@@ -16,21 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="本节介绍常微分方程的基本概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/05/20/hello-world/index.html">
+<meta property="og:title" content="常微分方程（一）">
+<meta property="og:url" content="http://example.com/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="本节介绍常微分方程的基本概念">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-20T00:02:51.587Z">
-<meta property="article:modified_time" content="2022-03-28T15:40:34.522Z">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-04-01T12:21:12.000Z">
+<meta property="article:modified_time" content="2022-04-06T02:04:40.283Z">
 <meta property="article:author" content="Yixiao Feng">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
   
   
   
-  <title>Hello World - Newtonpula的自留地</title>
+  <title>常微分方程（一） - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -205,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="常微分方程（一）"></span>
           
         </div>
 
@@ -221,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-20 08:02" pubdate>
-          2022年5月20日 早上
+        <time datetime="2022-04-01 20:21" pubdate>
+          2022年4月1日 晚上
         </time>
       </span>
     
@@ -234,7 +237,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          367 字
+          1.6k 字
         
       </span>
     
@@ -246,7 +249,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          14 分钟
         
       </span>
     
@@ -284,23 +287,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">常微分方程（一）</h1>
             
             <div class="markdown-body">
               
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+              <p>最近其他东西读得有点累了，开个ODE的新坑，这主要是因为一直在读的Neuronal Dynamics里用到了很多ODE。参考书基本是丁同仁的《常微分方程教程》，会查知乎上大佬整理的笔记，可能也会附加一点Arnold的《Ordinary Differential Equations》（大概吧），大概就不指望会有动力系统的东西了。</p>
+<p>【定义1.1】方程<br>$$<br>F(x,y,y’,\cdots,y^{(n)})<br>$$<br>叫作常微分方程，其中导数实际出现的最高阶数$n$叫作常微分方程的阶.</p>
+<p>一般会给一个初值条件：<br>$$<br>y(x_0)&#x3D;y_0,y’(x_0)&#x3D;y’_0,\cdots,y^{(n-1)}(x_0)&#x3D;y^{(n-1)}_0<br>$$</p>
+<p>【定义1.2】微分方程的解的概念. 设$n$阶微分方程的解<br>$$<br>y&#x3D;\varphi(x,C_1,\cdots,C_n)<br>$$<br>包含$n$个独立的任意常数$C_1,\cdots,C_n$（这是因为每做一次不定积分就会多一个常数），则称它为通解，独立的意思是Jacobi行列式<br>$$<br>\det<br>\begin{bmatrix}<br>    \frac{\partial \varphi}{\partial C_1} &amp; \frac{\partial \varphi}{\partial C_2} &amp; \cdots &amp; \frac{\partial \varphi}{\partial C_n} \<br>    \frac{\partial \varphi’}{\partial C_1} &amp; \frac{\partial \varphi’}{\partial C_2} &amp; \cdots &amp; \frac{\partial \varphi’}{\partial C_n} \<br>    \vdots &amp; \vdots &amp; &amp; \vdots \<br>    \frac{\partial \varphi^{(n-1)}}{\partial C_1} &amp; \frac{\partial \varphi^{(n-1)}}{\partial C_2} &amp; \cdots &amp; \frac{\partial \varphi^{(n-1)}}{\partial C_n} \<br>\end{bmatrix}<br>$$<br>不为零，若解$y&#x3D;\varphi(x)$不包含任意常数，则称它为特解. 这个定义的合理性以后再说. </p>
+<p>利用初值条件，可以确定通解中的任意常数$C_1,\cdots,C_n$. 注意：由于分析方法的限制（如隐函数存在定理的局部性），一般只能在局部范围内讨论通解. 常数独立的条件保证可以反解出$C_1,\cdots,C_n$. 为此要求$F$是$C^1$的，不过一般遇到的ODE都是充分光滑的. </p>
+<p>考虑一阶微分方程<br>$$<br>\frac{\textrm{d}y}{\textrm{d}x}&#x3D;f(x,y)<br>$$<br>其中$f(x,y)$是平面区域$G$内的连续函数. 它的解$y&#x3D;\varphi(x)$在$(x,y)$平面上的图形——一条光滑曲线$\Gamma$为微分方程的<strong>积分曲线</strong>. 即使并不知道积分曲线是什么，也可以知道在积分曲线任意一点处的切线方程. 书中给出了<strong>线素</strong>和<strong>线素场</strong>或<strong>方向场</strong>的概念，其实就是切向量场，可以回忆一下切丛等微分流形中的概念.</p>
+<p>利用由关系式$f(x,y)&#x3D;k$确定的曲线$L_k$，称它为线素场的<strong>等斜线</strong>. 一般会利用等斜线上点的切向量方向来画出向量场的简图.</p>
+<p>如果一阶微分方程取如下形式：<br>$$<br>\frac{\textrm{d}y}{\textrm{d}x}&#x3D;-\frac{P(x,y)}{Q(x,y)}<br>$$<br>那么当$P(x_0,y_x)&#x3D;Q(x_0,y_0)&#x3D;0$时，称这样的点$(x_0,y_0)$为相应微分方程的<strong>奇异点</strong>. 线素场在奇异点没有意义. 奇异点的概念十分关键.</p>
 
               
             </div>
@@ -308,6 +306,41 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+    </div>
   
 </div>
 
@@ -317,8 +350,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2022/05/20/hello-world/</div>
+      <div>常微分方程（一）</div>
+      <div>http://example.com/2022/04/01/常微分方程（一）/</div>
     </div>
     <div class="license-meta">
       
@@ -330,7 +363,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月20日</div>
+          <div>2022年4月1日</div>
         </div>
       
       
@@ -360,12 +393,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" title="常微分方程（二）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程（二）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/18/%E8%AE%A1%E7%A7%91%E5%AF%BC%E5%A4%8D%E4%B9%A0/" title="计科导复习">
-                        <span class="hidden-mobile">计科导复习</span>
+                      <a href="/2022/03/29/%E9%AB%98%E4%BB%A3%E8%AF%BE%E5%A4%96%E9%A2%982/" title="高代课外题2">
+                        <span class="hidden-mobile">高代课外题2</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

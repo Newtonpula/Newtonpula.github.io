@@ -1,0 +1,956 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/title.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yixiao Feng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大一下记的数值分析笔记，乱得一比">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数值分析笔记">
+<meta property="og:url" content="http://example.com/2022/05/17/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Newtonpula的自留地">
+<meta property="og:description" content="大一下记的数值分析笔记，乱得一比">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/index/numerical.jpg">
+<meta property="article:published_time" content="2022-05-17T02:35:06.000Z">
+<meta property="article:modified_time" content="2022-05-19T07:59:48.326Z">
+<meta property="article:author" content="Yixiao Feng">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/numerical.jpg">
+  
+  
+  
+  <title>数值分析笔记 - Newtonpula的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"lP0EkKujSYnXpz4ctf8fFGsW-9Nh9j0Va","app_key":"DpVSkvgqz62seB0SqeXNleTm","server_url":"https://lp0ekkuj.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数值分析笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Yixiao Feng
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-17 10:35" pubdate>
+          2022年5月17日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          87 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数值分析笔记</h1>
+            
+            <div class="markdown-body">
+              
+              <h2 id="第1章-求解方程"><a href="#第1章-求解方程" class="headerlink" title="第1章 求解方程"></a>第1章 求解方程</h2><h3 id="1-1-二分法"><a href="#1-1-二分法" class="headerlink" title="1.1 二分法"></a>1.1 二分法</h3><p>时间复杂度：$O(\log n)$<br>n步二分法操作后，得到<br>$$ \lvert x_c-r \rvert &lt; \frac{b-a}{2^{n+1}}$$<br>如果误差小于$0.5 \times 10^{-p}$，精确到小数点后p位。</p>
+<p><strong>定义1.5</strong> 令$e_i$表示迭代过程中第i步时的误差，如果<br>$$ \lim_{i \to \infty}\frac{e_{i+1}}{e_i}&#x3D;S&lt;1$$<br>该方法被称为满足<strong>线性收敛</strong>，收敛速度为$S$。</p>
+<p><strong>定理1.6</strong> 假设函数$g$是连续可微函数，$g(r)&#x3D;r$,$S&#x3D;\lvert g’(r) \rvert&lt;1$，则不动点迭代对于一个足够接近$r$的初始估计，以速度$S$线性收敛到不动点$r$。</p>
+<p>根据定理1.6，近似误差之间的关系<br>$$ e_{i+1} \approx Se_i$$<br>在收敛过程中得到保持。</p>
+<p><strong>定义1.7</strong> 如果迭代方法对于一个足够接近$r$的初值能收敛到$r$，该迭代方法被称为<strong>局部收敛</strong>到$r$。</p>
+<p>定理1.6的结论是当$\lvert g’(r) \rvert&lt;1$时不动点迭代局部收敛。</p>
+<blockquote>
+<p>如果误差小于 $0.5 \times 10^{-p}$，解精确到小数点后 $p$位.</p>
+</blockquote>
+<h2 id="正交多项式"><a href="#正交多项式" class="headerlink" title="正交多项式"></a>正交多项式</h2><h3 id="最小二乘问题"><a href="#最小二乘问题" class="headerlink" title="最小二乘问题"></a>最小二乘问题</h3><p>给定函数 $f$，$w(x)$为权函数，求 $P_n(x)&#x3D;\sum_{k&#x3D;0}^{n} a_k\varphi_k(x)$使误差<br>$$<br>    E(a_0,\cdots ,a_n)&#x3D;\int_{a}^{b} w(x)[f(x)-P_n(x)]^{2} \mathrm{d}x<br>$$<br>极小，称 $P_n(x)$为该函数以 $w(x)$  为权函数的<strong>最小二乘函数逼近</strong>.</p>
+<p>如果 ${\varphi_0,\cdots ,\varphi_n}$为一组正交函数系，则<br>$$<br>    a_k&#x3D;\frac{(\varphi_k,f)<em>{w}}{(\varphi_k,\varphi_k)</em>{w}}<br>$$</p>
+<h3 id="Gram-Schmidt-正交化过程"><a href="#Gram-Schmidt-正交化过程" class="headerlink" title="Gram-Schmidt 正交化过程"></a>Gram-Schmidt 正交化过程</h3><p>是想把 ${1,x,\cdots ,x^{n}}\rightarrow {\varphi_0,\cdots ,\varphi _n}$成为正交基.</p>
+<p>设 $w(x)$为 $[a,b]$上的权函数. 令 $\varphi_0(x)&#x3D;1$，$\varphi_1(x)&#x3D;x-B_1$，其中<br>$$<br>    B_1&#x3D;\frac{(x\varphi_0,\varphi_0)<em>{w}}{(\varphi_0,\varphi_0)</em>{w}}<br>$$<br>对于权函数 $w(x)\equiv 1$的情况<br>$$<br>    B_1&#x3D;\frac{\int_{-1}^{1} x \mathrm{d}x}{\int_{-1}^{1} 1 \mathrm{d}x}&#x3D;0<br>$$</p>
+<p>当 $k\geqslant 2$时，有<br>$$<br>    \varphi_k(x)&#x3D;(x-B_k)\varphi_{k-1}-C_k\varphi_{k-2}<br>$$<br>其中<br>$$<br>    B_k&#x3D;\frac{(x\varphi_{k-1},\varphi_{k-1})<em>{w}}{(\varphi</em>{k-1},\varphi_{k-1})<em>{w}}, \qquad C_k&#x3D;\frac{(x\varphi</em>{k-2},\varphi_{k-1})<em>{w}}{(\varphi</em>{k-2},\varphi_{k-2})_{w}}<br>$$<br>则所得到的集合 ${\varphi_0,\cdots ,\varphi_n}$是正交的. 按这种办法求出来的多项是首一的，可能与一般定义的Legendre多项式或Chebyshev多项式不同.</p>
+<p>首一性还可以得到以下性质<br>$$<br>    (x\varphi_{k-2},\varphi_{k-1})<em>{w}&#x3D;(\varphi</em>{k-1},\varphi_{k-1})_{w}<br>$$</p>
+<h3 id="Simpson法则的误差"><a href="#Simpson法则的误差" class="headerlink" title="Simpson法则的误差"></a>Simpson法则的误差</h3><p><strong>Simpson法则</strong>：<br>$$<br>    \int_{x_0}^{x_2} f(x) \mathrm{d}x&#x3D;\frac{h}{3}(y_0+4y_1+y_2)-\frac{h^{5}}{90}f^{(4)}(c)<br>$$<br>其中 $h&#x3D;x_2-x_1&#x3D;x_1-x_0$，$c$在 $x_0$和 $x_2$之间.</p>
+<p>首先回顾Hermite插值：可将Hermite插值等价表示为经过 $z_1,z_2,\cdots,z_2n$，其中 $z_{2i-1}&#x3D;z{2i}&#x3D;x_i$，的Newton插值.<br>Newton插值的三次项为奇函数，故在 $x_0~ x_2$上积分为零，再对误差项利用积分第一中值定理知最后误差项.</p>
+<p>从该表达式知Simpson法则的代数精度为3.</p>
+<h3 id="3阶Newton-Cotes公式（Simpson3-x2F-8公式）"><a href="#3阶Newton-Cotes公式（Simpson3-x2F-8公式）" class="headerlink" title="3阶Newton-Cotes公式（Simpson3&#x2F;8公式）"></a>3阶Newton-Cotes公式（Simpson3&#x2F;8公式）</h3><p>$$<br>    \int_{x_0}^{x_3} f(x) \mathrm{d} \thickapprox \frac{3h}{8}(f_0+3f_1+3f_2+f_3)<br>$$<br>其误差也为 $h^{5}$量级，而因计算更复杂而通常不使用.</p>
+<h3 id="复合梯形法则"><a href="#复合梯形法则" class="headerlink" title="复合梯形法则"></a>复合梯形法则</h3><p>对于 $\displaystyle  x_j&#x3D;x_0+jh, x_0&#x3D;a, x_n&#x3D;b, h&#x3D;(b-a)&#x2F;n$ 有<br>$$<br>    \int_{a}^{b} f(x) \mathrm{d}&#x3D;\frac{h}{2}(f_0+2f_1+\cdots +2f_{n-1}+f_n)-\frac{(b-a)h^{2}}{12}f’’(c)<br>$$</p>
+<p>数值精度是2阶，代数精度是1阶.</p>
+<h3 id="复合Simpson公式"><a href="#复合Simpson公式" class="headerlink" title="复合Simpson公式"></a>复合Simpson公式</h3><p>类似，求和比较繁琐.</p>
+<h3 id="舍入误差对复合积分公式的影响"><a href="#舍入误差对复合积分公式的影响" class="headerlink" title="舍入误差对复合积分公式的影响"></a>舍入误差对复合积分公式的影响</h3><p>$$<br>    \int_{a}^{b} f(x) \mathrm{d}x\thickapprox \frac{h}{2}(f_0+2f_1+\cdots +2f_{n-1}+f_n)+\varepsilon_R<br>$$<br>有<br>$$<br>    \varepsilon_R \thickapprox (b-a)\varepsilon_h<br>$$</p>
+<h3 id="开Newton-Cotes公式"><a href="#开Newton-Cotes公式" class="headerlink" title="开Newton-Cotes公式"></a>开Newton-Cotes公式</h3><h3 id="Romberg积分"><a href="#Romberg积分" class="headerlink" title="Romberg积分"></a>Romberg积分</h3><p>一个表格<br>$$<br>    \begin{aligned}<br>    &amp;R_{11} \<br>    &amp;R_{21} \quad R_{22} \<br>    &amp;R_{31} \quad R_{32} \quad R_{33} \<br>    &amp;\vdots<br>    \end{aligned}<br>$$<br>定义<br>$$<br>    h_j&#x3D;\frac{1}{2^{j-1}}(b-a)<br>$$</p>
+<p>其中<br>$$<br>    R_{j1}&#x3D;\frac{1}{2}R_{j-1,1}+h_j\sum_{i&#x3D;1}^{2^{j-2}} f(a+(2i-1)h_j)<br>$$</p>
+<p>$$<br>    R_{jk}&#x3D;\frac{4^{k-1}R_{j,k-1}-R_{j-1,k-1}}{4^{k-1}-1}<br>$$</p>
+<p>这里 $R_{jj}$是 $2j$阶的近似.</p>
+<h2 id="自适应积分"><a href="#自适应积分" class="headerlink" title="自适应积分"></a>自适应积分</h2><p>为什么要自适应：</p>
+<ul>
+<li>高阶导数不易计算</li>
+<li>有些区域变化缓慢</li>
+</ul>
+<h2 id="高斯积分"><a href="#高斯积分" class="headerlink" title="高斯积分"></a>高斯积分</h2><p>高斯积分具有 $2n+1$阶的代数精度（使用 $n+1$个点），该精度是Newton-Cotes公式的两倍.</p>
+<p>三点Gauss积分<br>$$<br>    x_1&#x3D;-\sqrt{\frac{3}{5}} \quad x_2&#x3D;0 \quad x_3&#x3D;\sqrt{\frac{3}{5}} \<br>    c_1&#x3D;\frac{5}{9} \quad c_2&#x3D;\frac{8}{9} \quad c_3&#x3D;\frac{5}{9}<br>$$</p>
+<p>关于正交多项式系，有这样的定理 ：如果 ${p_0,p_1,p_2,\cdots,p_n}$在 $[a,b]$区间上是多项式的正交集，并且如果deg $p_i&#x3D;i$ ，则 $p_i$在区间 $(a,b)$上有 $i$个不同的根</p>
+<p>回忆Legendre多项式：在 $[-1,1]$上以权函数 $w(x)&#x3D;1$的正交多项式. 它们满足递推关系<br>$$<br>    (n+1)P_{n+1}(x)&#x3D;(2n+1)x P_n(x)-nP_{n-1}(x)<br>$$<br>其中 $P_0(x)&#x3D;1$，$P_1(x)&#x3D;x$</p>
+<p>这里Legendre多项式非首一，而是满足 $P_n(1)&#x3D;1$.</p>
+<p>接下去我们要证明插值节点恰为Legendre多项式的根，这跟首项系数无关.</p>
+<p><strong>Gauss积分</strong>：<br>$$<br>    \int_{-1}^{1} 1 \cdot f(x) \mathrm{d}x \thickapprox \sum_{i&#x3D;1}^{n} c_if(x_i)<br>$$<br>其中<br>$$<br>    c_i&#x3D;\int_{-1}^{1} 1 \cdot L_i(x) \mathrm{d}x, \quad i&#x3D;1,\cdots ,n<br>$$<br>$L_i$是Lagrange插值基. $x_i$是Legendre多项式的根. 写出1是为了强调权函数.</p>
+<p><strong>定理</strong>：Gauss积分方法，在 $[-1,1]$上使用 $n$阶Legendre多项式，具有 $2n-1$阶代数精度.</p>
+<blockquote>
+<p>并不需要解那个很复杂的非线性方程组，只要说明Gauss积分方法能够具有 $2n-1$阶代数精度，就可由唯一性得知它就是最好的插值法.</p>
+</blockquote>
+<p>在一般区间 $[a,b]$上近似积分，作变换 $t&#x3D;(2x-a-b)&#x2F;(b-a)$，容易检验<br>$$<br>    \int_{a}^{b} f(x) \mathrm{d}x&#x3D;\int_{-1}^{1} f(\frac{(b-a)t+b+a}{2})\frac{b-a}{2} \mathrm{d}t<br>$$</p>
+<p><strong>Gauss积分的误差</strong>：<br>$$<br>    R&#x3D;\int_{-1}^{1} f(x) \mathrm{d}x-\sum_{i&#x3D;1}^{n} c_if(x_i)&#x3D;\frac{f^{(2n)}(\xi)}{(2n)!}\int_{-1}^{1} q(x) \mathrm{d}x<br>$$<br>其中 $q(x)&#x3D;[(x-x_1)\cdots (x-x_n)]^{2}$</p>
+<p>可以考虑 $x_1,x_2,\cdots,x_n$的Hermite插值.</p>
+<h3 id="Gauss-Chebyshev-积分"><a href="#Gauss-Chebyshev-积分" class="headerlink" title="Gauss-Chebyshev 积分"></a>Gauss-Chebyshev 积分</h3><p>权函数 $\displaystyle w(x)&#x3D;\frac{1}{\sqrt{1-x^{2}}}$.</p>
+<p>此时取的诸 $\displaystyle x_i&#x3D;\cos \frac{2i-1}{2n}\pi,i&#x3D;1,2,\cdots ,n$，而 $\displaystyle c_i&#x3D;\int_{-1}^{1} \frac{L_i(x)}{\sqrt{1-x^{2}}} \mathrm{d}x$</p>
+<h3 id="反常积分的计算"><a href="#反常积分的计算" class="headerlink" title="反常积分的计算"></a>反常积分的计算</h3><p>尝试利用数值方法计算<br>$$<br>    \int_{a}^{b} \frac{g(x)}{(x-a)^{p}} \mathrm{d}x<br>$$<br>其中 $0&lt;p&lt;1$</p>
+<p>该积分有一个奇点 $x&#x3D;a$. </p>
+<ul>
+<li>梯形和Simpson方法发散</li>
+<li>开Newton-Cotes公式精度很低</li>
+</ul>
+<p>最简单的想法<br>$$<br>    \int_{a}^{b} \frac{g(x)-g(a)}{(x-a)^{p}} \mathrm{d}x+ \int_{a}^{b} \frac{g(a)}{(x-a)^{p}} \mathrm{d}x<br>$$</p>
+<p>这样 $\displaystyle G(x)&#x3D;\frac{g(x)-Q_4(x)}{(x-a)^{p}}\in C^{4}[a,b]$就可以利用之前说过的公式计算. （ $Q_4(x)$为 $g(x)$在 $x&#x3D;a$处展开的前5项.</p>
+<h3 id="高维积分的计算"><a href="#高维积分的计算" class="headerlink" title="高维积分的计算"></a>高维积分的计算</h3><p>这会牵扯到许多极限换序和收敛性的问题.</p>
+<h2 id="数值代数"><a href="#数值代数" class="headerlink" title="数值代数"></a>数值代数</h2><h3 id="方程组的求解——高斯消去法和LU分解"><a href="#方程组的求解——高斯消去法和LU分解" class="headerlink" title="方程组的求解——高斯消去法和LU分解"></a>方程组的求解——高斯消去法和LU分解</h3><p>朴素的Gauss消去法时，$n$个方程 $n$个未知数的消去计算，可以在 $\displaystyle \frac{2}{3}n^{3}+\frac{1}{2}n^{2}-\frac{7}{6}n$次操作后完成. $\displaystyle \frac{1}{3}n^{3}$ 次操作是加减， $\displaystyle \frac{1}{3}n^{3}$次操作是乘除. 所有操作完成后，变为上三角矩阵.</p>
+<p>再经历回代的操作，回代计算复杂度是 $O(n^{2})$，加减与乘除也是一半一半.</p>
+<p>LU分解是Gauss消去法的矩阵形式，L代表下三角，U代表上三角</p>
+<h3 id="矩阵的条件数"><a href="#矩阵的条件数" class="headerlink" title="矩阵的条件数"></a>矩阵的条件数</h3><p><strong>Q:</strong> 证明矩阵 $A$的条件数为 $\text{cond}(A)&#x3D;\left| A \right|<em>{}\left| A ^{-1} \right|</em>{}$</p>
+<p><strong>证:</strong> 注意误差放大因子<br>$$<br>    Q&#x3D;\frac{\left| x-x_a \right|<em>{}&#x2F;\left| x \right|</em>{}}{\left| b- Ax_a \right|<em>{}&#x2F;\left| b \right|</em>{}}\leqslant<br>$$</p>
+<p>$$<br>    \exists b,x,r \quad \text{s.t.} \quad \left| A \right|<em>{}&#x3D;\frac{\left| Ax \right|</em>{}}{\left| x \right|<em>{}}&#x3D;\frac{\left| b \right|</em>{}}{\left| x \right|<em>{}}, \quad \left| A ^{-1} \right|</em>{}&#x3D;\frac{\left| A ^{-1} r \right|<em>{}}{\left| r \right|</em>{}}<br>$$</p>
+<p><strong>收敛速度：</strong> $\varepsilon^{(k)}&#x3D;B^{k}\varepsilon^{(0)}$<br>设 $B$有 $n$个线性无关的特征向量 $u_1,\cdots ,u_n$，对应特征值为 $\lambda_1,\cdots ,\lambda_n$，则由 $\varepsilon^{(0)}&#x3D;\sum_{i&#x3D;1}^{n} a_iu_i$,</p>
+<p>$$<br>    \varepsilon^{(k)}&#x3D;\sum_{i&#x3D;1}^{n} a_i\lambda_i^{k}u_i<br>$$<br>可以看到 $\rho(B)&lt;1$越小，收敛越快.</p>
+<p><strong>Def:</strong><br>$$<br>    R(B)&#x3D;-\ln \rho(B)<br>$$<br>称为迭代法的收敛速度</p>
+<p><strong>定理：</strong> $x^{(k+1)}&#x3D;Bx^{(k)}+f$为迭代公式，存在某一范数（需要满足相容性条件）使得 $\left| B \right|_{}&#x3D;q&lt;1$，则</p>
+<ul>
+<li>迭代法收敛</li>
+<li>$\displaystyle \left| x^{(k)}-x^{*} \right|<em>{}\leqslant \frac{q}{1-q}\left| x^{(k)}-x^{(k-1)} \right|</em>{}$</li>
+<li>$\displaystyle \left| x^{(k)}-x^{*} \right|<em>{}\leqslant \frac{q^{k}}{1-q}\left| x^{(1)}-x^{(0)} \right|</em>{}$</li>
+</ul>
+<h3 id="稀疏矩阵计算"><a href="#稀疏矩阵计算" class="headerlink" title="稀疏矩阵计算"></a>稀疏矩阵计算</h3><p>稀疏矩阵：非零元密度远小于1的矩阵. 对于很大的 $N$，直接法存储 $N$阶矩阵数据需要 $O(N^{2})$大小；稀疏矩阵只存储非零元位置和数据，需要 $2N$ 大小.</p>
+<h3 id="Cholesky-分解"><a href="#Cholesky-分解" class="headerlink" title="Cholesky 分解"></a>Cholesky 分解</h3><p>如果 $A$ 是 $n \times n$ 对称正定矩阵，则存在上三角 $n \times n$ 矩阵 $R$ 满足 $A&#x3D; R ^{\mathsf{T}} R$</p>
+<p><strong>证</strong> 归纳<br>$$<br>    A&#x3D;<br>    \begin{bmatrix}<br>    a &amp; b^{\mathsf{T}} \<br>    b &amp; C \<br>    \end{bmatrix}<br>$$<br>设 $\displaystyle u&#x3D;\frac{b}{\sqrt{a}}$，令 $A_1&#x3D;C-uu ^{\mathsf{T}}$ 定义可逆矩阵<br>$$<br>    S&#x3D;<br>    \begin{bmatrix}<br>    \sqrt{a} &amp; u^{\mathsf{T}} \<br>    0 &amp; I<br>    \end{bmatrix}<br>$$<br>得到<br>$$<br>    S ^{\mathsf{T}}<br>    \begin{bmatrix}<br>    1 &amp; 0 \<br>    0 &amp; A_1 \<br>    \end{bmatrix}<br>    S&#x3D;A<br>$$<br>$A_1$   也是对称正定的，故 $A_1&#x3D;V ^{\mathsf{T}}V$，最后定义<br>$$<br>    R&#x3D;<br>    \begin{bmatrix}<br>    \sqrt{a} &amp; u ^{\mathsf{T}} \<br>    0 &amp; V \<br>    \end{bmatrix}<br>$$<br>在寻找 $R$ 时，继续对 $A_1$ 作操作即可.</p>
+<h3 id="共轭梯度法"><a href="#共轭梯度法" class="headerlink" title="共轭梯度法"></a>共轭梯度法</h3><p><strong>等价极值问题</strong><br><strong>定理</strong> $A$ 是 $n$ 阶对称正定矩阵，$x$ 是方程组 $Ax&#x3D;b$的解 $\Leftrightarrow$ $x$是二次函数 $f(x)&#x3D;\frac{1}{2}x^{\mathsf{T}}Ax-b^{\mathsf{T}}x$的极小点. 即<br>$$<br>    Ax^{<em>}&#x3D;b \Leftrightarrow f(x^{</em>})&#x3D; \min_{x\in \mathbb{R}^{n}}f(x)<br>$$</p>
+<p><strong>证</strong> 注意 $\nabla f(x)&#x3D; Ax-b$ 且 $f(x+\alpha y)&#x3D;f(x)+\alpha (Ax-b,y)+\frac{1}{2}\alpha^{2}(Ay,y)$</p>
+<h3 id="最速下降法"><a href="#最速下降法" class="headerlink" title="最速下降法"></a>最速下降法</h3><ul>
+<li><p>每次找一个方向 $d_k$，使得<br>$$<br>  x_{k+1}&#x3D;x_k+\alpha_k d_k<br>$$<br>其中系数 $\alpha_k$通过求一维问题的极小获得.</p>
+</li>
+<li><p>若 $d_k&#x3D;-\nabla f(x_k)&#x3D;b-x_k$，则该方向为<strong>最速下降方向</strong>. 有 $d_k&#x3D;r_k$，且 $d_k$和 $d_{k+1}$正交.</p>
+</li>
+</ul>
+<p>计算可以得到<br>$$<br>    \alpha_k&#x3D;\frac{(r_k,r_k)}{(Ar_k,r_k)}<br>$$</p>
+<blockquote>
+<p>可以直接考虑为什么 $d_k$ 和 $d_{k+1}$ 正交，注意并<strong>不</strong>一定有 $(d_i,d_j)&#x3D;0, i\neq j$</p>
+</blockquote>
+<p>误差估计<br>$$<br>    \left| x_k-x^{<em>} \right|_{A}\leqslant \left(\frac{\lambda_1-\lambda_n}{\lambda_1+\lambda_n}\right)^{k}\left| x_0-x^{</em>} \right|_{A}<br>$$</p>
+<p><strong>证</strong> 用归纳法，然后用Kantorovich不等式，具体推导略.<br>Kantorovich不等式可以见</p>
+<hr>
+<p>康托洛维奇(Kantorovich)不等式的一种初等证明<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/271983329">https://zhuanlan.zhihu.com/p/271983329</a></p>
+<hr>
+<blockquote>
+<p>最速下降法当矩阵条件数过大，即最大与最小特征值相差极大时收敛非常慢，不具有实际应用意义</p>
+</blockquote>
+<h3 id="共轭梯度法-1"><a href="#共轭梯度法-1" class="headerlink" title="共轭梯度法"></a>共轭梯度法</h3><blockquote>
+<p>$d_k$ 是方向， $r_k$ 是残差（标量），$x_k$ 是经过 $k$ 步得到的估计</p>
+</blockquote>
+<ul>
+<li><p>$f(x)$ 极小问题可迭代计算，每次找方向 $d_k$，使<br>$$<br>  x_{k+1}&#x3D;x_{k}+\alpha_k d_k<br>$$<br>其中系数 $\alpha$ 通过求一维问题的极小获得 </p>
+</li>
+<li><p>搜索方向两两共轭，且<br>$$<br>  d_{k+1}&#x3D;r_k+\beta_k d_k<br>$$<br>其中的系数由共轭性质确定.</p>
+</li>
+</ul>
+<p><strong>共轭向量</strong><br>定义 $\left| x \right|_{A}&#x3D;(Ax,x)^{\frac{1}{2}}$<br>定义 如果两个方向 $d_i$ 和 $d_j$ 满足<br>$$<br>    (d_i,Ad_j)&#x3D;0<br>$$<br>则称这两个向量关于矩阵  $A$ 共轭. 类似可定义矩阵  $A$ 的共轭向量组.</p>
+<ul>
+<li>有限步收敛，收敛速度为（K为矩阵条件数）<br>$$<br>  \left| x_k-x^{<em>} \right|_{A}\leqslant 2\left(\frac{\sqrt{K}-1}{\sqrt{K}+1}\right)^{k} \left| x_0-x^{</em>} \right|_{A}<br>$$</li>
+</ul>
+<p><strong>有限步收敛性定理</strong><br>设 ${d_1,\cdots ,d_n}$ 为对称正定矩阵 $A$ 的共轭向量组，令<br>$$<br>    \alpha_k&#x3D;\frac{(d_k,r_{k-1})}{(d_k,Ad_k)},  x_k&#x3D;x_{k-1}+\alpha_k d_k,  k&#x3D;1,\cdots ,n<br>$$<br>该方向为<strong>共轭方向法</strong>（比共轭梯度更广泛）. 对于该迭代法， $n$ 步迭代可得准确解<br>$$<br>    A x_n&#x3D;b<br>$$</p>
+<p><strong>证</strong> 首先 $Ax_n&#x3D;Ax_0+\alpha_1 Aad_1+\cdots +\alpha_n A d_n$</p>
+<p>由共轭性质，$(d_k,r_{k-1})&#x3D;(d_k,b-Ax_0)$.</p>
+<p>而  $(b-Ax_n,d_k)&#x3D;(b-Ax_0,d_k)-\alpha_k(Ad_k,d_k)&#x3D;0$（代入 $\alpha_k$ 的定义即知）</p>
+<p>故 $r_n$ 与所有的 $d_k$正交， 故 $Ax_n&#x3D;b$.</p>
+<p><strong>共轭梯度法</strong> </p>
+<p><strong>共轭梯度法</strong> 选择的搜索方向为负梯度方向和前一个搜索方向的组合，使得所得到的余项与前面的余项两两正交. 负梯度方向即为残差 $r_k$的方向<br>$$<br>    (r_i,r_j)&#x3D;0, i \neq j<br>$$</p>
+<p>令<br>$$<br>    r_{k-1}&#x3D;b-Ax_{k-1}, \quad(r_{k-1},d_i)&#x3D;0, \quad i&#x3D;1,\cdots ,k-1<br>$$<br>则<br>$$<br>    d_k&#x3D;r_{k-1}+\beta <em>{k-1}d</em>{k-1}<br>$$<br>选择合适的 $\beta_{k-1}$ 使得与前面的搜索方向共轭<br>$$<br>    (d_{k-1},Ad_k)&#x3D;0<br>$$<br>可以得到<br>$$<br>    \beta_{k-1}&#x3D;-\frac{(d_{k-1},Ar_{k-1})}{(d_{k-1},Ad_{k-1})}<br>$$</p>
+<p>证明实际上 $d_k$与 $d_j$都共轭（$j&lt;k$），归纳法<br>$$<br>    d_{j-1} ^{\mathsf{T}}A d_k&#x3D;d_{j-1} ^{\mathsf{T}} A r_{k-1}+\beta_{k-1} d_{j-1} ^{\mathsf{T}}A d_{k-1}<br>$$<br>那么由归纳法 $d_{j-1} ^{\mathsf{T}} A d_{k-1}&#x3D;0$<br>且<br>$$<br>    A d_{j-1}&#x3D;\frac{1}{\alpha_{j-1}}(r_{j-2}-r_{j-1}) \Rightarrow d_{j-1} ^{\mathsf{T}} Ar_{k-1}&#x3D;\frac{1}{\alpha_{j-1}}(r_{j-2}-r_{j-1}) ^{\mathsf{T}} r_{k-1}&#x3D;0<br>$$</p>
+<p>共轭梯度法复杂度还是 $O(n^{3})$ 甚至比直接法还要慢，但是在处理一些特殊问题（大型稀疏矩阵、良态即条件数很小）时有非常高的效率.</p>
+<blockquote>
+<p>总结算法如下<br>初始：$r_0&#x3D;b-Ax_0, \quad d_1&#x3D;r_0$<br>For $k&#x3D;1,\cdots ,n$<br>$\displaystyle \alpha_k&#x3D;\frac{(r_{k-1},r_{k-1})}{(d_k,Ad_k)}$<br>$x_k&#x3D;x_{k-1}+\alpha_k d_k$<br>$r_k&#x3D;r_{k-1}-\alpha_k A d_k$ （新残差）<br>$\displaystyle \beta_k&#x3D;\frac{(r_k,r_k)}{(r_{k-1},r_{k-1})}&#x3D;\frac{-(d_k, A r_k)}{(d_k,A d_k)}$<br>$d _{k+1}&#x3D;r_k+\beta_k d_k$<br>End For </p>
+</blockquote>
+<p>（下标可能与书本有所不同）</p>
+<p><strong>预条件</strong> 若 $A$为病态矩阵，过程易受舍入误差的影响，使用预条件可以在 $\sqrt{n}$ 步得到收敛解. </p>
+<p>目标是选择合适的矩阵 $M$，使得方程<br>$$<br>    M ^{-1} Ax&#x3D; M ^{-1}b<br>$$<br>更“好”. $M$ 当然可逆，称为<strong>预条件子</strong>. 我们希望</p>
+<ul>
+<li>$M$和 $A$ 足够接近</li>
+<li>$M$ 容易求逆</li>
+</ul>
+<p><strong>雅可比预条件子</strong> $M&#x3D;D$ ，其中 $D$ 是 $A$ 的对角线矩阵. 用 $(v,w)_{M}$ 替换欧几里得内积. 则 $M ^{-1}A$ 相对于新的内积仍然是对称正定矩阵.</p>
+<p><strong>高斯-赛德尔预条件子</strong><br>对称连续过松弛（SSOR），中预条件子定义为<br>$$<br>    M&#x3D;(D+\omega L)D ^{-1}(D+\omega U)<br>$$<br>其中 $A&#x3D;L+D+U$ 被分为下三角部分、对角线以及上三角部分. $\omega \in [0,2]$，当 $\omega&#x3D;1$ 时称为高斯-赛德尔预条件子 </p>
+<blockquote>
+<p>经过一些化简可以得到有预条件的算法<br>$x_0&#x3D;$ 初始条件<br>初始：$r_0&#x3D;b-Ax_0, \quad d_1&#x3D;z_0&#x3D;M ^{-1}r_0$<br>For $k&#x3D;1,\cdots ,n$<br>$\displaystyle \alpha_k&#x3D;\frac{(r_{k-1},z_{k-1})}{(d_k,Ad_k)}$<br>$x_k&#x3D;x_{k-1}+\alpha_k d_k$<br>$r_k&#x3D;r_{k-1}-\alpha_k A d_k$ （新残差）<br>$z_k&#x3D;M ^{-1}r_k$<br>$\displaystyle \beta_k&#x3D;\frac{(r_k,z_k)}{(r_{k-1},z_{k-1})}$<br>$d _{k+1}&#x3D;z_k+\beta_k d_k$<br>End For </p>
+</blockquote>
+<p>在SSOR下，不需要求 $M ^{-1}$，在计算 $z_{k}&#x3D; M ^{-1} r_k$ 时，由于 $M&#x3D;(I+\omega LD ^{-1})(D+\omega U)$ 是下上三角矩阵的乘积，故该方程可以通过两次回代求解.<br>$$<br>    (I+\omega LD ^{-1})c&#x3D;v \<br>    (D+ \omega U)z&#x3D;c \<br>$$</p>
+<p>可以将具备SSOR的共轭梯度法与一般的迭代法作比较.</p>
+<h2 id="QR分解"><a href="#QR分解" class="headerlink" title="QR分解"></a>QR分解</h2><p><strong>完全QR分解</strong>  对于 $A\in \mathbb{F}^{m \times n}, m &gt; n$, $A&#x3D;QR$<br>其中 $Q \in O(m)$<br>$$<br>    R&#x3D;<br>    \begin{bmatrix}<br>        \tilde{R} \<br>        0 \<br>    \end{bmatrix}<br>$$</p>
+<p>计算的复杂度为 $O(n^{3})$</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" class="category-chain-item">数值分析</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数值分析笔记</div>
+      <div>http://example.com/2022/05/17/数值分析笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yixiao Feng</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年5月17日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/18/%E8%AE%A1%E7%A7%91%E5%AF%BC%E5%A4%8D%E4%B9%A0/" title="计科导复习">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计科导复习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/11/%E4%BB%8E%E5%9B%BD%E5%AE%B6%E4%B8%8E%E7%A4%BE%E4%BC%9A%E7%9A%84%E5%85%B3%E7%B3%BB%E7%9C%8B%E7%BB%B4%E6%8C%81%E5%9B%BD%E5%AE%B6%E7%A8%B3%E5%AE%9A/" title="从国家与社会的关系看维持国家稳定">
+                        <span class="hidden-mobile">从国家与社会的关系看维持国家稳定</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"lP0EkKujSYnXpz4ctf8fFGsW-9Nh9j0Va","appKey":"DpVSkvgqz62seB0SqeXNleTm","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

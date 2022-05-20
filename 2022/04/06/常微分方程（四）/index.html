@@ -16,21 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="本节主要与奇解有关">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/05/20/hello-world/index.html">
+<meta property="og:title" content="常微分方程（四）">
+<meta property="og:url" content="http://example.com/2022/04/06/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="本节主要与奇解有关">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-20T00:02:51.587Z">
-<meta property="article:modified_time" content="2022-03-28T15:40:34.522Z">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-04-06T12:42:30.000Z">
+<meta property="article:modified_time" content="2022-04-09T01:57:51.524Z">
 <meta property="article:author" content="Yixiao Feng">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
   
   
   
-  <title>Hello World - Newtonpula的自留地</title>
+  <title>常微分方程（四） - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -205,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="常微分方程（四）"></span>
           
         </div>
 
@@ -221,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-20 08:02" pubdate>
-          2022年5月20日 早上
+        <time datetime="2022-04-06 20:42" pubdate>
+          2022年4月6日 晚上
         </time>
       </span>
     
@@ -234,7 +237,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          367 字
+          5.5k 字
         
       </span>
     
@@ -246,7 +249,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          47 分钟
         
       </span>
     
@@ -284,23 +287,52 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">常微分方程（四）</h1>
             
             <div class="markdown-body">
               
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
+              <h1 id="奇解"><a href="#奇解" class="headerlink" title="奇解"></a>奇解</h1><h2 id="一阶隐式微分方程"><a href="#一阶隐式微分方程" class="headerlink" title="一阶隐式微分方程"></a>一阶隐式微分方程</h2><p>本节讨论一阶隐式方程<br>$$<br>    F(x, y,\frac{\mathrm{d}y}{\mathrm{d}x})&#x3D;0 \tag{1}<br>$$<br>的几个特殊解法，隐式指的是 $\frac{\mathrm{d}y}{\mathrm{d}x}$没有预先表示为 $(x, y)$的显函数.</p>
+<h3 id="微分法"><a href="#微分法" class="headerlink" title="微分法"></a>微分法</h3><p>设从微分方程（1）中可显式解出未知函数<br>$$<br>    y&#x3D;f(x, p) \tag{2}<br>$$<br>其中 $p&#x3D;\frac{\mathrm{d}y}{\mathrm{d}x}$. 设函数 $f(x,p)$对 $(x,p)$是连续可微的. 则由方程（2）对 $x$进行微分，得<br>$$<br>    p&#x3D;f’_x(x,p)+f’<em>p(x,p)\frac{\mathrm{d}p}{\mathrm{d}x}<br>$$<br>或<br>$$<br>    [f’</em>(x,p)-p]\mathrm{d}x+f’_p(x,p)\mathrm{d}p&#x3D;0 \tag{3}<br>$$<br>这是一个关于变量 $x$和 $p$的一阶显式微分方程.</p>
+<p>求得（3）的通解 $p&#x3D;u(x,C)$，得到（2）的通解<br>$$<br>    y&#x3D;f(x,u(x,C))<br>$$<br>其中 $C$是一个任意常数；另外若（3）有特解 $p&#x3D;w(x)$则方程（2）有相应的特解<br>$$<br>    y&#x3D;f(x,w(x))<br>$$<br>另一方面，若（3）的通解可写成 $x&#x3D;v(p,C)$的形式，则（2）的通解可写成<br>$$<br>    \begin{cases}<br>        x&#x3D;v(p,C) \<br>        y&#x3D;f(v(p,C),p)<br>    \end{cases}<br>$$<br>这里 $p$视作一个参变量；同样如果（3）有特解 $x&#x3D;z(p)$，则（2）有相应的特解<br>$$<br>    \begin{cases}<br>        x&#x3D;z(p) \<br>        y&#x3D;f(z(p),)<br>    \end{cases}<br>$$</p>
+<h3 id="参数法"><a href="#参数法" class="headerlink" title="参数法"></a>参数法</h3><p>设微分方程不明显包含自变量，即<br>$$<br>    F(y,p)&#x3D;0 \quad \biggl(p&#x3D;\frac{\mathrm{d}y}{\mathrm{d}x}\biggr) \tag{4}<br>$$<br>作为变元 $y$和 $p$之间的联系，方程（4）在 $(y,p)$平面上一般表示若干条曲线. 设<br>$$<br>    y&#x3D;g(t),\quad p&#x3D;h(t) \tag{5}<br>$$<br>是其中一条. 称（5）为（4）的一个<strong>参数表示</strong>. 一般来说 $g(t)$，$g’(t)$和 $h(t)$都是参数 $t$的连续函数，并且 $h(t) \neq 0$. 根据上述微分方程的参数表示，我们有<br>$$<br>    \mathrm{d}x&#x3D;\frac{1}{p}\mathrm{d}y&#x3D;\frac{g’(t)}{h(t)}\mathrm{d}t<br>$$<br>再利用积分，可得<br>$$<br>    x&#x3D;\int_{}^{} \frac{g’(t)}{h(t)} \mathrm{d}t+C<br>$$<br>因此，微分方程（4）有通解<br>$$<br>    x&#x3D;\int_{}^{} \frac{g’(t)}{h(t)} \mathrm{d}t+C, \quad y&#x3D;g(t) \tag{6}<br>$$</p>
+<p>一般而言，一阶隐式微分方程<br>$$<br>    F(x, y,p)&#x3D;0 \quad \biggl( p&#x3D;\frac{\mathrm{d}y}{\mathrm{d}x} \biggr) \tag{7}<br>$$<br>在 $(x, y, p)$空间表示曲面. 设它的参数表达式为<br>$$<br>    x&#x3D;f(u,v), \quad y&#x3D;g(u,v), \quad p&#x3D;h(u,v)<br>$$<br>这里 $u$和 $v$ 是两个参数. 则 $\mathrm{d}y&#x3D;p\mathrm{d}x$可写成如下形式<br>$$<br>    M(u,v)\mathrm{d}u+N(u,v)\mathrm{d}v&#x3D;0 \tag{8}<br>$$<br>其中<br>$$<br>    \begin{cases}<br>        M(u,v)&#x3D;g’_u(u,v)-h(u,v)f’_u(u,v) \<br>        N(u,v)&#x3D;g’_v(u,v)-h(u,v)f’_v(u,v)<br>    \end{cases}<br>$$<br>若能求得一阶显式微分方程（8）的通解<br>$$<br>    v&#x3D;Q(u,C) \tag{9}<br>$$<br>则微分方程（7）有通解<br>$$<br>    x&#x3D;f(u,Q(u,C)), \quad y&#x3D;g(u,Q(u,C))<br>$$<br>其中 $u$是参变量，而 $C$是一个积分常数；若其有特解 $v&#x3D;S(u)$，则<br>$$<br>    x&#x3D;f(u,S(u)),\quad y&#x3D;g(u,S(u))<br>$$<br>是微分方程（7）的特解.</p>
+<h2 id="奇解-1"><a href="#奇解-1" class="headerlink" title="奇解"></a>奇解</h2><p>【定义】设一阶微分方程<br>$$<br>    F(x, y, \frac{\mathrm{d}y}{\mathrm{d}x})&#x3D;0 \tag{10}<br>$$<br>有一特解<br>$$<br>    \Gamma: y&#x3D;\varphi(x) \quad(x\in J)<br>$$<br>如果对每一点 $Q\in \Gamma$，在 $Q$任何领域内方程（10）有一个不同于 $\Gamma$的解在 $Q$点与 $\Gamma$相切，则称 $\Gamma$是微分方程（10）的<strong>奇解</strong>.</p>
+<p><strong>定理4.1（奇解存在的必要条件）</strong>：设函数 $F(x, y,p)$对 $(x, y, p)\in G$是连续的，而且对 $y$和 $p$有连续的偏导数 $F’_y$和 $F’_p$，若函数 $y&#x3D;\varphi(x),(x\in J)$是微分方程（10）的一个奇解，并且<br>$$<br>    (x,\varphi(x)\varphi’(x))\in G \quad(x\in J)<br>$$<br>则奇解 $y&#x3D;\varphi(x)$满足一个称之为<strong>p-判别式</strong>的联立方程<br>$$<br>    F(x, y, p)&#x3D;0, \quad F’_p(x, y, p)&#x3D;0 \quad(p&#x3D;\frac{\mathrm{d}y}{\mathrm{d}x}) \tag{11}<br>$$<br>设从（11）中消去 $p$得到方程<br>$$<br>    \Delta(x, y)&#x3D;0 \tag{12}<br>$$<br>则称由此所决定的曲线为方程（10）的<strong>P-判别曲线</strong>. 因此，微分方程（10）的奇解是一条p-判别曲线.</p>
+<p><strong>证</strong>：用反证法，假设 $\exists x_0\in J$，使得<br>$$<br>    F’_p(x_0, y_0, p_0) \neq 0<br>$$<br>利用隐函数定理，$F$关于 $p$的偏导数不为零保证在 $(x_0,y_0)$附近唯一确定函数<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;f(x, y)<br>$$<br>推得 $f(x, y)$在 $(x_0, y_0)$附近关于 $y$有连续的偏导数，再用Picard定理知在 $(x_0,y_0)$附近有唯一解，从而与奇解的假设矛盾.</p>
+<p>注意，由p-判别式确定的函数 $y&#x3D;\psi(x)$不一定是相应微分方程的解；即使是解，也不一定是奇解. </p>
+<p>上面的定理要求出通解才能验证奇解与否，下面的定理在某种条件下克服了这一困难.</p>
+<p><strong>定理4.2</strong>：设函数 $F(x, y, p)$对 $(x, y,p)\in G$是二阶连续可微的. 又设由微分方程（10）的p-判别式<br>$$<br>    F(x, y, p)&#x3D;0, \quad F’_p(x, y, p)&#x3D;0<br>$$<br>消去$p$后得到的函数 $y&#x3D;\psi(x)(x\in J)$是微分方程（10）的解（注意上面定理的注）.而且设条件<br>$$<br>    F’<em>y(x,\psi(x),\psi’(x)) \neq 0,\quad F’’</em>{pp}(x,\psi(x),\psi’(x)) \neq 0 \tag{13}<br>$$<br>以及<br>$$<br>    F’_p(x,\psi(x),\psi’(x))&#x3D;0 \tag{14}<br>$$<br>对 $x\in J$成立. 则 $y&#x3D;\psi(x)$是微分方程（10）的奇解.</p>
+<p><strong>证</strong>：放到了文章最后.</p>
+<p>我们说明该定理中（13）（14）都是不可去的.</p>
+<p>考虑方程<br>$$<br>    \biggl( \frac{\mathrm{d}y}{\mathrm{d}x} \biggr)^{2}-y^{2}&#x3D;0<br>$$<br>得到 $y&#x3D;0$，此时有 $F’_y(x,0,0)&#x3D;0$，而原方程的通解为 $y&#x3D;x\exp {\pm x}$.</p>
+<p>考虑方程<br>$$<br>    \sin (y \frac{\mathrm{d}y}{\mathrm{d}x})&#x3D;y<br>$$<br>得到 $y&#x3D;0$，此时有 $F’’_{pp}(x,0,0)&#x3D;0$，$y&#x3D;0$不是原方程的奇解.</p>
+<p>考虑方程<br>$$<br>    y&#x3D;2x+y’-\frac{1}{3}(y’)^3<br>$$<br>此时 $F’_p(x,\psi(x),\psi’(x))&#x3D;0$</p>
+<p>另一个类似于2.2中的结果：设连续函数 $E(y)$满足条件：<br>$$<br>    \begin{cases}<br>        E(y)&#x3D;0, \quad y&#x3D;0\<br>        E(y)\neq 0, \quad 0&lt;y\leqslant 1<br>    \end{cases}<br>$$<br>则 $y&#x3D;0$是微分方程<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;E(y)<br>$$<br>的奇解当且仅当瑕积分<br>$$<br>    \int_{0}^{1} \frac{\mathrm{d}y}{E(y)}<br>$$<br>收敛.<br><strong>证</strong>：$\Rightarrow$：若 $y&#x3D;0$为奇解，则存在局部解使得 $y\neq 0$，故有 $\frac{\mathrm{d}y}{E}&#x3D;\mathrm{d}x \Rightarrow \int_{0}^{1} \frac{\mathrm{d}y}{E}$收敛.</p>
+<p>$\Leftarrow$：$ \int_{0}^{1} \frac{\mathrm{d}y}{E}$收敛，可令 $x(y)&#x3D;x_0+\int_{0}^{y} \frac{\mathrm{d}y}{E}$是异于 $y&#x3D;0$的解，由于 $y’(0)&#x3D;0$，得到 $y&#x3D;0$是奇解.</p>
+<h2 id="包络"><a href="#包络" class="headerlink" title="包络"></a>包络</h2><p>这一节想利用有关曲线族的包络的概念来阐明奇解与通解之间的联系，以及讨论寻求奇解的方法.</p>
+<p>设单参数 $C$的曲线族<br>$$<br>    K(C): \qquad V(x,y,C)&#x3D;0 \tag{15}<br>$$<br>其中函数 $V(x, y, C)$对 $(x, y, C)\in D$是连续可微的. </p>
+<p>【定义】设在平面上有一条连续可微的曲线 $\Gamma$. 如果对于任一点 $q\in \Gamma$，在曲线族（15）中都有一条曲线 $K(C^*)$通过 $q$点且在该点与 $\Gamma$相切，而且 $K(C^*)$在 $q$点的某一领域内不同于 $\Gamma$. 则称曲线 $\Gamma$为曲线族（15）的一支<strong>包络</strong>.</p>
+<p>注：这个定义与微分几何中的定义稍有不同.</p>
+<p><strong>定理4.3</strong>：设微分方程<br>$$<br>    F(x, y, \frac{\mathrm{d}y}{\mathrm{d}x})&#x3D;0 \tag{16}<br>$$<br>有通积分为<br>$$<br>    U(x, y, C)&#x3D;0 \tag{17}<br>$$<br>又设（积分）曲线族（17）有包络为<br>$$<br>    \Gamma: \qquad y&#x3D;\varphi(x) \quad (x\in J)<br>$$<br>则包络 $y&#x3D;\varphi(x)$是微分方程（16）的奇解.</p>
+<p><strong>证</strong>：任取 $\Gamma$上一点，由包络的性质即可.</p>
+<div class="note note-success">
+            <p>由奇解的定义可知，奇解是通解的包络. 因此，由上定理可知，求微分方程的奇解归结到求它的通积分的包络. 通积分的包络就是原方程的奇解.</p>
+          </div>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
+<p><strong>定理4.4</strong>：设 $\Gamma$是曲线族（15）的一支包络. 则它满足如下的<strong>C-判别式</strong>：<br>$$<br>    V(x, y, C)&#x3D;0, \quad V’_C(x, y, C)&#x3D;0 \tag{18}<br>$$<br>或（消去 $C$，所得到的关系式）<br>$$<br>    \Omega(x, y)&#x3D;0 \tag{19}<br>$$</p>
+<p><strong>证</strong>：设包络的参数方程为<br>$$<br>    \begin{cases}<br>        x&#x3D;f(C) \<br>        y&#x3D;g(C)<br>    \end{cases}<br>$$<br>根据切向量共线得出一个式子，然后对 $V(x, y,C)&#x3D;0$对 $C$求导即可.</p>
+<p>满足C-判别式的曲线未必是相应曲线族的包络，如<br>$$<br>    (y-1)^{2}\biggl(\frac{\mathrm{d}y}{\mathrm{d}x}\biggr)^{2}&#x3D;\frac{4}{9}y<br>$$<br>解它的通积分和C-判别式得 $y&#x3D;0$或 $y&#x3D;3$，然而只有前一个是曲线的包络.</p>
+<p>下面的定理给出了包络的一个充分条件.<br><strong>定理4.5</strong>：设由曲线族（15）的C-判别式<br>$$<br>    V(x, y,C)&#x3D;0 \quad V’_C(x, y, C)&#x3D;0<br>$$<br>确定一支连续可微且不含于族（15）的曲线<br>$$<br>    \Lambda: \quad x&#x3D;\varphi(C), \quad y&#x3D;\psi(C) \quad (C\in J)<br>$$<br>而且它满足<strong>非蜕化性条件</strong>（即切向量不退化）<br>$$<br>    (\varphi’(C),\psi’(C))\neq (0,0), \quad (V’_x,V’_y)\neq (0,0)<br>$$<br>其中 $V’_x&#x3D;V’_x(\varphi(C),\psi(C),C)$与 $V’_y&#x3D;V’_y(\varphi(C),\psi(C),C)$. 则 $\Lambda$是曲线族（15）的一支包络.<br><strong>证</strong>：在 $\Lambda$上任取一点，在这一点附近用隐函数定理找到一条曲线族中的曲线，然后证明它在这一点与 $\Lambda$相切，即其切向量共线.</p>
+<div class="note note-success">
+            <p>该定理基本上只适用于能求出通积分的情形，使用时通常配合4.3，这是因为若能判定C-曲线不是积分曲线，则它不是解，从而不是奇解，从而不是包络.</p>
+          </div>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<h2 id="奇解的存在定理"><a href="#奇解的存在定理" class="headerlink" title="奇解的存在定理"></a>奇解的存在定理</h2><p>这是定理4.2的证明，可以参考教材117-120页<br>或者如下链接：</p>
+<hr>
+<p>常微分方程学习笔记（4）<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/97414951">https://zhuanlan.zhihu.com/p/97414951</a></p>
+<hr>
+<p>下一章就进入高阶微分方程了.</p>
 
               
             </div>
@@ -308,6 +340,41 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+    </div>
   
 </div>
 
@@ -317,8 +384,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2022/05/20/hello-world/</div>
+      <div>常微分方程（四）</div>
+      <div>http://example.com/2022/04/06/常微分方程（四）/</div>
     </div>
     <div class="license-meta">
       
@@ -330,7 +397,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月20日</div>
+          <div>2022年4月6日</div>
         </div>
       
       
@@ -360,12 +427,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2022/04/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%BA%94%EF%BC%89/" title="常微分方程（五）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程（五）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/18/%E8%AE%A1%E7%A7%91%E5%AF%BC%E5%A4%8D%E4%B9%A0/" title="计科导复习">
-                        <span class="hidden-mobile">计科导复习</span>
+                      <a href="/2022/04/05/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/" title="常微分方程（三）">
+                        <span class="hidden-mobile">常微分方程（三）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -1,0 +1,921 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/title.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yixiao Feng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本章的主题是线性微分方程组的一般理论和一些解法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常微分方程（六）">
+<meta property="og:url" content="http://example.com/2022/04/12/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E5%85%AD%EF%BC%89/index.html">
+<meta property="og:site_name" content="Newtonpula的自留地">
+<meta property="og:description" content="本章的主题是线性微分方程组的一般理论和一些解法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-04-12T01:59:42.000Z">
+<meta property="article:modified_time" content="2022-04-23T14:20:50.139Z">
+<meta property="article:author" content="Yixiao Feng">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+  
+  
+  
+  <title>常微分方程（六） - Newtonpula的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"lP0EkKujSYnXpz4ctf8fFGsW-9Nh9j0Va","app_key":"DpVSkvgqz62seB0SqeXNleTm","server_url":"https://lp0ekkuj.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常微分方程（六）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Yixiao Feng
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-12 09:59" pubdate>
+          2022年4月12日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          120 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">常微分方程（六）</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="线性微分方程组"><a href="#线性微分方程组" class="headerlink" title="线性微分方程组"></a>线性微分方程组</h1><h2 id="一般理论"><a href="#一般理论" class="headerlink" title="一般理论"></a>一般理论</h2><p>考虑标准形式的 $n$阶线性微分方程组<br>$$<br>    \frac{\mathrm{d}y_i}{\mathrm{d}x}&#x3D;\sum_{j&#x3D;1}^{n} a_{ij}(x)y_j+f_i(x) \quad (i&#x3D;1,2,\cdots ,n)<br>$$<br>其中系数函数 $a_{ij}(x)$和 $f_i(x)(i,j&#x3D;1,2,\cdots ,n)$在区间 $a&lt;x&lt;b$上都是连续的. 令矩阵<br>$$<br>    \mathbf{A}(x)&#x3D;(a_{ij}(x))_{n \times n}<br>$$<br>和向量<br>$$<br>    \mathbf{y}&#x3D;\begin{pmatrix}<br>        y_1 \<br>        y_2 \<br>        \vdots \<br>        y_n<br>    \end{pmatrix}<br>    , \quad<br>    \mathbf{f}(x)&#x3D;\begin{pmatrix}<br>        f_1(x) \<br>        f_2(x) \<br>        \vdots \<br>        f_n(x)<br>    \end{pmatrix}<br>$$<br>就可以将线性微分方程组写成向量形式<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{A}(x)\mathbf{y}+\mathbf{f}(x) \tag{1}<br>$$<br>当 $\mathbf{f}(x)$不恒为零$(a&lt;x&lt;b)$时，称（1）是<strong>非齐次</strong>的线性微分方程组；当 $\mathbf{f}(x)\equiv \mathbf{0}$时，亦即<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{A}(x)\mathbf{y} \tag{2}<br>$$<br>称它是（相应）<strong>齐次</strong>的线性微分方程组.</p>
+<p>注意由 $\mathbf{A}(x)$的连续性可知，在 $x$的任意有限闭区间上，函数 $\mathbf{A}(x)\mathbf{y}$对 $\mathbf{y}$满足Lipschitz条件. </p>
+<p><strong>存在和唯一性定理</strong>：线性微分方程组（1）满足初值条件<br>$$<br>    \mathbf{y}(x_0)&#x3D;\mathbf{y}_0 \tag{3}<br>$$<br>的解 $\mathbf{y}&#x3D;\mathbf{y}(x)$在区间 $a&lt;x&lt;b$上是存在和唯一的，其中初值 $x_0 \in (a,b)$和 $\mathbf{y}_0 \in \mathbb{R}^n$是任意给定的.</p>
+<h3 id="齐次线性微分方程组"><a href="#齐次线性微分方程组" class="headerlink" title="齐次线性微分方程组"></a>齐次线性微分方程组</h3><p><strong>引理6.1</strong>：齐次线性微分方程组的解满足线性性.</p>
+<p>令（2）在区间 $(a,b)$上所有的解所组成的集合为 $S$. 显然 $S$是一个线性空间.</p>
+<p><strong>引理6.2</strong>：线性空间 $S$是 $n$维的（$n$是（2）的阶数）.</p>
+<p><strong>证</strong>：作初值到 $S$的同构.</p>
+<p><strong>定理6.1</strong>：齐次线性微分方程组（2）在区间 $a&lt;x&lt;b$上有 $n$个线性无关的解<br>$$<br>    \mathbf{\varphi}_1,\mathbf{\varphi}_2,\cdots,\mathbf{\varphi}_n \tag{4}<br>$$<br>而且它的通解为<br>$$<br>    \mathbf{y}&#x3D;C_1\mathbf{\varphi}_1(x)+\cdots +C_n\mathbf{\varphi}_n(x) \tag{5}<br>$$<br>其中 $C_1,\cdots ,C_n$是任意常数.</p>
+<p><strong>证</strong>：利用引理6.2可得 $S$的一个基，它的线性组合就生成整个线性空间 $S$.</p>
+<p>称（2）的 $n$个线性无关的解为一个<strong>基本解组</strong>. 假设已知<br>$$<br>    \mathbf{y}_1(x),\cdots ,\mathbf{y}_n(x) \tag{6}<br>$$<br>是（2）的 $n$个解. 有一个在理论上比较简明的判别法 </p>
+<p><strong>定理6.2</strong>：设在（6）中诸解的分量形式为<br>$$<br>    \mathbf{y}<em>1(x)&#x3D;\begin{pmatrix}<br>    y</em>{11}(x) \<br>    y_{21}(x) \<br>    \vdots \<br>    y_{n1}(x)<br>    \end{pmatrix},<br>    \cdots<br>    \mathbf{y}<em>n(x)&#x3D;\begin{pmatrix}<br>    y</em>{1n}(x) \<br>    y_{2n}(x) \<br>    \vdots \<br>    y_{nn}(x)<br>    \end{pmatrix}<br>$$<br>称行列式<br>$$<br>    \begin{vmatrix}<br>    y_{11}(x) &amp; y_{12}(x) &amp; \cdots  &amp; y_{1n}(x) \<br>    \vdots    &amp; \vdots    &amp;         &amp; y_{2n}(x) \<br>    y_{n1}(x) &amp; y_{n2}(x) &amp; \cdots  &amp; y_{nn}(x) \<br>    \end{vmatrix}<br>$$<br>为解组（6）的<strong>朗斯基(Wronsky)行列式</strong>.</p>
+<p><strong>引理6.3</strong>：上述Wronsky行列式满足下面的<strong>Liouville公式</strong>：<br>$$<br>    W(x)&#x3D;W(x_0) \mathrm{e}^ {\int_{x_0}^{x} \mathrm{tr} [\mathbf{A}(x)] \mathrm{d}x} \quad (a&lt;x&lt;b) \tag{7}<br>$$<br>其中 $x_0 \in (a,b)$，<br><strong>证</strong>：利用行列式的求导公式得到<br>$$<br>    \mathbf{W}’&#x3D;\mathrm{tr}[\mathbf{A}(x)]W<br>$$<br>这是关于 $W$的一阶线性微分方程. 由此解出 $W$.</p>
+<p>【附注】由Liouville公式知，Wronsky行列式 $W(x)$在区间 $a&lt;x&lt;b$上要么恒为零，要么恒不为零. </p>
+<p><strong>定理6.2</strong>：线性微分方程组（2）的解组（6）是线性无关的充要条件为<br>$$<br>    W(x) \neq 0 \quad (a&lt;x&lt;b) \tag{8}<br>$$</p>
+<p><strong>证</strong>：用引理6.2中的同构即可.</p>
+<p><strong>推论6.1</strong>：解组（6）是线性相关的充要条件为<br>$$<br>    W(x) \equiv 0 \quad (a&lt;x&lt;b)<br>$$</p>
+<p>而这也等价于在某一特殊点 $x_0$的 $W(x_0)&#x3D;0$. </p>
+<p>对于解组（6），令矩阵 $\mathbf{Y}(x)&#x3D;(y_{ij}(x))_{n \times n}$，它叫作方程组（2）的<strong>解矩阵</strong>. 易知 $\mathbf{Y}(x)$是方程组（2）的矩阵解.</p>
+<p>当（6）是一个基本解组时，称相应的解矩阵 $\mathbf{Y}(x)$为一个<strong>基本解矩阵</strong>. 则若已知（2）的一个基解矩阵 $\mathbf{\Phi}(x)$，则由定理6.1知，它的通解为<br>$$<br>    \mathbf{y}&#x3D;\mathbf{\Phi}(x)\mathbf{c} \tag{9}<br>$$<br>其中 $\mathbf{c}$是 $n$维的任意常数列向量.</p>
+<p><strong>推论6.2</strong>：（1）设 $\mathbf{\Phi}(x)$是方程组（2）的一个基解矩阵，则对于任一个非奇异的 $n$阶常数矩阵 $\mathbf{C}$，矩阵<br>$$<br>    \mathbf{\Psi}(x)&#x3D;\mathbf{\Phi}(x) \mathbf{C} \tag{10}<br>$$<br>也是（2）的一个基解矩阵；</p>
+<p>（2）设 $\mathbf{\Phi}(x)$和 $\mathbf{\Psi}(x)$都是方程组（2）的基解矩阵，则必存在一个非奇异的 $n$阶常数矩阵 $\mathbf{C}$，使得（10）成立.</p>
+<p><strong>证</strong>：这几乎是显然的，就是个线性方程组.</p>
+<h3 id="非齐次线性微分方程组"><a href="#非齐次线性微分方程组" class="headerlink" title="非齐次线性微分方程组"></a>非齐次线性微分方程组</h3><p><strong>引理6.4</strong>：（2）的一个基解是 $\mathbf{\Phi}(x)$，$\mathbf{\phi}^*(x)$是（1）的一个特解，则（1）的任意解 $\mathbf{y}&#x3D;\mathbf{\varphi}(x)$可以表示为<br>$$<br>    \mathbf{\varphi}(x)&#x3D;\mathbf{\Phi}(x)\mathbf{c}+\mathbf{\varphi}^*(x)<br>$$<br>其中 $\mathbf{c}$是一个与 $\mathbf{\varphi}(x)$有关的常数列向量.</p>
+<p>事实上，利用<strong>常数变易法</strong>，只要知道 $\mathbf{\Phi}(x)$就够了.</p>
+<p>可以知道<br>$$<br>    \mathbf{\varphi}^*(x)&#x3D;\mathbf{\Phi}(x)\int_{x_0}^{x} \mathbf{\Phi}^{-1}(s)\mathbf{f}(s) \mathrm{d}s \tag{11}<br>$$<br>是（1）的一个特解.</p>
+<p><strong>引理6.5</strong>：设 $\mathbf{\Phi}(x)$是（2）的一个基解矩阵，则（11）式给出非齐次线性微分方程组（1）的一个特解.</p>
+<p><strong>定理6.3</strong>：（1）的通解可以表示为<br>$$<br>    \mathbf{y}&#x3D;\mathbf{\Phi}(x) \biggl( \mathbf{c}+\int_{x_0}^{x} \mathbf{\Phi}^{-1}(s)\mathbf{f}(s) \mathrm{d}s \biggr) \tag{12}<br>$$<br>其中 $\mathbf{c}$是 $n$维的任意常数列向量；而且（1）满足初值条件 $\mathbf{y}(x_0)&#x3D;\mathbf{y}_0$ 的解为<br>$$<br>    \mathbf{y}&#x3D;\mathbf{\Phi}(x)\mathbf{\Phi}^{-1}(x_0)\mathbf{y}<em>0+\mathbf{\Phi}(x) \int</em>{x_0}^{x} \mathbf{\Phi}^{-1}(x)\mathbf{f}(s) \mathrm{d}s \tag{13}<br>$$<br>其中 $x_0 \in (a,b)$.</p>
+<div class="note note-success">
+            <p>一般来说， $\mathbf{\Phi}(x)$比较难解. 但其仍有很重要的理论意义.</p>
+          </div>
+
+<h2 id="常系数线性微分方程组"><a href="#常系数线性微分方程组" class="headerlink" title="常系数线性微分方程组"></a>常系数线性微分方程组</h2><p><strong>常系数线性微分方程组</strong>：指的是<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{A}\mathbf{y}+\mathbf{f}(x) \tag{14}<br>$$<br>其中系数矩阵 $\mathbf{A}$为 $n$阶<strong>常数矩阵</strong>，而 $\mathbf{f}(x)$是在 $a&lt;x&lt;b$上连续的向量函数.</p>
+<p>相应的线性齐次微分方程组为<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{A}\mathbf{y} \tag{15}<br>$$</p>
+<p>当 $n$&#x3D;1 时，相应的线性齐次微分方程组成为<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;ay<br>$$<br>其通解为 $y&#x3D;C\mathrm{e}^{ax}$，我们尝试推广到高维情形.</p>
+<h3 id="矩阵指数函数"><a href="#矩阵指数函数" class="headerlink" title="矩阵指数函数"></a>矩阵指数函数</h3><p><strong>命题1</strong>：矩阵 $\mathbf{A}$的幂级数<br>$$<br>    \mathbf{E}+\mathbf{A}+\frac{1}{2!}\mathbf{A}^{2}+\cdots +\frac{1}{k!}\mathbf{A}^{k}+\cdots<br>$$<br>是绝对收敛的.<br>以记号 $\mathrm{e}^{\mathbf{A}}$（或 $\exp \mathbf{A}$）表示上述矩阵幂级数的和. 它也是一个矩阵. </p>
+<p><strong>命题2</strong>：关于矩阵指数函数的性质</p>
+<ul>
+<li>若 $\mathbf{AB}&#x3D;\mathbf{BA}$，则<br>$$<br>  \mathrm{e}^{\mathbf{A}+\mathbf{B}}&#x3D;\mathrm{e}^{\mathbf{A}}+\mathrm{e}^{\mathbf{B}}<br>$$</li>
+<li>对任何矩阵 $\mathbf{A}$，$\mathrm{e}^{\mathbf{A}}$可逆且<br>$$<br>  (\mathrm{e}^{\mathbf{A}})^{-1}&#x3D;\mathrm{e}^{-\mathbf{A}}<br>$$</li>
+<li>若 $\mathbf{P}$是一个非奇异的 $n$阶矩阵，则<br>$$<br>  \mathrm{e}^{\mathbf{PAP^{-1}}}&#x3D;\mathbf{P}\mathrm{e}^{\mathbf{A}}\mathbf{P}^{-1}<br>$$<br>证明略</li>
+</ul>
+<h3 id="常系数齐次微分方程组的基解矩阵"><a href="#常系数齐次微分方程组的基解矩阵" class="headerlink" title="常系数齐次微分方程组的基解矩阵"></a>常系数齐次微分方程组的基解矩阵</h3><p><strong>定理6.4</strong>：$\mathbf{\Phi}(x)&#x3D;\mathrm{e}^{x\mathbf{A}}$是（15）的一个<strong>标准基解矩阵</strong>（即 $\mathbf{\Phi}(0)&#x3D;\mathbf{E}$）</p>
+<p>证明略</p>
+<p><strong>推论6.3</strong>：常系数非齐次线性微分方程组（14）在区间 $(a,b)$上的通解为<br>$$<br>    \mathbf{y}&#x3D;\mathrm{e}^{x \mathbf{A}}\mathbf{c}+\int_{x_0}^{x} \mathrm{e}^{(x-s) \mathbf{A}} \mathbf{f}(s) \mathrm{d}s \tag{16}<br>$$</p>
+<p>其中 $\mathbf{c}$为一任意的常数列向量；而（14）满足初值条件 $\mathbf{y}(x_0)&#x3D;\mathbf{y}_0$的解为<br>$$<br>    \mathbf{y}&#x3D;\mathrm{e}^{(x-x_0) \mathbf{A}}\mathbf{y}<em>0+\int</em>{x_0}^{x} \mathrm{e}^{(x-s) \mathbf{A}} \mathbf{f}(s) \mathrm{d}s \tag{17}<br>$$<br>其中 $x_0 \in (a,b)$</p>
+<h3 id="利用Jordan标准型求基解矩阵"><a href="#利用Jordan标准型求基解矩阵" class="headerlink" title="利用Jordan标准型求基解矩阵"></a>利用Jordan标准型求基解矩阵</h3><p>对每个 $n$阶矩阵 $\mathbf{A}$，存在一个 $n$阶非奇异矩阵 $\mathbf{P}$，使得<br>$$<br>    \mathbf{A}&#x3D;\mathbf{PJP}^{-1}<br>$$<br>其中 $J$为Jordan标准型</p>
+<p>此时有<br>$$<br>    \mathrm{e}^{x \mathbf{A}}&#x3D;\mathrm{e}^{x \mathbf{PJP}^{-1}}&#x3D;\mathbf{P} \mathrm{e}^{x \mathbf{J}}\mathbf{P}^{-1}<br>$$<br>而 $\mathrm{e}^{x \mathbf{A}}\mathbf{P} &#x3D; \mathbf{P} \mathrm{e}^{x \mathbf{J}}$也是一个基解矩阵.</p>
+<p>然而 $J$和 $P$都很难求.</p>
+<h3 id="待定指数函数法"><a href="#待定指数函数法" class="headerlink" title="待定指数函数法"></a>待定指数函数法</h3><p>尝试把（16）应用于<strong>待定系数法</strong></p>
+<p>（一）$A$只有单的特征根<br>此时由<br>$$<br>    \mathbf{\Phi}(x)&#x3D;\mathrm{e}^{x \mathbf{A}} \mathbf{P}&#x3D;\mathbf{P}<br>    \begin{pmatrix}<br>        \mathrm{e}^{\lambda_1x} &amp;  &amp;  &amp;  \<br>         &amp; \mathrm{e}^{\lambda_2x} &amp; &amp; \<br>         &amp; &amp; \ddots &amp; \<br>         &amp; &amp; &amp; \mathrm{e}^{\lambda_nx}<br>    \end{pmatrix}<br>$$<br>且 $\mathbf{\Phi}(0)&#x3D;\mathbf{P}$. 由此可见<br>$$<br>    \mathrm{e}^{x \mathbf{A}}&#x3D;\mathbf{\Phi}(x)\mathbf{\Phi}^{-1}(0) \tag{18}<br>$$<br>令 $\mathbf{r}_i$表示 $\mathbf{P}$的第 $i$列的向量，则基解矩阵<br>$$<br>    \mathbf{\Phi}(x)&#x3D;(\mathrm{e}^{\lambda_1x}\mathbf{r}_1,\mathrm{e}^{\lambda_2x}\mathbf{r}_2,\cdots ,\mathrm{e}^{\lambda_nx}\mathbf{r}_n)<br>$$<br>下面寻找 $\mathbf{r}_i$的方法</p>
+<p><strong>引理</strong>：微分方程组（15）有非零解 $\mathbf{y}&#x3D;\mathrm{e}^{\lambda x}\mathbf{r}$，当且仅当 $\lambda$是矩阵 $\mathbf{A}$的特征根，而 $\mathbf{r}$是与 $\lambda$相应的特征向量.</p>
+<p><strong>定理6.5</strong>：设 $n$阶矩阵 $\mathbf{A}$有 $n$个互不相同的特征根 $\lambda_1,\lambda_2,\cdots,\lambda_n$，则矩阵函数<br>$$<br>    \mathbf{\Phi}(x)&#x3D;(\mathrm{e}^{\lambda_1x}\mathbf{r}_1,\mathrm{e}^{\lambda_2x}\mathbf{r}_2,\cdots ,\mathrm{e}^{\lambda_nx}\mathbf{r}_n)<br>$$<br>是（15）的一个基解矩阵，其中 $\mathbf{r}_i$是 $\mathbf{A}$的与 $\lambda_i$相应特征向量.</p>
+<p><strong>证</strong>：注意不同特征根的特征向量线性无关.</p>
+<p>我们可以加强定理6.5<br><strong>定理6.5</strong>*：将 $\mathbf{r}_1,\mathbf{r}_2,\cdots,\mathbf{r}_n$改为矩阵 $\mathbf{A}$的 $n$个线性无关的特征向量，它们对应的特征根不必互不相同.</p>
+<p>另外，定理6.5中的 $\mathbf{\Phi}(x)$可能是复矩阵，可以利用公式（18）求出实矩阵 $\mathrm{e}^{x \mathbf{A}}$</p>
+<p>假设（15）有一个复值解<br>$$<br>    \mathbf{y}_1&#x3D;\mathbf{u}(x)+i \mathbf{v}(x)<br>$$<br>则<br>$$<br>    \mathbf{y}_2&#x3D;\mathbf{u}(x)-i \mathbf{v}(x)<br>$$<br>也是 (15)的一个复值解.<br>则它们的实部和复部都是（15）的解.</p>
+<p>（二） $\mathbf{A}$有相重的特征根<br>在（15）的基解矩阵 $\mathrm{e}^{x \mathbf{A}}\mathbf{P}$的所有列向量中，与 $\lambda_i$相关的 $n_i$列都具有下列形式<br>$$<br>    \mathbf{y}&#x3D;e^{\lambda_i x} \biggl(\mathbf{r}_0+\frac{x}{1!}\mathbf{r}<em>1+\cdots +\frac{x^{n_i-1}}{(n_i-1)!}\mathbf{r}</em>{n_i-1} \biggr) \tag{19}<br>$$<br>其中 $\mathbf{r}_j(j&#x3D;0,1,\cdots ,n_i-1)$是 $n$维常数列向量. </p>
+<p><strong>引理6.7</strong>：设 $\lambda_i$是矩阵 $\mathbf{A}$的 $n_i$重特征根，则（15）有形如（19）的非零解的充要条件是： $\mathbf{r}_0$是齐次线性代数方程组<br>$$<br>    (\mathbf{A}-\lambda_i \mathbf{E})^{n_i}\mathbf{r}&#x3D;\mathbf{0} \tag{20}<br>$$<br>的一个非零解，而且（19）中的 $\mathbf{r}_1,\mathbf{r}_2,\cdots,\mathbf{r}_n$是由下面的关系式逐次确定的：<br>$$<br>    \begin{cases}<br>        \mathbf{r}_1&#x3D;(\mathbf{A}-\lambda_i \mathbf{E})\mathbf{r}_0 \<br>        \mathbf{r}<em>2&#x3D;(\mathbf{A}-\lambda_i \mathbf{E})\mathbf{r}<em>1 \<br>        \cdots \cdots  \<br>        \mathbf{r}</em>{n_i-1}&#x3D;(\mathbf{A}-\lambda_i \mathbf{E})\mathbf{r}</em>{n_i-2}<br>    \end{cases} \tag{21}<br>$$</p>
+<p>证明略</p>
+<p><strong>定理6.6</strong>：设 $n$阶实矩阵 $\mathbf{A}$在 $\mathbb{C}$中的互不相同的特征根为 $\lambda_1,\lambda_2,\cdots,\lambda_s$，它们的重数分别是 $n_1,n_2,\cdots,n_s$，则常系数齐次线性微分方程组（15）有基解矩阵 $\mathbf{\Phi}(x)$为<br>$$<br>    \biggl( \mathrm{e}^{\lambda_1x}\mathbf{P}<em>1^{(1)}(x),\cdots ,\mathrm{e}^{\lambda_1x}\mathbf{P}</em>{n_1}^{1}(x);\cdots ;\mathrm{e}^{\lambda_s x}\mathbf{P}<em>1^{(s)}(x),\cdots ,\mathrm{e}^{\lambda_s x}\mathbf{P}</em>{n_s}^{(s)}(x) \biggr) \tag{22}<br>$$<br>其中<br>$$<br>    \mathbf{P}<em>j^{(i)}(x)&#x3D;\mathbf{r}</em>{j0}^{(i)}+\frac{x}{1!}\mathbf{r}<em>{j1}^{(i)}+\frac{x^{2}}{2!}\mathbf{r}</em>{j2}^{(i)}+\cdots +\frac{x^{n_i-1}}{(n_i-1)!}\mathbf{r}<em>{jn</em>{i-1}}^{(i)} \tag{23}<br>$$<br>是与 $\lambda_i$对应的第 $j$个向量多项式 $(i&#x3D;1,2,\cdots ,s;j&#x3D;1,2,\cdots ,n_i)$，而 $\mathbf{r}<em>{10}^{(i)},\cdots ,\mathbf{r}</em>{n_i 0}^{(i)}$是齐次线性代数方程组（20）的 $n_i$个线性无关的解，且 $\mathbf{r}<em>{jk}^{(i)}(i&#x3D;1,2,\cdots ,s;j&#x3D;1,2,\cdots ,n_i;k&#x3D;1,2,\cdots ,n_i-1)$是把 $\mathbf{r}</em>{j0}^{(i)}$代替（21）中的 $\mathbf{r}<em>0$而依次得出的 $\mathbf{r}<em>k$. 即 $\mathbf{r}</em>{j,k}^{(i)}&#x3D;(\mathbf{A-\lambda_i E})\mathbf{r}</em>{j,k-1}^{(i)}$</p>
+<p>此外，当所得出的 $\mathbf{\Phi}(x)$是复值时，可利用之前的结论从 $\mathbf{\Phi}(x)$提取实值基解矩阵.</p>
+<p>这定理挺不讲人话的，得到的每一列中的多项式系数，即诸 $r$在三个坐标的意义下是不相同的，每一类中最多到 $x^{n_i-1}$是因为 $n_i$重特征根 $\lambda_i$，求 $n_i-1$阶导后 $\lambda_i$仍为根.</p>
+<p><strong>证</strong>：由引理6.7知（22）中每一列确实是（15）的解. 只需证明 $\mathbf{\Phi}(x)$的各列线性无关. 这是因为<br>$$<br>    \mathbf{\Phi}(0)&#x3D; \biggl(\mathbf{r}<em>{10}^{(1)},\cdots ,\mathbf{r}</em>{n_1 0}^{(1)};\cdots ;\mathbf{r}<em>{10}^{(s)},\cdots ,\mathbf{r}</em>{n_s 0}^{(s)} \biggr)<br>$$<br>取适当的 ${\mathbf{r}_{j 0}^{(i)}}$使得它们彼此间线性无关，由Wronsky行列式相关结论知， $\mathbf{\Phi}(x)$是（15）的一个基解矩阵 </p>
+<h2 id="高阶线性微分方程式"><a href="#高阶线性微分方程式" class="headerlink" title="高阶线性微分方程式"></a>高阶线性微分方程式</h2><p>本节仅讨论含一个未知函数 $y&#x3D;y(x)$的 $n$阶线性微分方程式<br>$$<br>    y^{(n)}+a_1(x)y^{(n-1)}+\cdots +a_{n-1}y’+a_n(x)y&#x3D;f(x) \tag{24}<br>$$<br>其中 $a_1(x),\cdots ,a_n(x)$和 $f(x)$都是区间 $a&lt;x&lt;b$上的连续函数. 当 $f(x)$不恒为零时，称（24）为<strong>非齐次</strong>线性微分方程组；而与之相应的<strong>齐次</strong>线性方程组为<br>$$<br>    y^{(n)}+a_1(x)y^{(n-1)}+\cdots +a_{n-1}y’+a_n(x)y&#x3D;0 \tag{25}<br>$$<br>引进新的未知函数<br>$$<br>    y_1&#x3D;y, y_2&#x3D;y’,\cdots ,y_n&#x3D;y^{(n-1)} \tag{26}<br>$$<br>则方程（24）等价于下面的线性微分方程组<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{A}(x)\mathbf{y}+\mathbf{f}(x) \tag{27}<br>$$<br>其中 $\mathbf{y}$是诸 $\mathbf{y}_i$的列向量，$\mathbf{f}$是将 $f(x)$置于末位的列向量，$\mathbf{A}(x)$是一个Frobenius矩阵</p>
+<p>$$<br>    \mathbf{A}(x)&#x3D;<br>    \begin{pmatrix}<br>        0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \<br>        0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \<br>        \vdots &amp; \vdots &amp; \vdots &amp; &amp; \vdots \<br>        0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \<br>        -a_n(x) &amp; -a_{n-1}(x) &amp; -a_{n-2}(x) &amp; \cdots &amp; -a_1(x)<br>    \end{pmatrix}<br>$$</p>
+<p>而（25）等价于<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{A}(x)\mathbf{y} \tag{28}<br>$$<br>微分方程（24）满足初值条件的解在区间 $a&lt;x&lt;b$上是存在和唯一的.</p>
+<h3 id="高阶线性微分方程的一般理论"><a href="#高阶线性微分方程的一般理论" class="headerlink" title="高阶线性微分方程的一般理论"></a>高阶线性微分方程的一般理论</h3><p>假设函数组<br>$$<br>    \varphi_1(x),\varphi_2(x),\cdots,\varphi_n(x) \tag{29}<br>$$<br>分别是齐次线性微分方程（28）的 $n$个解，其分别求相应阶导数后组合成的行列式称为（29）的Wronsky行列式.</p>
+<p>把之前的定理转述到高阶情形</p>
+<p><strong>定理6.1</strong>*：齐次线性微分方程（25）在区间 $a&lt;x&lt;b$上存在 $n$个线性无关的解，它们具有（29）的形式，则（25）的通解是它们的线性组合.</p>
+<p><strong>定理6.2</strong>*：（29）线性无关的充要条件是它的Wronsky行列式在区间 $a&lt;x&lt;b$上恒不为零.</p>
+<div class="note note-success">
+            <p>该定理成立需要（29）是一个齐次线性微分方程的解. 如果两个函数线性无关，但它们的Wronsky行列式恒为零，则不存在一个齐次线性微分方程的解是（29）</p>
+          </div>
+
+<p>注意到 $\mathbf{A}(x)$的迹具有简单形式，故Liouville公式有简单形式<br>$$<br>    W(x)&#x3D;W(x_0)\mathrm{e}^{-\int_{x_0}^{x} a_1(s) \mathrm{d}s} \quad (a&lt;x&lt;b) \tag{30}<br>$$<br>其中 $W(x)$是方程（25）的Wronsky行列式. </p>
+<p>对于二阶齐次线性微分方程，可以从（25）的一个非零解导出它的通解.</p>
+<p>设 $y&#x3D;\varphi(x)$是方程<br>$$<br>    y’’+p(x)y’+q(x)y&#x3D;0 \tag{31}<br>$$<br>的一个非零解，其中 $p(x)$和 $q(x)$是区间 $a&lt;x&lt;b$上的连续函数，则（31）的通解为<br>$$<br>    y&#x3D;\varphi(x)\biggl[ C_1+C_2 \int_{x_0}^{x} \frac{1}{\varphi(s)^{2}}\mathrm{e}^{-\int_{x_0}^{x} p(t) \mathrm{d}t} \mathrm{d}s \biggr] \tag{32}<br>$$<br>其中 $C_1$和 $C_2$为任意常数.</p>
+<p>这只要写出Liouville公式即可.</p>
+<p>运用常数变易法解非齐次的<br><strong>定理6.3</strong>* 设 $\varphi_1(x),\varphi_2(x),\cdots,\varphi_n(x)$是齐次线性微分方程（25）在区间 $a&lt;x&lt;b$上的一个基本解组，则（24）的通解为<br>$$<br>    y&#x3D;C_1\varphi_1(x)+\cdots +C_n \varphi_n(x) +\varphi^*(x) \tag{33}<br>$$<br>其中 $C_i$为常数<br>$$<br>    \varphi^*(x)&#x3D;\sum_{k&#x3D;1}^{n} \varphi_k(x) \cdot \int_{x_0}^{x} \frac{W_k(s)}{W(s)}f(s) \mathrm{d}s \tag{34}<br>$$</p>
+<p>这里 $W(x)$是诸 $\varphi_i(x)$的Wronsky行列式，而 $W_k(x)$是 $W(x)$中第 $n$行第 $k$列元素的代数余子式.</p>
+<p><strong>证</strong>：只要证明<br>$$<br>    \mathbf{\Phi}(x) \int_{x_0}^{x} \mathbf{\Phi}^{-1}(s)\mathbf{f}(s) \mathrm{d}s<br>$$<br>的第一个分量就是 $\varphi^*(x)$. </p>
+<p>这运用一些矩阵的计算是不难的.</p>
+<p>对于二阶的非齐次情况<br>设 $y&#x3D;\varphi(x)$是方程<br>$$<br>    y’’+p(x)y’+q(x)y&#x3D;f(x) \tag{35}<br>$$<br>的相应齐次方程的两个线性无关的特解 $y&#x3D;\varphi_1(x)$与 $y&#x3D;\varphi_2(x)$. $p(x),q(x),f(x)$在 $a&lt;x&lt;b$上连续.</p>
+<div class="note note-success">
+            <p>一般来说，运用常数变易法时，与系数为常数相比求导后会多出几项. 我们希望求导后也能有与系数为常数时同样的形式，同时也是为了方便起见，会令多出的几项为零. 这相当于主动增加了一个约束条件，但通常是值得的.</p>
+          </div>
+
+<h3 id="常系数高阶线性微分方程"><a href="#常系数高阶线性微分方程" class="headerlink" title="常系数高阶线性微分方程"></a>常系数高阶线性微分方程</h3><p>对于 $n$阶常系数微分方程<br>$$<br>    y^{(n)}+a_1y^{(n-1)}+\cdots +a_{n-1}y’+a_ny&#x3D;f(x) \tag{36}<br>$$<br>和相应的<br>$$<br>    y^{(n)}+a_1y^{(n-1)}+\cdots +a_{n-1}y’+a_ny&#x3D;0 \tag{36}<br>$$<br>其中 $a_1,\cdots ,a_n$是实常数，而 $f(x)$是区间 $a&lt;x&lt;b$上的实值连续函数.</p>
+<p>（36）等价于方程<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{Ay}<br>$$<br>其中<br>$$<br>    \mathbf{A}&#x3D;<br>    \begin{pmatrix}<br>        0 &amp; 1 &amp; 0 &amp; \cdots &amp; 0 \<br>        0 &amp; 0 &amp; 1 &amp; \cdots &amp; 0 \<br>        \vdots &amp; \vdots &amp; \vdots &amp; &amp; \vdots \<br>        0 &amp; 0 &amp; 0 &amp; \cdots &amp; 1 \<br>        -a_n &amp; -a_{n-1} &amp; -a_{n-2} &amp; \cdots &amp; -a_1<br>    \end{pmatrix} \tag{37}<br>$$<br>矩阵 $\mathbf{A}$的<strong>特征方程</strong>为<br>$$<br>    \lambda^{n}+a_1\lambda^{n-1}+\cdots +a_{n-1}\lambda+a_n&#x3D;0 \tag{38}<br>$$<br>它也叫（36）的特征方程.</p>
+<p><strong>定理6.6</strong>*：设（36）的特征方程（38）在 $\mathbb{C}$上有 $s$个互不相同的根 $\lambda_1,\lambda_2,\cdots,\lambda_s$，且对应的重数分别为 $n_i$. 则函数组<br>$$<br>    \begin{cases}<br>        \mathrm{e}^{\lambda_1x} , x\mathrm{e}^{\lambda_1x} ,\cdots ,x^{n_1-1}\mathrm{e}^{\lambda_1x} ; \<br>        \cdots \<br>        \mathrm{e}^{\lambda_sx} ,x\mathrm{e}^{\lambda_sx},\cdots ,x^{n_s-1}\mathrm{e}^{\lambda_sx} \tag{39}<br>    \end{cases}<br>$$<br>是（36）的一个基本解组. （注意这是 $n$个函数）</p>
+<p><strong>证</strong>：找一个基解矩阵使得它的第一行元素恰为（39）. 由矩阵论知识知 $\mathbf{A}$的Jordan标准型 $\mathbf{J}$中相应于某个 $\lambda_k$的Jordan块只有一个. </p>
+<p>一个重要的观察是：矩阵 $\mathbf{P}&#x3D;(p_{ij})$的第一行元素满足下面的性质<br>$$<br>    p_{1m_j} \neq 0 \quad (j&#x3D;1,2,\cdots ,s) \tag{40}<br>$$<br>其中<br>$$<br>    m_1&#x3D;1,m_2&#x3D;n_1+1,\cdots ,m_s&#x3D;n_1+\cdots +n_{s-1}+1<br>$$<br>事实上，若某个 $p_{1m_j}&#x3D;0$，则观察 $\mathbf{AP}$的第 $m_j$列，该列前 $n-1$行均为零，对应到 $\mathbf{PJ}$中得到 $\mathbf{P}$的第 $m_j$列全为零，与 $\mathbf{P}$非退化矛盾.</p>
+<p>写出基解矩阵 $\mathrm{e}^{x \mathbf{A}}\mathbf{P}&#x3D;\mathbf{PJ} $的第一行，利用（40），可以对 $\mathbf{PJ}$作初等列变换，消去多余项，就可以得到（39）中的形式.</p>
+<p>【注】当特征方程有复根时，复根成对出现，可以提取实部虚部得到相应实值解，应该实际上是实化的想法.</p>
+<p>对于一些特殊的 $f(x)$，可以凭借经验推测 $\varphi^*(x)$<br><strong>例</strong>：<br>$$<br>    f(x)&#x3D;P_m(x)\mathrm{e}^{\mu x}<br>$$<br>其中 $P_m(x)$表示 $x$的 $m$次多项式. 那么当 $\mu$不是方程（36）的特征根时，预测（35）有如下形式的特解<br>$$<br>    \varphi^*(x)&#x3D;Q_m(x)\mathrm{e}^{\mu x}<br>$$<br>其中 $m$次多项式 $Q_m(x)$的系数待定.</p>
+<p>当 $\mu$是 $k$重特征根时，则令<br>$$<br>    \varphi^*(x)&#x3D;x^kQ_m(x)\mathrm{e}^{\mu x}<br>$$</p>
+<p><strong>例</strong>：<br>$$<br>    f(x)&#x3D;[A_m(x)\cos (\beta x)+B_l(x) \sin (\beta x)] \mathrm{e}^{\alpha x}<br>$$<br>其中 $A_m(x)$和 $B_l(x)$分别是 $x$的 $m$次和 $l$次多项式. 那么相应特解的形式是<br>$$<br>    \varphi^*(x)&#x3D;x^{k}[C_n(x)\cos (\beta x)+D_n(x) \sin (\beta x)] \mathrm{e}^{\alpha x}<br>$$<br>其中非负整数 $k$是 $\alpha \pm i\beta$作为（36）的特征根的重数（$k$可以取0），$n&#x3D; \max{m,l}$，而 $n$次多项式 $C_n(x)$和 $D_n(x)$系数待定.</p>
+<p><strong>例（Euler方程）</strong>：<br>$$<br>    x^{n}y^{(n)}+a_1x^{n-1}y^{(n-1)}+\cdots +a_{n-1}xy’+a_ny&#x3D;0<br>$$<br>其中 $a_1,a_2,\cdots ,a_n$都是常数， $x&gt;0$.</p>
+<p>做代换 $x&#x3D;\mathrm{e}^{t} $，记微分算子 $D&#x3D;\frac{\mathrm{d}}{\mathrm{d}t}$</p>
+<p>可以归纳得到<br>$$<br>    x^{k}y^{(k)}&#x3D;D(D-1)\cdots (D-k+1)y<br>$$<br>代回Euler方程，得到关于 $t$的常系数线性微分方程，最终用 $t&#x3D; \ln x$反代即得解.</p>
+<p><strong>例</strong>：考虑微分方程<br>$$<br>    y’’+p(x)y’+q(x)y&#x3D;0 \tag{41}<br>$$<br>其中 $p(x)$和 $q(x)$是区间 $I:a&lt;x&lt;b$上的连续函数.<br>设 $y&#x3D;\varphi(x)$是方程（41）在区间 $I$上的一个非零解，则 $\varphi(x)$ 在区间 $I$上只有一阶零点，从而 $\varphi(x)$在任意有限闭区间上至多有有限个零点，从而每个零点是孤立的.</p>
+<p><strong>证</strong>：这可以由解的唯一性得到.</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常微分方程（六）</div>
+      <div>http://example.com/2022/04/12/常微分方程（六）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yixiao Feng</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月12日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/19/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%B8%83%EF%BC%89/" title="常微分方程（七）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程（七）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%BA%94%EF%BC%89/" title="常微分方程（五）">
+                        <span class="hidden-mobile">常微分方程（五）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"lP0EkKujSYnXpz4ctf8fFGsW-9Nh9j0Va","appKey":"DpVSkvgqz62seB0SqeXNleTm","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

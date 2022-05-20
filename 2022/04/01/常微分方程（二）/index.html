@@ -16,21 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="本节介绍一些简单的常微分方程">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/05/20/hello-world/index.html">
+<meta property="og:title" content="常微分方程（二）">
+<meta property="og:url" content="http://example.com/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="本节介绍一些简单的常微分方程">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-20T00:02:51.587Z">
-<meta property="article:modified_time" content="2022-03-28T15:40:34.522Z">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-04-01T14:51:13.000Z">
+<meta property="article:modified_time" content="2022-04-27T00:56:16.360Z">
 <meta property="article:author" content="Yixiao Feng">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
   
   
   
-  <title>Hello World - Newtonpula的自留地</title>
+  <title>常微分方程（二） - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -205,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="常微分方程（二）"></span>
           
         </div>
 
@@ -221,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-20 08:02" pubdate>
-          2022年5月20日 早上
+        <time datetime="2022-04-01 22:51" pubdate>
+          2022年4月1日 晚上
         </time>
       </span>
     
@@ -234,7 +237,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          367 字
+          5.8k 字
         
       </span>
     
@@ -246,7 +249,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          49 分钟
         
       </span>
     
@@ -284,23 +287,35 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">常微分方程（二）</h1>
             
             <div class="markdown-body">
               
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+              <h1 id="初等积分法"><a href="#初等积分法" class="headerlink" title="初等积分法"></a>初等积分法</h1><h2 id="恰当方程"><a href="#恰当方程" class="headerlink" title="恰当方程"></a>恰当方程</h2><p>考虑对称形式的一阶微分方程<br>$$<br>P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y&#x3D;0<br>$$<br>如果存在一个可微函数$\Phi(x,y)$使得它的全微分为<br>$$<br>\mathrm{d}\Phi(x,y)&#x3D;P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y<br>$$<br>则称该方程为<strong>恰当方程</strong>或<strong>全微分方程</strong>. 此时<br>$$<br>\Phi(x,y)&#x3D;C<br>$$<br>是该方程的一个通解. 这一点的验证需要用到隐函数定理.</p>
+<p><strong>定理2.1</strong> 设函数$P(x,y)$和$Q(x,y)$在区域<br>$$<br>R:\quad \alpha&lt;a&lt;\beta,\quad \gamma&lt;y&lt;\delta<br>$$<br>上连续，且有连续的一阶偏导数$\frac{\partial P}{\partial y}$与$\frac{\partial Q}{\partial x}$，<br>则上微分方程是恰当方程的充要条件为恒等式<br>$$<br>\frac{\partial P}{\partial y}(x,y)&#x3D;\frac{\partial Q}{\partial x}(x,y)<br>$$<br>在$R$内成立. 此时可以给出方程的通积分：<br>$$<br>\int_{x_0}^xP(x,y)\mathrm{d}x+\int_{y_0}^yQ(x_0,y)\mathrm{d}y&#x3D;C<br>$$<br>或者<br>$$<br>\int_{x_0}^xP(x,y_0)\mathrm{d}x+\int_{y_0}^yQ(x,y)\mathrm{d}y&#x3D;C<br>$$<br>其中$(x_0,y_0)$是$R$中任意取定的一点.</p>
+<h2 id="变量分离的方程"><a href="#变量分离的方程" class="headerlink" title="变量分离的方程"></a>变量分离的方程</h2><p>如果微分方程<br>$$<br>    P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y&#x3D;0<br>$$<br>中的函数$P(x,y)$和$Q(x,y)$均可分别表示为$x$的函数与$y$的函数的乘积，则称上方程为<strong>变量分离的方程</strong>. 令<br>$$<br>    P(x,y)&#x3D;X(x)Y_1(y),\quad Q(x,y)&#x3D;X_1(x)Y(y)<br>$$<br>以因子$X_1(x)Y_1(y)$去除上式两端，再积分，得到通积分<br>$$<br>\int_{}^{}\frac{X(x)}{X_1(x)}\mathrm{d}x+\int_{}^{}\frac{Y(y)}{Y_1(y)}\mathrm{d}y&#x3D;C<br>$$<br>但注意要补上如下形式的特解（如果它们不在上述通积分之内的话）：<br>$$<br>x&#x3D;a_i,\quad (i&#x3D;1,2,\cdots),\text{其中$a_i$是$X_1(x)&#x3D;0$的根}<br>$$<br>和<br>$$<br>y&#x3D;b_j,\quad (i&#x3D;1,2,\cdots),\text{其中$b_j$是$Y_1(y)&#x3D;0$的根}<br>$$</p>
+<p>习题中有一个有趣的结果：<br>设微分方程<br>$$<br>\frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;f(y)<br>$$<br>其中$f(y)$在$y&#x3D;a$的某领域（例如区间$\lvert y-a\rvert \leqslant \varepsilon$）内连续，而且$f(y)&#x3D;0$当且仅当$y&#x3D;a$. 则在直线$y&#x3D;a$上的每一点，上方程的解是局部唯一的当且仅当瑕积分<br>$$<br>\biggl\lvert \int_{a}^{a\pm \varepsilon} \frac{\mathrm{d}y}{f(y)}\biggr\rvert&#x3D;\infty \text{（发散）}<br>$$</p>
+<p>proof 设$y(x_0)&#x3D;a$. 首先，常值函数$y(x)&#x3D;a$显然是方程的解.</p>
+<p>$\Leftarrow$：假设方程还有解$y&#x3D;g(x)\neq a$，则$\exists x_1$，$h&#x3D;g(x_1)-a\neq 0$，则有<br>$$<br>    \biggl\lvert \int_{a}^{a+h}\frac{1}{f(y)} \mathrm{d}y\biggr\rvert&#x3D;\biggl\lvert \int_{x_0}^{x_1}\mathrm{d}x\biggr\rvert<br>$$<br>右侧积分有限，与瑕积分发散矛盾.</p>
+<p>$\Rightarrow$：假设方程只有唯一解$y(x)&#x3D;a$，若右侧瑕积分收敛，令<br>$g(x)&#x3D;\int_{a}^{x}\frac{1}{f(x)} \mathrm{d}y$ 则由<br>$$<br>    g’(y)&#x3D;\frac{1}{f(y)} ,y\neq a<br>$$<br>可知有隐函数$y&#x3D;h(g)\neq a$，从而有<br>$$<br>    \frac{\mathrm{d}h(g)}{\mathrm{d}g} &#x3D;\frac{\mathrm{d}y}{\mathrm{d}g(y)} &#x3D;f(y)&#x3D;f(h(g))<br>$$<br>即$y&#x3D;h(g)$也是解，但由$h(g)\neq a$知与解唯一矛盾！</p>
+<h2 id="一阶线性方程"><a href="#一阶线性方程" class="headerlink" title="一阶线性方程"></a>一阶线性方程</h2><p><strong>一阶线性方程</strong>即<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x} +p(x)y&#x3D;q(x) \qquad (1)<br>$$<br>其中函数$p(x)$和$q(x)$在区间 $I&#x3D;(a,b)$上连续，当$q(x)\equiv 0$时，方程成为<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x} +p(x)y&#x3D;0 \qquad (2)<br>$$<br>当$q(x)$不恒等于零时，称(1)为<strong>非齐次</strong>线性方程；而(2)为相应的<strong>齐次</strong>线性方程.</p>
+<p>(2)的通解形如<br>$$<br>    y&#x3D;C\mathrm{e}^{-\int_{}^{}p(x)\mathrm{d}x}<br>$$<br>其中$C$是任意常数</p>
+<p>(1)的通解形如<br>$$<br>    y&#x3D; \mathrm{e}^{-\int_{}^{}p(x)\mathrm{d}x}\biggl(C+\int_{}^{}q(x)\mathrm{e}^{\int_{}^{}p(x)\mathrm{d}x}\mathrm{d}x<br>    \biggr)<br>$$<br>其中$C$是一个任意常数，取原函数时取同一个. 上方法称为<strong>积分因子法</strong>.<br>这里的积分因子<br>$$<br>    \mu(x)&#x3D;\mathrm{e}^{\int_{}^{}p(x)\mathrm{d}x}<br>$$<br>注意积分因子的奇点作特殊讨论.<br>对于给定的初值$y(x_0)&#x3D;y_0$，解为<br>$$<br>    y&#x3D; y_0\mathrm{e}^{-\int_{x_0}^{x}p(x)\mathrm{d}x}+\int_{x_0}^{x}q(s)\mathrm{e}^{-\int_{s}^{x}p(t)\mathrm{d}t}\mathrm{d}s<br>$$<br>其中$p(x)$和$q(x)$在区间$I$上连续.  </p>
+<h2 id="初等变换法"><a href="#初等变换法" class="headerlink" title="初等变换法"></a>初等变换法</h2><h3 id="齐次方程："><a href="#齐次方程：" class="headerlink" title="齐次方程："></a><strong>齐次方程</strong>：</h3><p>如果微分方程<br>$$<br>    P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y&#x3D;0<br>$$<br>中的函数$P(x)$和$Q(x)$都是$x$和$y$的同次（例如$m$次）齐次函数，即：<br>$$<br>    P(tx,ty)&#x3D;t^mP(x,y),\quad Q(tx,ty)&#x3D;t^mQ(x,y),<br>$$<br>则称上方程为<strong>齐次方程</strong>（注意这与上节定义的齐次线性方程不是一回事）.<br>做替换<br>$$<br>    y&#x3D;ux<br>$$<br>得到<br>$$<br>    x^m[P(1,u)+uQ(1,u)]\mathrm{d}x+x^{m+1}Q(1,u)\mathrm{d}u&#x3D;0<br>$$<br>这是一个变量分离的方程.<br>齐次方程的另一个等价定义是<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;\Phi(\frac{y}{x} )<br>$$<br>注意：做代换时要排除$x&#x3D;0$的情况，因$x&#x3D;0$时代换不可逆.</p>
+<h3 id="伯努利-Bernoulli-方程"><a href="#伯努利-Bernoulli-方程" class="headerlink" title="伯努利(Bernoulli)方程"></a>伯努利(Bernoulli)方程</h3><p>形如<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x}+p(x)y&#x3D;q(x)y^n<br>$$<br>的方程称为伯努利方程，其中$n$为常数，而且$n\neq 0$和$1$. 以$(1-n)y^{-n}$ 乘方程两边，然后令 $z&#x3D;y^{1-n}$， 有<br>$$<br>    \frac{\mathrm{d}z}{\mathrm{d}x} +(1-n)p(x)z&#x3D;(1-n)q(x)<br>$$<br>这是关于未知函数$z$的一阶线性方程.</p>
+<h3 id="里卡蒂-Riccati-方程"><a href="#里卡蒂-Riccati-方程" class="headerlink" title="里卡蒂(Riccati)方程"></a>里卡蒂(Riccati)方程</h3><p>加入一阶微分方程<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x} &#x3D;f(x,y)<br>$$<br>的右端函数$f(x,y)$是一个关于$y$的二次多项式，则称此方程为二次方程；它可写成如下形式：<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x} &#x3D;p(x)y^2+q(x)y+r(x)<br>$$<br>其中$p(x)$不恒为零.</p>
+<p><strong>定理</strong> 设已知里卡蒂方程的一个特解$y&#x3D;\phi_1(x)$，则可用积分法求得它的通解.</p>
+<p>证：做代换$y&#x3D;u+\phi_1(x)$可将里卡蒂方程化为伯努利方程.</p>
+<p><strong>定理</strong> 设里卡蒂方程<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x} +ay^2&#x3D;bx^m<br>$$<br>其中$a\neq 0$，$b,m$都是常数. 又设$x\neq 0$和$y \neq 0$. 则当且仅当<br>$$<br>    m&#x3D;0,-2,\frac{-4k}{2k+1} ,\frac{-4k}{2k-1}\quad(k&#x3D;1,2,\cdots)<br>$$<br>时，上方程可通过适当的变换化为变量分离的方程.</p>
+<h2 id="积分因子法"><a href="#积分因子法" class="headerlink" title="积分因子法"></a>积分因子法</h2><p>想法是对一般的方程<br>$$<br>    P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y&#x3D;0 \tag{1}<br>$$<br>设法找一个可微的非零函数$\mu &#x3D;\mu (x,y)$，使得用它乘上方程后，所得方程<br>$$<br>    \mu (x,y)P(x,y)\mathrm{d}x+\mu(x,y)Q(x,y)\mathrm{d}y&#x3D;0 \tag{2}<br>$$<br>成为恰当方程，亦即<br>$$<br>    \frac{\partial (\mu P)}{\partial y} &#x3D; \frac{\partial (\mu Q)}{\partial x} \tag{3}<br>$$<br>这时，函数$\mu&#x3D;\mu(x,y)$叫作上方程的一个<strong>积分因子</strong>.<br>(3)也可以写成<br>$$<br>    P\frac{\partial \mu}{\partial y} -Q\frac{\partial \mu}{\partial x} &#x3D;\biggl(\frac{\partial Q}{\partial x} -\frac{\partial P}{\partial y} \biggr)\mu<br>$$<br><strong>定理</strong> 微分方程(1)有一个只依赖于$x$的积分因子的充要条件是<br>$$<br>    \frac{1}{Q(x,y)} \biggl(\frac{\partial P(x,y)}{\partial y} -\frac{\partial Q(x,y)}{\partial x} \biggr) \tag{4}<br>$$<br>只依赖于$x$，而与$y$无关.<br>此时记(4)为$G(x)$，则此时<br>$$<br>    \mu(x)&#x3D;\mathrm{e}^{\int G(x)\mathrm{d}x}<br>$$<br>是(1)的一个积分因子.</p>
+<p>类似的，微分方程(1)有一个只依赖于$y$的积分因子的充要条件是<br>$$<br>    \frac{1}{P(x,y)} \biggl(\frac{\partial Q(x,y)}{\partial x} -\frac{\partial P(x,y)}{\partial y} \biggr) &#x3D;H(y)<br>$$<br>此时<br>$$<br>    \mu(y)&#x3D;\mathrm{e}^{\int H(y)\mathrm{d}y}<br>$$<br>是(1)的一个积分因子.</p>
+<p>还可以<strong>分组求积分因子</strong>. 理由是下述定理：</p>
+<p><strong>定理</strong> 若$\mu &#x3D;\mu (x,y)$是方程(1)的一个积分因子，使得<br>$$<br>    \mu P(x,y)\mathrm{d}x+\mu Q(x,y)\mathrm{d}y&#x3D;\mathrm{d} \Phi (x,y)<br>$$<br>则$\mu(x,y)g(\Phi(x,y))$也是(1)的一个积分因子，其中$g(\cdot)$是任一可微的（非零）函数. </p>
+<p>证：验证恰当方程的条件即可. 事实上有<br>$$<br>    \mu g(\Phi) P\mathrm{d}x+\mu g(\Phi)Q\mathrm{d}y&#x3D;\mathrm{d}(\int g)(\Phi)<br>$$</p>
+<p>最后，若$P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y&#x3D;0$是齐次方程，则函数<br>$$<br>    \mu(x,y)&#x3D;\frac{1}{xP(x,y)+yQ(x,y)}<br>$$<br>是一个积分因子. 这是齐次函数的Euler定理的直接应用.</p>
+<h2 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h2><p>假设在 $(x, y)$平面上由方程<br>$$<br>    \Phi(x,y,C)&#x3D;0 \tag{5}<br>$$<br>给出一个以 $C$为参数的曲线族. 称另一族曲线<br>$$<br>    \Psi(x,y,K) \tag{6}<br>$$<br>其中 $K$为参数，使得族(6)中的任一条曲线与族(5)中的每一条曲线相交成定角 $\alpha$ ($-\frac{\pi}{2}&lt;\alpha&lt;\frac{\pi}{2}$,以逆时针方向为正). 称这样的曲线族(6)为已知曲线族(5)的<strong>等角轨线族</strong>. 特别，当 $\alpha&#x3D;\frac{\pi}{2}$时，称曲线族(6)为(5)的<strong>正交轨线族</strong>.</p>
+<p>(5)满足的微分方程<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;H(x, y)<br>$$<br>其中<br>$$<br>    H(x, y)&#x3D;-\frac{\Phi’_x (x, y,C(x, y))}{\Phi’_y (x,y,C(x, y))}<br>$$<br>这里 $C&#x3D;C(x, y)$是由 $\Phi(x,y,C)$决定的函数.</p>
+<p>当 $\alpha\neq \frac{\pi}{2}$时，有<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;\frac{H(x, y)+\tan\alpha}{1-H(x, y)\tan \alpha}<br>$$<br>而当 $\alpha&#x3D;\frac{\pi}{2}$时，就有<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;-\frac{1}{H(x, y)}<br>$$<br>这些 $H(x, y)$都是相同的.</p>
 
               
             </div>
@@ -308,6 +323,41 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+    </div>
   
 </div>
 
@@ -317,8 +367,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2022/05/20/hello-world/</div>
+      <div>常微分方程（二）</div>
+      <div>http://example.com/2022/04/01/常微分方程（二）/</div>
     </div>
     <div class="license-meta">
       
@@ -330,7 +380,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月20日</div>
+          <div>2022年4月1日</div>
         </div>
       
       
@@ -360,12 +410,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2022/04/05/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/" title="常微分方程（三）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程（三）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/18/%E8%AE%A1%E7%A7%91%E5%AF%BC%E5%A4%8D%E4%B9%A0/" title="计科导复习">
-                        <span class="hidden-mobile">计科导复习</span>
+                      <a href="/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/" title="常微分方程（一）">
+                        <span class="hidden-mobile">常微分方程（一）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

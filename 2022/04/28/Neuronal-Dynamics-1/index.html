@@ -1,0 +1,926 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/title.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Yixiao Feng">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Introduction - Neurons and Mathematics">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neuronal Dynamics (1)">
+<meta property="og:url" content="http://example.com/2022/04/28/Neuronal-Dynamics-1/index.html">
+<meta property="og:site_name" content="Newtonpula的自留地">
+<meta property="og:description" content="Introduction - Neurons and Mathematics">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-04-28T06:19:33.000Z">
+<meta property="article:modified_time" content="2022-05-18T09:19:00.631Z">
+<meta property="article:author" content="Yixiao Feng">
+<meta property="article:tag" content="神经科学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
+  
+  
+  
+  <title>Neuronal Dynamics (1) - Newtonpula的自留地</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.0","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"lP0EkKujSYnXpz4ctf8fFGsW-9Nh9j0Va","app_key":"DpVSkvgqz62seB0SqeXNleTm","server_url":"https://lp0ekkuj.lc-cn-e1-shared.com","path":"window.location.pathname","ignore_local":true}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (1)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        Yixiao Feng
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-28 14:19" pubdate>
+          2022年4月28日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          <!-- compatible with older versions-->
+          14k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          <!-- compatible with older versions-->
+          115 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Neuronal Dynamics (1)</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="Chapter-I"><a href="#Chapter-I" class="headerlink" title="Chapter I"></a>Chapter I</h1><h1 id="Introduction-Neurons-and-Mathematics"><a href="#Introduction-Neurons-and-Mathematics" class="headerlink" title="Introduction: Neurons and Mathematics"></a>Introduction: Neurons and Mathematics</h1><p>The online version of the book:</p>
+<hr>
+<p>Neuronal Dynamics - a neuroscience textbook by Wulfram Gerstner, Werner M. Kistler, Richard Naud and Liam Paninski<br><a target="_blank" rel="noopener" href="https://neuronaldynamics.epfl.ch/index.html">https://neuronaldynamics.epfl.ch/index.html</a></p>
+<hr>
+<h2 id="1-1-Elements-of-Neuronal-Systems"><a href="#1-1-Elements-of-Neuronal-Systems" class="headerlink" title="1.1 Elements of Neuronal Systems"></a>1.1 Elements of Neuronal Systems</h2><h3 id="1-1-1-The-Ideal-Spiking-Neuron"><a href="#1-1-1-The-Ideal-Spiking-Neuron" class="headerlink" title="1.1.1 The Ideal Spiking Neuron"></a>1.1.1 The Ideal Spiking Neuron</h3><p>dendrites(树突), soma(), axon(轴突)<br>synapse(突触)</p>
+<blockquote>
+<p>synapses locate in dendrites.</p>
+</blockquote>
+<h3 id="1-1-2-Spike-Trains"><a href="#1-1-2-Spike-Trains" class="headerlink" title="1.1.2 Spike Trains"></a>1.1.2 Spike Trains</h3><p>action potentials or spikes, have an amplitude of about 100mV and typically a durationn of 1-2 ms.</p>
+<p>Spike train: a chain of action potentials emitted by a single neuron, a sequence of stereotyped events which occur at regular or irregular intervals.</p>
+<p>The number and the timing of spikes matters.</p>
+<p>Action potentials in a spike train are ususally well seperated.</p>
+<h3 id="1-1-3-Synapses"><a href="#1-1-3-Synapses" class="headerlink" title="1.1.3 Synapses"></a>1.1.3 Synapses</h3><p>synaptic cleft</p>
+<p>chemical synapses, electrical synapses(gap juntions), </p>
+<h3 id="1-1-4-Neurons-are-part-of-a-big-system"><a href="#1-1-4-Neurons-are-part-of-a-big-system" class="headerlink" title="1.1.4 Neurons are part of a big system"></a>1.1.4 Neurons are part of a big system</h3><p>neuron’s receptive field(感受野): the limited zone where a neuron is sensitive to stimuli.(out of brain)</p>
+<h2 id="1-2-Elements-of-Neuronal-Dynamics"><a href="#1-2-Elements-of-Neuronal-Dynamics" class="headerlink" title="1.2 Elements of Neuronal Dynamics"></a>1.2 Elements of Neuronal Dynamics</h2><p>membrane potential<br>synapse: excitatory(the change is positive), inhibitory(the change is negative)</p>
+<p>At rest, the cell membrane has already a strongly negative polarization of about -65mV. </p>
+<p>An input at an excitatory synapse reduces the negative polarization of the membrane and is therefore called depolarizing. An input the increase the negative polarization of the membrane even further is called hyperpolarizing.</p>
+<h3 id="1-2-1-Postsynaptic-Potentials"><a href="#1-2-1-Postsynaptic-Potentials" class="headerlink" title="1.2.1 Postsynaptic Potentials"></a>1.2.1 Postsynaptic Potentials</h3><p>postsynaptic potential(PSP), excitatory postsynaptic potential(EPSP), inhibitory postsynaptic potential(IPSP)</p>
+<p>The membrane potential responds linearly to input spikes. Linearity breaks dwon if too many input spikes arrive during a short interval. </p>
+<p><strong>spike-afterpotential</strong>: afer the pulse the membrane potential does not directly return to the resting potential, but passes, for many neuron types, through a phase of hyperpolarization below the resting value.</p>
+<p>About 20-50 presynaptic spikes have to arrive within a short time window to trigger a postsynaptic action potential.</p>
+<blockquote>
+<p>when the voltage hits the threshold, the neuron can enter a state of refractoriness. </p>
+</blockquote>
+<h2 id="1-3-Integrate-And-Fire-Models"><a href="#1-3-Integrate-And-Fire-Models" class="headerlink" title="1.3 Integrate-And-Fire Models"></a>1.3 Integrate-And-Fire Models</h2><p>The moment of threshold crossing defines the firing time $t_i^{(f)}$.</p>
+<p>‘Leaky-Integrate-and-Fire’ Model</p>
+<h3 id="1-3-1-Integration-of-Inputs"><a href="#1-3-1-Integration-of-Inputs" class="headerlink" title="1.3.1 Integration of Inputs"></a>1.3.1 Integration of Inputs</h3><p>The equation of a passive membrane:<br>$$ \tau_m \frac{\mathrm{d}u}{\mathrm{d}t}&#x3D;-[u(t)-u_{rest}]+RI(t) \tag{1.5}$$<br>We refer to $u$ as the membrane potential and to $\tau_m$ as the <strong>membrane time constant</strong> of the neuron. The above equation is called the equation of a passive membrane.</p>
+<p>The solution of the differential equation with initial condition $u(t_0)&#x3D;u_{rest}+\Delta u$ and $ I(t)&#x3D;0 $ is<br>$$ u(t)-u_{rest}&#x3D;\Delta u \exp(-\frac{t-t_0}{\tau_m})\quad \text{for} \quad t&gt;t_0$$</p>
+<p>This indicates that, in the absence fo input, the membrane potential decays exponentiallly to its resting value. The membrane time constant $\tau_m &#x3D;RC$ is the characteristic time of the decay. For a typical neuron it is in the range of 10ms, and hence rather long compared to the duration of a spike which is on the order of 1ms.</p>
+<h3 id="1-3-2-Pulse-Input"><a href="#1-3-2-Pulse-Input" class="headerlink" title="1.3.2 Pulse Input"></a>1.3.2 Pulse Input</h3><p>Suppose that the passive membrane is stimulated by a constant input current $I(t)&#x3D;I_0$ which starts at $t&#x3D;0$ and ends at time $t&#x3D;\Delta$. For the sake of simplicity we assume that the membrane potential at time $t&#x3D;0$ is at its resting value $u(0)&#x3D;u_{rest}$.</p>
+<p>Now, the solution to the differential equation for $0&lt;t&lt;\Delta$ is<br>$$ u(t)&#x3D;u_{rest}+RI_0[1-\exp(-\frac{t}{\tau_m})]$$</p>
+<p>If the input current never stopped, the mambrane potential would approach for $t\to \infty$ the asymptotic value $u(\infty)&#x3D;u_{rest}+RI_0$. Once a steady state is reached, the charge on the capacitor no longer changes. All input current must then flow thorugh the resistor. The steady-state voltage at the resistor is therefore $RI_0$ so that the total membrane voltage is $u_{rest}+RI_0$.</p>
+<blockquote>
+<center> Example: Short pulses and the Dirac $ \delta $ function </center>
+For pulse duration $\Delta \ll \tau_m$, expand the exponential term into a Taylor series, we find:
+$$ u(\Delta)=u_{rest}+RI_0\frac{\Delta}{\tau_m}$$
+Namely, the voltage deflection depends linearly on the amplitude and the duration of the pulse.
+As long as $q=I_0\Delta$ stay the same, the voltage change induced by a short current pulse is always the same, whenever the duration of the pulse $\Delta$ is much shorter than the time constant $\tau_m$. Thus, the exact duration of the pulse is irrelevant, as long as it is short enough.
+</blockquote>
+<blockquote>
+<p>We no longer have to worry about the time course of the membrane potential during the application of the current pulse: the membrane potential simply jumps at time $t&#x3D;0$ by an amount $q&#x2F;C$.</p>
+</blockquote>
+<blockquote>
+<p>In conclusion, the solution of<br>    $$<br>        \tau_{m} \frac{\mathrm{d}u}{\mathrm{d}t}&#x3D;-[u(t)-u_{rest}]+Rq\delta(t)<br>    $$<br>is $u(t)&#x3D;u_{rest}$ for $t\leqslant 0$ and given by<br>    $$<br>        u(t)-u_{rest}&#x3D;q \frac{R}{\tau_m}\exp (-\frac{t}{\tau_m}) \quad \text{for} \quad t&gt;0<br>    $$</p>
+</blockquote>
+<blockquote>
+<p>We call it <strong>the impulse-response function or Green’s function of the linear differential equation</strong>.</p>
+</blockquote>
+<h3 id="1-3-3-Nonlinear-Integrate-and-fire-Model"><a href="#1-3-3-Nonlinear-Integrate-and-fire-Model" class="headerlink" title="1.3.3 Nonlinear Integrate-and-fire Model"></a>1.3.3 Nonlinear Integrate-and-fire Model</h3><p>$$<br>    \tau \frac{\mathrm{d}u}{\mathrm{d}t}&#x3D;F(u)+RI(t)<br>$$</p>
+<p>where $F(u)$ can be a non-linear function. For example, $F(u)&#x3D;c_2(u-c_1)^{2}+c_0$ (the quadratic integrate-and-fire models) or $F(u)&#x3D;-(u-u_{rest})+c_0\exp (u-\theta)$ (the exponential integrate-and-fire model)</p>
+<h3 id="1-3-4-The-Threshold-for-Spike-Firing"><a href="#1-3-4-The-Threshold-for-Spike-Firing" class="headerlink" title="1.3.4 The Threshold for Spike Firing"></a>1.3.4 The Threshold for Spike Firing</h3><p><strong>firing time</strong>: the moment when a given neuron emits an action potential $t ^{(f)}$. In the leaky-and-fire model is defined as<br>$$<br>    t^{(f)}: u(t^{(f)})&#x3D;\theta<br>$$<br>immediately after $t^{(f)}$ the potential is reset to a new value $u_r&lt;\theta$<br>$$<br>    \lim_{\delta \to 0;\delta&gt;0} u(t^{(f)}+\delta)&#x3D;u_r<br>$$<br>$u_r$refers to the spike-afterpotential</p>
+<p>For $t&gt; t^{(f)}$, the dynamics is as usual until the next threshold crossing occurs.</p>
+<p>The combination of leaky integration and reset defines the leaky integrate-and-fire model. </p>
+<p><strong>Q</strong>: What’s the meaning of the notes under Fig. 1.9 “Units of input current are chosen so that $I_0&#x3D;1$ corresponds to a trajectory that reaches the threshold for $t \in \infty$”</p>
+<h3 id="1-3-5-Time-dependent-Input"><a href="#1-3-5-Time-dependent-Input" class="headerlink" title="1.3.5 Time-dependent Input"></a>1.3.5 Time-dependent Input</h3><p>This subsection study a leaky integrate-and-fire model which is driven by an arbitrary time-dependent input current $I(t)$;. </p>
+<p><strong>spike train of a neuron $i$</strong><br>$$<br>    S_i(t)&#x3D;\sum_{f}^{} \delta(t-t_i^{(f)})  \tag{1.14}<br>$$</p>
+<p>In the absence of a threshold, the linear differential equation (1.5) has a solution<br>$$<br>    u(t)&#x3D;u_{rest}+\frac{R}{\tau_m}\int_{0}^{\infty} \exp (-\frac{s}{\tau_m})I(t-s) \mathrm{d}s \tag{1.15}<br>$$<br>(Check ODE by Ding Tongren p33)<br>where $I(t)$ is an arbitrary input current and $\tau_m&#x3D;RC$ is the membrane time constant. Assume here that the input curreent is defined for a long time back into the past: $t \to -\infty$ to avoid initial condition. </p>
+<p>Consider adding a threshold $\theta$ to (1.15). The reset of the potential corresponds to removing a charge $q_r&#x3D;C(\theta-u_r)$ from the capacitor&#x2F; adding a negative charge $-q_r$ onto the capacitor. Therefore, the reset corresponds to a short current pulse $I_r&#x3D;-q_r\delta(t-t^{(f)})$ at the moment of the firing $t^{(f)}$. The reset current is<br>$$<br>    I_r&#x3D;-q_r \sum_{f}^{} \delta(t-t^{(f)})&#x3D;-C(\theta-u_r)S(t)<br>$$<br>where $S(t)$ denotes the spike train.</p>
+<p>The total current $I(t)+I_r(t)$, consisting of the stimulating current and the reset current. The final result<br>$$<br>    u(t)&#x3D;u_{rest}+\sum_{f}^{} (u_r-\theta)\exp (-\frac{t-t^{(f)}}{\tau_m})+\frac{R}{\tau_m}\int_{0}^{\infty} \exp (-\frac{s}{\tau_m})I(t-s) \mathrm{d}s \tag{1.17}<br>$$<br>where the firing times $t^{(f)}$ are defined by the threshold condition<br>$$<br>    t^{(f)}&#x3D;{t|u(t)&#x3D;\theta} \tag{1.18}<br>$$</p>
+<blockquote>
+<p>The second term of (1.17) describes the ‘ discharging’ of neurons at the moment of the firing&#x2F; the effect of the discharging current pulses at the moment of the reset.<br>The last term decribes the sum of the impulse response functions since the electricity exists at ant moment.</p>
+</blockquote>
+<h3 id="1-3-6-Linear-Differential-Equation-vs-Linear-Filter-Two-Equivalent-Pictures"><a href="#1-3-6-Linear-Differential-Equation-vs-Linear-Filter-Two-Equivalent-Pictures" class="headerlink" title="1.3.6 Linear Differential Equation vs. Linear Filter: Two Equivalent Pictures"></a>1.3.6 Linear Differential Equation vs. Linear Filter: Two Equivalent Pictures</h3><p>Rewrite the solution (1.17) in the form<br>$$<br>    u(t)&#x3D;\int_{0}^{\infty} \eta(s)S(t-s) \mathrm{d}s+\int_{0}^{\infty} \kappa(s)I(t-s) \mathrm{d}s  \tag{1.22}<br>$$<br>where the filter $\displaystyle \eta(s)&#x3D;(u_r-\theta)\exp (-\frac{s}{\tau_m})$ , $\displaystyle \kappa(s)&#x3D;\frac{1}{C}\exp (-\frac{s}{\tau_m})$ and<br>$$<br>    S_i(t)&#x3D;\sum_{f}^{} \delta(t-t_i^{(f)})<br>$$</p>
+<blockquote>
+<p>(1.22) is much more general than the leaky integrate-and-fire model, because the filters do not need to be expoenntial but could have any arbitrary shape. </p>
+</blockquote>
+<blockquote>
+<p>The <strong>filter</strong> $\eta$ describes the reset of the membrane potential and, more generally, accounts for <strong>neuronal refractoriness</strong>.<br>The <strong>filter</strong> $\kappa$ summarizes the linear electrical properties of the membrane.</p>
+</blockquote>
+<blockquote>
+<p>(1.22) also tells us how to write a sum to the form of convolution, which relys on the propertiy of $\delta$ function. </p>
+</blockquote>
+<p><strong>Q</strong>: What is a filter?</p>
+<h3 id="Periodic-drive-and-Fourier-transform"><a href="#Periodic-drive-and-Fourier-transform" class="headerlink" title="Periodic drive and Fourier transform"></a>Periodic drive and Fourier transform</h3><p>recall<br>$$<br>    \hat{f}(\omega)&#x3D;\int_{-\infty}^{\infty} f(t)\mathrm{e}^{-i\omega t}  \mathrm{d}t&#x3D;\left\vert \hat{f}(\omega) \right\vert \mathrm{e}^{i \phi_f(\omega)}<br>$$<br>where $\left\vert \hat{f}(\omega) \right\vert $ and $\phi_f(\omega)$ are called <strong>amplitude</strong> and <strong>phase</strong> of the Fourier transform at frequency $\omega$. </p>
+<p>Consider a system<br>$$<br>    u(t)&#x3D;\int_{-\infty}^{\infty} \kappa(s)I(t-s) \mathrm{d}s<br>$$<br>then we have $\hat{u}(\omega)&#x3D;\hat{\kappa}(\omega)\hat{I}(\omega)$  </p>
+<p>In the above system, let<br>$$<br>    I(t)&#x3D;I_0\mathrm{e}^{i \omega t}<br>$$<br>we focus on the real part. If the input is periodic at frequency $\omega$ the output<br>$$<br>    u(t)&#x3D; \biggl[ \int_{-\infty}^{\infty} \kappa(s)\mathrm{e}^{-i\omega s}  \mathrm{d}s \biggr] I_0 \mathrm{e}^{i\omega t} \tag{1.27}<br>$$<br>write $u(t)&#x3D;u_0 \mathrm{e}^{i\phi  _k(\omega)+i\omega t}$. We have<br>$$<br>    \frac{u_0}{I_0}&#x3D;\left\vert \hat{\kappa}(\omega) \right\vert \tag{1.28}<br>$$</p>
+<p>calculate $\left\vert \hat{\kappa}(\omega) \right\vert $<br>$$<br>    \left\vert \hat{\kappa}(\omega) \right\vert&#x3D;\frac{1}{C}\left\vert \frac{\tau_m}{1+i\omega \tau_m} \right\vert<br>$$<br>Therefore the amplitude of the response to a periodic input decreases at high frequencies. </p>
+<h2 id="1-4-Limitations-of-the-Leaky-Integrate-and-Fire-Model"><a href="#1-4-Limitations-of-the-Leaky-Integrate-and-Fire-Model" class="headerlink" title="1.4 Limitations of the Leaky Integrate-and-Fire Model"></a>1.4 Limitations of the Leaky Integrate-and-Fire Model</h2><h3 id="1-4-1-Adaption-Bursting-and-Inhibitory-Rebound"><a href="#1-4-1-Adaption-Bursting-and-Inhibitory-Rebound" class="headerlink" title="1.4.1 Adaption, Bursting, and Inhibitory Rebound"></a>1.4.1 Adaption, Bursting, and Inhibitory Rebound</h3><p><strong>Adaption</strong>: Most neurons will respond to the current step with a spike train where intervals between spikes increase successively until a steady state of periodic firing is reached. </p>
+<p><strong>Fast-spiking neurons</strong>: neurons showing no adaption —— can be well approximated by non-adapting integrate-and-fire models. </p>
+<blockquote>
+<p>Many inhibitory neurons are fast-spiking neurons.</p>
+</blockquote>
+<p><strong>Bursting and stuttering neurons</strong>: respond to constant stimulation by a sequence of spikes that is periodically (bursting) or aperiodically (stuttering) interrupted by rather long interals.</p>
+<blockquote>
+<p>changing ‘filters’ in (1.22), we can describe bursting.</p>
+</blockquote>
+<p><strong>Post-inhibitory rebound</strong>: when an inhibitory input is switched off, many neurons respond with one or more ‘rebound spikes’, even the release of inhibition can trigger action potentials. </p>
+<h3 id="1-4-2-Shunting-Inhibition-and-Reversal-Potential"><a href="#1-4-2-Shunting-Inhibition-and-Reversal-Potential" class="headerlink" title="1.4.2 Shunting Inhibition and Reversal Potential"></a>1.4.2 Shunting Inhibition and Reversal Potential</h3><p>postsynaptic current, PSC<br>$$<br>    \text{PSC} \quad \propto \quad [u_0-E_{syn}]<br>$$<br>where $u_0$ is the membrane potential and  $E_{syn}$ is the ‘reversal potential’ of the synapse. </p>
+<blockquote>
+<center>Ex: Shunting Inhibition </center>
+</blockquote>
+<p><strong>Q</strong>: I’m not clear about shunting inhibition </p>
+<h3 id="1-4-3-Conductance-Changes-after-a-Spike"><a href="#1-4-3-Conductance-Changes-after-a-Spike" class="headerlink" title="1.4.3 Conductance Changes after a Spike"></a>1.4.3 Conductance Changes after a Spike</h3><p>The shape of the postsynaptic potentials does not only depend on the level of depolarization but also on the internal state of the neuron, e.g., on the timing relative to previous action potentials.</p>
+<h3 id="1-4-4-Spatial-Structure"><a href="#1-4-4-Spatial-Structure" class="headerlink" title="1.4.4 Spatial Structure"></a>1.4.4 Spatial Structure</h3><p>The form of postsynaptic potentials also depends on the location of the synapse on the dendritic tree. </p>
+<p><strong>Fig.1.12</strong> shows that a presynaptic spike that arrives at time $t_j^{(f)}$ shortly after the spike of the postsynaptic neuron has a smaller effect than a spike that arrives much later. </p>
+<p>In the situation of successive inputs, the first input will cause local changes of the membrane potential, changing the response of spikes that arrive later. </p>
+<p><strong>hot spots</strong>: small regions on the dendrite where a strong nonlinear boosting of synaptic currents occurs. The boosting can lead to dendritic spikes which last longer (tens of milliseconds).</p>
+<h2 id="1-5-What-Can-We-Expect-from-Integrate-And-Fire-Models"><a href="#1-5-What-Can-We-Expect-from-Integrate-And-Fire-Models" class="headerlink" title="1.5 What Can We Expect from Integrate-And-Fire Models?"></a>1.5 What Can We Expect from Integrate-And-Fire Models?</h2><p>By adding adaptation and refractoriness  to the neuron model, the prediction of leaky integrate-and-fire model works surprisingly well. </p>
+<p>The first way to add adaptation is: after each spike the threshold $\theta$ is increased by an amount $\theta$, while during a quiescent period the threshold approaches its stationary value $\theta_0$. Use the Dirac $\delta-$function to express this idea<br>$$<br>    \tau_{\text{adapt}}\frac{\mathrm{d}}{\mathrm{d}t}\theta(t)&#x3D;-[\theta(t)-\theta_0]+\theta \sum_{f}^{} \delta(t-t^{(f)}) \tag{1.34}<br>$$<br>where $\tau_{\text{adapt}}$ is the time constant of adaptation (a few hundred milliseconds) and $t^{(f)}&#x3D;t^{(1)},t^{(2)}\cdots $ are the firing times of the neuron.</p>
+<h2 id="1-6-Summary"><a href="#1-6-Summary" class="headerlink" title="1.6 Summary"></a>1.6 Summary</h2><p>The whole paragraph is valuable. Foe me, the most important sentence is: The simple leaky integrate-and-fire model does not account for <strong>long-lasting refractoriness</strong> or <strong>adaptation</strong>.</p>
+<h3 id="Exercise"><a href="#Exercise" class="headerlink" title="Exercise"></a>Exercise</h3><p><strong>Synaptic current pulse</strong> Synaptic inputs can be approximated by an exponential current $\displaystyle I(t)&#x3D;\frac{q}{\tau_s}\exp [-\frac{t-t^{(f)}}{\tau_s}]$ for $t&gt;t^{(f)}$ where $t^{(f)}$ is the moment when the spike arrives at the synapse.</p>
+<p>(a) Calculate the response of a passive membrane with time constant $\tau_m$ to an input spike arriving at time $t^{(f)}$.</p>
+<p>(b) In the solution resulting from (a), take the limit $\tau_s \to \tau_m$ and show that in this limit the response is proportional to $\propto [t-t^{(f)}] \exp [-\frac{t-t^{(f)}}{\tau_s}]$. A function of this form is sometimes called an  $\alpha$-function.</p>
+<p>(c) In the solution resulting from (a), take the limit $\tau_s \to 0$. Can you relate your result to the discussion of the Dirac- $\delta$ function?</p>
+<p><strong>Solution</strong><br>(a)<br>$$<br>    \begin{aligned}<br>        u(t)&amp;&#x3D;u_{rest}+\exp{[-\frac{t}{\tau_m}]} \int_{t^{(f)}}^{t} \frac{qR}{\tau_m \tau_s} \exp [\frac{t^{(f)}}{\tau_s}+\frac{t}{\tau_m}-\frac{t}{\tau_s}]\mathrm{d}t \<br>        &amp;&#x3D; u_{rest}+\frac{qR}{\tau_s-\tau_m}[\exp (\frac{t^{(f)}-t}{\tau_s})-\exp (\frac{t^{(f)}-t}{\tau_m}) ]\quad (t&gt;t^{(f)})   \<br>    \end{aligned}<br>$$</p>
+<p>(b)<br>Verifying the equicontinuity, we can exchange the order of limitation and integration.<br>$$<br>    \lim_{\tau_s \to \tau_m} u(t)&#x3D;u_{rest}+\frac{qR}{\tau_m^2}[t-t^{(f)}]\exp [-\frac{t-t^{(f)}}{\tau_m}]<br>$$</p>
+<p><img src="/images/2022-05-08-10-50-17.png" srcset="/img/loading.gif" lazyload></p>
+<p>(c)<br>$$<br>    \lim_{\tau_s \to 0^{+}}u(t)&#x3D;u_{rest}+\frac{qR}{\tau_m}\exp (-\frac{t-t^{(f)}}{\tau_m}) \quad (t&gt;t^{(f)})<br>$$</p>
+<p>It’s exact the solution of the Dirac-$\delta$ function. That’s because<br>$$<br>    \int_{t^{(f)}}^{\infty} I(t) \mathrm{d}t&#x3D;q<br>$$<br>and<br>$$<br>    \lim_{\tau_s \to 0^{+}} \frac{I(t)}{q} &#x3D;\delta(t-t^{(f)})<br>$$</p>
+<p><strong>Time-dependent solution</strong> Show that (1.15) is a solution of (1.5) for time-dependent input $I(t)$. </p>
+<p><strong>Chain of linear equations</strong> Suppose that arrival of a spike at time $t^{(f)}$ releases neurotransmitter into the synaptic cleft. The amount of available neurotransmitter at time  $t$ is $\displaystyle \tau_x \frac{\mathrm{d}x}{\mathrm{d}t}&#x3D;-x+\delta(t-t^{(f)})$. The neurotransmitter binds to the postsynaptic membrane and opens channels that enable a synaptic current $\displaystyle \tau_s \frac{\mathrm{d}I}{\mathrm{d}t}&#x3D;-I+I_0 x(t)$. Finally, the current charges the postsynaptic membrane according to $\displaystyle \tau_m \frac{\mathrm{d}u}{\mathrm{d}t}&#x3D;-u+RI(t)$. Write the voltage response to a single current pulse as an integral.</p>
+<p><strong>solution</strong><br>I’m not very sure. I omited some constants in calculating.</p>
+<p>$$<br>    u&#x3D;\frac{\tau_x^{2}}{(\tau_x-\tau_s)(\tau_x-\tau_m)}I_0R \exp (-\frac{t-t^{(f)}}{\tau_x})<br>$$</p>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/">#神经科学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Neuronal Dynamics (1)</div>
+      <div>http://example.com/2022/04/28/Neuronal-Dynamics-1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Yixiao Feng</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年4月28日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/29/Ascoli-Arzela-Theorem/" title="Ascoli-Arzela Theorem">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Ascoli-Arzela Theorem</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/19/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%B8%83%EF%BC%89/" title="常微分方程（七）">
+                        <span class="hidden-mobile">常微分方程（七）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"lP0EkKujSYnXpz4ctf8fFGsW-9Nh9j0Va","appKey":"DpVSkvgqz62seB0SqeXNleTm","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

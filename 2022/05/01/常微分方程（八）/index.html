@@ -16,21 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="本章介绍微分方程解的定性理论和分支理论">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/05/20/hello-world/index.html">
+<meta property="og:title" content="常微分方程（八）">
+<meta property="og:url" content="http://example.com/2022/05/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E5%85%AB%EF%BC%89/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="本章介绍微分方程解的定性理论和分支理论">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-05-20T00:02:51.587Z">
-<meta property="article:modified_time" content="2022-03-28T15:40:34.522Z">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-05-01T12:39:18.000Z">
+<meta property="article:modified_time" content="2022-05-02T09:03:07.809Z">
 <meta property="article:author" content="Yixiao Feng">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
   
   
   
-  <title>Hello World - Newtonpula的自留地</title>
+  <title>常微分方程（八） - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -205,7 +208,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Hello World"></span>
+            <span id="subtitle" data-typed-text="常微分方程（八）"></span>
           
         </div>
 
@@ -221,8 +224,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-05-20 08:02" pubdate>
-          2022年5月20日 早上
+        <time datetime="2022-05-01 20:39" pubdate>
+          2022年5月1日 晚上
         </time>
       </span>
     
@@ -234,7 +237,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          367 字
+          2.3k 字
         
       </span>
     
@@ -246,7 +249,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          20 分钟
         
       </span>
     
@@ -284,30 +287,76 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Hello World</h1>
+            <h1 style="display: none">常微分方程（八）</h1>
             
             <div class="markdown-body">
               
-              <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
+              <h1 id="定性理论与分支理论初步"><a href="#定性理论与分支理论初步" class="headerlink" title="定性理论与分支理论初步"></a>定性理论与分支理论初步</h1><p>The following videos are helpful to understand this chapter. Thanks to @inversioner at Zhihu.</p>
+<hr>
+<p>【维度】数学漫步第一季（熟肉）[2008]<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av13923799?from=search&amp;seid=12319283859508785318">https://www.bilibili.com/video/av13923799?from=search&amp;seid=12319283859508785318</a></p>
+<hr>
+<hr>
+<p>维度：数学漫步2-混沌<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av4194600?from=search&amp;seid=12319283859508785318">https://www.bilibili.com/video/av4194600?from=search&amp;seid=12319283859508785318</a></p>
+<hr>
+<h2 id="动力系统，相空间与轨线"><a href="#动力系统，相空间与轨线" class="headerlink" title="动力系统，相空间与轨线"></a>动力系统，相空间与轨线</h2><p>Recall <strong>autonomous</strong> differential equations: differential equations whose independent variables are not explicitly included in the equation. </p>
+<p>Considering a moving particle in a n-dimensional space. We know its speed at $\mathbf{x}$ is $\mathbf{v}(\mathbf{x})&#x3D;(v_1(\mathbf{x}),\cdots ,v_n(\mathbf{x}))$. The equation of motion is<br>$$<br>    \frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}&#x3D;\mathbf{v}(\mathbf{x}) \tag{1}<br>$$<br>If $\mathbf{v}(\mathbf{x})$ satisfies the condition of existence and uniqueness theorem, then for all initial condition<br>$$<br>    \mathbf{x}(t_0)&#x3D;\mathbf{x}_0<br>$$<br>(1) has unique solution satisfying (2)<br>$$<br>    \mathbf{x}&#x3D;\mathbf{\phi}(t,t_0,\mathbf{x}_0) \tag{3}<br>$$</p>
+<p>We call the space for $\mathbf{x}$ (namely $\mathbb{R}^{n}$ ) <strong>phase space</strong>, the space for $(t,\mathbf{x})$ (namely $\mathbb{R}^{1} \times \mathbb{R}^{n}$ ) <strong>augmented phase space</strong>.</p>
+<p>(1) defines a <strong>vector field</strong> in the phase space.<br>$$<br>    \mathbf{v}(\mathbf{x})&#x3D;(v_1(\mathbf{x}),\cdots ,v_n(\mathbf{x})) \tag{4}<br>$$</p>
+<p>The solution (3) gives a <strong>trajectory</strong> in the phase space.</p>
+<blockquote>
+<p>Trajectory is the projection of integral curve on the phase space.</p>
+</blockquote>
+<p>If $\mathbf{x}_0$ is a zero point of (4), namely $v(\mathbf{x}_0)&#x3D;0$, then (1) has a constant solution $\mathbf{x}&#x3D;\mathbf{x}_0$. We call $\mathbf{x}_0$ is a <strong>balance point</strong> to (1). The balance points to (1) is called <strong>singularities</strong>.</p>
+<p>If (3) is an unsteady periodic motion, namely $\exists T&gt;0$, s.t.<br>$$<br>    \mathbf{\varphi}(t+T,t_0,\mathbf{x}_0)\equiv \mathbf{\varphi}(t,t_0,\mathbf{x}_0)<br>$$<br>Then its trajectory in the phase space is a closed curve, denoted as <strong>close orbit</strong>.</p>
+<p>Any autonomous differential equation has the form of (1). This introduces the concept of <strong>dynamic system</strong>.</p>
+<p><strong>Basic properties of dynamic system</strong>:</p>
+<ul>
+<li>translation invariance of integral curves: for all constant $C$, $\mathbf{x}&#x3D;\mathbf{\varphi}(t+C)$ is a solution to (1).</li>
+<li>uniqueness of trajectories passing through each point in phase space. We can only consider the solution corresponding to the initial time $t_0&#x3D;0$. Define<br>$$<br>  \mathbf{\varphi}(t,\mathbf{x}_0)&#x3D;\mathbf{\varphi}(t,0,\mathbf{x}_0)<br>$$</li>
+<li>properties of group:  $\mathbf{\varphi}(t,\mathbf{x}_0)$ satisfies<br>$$<br>  \mathbf{\varphi}(t_2,\mathbf{\varphi}(t_1,\mathbf{x}_0))&#x3D;\mathbf{\varphi}(t_2+t_1,\mathbf{x}_0) \tag{5}<br>$$</li>
+</ul>
+<h2 id="解的稳定性"><a href="#解的稳定性" class="headerlink" title="解的稳定性"></a>解的稳定性</h2><h2 id="平面上的动力系统，奇点与极限环"><a href="#平面上的动力系统，奇点与极限环" class="headerlink" title="平面上的动力系统，奇点与极限环"></a>平面上的动力系统，奇点与极限环</h2><h2 id="结构稳定与分支现象"><a href="#结构稳定与分支现象" class="headerlink" title="结构稳定与分支现象"></a>结构稳定与分支现象</h2>
               
             </div>
             <hr/>
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+      
+    </div>
   
 </div>
 
@@ -317,8 +366,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Hello World</div>
-      <div>http://example.com/2022/05/20/hello-world/</div>
+      <div>常微分方程（八）</div>
+      <div>http://example.com/2022/05/01/常微分方程（八）/</div>
     </div>
     <div class="license-meta">
       
@@ -330,7 +379,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年5月20日</div>
+          <div>2022年5月1日</div>
         </div>
       
       
@@ -360,12 +409,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2022/05/06/%E6%B0%B8%E4%B9%85%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/" title="永久记录（一）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">永久记录（一）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/05/18/%E8%AE%A1%E7%A7%91%E5%AF%BC%E5%A4%8D%E4%B9%A0/" title="计科导复习">
-                        <span class="hidden-mobile">计科导复习</span>
+                      <a href="/2022/05/01/Neuronal-Dynamics-2/" title="Neuronal Dynamics (2)">
+                        <span class="hidden-mobile">Neuronal Dynamics (2)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
