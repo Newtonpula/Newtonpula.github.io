@@ -237,7 +237,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          11k 字
+          4k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
           <!-- compatible with older versions-->
-          91 分钟
+          34 分钟
         
       </span>
     
@@ -292,38 +292,158 @@
             <div class="markdown-body">
               
               <h1 id="高阶微分方程"><a href="#高阶微分方程" class="headerlink" title="高阶微分方程"></a>高阶微分方程</h1><p>首先各未知函数微商的最高阶数之和叫作该微分方程的<strong>阶</strong>，它可以部分反应求解的难度. 因此降阶是非常重要的一步. </p>
-<h2 id="几个例子"><a href="#几个例子" class="headerlink" title="几个例子"></a>几个例子</h2><p>不明显包含自变量的方程叫作<strong>自治</strong>（或<strong>驻定</strong>）的，对它们可以进行降阶. 例如，考虑n阶的自治微分方程<br>$$<br>    F\biggl(y,\frac{\mathrm{d}y}{\mathrm{d}x},\cdots ,\frac{\mathrm{d}^ny}{\mathrm{d}x^n}\biggr)&#x3D;0 \tag{1}<br>$$<br>令 $z&#x3D;\frac{\mathrm{d}y}{\mathrm{d}x}$，则有关系式<br>$$<br>    \begin{cases}<br>        \displaystyle<br>        \frac{\mathrm{d}^2y}{\mathrm{d}x^2}&#x3D;\frac{\mathrm{d}z}{\mathrm{d}x}&#x3D;\frac{\mathrm{d}z}{\mathrm{d}y}\frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;z\frac{\mathrm{d}z}{\mathrm{d}y} \<br>        \displaystyle<br>        \frac{\mathrm{d}^3y}{\mathrm{d}x^3}&#x3D;\frac{\mathrm{d}}{\mathrm{d}x}\biggl(z\frac{\mathrm{d}z}{\mathrm{d}y}\biggr)&#x3D;z^2\frac{\mathrm{d}^2z}{\mathrm{d}y^2}+z<br>        \biggl(\frac{\mathrm{d}z}{\mathrm{d}y}\biggr) \<br>        \cdots \<br>        \displaystyle<br>        \frac{\mathrm{d}^ny}{\mathrm{d}x^n}&#x3D;\varphi\biggl(z,\frac{\mathrm{d}z}{\mathrm{d}y},\cdots ,\frac{\mathrm{d}^{n-1}z}{\mathrm{d}y^{n-1}}\biggr)<br>    \end{cases}<br>$$<br>然后，把它们代入（1），就得到一个 $n-1$阶的微分方程<br>$$<br>    F_1\biggl(y,z,\frac{\mathrm{d}z}{\mathrm{d}y},\cdots ,\frac{\mathrm{d}^{n-1}z}{\mathrm{d}y^{n-1}}\biggr)&#x3D;0<br>$$<br>其中 $z$是未知函数，而 $y$是自变量.</p>
-<p>与之相关有<strong>轨线</strong>、<strong>相平面</strong>、<strong>相图</strong>的概念.<br>【例1】<strong>单摆方程</strong>：直接给出要解的微分方程<br>$$<br>    \frac{\mathrm{d}^2x}{\mathrm{d}t^2}+a^{2}\sin x&#x3D;0<br>$$<br>其中常数 $a&#x3D;\sqrt{g&#x2F;l}&gt;0$.</p>
-<p>两边乘 $\displaystyle \frac{\mathrm{d}x}{\mathrm{d}t}$，再积分得<br>$$<br>    \frac{1}{2} \biggl(\frac{\mathrm{d}x}{\mathrm{d}t} \biggr)^{2}-a^{2}\cos x&#x3D;-\frac{1}{2}C_1<br>$$<br>把这种由高阶微分方程积分一次得到的关系式称为<strong>首次积分</strong><br>继续解该方程得到通积分，包含椭圆函数，可以利用 $\sin x \thickapprox x$，接下去变成物理中的推导，略.</p>
-<p>【例2】<strong>悬链线方程</strong>：在数学分析中，已经用变分法求得了悬链线的方程（摆线），这里可以从微分方程的角度再看一下（其实也是类似的）. 直接给出要解的微分方程<br>$$<br>    y’’&#x3D;a \sqrt{1+(y’)^{2}} \tag{2}<br>$$<br>其中 $a&#x3D;\gamma&#x2F;H_0$是常数. 且满足<strong>边值条件</strong><br>$$<br>    y(x_1)&#x3D;y_1, \quad y(x_2)&#x3D;y_2 \tag{3}<br>$$<br>这是一个<strong>边值问题</strong>. 令 $z&#x3D;y’$可以降为一阶微分方程<br>$$<br>    z’&#x3D;a \sqrt{1+z^{2}}<br>$$<br>而且它是变量分离的. 容易求出它的通解<br>$$<br>    z&#x3D; \sinh a(x+C_1)<br>$$<br>其中 $C_1$是一个任意常数. 由此再积分得到通解<br>$$<br>    y&#x3D;\frac{1}{a} \cosh a(x+C_1) +C_2 \tag{4}<br>$$<br>其中 $C_2$是第二个任意常数.</p>
+<h2 id="几个例子"><a href="#几个例子" class="headerlink" title="几个例子"></a>几个例子</h2><p>不明显包含自变量的方程叫作<strong>自治</strong>（或<strong>驻定</strong>）的，对它们可以进行降阶. 例如，考虑n阶的自治微分方程</p>
+<script type="math/tex; mode=display">
+    F\biggl(y,\frac{\mathrm{d}y}{\mathrm{d}x},\cdots ,\frac{\mathrm{d}^ny}{\mathrm{d}x^n}\biggr)=0 \tag{1}</script><p>令 $z=\frac{\mathrm{d}y}{\mathrm{d}x}$，则有关系式</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        \displaystyle 
+        \frac{\mathrm{d}^2y}{\mathrm{d}x^2}=\frac{\mathrm{d}z}{\mathrm{d}x}=\frac{\mathrm{d}z}{\mathrm{d}y}\frac{\mathrm{d}y}{\mathrm{d}x}=z\frac{\mathrm{d}z}{\mathrm{d}y} \\
+        \displaystyle 
+        \frac{\mathrm{d}^3y}{\mathrm{d}x^3}=\frac{\mathrm{d}}{\mathrm{d}x}\biggl(z\frac{\mathrm{d}z}{\mathrm{d}y}\biggr)=z^2\frac{\mathrm{d}^2z}{\mathrm{d}y^2}+z
+        \biggl(\frac{\mathrm{d}z}{\mathrm{d}y}\biggr) \\ 
+        \cdots \\
+        \displaystyle 
+        \frac{\mathrm{d}^ny}{\mathrm{d}x^n}=\varphi\biggl(z,\frac{\mathrm{d}z}{\mathrm{d}y},\cdots ,\frac{\mathrm{d}^{n-1}z}{\mathrm{d}y^{n-1}}\biggr)
+    \end{cases}</script><p>然后，把它们代入（1），就得到一个 $n-1$阶的微分方程</p>
+<script type="math/tex; mode=display">
+    F_1\biggl(y,z,\frac{\mathrm{d}z}{\mathrm{d}y},\cdots ,\frac{\mathrm{d}^{n-1}z}{\mathrm{d}y^{n-1}}\biggr)=0</script><p>其中 $z$是未知函数，而 $y$是自变量.</p>
+<p>与之相关有<strong>轨线</strong>、<strong>相平面</strong>、<strong>相图</strong>的概念.<br>【例1】<strong>单摆方程</strong>：直接给出要解的微分方程</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}^2x}{\mathrm{d}t^2}+a^{2}\sin x=0</script><p>其中常数 $a=\sqrt{g/l}&gt;0$.</p>
+<p>两边乘 $\displaystyle \frac{\mathrm{d}x}{\mathrm{d}t}$，再积分得</p>
+<script type="math/tex; mode=display">
+    \frac{1}{2} \biggl(\frac{\mathrm{d}x}{\mathrm{d}t} \biggr)^{2}-a^{2}\cos x=-\frac{1}{2}C_1</script><p>把这种由高阶微分方程积分一次得到的关系式称为<strong>首次积分</strong><br>继续解该方程得到通积分，包含椭圆函数，可以利用 $\sin x \thickapprox x$，接下去变成物理中的推导，略.</p>
+<p>【例2】<strong>悬链线方程</strong>：在数学分析中，已经用变分法求得了悬链线的方程（摆线），这里可以从微分方程的角度再看一下（其实也是类似的）. 直接给出要解的微分方程</p>
+<script type="math/tex; mode=display">
+    y''=a \sqrt{1+(y')^{2}} \tag{2}</script><p>其中 $a=\gamma/H_0$是常数. 且满足<strong>边值条件</strong></p>
+<script type="math/tex; mode=display">
+    y(x_1)=y_1, \quad y(x_2)=y_2 \tag{3}</script><p>这是一个<strong>边值问题</strong>. 令 $z=y’$可以降为一阶微分方程</p>
+<script type="math/tex; mode=display">
+    z'=a \sqrt{1+z^{2}}</script><p>而且它是变量分离的. 容易求出它的通解</p>
+<script type="math/tex; mode=display">
+    z= \sinh a(x+C_1)</script><p>其中 $C_1$是一个任意常数. 由此再积分得到通解   </p>
+<script type="math/tex; mode=display">
+    y=\frac{1}{a} \cosh a(x+C_1) +C_2 \tag{4}</script><p>其中 $C_2$是第二个任意常数.</p>
 <p>利用边值条件（2）和（3）可唯一确定 $C_1$和 $C_2$. 最终答案是一个双曲余弦函数. 问题此时还没有完全解决. 还需要利用悬链线的长度解曲线积分，利用边值条件的高度差求解常数.</p>
-<p>【例3】<strong>二体问题</strong>：由Newton’s Law得到一个6阶的微分方程组，可以推出运动的轨道永远在一个平面上，不妨设为平面 $z&#x3D;0$. 此时降为一个4阶方程. 以下求解过程略.</p>
-<h2 id="n维线性空间中的微分方程"><a href="#n维线性空间中的微分方程" class="headerlink" title="n维线性空间中的微分方程"></a>n维线性空间中的微分方程</h2><p>设 $n$阶微分方程<br>$$<br>    \frac{\mathrm{d}^ny}{\mathrm{d}x^n}&#x3D;F \biggl(x,y,\frac{\mathrm{d}y}{\mathrm{d}x},\cdots ,\frac{\mathrm{d}^{n-1}y}{\mathrm{d}x^{n-1}} \biggr) \tag{5}<br>$$<br>这里 $x$是自变量，而 $y$是未知函数<br>令<br>$$<br>    y_1&#x3D;y,y_2&#x3D;\frac{\mathrm{d}y}{\mathrm{d}x},\cdots ,y_n&#x3D;\frac{\mathrm{d}^{n-1}y}{\mathrm{d}x^{n-1}}<br>$$<br>则微分方程（5）等价于下列 $n$阶标准微分方程组<br>$$<br>    \begin{cases}<br>        \displaystyle \frac{\mathrm{d}y_1}{\mathrm{d}x}&#x3D;y_2 \<br>        \cdots \<br>        \displaystyle \frac{\mathrm{d}y_{n-1}}{\mathrm{d}x}&#x3D;y_n \<br>        \displaystyle \frac{\mathrm{d}y_n}{\mathrm{d}x}&#x3D;F(x,y_1,y_2,\cdots ,y_n)<br>    \end{cases}<br>$$<br>对于未知数个数等于微分方程阶数的方程，可以通过换元写成标准形式<br>$$<br>    \begin{cases}<br>        \displaystyle \frac{\mathrm{d}y_1}{\mathrm{d}x}&#x3D;f_1(x,y_1,y_2,\cdots,y_n), \<br>        \displaystyle \frac{\mathrm{d}y_2}{\mathrm{d}x}&#x3D;f_2(x,y_1,y_2,\cdots,y_n), \<br>        \cdots  \<br>        \displaystyle \frac{\mathrm{d}y_n}{\mathrm{d}x}&#x3D;f_n(x,y_1,y_2,\cdots,y_n),<br>    \end{cases} \tag{6}<br>$$<br>其中 $f_1,f_2,\cdots,f_n$是变元 $(x,y_1,y_2,\cdots,y_n)$在某个区域 $D$内的连续函数.</p>
-<p>可以令 $n$维的行向量<br>$$<br>    y&#x3D;(y_1,y_2,\cdots,y_n) \in  \mathbb{R}^{n}<br>$$<br>令<br>$$<br>    f_i(x,\mathbf{y})&#x3D;f_i(x,y_1,y_2,\cdots,y_n)<br>$$<br>$i&#x3D;1,2,\cdots ,n$和<br>$$<br>    \mathbf{f}(x, \mathbf{y})&#x3D;(f_1(x,\mathbf{y}),\cdots ,f_n(x,\mathbf{y})) \in \mathbb{R}^{n}<br>$$<br>而且规定<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D; \biggl( \frac{\mathrm{d}y_1}{\mathrm{d}x},\frac{\mathrm{d}y_2}{\mathrm{d}x},\cdots,\frac{\mathrm{d}y_n}{\mathrm{d}x} \biggr)<br>$$<br>则微分方程组（6）的向量形式为<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{f}(x, \mathbf{y})  \tag{7}<br>$$<br>其中 $\mathbf{f}(x, \mathbf{y})$是关于变元 $(x, \mathbf{y})\in D$的一个 $n$维向量值函数. 一般还应给出初值条件<br>$$<br>    \mathbf{y}(x_0)&#x3D;\mathbf{y}_0<br>$$<br>其中的初值点 $(x_0, \mathbf{y}_0)\in D \subset \mathbb{R}^{n+1}$.</p>
+<p>【例3】<strong>二体问题</strong>：由Newton’s Law得到一个6阶的微分方程组，可以推出运动的轨道永远在一个平面上，不妨设为平面 $z=0$. 此时降为一个4阶方程. 以下求解过程略.</p>
+<h2 id="n维线性空间中的微分方程"><a href="#n维线性空间中的微分方程" class="headerlink" title="n维线性空间中的微分方程"></a>n维线性空间中的微分方程</h2><p>设 $n$阶微分方程</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}^ny}{\mathrm{d}x^n}=F \biggl(x,y,\frac{\mathrm{d}y}{\mathrm{d}x},\cdots ,\frac{\mathrm{d}^{n-1}y}{\mathrm{d}x^{n-1}} \biggr) \tag{5}</script><p>这里 $x$是自变量，而 $y$是未知函数<br>令</p>
+<script type="math/tex; mode=display">
+    y_1=y,y_2=\frac{\mathrm{d}y}{\mathrm{d}x},\cdots ,y_n=\frac{\mathrm{d}^{n-1}y}{\mathrm{d}x^{n-1}}</script><p>则微分方程（5）等价于下列 $n$阶标准微分方程组</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        \displaystyle \frac{\mathrm{d}y_1}{\mathrm{d}x}=y_2 \\
+        \cdots \\ 
+        \displaystyle \frac{\mathrm{d}y_{n-1}}{\mathrm{d}x}=y_n \\ 
+        \displaystyle \frac{\mathrm{d}y_n}{\mathrm{d}x}=F(x,y_1,y_2,\cdots ,y_n)  
+    \end{cases}</script><p>对于未知数个数等于微分方程阶数的方程，可以通过换元写成标准形式</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        \displaystyle \frac{\mathrm{d}y_1}{\mathrm{d}x}=f_1(x,y_1,y_2,\cdots,y_n), \\
+        \displaystyle \frac{\mathrm{d}y_2}{\mathrm{d}x}=f_2(x,y_1,y_2,\cdots,y_n), \\ 
+        \cdots  \\ 
+        \displaystyle \frac{\mathrm{d}y_n}{\mathrm{d}x}=f_n(x,y_1,y_2,\cdots,y_n),
+    \end{cases} \tag{6}</script><p>其中 $f_1,f_2,\cdots,f_n$是变元 $(x,y_1,y_2,\cdots,y_n)$在某个区域 $D$内的连续函数.</p>
+<p>可以令 $n$维的行向量</p>
+<script type="math/tex; mode=display">
+    y=(y_1,y_2,\cdots,y_n) \in  \mathbb{R}^{n}</script><p>令 </p>
+<script type="math/tex; mode=display">
+    f_i(x,\mathbf{y})=f_i(x,y_1,y_2,\cdots,y_n)</script><p>$i=1,2,\cdots ,n$和</p>
+<script type="math/tex; mode=display">
+    \mathbf{f}(x, \mathbf{y})=(f_1(x,\mathbf{y}),\cdots ,f_n(x,\mathbf{y})) \in \mathbb{R}^{n}</script><p>而且规定</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}= \biggl( \frac{\mathrm{d}y_1}{\mathrm{d}x},\frac{\mathrm{d}y_2}{\mathrm{d}x},\cdots,\frac{\mathrm{d}y_n}{\mathrm{d}x} \biggr)</script><p>则微分方程组（6）的向量形式为</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x, \mathbf{y})  \tag{7}</script><p>其中 $\mathbf{f}(x, \mathbf{y})$是关于变元 $(x, \mathbf{y})\in D$的一个 $n$维向量值函数. 一般还应给出初值条件</p>
+<script type="math/tex; mode=display">
+    \mathbf{y}(x_0)=\mathbf{y}_0</script><p>其中的初值点 $(x_0, \mathbf{y}_0)\in D \subset \mathbb{R}^{n+1}$.</p>
 <div class="note note-success">
             <p>在 $\mathbb{R}^{n}$中引入模后可以用完全一致的方法证明Picard定理和Peano定理</p>
           </div>
-
-<p>如果在方程（6）中函数 $f_1,f_2,\cdots,f_n$都是对于 $y_1,y_2,\cdots,y_n$的线性函数，即<br>$$<br>    f_k(x,y_1,y_2,\cdots,y_n)&#x3D;\sum_{i&#x3D;1}^{n} a_{ik}(x)y_i+e_k(x)<br>$$<br>$(k&#x3D;1,2,\cdots ,n)$，则称微分方程（6）或（7）是<strong>线性</strong>的；否则称为<strong>非线性</strong>的.</p>
-<p>线性微分方程组<br>$$<br>    \frac{\mathrm{d}y_k}{\mathrm{d}x}&#x3D;\sum_{i&#x3D;1}^{n} a_{ik}(x)y_i+e_k(x)<br>$$<br>$(k&#x3D;1,2,\cdots ,n)$的向量形式可以写成<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{y}\mathbf{A}(x)+\mathbf{e}(x)<br>$$<br>其中向量 $\mathbf{y}&#x3D;(y_1,y_2,\cdots,y_n)$和 $\mathbf{e}(x)&#x3D;e_1(x),e_2(x),\cdots,e_n(x)$，而矩阵 $\mathbf{A}(x)&#x3D;(a_{ik}(x))_{n \times n}$.<br>若采用列向量的写法，则<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{A}(x)\mathbf{y}+\mathbf{e}(x) \tag{8}<br>$$<br>这种形式比较常见.</p>
-<p>设 $\mathbf{A}(x)$和 $\mathbf{e}(x)$在区间 $a&lt;x&lt;b$上连续，则线性微分方程（8）满足任何初值条件<br>$$<br>    \mathbf{y}(x_0)&#x3D;y_0 \quad (a&lt;x_0&lt;b), \mathbf{y}_0 \in \mathbb{R}^{n}<br>$$<br>的解 $\mathbf{y}&#x3D;\mathbf{y}(x)$在整个区间 $a&lt;x&lt;b$上存在且唯一.</p>
-<h2 id="解对初值和参数的连续依赖性"><a href="#解对初值和参数的连续依赖性" class="headerlink" title="解对初值和参数的连续依赖性"></a>解对初值和参数的连续依赖性</h2><p>不失一般性，只讨论初值问题<br>$$<br>    (E_{\lambda}): \quad \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{f}(x,\mathbf{y},\mathbf{\lambda}),\quad \mathbf{y}(0)&#x3D;\mathbf{0}<br>$$<br>的解 $\mathbf{y}&#x3D;\mathbf{\varphi}(x,\mathbf{\lambda})$对参量 $\mathbf{\lambda}$的依赖性，其中 $\mathbf{\lambda}$是 $m$维的参数向量.</p>
-<p><strong>定理5.1</strong>：设 $n$维向量值函数 $\mathbf{f}(x,\mathbf{y},\mathbf{\lambda})$在区域<br>$$<br>    G: \quad \left\vert x \right\vert \leqslant a, \quad \left\vert \mathbf{y} \right\vert \leqslant b, \quad \left\vert \mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert \leqslant c<br>$$<br>上是连续的，而且对 $\mathbf{y}$满足Lipschitz条件<br>$$<br>    \left\vert \mathbf{f}(x,\mathbf{y}_1,\mathbf{\lambda})-\mathbf{f}(x,\mathbf{y}_2,\mathbf{\lambda}) \right\vert \leqslant L\left\vert \mathbf{y}_1-\mathbf{y}_2 \right\vert<br>$$<br>其中常数 $L\geqslant 0$. 令正数 $M$为 $\left\vert \mathbf{f}(x,\mathbf{y},\mathbf{\lambda}) \right\vert $在区域 $G$的一个上界，而且令<br>$$<br>    h&#x3D; \min \biggl(a,\frac{b}{M} \biggr)<br>$$<br>则初值问题 $(E_\lambda)$的解 $\mathbf{y}&#x3D;\mathbf{\varphi}(x,\mathbf{\lambda})$在区域<br>$$<br>    D: \quad \left\vert x \right\vert \leqslant h, \quad \left\vert \mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert \leqslant c<br>$$<br>上是连续的. </p>
-<p><strong>证</strong>：先证明初值问题 $(E_\lambda)$的Picard序列 ${\mathbf{\varphi}_k(x,\mathbf{\lambda})}$对参数 $\mathbf{\lambda}$的连续性（和可微性）；再证明 $\mathbf{\varphi}_k(x,\mathbf{\lambda})$是一致收敛的，而且它的极限函数 $\mathbf{y}&#x3D;\mathbf{\varphi}(x,\mathbf{\lambda})$ 是 $(E_\lambda)$的解.</p>
-<p><strong>推论</strong>：设 $n$维向量值函数 $f(x,\mathbf{y})$在区域<br>$$<br>    R: \quad \left\vert x-x_0 \right\vert \leqslant a, \quad \left\vert y-y_0 \right\vert \leqslant b<br>$$<br>上连续，而且对 $\mathbf{y}$满足Lipschitz条件. 则微分方程初值问题<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{f}(x,\mathbf{y}),\quad \mathbf{y}(x_0)&#x3D;\eta \tag{9}<br>$$<br>的解 $\mathbf{y}&#x3D;\mathbf{\varphi}(x,\mathbf{\eta})$在区域<br>$$<br>    Q: \quad \left\vert x-x_0 \right\vert \leqslant \frac{h}{2}, \quad \left\vert \mathbf{\eta}-\mathbf{y_0} \right\vert \leqslant \frac{b}{2}<br>$$<br>上是连续的，其中<br>$$<br>    h&#x3D;\min \biggl(a,\frac{b}{M} \biggr)<br>$$<br>而正数 $M$为 $\left\vert f(x,\mathbf{y}) \right\vert $在区域 $R$上的一个上界.</p>
+<p>如果在方程（6）中函数 $f_1,f_2,\cdots,f_n$都是对于 $y_1,y_2,\cdots,y_n$的线性函数，即</p>
+<script type="math/tex; mode=display">
+    f_k(x,y_1,y_2,\cdots,y_n)=\sum_{i=1}^{n} a_{ik}(x)y_i+e_k(x)</script><p>$(k=1,2,\cdots ,n)$，则称微分方程（6）或（7）是<strong>线性</strong>的；否则称为<strong>非线性</strong>的.</p>
+<p>线性微分方程组</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}y_k}{\mathrm{d}x}=\sum_{i=1}^{n} a_{ik}(x)y_i+e_k(x)</script><p>$(k=1,2,\cdots ,n)$的向量形式可以写成</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{y}\mathbf{A}(x)+\mathbf{e}(x)</script><p>其中向量 $\mathbf{y}=(y_1,y_2,\cdots,y_n)$和 $\mathbf{e}(x)=e_1(x),e_2(x),\cdots,e_n(x)$，而矩阵 $\mathbf{A}(x)=(a_{ik}(x))_{n \times n}$.<br>若采用列向量的写法，则</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{A}(x)\mathbf{y}+\mathbf{e}(x) \tag{8}</script><p>这种形式比较常见.</p>
+<p>设 $\mathbf{A}(x)$和 $\mathbf{e}(x)$在区间 $a&lt;x&lt;b$上连续，则线性微分方程（8）满足任何初值条件</p>
+<script type="math/tex; mode=display">
+    \mathbf{y}(x_0)=y_0 \quad (a<x_0<b), \mathbf{y}_0 \in \mathbb{R}^{n}</script><p>的解 $\mathbf{y}=\mathbf{y}(x)$在整个区间 $a&lt;x&lt;b$上存在且唯一.</p>
+<h2 id="解对初值和参数的连续依赖性"><a href="#解对初值和参数的连续依赖性" class="headerlink" title="解对初值和参数的连续依赖性"></a>解对初值和参数的连续依赖性</h2><p>不失一般性，只讨论初值问题</p>
+<script type="math/tex; mode=display">
+    (E_{\lambda}): \quad \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y},\mathbf{\lambda}),\quad \mathbf{y}(0)=\mathbf{0}</script><p>的解 $\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})$对参量 $\mathbf{\lambda}$的依赖性，其中 $\mathbf{\lambda}$是 $m$维的参数向量.</p>
+<p><strong>定理5.1</strong>：设 $n$维向量值函数 $\mathbf{f}(x,\mathbf{y},\mathbf{\lambda})$在区域 </p>
+<script type="math/tex; mode=display">
+    G: \quad \left\vert x \right\vert \leqslant a, \quad \left\vert \mathbf{y} \right\vert \leqslant b, \quad \left\vert \mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert \leqslant c</script><p>上是连续的，而且对 $\mathbf{y}$满足Lipschitz条件</p>
+<script type="math/tex; mode=display">
+    \left\vert \mathbf{f}(x,\mathbf{y}_1,\mathbf{\lambda})-\mathbf{f}(x,\mathbf{y}_2,\mathbf{\lambda}) \right\vert \leqslant L\left\vert \mathbf{y}_1-\mathbf{y}_2 \right\vert</script><p>其中常数 $L\geqslant 0$. 令正数 $M$为 $\left\vert \mathbf{f}(x,\mathbf{y},\mathbf{\lambda}) \right\vert $在区域 $G$的一个上界，而且令</p>
+<script type="math/tex; mode=display">
+    h= \min \biggl(a,\frac{b}{M} \biggr)</script><p>则初值问题 $(E_\lambda)$的解 $\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})$在区域</p>
+<script type="math/tex; mode=display">
+    D: \quad \left\vert x \right\vert \leqslant h, \quad \left\vert \mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert \leqslant c</script><p>上是连续的. </p>
+<p><strong>证</strong>：先证明初值问题 $(E_\lambda)$的Picard序列 $\{\mathbf{\varphi}_k(x,\mathbf{\lambda})\}$对参数 $\mathbf{\lambda}$的连续性（和可微性）；再证明 $\mathbf{\varphi}_k(x,\mathbf{\lambda})$是一致收敛的，而且它的极限函数 $\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})$ 是 $(E_\lambda)$的解.</p>
+<p><strong>推论</strong>：设 $n$维向量值函数 $f(x,\mathbf{y})$在区域 </p>
+<script type="math/tex; mode=display">
+    R: \quad \left\vert x-x_0 \right\vert \leqslant a, \quad \left\vert y-y_0 \right\vert \leqslant b</script><p>上连续，而且对 $\mathbf{y}$满足Lipschitz条件. 则微分方程初值问题 </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y}),\quad \mathbf{y}(x_0)=\eta \tag{9}</script><p>的解 $\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\eta})$在区域 </p>
+<script type="math/tex; mode=display">
+    Q: \quad \left\vert x-x_0 \right\vert \leqslant \frac{h}{2}, \quad \left\vert \mathbf{\eta}-\mathbf{y_0} \right\vert \leqslant \frac{b}{2}</script><p>上是连续的，其中 </p>
+<script type="math/tex; mode=display">
+    h=\min \biggl(a,\frac{b}{M} \biggr)</script><p>而正数 $M$为 $\left\vert f(x,\mathbf{y}) \right\vert $在区域 $R$上的一个上界.</p>
 <p>解的存在性可由局部延伸到大范围. 解对初值（或参数）的连续性（和可微性）也有类似的如下结论.</p>
-<p><strong>定理5.2</strong>：设 $n$维向量值函数 $\mathbf{f}(x,\mathbf{y})$在 $(x,\mathbf{y})$空间内的某个开区域上是连续的，而且对 $\mathbf{y}$满足局部 Lipschitz条件. 假设 $\mathbf{y}&#x3D; \mathbf{\xi}(x)$是微分方程<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{f}(x,\mathbf{y})\tag{10}<br>$$<br>的一个解，令它的存在区间为 $J$. 现在，在区间 $J$内任取一个有界闭区间 $a\leqslant x\leqslant b$. 则存在常数 $\delta&gt;0$，使得对任何初值 $(x_0,\mathbf{y}_0)$，<br>$$<br>    a\leqslant x_0\leqslant b, \quad \left\vert \mathbf{y}_0-\mathbf{\xi}(x_0) \right\vert \leqslant \delta<br>$$<br>Cauchy问题<br>$$<br>    (E): \quad \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{f}(x,\mathbf{y}),\quad \mathbf{y}(x_0)&#x3D;y_0<br>$$<br>的解 $\mathbf{y}&#x3D;\mathbf{\varphi}(x;x_0,\mathbf{y}_0)$也至少在区间 $a\leqslant x\leqslant b$上存在，并且它在闭区域<br>$$<br>    D_\delta: \quad a\leqslant x\leqslant b, a\leqslant x_0 \leqslant b, \left\vert \mathbf{y}_0-\mathbf{\xi}(x_0) \right\vert \leqslant \delta<br>$$<br>上是连续的.</p>
+<p><strong>定理5.2</strong>：设 $n$维向量值函数 $\mathbf{f}(x,\mathbf{y})$在 $(x,\mathbf{y})$空间内的某个开区域上是连续的，而且对 $\mathbf{y}$满足局部 Lipschitz条件. 假设 $\mathbf{y}= \mathbf{\xi}(x)$是微分方程</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y})\tag{10}</script><p>的一个解，令它的存在区间为 $J$. 现在，在区间 $J$内任取一个有界闭区间 $a\leqslant x\leqslant b$. 则存在常数 $\delta&gt;0$，使得对任何初值 $(x_0,\mathbf{y}_0)$，</p>
+<script type="math/tex; mode=display">
+    a\leqslant x_0\leqslant b, \quad \left\vert \mathbf{y}_0-\mathbf{\xi}(x_0) \right\vert \leqslant \delta</script><p>Cauchy问题 </p>
+<script type="math/tex; mode=display">
+    (E): \quad \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y}),\quad \mathbf{y}(x_0)=y_0</script><p>的解 $\mathbf{y}=\mathbf{\varphi}(x;x_0,\mathbf{y}_0)$也至少在区间 $a\leqslant x\leqslant b$上存在，并且它在闭区域 </p>
+<script type="math/tex; mode=display">
+    D_\delta: \quad a\leqslant x\leqslant b, a\leqslant x_0 \leqslant b, \left\vert \mathbf{y}_0-\mathbf{\xi}(x_0) \right\vert \leqslant \delta</script><p>上是连续的.</p>
 <p><strong>证</strong>：用有限覆盖定理将局部Lipschitz条件化为整体Lipschitz条件，然后构造Picard序列证明.</p>
 <p>最后提一下习题中的一个问题：如果 $\mathbf{f}(x,\mathbf{y})$在区域 $R$连续，且微分方程 $\displaystyle  \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}\mathbf{f}(x,\mathbf{y})$经过区域 $R$任意一点的解都存在且唯一，则这些解关于初值连续依赖.</p>
-<p>设经过 $(x_0,\mathbf{y}_0)$的解是 $\mathbf{y}&#x3D;\mathbf{\phi}(x;x_0,\mathbf{y}<em>0)&#x3D;\mathbf{\psi}</em>{x_0,\mathbf{y}<em>0}(x)$. 首先 $\mathbf{\psi}$当然是关于 $x$连续的（因为可微），且 $\mathbf{\psi}</em>{x_0,\mathbf{y}_0}(x_0)&#x3D;\mathbf{y}_0$. 假设 $\mathbf{\varphi}$关于 $(x_0, \mathbf{y}_0)$不连续，间断点是 $(x_0^*,\mathbf{y}_0^*$. 任取 $\varepsilon&gt;0$，由唯一性和连续性知不连续的表达式在 $d((\widetilde{x}_0,\mathbf{\widetilde{y}}_0),(x_0^*,\mathbf{y}_0^*))$足够小时不可能成立.</p>
-<h2 id="解对初值和参数的连续可微性"><a href="#解对初值和参数的连续可微性" class="headerlink" title="解对初值和参数的连续可微性"></a>解对初值和参数的连续可微性</h2><p>不失一般性，只考虑微分方程<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{f}(x,\mathbf{y},\mathbf{\lambda}) \tag{11}<br>$$<br>满足初值条件<br>$$<br>    \mathbf{y}(0)&#x3D;\mathbf{0}<br>$$<br>的解 $\mathbf{y}&#x3D;\varphi(x,\mathbf{\lambda})$对参数 $\mathbf{\lambda}$的连续可微性.</p>
-<p><strong>定理5.3</strong>：设 $\mathbf{f}(x.\mathbf{y}.\mathbf{\lambda})$在区域<br>$$<br>    G: \quad \left\vert x \right\vert \leqslant a, \quad \left\vert \mathbf{y} \right\vert \leqslant b, \quad \left\vert \mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert\leqslant c<br>$$<br>上连续，且对 $\mathbf{y}$和 $\lambda$有连续偏微商. 则微分方程（11）满足初值条件 $\mathbf{y}(0)&#x3D;\mathbf{0}$的解 $\mathbf{y}&#x3D;\mathbf{\varphi}(x,\mathbf{\lambda})$在区域<br>$$<br>    D: \quad \left\vert x \right\vert \leqslant h, \quad \left\vert \mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert \leqslant c<br>$$<br>上是连续可微的，其中正数 $h$的定义同定理5.1.</p>
-<p><strong>证</strong>：首先化成积分方程<br>$$<br>    \mathbf{y}&#x3D;\int_{0}^{x} \mathbf{f}(x,\mathbf{y},\mathbf{\lambda}) \mathrm{d}x<br>$$<br>构造它的Picard序列，由定理5.1知Picard序列 $\mathbf{\varphi}_k(x,\mathbf{\lambda})$在区域 $D$上一致收敛到方程（11）的唯一解 $\mathbf{y}&#x3D;\mathbf{\varphi}(x,\mathbf{\lambda})$. 其次，为了证明 $\mathbf{y}&#x3D;\mathbf{\varphi}(x,\mathbf{\lambda})$对 $\mathbf{\lambda}$有连续的偏微商 $\frac{\partial \mathbf{\varphi}}{\partial \mathbf{\lambda}}(x,\mathbf{\lambda})$，证明序列 $\frac{\partial \mathbf{\varphi}_k}{\partial \mathbf{\lambda}}(x,\mathbf{\lambda})$对 $(x,\mathbf{\lambda}) \in D$一致收敛.<br>归纳证明辅助不等式<br>$$<br>    \left\vert \frac{\partial \mathbf{\varphi}}{\partial \mathbf{\lambda}} \right\vert \leqslant \exp (\alpha h)<br>$$<br>其中 $\alpha$是区域 $G$上 $\displaystyle \frac{\partial \mathbf{f}}{\partial \mathbf{y}}(x,\mathbf{y},\mathbf{\lambda})$和 $\displaystyle \frac{\partial \mathbf{f}}{\partial \mathbf{\lambda}}(x,\mathbf{y},\mathbf{\lambda})$的共同上界.</p>
-<p>再次，利用Cauchy收敛准则证明<br>$$<br>    v_{k,s}&#x3D;\left\vert \frac{\partial \mathbf{\varphi}_{k+s}}{\partial \mathbf{\lambda}}-\frac{\partial \mathbf{\varphi}_k}{\partial \mathbf{\lambda}} \right\vert<br>$$<br>一致趋于0.</p>
-<p>最后，由<br>$$<br>    \frac{\partial \mathbf{\varphi}}{\partial x}(x,\mathbf{\lambda})&#x3D;\mathbf{f}(x,\mathbf{\varphi}(x,\mathbf{\lambda}),\mathbf{\lambda})<br>$$<br>知 $\displaystyle \frac{\partial \mathbf{\varphi}}{\partial x}(x,\mathbf{\lambda})$对 $(x,\mathbf{\lambda}) \in D$也是连续的. </p>
-<p><strong>推论</strong>：设 $n$维向量值函数 $\mathbf{f}(x,\mathbf{y})$在区域<br>$$<br>    R: \quad \left\vert x-x_0 \right\vert \leqslant a, \quad \left\vert y-y_0 \right\vert \leqslant b<br>$$<br>上连续，而且对 $\mathbf{y}$有连续的偏微商 $\mathbf{f}’_{\mathbf{y}}(x,\mathbf{y})$. 则初值问题<br>$$<br>    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}&#x3D;\mathbf{f}(x,\mathbf{y}), \quad \mathbf{y}(x_0)&#x3D;\mathbf{\eta}<br>$$<br>的解 $\mathbf{y}&#x3D;\mathbf{\varphi}(x,\mathbf{\eta})$在区域<br>$$<br>    D: \quad \left\vert x-x_0 \right\vert \leqslant \frac{h}{2}, \quad \left\vert \mathbf{\eta}-\mathbf{y}_0 \right\vert \leqslant \frac{b}{2}<br>$$<br>上是连续可微的.</p>
-<p>【附注】假设 $y$和 $\lambda$都是一维的，并且定理5.3及其推论的条件成立，则初值问题<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;f(x, y, \lambda), \quad y(x_0)&#x3D;y_0 \tag{12}<br>$$<br>的解 $y&#x3D;\varphi(x;x_0,y_0,\lambda)$对初值 $x_0$，$y_0$及参数 $\lambda$的偏导数 $\displaystyle \frac{\partial \varphi}{\partial x_0}$， $\displaystyle \frac{\partial \varphi}{\partial y_0}$和 $\displaystyle \frac{\partial \varphi}{\partial \lambda}$分别在它们有定义的区域内连续可微.</p>
-<p>在与之等价的积分方程<br>$$<br>    \varphi(x;x_0,y_0,\lambda)&#x3D;y_0+\int_{x_0}^{x} f(x,\varphi(x;x_0,y_0,\lambda),\lambda) \mathrm{d}x \tag{13}<br>$$<br>两端分别对 $x_0$，$y_0$和 $\lambda$求偏导数可以得到三个一阶线性微分方程，把它们叫（12）关于初值 $x_0$，$y_0$和参数 $\lambda$的<strong>变分方程</strong>（回忆变分法的两个经典例子）</p>
+<p>设经过 $(x_0,\mathbf{y}_0)$的解是 $\mathbf{y}=\mathbf{\phi}(x;x_0,\mathbf{y}_0)=\mathbf{\psi}_{x_0,\mathbf{y}_0}(x)$. 首先 $\mathbf{\psi}$当然是关于 $x$连续的（因为可微），且 $\mathbf{\psi}_{x_0,\mathbf{y}_0}(x_0)=\mathbf{y}_0$. 假设 $\mathbf{\varphi}$关于 $(x_0, \mathbf{y}_0)$不连续，间断点是 $(x_0^<em>,\mathbf{y}_0^</em>$. 任取 $\varepsilon&gt;0$，由唯一性和连续性知不连续的表达式在 $d((\widetilde{x}_0,\mathbf{\widetilde{y}}_0),(x_0^<em>,\mathbf{y}_0^</em>))$足够小时不可能成立.</p>
+<h2 id="解对初值和参数的连续可微性"><a href="#解对初值和参数的连续可微性" class="headerlink" title="解对初值和参数的连续可微性"></a>解对初值和参数的连续可微性</h2><p>不失一般性，只考虑微分方程 </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y},\mathbf{\lambda}) \tag{11}</script><p>满足初值条件 </p>
+<script type="math/tex; mode=display">
+    \mathbf{y}(0)=\mathbf{0}</script><p>的解 $\mathbf{y}=\varphi(x,\mathbf{\lambda})$对参数 $\mathbf{\lambda}$的连续可微性.</p>
+<p><strong>定理5.3</strong>：设 $\mathbf{f}(x.\mathbf{y}.\mathbf{\lambda})$在区域 </p>
+<script type="math/tex; mode=display">
+    G: \quad \left\vert x \right\vert \leqslant a, \quad \left\vert \mathbf{y} \right\vert \leqslant b, \quad \left\vert \mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert\leqslant c</script><p>上连续，且对 $\mathbf{y}$和 $\lambda$有连续偏微商. 则微分方程（11）满足初值条件 $\mathbf{y}(0)=\mathbf{0}$的解 $\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})$在区域 </p>
+<script type="math/tex; mode=display">
+    D: \quad \left\vert x \right\vert \leqslant h, \quad \left\vert \mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert \leqslant c</script><p>上是连续可微的，其中正数 $h$的定义同定理5.1.</p>
+<p><strong>证</strong>：首先化成积分方程</p>
+<script type="math/tex; mode=display">
+    \mathbf{y}=\int_{0}^{x} \mathbf{f}(x,\mathbf{y},\mathbf{\lambda}) \mathrm{d}x</script><p>构造它的Picard序列，由定理5.1知Picard序列 $\mathbf{\varphi}_k(x,\mathbf{\lambda})$在区域 $D$上一致收敛到方程（11）的唯一解 $\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})$. 其次，为了证明 $\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})$对 $\mathbf{\lambda}$有连续的偏微商 $\frac{\partial \mathbf{\varphi}}{\partial \mathbf{\lambda}}(x,\mathbf{\lambda})$，证明序列 $\frac{\partial \mathbf{\varphi}_k}{\partial \mathbf{\lambda}}(x,\mathbf{\lambda})$对 $(x,\mathbf{\lambda}) \in D$一致收敛.<br>归纳证明辅助不等式</p>
+<script type="math/tex; mode=display">
+    \left\vert \frac{\partial \mathbf{\varphi}}{\partial \mathbf{\lambda}} \right\vert \leqslant \exp (\alpha h)</script><p>其中 $\alpha$是区域 $G$上 $\displaystyle \frac{\partial \mathbf{f}}{\partial \mathbf{y}}(x,\mathbf{y},\mathbf{\lambda})$和 $\displaystyle \frac{\partial \mathbf{f}}{\partial \mathbf{\lambda}}(x,\mathbf{y},\mathbf{\lambda})$的共同上界.</p>
+<p>再次，利用Cauchy收敛准则证明 </p>
+<script type="math/tex; mode=display">
+    v_{k,s}=\left\vert \frac{\partial \mathbf{\varphi}_{k+s}}{\partial \mathbf{\lambda}}-\frac{\partial \mathbf{\varphi}_k}{\partial \mathbf{\lambda}} \right\vert</script><p>一致趋于0.</p>
+<p>最后，由</p>
+<script type="math/tex; mode=display">
+    \frac{\partial \mathbf{\varphi}}{\partial x}(x,\mathbf{\lambda})=\mathbf{f}(x,\mathbf{\varphi}(x,\mathbf{\lambda}),\mathbf{\lambda})</script><p>知 $\displaystyle \frac{\partial \mathbf{\varphi}}{\partial x}(x,\mathbf{\lambda})$对 $(x,\mathbf{\lambda}) \in D$也是连续的. </p>
+<p><strong>推论</strong>：设 $n$维向量值函数 $\mathbf{f}(x,\mathbf{y})$在区域 </p>
+<script type="math/tex; mode=display">
+    R: \quad \left\vert x-x_0 \right\vert \leqslant a, \quad \left\vert y-y_0 \right\vert \leqslant b</script><p>上连续，而且对 $\mathbf{y}$有连续的偏微商 $\mathbf{f}’_{\mathbf{y}}(x,\mathbf{y})$. 则初值问题 </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y}), \quad \mathbf{y}(x_0)=\mathbf{\eta}</script><p>的解 $\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\eta})$在区域</p>
+<script type="math/tex; mode=display">
+    D: \quad \left\vert x-x_0 \right\vert \leqslant \frac{h}{2}, \quad \left\vert \mathbf{\eta}-\mathbf{y}_0 \right\vert \leqslant \frac{b}{2}</script><p>上是连续可微的.</p>
+<p>【附注】假设 $y$和 $\lambda$都是一维的，并且定理5.3及其推论的条件成立，则初值问题 </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y, \lambda), \quad y(x_0)=y_0 \tag{12}</script><p>的解 $y=\varphi(x;x_0,y_0,\lambda)$对初值 $x_0$，$y_0$及参数 $\lambda$的偏导数 $\displaystyle \frac{\partial \varphi}{\partial x_0}$， $\displaystyle \frac{\partial \varphi}{\partial y_0}$和 $\displaystyle \frac{\partial \varphi}{\partial \lambda}$分别在它们有定义的区域内连续可微.</p>
+<p>在与之等价的积分方程 </p>
+<script type="math/tex; mode=display">
+    \varphi(x;x_0,y_0,\lambda)=y_0+\int_{x_0}^{x} f(x,\varphi(x;x_0,y_0,\lambda),\lambda) \mathrm{d}x \tag{13}</script><p>两端分别对 $x_0$，$y_0$和 $\lambda$求偏导数可以得到三个一阶线性微分方程，把它们叫（12）关于初值 $x_0$，$y_0$和参数 $\lambda$的<strong>变分方程</strong>（回忆变分法的两个经典例子）</p>
 
               
             </div>

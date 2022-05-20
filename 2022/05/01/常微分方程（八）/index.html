@@ -249,7 +249,7 @@
         
         
           <!-- compatible with older versions-->
-          20 分钟
+          19 分钟
         
       </span>
     
@@ -299,21 +299,31 @@
 <p>维度：数学漫步2-混沌<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/av4194600?from=search&amp;seid=12319283859508785318">https://www.bilibili.com/video/av4194600?from=search&amp;seid=12319283859508785318</a></p>
 <hr>
 <h2 id="动力系统，相空间与轨线"><a href="#动力系统，相空间与轨线" class="headerlink" title="动力系统，相空间与轨线"></a>动力系统，相空间与轨线</h2><p>Recall <strong>autonomous</strong> differential equations: differential equations whose independent variables are not explicitly included in the equation. </p>
-<p>Considering a moving particle in a n-dimensional space. We know its speed at $\mathbf{x}$ is $\mathbf{v}(\mathbf{x})&#x3D;(v_1(\mathbf{x}),\cdots ,v_n(\mathbf{x}))$. The equation of motion is<br>$$<br>    \frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}&#x3D;\mathbf{v}(\mathbf{x}) \tag{1}<br>$$<br>If $\mathbf{v}(\mathbf{x})$ satisfies the condition of existence and uniqueness theorem, then for all initial condition<br>$$<br>    \mathbf{x}(t_0)&#x3D;\mathbf{x}_0<br>$$<br>(1) has unique solution satisfying (2)<br>$$<br>    \mathbf{x}&#x3D;\mathbf{\phi}(t,t_0,\mathbf{x}_0) \tag{3}<br>$$</p>
-<p>We call the space for $\mathbf{x}$ (namely $\mathbb{R}^{n}$ ) <strong>phase space</strong>, the space for $(t,\mathbf{x})$ (namely $\mathbb{R}^{1} \times \mathbb{R}^{n}$ ) <strong>augmented phase space</strong>.</p>
-<p>(1) defines a <strong>vector field</strong> in the phase space.<br>$$<br>    \mathbf{v}(\mathbf{x})&#x3D;(v_1(\mathbf{x}),\cdots ,v_n(\mathbf{x})) \tag{4}<br>$$</p>
-<p>The solution (3) gives a <strong>trajectory</strong> in the phase space.</p>
+<p>Considering a moving particle in a n-dimensional space. We know its speed at $\mathbf{x}$ is $\mathbf{v}(\mathbf{x})=(v_1(\mathbf{x}),\cdots ,v_n(\mathbf{x}))$. The equation of motion is </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}=\mathbf{v}(\mathbf{x}) \tag{1}</script><p>If $\mathbf{v}(\mathbf{x})$ satisfies the condition of existence and uniqueness theorem, then for all initial condition</p>
+<script type="math/tex; mode=display">
+    \mathbf{x}(t_0)=\mathbf{x}_0</script><p>(1) has unique solution satisfying (2)</p>
+<script type="math/tex; mode=display">
+    \mathbf{x}=\mathbf{\phi}(t,t_0,\mathbf{x}_0) \tag{3}</script><p>We call the space for $\mathbf{x}$ (namely $\mathbb{R}^{n}$ ) <strong>phase space</strong>, the space for $(t,\mathbf{x})$ (namely $\mathbb{R}^{1} \times \mathbb{R}^{n}$ ) <strong>augmented phase space</strong>.</p>
+<p>(1) defines a <strong>vector field</strong> in the phase space. </p>
+<script type="math/tex; mode=display">
+    \mathbf{v}(\mathbf{x})=(v_1(\mathbf{x}),\cdots ,v_n(\mathbf{x})) \tag{4}</script><p>The solution (3) gives a <strong>trajectory</strong> in the phase space.</p>
 <blockquote>
 <p>Trajectory is the projection of integral curve on the phase space.</p>
 </blockquote>
-<p>If $\mathbf{x}_0$ is a zero point of (4), namely $v(\mathbf{x}_0)&#x3D;0$, then (1) has a constant solution $\mathbf{x}&#x3D;\mathbf{x}_0$. We call $\mathbf{x}_0$ is a <strong>balance point</strong> to (1). The balance points to (1) is called <strong>singularities</strong>.</p>
-<p>If (3) is an unsteady periodic motion, namely $\exists T&gt;0$, s.t.<br>$$<br>    \mathbf{\varphi}(t+T,t_0,\mathbf{x}_0)\equiv \mathbf{\varphi}(t,t_0,\mathbf{x}_0)<br>$$<br>Then its trajectory in the phase space is a closed curve, denoted as <strong>close orbit</strong>.</p>
+<p>If $\mathbf{x}_0$ is a zero point of (4), namely $v(\mathbf{x}_0)=0$, then (1) has a constant solution $\mathbf{x}=\mathbf{x}_0$. We call $\mathbf{x}_0$ is a <strong>balance point</strong> to (1). The balance points to (1) is called <strong>singularities</strong>.</p>
+<p>If (3) is an unsteady periodic motion, namely $\exists T&gt;0$, s.t.</p>
+<script type="math/tex; mode=display">
+    \mathbf{\varphi}(t+T,t_0,\mathbf{x}_0)\equiv \mathbf{\varphi}(t,t_0,\mathbf{x}_0)</script><p>Then its trajectory in the phase space is a closed curve, denoted as <strong>close orbit</strong>.</p>
 <p>Any autonomous differential equation has the form of (1). This introduces the concept of <strong>dynamic system</strong>.</p>
 <p><strong>Basic properties of dynamic system</strong>:</p>
 <ul>
-<li>translation invariance of integral curves: for all constant $C$, $\mathbf{x}&#x3D;\mathbf{\varphi}(t+C)$ is a solution to (1).</li>
-<li>uniqueness of trajectories passing through each point in phase space. We can only consider the solution corresponding to the initial time $t_0&#x3D;0$. Define<br>$$<br>  \mathbf{\varphi}(t,\mathbf{x}_0)&#x3D;\mathbf{\varphi}(t,0,\mathbf{x}_0)<br>$$</li>
-<li>properties of group:  $\mathbf{\varphi}(t,\mathbf{x}_0)$ satisfies<br>$$<br>  \mathbf{\varphi}(t_2,\mathbf{\varphi}(t_1,\mathbf{x}_0))&#x3D;\mathbf{\varphi}(t_2+t_1,\mathbf{x}_0) \tag{5}<br>$$</li>
+<li>translation invariance of integral curves: for all constant $C$, $\mathbf{x}=\mathbf{\varphi}(t+C)$ is a solution to (1).</li>
+<li>uniqueness of trajectories passing through each point in phase space. We can only consider the solution corresponding to the initial time $t_0=0$. Define <script type="math/tex; mode=display">
+  \mathbf{\varphi}(t,\mathbf{x}_0)=\mathbf{\varphi}(t,0,\mathbf{x}_0)</script></li>
+<li>properties of group:  $\mathbf{\varphi}(t,\mathbf{x}_0)$ satisfies <script type="math/tex; mode=display">
+  \mathbf{\varphi}(t_2,\mathbf{\varphi}(t_1,\mathbf{x}_0))=\mathbf{\varphi}(t_2+t_1,\mathbf{x}_0) \tag{5}</script></li>
 </ul>
 <h2 id="解的稳定性"><a href="#解的稳定性" class="headerlink" title="解的稳定性"></a>解的稳定性</h2><h2 id="平面上的动力系统，奇点与极限环"><a href="#平面上的动力系统，奇点与极限环" class="headerlink" title="平面上的动力系统，奇点与极限环"></a>平面上的动力系统，奇点与极限环</h2><h2 id="结构稳定与分支现象"><a href="#结构稳定与分支现象" class="headerlink" title="结构稳定与分支现象"></a>结构稳定与分支现象</h2>
               

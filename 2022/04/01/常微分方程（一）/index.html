@@ -237,7 +237,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.6k 字
+          1.5k 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
           <!-- compatible with older versions-->
-          14 分钟
+          13 分钟
         
       </span>
     
@@ -292,13 +292,30 @@
             <div class="markdown-body">
               
               <p>最近其他东西读得有点累了，开个ODE的新坑，这主要是因为一直在读的Neuronal Dynamics里用到了很多ODE。参考书基本是丁同仁的《常微分方程教程》，会查知乎上大佬整理的笔记，可能也会附加一点Arnold的《Ordinary Differential Equations》（大概吧），大概就不指望会有动力系统的东西了。</p>
-<p>【定义1.1】方程<br>$$<br>F(x,y,y’,\cdots,y^{(n)})<br>$$<br>叫作常微分方程，其中导数实际出现的最高阶数$n$叫作常微分方程的阶.</p>
-<p>一般会给一个初值条件：<br>$$<br>y(x_0)&#x3D;y_0,y’(x_0)&#x3D;y’_0,\cdots,y^{(n-1)}(x_0)&#x3D;y^{(n-1)}_0<br>$$</p>
-<p>【定义1.2】微分方程的解的概念. 设$n$阶微分方程的解<br>$$<br>y&#x3D;\varphi(x,C_1,\cdots,C_n)<br>$$<br>包含$n$个独立的任意常数$C_1,\cdots,C_n$（这是因为每做一次不定积分就会多一个常数），则称它为通解，独立的意思是Jacobi行列式<br>$$<br>\det<br>\begin{bmatrix}<br>    \frac{\partial \varphi}{\partial C_1} &amp; \frac{\partial \varphi}{\partial C_2} &amp; \cdots &amp; \frac{\partial \varphi}{\partial C_n} \<br>    \frac{\partial \varphi’}{\partial C_1} &amp; \frac{\partial \varphi’}{\partial C_2} &amp; \cdots &amp; \frac{\partial \varphi’}{\partial C_n} \<br>    \vdots &amp; \vdots &amp; &amp; \vdots \<br>    \frac{\partial \varphi^{(n-1)}}{\partial C_1} &amp; \frac{\partial \varphi^{(n-1)}}{\partial C_2} &amp; \cdots &amp; \frac{\partial \varphi^{(n-1)}}{\partial C_n} \<br>\end{bmatrix}<br>$$<br>不为零，若解$y&#x3D;\varphi(x)$不包含任意常数，则称它为特解. 这个定义的合理性以后再说. </p>
+<p>【定义1.1】方程</p>
+<script type="math/tex; mode=display">
+F(x,y,y',\cdots,y^{(n)})</script><p>叫作常微分方程，其中导数实际出现的最高阶数$n$叫作常微分方程的阶.</p>
+<p>一般会给一个初值条件：</p>
+<script type="math/tex; mode=display">
+y(x_0)=y_0,y'(x_0)=y'_0,\cdots,y^{(n-1)}(x_0)=y^{(n-1)}_0</script><p>【定义1.2】微分方程的解的概念. 设$n$阶微分方程的解</p>
+<script type="math/tex; mode=display">
+y=\varphi(x,C_1,\cdots,C_n)</script><p>包含$n$个独立的任意常数$C_1,\cdots,C_n$（这是因为每做一次不定积分就会多一个常数），则称它为通解，独立的意思是Jacobi行列式</p>
+<script type="math/tex; mode=display">
+\det 
+\begin{bmatrix}
+    \frac{\partial \varphi}{\partial C_1} & \frac{\partial \varphi}{\partial C_2} & \cdots & \frac{\partial \varphi}{\partial C_n} \\ 
+    \frac{\partial \varphi'}{\partial C_1} & \frac{\partial \varphi'}{\partial C_2} & \cdots & \frac{\partial \varphi'}{\partial C_n} \\
+    \vdots & \vdots & & \vdots \\ 
+    \frac{\partial \varphi^{(n-1)}}{\partial C_1} & \frac{\partial \varphi^{(n-1)}}{\partial C_2} & \cdots & \frac{\partial \varphi^{(n-1)}}{\partial C_n} \\ 
+\end{bmatrix}</script><p>不为零，若解$y=\varphi(x)$不包含任意常数，则称它为特解. 这个定义的合理性以后再说. </p>
 <p>利用初值条件，可以确定通解中的任意常数$C_1,\cdots,C_n$. 注意：由于分析方法的限制（如隐函数存在定理的局部性），一般只能在局部范围内讨论通解. 常数独立的条件保证可以反解出$C_1,\cdots,C_n$. 为此要求$F$是$C^1$的，不过一般遇到的ODE都是充分光滑的. </p>
-<p>考虑一阶微分方程<br>$$<br>\frac{\textrm{d}y}{\textrm{d}x}&#x3D;f(x,y)<br>$$<br>其中$f(x,y)$是平面区域$G$内的连续函数. 它的解$y&#x3D;\varphi(x)$在$(x,y)$平面上的图形——一条光滑曲线$\Gamma$为微分方程的<strong>积分曲线</strong>. 即使并不知道积分曲线是什么，也可以知道在积分曲线任意一点处的切线方程. 书中给出了<strong>线素</strong>和<strong>线素场</strong>或<strong>方向场</strong>的概念，其实就是切向量场，可以回忆一下切丛等微分流形中的概念.</p>
-<p>利用由关系式$f(x,y)&#x3D;k$确定的曲线$L_k$，称它为线素场的<strong>等斜线</strong>. 一般会利用等斜线上点的切向量方向来画出向量场的简图.</p>
-<p>如果一阶微分方程取如下形式：<br>$$<br>\frac{\textrm{d}y}{\textrm{d}x}&#x3D;-\frac{P(x,y)}{Q(x,y)}<br>$$<br>那么当$P(x_0,y_x)&#x3D;Q(x_0,y_0)&#x3D;0$时，称这样的点$(x_0,y_0)$为相应微分方程的<strong>奇异点</strong>. 线素场在奇异点没有意义. 奇异点的概念十分关键.</p>
+<p>考虑一阶微分方程</p>
+<script type="math/tex; mode=display">
+\frac{\textrm{d}y}{\textrm{d}x}=f(x,y)</script><p>其中$f(x,y)$是平面区域$G$内的连续函数. 它的解$y=\varphi(x)$在$(x,y)$平面上的图形——一条光滑曲线$\Gamma$为微分方程的<strong>积分曲线</strong>. 即使并不知道积分曲线是什么，也可以知道在积分曲线任意一点处的切线方程. 书中给出了<strong>线素</strong>和<strong>线素场</strong>或<strong>方向场</strong>的概念，其实就是切向量场，可以回忆一下切丛等微分流形中的概念.</p>
+<p>利用由关系式$f(x,y)=k$确定的曲线$L_k$，称它为线素场的<strong>等斜线</strong>. 一般会利用等斜线上点的切向量方向来画出向量场的简图.</p>
+<p>如果一阶微分方程取如下形式：</p>
+<script type="math/tex; mode=display">
+\frac{\textrm{d}y}{\textrm{d}x}=-\frac{P(x,y)}{Q(x,y)}</script><p>那么当$P(x_0,y_x)=Q(x_0,y_0)=0$时，称这样的点$(x_0,y_0)$为相应微分方程的<strong>奇异点</strong>. 线素场在奇异点没有意义. 奇异点的概念十分关键.</p>
 
               
             </div>

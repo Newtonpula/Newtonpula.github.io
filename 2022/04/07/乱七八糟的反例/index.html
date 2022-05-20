@@ -16,12 +16,12 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="乱七八糟的反例自己对反例什么的并不是很上心，一下结果基本上都是十分基本的反例了 积分相关（1）设 $D&#x3D;[0,1]\times [0,1]$，$\displaystyle \iint_D f(x, y)\mathrm{d}x\mathrm{d}y$存在，而 $\displaystyle \int_{0}^{1}  \mathrm{d}x \int_{0}^{1} f(x, y) \mat">
+    <meta name="description" content="乱七八糟的反例自己对反例什么的并不是很上心，一下结果基本上都是十分基本的反例了 积分相关（1）设 $D&#x3D;[0,1]\times [0,1]$，$\displaystyle \iint_D f(x, y)\mathrm{d}x\mathrm{d}y$存在，而 $\displaystyle \int_{0}^{1}  \mathrm{d}x \int_{0}^{1} f(x, y) \mathrm{d">
 <meta property="og:type" content="article">
 <meta property="og:title" content="乱七八糟的反例">
 <meta property="og:url" content="http://example.com/2022/04/07/%E4%B9%B1%E4%B8%83%E5%85%AB%E7%B3%9F%E7%9A%84%E5%8F%8D%E4%BE%8B/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="乱七八糟的反例自己对反例什么的并不是很上心，一下结果基本上都是十分基本的反例了 积分相关（1）设 $D&#x3D;[0,1]\times [0,1]$，$\displaystyle \iint_D f(x, y)\mathrm{d}x\mathrm{d}y$存在，而 $\displaystyle \int_{0}^{1}  \mathrm{d}x \int_{0}^{1} f(x, y) \mat">
+<meta property="og:description" content="乱七八糟的反例自己对反例什么的并不是很上心，一下结果基本上都是十分基本的反例了 积分相关（1）设 $D&#x3D;[0,1]\times [0,1]$，$\displaystyle \iint_D f(x, y)\mathrm{d}x\mathrm{d}y$存在，而 $\displaystyle \int_{0}^{1}  \mathrm{d}x \int_{0}^{1} f(x, y) \mathrm{d">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-04-07T11:52:18.000Z">
 <meta property="article:modified_time" content="2022-04-08T02:39:58.309Z">
@@ -235,7 +235,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.1k 字
+          1k 字
         
       </span>
     
@@ -247,7 +247,7 @@
         
         
           <!-- compatible with older versions-->
-          10 分钟
+          9 分钟
         
       </span>
     
@@ -290,12 +290,29 @@
             <div class="markdown-body">
               
               <h1 id="乱七八糟的反例"><a href="#乱七八糟的反例" class="headerlink" title="乱七八糟的反例"></a>乱七八糟的反例</h1><p>自己对反例什么的并不是很上心，一下结果基本上都是十分基本的反例了</p>
-<h2 id="积分相关"><a href="#积分相关" class="headerlink" title="积分相关"></a>积分相关</h2><p>（1）设 $D&#x3D;[0,1]\times [0,1]$，<br>$\displaystyle \iint_D f(x, y)\mathrm{d}x\mathrm{d}y$存在，而 $\displaystyle \int_{0}^{1}  \mathrm{d}x \int_{0}^{1} f(x, y) \mathrm{d}y$与 $\displaystyle \int_{0}^{1} \mathrm{d}y \int_{0}^{1} f(x, y) \mathrm{d}x$不存在.</p>
-<p>ex：考虑<br>$$<br>    f(x, y)&#x3D;<br>    \begin{cases}<br>        \frac{1}{m}+\frac{1}{q},\quad x&#x3D;\frac{n}{m}, y&#x3D;\frac{p}{q},(n,m)&#x3D;1,(p,q)&#x3D;1 \<br>        0, \quad \text{else}<br>    \end{cases}<br>$$</p>
-<p>(2)$\displaystyle \iint_D f(x, y)\mathrm{d}x\mathrm{d}y$不存在，而 $\displaystyle \int_{0}^{1}  \mathrm{d}x \int_{0}^{1} f(x, y) \mathrm{d}y$或$\displaystyle \int_{0}^{1} \mathrm{d}y \int_{0}^{1} f(x, y) \mathrm{d}x$存在.</p>
-<p>ex：考虑<br>$$<br>    f(x, y)&#x3D;<br>    \begin{cases}<br>        D(x),\quad y\in [0,\frac{1}{2}] \<br>        1-D(x), \quad y\in [\frac{1}{2},1]<br>    \end{cases}<br>$$<br>其中 $D(x)$为Dirichlet函数</p>
+<h2 id="积分相关"><a href="#积分相关" class="headerlink" title="积分相关"></a>积分相关</h2><p>（1）设 $D=[0,1]\times [0,1]$，<br>$\displaystyle \iint_D f(x, y)\mathrm{d}x\mathrm{d}y$存在，而 $\displaystyle \int_{0}^{1}  \mathrm{d}x \int_{0}^{1} f(x, y) \mathrm{d}y$与 $\displaystyle \int_{0}^{1} \mathrm{d}y \int_{0}^{1} f(x, y) \mathrm{d}x$不存在.</p>
+<p>ex：考虑</p>
+<script type="math/tex; mode=display">
+    f(x, y)=
+    \begin{cases}
+        \frac{1}{m}+\frac{1}{q},\quad x=\frac{n}{m}, y=\frac{p}{q},(n,m)=1,(p,q)=1 \\
+        0, \quad \text{else}
+    \end{cases}</script><p>(2)$\displaystyle \iint_D f(x, y)\mathrm{d}x\mathrm{d}y$不存在，而 $\displaystyle \int_{0}^{1}  \mathrm{d}x \int_{0}^{1} f(x, y) \mathrm{d}y$或$\displaystyle \int_{0}^{1} \mathrm{d}y \int_{0}^{1} f(x, y) \mathrm{d}x$存在.</p>
+<p>ex：考虑 </p>
+<script type="math/tex; mode=display">
+    f(x, y)=
+    \begin{cases}
+        D(x),\quad y\in [0,\frac{1}{2}] \\
+        1-D(x), \quad y\in [\frac{1}{2},1]
+    \end{cases}</script><p>其中 $D(x)$为Dirichlet函数</p>
 <p>（3）$\displaystyle \iint_D f(x, y)\mathrm{d}x\mathrm{d}y$不存在，而 $\displaystyle \int_{0}^{1}  \mathrm{d}x \int_{0}^{1} f(x, y) \mathrm{d}y$与 $\displaystyle \int_{0}^{1} \mathrm{d}y \int_{0}^{1} f(x, y) \mathrm{d}x$存在但不相等.</p>
-<p>ex：考虑<br>$$<br>    f(x, y)&#x3D;<br>    \begin{cases}<br>        \frac{x-y}{(x+y)^3}, \quad x+y \neq 0 \<br>        0,\quad x+y&#x3D;0<br>    \end{cases}<br>$$<br>取 $(\frac{2}{n},\frac{1}{n})$知 $f(x, y)$在 $D$上无界.</p>
+<p>ex：考虑</p>
+<script type="math/tex; mode=display">
+    f(x, y)=
+    \begin{cases}
+        \frac{x-y}{(x+y)^3}, \quad x+y \neq 0 \\
+        0,\quad x+y=0
+    \end{cases}</script><p>取 $(\frac{2}{n},\frac{1}{n})$知 $f(x, y)$在 $D$上无界.</p>
 
               
             </div>

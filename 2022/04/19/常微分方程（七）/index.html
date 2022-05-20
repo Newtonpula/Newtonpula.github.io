@@ -237,7 +237,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          11k 字
+          314 字
         
       </span>
     
@@ -249,7 +249,7 @@
         
         
           <!-- compatible with older versions-->
-          89 分钟
+          3 分钟
         
       </span>
     
@@ -291,103 +291,230 @@
             
             <div class="markdown-body">
               
-              <h1 id="幂级数解法"><a href="#幂级数解法" class="headerlink" title="幂级数解法"></a>幂级数解法</h1><h2 id="柯西定理"><a href="#柯西定理" class="headerlink" title="柯西定理"></a>柯西定理</h2><p>这部分的主要结果是建立初值问题收敛的幂级数解的存在和唯一性定理. 只讨论一阶的微分方程<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;f(x, y)<br>$$<br>其中 $f(x, y)$在区域 $G \in \mathbb{R}^{2}$上<strong>解析</strong>（能够局部展开成收敛幂级数）</p>
-<p>对于初值问题<br>$$<br>    (E): \quad \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;f(x, y),\quad y(x_0)&#x3D;y_0<br>$$</p>
-<p>下证明该解 $y&#x3D;y(x)$在 $x_0$附近是<strong>解析</strong>的</p>
+              <h1 id="幂级数解法"><a href="#幂级数解法" class="headerlink" title="幂级数解法"></a>幂级数解法</h1><h2 id="柯西定理"><a href="#柯西定理" class="headerlink" title="柯西定理"></a>柯西定理</h2><p>这部分的主要结果是建立初值问题收敛的幂级数解的存在和唯一性定理. 只讨论一阶的微分方程</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y)</script><p>其中 $f(x, y)$在区域 $G \in \mathbb{R}^{2}$上<strong>解析</strong>（能够局部展开成收敛幂级数）</p>
+<p>对于初值问题</p>
+<script type="math/tex; mode=display">
+    (E): \quad \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y),\quad y(x_0)=y_0</script><p>下证明该解 $y=y(x)$在 $x_0$附近是<strong>解析</strong>的</p>
 <p>我们有<strong>优级数</strong>（或<strong>强级数</strong>），<strong>优函数</strong>（或<strong>强函数</strong>）的概念.</p>
-<p><strong>引理7.1</strong>：设函数 $f(x, y)$在矩形区域<br>$$<br>    R: \quad \left\vert x-x_0 \right\vert &lt;\alpha,\quad \left\vert y-y_0 \right\vert &lt; \beta<br>$$<br>上可以展成 $(x-x_0)$和 $(y-y_0)$的一个收敛的幂级数，则存在常数 $M&gt;0$，使得函数<br>$$<br>    F(x, y)&#x3D;\frac{M}{(1-\displaystyle \frac{x-x_0}{a})(1-\displaystyle \frac{y-y_0}{b})} \tag{1}<br>$$<br>在矩形区域<br>$$<br>    R_0: \quad \left\vert x-x_0 \right\vert &lt;a, \quad \left\vert y-y_0 \right\vert &lt;b<br>$$<br>内是 $f(x, y)$的一个优函数，其中 $a&lt; \alpha$和 $b&lt;\beta$.</p>
+<p><strong>引理7.1</strong>：设函数 $f(x, y)$在矩形区域 </p>
+<script type="math/tex; mode=display">
+    R: \quad \left\vert x-x_0 \right\vert <\alpha,\quad \left\vert y-y_0 \right\vert < \beta</script><p>上可以展成 $(x-x_0)$和 $(y-y_0)$的一个收敛的幂级数，则存在常数 $M&gt;0$，使得函数 </p>
+<script type="math/tex; mode=display">
+    F(x, y)=\frac{M}{(1-\displaystyle \frac{x-x_0}{a})(1-\displaystyle \frac{y-y_0}{b})} \tag{1}</script><p>在矩形区域 </p>
+<script type="math/tex; mode=display">
+    R_0: \quad \left\vert x-x_0 \right\vert <a, \quad \left\vert y-y_0 \right\vert <b</script><p>内是 $f(x, y)$的一个优函数，其中 $a&lt; \alpha$和 $b&lt;\beta$.</p>
 <p><strong>证</strong>：把 $F (x, y)$展开即可找 $M$.</p>
-<p><strong>引理7.2</strong>：设在 $R_0$上由（1）给定 $F(x, y)$，则初值问题<br>$$<br>    (\hat{E}): \quad \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;F(x, y), \quad y(x_0)&#x3D;y_0<br>$$<br>在区间 $\left\vert x-x_0 \right\vert &lt;\rho$内存在一个解析的解 $y&#x3D;\hat{y}(x)$，其中常数 $\rho&#x3D;a(1-\mathrm{e}^{-b&#x2F;2aM} )$，而正数 $a,b$和 $M$的意义同上.</p>
-<p><strong>证</strong>：利用分离变量法求解 $(\hat{E})$，解出 $y&#x3D;\hat{y}(x)$，分析 $\hat{y}(x)$中 $\displaystyle \ln (1-\frac{x-x_0}{a})$的收敛半径和 $\sqrt{1+\cdot}$的收敛半径；可以得到 $\hat{y}(x)$是 $(\hat{E})$的解析解.</p>
-<p><strong>定理7.1</strong>（Cauchy）：如果函数 $f(x, y)$在矩形区域 $R$上可以展开成 $(x-x_0)$和 $(y-y_0)$的一个收敛的幂级数，则初值问题 $(E)$在 $x_0$点的领域 $\left\vert x-x_0 \right\vert &lt;\rho$内有一个解析解 $y&#x3D;y(x)$，而且它是唯一的. 此处区域 $R$和常数 $\rho$的意义同上.</p>
-<p><strong>证</strong>：首先展开 $f(x,y)$：<br>$$<br>    f(x, y)&#x3D;\sum_{i,j&#x3D;0}^{\infty} a_{ij}(x-x_0)^{i}(y-y_0)^{j} \tag{2}<br>$$<br>作形式解<br>$$<br>    y&#x3D;y_0+\sum_{n&#x3D;1}^{\infty} C_n(x-x_0)^{n} \tag{3}<br>$$<br>可以直接求 $C_n$，它是诸 $a_{ij}$的多项式 $P_n$，$P_n$的系数<strong>全为正</strong>且 $P_n$与 $f(x, y)$无关. 这就说明了解析解的唯一性，我们还要说明（3）是一致收敛的.</p>
-<p>考虑初值问题<br>$$<br>    (\hat{E}): \quad \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;F(x, y), \quad y(x_0)&#x3D;y_0<br>$$<br>其中 $F(x, y)$和 $a,b,M$如之前所定义. 它在 $R_0$内是 $f(x, y)$的优函数.<br>作 $(\hat{E})$的形式解<br>$$<br>    y&#x3D;\hat{y}(x)&#x3D;y_0+\sum_{n&#x3D;1}^{\infty} \hat{C_n}(x-x_0)^{n}<br>$$<br>则有 $\hat{C_n}\geqslant \left\vert C_n \right\vert $，由优级数判别法，定理证毕.</p>
+<p><strong>引理7.2</strong>：设在 $R_0$上由（1）给定 $F(x, y)$，则初值问题</p>
+<script type="math/tex; mode=display">
+    (\hat{E}): \quad \frac{\mathrm{d}y}{\mathrm{d}x}=F(x, y), \quad y(x_0)=y_0</script><p>在区间 $\left\vert x-x_0 \right\vert &lt;\rho$内存在一个解析的解 $y=\hat{y}(x)$，其中常数 $\rho=a(1-\mathrm{e}^{-b/2aM} )$，而正数 $a,b$和 $M$的意义同上.</p>
+<p><strong>证</strong>：利用分离变量法求解 $(\hat{E})$，解出 $y=\hat{y}(x)$，分析 $\hat{y}(x)$中 $\displaystyle \ln (1-\frac{x-x_0}{a})$的收敛半径和 $\sqrt{1+\cdot}$的收敛半径；可以得到 $\hat{y}(x)$是 $(\hat{E})$的解析解.</p>
+<p><strong>定理7.1</strong>（Cauchy）：如果函数 $f(x, y)$在矩形区域 $R$上可以展开成 $(x-x_0)$和 $(y-y_0)$的一个收敛的幂级数，则初值问题 $(E)$在 $x_0$点的领域 $\left\vert x-x_0 \right\vert &lt;\rho$内有一个解析解 $y=y(x)$，而且它是唯一的. 此处区域 $R$和常数 $\rho$的意义同上.</p>
+<p><strong>证</strong>：首先展开 $f(x,y)$：</p>
+<script type="math/tex; mode=display">
+    f(x, y)=\sum_{i,j=0}^{\infty} a_{ij}(x-x_0)^{i}(y-y_0)^{j} \tag{2}</script><p>作形式解</p>
+<script type="math/tex; mode=display">
+    y=y_0+\sum_{n=1}^{\infty} C_n(x-x_0)^{n} \tag{3}</script><p>可以直接求 $C_n$，它是诸 $a_{ij}$的多项式 $P_n$，$P_n$的系数<strong>全为正</strong>且 $P_n$与 $f(x, y)$无关. 这就说明了解析解的唯一性，我们还要说明（3）是一致收敛的.</p>
+<p>考虑初值问题</p>
+<script type="math/tex; mode=display">
+    (\hat{E}): \quad \frac{\mathrm{d}y}{\mathrm{d}x}=F(x, y), \quad y(x_0)=y_0</script><p>其中 $F(x, y)$和 $a,b,M$如之前所定义. 它在 $R_0$内是 $f(x, y)$的优函数.<br>作 $(\hat{E})$的形式解</p>
+<script type="math/tex; mode=display">
+    y=\hat{y}(x)=y_0+\sum_{n=1}^{\infty} \hat{C_n}(x-x_0)^{n}</script><p>则有 $\hat{C_n}\geqslant \left\vert C_n \right\vert $，由优级数判别法，定理证毕.</p>
 <div class="note note-success">
-            <p>非解析的微分方程可能没有形式的幂级数解.如<br>$$<br>    \frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;\frac{y-x}{x}, y(0)&#x3D;0<br>$$</p>
+            <p>非解析的微分方程可能没有形式的幂级数解.如</p><script type="math/tex; mode=display">    \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{y-x}{x}, y(0)=0</script>
           </div>
-
 <div class="note note-success">
-            <p>非解析微分方程的形式解可能不收敛.如<br>$$<br>    x^{2}\frac{\mathrm{d}y}{\mathrm{d}x}&#x3D;y-x, \quad y(0)&#x3D;0<br>$$<br>它的形式解是<br>$$<br>    y&#x3D;x+x^{2}+2!x^{3}+\cdots +n! x^{n+1}+\cdots<br>$$<br>但是它对任何 $x \neq 0$不收敛.</p>
+            <p>非解析微分方程的形式解可能不收敛.如 </p><script type="math/tex; mode=display">    x^{2}\frac{\mathrm{d}y}{\mathrm{d}x}=y-x, \quad y(0)=0</script><p>它的形式解是</p><script type="math/tex; mode=display">    y=x+x^{2}+2!x^{3}+\cdots +n! x^{n+1}+\cdots</script><p>但是它对任何 $x \neq 0$不收敛.</p>
           </div>
 <p>优级数方法可以应用于微分方程组，具体见书本.</p>
-<p>叙述解析微分方程组的Cauchy定理<br>对于微分方程组的初值问题<br>$$<br>    \frac{\mathrm{d}y^{(k)}}{\mathrm{d}x}&#x3D;f_k(x,y^{(1)},\cdots ,y^{(n)}), \quad y^{(k)}(x_0)&#x3D;y_k<br>$$<br>$(k&#x3D;1,2,\cdots ,n)$. 如果 $f_k$在区域<br>$$<br>    \left\vert x-x_0 \right\vert \leqslant \alpha, \quad \left\vert y^{(1)}-y_1 \right\vert \leqslant \beta,\quad \cdots ,\quad \left\vert y^{(n)}-y_n \right\vert \leqslant \beta<br>$$<br>上能展开成 $x-x_0$和诸 $y^{(k)}-y_k$的收敛的幂级数，则上初值问题在 $x_0$点的领域 $\left\vert x-x_0 \right\vert &lt;\rho$内有一个解析解组 $y^{(k)}&#x3D;y^{(k)}(x)$，而且它是唯一的. 这里<br>$$<br>    \rho&#x3D;a(1-\mathrm{e}^{-b&#x2F;2aM} )<br>$$<br>其中 $M$类似定义.</p>
-<h2 id="幂级数解法-1"><a href="#幂级数解法-1" class="headerlink" title="幂级数解法"></a>幂级数解法</h2><p>考虑二阶齐次线性微分方程<br>$$<br>    A(x)y’’+B(x)y’+C(x)y&#x3D;0 \tag{4}<br>$$<br>其中 $A(x),B(x)$和 $C(x)$在区间 $\left\vert x-x_0 \right\vert &lt;r $ 内解析，不妨它们没有公因子 $(x-x_0)$.</p>
+<p>叙述解析微分方程组的Cauchy定理<br>对于微分方程组的初值问题</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}y^{(k)}}{\mathrm{d}x}=f_k(x,y^{(1)},\cdots ,y^{(n)}), \quad y^{(k)}(x_0)=y_k</script><p>$(k=1,2,\cdots ,n)$. 如果 $f_k$在区域 </p>
+<script type="math/tex; mode=display">
+    \left\vert x-x_0 \right\vert \leqslant \alpha, \quad \left\vert y^{(1)}-y_1 \right\vert \leqslant \beta,\quad \cdots ,\quad \left\vert y^{(n)}-y_n \right\vert \leqslant \beta</script><p>上能展开成 $x-x_0$和诸 $y^{(k)}-y_k$的收敛的幂级数，则上初值问题在 $x_0$点的领域 $\left\vert x-x_0 \right\vert &lt;\rho$内有一个解析解组 $y^{(k)}=y^{(k)}(x)$，而且它是唯一的. 这里</p>
+<script type="math/tex; mode=display">
+    \rho=a(1-\mathrm{e}^{-b/2aM} )</script><p>其中 $M$类似定义.</p>
+<h2 id="幂级数解法-1"><a href="#幂级数解法-1" class="headerlink" title="幂级数解法"></a>幂级数解法</h2><p>考虑二阶齐次线性微分方程</p>
+<script type="math/tex; mode=display">
+    A(x)y''+B(x)y'+C(x)y=0 \tag{4}</script><p>其中 $A(x),B(x)$和 $C(x)$在区间 $\left\vert x-x_0 \right\vert &lt;r $ 内解析，不妨它们没有公因子 $(x-x_0)$.</p>
 <ul>
-<li><p>$A(x_0) \neq 0$. 称这样的 $x_0$为（4）的<strong>常点</strong>. 将方程写成<br>$$<br> y’’+p(x)y’+q(x)y&#x3D;0 \tag{5}<br>$$</p>
-</li>
-<li><p>$A(x_0)&#x3D;0$，称这样的 $x_0$为（4）的<strong>奇点</strong>.</p>
+<li><p>$A(x_0) \neq 0$. 称这样的 $x_0$为（4）的<strong>常点</strong>. 将方程写成 </p>
+<script type="math/tex; mode=display">
+ y''+p(x)y'+q(x)y=0 \tag{5}</script></li>
+<li><p>$A(x_0)=0$，称这样的 $x_0$为（4）的<strong>奇点</strong>.</p>
 </li>
 </ul>
-<p><strong>定理7.2</strong>：设微分方程（5）系数函数 $p(x)$和 $q(x)$在区间 $\left\vert x-x_0 \right\vert &lt;r $可以展成 $(x-x_0)$的收敛的幂级数. 则（5）在区间 $\left\vert x-x_0 \right\vert &lt;r$内有收敛的幂级数解<br>$$<br>    y&#x3D;\sum_{n&#x3D;0}^{\infty} C_n(x-x_0)^{n}<br>$$<br>其中 $C_0&#x3D;y_0$和 $C_1&#x3D;y_0’$.</p>
+<p><strong>定理7.2</strong>：设微分方程（5）系数函数 $p(x)$和 $q(x)$在区间 $\left\vert x-x_0 \right\vert &lt;r $可以展成 $(x-x_0)$的收敛的幂级数. 则（5）在区间 $\left\vert x-x_0 \right\vert &lt;r$内有收敛的幂级数解</p>
+<script type="math/tex; mode=display">
+    y=\sum_{n=0}^{\infty} C_n(x-x_0)^{n}</script><p>其中 $C_0=y_0$和 $C_1=y_0’$.</p>
 <p><strong>证</strong>：由微分方程组的Cauchy定理即可.</p>
-<h2 id="Legendre-多项式"><a href="#Legendre-多项式" class="headerlink" title="Legendre 多项式"></a>Legendre 多项式</h2><p>Legendre方程<br>$$<br>    (1-x^{2})y’’-2xy’+n(n+1)y&#x3D;0 \tag{6}<br>$$<br>有幂级数解<br>$$<br>    y&#x3D;C_0y_1(x)+C_1y_2(x), \quad (-1&lt;x&lt;1) \tag{7}<br>$$<br>其中 $C_0$和 $C_1$是任意常数，而<br>$$<br>    y_1(x)&#x3D;1-\frac{n(n+1)}{2!}x^{2}+\frac{(n-2)n(n+1)(n+3)}{4!}x^{4}-\cdots<br>$$<br>$$<br>    y_2(x)&#x3D;x-\frac{(n-1)(n+2)}{3!}x^{3}+\frac{(n+3)(n-1)(n+2)(n+4)}{5!}x^{5}-\cdots<br>$$<br>显然 $y_1(x)$和 $y_2(x)$线性无关. 当 $n$是正偶数时, $y_1(x)&#x3D;P_n(x)$是一个 $n$次多项式， $y_2(x)$是无穷级数；当 $n$是正奇数时， $y_2(x)&#x3D;P_n(x)$是一个 $n$次多项式. $P_n(x)$相差一个常数因子的情况下可以写成<br>$$<br>    P_n(x)&#x3D;\frac{1}{2^{n}}\sum_{k&#x3D;0}^{[\frac{n}{2}]} \frac{(-1)^{k}(2n-2k)!}{k!(n-k)!(n-2k)!}x^{n-2k} \tag{8}<br>$$<br>对任意的非负整数 $n$，由（8）表达的 $n$次多项式 $P_n(x)$是相应的Legendre方程的解. 它们叫作<strong>Legendre多项式</strong>.</p>
-<p>有<br>$$<br>    P_n(-x)&#x3D;(-1)^{n}P_n(x)<br>$$<br>Legendre多项式系<br>$$<br>    P_0(x),P_1(x), P_2(x),\cdots  \tag{9}<br>$$<br>有如下性质<br><strong>性质1</strong>： $P_n(x)$满足Rodrigues公式<br>$$<br>    P_n(x)&#x3D;\frac{1}{2^{n}n!}\frac{\mathrm{d}^{n}}{\mathrm{d}x^{n}}(x^{2}-1)^{n} \tag{10}<br>$$<br>从而容易得出<br>$$<br>    P_n(1)&#x3D;1, \quad P_n(-1)&#x3D;(-1)^{n} \tag{11}<br>$$<br><strong>证</strong>：用二项式定理即可.</p>
-<p><strong>性质2</strong>：Legendre函数系是正交的，但结果与一般的结论有所不同<br>$$<br>    \int_{-1}^{1} P_n(x)P_m(x) \mathrm{d}x &#x3D;<br>    \begin{cases}<br>        0,\quad m \neq n \<br>        \sigma_n&gt;0, \quad m&#x3D;n<br>    \end{cases}<br>$$<br>并且有 $\sigma_n&#x3D;\displaystyle \frac{2}{2n+1}$<br><strong>证</strong>：当 $n \neq m$时，用分部积分法和（11）的结果得到 $(P_n,P_m)&#x3D;0$.<br>当 $n&#x3D;m$时进一步计算就有结果成立，这里用到 $\displaystyle \int_{0}^{\frac{\pi}{2}} \cos ^{2n+1}\theta \mathrm{d}\theta$ 的结果.</p>
-<p>设 $f(x)$在区间 $[-1,1]$上可积，则可作 $f(x)$关于 $P_n(x)$的<strong>广义Fourier级数</strong><br>$$<br>    f(x) \approx \sum_{n&#x3D;0}^{\infty} a_nP_n(x) \tag{12}<br>$$<br>其中<br>$$<br>    a_n&#x3D;\frac{2n+1}{2} \int_{-1}^{1} f(x)P_n(x) \mathrm{d}x<br>$$<br>这里定义的级数的收敛性与一般Fourier级数中有类似的结果.</p>
-<p>如果函数 $(1-x^{2})^{-1&#x2F;4}f(x)$在区间 $-1\leqslant x\leqslant 1$上绝对可积，并且下列条件之一成立：</p>
+<h2 id="Legendre-多项式"><a href="#Legendre-多项式" class="headerlink" title="Legendre 多项式"></a>Legendre 多项式</h2><p>Legendre方程</p>
+<script type="math/tex; mode=display">
+    (1-x^{2})y''-2xy'+n(n+1)y=0 \tag{6}</script><p>有幂级数解</p>
+<script type="math/tex; mode=display">
+    y=C_0y_1(x)+C_1y_2(x), \quad (-1<x<1) \tag{7}</script><p>其中 $C_0$和 $C_1$是任意常数，而 </p>
+<script type="math/tex; mode=display">
+    y_1(x)=1-\frac{n(n+1)}{2!}x^{2}+\frac{(n-2)n(n+1)(n+3)}{4!}x^{4}-\cdots</script><script type="math/tex; mode=display">
+    y_2(x)=x-\frac{(n-1)(n+2)}{3!}x^{3}+\frac{(n+3)(n-1)(n+2)(n+4)}{5!}x^{5}-\cdots</script><p>显然 $y_1(x)$和 $y_2(x)$线性无关. 当 $n$是正偶数时, $y_1(x)=P_n(x)$是一个 $n$次多项式， $y_2(x)$是无穷级数；当 $n$是正奇数时， $y_2(x)=P_n(x)$是一个 $n$次多项式. $P_n(x)$相差一个常数因子的情况下可以写成</p>
+<script type="math/tex; mode=display">
+    P_n(x)=\frac{1}{2^{n}}\sum_{k=0}^{[\frac{n}{2}]} \frac{(-1)^{k}(2n-2k)!}{k!(n-k)!(n-2k)!}x^{n-2k} \tag{8}</script><p>对任意的非负整数 $n$，由（8）表达的 $n$次多项式 $P_n(x)$是相应的Legendre方程的解. 它们叫作<strong>Legendre多项式</strong>.</p>
+<p>有</p>
+<script type="math/tex; mode=display">
+    P_n(-x)=(-1)^{n}P_n(x)</script><p>Legendre多项式系 </p>
+<script type="math/tex; mode=display">
+    P_0(x),P_1(x), P_2(x),\cdots  \tag{9}</script><p>有如下性质<br><strong>性质1</strong>： $P_n(x)$满足Rodrigues公式 </p>
+<script type="math/tex; mode=display">
+    P_n(x)=\frac{1}{2^{n}n!}\frac{\mathrm{d}^{n}}{\mathrm{d}x^{n}}(x^{2}-1)^{n} \tag{10}</script><p>从而容易得出</p>
+<script type="math/tex; mode=display">
+    P_n(1)=1, \quad P_n(-1)=(-1)^{n} \tag{11}</script><p><strong>证</strong>：用二项式定理即可.</p>
+<p><strong>性质2</strong>：Legendre函数系是正交的，但结果与一般的结论有所不同 </p>
+<script type="math/tex; mode=display">
+    \int_{-1}^{1} P_n(x)P_m(x) \mathrm{d}x =
+    \begin{cases}
+        0,\quad m \neq n \\
+        \sigma_n>0, \quad m=n
+    \end{cases}</script><p>并且有 $\sigma_n=\displaystyle \frac{2}{2n+1}$<br><strong>证</strong>：当 $n \neq m$时，用分部积分法和（11）的结果得到 $(P_n,P_m)=0$.<br>当 $n=m$时进一步计算就有结果成立，这里用到 $\displaystyle \int_{0}^{\frac{\pi}{2}} \cos ^{2n+1}\theta \mathrm{d}\theta$ 的结果.</p>
+<p>设 $f(x)$在区间 $[-1,1]$上可积，则可作 $f(x)$关于 $P_n(x)$的<strong>广义Fourier级数</strong></p>
+<script type="math/tex; mode=display">
+    f(x) \approx \sum_{n=0}^{\infty} a_nP_n(x) \tag{12}</script><p>其中</p>
+<script type="math/tex; mode=display">
+    a_n=\frac{2n+1}{2} \int_{-1}^{1} f(x)P_n(x) \mathrm{d}x</script><p>这里定义的级数的收敛性与一般Fourier级数中有类似的结果.</p>
+<p>如果函数 $(1-x^{2})^{-1/4}f(x)$在区间 $-1\leqslant x\leqslant 1$上绝对可积，并且下列条件之一成立：</p>
 <ul>
 <li><strong>Dirichlet条件</strong>：$f(x)$在 $x_0$附近的一个区间上分段单调，并且在这区间上不连续点的个数至多是一个有限数.</li>
-<li><strong>Dini条件</strong>：对于某一常数 $h&gt;0$，积分<br>$$<br>  \int_{0}^{h} \frac{\left\vert f(x_0+t)-f(x_0+0)+f(x_0-t)-f(x_0-0) \right\vert }{t} \mathrm{d}t<br>$$<br>存在 </li>
-<li><strong>Holder条件</strong>：$f(x)$在 $x_0$点连续，并且对于充分小的 $t&gt;0$，不等式<br>$$<br>  \left\vert f(x_0 \pm t)-f(x_0) \right\vert \leqslant Lt ^{\alpha}<br>$$<br>成立，其中 $L$和 $\alpha$都是正的常数，且 $\alpha\leqslant 1$；</li>
+<li><strong>Dini条件</strong>：对于某一常数 $h&gt;0$，积分 <script type="math/tex; mode=display">
+  \int_{0}^{h} \frac{\left\vert f(x_0+t)-f(x_0+0)+f(x_0-t)-f(x_0-0) \right\vert }{t} \mathrm{d}t</script>存在 </li>
+<li><strong>Holder条件</strong>：$f(x)$在 $x_0$点连续，并且对于充分小的 $t&gt;0$，不等式<script type="math/tex; mode=display">
+  \left\vert f(x_0 \pm t)-f(x_0) \right\vert \leqslant Lt ^{\alpha}</script>成立，其中 $L$和 $\alpha$都是正的常数，且 $\alpha\leqslant 1$；</li>
 </ul>
-<p>那么（12）定义的级数在 $x&#x3D;\xi(-1&lt;\xi&lt;1) $收敛到<br>$$<br>    \frac{1}{2}[f(\xi +0)+f(\xi -0)]<br>$$<br>特别，如果 $f(x)$在 $x&#x3D;\xi$连续，则该级数在 $x&#x3D;\xi$处收敛到 $f(\xi)$.</p>
+<p>那么（12）定义的级数在 $x=\xi(-1&lt;\xi&lt;1) $收敛到</p>
+<script type="math/tex; mode=display">
+    \frac{1}{2}[f(\xi +0)+f(\xi -0)]</script><p>特别，如果 $f(x)$在 $x=\xi$连续，则该级数在 $x=\xi$处收敛到 $f(\xi)$.</p>
 <h2 id="广义幂级数解法"><a href="#广义幂级数解法" class="headerlink" title="广义幂级数解法"></a>广义幂级数解法</h2><p>考虑（4）有奇点的情况.</p>
-<p>首先由方程 $x^{2}y’’-2y&#x3D;0$在 $x&#x3D;0$附近的性态知方程（4）在奇点附近不会再有幂级数形式的通解且在奇点 $x_0$的初值问题可能是无解的.</p>
-<p>求解 $\displaystyle x^{2}y’’+xy’+(x^{2}-\frac{1}{4}y)&#x3D;0 $知，解为两个线性无关的<strong>广义幂级数</strong>.</p>
-<p>$$<br>    \sum_{n&#x3D;0}^{\infty} C_n(x-x_0)^{n+\rho}\quad(C_0 \neq 0)<br>$$<br>其中常数 $\rho$叫作<strong>指标</strong>.</p>
-<p><strong>正则奇点</strong>：设（4）可改写成如下形式：<br>$$<br>    (x-x_0)^{2}P(x)y’’+(x-x_0)Q(x)y’+R(x)y&#x3D;0 \tag{13}<br>$$<br>其中 $P(x)$，$Q(x)$ 和 $R(x)$是多项式（或它们在 $x_0$点附近可展成 $(x-x_0)$ 的幂级数）；并且 $P(x)\neq 0$ ，而 $Q(x_0)$和 $R(x_0)$不同时等于零，则称 $x_0$为微分方程（4）的<strong>正则奇点</strong>. </p>
-<p><strong>定理7.3</strong>：微分方程（4）在正则奇点 $x_0$的领域内有收敛的广义幂级数解<br>$$<br>    y&#x3D;\sum_{k&#x3D;0}^{\infty} C_k(x-x_0)^{k+\rho} \quad (C_0\neq 0) \tag{14}<br>$$<br>其中 $\rho$和 $C_k$由代入决定.</p>
-<p><strong>证</strong>：在 $x_0$的领域 $\left\vert x-x_0 \right\vert &lt;r$ 内将 $Q(x)$和 $R(x)$展开为幂级数<br>$$<br>    Q(x)&#x3D;\sum_{k&#x3D;0}^{\infty} a_k(x-x_0)^{k} \quad R(x)&#x3D;\sum_{k&#x3D;0}^{\infty} b_k(x-x_0)^{k}<br>$$<br>代入，也将（14）的形式解代入，可以整理得到递推公式.</p>
-<p>其中第一式得<strong>指标方程</strong><br>$$<br>    \rho(\rho-1)+a_0\rho+b_0&#x3D;0<br>$$</p>
-<p>当 $\rho_1$和 $\rho_2$这两个<strong>指标根</strong>为实数时，取 $\rho_1\geqslant \rho_2$下的 $\rho_1$，否则任取一根.</p>
+<p>首先由方程 $x^{2}y’’-2y=0$在 $x=0$附近的性态知方程（4）在奇点附近不会再有幂级数形式的通解且在奇点 $x_0$的初值问题可能是无解的.</p>
+<p>求解 $\displaystyle x^{2}y’’+xy’+(x^{2}-\frac{1}{4}y)=0 $知，解为两个线性无关的<strong>广义幂级数</strong>.</p>
+<script type="math/tex; mode=display">
+    \sum_{n=0}^{\infty} C_n(x-x_0)^{n+\rho}\quad(C_0 \neq 0)</script><p>其中常数 $\rho$叫作<strong>指标</strong>.</p>
+<p><strong>正则奇点</strong>：设（4）可改写成如下形式：</p>
+<script type="math/tex; mode=display">
+    (x-x_0)^{2}P(x)y''+(x-x_0)Q(x)y'+R(x)y=0 \tag{13}</script><p>其中 $P(x)$，$Q(x)$ 和 $R(x)$是多项式（或它们在 $x_0$点附近可展成 $(x-x_0)$ 的幂级数）；并且 $P(x)\neq 0$ ，而 $Q(x_0)$和 $R(x_0)$不同时等于零，则称 $x_0$为微分方程（4）的<strong>正则奇点</strong>. </p>
+<p><strong>定理7.3</strong>：微分方程（4）在正则奇点 $x_0$的领域内有收敛的广义幂级数解</p>
+<script type="math/tex; mode=display">
+    y=\sum_{k=0}^{\infty} C_k(x-x_0)^{k+\rho} \quad (C_0\neq 0) \tag{14}</script><p>其中 $\rho$和 $C_k$由代入决定.</p>
+<p><strong>证</strong>：在 $x_0$的领域 $\left\vert x-x_0 \right\vert &lt;r$ 内将 $Q(x)$和 $R(x)$展开为幂级数 </p>
+<script type="math/tex; mode=display">
+    Q(x)=\sum_{k=0}^{\infty} a_k(x-x_0)^{k} \quad R(x)=\sum_{k=0}^{\infty} b_k(x-x_0)^{k}</script><p>代入，也将（14）的形式解代入，可以整理得到递推公式.</p>
+<p>其中第一式得<strong>指标方程</strong></p>
+<script type="math/tex; mode=display">
+    \rho(\rho-1)+a_0\rho+b_0=0</script><p>当 $\rho_1$和 $\rho_2$这两个<strong>指标根</strong>为实数时，取 $\rho_1\geqslant \rho_2$下的 $\rho_1$，否则任取一根.</p>
 <p>这样就可以由递推公式得到 $C_1,C_2,\cdots ,C_k,\cdots $.</p>
 <p>需要证明（14）在 $x_0$附近收敛（不一定包括 $x_0$点）.</p>
-<p>首先由数项级数的性质知对于取定的 $0&lt;r_1&lt;r$存在 $M&gt;0$（不妨 $M\geqslant 1$）使得 $\left\vert a_k \right\vert $， $\left\vert b_k \right\vert $， $\left\vert \rho_1 a_k+b_k \right\vert $均不大于 $\displaystyle \frac{M}{r_1^{k}}$.</p>
+<p>首先由数项级数的性质知对于取定的 $0<r_1<r$存在 $M>0$（不妨 $M\geqslant 1$）使得 $\left\vert a_k \right\vert $， $\left\vert b_k \right\vert $， $\left\vert \rho_1 a_k+b_k \right\vert $均不大于 $\displaystyle \frac{M}{r_1^{k}}$.</p>
 <p>由归纳法就可以证明 $\displaystyle \left\vert C_k \right\vert \leqslant (\frac{M}{r_1})^{k} $.</p>
 <p>于是（14）在 $\displaystyle 0&lt;\left\vert x-x_0 \right\vert \leqslant \frac{r_2}{M}$上收敛.</p>
 <div class="note note-success">
             <p>当 $\rho_1$是复数时，可以从（14）分离出两个实的级数解</p>
           </div>
-
 <div class="note note-success">
-            <p>当 $\rho_1$和 $\rho_2$都是实数且 $\rho_1-\rho_2&#x3D;m \in \mathbb{N}$时，一般不能从 $\rho_2$出发得到一个与（14）不同的广义幂级数解. 但可以利用Liouville公式，从与 $\rho_1$相应的（14）出发，得到另一个与其线性无关的解.</p>
+            <p>当 $\rho_1$和 $\rho_2$都是实数且 $\rho_1-\rho_2=m \in \mathbb{N}$时，一般不能从 $\rho_2$出发得到一个与（14）不同的广义幂级数解. 但可以利用Liouville公式，从与 $\rho_1$相应的（14）出发，得到另一个与其线性无关的解.</p>
           </div> 
-
-<p><strong>Bessel方程</strong>：<br>$$<br>    x^{2}y’’+xy’+(x^{2}-n^{2})y&#x3D;0 \tag{15}<br>$$<br>其中常数 $n\geqslant 0$<br>它的两个指标根为 $\pm n$，对于 $\rho_1&#x3D;n$，取一个比较好的 $C_0$<br>$$<br>    C_0&#x3D;\frac{1}{2^{n}\Gamma(n+1)}<br>$$<br>则<br>$$<br>    y&#x3D;J_n(x)&#x3D;\sum_{k&#x3D;0}^{\infty} \frac{(-1)^{k}}{\Gamma(n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k+n} \tag{16}<br>$$<br>它的收敛半径是无穷大，它叫<strong>第一类Bessel函数</strong>.</p>
-<p>对于 $\rho_2&#x3D;-n$</p>
+<p><strong>Bessel方程</strong>：</p>
+<script type="math/tex; mode=display">
+    x^{2}y''+xy'+(x^{2}-n^{2})y=0 \tag{15}</script><p>其中常数 $n\geqslant 0$<br>它的两个指标根为 $\pm n$，对于 $\rho_1=n$，取一个比较好的 $C_0$</p>
+<script type="math/tex; mode=display">
+    C_0=\frac{1}{2^{n}\Gamma(n+1)}</script><p>则 </p>
+<script type="math/tex; mode=display">
+    y=J_n(x)=\sum_{k=0}^{\infty} \frac{(-1)^{k}}{\Gamma(n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k+n} \tag{16}</script><p>它的收敛半径是无穷大，它叫<strong>第一类Bessel函数</strong>.</p>
+<p>对于 $\rho_2=-n$</p>
 <ul>
-<li>若 $2n$不等于任何整数<br>类似有<br>$$<br>  y&#x3D;J_{-n}(x)&#x3D;\sum_{k&#x3D;0}^{\infty} \frac{(-1)^{k}}{\Gamma(-n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k-n} \tag{17}<br>$$<br>它叫做<strong>第二类Bessel函数</strong>.</li>
-<li>$2n&#x3D;N\in \mathbb{Z}$<br>1）若 $2n&#x3D;2s+1$，此时令 $C_{2s+1}&#x3D;0$则得到一个同（17）的解<br>2）若 $n \in \mathbb{Z}$ 此时不可能从 $\rho_2&#x3D;-n$和递推公式求出方程的广义幂级数解.<br>为求解，取参数 $\alpha \neq n$但 $\alpha \rightarrow n$，则 $J_{\alpha}(x)$和 $J_{-\alpha}(x)$都有意义，且函数<br>$$<br>  y_{\alpha}(x)&#x3D;\frac{J_{\alpha}\cos \alpha\pi-J_{-\alpha}(x)}{\sin \alpha\pi} \quad (\sin \alpha\pi\neq 0)<br>$$<br>是Bessel方程当 $n&#x3D;\alpha$时的一个解，且它在 $x&#x3D;0$的领域内是无界的.<br>令<br>$$<br>  Y_{n}(x)&#x3D;\lim_{\alpha \to n}y_{\alpha}(x)<br>$$<br>则 $y&#x3D;Y_{n}(x)$是Bessel方程的解，且与第一类Bessel函数 $J_{n}(x)$线性无关，称为<strong>Neumann函数</strong>.</li>
+<li>若 $2n$不等于任何整数<br>类似有 <script type="math/tex; mode=display">
+  y=J_{-n}(x)=\sum_{k=0}^{\infty} \frac{(-1)^{k}}{\Gamma(-n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k-n} \tag{17}</script>它叫做<strong>第二类Bessel函数</strong>.</li>
+<li>$2n=N\in \mathbb{Z}$<br>1）若 $2n=2s+1$，此时令 $C_{2s+1}=0$则得到一个同（17）的解<br>2）若 $n \in \mathbb{Z}$ 此时不可能从 $\rho_2=-n$和递推公式求出方程的广义幂级数解.<br>为求解，取参数 $\alpha \neq n$但 $\alpha \rightarrow n$，则 $J_{\alpha}(x)$和 $J_{-\alpha}(x)$都有意义，且函数 <script type="math/tex; mode=display">
+  y_{\alpha}(x)=\frac{J_{\alpha}\cos \alpha\pi-J_{-\alpha}(x)}{\sin \alpha\pi} \quad (\sin \alpha\pi\neq 0)</script>是Bessel方程当 $n=\alpha$时的一个解，且它在 $x=0$的领域内是无界的.<br>令<script type="math/tex; mode=display">
+  Y_{n}(x)=\lim_{\alpha \to n}y_{\alpha}(x)</script>则 $y=Y_{n}(x)$是Bessel方程的解，且与第一类Bessel函数 $J_{n}(x)$线性无关，称为<strong>Neumann函数</strong>.</li>
 </ul>
 <p>解释一下其中的一些性质</p>
 <ul>
-<li>当 $n \in \mathbb{Z}$时，有 $J_{-n}(x)&#x3D;(-1)^{n}J_n(x)$. 事实上由于 $\Gamma(-n+k+1)\to \infty$，故<br>$$<br>  \begin{aligned}<br>  J_{-n}(x)&amp;&#x3D; \sum_{k&#x3D;n}^{\infty} \frac{(-1)^{k}}{\Gamma(-n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k-n} \<br>  &amp;&#x3D; \sum_{k&#x3D;0}^{\infty} \frac{(-1)^{k+n}}{\Gamma(n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k+n} \<br>  &amp;&#x3D; (-1)^{n}J_n(x)<br>  \end{aligned}<br>$$</li>
-<li>一个中间结论：<br>$$<br>  J_{v}J_{-v}’-J_{-v}J_{v}’&#x3D;-\frac{2\sin v\pi}{\pi x}<br>$$<br><strong>证</strong>：</li>
+<li>当 $n \in \mathbb{Z}$时，有 $J_{-n}(x)=(-1)^{n}J_n(x)$. 事实上由于 $\Gamma(-n+k+1)\to \infty$，故 <script type="math/tex; mode=display">
+  \begin{aligned}
+      J_{-n}(x)&= \sum_{k=n}^{\infty} \frac{(-1)^{k}}{\Gamma(-n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k-n} \\
+      &= \sum_{k=0}^{\infty} \frac{(-1)^{k+n}}{\Gamma(n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k+n} \\ 
+      &= (-1)^{n}J_n(x)
+  \end{aligned}</script></li>
+<li>一个中间结论：<script type="math/tex; mode=display">
+  J_{v}J_{-v}'-J_{-v}J_{v}'=-\frac{2\sin v\pi}{\pi x}</script><strong>证</strong>：</li>
 <li>关于 $Y_n(x)$的构造，这部分可以看《特殊函数概论》中关于第二类Bessel函数的相关章节. 证明极限存在和 $Y_n(x)$确实是方程解，可以参考Watson (1944), pp. 58~59.</li>
 </ul>
 <h2 id="Bessel-函数"><a href="#Bessel-函数" class="headerlink" title="Bessel 函数"></a>Bessel 函数</h2><p>下面都假设 $n$为非负整数. 称 $J_n(x)$为 $n$<strong>阶Bessel函数</strong>；称 $Y_n(x)$为 $n$<strong>阶Neumann函数</strong>. </p>
-<p><strong>性质1</strong>：当 $x \to \infty$时， $J_n(x)$和 $Y_n(x)$有如下<strong>渐进式</strong>：<br>$$<br>    J_n(x)&#x3D;\frac{A_n}{\sqrt{x}}[\sin (x+\alpha_n)+o(1)] \tag{18}<br>$$<br>和<br>$$<br>    Y_n(x)&#x3D;\frac{B_n}{\sqrt{x}}[\cos (x+\beta_n)+o(1)] \tag{19}<br>$$</p>
-<p>其中 $o(1)$表示一个无穷小量，而 $A_n,B_n,\alpha_n,\beta_n$都是只与 $n$有关的常数，且 $A_n&gt;0,B_n&gt;0$.</p>
-<p><strong>证</strong>：作代换<br>$$<br>    J_n(x)&#x3D;\frac{u(x)}{\sqrt{x}} \quad (x&gt;0)<br>$$<br>代入Bessel方程后得到一个二阶线性微分方程的非零解<br>$$<br>    u’’(x)+  \biggl( 1-\frac{n^{2}-\frac{1}{4}}{x^{2}} \biggr)u(x)&#x3D;0<br>$$<br>由解的唯一性知 $u(x)$和 $u’(x)$不同时为零，则<br>$$<br>    r(x)&#x3D;\sqrt{[u(x)]^{2}+[u’(x)]^{2}}&gt;0<br>$$<br>把 $u(x)$和 $u’(x)$表达成极坐标的形式<br>$$<br>    \begin{cases}<br>        u(x)&#x3D;r(x)\sin \theta(x) \<br>        u’(x)&#x3D;r(x)\cos \theta(x)<br>    \end{cases}<br>$$<br>再代回得到关于 $r(x)$和 $\theta(x)$的微分方程.</p>
-<p>$$<br>    \begin{cases}<br>        r’(x) &#x3D;\frac{n^{2}-\frac{1}{4}}{x^{2}}r(x)\sin \theta(x) \cos \theta(x) \<br>        \theta’(x)&#x3D;1-\frac{n^{2}-\frac{1}{4}}{x^{2}}\sin ^{2}\theta(x)<br>    \end{cases}<br>$$</p>
-<p>令 $\theta(x)&#x3D;x+\varphi(x)$，代回上面的第二个方程，并取从1 到 $x$的积分，可以得到极限 $\lim_{x \to \infty}\varphi(x)&#x3D;\alpha_n$存在. 从而得到渐进式<br>$$<br>    \theta(x)&#x3D;x+\alpha_n+o(1)<br>$$<br>再对上面方程的第一式积分（注意它有通积分），得极限<br>$$<br>    \lim_{x \to \infty}r(x)&#x3D;A_n&gt;0<br>$$<br>也存在.<br>故 $r(x)$得渐进式为<br>$$<br>    r(x)&#x3D;A_n+o(!)<br>$$<br>将上两个渐进式代回极坐标形式知<br>$$<br>    \begin{cases}<br>        u(x)&#x3D;A_n\sin (x+\alpha_n) +o(1) \<br>        u’(x)&#x3D;A_n\cos (x+\alpha_n) +o(1)<br>    \end{cases}<br>$$<br>从而有原渐进式成立. 并且计算可以发现求导与求渐进可以交换次序.</p>
+<p><strong>性质1</strong>：当 $x \to \infty$时， $J_n(x)$和 $Y_n(x)$有如下<strong>渐进式</strong>：</p>
+<script type="math/tex; mode=display">
+    J_n(x)=\frac{A_n}{\sqrt{x}}[\sin (x+\alpha_n)+o(1)] \tag{18}</script><p>和</p>
+<script type="math/tex; mode=display">
+    Y_n(x)=\frac{B_n}{\sqrt{x}}[\cos (x+\beta_n)+o(1)] \tag{19}</script><p>其中 $o(1)$表示一个无穷小量，而 $A_n,B_n,\alpha_n,\beta_n$都是只与 $n$有关的常数，且 $A_n&gt;0,B_n&gt;0$.</p>
+<p><strong>证</strong>：作代换 </p>
+<script type="math/tex; mode=display">
+    J_n(x)=\frac{u(x)}{\sqrt{x}} \quad (x>0)</script><p>代入Bessel方程后得到一个二阶线性微分方程的非零解</p>
+<script type="math/tex; mode=display">
+    u''(x)+  \biggl( 1-\frac{n^{2}-\frac{1}{4}}{x^{2}} \biggr)u(x)=0</script><p>由解的唯一性知 $u(x)$和 $u’(x)$不同时为零，则 </p>
+<script type="math/tex; mode=display">
+    r(x)=\sqrt{[u(x)]^{2}+[u'(x)]^{2}}>0</script><p>把 $u(x)$和 $u’(x)$表达成极坐标的形式 </p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        u(x)=r(x)\sin \theta(x) \\
+        u'(x)=r(x)\cos \theta(x)    
+    \end{cases}</script><p>再代回得到关于 $r(x)$和 $\theta(x)$的微分方程.</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        r'(x) =\frac{n^{2}-\frac{1}{4}}{x^{2}}r(x)\sin \theta(x) \cos \theta(x) \\
+        \theta'(x)=1-\frac{n^{2}-\frac{1}{4}}{x^{2}}\sin ^{2}\theta(x) 
+    \end{cases}</script><p>令 $\theta(x)=x+\varphi(x)$，代回上面的第二个方程，并取从1 到 $x$的积分，可以得到极限 $\lim_{x \to \infty}\varphi(x)=\alpha_n$存在. 从而得到渐进式 </p>
+<script type="math/tex; mode=display">
+    \theta(x)=x+\alpha_n+o(1)</script><p>再对上面方程的第一式积分（注意它有通积分），得极限 </p>
+<script type="math/tex; mode=display">
+    \lim_{x \to \infty}r(x)=A_n>0</script><p>也存在.<br>故 $r(x)$得渐进式为</p>
+<script type="math/tex; mode=display">
+    r(x)=A_n+o(!)</script><p>将上两个渐进式代回极坐标形式知</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        u(x)=A_n\sin (x+\alpha_n) +o(1) \\
+        u'(x)=A_n\cos (x+\alpha_n) +o(1)        
+    \end{cases}</script><p>从而有原渐进式成立. 并且计算可以发现求导与求渐进可以交换次序.</p>
 <p>渐进式的一个意义在于可以帮助我们分析零点的性质. $J_n(x)$和 $Y_n(x)$都有无穷多个零点，而且它们的零点<strong>互相交错</strong>（留作以后证明）. 可以推得 </p>
 <ul>
-<li>$J_0(0)&#x3D;1$</li>
-<li>$J_n(0)&#x3D;0 \quad n\geqslant 1$</li>
-<li>$\lim_{x \to o^{+}}Y_n(x)&#x3D;-\infty$</li>
+<li>$J_0(0)=1$</li>
+<li>$J_n(0)=0 \quad n\geqslant 1$</li>
+<li>$\lim_{x \to o^{+}}Y_n(x)=-\infty$</li>
 </ul>
 <p>这也说明 $J_n(x)$和 $Y_n(x)$线性无关. </p>
-<p>设 $J_n(x)$的无穷多个零点依次排列为<br>$$<br>    0&lt;\beta_1&lt;\beta_2&lt;\cdots &lt;\beta_k&lt;\cdots (\to \infty)<br>$$<br>它们与 $n$有关.</p>
-<p>在区间 $[0,1]$上考虑函数系<br>$$<br>    J_n(\beta_1t),J_n(\beta_2t),\cdots ,J_n(\beta_kt),\cdots \tag{20}<br>$$<br>则有<br><strong>性质2</strong>：函数系（20）在区间 $[0,1]$上是一个以 $t$为权的<strong>正交系</strong>，即<br>$$<br>    \int_{0}^{1} t J_n(\beta_jt)J_n(\beta_kt) \mathrm{d}t&#x3D;<br>    \begin{cases}<br>        0,\quad j\neq k \<br>        \tau_{n,k}&gt;0,\quad j&#x3D;k<br>    \end{cases} \tag{21}<br>$$<br>并且可以算出 $\tau_{n,k}&#x3D;\frac{1}{2}[J_n’(\beta_k)]^{2}$</p>
-<p><strong>证</strong>：令<br>$$<br>    u&#x3D;J_n(at), \quad v&#x3D;J_n(bt)<br>$$<br>代入Bessel方程，然后消去 $n^{2}$得<br>$$<br>    t^{2}(vu’’-uv’’)+t(vu’-u’v)+t^{2}(a^{2}-b^{2})uv&#x3D;0<br>$$<br>凑积分，化为<br>$$<br>    \frac{\mathrm{d}}{\mathrm{d}t}[t(vu’-uv’)]+t(a^{2}-b^{2})uv&#x3D;0<br>$$<br>积分上式，并注意 $u(0),v(0),u’(0),v’(0)$有界，得到<br>$$<br>    (a^{2}-b^{2})\int_{0}^{1} tuv \mathrm{d}t&#x3D;bJ_n(a)J_n’(b)-aJ_n(b)J_n’(a) \tag{22}<br>$$<br>得到（21）的第一部分. 在（22）中取 $b&#x3D;\beta_k$和 $a\neq \beta_k$，再令 $a\to \beta_k$，运用 L’Hospital法则就得到（21）的第二部分.</p>
-<p>考虑区间 $[0,1]$上可积的 $f(x)$关于Bessel正交函数系的如下展开<br>$$<br>    f(x) ~ \sum_{k&#x3D;1}^{\infty} a_kJ_n(\beta_kx) \tag{23}<br>$$<br>其中广义Fourier系数<br>$$<br>    a_k&#x3D;\frac{2}{[J_n’(\beta_k)]^{2}}\int_{0}^{1} tf(t)J_n(\beta_kt) \mathrm{d}t<br>$$</p>
-<div class="note note-success">
-            <p>如果 $\sqrt{x}f(x)$在 $0\leqslant x\leqslant 1$上绝对可积，且满足Dirichlet&#x2F;Dini&#x2F;Holder条件之一，则右侧的广义Fourier级数在 $x&#x3D;x_0$点收敛到两单侧极限的平均值；则当 $f(x)$在 $x&#x3D;x_0$处连续时，该级数收敛到 $f(x_0)$</p>
+<p>设 $J_n(x)$的无穷多个零点依次排列为</p>
+<script type="math/tex; mode=display">
+    0<\beta_1<\beta_2<\cdots <\beta_k<\cdots (\to \infty)</script><p>它们与 $n$有关.</p>
+<p>在区间 $[0,1]$上考虑函数系 </p>
+<script type="math/tex; mode=display">
+    J_n(\beta_1t),J_n(\beta_2t),\cdots ,J_n(\beta_kt),\cdots \tag{20}</script><p>则有<br><strong>性质2</strong>：函数系（20）在区间 $[0,1]$上是一个以 $t$为权的<strong>正交系</strong>，即 </p>
+<script type="math/tex; mode=display">
+    \int_{0}^{1} t J_n(\beta_jt)J_n(\beta_kt) \mathrm{d}t=
+    \begin{cases}
+        0,\quad j\neq k \\
+        \tau_{n,k}>0,\quad j=k 
+    \end{cases} \tag{21}</script><p>并且可以算出 $\tau_{n,k}=\frac{1}{2}[J_n’(\beta_k)]^{2}$</p>
+<p><strong>证</strong>：令</p>
+<script type="math/tex; mode=display">
+    u=J_n(at), \quad v=J_n(bt)</script><p>代入Bessel方程，然后消去 $n^{2}$得 </p>
+<script type="math/tex; mode=display">
+    t^{2}(vu''-uv'')+t(vu'-u'v)+t^{2}(a^{2}-b^{2})uv=0</script><p>凑积分，化为 </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}}{\mathrm{d}t}[t(vu'-uv')]+t(a^{2}-b^{2})uv=0</script><p>积分上式，并注意 $u(0),v(0),u’(0),v’(0)$有界，得到 </p>
+<script type="math/tex; mode=display">
+    (a^{2}-b^{2})\int_{0}^{1} tuv \mathrm{d}t=bJ_n(a)J_n'(b)-aJ_n(b)J_n'(a) \tag{22}</script><p>得到（21）的第一部分. 在（22）中取 $b=\beta_k$和 $a\neq \beta_k$，再令 $a\to \beta_k$，运用 L’Hospital法则就得到（21）的第二部分.</p>
+<p>考虑区间 $[0,1]$上可积的 $f(x)$关于Bessel正交函数系的如下展开 </p>
+<script type="math/tex; mode=display">
+    f(x) ~ \sum_{k=1}^{\infty} a_kJ_n(\beta_kx) \tag{23}</script><p>其中广义Fourier系数 </p>
+<script type="math/tex; mode=display">
+    a_k=\frac{2}{[J_n'(\beta_k)]^{2}}\int_{0}^{1} tf(t)J_n(\beta_kt) \mathrm{d}t</script><div class="note note-success">
+            <p>如果 $\sqrt{x}f(x)$在 $0\leqslant x\leqslant 1$上绝对可积，且满足Dirichlet/Dini/Holder条件之一，则右侧的广义Fourier级数在 $x=x_0$点收敛到两单侧极限的平均值；则当 $f(x)$在 $x=x_0$处连续时，该级数收敛到 $f(x_0)$</p>
           </div>
-
-
-
 
               
             </div>
