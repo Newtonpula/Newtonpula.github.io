@@ -16,24 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="isomorphism 同构 epimorphism 满态射 monomorphism 单态射 bimorphism 双同态 endomorphism 自同态 automorphism 自同构  quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$    Schur’s Theorem  复线性空间上的线性算子可以正交相似于上对角算子 复线性空间上的线性算子 $T">
+    <meta name="description" content="静电场">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algebra (1)">
-<meta property="og:url" content="http://example.com/2022/04/10/Algebra-1/index.html">
+<meta property="og:title" content="Chapter10">
+<meta property="og:url" content="http://example.com/2022/06/11/Chapter10/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="isomorphism 同构 epimorphism 满态射 monomorphism 单态射 bimorphism 双同态 endomorphism 自同态 automorphism 自同构  quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$    Schur’s Theorem  复线性空间上的线性算子可以正交相似于上对角算子 复线性空间上的线性算子 $T">
+<meta property="og:description" content="静电场">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/index/algebra.png">
-<meta property="article:published_time" content="2022-04-10T02:13:56.000Z">
-<meta property="article:modified_time" content="2022-06-10T11:59:14.250Z">
+<meta property="og:image" content="http://example.com/img/index/physics.jpg">
+<meta property="article:published_time" content="2022-06-11T13:36:06.000Z">
+<meta property="article:modified_time" content="2022-06-11T13:40:21.258Z">
 <meta property="article:author" content="Yixiao Feng">
-<meta property="article:tag" content="数学">
+<meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/index/algebra.png">
+<meta name="twitter:image" content="http://example.com/img/index/physics.jpg">
   
   
   
-  <title>Algebra (1) - Newtonpula的自留地</title>
+  <title>Chapter10 - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Algebra (1)"></span>
+            <span id="subtitle" data-typed-text="Chapter10"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-10 10:13" pubdate>
-          2022年4月10日 上午
+        <time datetime="2022-06-11 21:36" pubdate>
+          2022年6月11日 晚上
         </time>
       </span>
     
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.8k 字
+          3.7k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          16 分钟
+          32 分钟
         
       </span>
     
@@ -319,78 +319,134 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Algebra (1)</h1>
+            <h1 style="display: none">Chapter10</h1>
             
             <div class="markdown-body">
               
-              <ul>
-<li>isomorphism 同构</li>
-<li>epimorphism 满态射</li>
-<li>monomorphism 单态射</li>
-<li>bimorphism 双同态</li>
-<li>endomorphism 自同态</li>
-<li><p>automorphism 自同构</p>
-</li>
-<li><p>quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$ </p>
-</li>
-</ul>
-<p><strong>Schur’s Theorem</strong> </p>
-<p>复线性空间上的线性算子可以正交相似于上对角算子</p>
-<p><strong>复线性空间上的线性算子 $T$ 若满足 $\langle Tv,v \rangle =0, \forall v \in V$，则 $T=0$</strong> </p>
-<p>《LADR》210</p>
-<p><strong>复线性空间上的线性算子 $T$ 是自伴的 $\Leftrightarrow$ $\langle Tv,v \rangle \in \mathbb{R}, \forall v \in V$</strong></p>
-<p><strong>$T$ 正规 $\Leftrightarrow$ $\left| Tv \right|_{}=\left| T^{*}v \right|_{}, \forall v \in V$</strong></p>
-<p>从而 $T$ 与 $T^{*}$ 有相同的特征向量</p>
-<p><strong>The Complex Spectral Theorem</strong> </p>
-<p>复线性空间上的正规算子可以酉对角化</p>
-<p><strong>Real Spectral Theorem</strong> </p>
-<p>实线性空间上的自伴算子可以正交对角化</p>
-<p><strong>正规算子的刻画</strong></p>
+              <h1 id="Chapter-10-静电场"><a href="#Chapter-10-静电场" class="headerlink" title="Chapter 10 静电场"></a>Chapter 10 静电场</h1><h2 id="库仑定律"><a href="#库仑定律" class="headerlink" title="库仑定律"></a>库仑定律</h2><p><strong>Coulomb’s Law</strong> </p>
+<script type="math/tex; mode=display">
+    \mathbf{F}=\frac{q_1q_2}{4\pi \varepsilon_0 r^{2}}\mathbf{e_r}</script><p>其中真空介电常数</p>
+<script type="math/tex; mode=display">
+    \varepsilon_0=\frac{1}{4\pi k}=8.854\times 10^{-12}</script><p><strong>Charge Conservation</strong><br>The total electric charge in an isolated system never changes</p>
+<h2 id="电场"><a href="#电场" class="headerlink" title="电场"></a>电场</h2><p>运动电荷不满足作用力等于反作用力，说明存在第三者——场</p>
+<p>电场强度</p>
+<script type="math/tex; mode=display">
+    \mathbf{E}=\frac{\mathbf{F}}{q_0}=\frac{q}{4\pi \varepsilon_0 r^{2}}\mathbf{e_r}</script><p>$q_0$为试验电荷，电量和线度充分小</p>
+<blockquote>
+<p>电场可以叠加</p>
+</blockquote>
+<p><strong>电偶极子（Electric Dipole）</strong> 等量异号、间距小的两个点电荷，方向从负电荷指向正电荷</p>
+<p><strong>电偶极矩（Electric Dipole Moment）</strong> </p>
+<script type="math/tex; mode=display">
+    \mathbf{p}=q \mathbf{l}</script><h3 id="电场计算"><a href="#电场计算" class="headerlink" title="电场计算"></a>电场计算</h3><p>电偶极子中垂线上场强为</p>
+<script type="math/tex; mode=display">
+    \mathbf{E_B}=-\frac{\mathbf{p}}{4\pi \varepsilon_0 r^{3}}</script><p>电偶极子延长线上任一点 $A$的场强</p>
+<script type="math/tex; mode=display">
+    \mathbf{E_A}=\frac{2\mathbf{p}}{4\pi \varepsilon_0 r^{3}}</script><p>其中 $r$为 $A$到电偶极子中点的有向距离</p>
+<p><strong>Q</strong> 计算电偶极子产生的场强 $(\mathbf{p},\mathbf{r},\theta)$<br>一般情况有</p>
+<script type="math/tex; mode=display">
+    \mathbf{E}=\frac{1}{4\pi \varepsilon_0 r^{3}}\left[\frac{3(\mathbf{p}\cdot \mathbf{r})\mathbf{r}}{r^{2}}-\mathbf{p}\right]</script><p><strong>Q</strong> 计算无限长带电直线距离 $d$处场强</p>
+<script type="math/tex; mode=display">
+    E=\frac{\lambda}{2\pi \varepsilon_0 d}</script><p><strong>Q</strong> 半无限长端面</p>
+<script type="math/tex; mode=display">
+    E_x=E_y=\frac{\lambda}{4\pi \varepsilon_0d}</script><p><strong>Q</strong> 计算均匀带电细圆环轴线上的电场 $(q,r,z)$</p>
+<script type="math/tex; mode=display">
+    E_z=\frac{qz}{4\pi \varepsilon_0 (r^{2}+z^{2})^{\frac{3}{2}}}</script><p><strong>Q</strong> 计算薄圆盘的电场</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}E=\frac{\mathrm{d}q}{4\pi \varepsilon_0} \frac{z}{(r^{2}+z^{2})^{\frac{3}{2}}}</script><p>从而 </p>
+<script type="math/tex; mode=display">
+    E=\frac{\sigma}{2 \varepsilon_0}\left(1-\frac{z}{\sqrt{R^{2}+z^{2}}}\right)</script><p>注意</p>
 <ul>
-<li>谱定理 </li>
-<li>$A^{*}=p(A)$，对某个多项式 $p(t)$</li>
+<li>$\displaystyle z\to \infty \colon E=0$</li>
+<li>$\displaystyle z \gg R \colon E=\frac{Q}{4\pi \varepsilon_0 z^{2}}$</li>
+<li>$\displaystyle z \to 0 \colon E=\frac{\sigma}{2 \varepsilon_0}$</li>
 </ul>
-<p>$\mathbb{R}$ 上的正定算子首先是对称算子， $\mathbb{C}$ 上的正定算子首先是自伴算子</p>
-<p><strong>Riesz Representation Theorem</strong></p>
-<p>有限维线性空间 $V$ 上的线性函数 $\varphi$，一定存在唯一的 $u \in V$，使得</p>
+<h3 id="电场力和力矩"><a href="#电场力和力矩" class="headerlink" title="电场力和力矩"></a>电场力和力矩</h3><script type="math/tex; mode=display">
+    \mathbf{F}=q_0 \mathbf{E}</script><p><strong>Q</strong> 求电偶极子受的合力</p>
 <script type="math/tex; mode=display">
-    \varphi(v)= \langle v,y \rangle</script><p><strong>正定算子的刻画</strong>  </p>
-<p>$T$正定 $\Leftrightarrow$ $T$ 自伴且所有特征值都为正 $\Leftrightarrow$ $T$ 有（唯一的）正定的平方根 $\Leftrightarrow$ $T$ 有自伴的平方根  $\Leftrightarrow$ $\exists R, T=R^{*}R$</p>
-<p>证明用到谱定理</p>
-<p>注意一个正定算子可以有无穷多平方根（当然只有一个是正定的）</p>
-<p><strong>等距算子的刻画</strong></p>
-<p>$S$ 是等距算子 $\Leftrightarrow$ $\langle Su,Sv \rangle = \langle u,v \rangle, \forall u,v \in V $ $\Leftrightarrow$ $S$ 把一组正交向量映成一组正交向量 $\Leftrightarrow$ $S$ 把一组正交基映成正交基 $\Leftrightarrow$ $S^{<em>}S=SS^{</em>}=I$ $\Leftrightarrow$ $S^{<em>}$ 是等距算子 $\Leftrightarrow$ $S$ 可逆且 $S ^{-1}=S^{</em>}$</p>
-<p>由此可知等距算子是正规算子</p>
-<p><strong>$\mathbb{C}$ 上等距算子的刻画</strong></p>
-<p>复线性空间上的算子是等距算子 $\Leftrightarrow$ 存在一组 $S$ 的特征向量为标准正交基，它们对应的特征值模长均为1 </p>
-<p><strong>谱分解</strong></p>
-<p>假设 $A \in \mathbb{C}^{n \times n}$ 可对角化，$\lambda_1,\cdots \lambda_s$ 是所有互不相同的特征值，则存在唯一的分解 $P_i= Q_i \widetilde{Q}_i$，使得</p>
-<ul>
-<li>$\sum_{i=1}^{s} P_i=I$</li>
-<li>$P_i P_j = \delta_{ij} P_i$，这说明 $P_i$ 是投影</li>
-<li>$A=\lambda_1 P_1+\cdots +\lambda_s P_s$   </li>
+    \mathbf{F}=0</script><p><strong>Q</strong> 求电偶极子在均匀外电场中受到的电场力偶矩 $(p,E,\theta)$</p>
+<script type="math/tex; mode=display">
+    \mathbf{M}=\mathbf{p} \times \mathbf{E}</script><p><strong>Q</strong> 非匀强场中电偶极子的受力 $(\mathbf{p}=p \mathbf{k}, \mathbf{E}(\mathbf{r}))$</p>
+<script type="math/tex; mode=display">
+    \mathbf{F}=p \frac{\partial \mathbf{E}}{\partial z}</script><p><strong>Q</strong> 求电偶极子在电场中受力. $\mathbf{p}=(p_x,p_y,p_z), \mathbf{E}(\mathbf{r})$</p>
+<script type="math/tex; mode=display">
+    \mathbf{F}=\mathbf{p} \cdot \nabla \mathbf{E}</script><blockquote>
+<p>上两个式子是令人迷惑的，会有9组不同的坐标出现</p>
+</blockquote>
+<h2 id="高斯定理"><a href="#高斯定理" class="headerlink" title="高斯定理"></a>高斯定理</h2><h3 id="电场线"><a href="#电场线" class="headerlink" title="电场线"></a>电场线</h3><script type="math/tex; mode=display">
+    \mathrm{d}N=E\mathrm{d}S \cos \theta</script><p>其中 $\theta$是 $S$的法向量 $\mathbf{n}$与 $E$的夹角</p>
+<h3 id="电通量（flux）"><a href="#电通量（flux）" class="headerlink" title="电通量（flux）"></a>电通量（flux）</h3><script type="math/tex; mode=display">
+    \mathrm{d}\Phi=\mathbf{E}\cdot \mathrm{d}\mathbf{S}=E\mathrm{d}S_{\perp }</script><p>其中 $\mathrm{d}\mathbf{S}=\mathrm{d}S \mathbf{e_n}$<br>从定义看出，电通量可以有正负</p>
+<p>通过任意曲面的电通量</p>
+<script type="math/tex; mode=display">
+    \Phi=\iint_{S} \mathbf{E}\cdot \mathrm{d}\mathbf{S}</script><p>当曲面为闭合面时，取外法向</p>
+<h3 id="高斯定理-1"><a href="#高斯定理-1" class="headerlink" title="高斯定理"></a>高斯定理</h3><p><strong>立体角</strong></p>
+<script type="math/tex; mode=display">
+    \mathrm{d}\Omega =\frac{\mathbf{e_r}\cdot \mathrm{d}\mathbf{S}}{r^{2}}=\sin \theta\mathrm{d}\theta \mathrm{d}\varphi</script><p>以观测点为球心，构造一个单位球面；任意物体投影到该单位球面上的投影面积，即为该物体相对于该观测点的立体角。</p>
+<blockquote>
+<p>立体角可以小于零（有向面积）</p>
+</blockquote>
+<p><strong>Q</strong> 计算任意闭合曲面对面内一点 o 所张的立体角（$4\pi$）</p>
+<p><strong>Q</strong> 部分曲面 $\Delta \Omega$，$q$，电通量？</p>
+<script type="math/tex; mode=display">
+    \Delta \Phi=\frac{q \Delta \Omega}{4\pi \varepsilon_0}</script><p><strong>Q</strong> 任意闭合曲面，曲面外一点 o，则积分</p>
+<script type="math/tex; mode=display">
+    \oiint_{S} \frac{\mathbf{e_r}\cdot \mathrm{d}\mathbf{S}}{r^{2}}=0</script><p>从而任意闭合面，不包围 $q$，电通量为0.<br><strong>点电荷在闭合面外对电通量无贡献，但对闭合面上的电场强度有贡献</strong></p>
+<p>电场线数目</p>
+<script type="math/tex; mode=display">
+    N=\frac{q}{\varepsilon_0}</script><p>高斯定理</p>
+<script type="math/tex; mode=display">
+    \oiint_{S} \mathbf{E}\cdot \mathrm{d}\mathbf{S}=\frac{1}{\varepsilon_0}\sum_{i}^{} q_i</script><p>$S$称为Gauss面</p>
+<p>连续情况</p>
+<script type="math/tex; mode=display">
+    \oiint_{S}\mathbf{E}\cdot \mathrm{d}\mathbf{S}=\frac{1}{\varepsilon_0}\iiint_{V} \rho \mathrm{d}V</script><h3 id="高斯定理应用"><a href="#高斯定理应用" class="headerlink" title="高斯定理应用"></a>高斯定理应用</h3><p>均匀带电球的电场分布</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        \displaystyle \mathbf{E}=\frac{\rho}{3 \varepsilon_0}\mathbf{r}, r < R \\
+        \displaystyle \mathbf{E}=\frac{q}{4\pi \varepsilon_0r^{3}}\mathbf{r}, r\geqslant R \\ 
+    \end{cases}</script><h3 id="高斯定理的微分形式"><a href="#高斯定理的微分形式" class="headerlink" title="高斯定理的微分形式"></a>高斯定理的微分形式</h3><p>将高斯定理应用在 $\Delta V$ 小体积元上</p>
+<script type="math/tex; mode=display">
+    \frac{\rho \mathrm{d}V}{\varepsilon_0}=\oiint \mathbf{E}\cdot \mathrm{d}\mathbf{S}=(\nabla \cdot \mathbf{E})\mathrm{d}V</script><p>最后一步用到数学中的高斯定理<br>故有</p>
+<script type="math/tex; mode=display">
+    \nabla \cdot \mathbf{E}=\frac{\rho}{\varepsilon_0}</script><p>即<strong>E的散度等于电荷密度除以 $\varepsilon_0$</strong></p>
+<h2 id="电势"><a href="#电势" class="headerlink" title="电势"></a>电势</h2><h3 id="环路定理"><a href="#环路定理" class="headerlink" title="环路定理"></a>环路定理</h3><p>静电场力为保守力，电场强度沿任意闭合路径的环流为零</p>
+<script type="math/tex; mode=display">
+    \oint_{l}\mathbf{E} \cdot \mathrm{d}\mathbf{l}=0</script><h3 id="电势-1"><a href="#电势-1" class="headerlink" title="电势"></a>电势</h3><script type="math/tex; mode=display">
+    V_1-V_2= \int_{1}^{2} \mathbf{E}\cdot  \mathrm{d}\mathbf{l}</script><script type="math/tex; mode=display">
+    -\mathrm{d}V=\mathbf{E}\cdot \mathrm{d}\mathbf{l}</script><p>点电荷的电势</p>
+<script type="math/tex; mode=display">
+    V_{P}=\frac{q}{4\pi \varepsilon_0 r}</script><p><strong>Q</strong> 均匀带电球体的电势分布<br>omitted </p>
+<p><strong>Q</strong> 均匀带电球面的电势分布<br>注意球内电场强度为零，故电势不变</p>
+<p><strong>Q</strong> 电偶极子的电势分布 $(p,r,\theta)$</p>
+<script type="math/tex; mode=display">
+    V=\frac{q}{4\pi \varepsilon_0 r_{+}} -\frac{q}{4\pi \varepsilon_0 r_{-}}=\frac{q(r_{-}-r_{+})}{4\pi \varepsilon_0 r_{+} r_{-}}=\frac{p\cos \theta}{4\pi \varepsilon_0 r^{2}}=\frac{\mathbf{p}\cdot \mathbf{r}}{4\pi \varepsilon_0 r^{3}}</script><p><strong>电偶极层&amp;电偶极层强度</strong></p>
+<script type="math/tex; mode=display">
+    \mathbf{\tau}=\mathbf{l}\sigma_{e}=\frac{\Delta p}{\Delta S}</script><p>任意形状电偶极层在A点的电势</p>
+<script type="math/tex; mode=display">
+    V_{A}=\frac{l\sigma_{e}}{4\pi \varepsilon_0}\Omega, (z>0) \\ 
+    V_{A}=-\frac{l\sigma_{e}}{4\pi \varepsilon_0}\Omega, (z<0) \\</script><p>电偶极层两侧电势差为 $\displaystyle \frac{\tau}{\varepsilon_0}$   </p>
+<p><strong>Q</strong> 细带电半圆环 $(R,x)$ 且 $\lambda(\theta)=\lambda_0 \sin \theta$<br>求直径上任一点的电势</p>
+<script type="math/tex; mode=display">
+    U(x)=\int_{0}^{\pi} \frac{R\lambda_0 \sin \theta \mathrm{d}\theta}{4\pi \varepsilon_0(R^{2}+x^{2}-2Rx \cos \theta)^{\frac{1}{2}}}=\frac{\lambda_0}{2\pi \varepsilon_0}</script><p>即直径上各点的电势相同</p>
+<blockquote>
+<p>通过计算可以发现直径上各点电场方向垂直于直径</p>
+</blockquote>
+<p>类似有均匀带电半球面在底面电势相等 </p>
+<h3 id="电势梯度"><a href="#电势梯度" class="headerlink" title="电势梯度"></a>电势梯度</h3><ul>
+<li>等势面与电场线处处正交</li>
+<li>电荷移动的始点与终点在同一等势面上，电场力不做功</li>
 </ul>
-<p>并且用插值法可以得到 $P_i$ 是 $A$ 的多项式</p>
-<p>于是我们可以得到 $A$ 是正规算子 $\Leftrightarrow$ $A$ 可对角化且谱分解中的投影均为正交投影（注意到用谱定理可以证明，正规的投影算子一定是自共轭的）</p>
-<p><strong>极分解</strong></p>
-<p>$V$ 上的线性算子 $T$ 可以写成如下形式</p>
+<p><strong>电势梯度</strong></p>
 <script type="math/tex; mode=display">
-    T=S \sqrt{T^{*}T}</script><p>其中 $S$ 是等距算子</p>
-<p>那么也可以写成</p>
+    \nabla V=\frac{\mathrm{d}V}{\mathrm{d}n}\mathbf{e_n}</script><p>大小等于沿着等势面法线方向的空间变化率，指向电势增加的方向</p>
+<p>有</p>
 <script type="math/tex; mode=display">
-    T= \sqrt{TT^{*}}S'</script><p>如果正定算子 $R$ 使得 $T=SR$，那么 $R=\sqrt{T^{*}T}$，即极分解唯一</p>
-<p>有趣的是，如果 $T$ 正规，那么 </p>
+    \mathbf{E}=-\nabla V=-(\frac{\partial V}{\partial x}\mathbf{i}+\frac{\partial V}{\partial y}\mathbf{j}+\frac{\partial V}{\partial z}\mathbf{k})</script><p>即电场强度和电势梯度的大小相等，方向相反</p>
+<h3 id="电势能"><a href="#电势能" class="headerlink" title="电势能"></a>电势能</h3><script type="math/tex; mode=display">
+    W=qV</script><script type="math/tex; mode=display">
+    W_1-W_2=\int_{1}^{2} q_0 \mathbf{E} \cdot \mathrm{d}\mathbf{l}</script><p><strong>Q</strong> 电偶极子 $\mathbf{p}$ 在外电场 $\mathbf{E}$ 中的电势能 </p>
 <script type="math/tex; mode=display">
-    T=S \sqrt{T^{*}T}=\sqrt{T^{*}T}S</script><p><strong>证</strong> 设 $T=PQ$，其中 $P$ 是保距算子，$Q$ 是（半）正定的，那么由 $T$ 正规可以得到 </p>
-<script type="math/tex; mode=display">
-    (PQP^{*})^{2}=PQ^{2}P^{*}=Q^{2}</script><p>两边开方得到 </p>
-<script type="math/tex; mode=display">
-    PQP^{*}=Q</script><p>即</p>
-<script type="math/tex; mode=display">
-    PQ=QP</script><p><strong>SVD分解</strong></p>
-<p>可以写成两种形式，并且不限于方阵</p>
-<p><strong>$n$ 维空间 $V$ 满足 $V= \text{Ker} T^{n} \oplus \text{Im} T^{n}$</strong></p>
-
+    W_{\text{dipole}}=-\mathbf{p}\cdot \mathbf{E}</script>
               
             </div>
             <hr/>
@@ -407,8 +463,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E4%BB%A3%E6%95%B0%E5%AD%A6/" class="category-chain-item">代数学</a>
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/" class="category-chain-item">物理学</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/%E6%99%AE%E7%89%A9/" class="category-chain-item">普物</a>
+  
+  
+
   
 
       </span>
@@ -422,7 +485,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+        <a href="/tags/%E7%89%A9%E7%90%86/">#物理</a>
       
     </div>
   
@@ -434,8 +497,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Algebra (1)</div>
-      <div>http://example.com/2022/04/10/Algebra-1/</div>
+      <div>Chapter10</div>
+      <div>http://example.com/2022/06/11/Chapter10/</div>
     </div>
     <div class="license-meta">
       
@@ -447,7 +510,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月10日</div>
+          <div>2022年6月11日</div>
         </div>
       
       
@@ -472,6 +535,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter11/" title="Chapter11">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Chapter11</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/29/%E6%B0%B8%E4%B9%85%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%89%EF%BC%89/" title="永久记录（三）">
+                        <span class="hidden-mobile">永久记录（三）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 

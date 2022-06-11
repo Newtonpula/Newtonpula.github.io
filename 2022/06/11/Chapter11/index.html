@@ -16,24 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="isomorphism 同构 epimorphism 满态射 monomorphism 单态射 bimorphism 双同态 endomorphism 自同态 automorphism 自同构  quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$    Schur’s Theorem  复线性空间上的线性算子可以正交相似于上对角算子 复线性空间上的线性算子 $T">
+    <meta name="description" content="导体和电介质">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algebra (1)">
-<meta property="og:url" content="http://example.com/2022/04/10/Algebra-1/index.html">
+<meta property="og:title" content="Chapter11">
+<meta property="og:url" content="http://example.com/2022/06/11/Chapter11/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="isomorphism 同构 epimorphism 满态射 monomorphism 单态射 bimorphism 双同态 endomorphism 自同态 automorphism 自同构  quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$    Schur’s Theorem  复线性空间上的线性算子可以正交相似于上对角算子 复线性空间上的线性算子 $T">
+<meta property="og:description" content="导体和电介质">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/index/algebra.png">
-<meta property="article:published_time" content="2022-04-10T02:13:56.000Z">
-<meta property="article:modified_time" content="2022-06-10T11:59:14.250Z">
+<meta property="og:image" content="http://example.com/img/index/physics.jpg">
+<meta property="article:published_time" content="2022-06-11T13:36:18.000Z">
+<meta property="article:modified_time" content="2022-06-11T13:41:12.610Z">
 <meta property="article:author" content="Yixiao Feng">
-<meta property="article:tag" content="数学">
+<meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/index/algebra.png">
+<meta name="twitter:image" content="http://example.com/img/index/physics.jpg">
   
   
   
-  <title>Algebra (1) - Newtonpula的自留地</title>
+  <title>Chapter11 - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Algebra (1)"></span>
+            <span id="subtitle" data-typed-text="Chapter11"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-10 10:13" pubdate>
-          2022年4月10日 上午
+        <time datetime="2022-06-11 21:36" pubdate>
+          2022年6月11日 晚上
         </time>
       </span>
     
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.8k 字
+          2.2k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          16 分钟
+          19 分钟
         
       </span>
     
@@ -319,78 +319,74 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Algebra (1)</h1>
+            <h1 style="display: none">Chapter11</h1>
             
             <div class="markdown-body">
               
-              <ul>
-<li>isomorphism 同构</li>
-<li>epimorphism 满态射</li>
-<li>monomorphism 单态射</li>
-<li>bimorphism 双同态</li>
-<li>endomorphism 自同态</li>
-<li><p>automorphism 自同构</p>
-</li>
-<li><p>quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$ </p>
-</li>
-</ul>
-<p><strong>Schur’s Theorem</strong> </p>
-<p>复线性空间上的线性算子可以正交相似于上对角算子</p>
-<p><strong>复线性空间上的线性算子 $T$ 若满足 $\langle Tv,v \rangle =0, \forall v \in V$，则 $T=0$</strong> </p>
-<p>《LADR》210</p>
-<p><strong>复线性空间上的线性算子 $T$ 是自伴的 $\Leftrightarrow$ $\langle Tv,v \rangle \in \mathbb{R}, \forall v \in V$</strong></p>
-<p><strong>$T$ 正规 $\Leftrightarrow$ $\left| Tv \right|_{}=\left| T^{*}v \right|_{}, \forall v \in V$</strong></p>
-<p>从而 $T$ 与 $T^{*}$ 有相同的特征向量</p>
-<p><strong>The Complex Spectral Theorem</strong> </p>
-<p>复线性空间上的正规算子可以酉对角化</p>
-<p><strong>Real Spectral Theorem</strong> </p>
-<p>实线性空间上的自伴算子可以正交对角化</p>
-<p><strong>正规算子的刻画</strong></p>
+              <h1 id="导体和电介质"><a href="#导体和电介质" class="headerlink" title="导体和电介质"></a>导体和电介质</h1><h2 id="导体"><a href="#导体" class="headerlink" title="导体"></a>导体</h2><h3 id="静电平衡"><a href="#静电平衡" class="headerlink" title="静电平衡"></a>静电平衡</h3><p>表面电场</p>
+<script type="math/tex; mode=display">
+    \mathbf{E}= \frac{\sigma}{\varepsilon_0} \mathbf{n}</script><p>其中 $\sigma$ 为电荷面密度. 用高斯定理即可证明. </p>
+<p>腔内无电荷，$U_{腔}=U_0, E_{腔内}=0, \sigma_{内}=0$（内表面无净电荷）</p>
+<p>导体接地，导体电势为零，但电荷不一定全跑光</p>
+<h3 id="唯一性定理"><a href="#唯一性定理" class="headerlink" title="唯一性定理"></a>唯一性定理</h3><p>空间电荷分布确定，该空间的电场分布由各个导体的电势（或电量）及区域边界上的电势（或电场）唯一确定. 空间电荷分布确定，边界条件确定，则场分布唯一确定.</p>
+<h3 id="静电屏蔽"><a href="#静电屏蔽" class="headerlink" title="静电屏蔽"></a>静电屏蔽</h3><p>接地空腔导体可保护腔外空间不受腔内带电体的影响——全静电屏蔽</p>
+<h3 id="孤立导体"><a href="#孤立导体" class="headerlink" title="孤立导体"></a>孤立导体</h3><h2 id="电容器及电容"><a href="#电容器及电容" class="headerlink" title="电容器及电容"></a>电容器及电容</h2><h2 id="电介质"><a href="#电介质" class="headerlink" title="电介质"></a>电介质</h2><h3 id="介质的极化"><a href="#介质的极化" class="headerlink" title="介质的极化"></a>介质的极化</h3><p><strong>有极分子的转向极化</strong></p>
 <ul>
-<li>谱定理 </li>
-<li>$A^{*}=p(A)$，对某个多项式 $p(t)$</li>
+<li>极性分子： $p\neq 0$ 分子有固有电偶极矩</li>
+<li>无极分子： $p=0$ 分子无固有电偶极矩</li>
 </ul>
-<p>$\mathbb{R}$ 上的正定算子首先是对称算子， $\mathbb{C}$ 上的正定算子首先是自伴算子</p>
-<p><strong>Riesz Representation Theorem</strong></p>
-<p>有限维线性空间 $V$ 上的线性函数 $\varphi$，一定存在唯一的 $u \in V$，使得</p>
+<p><strong>无极分子的位移极化（感应极化）</strong><br>无极分子在外场的作用下正、负电荷中心发生偏移而产生的极化现象</p>
+<h3 id="极化强度"><a href="#极化强度" class="headerlink" title="极化强度"></a>极化强度</h3><p>极化强度 </p>
 <script type="math/tex; mode=display">
-    \varphi(v)= \langle v,y \rangle</script><p><strong>正定算子的刻画</strong>  </p>
-<p>$T$正定 $\Leftrightarrow$ $T$ 自伴且所有特征值都为正 $\Leftrightarrow$ $T$ 有（唯一的）正定的平方根 $\Leftrightarrow$ $T$ 有自伴的平方根  $\Leftrightarrow$ $\exists R, T=R^{*}R$</p>
-<p>证明用到谱定理</p>
-<p>注意一个正定算子可以有无穷多平方根（当然只有一个是正定的）</p>
-<p><strong>等距算子的刻画</strong></p>
-<p>$S$ 是等距算子 $\Leftrightarrow$ $\langle Su,Sv \rangle = \langle u,v \rangle, \forall u,v \in V $ $\Leftrightarrow$ $S$ 把一组正交向量映成一组正交向量 $\Leftrightarrow$ $S$ 把一组正交基映成正交基 $\Leftrightarrow$ $S^{<em>}S=SS^{</em>}=I$ $\Leftrightarrow$ $S^{<em>}$ 是等距算子 $\Leftrightarrow$ $S$ 可逆且 $S ^{-1}=S^{</em>}$</p>
-<p>由此可知等距算子是正规算子</p>
-<p><strong>$\mathbb{C}$ 上等距算子的刻画</strong></p>
-<p>复线性空间上的算子是等距算子 $\Leftrightarrow$ 存在一组 $S$ 的特征向量为标准正交基，它们对应的特征值模长均为1 </p>
-<p><strong>谱分解</strong></p>
-<p>假设 $A \in \mathbb{C}^{n \times n}$ 可对角化，$\lambda_1,\cdots \lambda_s$ 是所有互不相同的特征值，则存在唯一的分解 $P_i= Q_i \widetilde{Q}_i$，使得</p>
+    \mathbf{P}= \lim_{\Delta V \to 0} \frac{\sum_{i}^{} \mathbf{p}_i}{\Delta V}</script><p>要求 $\Delta V$ 宏观小，微观大. $\mathbf{p}_i$ 为分子电偶极矩，求和为矢量和，单位为 C/m$^{2}$</p>
+<p>完全极化的电介质，单位体积内分子数为 $n$，则极化强度为</p>
+<script type="math/tex; mode=display">
+    \mathbf{P}=n \mathbf{p}</script><h3 id="极化电荷"><a href="#极化电荷" class="headerlink" title="极化电荷"></a>极化电荷</h3><p>在介质表面出现电荷，称为极化（束缚）电荷；也可能在体内出现极化电荷.</p>
+<p>面元 $\Delta S $处的极化电荷面密度</p>
+<script type="math/tex; mode=display">
+    \sigma'=\mathbf{P} \cdot \mathbf{e}_n</script><p>任意闭合面内体极化电荷</p>
+<script type="math/tex; mode=display">
+    q'=-\oiint _{S} \mathbf{P} \cdot \mathrm{d}\mathbf{S}</script><h3 id="极化率"><a href="#极化率" class="headerlink" title="极化率"></a>极化率</h3><p>对于各向同性的电介质，当外加电场不太强时，介质内任意点的极化强度与该点的总电场强度 $E=E_0+E’$ 成正比. $E’$ 为介质极化所产生的附加电场强度.</p>
+<script type="math/tex; mode=display">
+    \mathbf{P}= \chi_e \varepsilon_0 \mathbf{E}</script><p>式中 $\chi_e$ 为介质的极化率. 一般来说极化率与介质中的电场强度无关，且为无量纲常量.</p>
+<h3 id="介质中静电场的环流定理"><a href="#介质中静电场的环流定理" class="headerlink" title="介质中静电场的环流定理"></a>介质中静电场的环流定理</h3><script type="math/tex; mode=display">
+    \oint_{l} \mathbf{E}_0 \cdot \mathrm{d}l=0</script><h3 id="介质中静电场的高斯定理"><a href="#介质中静电场的高斯定理" class="headerlink" title="介质中静电场的高斯定理"></a>介质中静电场的高斯定理</h3><p>定义</p>
+<script type="math/tex; mode=display">
+    \varepsilon_0 \mathbf{E}+\mathbf{P}=\mathbf{D}</script><p>则 </p>
+<script type="math/tex; mode=display">
+    \oiint_{S} \mathbf{D} \cdot \mathrm{d} \mathbf{S}= \sum_{S内}^{} q_0</script><p>$\mathbf{D}$ 称为电位移矢量，注意</p>
 <ul>
-<li>$\sum_{i=1}^{s} P_i=I$</li>
-<li>$P_i P_j = \delta_{ij} P_i$，这说明 $P_i$ 是投影</li>
-<li>$A=\lambda_1 P_1+\cdots +\lambda_s P_s$   </li>
+<li>电位移矢量并不仅仅由空间自由电荷分布决定，它还与外加电场 $\mathbf{E}_0$ 和介质的极化电荷有关；</li>
+<li>$\mathbf{D}$ 本身没有物理意义</li>
+<li>上面的定义是对于各向同性线性介质而言的. 对于一般介质， $\mathbf{P}$ 与 $\mathbf{E}$ 关系复杂（张量），如铁电体的电滞回线.</li>
 </ul>
-<p>并且用插值法可以得到 $P_i$ 是 $A$ 的多项式</p>
-<p>于是我们可以得到 $A$ 是正规算子 $\Leftrightarrow$ $A$ 可对角化且谱分解中的投影均为正交投影（注意到用谱定理可以证明，正规的投影算子一定是自共轭的）</p>
-<p><strong>极分解</strong></p>
-<p>$V$ 上的线性算子 $T$ 可以写成如下形式</p>
+<p>外电场不太强时</p>
 <script type="math/tex; mode=display">
-    T=S \sqrt{T^{*}T}</script><p>其中 $S$ 是等距算子</p>
-<p>那么也可以写成</p>
+    \mathbf{D}=\varepsilon_0 E+\chi_e \varepsilon_0 E =\varepsilon_0(1+\chi_e)\mathbf{E}</script><p>令 $\varepsilon_r=1+ \chi_e$ 为介质的相对介电常数，则</p>
 <script type="math/tex; mode=display">
-    T= \sqrt{TT^{*}}S'</script><p>如果正定算子 $R$ 使得 $T=SR$，那么 $R=\sqrt{T^{*}T}$，即极分解唯一</p>
-<p>有趣的是，如果 $T$ 正规，那么 </p>
+    \mathbf{D}=\varepsilon_0 \varepsilon_r \mathbf{E}=\varepsilon \mathbf{E}</script><p>注意，对于永久极化的驻极体，上式并不成立</p>
+<p><strong>Q</strong> 均匀介质球发生均匀极化  $(\mathbf{P},R)$ 则球内电场为</p>
 <script type="math/tex; mode=display">
-    T=S \sqrt{T^{*}T}=\sqrt{T^{*}T}S</script><p><strong>证</strong> 设 $T=PQ$，其中 $P$ 是保距算子，$Q$ 是（半）正定的，那么由 $T$ 正规可以得到 </p>
+    \mathbf{E}'=-\frac{P}{3 \varepsilon_0}</script><h3 id="介质交界面两侧电场的关系"><a href="#介质交界面两侧电场的关系" class="headerlink" title="介质交界面两侧电场的关系"></a>介质交界面两侧电场的关系</h3><p><strong>电场强度与界面垂直</strong><br>价值两侧电场电矢量位移值 $\mathbf{D}$ 连续，则电场强度 $\mathbf{E}$ 在介质界面不连续</p>
+<p><strong>电场强度与界面斜交</strong><br>在介质两侧的电场电位移矢量在界面法线方向分量连续，从而电场强度在界面法线方向的分量不连续；介质两侧的电场强度界面切线方向的分量连续，从而电场电位移矢量在界面切线方向的分量不连续.</p>
+<p>满足折射定律</p>
 <script type="math/tex; mode=display">
-    (PQP^{*})^{2}=PQ^{2}P^{*}=Q^{2}</script><p>两边开方得到 </p>
+    \frac{\tan \theta_1}{\tan \theta_2} = \frac{\varepsilon_1}{\varepsilon_2}</script><p>（与法线夹角）</p>
+<p><strong>有介质时的唯一性定理</strong></p>
+<p>空间电荷分布确定， $\varepsilon_i$ 分布确定，在各个子区域的边界上满足</p>
 <script type="math/tex; mode=display">
-    PQP^{*}=Q</script><p>即</p>
+    \mathbf{E}_{it}=\mathbf{E}_{jt}, \quad \mathbf{D}_{in}=\mathbf{D}_{jn}</script><p>该空间的电场分布由各个导体的电势（或电量）及整个区域边界上的电势（或电场）唯一确定.</p>
+<h2 id="静电场的能量"><a href="#静电场的能量" class="headerlink" title="静电场的能量"></a>静电场的能量</h2><p>$n$ 个点电荷总电势能</p>
 <script type="math/tex; mode=display">
-    PQ=QP</script><p><strong>SVD分解</strong></p>
-<p>可以写成两种形式，并且不限于方阵</p>
-<p><strong>$n$ 维空间 $V$ 满足 $V= \text{Ker} T^{n} \oplus \text{Im} T^{n}$</strong></p>
-
+    W=\frac{1}{2} \sum_{i}^{} q_i U_i</script><p>令 $U_i$ 为 $q_i$ 以外的电荷在 $q_i$ 处的电势</p>
+<p>一个带电体的总电势能</p>
+<script type="math/tex; mode=display">
+    W=\frac{1}{2} \int_{Q}^{} U \mathrm{d}q</script><p>把各点电荷彼此分散到无限远的过程中电场力做的功，把这些点电荷从无限远离的状态聚合到给定位置时外力做的功</p>
+<p><strong>带电导体球的静电能（$Q,R$）</strong></p>
+<script type="math/tex; mode=display">
+    W=\frac{Q^{2}}{8\pi \varepsilon_0 R}</script><h3 id="电场能量密度"><a href="#电场能量密度" class="headerlink" title="电场能量密度"></a>电场能量密度</h3><p>电场能密度 </p>
+<script type="math/tex; mode=display">
+    w_{e}=\frac{1}{2} \mathbf{D} \cdot \mathbf{E}</script>
               
             </div>
             <hr/>
@@ -407,8 +403,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E4%BB%A3%E6%95%B0%E5%AD%A6/" class="category-chain-item">代数学</a>
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/" class="category-chain-item">物理学</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/%E6%99%AE%E7%89%A9/" class="category-chain-item">普物</a>
+  
+  
+
   
 
       </span>
@@ -422,7 +425,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+        <a href="/tags/%E7%89%A9%E7%90%86/">#物理</a>
       
     </div>
   
@@ -434,8 +437,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Algebra (1)</div>
-      <div>http://example.com/2022/04/10/Algebra-1/</div>
+      <div>Chapter11</div>
+      <div>http://example.com/2022/06/11/Chapter11/</div>
     </div>
     <div class="license-meta">
       
@@ -447,7 +450,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月10日</div>
+          <div>2022年6月11日</div>
         </div>
       
       
@@ -472,6 +475,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter12/" title="Chapter12">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Chapter12</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter10/" title="Chapter10">
+                        <span class="hidden-mobile">Chapter10</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 

@@ -16,24 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="isomorphism 同构 epimorphism 满态射 monomorphism 单态射 bimorphism 双同态 endomorphism 自同态 automorphism 自同构  quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$    Schur’s Theorem  复线性空间上的线性算子可以正交相似于上对角算子 复线性空间上的线性算子 $T">
+    <meta name="description" content="光的偏振">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algebra (1)">
-<meta property="og:url" content="http://example.com/2022/04/10/Algebra-1/index.html">
+<meta property="og:title" content="Chapter17">
+<meta property="og:url" content="http://example.com/2022/06/11/Chapter17/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="isomorphism 同构 epimorphism 满态射 monomorphism 单态射 bimorphism 双同态 endomorphism 自同态 automorphism 自同构  quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$    Schur’s Theorem  复线性空间上的线性算子可以正交相似于上对角算子 复线性空间上的线性算子 $T">
+<meta property="og:description" content="光的偏振">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/index/algebra.png">
-<meta property="article:published_time" content="2022-04-10T02:13:56.000Z">
-<meta property="article:modified_time" content="2022-06-10T11:59:14.250Z">
+<meta property="og:image" content="http://example.com/img/index/physics.jpg">
+<meta property="article:published_time" content="2022-06-11T13:37:13.000Z">
+<meta property="article:modified_time" content="2022-06-11T13:45:53.145Z">
 <meta property="article:author" content="Yixiao Feng">
-<meta property="article:tag" content="数学">
+<meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/index/algebra.png">
+<meta name="twitter:image" content="http://example.com/img/index/physics.jpg">
   
   
   
-  <title>Algebra (1) - Newtonpula的自留地</title>
+  <title>Chapter17 - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Algebra (1)"></span>
+            <span id="subtitle" data-typed-text="Chapter17"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-10 10:13" pubdate>
-          2022年4月10日 上午
+        <time datetime="2022-06-11 21:37" pubdate>
+          2022年6月11日 晚上
         </time>
       </span>
     
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.8k 字
+          1.5k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          16 分钟
+          13 分钟
         
       </span>
     
@@ -319,77 +319,48 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Algebra (1)</h1>
+            <h1 style="display: none">Chapter17</h1>
             
             <div class="markdown-body">
               
-              <ul>
-<li>isomorphism 同构</li>
-<li>epimorphism 满态射</li>
-<li>monomorphism 单态射</li>
-<li>bimorphism 双同态</li>
-<li>endomorphism 自同态</li>
-<li><p>automorphism 自同构</p>
-</li>
-<li><p>quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$ </p>
-</li>
-</ul>
-<p><strong>Schur’s Theorem</strong> </p>
-<p>复线性空间上的线性算子可以正交相似于上对角算子</p>
-<p><strong>复线性空间上的线性算子 $T$ 若满足 $\langle Tv,v \rangle =0, \forall v \in V$，则 $T=0$</strong> </p>
-<p>《LADR》210</p>
-<p><strong>复线性空间上的线性算子 $T$ 是自伴的 $\Leftrightarrow$ $\langle Tv,v \rangle \in \mathbb{R}, \forall v \in V$</strong></p>
-<p><strong>$T$ 正规 $\Leftrightarrow$ $\left| Tv \right|_{}=\left| T^{*}v \right|_{}, \forall v \in V$</strong></p>
-<p>从而 $T$ 与 $T^{*}$ 有相同的特征向量</p>
-<p><strong>The Complex Spectral Theorem</strong> </p>
-<p>复线性空间上的正规算子可以酉对角化</p>
-<p><strong>Real Spectral Theorem</strong> </p>
-<p>实线性空间上的自伴算子可以正交对角化</p>
-<p><strong>正规算子的刻画</strong></p>
+              <h1 id="光的偏振"><a href="#光的偏振" class="headerlink" title="光的偏振"></a>光的偏振</h1><h2 id="偏振光"><a href="#偏振光" class="headerlink" title="偏振光"></a>偏振光</h2><p><strong>光矢量（电矢量）</strong> </p>
 <ul>
-<li>谱定理 </li>
-<li>$A^{*}=p(A)$，对某个多项式 $p(t)$</li>
+<li>线偏振光（平面偏振光）:光振动矢量 $E$始终保持在一个确定的平面内</li>
+<li>圆偏振光：迎着光的传播方向，光矢量绕着光的传播方向旋转，端点轨迹是一个圆，分右旋或左旋</li>
+<li>椭圆偏振光：迎着光的传播方向，光矢量绕着光的传播方向旋转，端点轨迹是一个椭圆<blockquote>
+<p>圆偏振光和椭圆偏振光都可看作是由两个线偏振光的叠加，</p>
+<script type="math/tex; mode=display">
+  E_y=E_{y0}\cos [\omega t-kx+\varphi_1] \\
+  E_x=E_{x0} \cos [\omega t-kx+\varphi_2]</script></blockquote>
+</li>
+<li>自然光：大量振幅相同（振动方向、相位不确定）的光的叠加，可以看作两个振动方向相互垂直，没有恒定相位关系的独立光矢量的叠加. <strong>它们的振幅相等，光强各占总光强的一半</strong></li>
+<li>部分偏振光——可以认为是相互垂直的、不等幅的线偏振光的非相干叠加. </li>
 </ul>
-<p>$\mathbb{R}$ 上的正定算子首先是对称算子， $\mathbb{C}$ 上的正定算子首先是自伴算子</p>
-<p><strong>Riesz Representation Theorem</strong></p>
-<p>有限维线性空间 $V$ 上的线性函数 $\varphi$，一定存在唯一的 $u \in V$，使得</p>
+<h2 id="偏振片、Malus定律"><a href="#偏振片、Malus定律" class="headerlink" title="偏振片、Malus定律"></a>偏振片、Malus定律</h2><p>最简单的偏振片：拉长的碘-聚乙烯醇分子，电矢量沿长链方向振动的光驱动材料中的电子在长链方向振动（类似于电流），故被吸收；电矢量垂直于长链方向的光能够透过. </p>
+<p><strong>马吕斯定律</strong></p>
 <script type="math/tex; mode=display">
-    \varphi(v)= \langle v,y \rangle</script><p><strong>正定算子的刻画</strong>  </p>
-<p>$T$正定 $\Leftrightarrow$ $T$ 自伴且所有特征值都为正 $\Leftrightarrow$ $T$ 有（唯一的）正定的平方根 $\Leftrightarrow$ $T$ 有自伴的平方根  $\Leftrightarrow$ $\exists R, T=R^{*}R$</p>
-<p>证明用到谱定理</p>
-<p>注意一个正定算子可以有无穷多平方根（当然只有一个是正定的）</p>
-<p><strong>等距算子的刻画</strong></p>
-<p>$S$ 是等距算子 $\Leftrightarrow$ $\langle Su,Sv \rangle = \langle u,v \rangle, \forall u,v \in V $ $\Leftrightarrow$ $S$ 把一组正交向量映成一组正交向量 $\Leftrightarrow$ $S$ 把一组正交基映成正交基 $\Leftrightarrow$ $S^{<em>}S=SS^{</em>}=I$ $\Leftrightarrow$ $S^{<em>}$ 是等距算子 $\Leftrightarrow$ $S$ 可逆且 $S ^{-1}=S^{</em>}$</p>
-<p>由此可知等距算子是正规算子</p>
-<p><strong>$\mathbb{C}$ 上等距算子的刻画</strong></p>
-<p>复线性空间上的算子是等距算子 $\Leftrightarrow$ 存在一组 $S$ 的特征向量为标准正交基，它们对应的特征值模长均为1 </p>
-<p><strong>谱分解</strong></p>
-<p>假设 $A \in \mathbb{C}^{n \times n}$ 可对角化，$\lambda_1,\cdots \lambda_s$ 是所有互不相同的特征值，则存在唯一的分解 $P_i= Q_i \widetilde{Q}_i$，使得</p>
-<ul>
-<li>$\sum_{i=1}^{s} P_i=I$</li>
-<li>$P_i P_j = \delta_{ij} P_i$，这说明 $P_i$ 是投影</li>
-<li>$A=\lambda_1 P_1+\cdots +\lambda_s P_s$   </li>
-</ul>
-<p>并且用插值法可以得到 $P_i$ 是 $A$ 的多项式</p>
-<p>于是我们可以得到 $A$ 是正规算子 $\Leftrightarrow$ $A$ 可对角化且谱分解中的投影均为正交投影（注意到用谱定理可以证明，正规的投影算子一定是自共轭的）</p>
-<p><strong>极分解</strong></p>
-<p>$V$ 上的线性算子 $T$ 可以写成如下形式</p>
+    I_2=I_1\cos ^{2}\alpha</script><h2 id="反射和折射时光的偏振"><a href="#反射和折射时光的偏振" class="headerlink" title="反射和折射时光的偏振"></a>反射和折射时光的偏振</h2><p><strong>布儒斯特定律</strong><br>当自然光以<strong>布儒斯特角</strong> $\theta_B$入射时，折射光是<strong>部分偏振光</strong>，反射光为<strong>振动方向垂直于入射面的线偏振光</strong>，且此时<strong>反射光与折射光之间的夹角恰为$\displaystyle\frac{\pi}{2}$</strong> </p>
+<p>有 </p>
 <script type="math/tex; mode=display">
-    T=S \sqrt{T^{*}T}</script><p>其中 $S$ 是等距算子</p>
-<p>那么也可以写成</p>
+    \tan \theta_B=\frac{n_2}{n_1}</script><p>从 $n_1$射向 $n_2$.</p>
+<h2 id="晶体的双折射现象"><a href="#晶体的双折射现象" class="headerlink" title="晶体的双折射现象"></a>晶体的双折射现象</h2><p>光入射到某些晶体内时，产生两束沿不同方向传播的折射光. 其中一束遵守通常的折射定律，称为<strong>寻常光（o光）</strong>，另一束不遵守折射定律，称为<strong>非常光（e光）</strong></p>
+<p>当光沿着<strong>光轴</strong>方向传播时不产生双折射现象. （光轴只是一个方向）<br>在光轴方向上o光和e光的折射率相等，传播速度也相同.<br>把包含光轴和任一已知光纤所组成的平面称为晶体中该光线的<strong>主平面</strong>.</p>
+<p>由o光和光轴所组成的平面，称为o光的主平面；类似有e光的主平面.</p>
+<p>一般情况下，o光和e光的主平面并不重合，但当光轴位于入射面内时，这两个主平面是重合的.</p>
+<p>双折射现象出现的原因是晶体结构的各向异性. 介电常数 $\varepsilon$ 与方向有关，导致沿各不同方向传播的光速不同. </p>
+<p>非常光在晶体中传播时其光矢量方向与光轴间的夹角随传播方向而异，因此其速率在各个方向上不同.</p>
+<p>两束光只有在沿光轴方向上传播时，它们的速率才相等.</p>
+<p>若使光轴与晶体表面平行，并以平行光垂直入射，经过厚度为 $d$ 的晶体，两束光之间存在光程差 $\delta=\lvert n_o-n_e \rvert d $ ，相应相位差</p>
 <script type="math/tex; mode=display">
-    T= \sqrt{TT^{*}}S'</script><p>如果正定算子 $R$ 使得 $T=SR$，那么 $R=\sqrt{T^{*}T}$，即极分解唯一</p>
-<p>有趣的是，如果 $T$ 正规，那么 </p>
+    \Delta \varphi=\frac{2\pi}{\lambda}\delta=\frac{2\pi}{\lambda}\lvert n_o-n_e \rvert d</script><p>波片厚度满足</p>
 <script type="math/tex; mode=display">
-    T=S \sqrt{T^{*}T}=\sqrt{T^{*}T}S</script><p><strong>证</strong> 设 $T=PQ$，其中 $P$ 是保距算子，$Q$ 是（半）正定的，那么由 $T$ 正规可以得到 </p>
+    \lvert n_e-n_o \rvert d= \frac{\lambda}{4}</script><p>的波片称为四分之一波片，相应有二分之一波片（或半波片）.</p>
+<p>两束光矢量方向相同，相差相位为 $\Delta \varphi$光强为 $I_1, I_2$的线偏振光叠加后合光强为</p>
 <script type="math/tex; mode=display">
-    (PQP^{*})^{2}=PQ^{2}P^{*}=Q^{2}</script><p>两边开方得到 </p>
-<script type="math/tex; mode=display">
-    PQP^{*}=Q</script><p>即</p>
-<script type="math/tex; mode=display">
-    PQ=QP</script><p><strong>SVD分解</strong></p>
-<p>可以写成两种形式，并且不限于方阵</p>
-<p><strong>$n$ 维空间 $V$ 满足 $V= \text{Ker} T^{n} \oplus \text{Im} T^{n}$</strong></p>
+    I_{out}=I_1+I_2+2\sqrt{I_1I_2}\cos \Delta \varphi</script><p>线偏振光通过四分之一波片后变为椭圆或圆偏振光.</p>
+<p>线偏振光通过二分之一波片后变为线偏振光，但是振动方向将转过 $2\alpha$ 角，$\alpha$ 是入射线偏振光振动方向与光轴之间的夹角.</p>
+<p>自然光通过波片后仍为自然光.</p>
+<p>利用四分之一波片，入射线偏振光的振动方向与光轴方向成 $\frac{\pi}{4}$ 时，可以得到圆偏振光.</p>
 
               
             </div>
@@ -407,8 +378,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E4%BB%A3%E6%95%B0%E5%AD%A6/" class="category-chain-item">代数学</a>
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/" class="category-chain-item">物理学</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/%E6%99%AE%E7%89%A9/" class="category-chain-item">普物</a>
+  
+  
+
   
 
       </span>
@@ -422,7 +400,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+        <a href="/tags/%E7%89%A9%E7%90%86/">#物理</a>
       
     </div>
   
@@ -434,8 +412,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Algebra (1)</div>
-      <div>http://example.com/2022/04/10/Algebra-1/</div>
+      <div>Chapter17</div>
+      <div>http://example.com/2022/06/11/Chapter17/</div>
     </div>
     <div class="license-meta">
       
@@ -447,7 +425,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月10日</div>
+          <div>2022年6月11日</div>
         </div>
       
       
@@ -472,6 +450,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter18/" title="Chapter18">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Chapter18</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter16/" title="Chapter16">
+                        <span class="hidden-mobile">Chapter16</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 

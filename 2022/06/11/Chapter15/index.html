@@ -16,24 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="isomorphism 同构 epimorphism 满态射 monomorphism 单态射 bimorphism 双同态 endomorphism 自同态 automorphism 自同构  quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$    Schur’s Theorem  复线性空间上的线性算子可以正交相似于上对角算子 复线性空间上的线性算子 $T">
+    <meta name="description" content="电磁场与电磁波">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algebra (1)">
-<meta property="og:url" content="http://example.com/2022/04/10/Algebra-1/index.html">
+<meta property="og:title" content="Chapter15">
+<meta property="og:url" content="http://example.com/2022/06/11/Chapter15/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="isomorphism 同构 epimorphism 满态射 monomorphism 单态射 bimorphism 双同态 endomorphism 自同态 automorphism 自同构  quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$    Schur’s Theorem  复线性空间上的线性算子可以正交相似于上对角算子 复线性空间上的线性算子 $T">
+<meta property="og:description" content="电磁场与电磁波">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/index/algebra.png">
-<meta property="article:published_time" content="2022-04-10T02:13:56.000Z">
-<meta property="article:modified_time" content="2022-06-10T11:59:14.250Z">
+<meta property="og:image" content="http://example.com/img/index/physics.jpg">
+<meta property="article:published_time" content="2022-06-11T13:36:53.000Z">
+<meta property="article:modified_time" content="2022-06-11T13:43:23.076Z">
 <meta property="article:author" content="Yixiao Feng">
-<meta property="article:tag" content="数学">
+<meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/index/algebra.png">
+<meta name="twitter:image" content="http://example.com/img/index/physics.jpg">
   
   
   
-  <title>Algebra (1) - Newtonpula的自留地</title>
+  <title>Chapter15 - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Algebra (1)"></span>
+            <span id="subtitle" data-typed-text="Chapter15"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-10 10:13" pubdate>
-          2022年4月10日 上午
+        <time datetime="2022-06-11 21:36" pubdate>
+          2022年6月11日 晚上
         </time>
       </span>
     
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.8k 字
+          890 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          16 分钟
+          8 分钟
         
       </span>
     
@@ -319,78 +319,95 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Algebra (1)</h1>
+            <h1 style="display: none">Chapter15</h1>
             
             <div class="markdown-body">
               
-              <ul>
-<li>isomorphism 同构</li>
-<li>epimorphism 满态射</li>
-<li>monomorphism 单态射</li>
-<li>bimorphism 双同态</li>
-<li>endomorphism 自同态</li>
-<li><p>automorphism 自同构</p>
-</li>
-<li><p>quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$ </p>
-</li>
+              <h1 id="Chapter-15-电磁场与电磁波"><a href="#Chapter-15-电磁场与电磁波" class="headerlink" title="Chapter 15 电磁场与电磁波"></a>Chapter 15 电磁场与电磁波</h1><p>变化的电场如何产生磁场？</p>
+<p>Maxwell’s idea<br>我们定义了电位移矢量 $\mathbf{D}=\varepsilon_0 \mathbf{E}+\mathbf{P}$，其中 $\mathbf{P}=n q \mathbf{l}$</p>
+<p>可以定义位移电流密度</p>
+<script type="math/tex; mode=display">
+    \overrightarrow{j}_D=\frac{\partial \overrightarrow{D}}{\partial t}</script><p>位移电流强度</p>
+<script type="math/tex; mode=display">
+    I_D= \iint_S \frac{\partial \overrightarrow{D}}{\partial t} \cdot \mathrm{d} \overrightarrow{S}</script><p>交换积分号与求导符号可得</p>
+<script type="math/tex; mode=display">
+    I_D=\frac{\mathrm{d}}{\mathrm{d}t} \mathbf{\Phi}(t)</script><p><strong>Q</strong>：RC电流充电电流 $I_c$，极板间的 $I_d$是多少？<br>首先</p>
+<script type="math/tex; mode=display">
+    j_D=\frac{\partial \mathbf{D}}{\partial t}</script><p>而 </p>
+<script type="math/tex; mode=display">
+    \displaystyle  I_D= j_D S=\frac{\mathrm{d}D}{\mathrm{d}t} S=\frac{\mathrm{d}(DS)}{\mathrm{d}t}=\frac{\mathrm{d}(\sigma_0(t)S)}{\mathrm{d}t}=\frac{\mathrm{d}q}{\mathrm{d}t}=I_C</script><p>一般的在导体中主要是传导电流，位移电流可以忽略不计.</p>
+<p><strong>Q</strong>： （$I_c, I_d$）共同产生磁场 $H$满足的规律？</p>
+<script type="math/tex; mode=display">
+    \oint_L \mathbf{H} \cdot \mathrm{d}\mathbf{l}=I_c+I_d=\iint_S \frac{\partial \mathbf{D}}{\partial t} \mathrm{d} \mathbf{S}</script><p>磁场强度的环量等于通过界面的全电流.</p>
+<p>“变化电场激发涡旋磁场”与“变化磁场激发涡旋电场”相对称</p>
+<p><strong>Q</strong>：圆板电容器 $d \ll R$，充电电流 $I_c$，求C内磁场分布.</p>
+<p>算出来是</p>
+<script type="math/tex; mode=display">
+    \mathbf{H}=\frac{r}{2\pi R^{2}}I_c \quad (r<R)</script><p>而 $\displaystyle  \mathbf{B}=\mu_0 \mathbf{H}$. </p>
+<p><strong>全电流的连续性</strong>：在有 $I_c$的地方 $I_d$几乎为零；在有 $I_d$的地方没有 $I_c$. 事实上 $I_D=I_c+ I_d$连续</p>
+<p><strong>证</strong>：任取任意闭合曲面 $S$，只需证明全电流对于该闭合曲面的通量为零.</p>
+<p>一方面由高斯定理</p>
+<script type="math/tex; mode=display">
+    \oint_S \mathbf{D} \cdot \mathrm{d} \mathbf{S} =q \\ 
+    \oint_S \mathbf{j}_c \cdot \mathrm{d}\mathbf{S} =-\frac{\mathrm{d}q}{\mathrm{d}t}</script><p>第一式求导与第二式相加，整理即得.</p>
+<p>对于 T96 其实有（对于整个电容器） $\displaystyle I_c=-I_d$</p>
+<p><strong>例</strong>：运动电荷得全电流也连续，形成闭合曲线. </p>
+<p><img src="images/2022-04-18-15-15-48.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Maxwell-方程组"><a href="#Maxwell-方程组" class="headerlink" title="Maxwell 方程组"></a>Maxwell 方程组</h2><script type="math/tex; mode=display">
+    \begin{cases}
+        \oiint_S \mathbf{D} \cdot \mathrm{d}\mathbf{S}=q_0 \\ 
+        \oiint_S \mathbf{B} \cdot \mathrm{d}\mathbf{S}=0 \\ 
+        \oint_l \mathbf{E} \cdot \mathrm{d}\mathbf{l}=-\iint_S \frac{\partial \mathbf{B}}{\partial t} \cdot \mathrm{d}\mathbf{S} \\ 
+        \oint_l \mathbf{H} \cdot \mathrm{d}\mathbf{l} =I +\iint_S \frac{\partial D}{\partial t} \cdot \mathrm{d}\mathbf{S}
+    \end{cases}</script><p>微分形式</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        \nabla \cdot \mathbf{D}= \rho_0 \\ 
+        \nabla \cdot \mathbf{B}= 0 \\ 
+        \nabla \times \mathbf{E} =-\frac{\partial \mathbf{B}}{\partial t} \\ 
+        \nabla \times \mathbf{H}=\mathbf{j}_c+\frac{\partial \mathbf{D}}{\partial t} \\ 
+    \end{cases}</script><p>自由电磁场的微分形式</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        \nabla \cdot \mathbf{D}= 0 \\ 
+        \nabla \cdot \mathbf{B}= 0 \\ 
+        \nabla \times \mathbf{E} =-\frac{\partial \mathbf{B}}{\partial t} \\ 
+        \nabla \times \mathbf{H}=\frac{\partial \mathbf{D}}{\partial t} \\ 
+    \end{cases}</script><h3 id="电磁波的性质"><a href="#电磁波的性质" class="headerlink" title="电磁波的性质"></a>电磁波的性质</h3><p>（1）电磁波为横波 （E，H，c）：RHR </p>
+<p>（2）波动方程 </p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        \frac{\partial^{2} B}{\partial t^{2}}=c^{2} \frac{\partial ^{2} E}{\partial z^{2}} \\ 
+        \frac{\partial^{2}E}{\partial t^{2}}=c^{2} \frac{\partial ^{2} B}{\partial z^{2}} \\ 
+    \end{cases}</script><p>我们也有 $\varepsilon_0 \mu_0=\frac{1}{c^{2}}$<br>（3）介质中波速 $\displaystyle c=\frac{1}{ \sqrt{\varepsilon \mu}}$</p>
+<p>(4) $E=cB$</p>
+<p><strong>证</strong>：（1）由T99知 $\displaystyle E_{0x}=0$，$\displaystyle  B_{0x}=0$其中 $x$是传播方向.</p>
+<p><strong>Q</strong>：$E,B$方向关系？<br>仍设传播方向为 $x$轴方向，不妨 $E$的方向为 $y$轴方向.</p>
+<p>设出 $B$的方程，然后利用Maxwell方程组的第三个方程得到 $B_y$与 $t$无关. $B_y$有的分量应该是稳恒的，这不是电磁波，我们不关心.</p>
+<p>（2）波动方程<br><strong>Q</strong>：$\displaystyle  E=E(z,t)\mathbf{i}$, $\displaystyle  B=B(z,t)\mathbf{j}$</p>
+<p>（3）光速<br>折射率 </p>
+<script type="math/tex; mode=display">
+    n=\sqrt{\mu_r \varepsilon_r}</script><p>（4）$E,B$大小关系<br>有 </p>
+<script type="math/tex; mode=display">
+    \frac{1}{2}\varepsilon E^{2}=\frac{1}{2} \mu H^{2}</script><p>从而在介质中有 $\displaystyle E=uB$</p>
+<h3 id="电磁波的能量"><a href="#电磁波的能量" class="headerlink" title="电磁波的能量"></a>电磁波的能量</h3><ul>
+<li>能量密度<script type="math/tex; mode=display">
+  \omega=\varepsilon_0E</script></li>
 </ul>
-<p><strong>Schur’s Theorem</strong> </p>
-<p>复线性空间上的线性算子可以正交相似于上对角算子</p>
-<p><strong>复线性空间上的线性算子 $T$ 若满足 $\langle Tv,v \rangle =0, \forall v \in V$，则 $T=0$</strong> </p>
-<p>《LADR》210</p>
-<p><strong>复线性空间上的线性算子 $T$ 是自伴的 $\Leftrightarrow$ $\langle Tv,v \rangle \in \mathbb{R}, \forall v \in V$</strong></p>
-<p><strong>$T$ 正规 $\Leftrightarrow$ $\left| Tv \right|_{}=\left| T^{*}v \right|_{}, \forall v \in V$</strong></p>
-<p>从而 $T$ 与 $T^{*}$ 有相同的特征向量</p>
-<p><strong>The Complex Spectral Theorem</strong> </p>
-<p>复线性空间上的正规算子可以酉对角化</p>
-<p><strong>Real Spectral Theorem</strong> </p>
-<p>实线性空间上的自伴算子可以正交对角化</p>
-<p><strong>正规算子的刻画</strong></p>
 <ul>
-<li>谱定理 </li>
-<li>$A^{*}=p(A)$，对某个多项式 $p(t)$</li>
+<li>平均能量密度<script type="math/tex; mode=display">
+  \bar{\omega}=\frac{1}{2}\varepsilon_0E_0^{2}=\frac{1}{2}\mu_0H_0^{2}</script>注意它与频率无关！</li>
+<li><p>能流密度</p>
+<script type="math/tex; mode=display">
+  S= \omega u</script><p>单位为 $W/m^{2}$或 $J/(s\cdot m^{2})$<br>具体来说</p>
+<script type="math/tex; mode=display">
+  \mathbf{S}=\mathbf{E} \times \mathbf{H}</script><p>称为玻因廷(Poynting)矢量.</p>
+</li>
+<li><p>波强</p>
+<script type="math/tex; mode=display">
+  I=\bar{S}=\bar{EH}=\frac{1}{2}\sqrt{\frac{\varepsilon}{\mu}}E_0^{2}</script></li>
 </ul>
-<p>$\mathbb{R}$ 上的正定算子首先是对称算子， $\mathbb{C}$ 上的正定算子首先是自伴算子</p>
-<p><strong>Riesz Representation Theorem</strong></p>
-<p>有限维线性空间 $V$ 上的线性函数 $\varphi$，一定存在唯一的 $u \in V$，使得</p>
-<script type="math/tex; mode=display">
-    \varphi(v)= \langle v,y \rangle</script><p><strong>正定算子的刻画</strong>  </p>
-<p>$T$正定 $\Leftrightarrow$ $T$ 自伴且所有特征值都为正 $\Leftrightarrow$ $T$ 有（唯一的）正定的平方根 $\Leftrightarrow$ $T$ 有自伴的平方根  $\Leftrightarrow$ $\exists R, T=R^{*}R$</p>
-<p>证明用到谱定理</p>
-<p>注意一个正定算子可以有无穷多平方根（当然只有一个是正定的）</p>
-<p><strong>等距算子的刻画</strong></p>
-<p>$S$ 是等距算子 $\Leftrightarrow$ $\langle Su,Sv \rangle = \langle u,v \rangle, \forall u,v \in V $ $\Leftrightarrow$ $S$ 把一组正交向量映成一组正交向量 $\Leftrightarrow$ $S$ 把一组正交基映成正交基 $\Leftrightarrow$ $S^{<em>}S=SS^{</em>}=I$ $\Leftrightarrow$ $S^{<em>}$ 是等距算子 $\Leftrightarrow$ $S$ 可逆且 $S ^{-1}=S^{</em>}$</p>
-<p>由此可知等距算子是正规算子</p>
-<p><strong>$\mathbb{C}$ 上等距算子的刻画</strong></p>
-<p>复线性空间上的算子是等距算子 $\Leftrightarrow$ 存在一组 $S$ 的特征向量为标准正交基，它们对应的特征值模长均为1 </p>
-<p><strong>谱分解</strong></p>
-<p>假设 $A \in \mathbb{C}^{n \times n}$ 可对角化，$\lambda_1,\cdots \lambda_s$ 是所有互不相同的特征值，则存在唯一的分解 $P_i= Q_i \widetilde{Q}_i$，使得</p>
-<ul>
-<li>$\sum_{i=1}^{s} P_i=I$</li>
-<li>$P_i P_j = \delta_{ij} P_i$，这说明 $P_i$ 是投影</li>
-<li>$A=\lambda_1 P_1+\cdots +\lambda_s P_s$   </li>
-</ul>
-<p>并且用插值法可以得到 $P_i$ 是 $A$ 的多项式</p>
-<p>于是我们可以得到 $A$ 是正规算子 $\Leftrightarrow$ $A$ 可对角化且谱分解中的投影均为正交投影（注意到用谱定理可以证明，正规的投影算子一定是自共轭的）</p>
-<p><strong>极分解</strong></p>
-<p>$V$ 上的线性算子 $T$ 可以写成如下形式</p>
-<script type="math/tex; mode=display">
-    T=S \sqrt{T^{*}T}</script><p>其中 $S$ 是等距算子</p>
-<p>那么也可以写成</p>
-<script type="math/tex; mode=display">
-    T= \sqrt{TT^{*}}S'</script><p>如果正定算子 $R$ 使得 $T=SR$，那么 $R=\sqrt{T^{*}T}$，即极分解唯一</p>
-<p>有趣的是，如果 $T$ 正规，那么 </p>
-<script type="math/tex; mode=display">
-    T=S \sqrt{T^{*}T}=\sqrt{T^{*}T}S</script><p><strong>证</strong> 设 $T=PQ$，其中 $P$ 是保距算子，$Q$ 是（半）正定的，那么由 $T$ 正规可以得到 </p>
-<script type="math/tex; mode=display">
-    (PQP^{*})^{2}=PQ^{2}P^{*}=Q^{2}</script><p>两边开方得到 </p>
-<script type="math/tex; mode=display">
-    PQP^{*}=Q</script><p>即</p>
-<script type="math/tex; mode=display">
-    PQ=QP</script><p><strong>SVD分解</strong></p>
-<p>可以写成两种形式，并且不限于方阵</p>
-<p><strong>$n$ 维空间 $V$ 满足 $V= \text{Ker} T^{n} \oplus \text{Im} T^{n}$</strong></p>
-
+<h3 id="电磁波的动量"><a href="#电磁波的动量" class="headerlink" title="电磁波的动量"></a>电磁波的动量</h3>
               
             </div>
             <hr/>
@@ -407,8 +424,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E4%BB%A3%E6%95%B0%E5%AD%A6/" class="category-chain-item">代数学</a>
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/" class="category-chain-item">物理学</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/%E6%99%AE%E7%89%A9/" class="category-chain-item">普物</a>
+  
+  
+
   
 
       </span>
@@ -422,7 +446,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+        <a href="/tags/%E7%89%A9%E7%90%86/">#物理</a>
       
     </div>
   
@@ -434,8 +458,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Algebra (1)</div>
-      <div>http://example.com/2022/04/10/Algebra-1/</div>
+      <div>Chapter15</div>
+      <div>http://example.com/2022/06/11/Chapter15/</div>
     </div>
     <div class="license-meta">
       
@@ -447,7 +471,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月10日</div>
+          <div>2022年6月11日</div>
         </div>
       
       
@@ -472,6 +496,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter16/" title="Chapter16">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Chapter16</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter14/" title="Chapter14">
+                        <span class="hidden-mobile">Chapter14</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 

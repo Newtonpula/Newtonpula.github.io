@@ -16,24 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="isomorphism 同构 epimorphism 满态射 monomorphism 单态射 bimorphism 双同态 endomorphism 自同态 automorphism 自同构  quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$    Schur’s Theorem  复线性空间上的线性算子可以正交相似于上对角算子 复线性空间上的线性算子 $T">
+    <meta name="description" content="稳恒磁场">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algebra (1)">
-<meta property="og:url" content="http://example.com/2022/04/10/Algebra-1/index.html">
+<meta property="og:title" content="Chapter12">
+<meta property="og:url" content="http://example.com/2022/06/11/Chapter12/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="isomorphism 同构 epimorphism 满态射 monomorphism 单态射 bimorphism 双同态 endomorphism 自同态 automorphism 自同构  quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$    Schur’s Theorem  复线性空间上的线性算子可以正交相似于上对角算子 复线性空间上的线性算子 $T">
+<meta property="og:description" content="稳恒磁场">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/index/algebra.png">
-<meta property="article:published_time" content="2022-04-10T02:13:56.000Z">
-<meta property="article:modified_time" content="2022-06-10T11:59:14.250Z">
+<meta property="og:image" content="http://example.com/img/index/physics.jpg">
+<meta property="article:published_time" content="2022-06-11T13:36:29.000Z">
+<meta property="article:modified_time" content="2022-06-11T13:41:55.584Z">
 <meta property="article:author" content="Yixiao Feng">
-<meta property="article:tag" content="数学">
+<meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/index/algebra.png">
+<meta name="twitter:image" content="http://example.com/img/index/physics.jpg">
   
   
   
-  <title>Algebra (1) - Newtonpula的自留地</title>
+  <title>Chapter12 - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Algebra (1)"></span>
+            <span id="subtitle" data-typed-text="Chapter12"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-10 10:13" pubdate>
-          2022年4月10日 上午
+        <time datetime="2022-06-11 21:36" pubdate>
+          2022年6月11日 晚上
         </time>
       </span>
     
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.8k 字
+          3k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          16 分钟
+          26 分钟
         
       </span>
     
@@ -319,77 +319,96 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Algebra (1)</h1>
+            <h1 style="display: none">Chapter12</h1>
             
             <div class="markdown-body">
               
-              <ul>
-<li>isomorphism 同构</li>
-<li>epimorphism 满态射</li>
-<li>monomorphism 单态射</li>
-<li>bimorphism 双同态</li>
-<li>endomorphism 自同态</li>
-<li><p>automorphism 自同构</p>
-</li>
-<li><p>quaternion group $\{1,-1,i,-i,j,-j,k,-k\}$ </p>
-</li>
-</ul>
-<p><strong>Schur’s Theorem</strong> </p>
-<p>复线性空间上的线性算子可以正交相似于上对角算子</p>
-<p><strong>复线性空间上的线性算子 $T$ 若满足 $\langle Tv,v \rangle =0, \forall v \in V$，则 $T=0$</strong> </p>
-<p>《LADR》210</p>
-<p><strong>复线性空间上的线性算子 $T$ 是自伴的 $\Leftrightarrow$ $\langle Tv,v \rangle \in \mathbb{R}, \forall v \in V$</strong></p>
-<p><strong>$T$ 正规 $\Leftrightarrow$ $\left| Tv \right|_{}=\left| T^{*}v \right|_{}, \forall v \in V$</strong></p>
-<p>从而 $T$ 与 $T^{*}$ 有相同的特征向量</p>
-<p><strong>The Complex Spectral Theorem</strong> </p>
-<p>复线性空间上的正规算子可以酉对角化</p>
-<p><strong>Real Spectral Theorem</strong> </p>
-<p>实线性空间上的自伴算子可以正交对角化</p>
-<p><strong>正规算子的刻画</strong></p>
-<ul>
-<li>谱定理 </li>
-<li>$A^{*}=p(A)$，对某个多项式 $p(t)$</li>
-</ul>
-<p>$\mathbb{R}$ 上的正定算子首先是对称算子， $\mathbb{C}$ 上的正定算子首先是自伴算子</p>
-<p><strong>Riesz Representation Theorem</strong></p>
-<p>有限维线性空间 $V$ 上的线性函数 $\varphi$，一定存在唯一的 $u \in V$，使得</p>
+              <h1 id="稳恒磁场"><a href="#稳恒磁场" class="headerlink" title="稳恒磁场"></a>稳恒磁场</h1><h2 id="电流和电源"><a href="#电流和电源" class="headerlink" title="电流和电源"></a>电流和电源</h2><h3 id="电流密度"><a href="#电流密度" class="headerlink" title="电流密度"></a>电流密度</h3><script type="math/tex; mode=display">
+    \mathbf{j}=\frac{\mathrm{d}I}{\mathrm{d}S_{\perp}}\mathbf{e}_n</script><p>方向为正电荷运动的方向</p>
+<p>载流子 $q$，数密度 $n$，漂移速度 $\mathbf{v}_d$，则</p>
 <script type="math/tex; mode=display">
-    \varphi(v)= \langle v,y \rangle</script><p><strong>正定算子的刻画</strong>  </p>
-<p>$T$正定 $\Leftrightarrow$ $T$ 自伴且所有特征值都为正 $\Leftrightarrow$ $T$ 有（唯一的）正定的平方根 $\Leftrightarrow$ $T$ 有自伴的平方根  $\Leftrightarrow$ $\exists R, T=R^{*}R$</p>
-<p>证明用到谱定理</p>
-<p>注意一个正定算子可以有无穷多平方根（当然只有一个是正定的）</p>
-<p><strong>等距算子的刻画</strong></p>
-<p>$S$ 是等距算子 $\Leftrightarrow$ $\langle Su,Sv \rangle = \langle u,v \rangle, \forall u,v \in V $ $\Leftrightarrow$ $S$ 把一组正交向量映成一组正交向量 $\Leftrightarrow$ $S$ 把一组正交基映成正交基 $\Leftrightarrow$ $S^{<em>}S=SS^{</em>}=I$ $\Leftrightarrow$ $S^{<em>}$ 是等距算子 $\Leftrightarrow$ $S$ 可逆且 $S ^{-1}=S^{</em>}$</p>
-<p>由此可知等距算子是正规算子</p>
-<p><strong>$\mathbb{C}$ 上等距算子的刻画</strong></p>
-<p>复线性空间上的算子是等距算子 $\Leftrightarrow$ 存在一组 $S$ 的特征向量为标准正交基，它们对应的特征值模长均为1 </p>
-<p><strong>谱分解</strong></p>
-<p>假设 $A \in \mathbb{C}^{n \times n}$ 可对角化，$\lambda_1,\cdots \lambda_s$ 是所有互不相同的特征值，则存在唯一的分解 $P_i= Q_i \widetilde{Q}_i$，使得</p>
-<ul>
-<li>$\sum_{i=1}^{s} P_i=I$</li>
-<li>$P_i P_j = \delta_{ij} P_i$，这说明 $P_i$ 是投影</li>
-<li>$A=\lambda_1 P_1+\cdots +\lambda_s P_s$   </li>
-</ul>
-<p>并且用插值法可以得到 $P_i$ 是 $A$ 的多项式</p>
-<p>于是我们可以得到 $A$ 是正规算子 $\Leftrightarrow$ $A$ 可对角化且谱分解中的投影均为正交投影（注意到用谱定理可以证明，正规的投影算子一定是自共轭的）</p>
-<p><strong>极分解</strong></p>
-<p>$V$ 上的线性算子 $T$ 可以写成如下形式</p>
+    \mathbf{j}=nq \mathbf{v}_d</script><p><strong>电流强度</strong></p>
 <script type="math/tex; mode=display">
-    T=S \sqrt{T^{*}T}</script><p>其中 $S$ 是等距算子</p>
-<p>那么也可以写成</p>
+    I= \iint_{S} \mathbf{j} \cdot \mathrm{d}\mathbf{S}</script><p><strong>电荷守恒定律</strong></p>
 <script type="math/tex; mode=display">
-    T= \sqrt{TT^{*}}S'</script><p>如果正定算子 $R$ 使得 $T=SR$，那么 $R=\sqrt{T^{*}T}$，即极分解唯一</p>
-<p>有趣的是，如果 $T$ 正规，那么 </p>
+    \oiint_{S} \mathbf{j} \cdot \mathrm{d}\mathbf{S}=- \frac{\mathrm{d}q_{内}}{\mathrm{d}t}</script><p>若空间电荷分布不随时间变化，则</p>
 <script type="math/tex; mode=display">
-    T=S \sqrt{T^{*}T}=\sqrt{T^{*}T}S</script><p><strong>证</strong> 设 $T=PQ$，其中 $P$ 是保距算子，$Q$ 是（半）正定的，那么由 $T$ 正规可以得到 </p>
+    \oiint_{S} \mathbf{j} \cdot \mathrm{d}\mathbf{S}=0</script><p>它称为<strong>稳恒电流条件</strong>，恒定电流产生的电场称为<strong>稳恒电场</strong></p>
+<p>它满足 </p>
 <script type="math/tex; mode=display">
-    (PQP^{*})^{2}=PQ^{2}P^{*}=Q^{2}</script><p>两边开方得到 </p>
+    \oiint_{S} \mathbf{E}\cdot \mathrm{d}\mathbf{S} =\frac{1}{\varepsilon_0} \sum_{i}^{} q_i</script><p>即高斯定理</p>
 <script type="math/tex; mode=display">
-    PQP^{*}=Q</script><p>即</p>
+    \oint_{l} \mathbf{E} \cdot\mathrm{d}  \mathbf{l}=0</script><p>即保守场</p>
+<h3 id="欧姆定律"><a href="#欧姆定律" class="headerlink" title="欧姆定律"></a>欧姆定律</h3><p>微观形式 </p>
 <script type="math/tex; mode=display">
-    PQ=QP</script><p><strong>SVD分解</strong></p>
-<p>可以写成两种形式，并且不限于方阵</p>
-<p><strong>$n$ 维空间 $V$ 满足 $V= \text{Ker} T^{n} \oplus \text{Im} T^{n}$</strong></p>
+    \mathbf{j} = \frac{1}{\rho} \mathbf{E}= \sigma \mathbf{E}</script><p>其中 $\sigma$ 称为电导率</p>
+<p><strong>电导率公式</strong></p>
+<script type="math/tex; mode=display">
+    \sigma= \frac{n e^{2} \tau}{m}</script><p>其中 $n$ 是单位体积的电子数，$\tau$ 是平均碰撞时间</p>
+<p><strong>焦耳定律的微分形式</strong></p>
+<script type="math/tex; mode=display">
+    w=\sigma \mathbf{E}^{2}</script><h3 id="电源"><a href="#电源" class="headerlink" title="电源"></a>电源</h3><p><strong>非静电力</strong></p>
+<script type="math/tex; mode=display">
+    \mathbf{E}_k=\frac{\mathbf{F}_k}{q}</script><p>比如洛伦兹力、旋电场、温差电源扩散作用、化学电池中溶解和沉积过程</p>
+<p><strong>电源电动势</strong></p>
+<script type="math/tex; mode=display">
+    E=\frac{W}{q}=\int_{-}^{+} \mathbf{E}_k \cdot \mathrm{d}\mathbf{l}</script><p><strong>电源内部的欧姆定律</strong></p>
+<script type="math/tex; mode=display">
+    \mathbf{j}=\sigma(\mathbf{E}+\mathbf{E}_k)</script><h2 id="磁场"><a href="#磁场" class="headerlink" title="磁场"></a>磁场</h2><p>定义1： $\mathbf{F}=q \mathbf{v} \times \mathbf{B}$</p>
+<p>定义2： $\mathbf{F}= I \mathbf{L} \times \mathbf{B}$（载流导线在磁场中受力）</p>
+<p>定义3： $\mathbf{M}= \mathbf{m} \times \mathbf{B}$（小磁针在磁场中受力矩）</p>
+<h2 id="毕奥-萨法尔定律"><a href="#毕奥-萨法尔定律" class="headerlink" title="毕奥-萨法尔定律"></a>毕奥-萨法尔定律</h2><p><strong>Biot-Savart-Laplace Law</strong></p>
+<script type="math/tex; mode=display">
+    \mathrm{d}\mathbf{B}= \frac{\mu_0}{4\pi} \frac{I \mathrm{d}\mathbf{l} \times \mathbf{r}}{r^{3}}</script><p>$\mu_0=4\pi \times 10^{-7}$(T $\cdot$ m/A) 为真空磁导率</p>
+<script type="math/tex; mode=display">
+    \mathbf{B}=\int_{}^{}  \mathrm{d}\mathbf{B}=\frac{\mu_0}{4\pi}\int_{L} \frac{\mathbf{I} \mathrm{d}\mathbf{l} \times \mathbf{r}}{r^{3}}</script><p><strong>Q:</strong> 离无限长直电流距离为 $r$ 的空间点的磁感应强度的大小为 </p>
+<script type="math/tex; mode=display">
+    \mathbf{B}=\frac{\mu_0 I}{2\pi r}</script><p><strong>Q:</strong> 圆电流轴线上的电场分布</p>
+<script type="math/tex; mode=display">
+    \mathbf{B}=\frac{\mu_0 IR^{2}}{2(R^{2}+z^{2})^{3/2}}</script><p>圆电流中心处 $z=0$</p>
+<script type="math/tex; mode=display">
+    B_{O}=\frac{\mu_0 I}{2R}</script><p>远离圆电流中心 $z\gg R$</p>
+<script type="math/tex; mode=display">
+    B_{P} \thickapprox \frac{\mu_0 IR^{2}}{2z^{3}}= \frac{\mu_0}{2\pi} \frac{IS}{z^{3}}</script><p>如果令 $\mathbf{m}=IS \mathbf{e}_n$，则</p>
+<script type="math/tex; mode=display">
+    \mathbf{B}_{P}= \frac{\mu_0}{2\pi} \frac{\mathbf{m}}{z^{3}}</script><p>把载流圆线圈称为磁偶极子，$\mathbf{m}$ 称为载流圆线圈的磁偶极矩，简称为<strong>磁矩</strong>. 如果线圈有 $N$ 匝，则 $m=NIS$</p>
+<p><strong>Q:</strong> 载流无限长直螺线管轴线上的磁场</p>
+<script type="math/tex; mode=display">
+    \mathbf{B}_{O}=\mu_0 nI</script><p>实际上不限于轴线，螺线管内空间各点磁感应强度均相同</p>
+<p><strong>Q:</strong> 半无限长螺线管断面中心处，磁感应强度大小为 $\mathbf{B}=\frac{1}{2}\mu_0 nI$</p>
+<h2 id="磁高斯定理-安培环路定理"><a href="#磁高斯定理-安培环路定理" class="headerlink" title="磁高斯定理/安培环路定理"></a>磁高斯定理/安培环路定理</h2><p>通过任意曲面 $S$ 的磁通量为</p>
+<script type="math/tex; mode=display">
+    \Phi_{m}= \iint_{S} \mathbf{B} \cdot \mathrm{d}\mathbf{S}</script><p><strong>磁场的高斯定理</strong></p>
+<script type="math/tex; mode=display">
+    \oiint_{S} \mathbf{B}\cdot \mathrm{d}\mathbf{S}=0</script><p><strong>安培环路定理</strong></p>
+<script type="math/tex; mode=display">
+    \oint_{l} \mathbf{B}\cdot \mathrm{d}\mathbf{l}= \mu_0 \sum_{}^{} I</script><p>当 $I$ 穿过环路成右手螺旋定则时取正，反之取负. 一条电流多次穿过也要分开计算. </p>
+<p><strong>Q:</strong> 无限大均匀载流平面板外的磁场</p>
+<script type="math/tex; mode=display">
+    B(z)=\frac{\mu_0 \alpha}{2}</script><p>其中 $\alpha$ 为电流线密度</p>
+<p>板内是正比例关系</p>
+<p><strong>Q:</strong> 两个圆电流轴线上的磁场分布，分三种情况</p>
+<p>应用：亥姆霍兹线圈——相互平行的一对相同的圆形线圈，它们之间相隔一个半径并进行缠绕，从而使电流沿相同的方向流过这两个线圈。这种绕组在两个线圈之间产生均匀磁场，其主分量与这两个线圈的轴平行。</p>
+<p><strong>Q:</strong> 计算 （$n, \mathrm{d}\mathbf{l}, S, q, \mathbf{v}$）在 $\mathbf{r}$ 的 $\mathrm{d}\mathbf{B}$</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}\mathbf{B}= \frac{\mu_0}{4\pi}\frac{q \mathrm{d}N \mathbf{v} \times \mathbf{r}}{r^{3}}</script><p>一个载流子产生</p>
+<script type="math/tex; mode=display">
+    \mathbf{B}= \frac{\mu_0}{4\pi} \frac{q \mathbf{v} \times \mathbf{r}}{r^{3}}</script><p>但一定要 $v \ll c$  </p>
+<p>由安培环路定理和 Kelvin-Stokes Theorem 可以得到以下结论</p>
+<script type="math/tex; mode=display">
+    \nabla \times \mathbf{B}= \mu_0 \mathbf{j}</script><p>即有电流的地方会产生磁场的旋转，没有电流的地方没有磁场的旋涡</p>
+<h2 id="磁场对载流导线的作用"><a href="#磁场对载流导线的作用" class="headerlink" title="磁场对载流导线的作用"></a>磁场对载流导线的作用</h2><script type="math/tex; mode=display">
+    \mathbf{F}= \int_{L}^{} I \mathrm{d}\mathbf{l} \times \mathbf{B}</script><p>磁场对闭合载流导线的作用合力为零</p>
+<p><strong>Q:</strong> 任意形状载流线圈在磁场中受到的磁力矩 </p>
+<script type="math/tex; mode=display">
+    \mathbf{M}= \mathbf{m} \times \mathbf{B}</script><p>其中 $\mathbf{m} = NI \mathbf{S}$   </p>
+<p><strong>Q:</strong> 一段电流 $I$，在 $\mathbf{B}$ 中安培力的功</p>
+<script type="math/tex; mode=display">
+    A=I \Delta \Phi</script><p>其中当 $I$ 与 $\mathbf{B}$ 成右手关系时，$\Phi&gt;0$. 反之则小于零.</p>
+<h2 id="带电粒子的运动"><a href="#带电粒子的运动" class="headerlink" title="带电粒子的运动"></a>带电粒子的运动</h2><p><strong>Q:</strong> 圆周运动等效磁矩与 $\mathbf{B}$ 的方向关系如何：$\mathbf{m}$ 与 $- \mathbf{B}$ 同向</p>
+<p><strong>霍尔效应</strong></p>
+<script type="math/tex; mode=display">
+    U_{H}= R_{H} \frac{IB}{d}</script><p>$d$是 $\mathbf{B}$ 方向上的距离，$R_H=\frac{1}{qn}$ 称为霍尔系数</p>
 
               
             </div>
@@ -407,8 +426,15 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E4%BB%A3%E6%95%B0%E5%AD%A6/" class="category-chain-item">代数学</a>
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/" class="category-chain-item">物理学</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/%E6%99%AE%E7%89%A9/" class="category-chain-item">普物</a>
+  
+  
+
   
 
       </span>
@@ -422,7 +448,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+        <a href="/tags/%E7%89%A9%E7%90%86/">#物理</a>
       
     </div>
   
@@ -434,8 +460,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Algebra (1)</div>
-      <div>http://example.com/2022/04/10/Algebra-1/</div>
+      <div>Chapter12</div>
+      <div>http://example.com/2022/06/11/Chapter12/</div>
     </div>
     <div class="license-meta">
       
@@ -447,7 +473,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月10日</div>
+          <div>2022年6月11日</div>
         </div>
       
       
@@ -472,6 +498,29 @@
 
 
 
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter13/" title="Chapter13">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Chapter13</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter11/" title="Chapter11">
+                        <span class="hidden-mobile">Chapter11</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
               
             </div>
 
