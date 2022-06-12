@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/physics.jpg">
 <meta property="article:published_time" content="2022-06-11T13:36:53.000Z">
-<meta property="article:modified_time" content="2022-06-11T13:43:23.076Z">
+<meta property="article:modified_time" content="2022-06-12T13:29:31.068Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          890 字
+          917 字
         
       </span>
     
@@ -323,7 +323,7 @@
             
             <div class="markdown-body">
               
-              <h1 id="Chapter-15-电磁场与电磁波"><a href="#Chapter-15-电磁场与电磁波" class="headerlink" title="Chapter 15 电磁场与电磁波"></a>Chapter 15 电磁场与电磁波</h1><p>变化的电场如何产生磁场？</p>
+              <h1 id="Chapter-15-电磁场与电磁波"><a href="#Chapter-15-电磁场与电磁波" class="headerlink" title="Chapter 15 电磁场与电磁波"></a>Chapter 15 电磁场与电磁波</h1><h2 id="Maxwell-电磁理论"><a href="#Maxwell-电磁理论" class="headerlink" title="Maxwell 电磁理论"></a>Maxwell 电磁理论</h2><p>变化的电场如何产生磁场？</p>
 <p>Maxwell’s idea<br>我们定义了电位移矢量 $\mathbf{D}=\varepsilon_0 \mathbf{E}+\mathbf{P}$，其中 $\mathbf{P}=n q \mathbf{l}$</p>
 <p>可以定义位移电流密度</p>
 <script type="math/tex; mode=display">
@@ -331,11 +331,11 @@
 <script type="math/tex; mode=display">
     I_D= \iint_S \frac{\partial \overrightarrow{D}}{\partial t} \cdot \mathrm{d} \overrightarrow{S}</script><p>交换积分号与求导符号可得</p>
 <script type="math/tex; mode=display">
-    I_D=\frac{\mathrm{d}}{\mathrm{d}t} \mathbf{\Phi}(t)</script><p><strong>Q</strong>：RC电流充电电流 $I_c$，极板间的 $I_d$是多少？<br>首先</p>
+    I_D=\frac{\mathrm{d}}{\mathrm{d}t} \mathbf{\Phi}_{D}(t)</script><p><strong>Q</strong>：RC电流充电电流 $I_c$，极板间的 $I_d$是多少？<br>首先</p>
 <script type="math/tex; mode=display">
     j_D=\frac{\partial \mathbf{D}}{\partial t}</script><p>而 </p>
 <script type="math/tex; mode=display">
-    \displaystyle  I_D= j_D S=\frac{\mathrm{d}D}{\mathrm{d}t} S=\frac{\mathrm{d}(DS)}{\mathrm{d}t}=\frac{\mathrm{d}(\sigma_0(t)S)}{\mathrm{d}t}=\frac{\mathrm{d}q}{\mathrm{d}t}=I_C</script><p>一般的在导体中主要是传导电流，位移电流可以忽略不计.</p>
+    \displaystyle  I_D= j_D S=\frac{\mathrm{d}D}{\mathrm{d}t} S=\frac{\mathrm{d}(DS)}{\mathrm{d}t}=\frac{\mathrm{d}(\sigma_0(t)S)}{\mathrm{d}t}=\frac{\mathrm{d}q}{\mathrm{d}t}=I_C</script><p>一般的在介质中主要是位移电流，在导体中主要是传导电流，位移电流可以忽略不计.</p>
 <p><strong>Q</strong>： （$I_c, I_d$）共同产生磁场 $H$满足的规律？</p>
 <script type="math/tex; mode=display">
     \oint_L \mathbf{H} \cdot \mathrm{d}\mathbf{l}=I_c+I_d=\iint_S \frac{\partial \mathbf{D}}{\partial t} \mathrm{d} \mathbf{S}</script><p>磁场强度的环量等于通过界面的全电流.</p>
@@ -373,14 +373,20 @@
         \nabla \cdot \mathbf{B}= 0 \\ 
         \nabla \times \mathbf{E} =-\frac{\partial \mathbf{B}}{\partial t} \\ 
         \nabla \times \mathbf{H}=\frac{\partial \mathbf{D}}{\partial t} \\ 
-    \end{cases}</script><h3 id="电磁波的性质"><a href="#电磁波的性质" class="headerlink" title="电磁波的性质"></a>电磁波的性质</h3><p>（1）电磁波为横波 （E，H，c）：RHR </p>
+    \end{cases}</script><p>还可以加入介质性质</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        \mathbf{D} = \varepsilon \mathbf{E} \\
+        \mathbf{B} = \mu \mathbf{H} \\ 
+        \mathbf{j} = \gamma \mathbf{E}
+    \end{cases}</script><h2 id="电磁波"><a href="#电磁波" class="headerlink" title="电磁波"></a>电磁波</h2><h3 id="电磁波的性质"><a href="#电磁波的性质" class="headerlink" title="电磁波的性质"></a>电磁波的性质</h3><p>（1）电磁波为横波 （$E,H,c$）：RHR </p>
 <p>（2）波动方程 </p>
 <script type="math/tex; mode=display">
     \begin{cases}
         \frac{\partial^{2} B}{\partial t^{2}}=c^{2} \frac{\partial ^{2} E}{\partial z^{2}} \\ 
         \frac{\partial^{2}E}{\partial t^{2}}=c^{2} \frac{\partial ^{2} B}{\partial z^{2}} \\ 
     \end{cases}</script><p>我们也有 $\varepsilon_0 \mu_0=\frac{1}{c^{2}}$<br>（3）介质中波速 $\displaystyle c=\frac{1}{ \sqrt{\varepsilon \mu}}$</p>
-<p>(4) $E=cB$</p>
+<p>（4） $E=cB$</p>
 <p><strong>证</strong>：（1）由T99知 $\displaystyle E_{0x}=0$，$\displaystyle  B_{0x}=0$其中 $x$是传播方向.</p>
 <p><strong>Q</strong>：$E,B$方向关系？<br>仍设传播方向为 $x$轴方向，不妨 $E$的方向为 $y$轴方向.</p>
 <p>设出 $B$的方程，然后利用Maxwell方程组的第三个方程得到 $B_y$与 $t$无关. $B_y$有的分量应该是稳恒的，这不是电磁波，我们不关心.</p>
@@ -392,7 +398,7 @@
     \frac{1}{2}\varepsilon E^{2}=\frac{1}{2} \mu H^{2}</script><p>从而在介质中有 $\displaystyle E=uB$</p>
 <h3 id="电磁波的能量"><a href="#电磁波的能量" class="headerlink" title="电磁波的能量"></a>电磁波的能量</h3><ul>
 <li>能量密度<script type="math/tex; mode=display">
-  \omega=\varepsilon_0E</script></li>
+  \omega=\varepsilon_0E^{2}</script></li>
 </ul>
 <ul>
 <li>平均能量密度<script type="math/tex; mode=display">
