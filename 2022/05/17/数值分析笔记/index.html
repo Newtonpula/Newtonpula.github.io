@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/numerical.jpg">
 <meta property="article:published_time" content="2022-05-17T02:35:06.000Z">
-<meta property="article:modified_time" content="2022-05-19T07:59:48.326Z">
+<meta property="article:modified_time" content="2022-06-12T15:23:28.141Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          178 字
+          175 字
         
       </span>
     
@@ -323,7 +323,7 @@
             
             <div class="markdown-body">
               
-              <h2 id="第1章-求解方程"><a href="#第1章-求解方程" class="headerlink" title="第1章 求解方程"></a>第1章 求解方程</h2><h3 id="1-1-二分法"><a href="#1-1-二分法" class="headerlink" title="1.1 二分法"></a>1.1 二分法</h3><p>时间复杂度：$O(\log n)$<br>n步二分法操作后，得到</p>
+              <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h3 id="1-1-二分法"><a href="#1-1-二分法" class="headerlink" title="1.1 二分法"></a>1.1 二分法</h3><p>时间复杂度：$O(\log n)$<br>n步二分法操作后，得到</p>
 <script type="math/tex; mode=display">\lvert x_c-r \rvert < \frac{b-a}{2^{n+1}}</script><p>如果误差小于$0.5 \times 10^{-p}$，精确到小数点后p位。</p>
 <p><strong>定义1.5</strong> 令$e_i$表示迭代过程中第i步时的误差，如果</p>
 <script type="math/tex; mode=display">\lim_{i \to \infty}\frac{e_{i+1}}{e_i}=S<1</script><p>该方法被称为满足<strong>线性收敛</strong>，收敛速度为$S$。</p>
@@ -335,24 +335,25 @@
 <blockquote>
 <p>如果误差小于 $0.5 \times 10^{-p}$，解精确到小数点后 $p$位.</p>
 </blockquote>
-<h2 id="正交多项式"><a href="#正交多项式" class="headerlink" title="正交多项式"></a>正交多项式</h2><h3 id="最小二乘问题"><a href="#最小二乘问题" class="headerlink" title="最小二乘问题"></a>最小二乘问题</h3><p>给定函数 $f$，$w(x)$为权函数，求 $P_n(x)=\sum_{k=0}^{n} a_k\varphi_k(x)$使误差 </p>
+<h1 id="求解方程"><a href="#求解方程" class="headerlink" title="求解方程"></a>求解方程</h1><h1 id="方程组"><a href="#方程组" class="headerlink" title="方程组"></a>方程组</h1><h1 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h1><h1 id="最小二乘"><a href="#最小二乘" class="headerlink" title="最小二乘"></a>最小二乘</h1><h1 id="数值微分和积分"><a href="#数值微分和积分" class="headerlink" title="数值微分和积分"></a>数值微分和积分</h1><h2 id="数值微分"><a href="#数值微分" class="headerlink" title="数值微分"></a>数值微分</h2><h3 id="有限差分公式"><a href="#有限差分公式" class="headerlink" title="有限差分公式"></a>有限差分公式</h3><p><strong>二点前向差分公式</strong></p>
 <script type="math/tex; mode=display">
-    E(a_0,\cdots ,a_n)=\int_{a}^{b} w(x)[f(x)-P_n(x)]^{2} \mathrm{d}x</script><p>极小，称 $P_n(x)$为该函数以 $w(x)$  为权函数的<strong>最小二乘函数逼近</strong>.</p>
-<p>如果 $\{\varphi_0,\cdots ,\varphi_n\}$为一组正交函数系，则</p>
+    f'(x) =\frac{f(x+h)-f(x)}{h} - \frac{h}{2} f''(c)</script><p>其中 $c$ 在 $x$ 和 $x+h$ 之间 </p>
+<p>如果误差是 $O(h^{n})$，称公式为 $n$ 阶近似 </p>
+<p><strong>三点中心差分公式（二阶中心差分公式）</strong></p>
 <script type="math/tex; mode=display">
-    a_k=\frac{(\varphi_k,f)_{w}}{(\varphi_k,\varphi_k)_{w}}</script><h3 id="Gram-Schmidt-正交化过程"><a href="#Gram-Schmidt-正交化过程" class="headerlink" title="Gram-Schmidt 正交化过程"></a>Gram-Schmidt 正交化过程</h3><p>是想把 $\{1,x,\cdots ,x^{n}\}\rightarrow \{\varphi_0,\cdots ,\varphi _n\}$成为正交基.</p>
-<p>设 $w(x)$为 $[a,b]$上的权函数. 令 $\varphi_0(x)=1$，$\varphi_1(x)=x-B_1$，其中</p>
+    f'(x)= \frac{f(x+h)-f(x-h)}{2h}- \frac{h^{2}}{6}f'''(c)</script><p>其中 $x-h&lt;c&lt;x+h$</p>
+<p><strong>二阶导数的三点中心差分公式</strong></p>
 <script type="math/tex; mode=display">
-    B_1=\frac{(x\varphi_0,\varphi_0)_{w}}{(\varphi_0,\varphi_0)_{w}}</script><p>对于权函数 $w(x)\equiv 1$的情况</p>
+    f''(x)= \frac{f(x+h)-2f(x)+f(x-h)}{h^{2}}-\frac{h^{2}}{12} f^{(4)}(c)</script><p>其中 $x-h&lt;c&lt;x+h$</p>
+<h3 id="舍入误差"><a href="#舍入误差" class="headerlink" title="舍入误差"></a>舍入误差</h3><p>以三点中心差分公式为例，加上机器误差，总误差的绝对值上界是</p>
 <script type="math/tex; mode=display">
-    B_1=\frac{\int_{-1}^{1} x \mathrm{d}x}{\int_{-1}^{1} 1 \mathrm{d}x}=0</script><p>当 $k\geqslant 2$时，有 </p>
+    \frac{h^{2}}{6} f'''(c)+ \frac{\varepsilon_{mach}}{h}</script><h3 id="外推"><a href="#外推" class="headerlink" title="外推"></a>外推</h3><p>如果有</p>
 <script type="math/tex; mode=display">
-    \varphi_k(x)=(x-B_k)\varphi_{k-1}-C_k\varphi_{k-2}</script><p>其中 </p>
+    Q=F_n(h) + Kh^{n} +O(h^{n+1})</script><p>那么用 $\frac{h}{2}$ 代替 $h$，重新解出得</p>
 <script type="math/tex; mode=display">
-    B_k=\frac{(x\varphi_{k-1},\varphi_{k-1})_{w}}{(\varphi_{k-1},\varphi_{k-1})_{w}}, \qquad C_k=\frac{(x\varphi_{k-2},\varphi_{k-1})_{w}}{(\varphi_{k-2},\varphi_{k-2})_{w}}</script><p>则所得到的集合 $\{\varphi_0,\cdots ,\varphi_n\}$是正交的. 按这种办法求出来的多项是首一的，可能与一般定义的Legendre多项式或Chebyshev多项式不同.</p>
-<p>首一性还可以得到以下性质 </p>
-<script type="math/tex; mode=display">
-    (x\varphi_{k-2},\varphi_{k-1})_{w}=(\varphi_{k-1},\varphi_{k-1})_{w}</script><h3 id="Simpson法则的误差"><a href="#Simpson法则的误差" class="headerlink" title="Simpson法则的误差"></a>Simpson法则的误差</h3><p><strong>Simpson法则</strong>：</p>
+    Q\thickapprox \frac{2^{n}F(h/2)-F(h)}{2^{n}-1}</script><p>$F_{n+1}(h)$ 至少是 $n+1$ 阶近似 $Q$ 的公式 </p>
+<p>一个例子是用二阶中心差分公式进行外推，得到的其实是四阶公式. 且误差项仅和 $h$ 的偶数阶有关.</p>
+<h2 id="数值积分的Newton-Cotes公式"><a href="#数值积分的Newton-Cotes公式" class="headerlink" title="数值积分的Newton-Cotes公式"></a>数值积分的Newton-Cotes公式</h2><h3 id="Simpson法则的误差"><a href="#Simpson法则的误差" class="headerlink" title="Simpson法则的误差"></a>Simpson法则的误差</h3><p><strong>Simpson法则</strong>：</p>
 <script type="math/tex; mode=display">
     \int_{x_0}^{x_2} f(x) \mathrm{d}x=\frac{h}{3}(y_0+4y_1+y_2)-\frac{h^{5}}{90}f^{(4)}(c)</script><p>其中 $h=x_2-x_1=x_1-x_0$，$c$在 $x_0$和 $x_2$之间.</p>
 <p>首先回顾Hermite插值：可将Hermite插值等价表示为经过 $z_1,z_2,\cdots,z_2n$，其中 $z_{2i-1}=z{2i}=x_i$，的Newton插值.<br>Newton插值的三次项为奇函数，故在 $x_0~ x_2$上积分为零，再对误差项利用积分第一中值定理知最后误差项.</p>
@@ -366,7 +367,7 @@
 <h3 id="舍入误差对复合积分公式的影响"><a href="#舍入误差对复合积分公式的影响" class="headerlink" title="舍入误差对复合积分公式的影响"></a>舍入误差对复合积分公式的影响</h3><script type="math/tex; mode=display">
     \int_{a}^{b} f(x) \mathrm{d}x\thickapprox \frac{h}{2}(f_0+2f_1+\cdots +2f_{n-1}+f_n)+\varepsilon_R</script><p>有</p>
 <script type="math/tex; mode=display">
-    \varepsilon_R \thickapprox (b-a)\varepsilon_h</script><h3 id="开Newton-Cotes公式"><a href="#开Newton-Cotes公式" class="headerlink" title="开Newton-Cotes公式"></a>开Newton-Cotes公式</h3><h3 id="Romberg积分"><a href="#Romberg积分" class="headerlink" title="Romberg积分"></a>Romberg积分</h3><p>一个表格 </p>
+    \varepsilon_R \thickapprox (b-a)\varepsilon_h</script><h3 id="开Newton-Cotes公式"><a href="#开Newton-Cotes公式" class="headerlink" title="开Newton-Cotes公式"></a>开Newton-Cotes公式</h3><h2 id="Romberg积分"><a href="#Romberg积分" class="headerlink" title="Romberg积分"></a>Romberg积分</h2><p>一个表格 </p>
 <script type="math/tex; mode=display">
     \begin{aligned}
     &R_{11} \\ 
@@ -423,7 +424,24 @@
 <script type="math/tex; mode=display">
     \int_{a}^{b} \frac{g(x)-g(a)}{(x-a)^{p}} \mathrm{d}x+ \int_{a}^{b} \frac{g(a)}{(x-a)^{p}} \mathrm{d}x</script><p>这样 $\displaystyle G(x)=\frac{g(x)-Q_4(x)}{(x-a)^{p}}\in C^{4}[a,b]$就可以利用之前说过的公式计算. （ $Q_4(x)$为 $g(x)$在 $x=a$处展开的前5项.</p>
 <h3 id="高维积分的计算"><a href="#高维积分的计算" class="headerlink" title="高维积分的计算"></a>高维积分的计算</h3><p>这会牵扯到许多极限换序和收敛性的问题.</p>
-<h2 id="数值代数"><a href="#数值代数" class="headerlink" title="数值代数"></a>数值代数</h2><h3 id="方程组的求解——高斯消去法和LU分解"><a href="#方程组的求解——高斯消去法和LU分解" class="headerlink" title="方程组的求解——高斯消去法和LU分解"></a>方程组的求解——高斯消去法和LU分解</h3><p>朴素的Gauss消去法时，$n$个方程 $n$个未知数的消去计算，可以在 $\displaystyle \frac{2}{3}n^{3}+\frac{1}{2}n^{2}-\frac{7}{6}n$次操作后完成. $\displaystyle \frac{1}{3}n^{3}$ 次操作是加减， $\displaystyle \frac{1}{3}n^{3}$次操作是乘除. 所有操作完成后，变为上三角矩阵.</p>
+<h1 id="特征值与奇异值"><a href="#特征值与奇异值" class="headerlink" title="特征值与奇异值"></a>特征值与奇异值</h1><h1 id="三角插值和FFT"><a href="#三角插值和FFT" class="headerlink" title="三角插值和FFT"></a>三角插值和FFT</h1><h2 id="正交多项式"><a href="#正交多项式" class="headerlink" title="正交多项式"></a>正交多项式</h2><h3 id="最小二乘问题"><a href="#最小二乘问题" class="headerlink" title="最小二乘问题"></a>最小二乘问题</h3><p>给定函数 $f$，$w(x)$为权函数，求 $P_n(x)=\sum_{k=0}^{n} a_k\varphi_k(x)$使误差 </p>
+<script type="math/tex; mode=display">
+    E(a_0,\cdots ,a_n)=\int_{a}^{b} w(x)[f(x)-P_n(x)]^{2} \mathrm{d}x</script><p>极小，称 $P_n(x)$为该函数以 $w(x)$  为权函数的<strong>最小二乘函数逼近</strong>.</p>
+<p>如果 $\{\varphi_0,\cdots ,\varphi_n\}$为一组正交函数系，则</p>
+<script type="math/tex; mode=display">
+    a_k=\frac{(\varphi_k,f)_{w}}{(\varphi_k,\varphi_k)_{w}}</script><h3 id="Gram-Schmidt-正交化过程"><a href="#Gram-Schmidt-正交化过程" class="headerlink" title="Gram-Schmidt 正交化过程"></a>Gram-Schmidt 正交化过程</h3><p>是想把 $\{1,x,\cdots ,x^{n}\}\rightarrow \{\varphi_0,\cdots ,\varphi _n\}$成为正交基.</p>
+<p>设 $w(x)$为 $[a,b]$上的权函数. 令 $\varphi_0(x)=1$，$\varphi_1(x)=x-B_1$，其中</p>
+<script type="math/tex; mode=display">
+    B_1=\frac{(x\varphi_0,\varphi_0)_{w}}{(\varphi_0,\varphi_0)_{w}}</script><p>对于权函数 $w(x)\equiv 1$的情况</p>
+<script type="math/tex; mode=display">
+    B_1=\frac{\int_{-1}^{1} x \mathrm{d}x}{\int_{-1}^{1} 1 \mathrm{d}x}=0</script><p>当 $k\geqslant 2$时，有 </p>
+<script type="math/tex; mode=display">
+    \varphi_k(x)=(x-B_k)\varphi_{k-1}-C_k\varphi_{k-2}</script><p>其中 </p>
+<script type="math/tex; mode=display">
+    B_k=\frac{(x\varphi_{k-1},\varphi_{k-1})_{w}}{(\varphi_{k-1},\varphi_{k-1})_{w}}, \qquad C_k=\frac{(x\varphi_{k-2},\varphi_{k-1})_{w}}{(\varphi_{k-2},\varphi_{k-2})_{w}}</script><p>则所得到的集合 $\{\varphi_0,\cdots ,\varphi_n\}$是正交的. 按这种办法求出来的多项是首一的，可能与一般定义的Legendre多项式或Chebyshev多项式不同.</p>
+<p>首一性还可以得到以下性质 </p>
+<script type="math/tex; mode=display">
+    (x\varphi_{k-2},\varphi_{k-1})_{w}=(\varphi_{k-1},\varphi_{k-1})_{w}</script><h2 id="数值代数"><a href="#数值代数" class="headerlink" title="数值代数"></a>数值代数</h2><h3 id="方程组的求解——高斯消去法和LU分解"><a href="#方程组的求解——高斯消去法和LU分解" class="headerlink" title="方程组的求解——高斯消去法和LU分解"></a>方程组的求解——高斯消去法和LU分解</h3><p>朴素的Gauss消去法时，$n$个方程 $n$个未知数的消去计算，可以在 $\displaystyle \frac{2}{3}n^{3}+\frac{1}{2}n^{2}-\frac{7}{6}n$次操作后完成. $\displaystyle \frac{1}{3}n^{3}$ 次操作是加减， $\displaystyle \frac{1}{3}n^{3}$次操作是乘除. 所有操作完成后，变为上三角矩阵.</p>
 <p>再经历回代的操作，回代计算复杂度是 $O(n^{2})$，加减与乘除也是一半一半.</p>
 <p>LU分解是Gauss消去法的矩阵形式，L代表下三角，U代表上三角</p>
 <h3 id="矩阵的条件数"><a href="#矩阵的条件数" class="headerlink" title="矩阵的条件数"></a>矩阵的条件数</h3><p><strong>Q:</strong> 证明矩阵 $A$的条件数为 $\text{cond}(A)=\left| A \right|_{}\left| A ^{-1} \right|_{}$</p>
