@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/physics.jpg">
 <meta property="article:published_time" content="2022-06-11T13:37:06.000Z">
-<meta property="article:modified_time" content="2022-06-11T13:45:11.434Z">
+<meta property="article:modified_time" content="2022-06-13T13:12:57.273Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="物理">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.2k 字
+          3.5k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          18 分钟
+          30 分钟
         
       </span>
     
@@ -326,34 +326,85 @@
               <h1 id="光的干涉与衍射"><a href="#光的干涉与衍射" class="headerlink" title="光的干涉与衍射"></a>光的干涉与衍射</h1><p>匀速运动的电子不辐射电磁波，加速运动的电子辐射电磁波 </p>
 <h2 id="双缝干涉"><a href="#双缝干涉" class="headerlink" title="双缝干涉"></a>双缝干涉</h2><p><strong>Q</strong>：双缝 $d$，平行单色相干光 $(\lambda,)$</p>
 <p>1) 合振幅：$\displaystyle E(\theta)=2\cos \frac{\Delta \varphi}{2}E_{p}$，其中 $\displaystyle \Delta \varphi=\frac{2\pi d}{\lambda}\sin \theta$</p>
-<p>$n$缝干涉：$\displaystyle E(\theta)=$</p>
+<p>$n$缝干涉：$\displaystyle E(\theta)=E_p \frac{\sin (\frac{n \Delta \varphi}{2})}{\sin (\frac{\Delta \varphi}{2})}$</p>
 <blockquote>
 <p>在一般的参数下，光程差 $\Delta=d \sin \theta$</p>
 </blockquote>
 <p>2) 光强分布<br>首先光强</p>
 <script type="math/tex; mode=display">
     I(\theta)=4I_0\cos ^{2}\frac{\Delta \varphi}{2}=4I \cos ^{2}(\frac{\pi}{\lambda}d\sin \theta)</script><p>$\displaystyle I_0=\frac{1}{2}\sqrt{\frac{\varepsilon}{\mu}}E_p^{2}$</p>
-<p>明条纹：$\displaystyle d\sin \theta= \pm n \lambda$，暗条纹：$\displaystyle d\sin \theta=\pm (2n+1)\frac{\lambda}{2}$ </p>
-<p>3) <strong>衬度</strong> </p>
+<p>明条纹：$\displaystyle d\sin \theta= \pm n \lambda$，暗条纹：$\displaystyle d\sin \theta=\pm (2n-1)\frac{\lambda}{2}$ </p>
+<p>条纹间距 </p>
 <script type="math/tex; mode=display">
-    V=\frac{I_{\max}-I_{\min}}{I_{\max}+I_{\min}}</script><p>两个振幅一样时，衬度最大，为 $1$</p>
-<p><strong>Q</strong>：斜入射双缝，干涉条纹要移动</p>
+    \Delta x= \frac{L}{d} \lambda</script><p>3) <strong>衬度</strong> </p>
+<script type="math/tex; mode=display">
+    V=\frac{I_{\max}-I_{\min}}{I_{\max}+I_{\min}}</script><p>两个振幅一样时，衬度最大，为 $1$，若分振幅为 $E_1,E_2$，则衬度为</p>
+<script type="math/tex; mode=display">
+    V= \frac{2\sqrt{I_1I_2}}{I_1+I_2}</script><p><strong>Q</strong>：斜入射双缝，干涉条纹要移动</p>
 <p><strong>Q</strong>：杨氏双缝干涉实验中，要加单缝. </p>
 <blockquote>
 <p>判断明暗条纹时注意半波反射 </p>
 </blockquote>
-<h2 id="薄膜干涉"><a href="#薄膜干涉" class="headerlink" title="薄膜干涉"></a>薄膜干涉</h2><h2 id="衍射"><a href="#衍射" class="headerlink" title="衍射"></a>衍射</h2><h3 id="单缝衍射"><a href="#单缝衍射" class="headerlink" title="单缝衍射"></a>单缝衍射</h3><script type="math/tex; mode=display">
+<p>在双缝干涉实验中，当单缝变宽时，干涉条纹衬度变小. 当单缝宽度达到 $D\lambda/d$ （$D$ 为单缝与双缝间距离，$d$ 为双缝间距）时，干涉条纹完全消失. </p>
+<h2 id="光的相干性"><a href="#光的相干性" class="headerlink" title="光的相干性"></a>光的相干性</h2><p>相干条件：频率相同、振动方向相同、相位差恒定</p>
+<p>相干光的实现：</p>
+<ul>
+<li>对普通光源：相干光必须是来自同一光波列，光源不同点发出的光是非相干的，同一点不同时间发出的光是非相干的，不同光源的光是非相干的</li>
+<li>激光光源：不同光源的光可以是相干的</li>
+</ul>
+<h2 id="薄膜干涉"><a href="#薄膜干涉" class="headerlink" title="薄膜干涉"></a>薄膜干涉</h2><p>光程差</p>
+<script type="math/tex; mode=display">
+    L= \sum_{i}^{} n_i s_i</script><p>计算时注意半波损失！</p>
+<h3 id="等倾干涉"><a href="#等倾干涉" class="headerlink" title="等倾干涉"></a>等倾干涉</h3><p>连续改变厚度时环心不断冒出环纹，中心处明暗交替；膜的厚度 $e$ 减小时，条纹内缩，中心处明暗交替. 条纹内疏外密. </p>
+<p><strong>高反射膜</strong></p>
+<script type="math/tex; mode=display">
+    d= \frac{\lambda}{4n}</script><p><strong>增透膜</strong></p>
+<p>在玻璃板上喷镀透明介质膜 $n&lt;n_0$<br>在两个面上均有半波损失，膜的厚度为</p>
+<script type="math/tex; mode=display">
+    d= \frac{\lambda}{4n}</script><p>时是增透膜</p>
+<h3 id="等厚干涉"><a href="#等厚干涉" class="headerlink" title="等厚干涉"></a>等厚干涉</h3><p><strong>劈尖干涉</strong></p>
+<script type="math/tex; mode=display">
+    2ne+ \frac{\lambda}{2} = k \lambda</script><p>时为明纹</p>
+<script type="math/tex; mode=display">
+    2ne+ \frac{\lambda}{2} = (2k+1) \frac{\lambda}{2}</script><p>时为暗纹</p>
+<script type="math/tex; mode=display">
+    \Delta e= \frac{\lambda}{2n}</script><p>从而条纹间距</p>
+<script type="math/tex; mode=display">
+    \Delta x \thickapprox \frac{\lambda}{2n \theta}</script><p><strong>牛顿环</strong></p>
+<script type="math/tex; mode=display">
+    r \thickapprox \sqrt{2eR}</script><p>明环</p>
+<script type="math/tex; mode=display">
+    r=\sqrt{\frac{(2k-1)R\lambda}{2n}}</script><p>暗环</p>
+<script type="math/tex; mode=display">
+    r= \sqrt{\frac{kR\lambda}{n}}</script><p>环间距</p>
+<script type="math/tex; mode=display">
+    r_{k+m}^{2}- r_{k}^{2}= mR\lambda</script><p>条纹间距内疏外密，半径越大干涉级次越大；中央是暗纹（半波损失）</p>
+<h3 id="迈克尔逊干涉仪"><a href="#迈克尔逊干涉仪" class="headerlink" title="迈克尔逊干涉仪"></a>迈克尔逊干涉仪</h3><p>光拍现象</p>
+<h2 id="单缝衍射"><a href="#单缝衍射" class="headerlink" title="单缝衍射"></a>单缝衍射</h2><script type="math/tex; mode=display">
     E(\theta)=E_0 \frac{\sin \beta}{\beta},\quad \beta=\frac{\pi a \sin \theta}{\lambda}</script><p>其中 $E_0$为中央亮纹处的振幅</p>
-<h3 id="双缝衍射"><a href="#双缝衍射" class="headerlink" title="双缝衍射"></a>双缝衍射</h3><p>首先单缝衍射中，上下移动单缝，光屏上各条纹不变.</p>
-<p><strong>Q：</strong> 双缝衍射 $(\lambda, a, d, E_0)$， $E(\theta)=$？<br>考虑到两个单缝之间有光程差 $\delta=d \sin \theta$，可以认为相位差 $\displaystyle \varphi= \frac{2\pi d \sin \theta}{\lambda}$，认为是两个有相位差的光合成. 因为 $\displaystyle E_p=R_0 \frac{\sin  \beta}{\beta}$，故两个振动的叠加</p>
+<h3 id="条纹分析"><a href="#条纹分析" class="headerlink" title="条纹分析"></a>条纹分析</h3><p>中央是明条纹，暗条纹条件</p>
+<script type="math/tex; mode=display">
+    a \sin  \theta = \pm k \lambda, \quad k=1,2,3,\cdots</script><p>明条纹条件</p>
+<script type="math/tex; mode=display">
+    a\sin \theta= \pm (2m+1) \frac{\lambda}{2}, \quad m=1,2,\cdots</script><p>明纹宽度，0级明纹角宽度</p>
+<script type="math/tex; mode=display">
+    \Delta \theta_0 = 2 \theta_1 \thickapprox  2 \frac{\lambda}{a}</script><p>第 $k$ 级明纹角宽度（也是暗纹角宽度）</p>
+<script type="math/tex; mode=display">
+    \Delta \theta_k = \frac{\lambda}{a}</script><h2 id="双缝衍射"><a href="#双缝衍射" class="headerlink" title="双缝衍射"></a>双缝衍射</h2><p>首先单缝衍射中，上下移动单缝，光屏上各条纹不变.</p>
+<p><strong>Q：</strong> 双缝衍射 $(\lambda, a, d, E_0)$， $E(\theta)=$？<br>考虑到两个单缝之间有光程差 $\delta=d \sin \theta$，可以认为相位差 $\displaystyle \varphi= \frac{2\pi d \sin \theta}{\lambda}$，认为是两个有相位差的光合成. 因为 $\displaystyle E_p=E_0 \frac{\sin  \beta}{\beta}$，故两个振动的叠加</p>
 <script type="math/tex; mode=display">
     E=E_p \frac{\sin \varphi}{\sin (\frac{\varphi}{2})}=E_0 \frac{\sin \beta}{\beta}\frac{\sin (\varphi)}{\sin (\frac{\varphi}{2})}</script><p>那么 $N$缝衍射合振幅 </p>
 <script type="math/tex; mode=display">
     E=E_0 \frac{\sin \beta}{\beta} \frac{\sin (\frac{N\varphi}{2})}{\sin (\frac{\varphi}{2})}</script><p>注意 $\displaystyle \beta=\frac{\pi a \sin \theta}{\lambda}, \varphi= \frac{2\pi d \sin \theta}{\lambda}$</p>
 <p><strong>光栅：</strong> 大量等宽等间距的平行狭缝（或反射面）构成的光学元件.</p>
-<h3 id="光栅衍射"><a href="#光栅衍射" class="headerlink" title="光栅衍射"></a>光栅衍射</h3><p><strong>多缝干涉主极大：</strong></p>
-<p><strong>多缝干涉暗纹：</strong></p>
-<p><strong>多缝干涉次级大：</strong> 相邻主极大间有 $N-1$个暗纹，一定有 $N-2$条明纹——次级大</p>
+<h2 id="光栅衍射"><a href="#光栅衍射" class="headerlink" title="光栅衍射"></a>光栅衍射</h2><p><strong>多缝干涉主极大：</strong></p>
+<script type="math/tex; mode=display">
+    d\sin \theta = k\lambda, \quad k=0, \pm 1,\cdots</script><p>此时所有缝的光振动同相，每个缝的振幅为 $E_0$</p>
+<script type="math/tex; mode=display">
+    E=NE_0 \\ 
+    I=N^{2} I_0</script><p><strong>多缝干涉暗纹：</strong></p>
+<script type="math/tex; mode=display">
+    d \sin \theta = \pm k \frac{\lambda}{N},\quad k=1,2,\cdots N-1,N+1,\cdots</script><p><strong>多缝干涉次级大：</strong> 相邻主极大间有 $N-1$个暗纹，一定有 $N-2$条明纹——次级大</p>
 <blockquote>
 <p>次级大的光强仅为主极大的4%</p>
 </blockquote>
@@ -381,12 +432,17 @@
 <script type="math/tex; mode=display">
     R=\frac{\lambda}{\Delta \lambda}</script><p><strong>Q:</strong> 怎样定义能分辨两条谱线？<br>瑞利判据：<br>得到</p>
 <script type="math/tex; mode=display">
-    R=\frac{\lambda}{\Delta \lambda}=kN</script><h3 id="夫琅和费圆孔衍射现象"><a href="#夫琅和费圆孔衍射现象" class="headerlink" title="夫琅和费圆孔衍射现象"></a>夫琅和费圆孔衍射现象</h3><p><strong>Airy disk（艾里斑）</strong> 84%</p>
+    R=\frac{\lambda}{\Delta \lambda}=kN</script><p>（用 $k$ 级主极大的分辨本领）</p>
+<h2 id="夫琅和费圆孔衍射现象"><a href="#夫琅和费圆孔衍射现象" class="headerlink" title="夫琅和费圆孔衍射现象"></a>夫琅和费圆孔衍射现象</h2><p><strong>Airy disk（艾里斑）</strong> 84%</p>
 <p>艾里斑的半角宽：</p>
-<p>透镜的分辨本领</p>
-<p>定义最小分辨角的倒数为透镜的分辨本领.</p>
 <script type="math/tex; mode=display">
-    R=\frac{d}{1.22\lambda}</script><h3 id="X射线的衍射"><a href="#X射线的衍射" class="headerlink" title="X射线的衍射"></a>X射线的衍射</h3><p>布拉格公式</p>
+    d \sin \theta_1 \thickapprox 1.22 \lambda</script><p>透镜的分辨本领</p>
+<p>如果透镜恰好能分辨两个物点，两个物点对透镜中心张角为</p>
+<script type="math/tex; mode=display">
+    \theta_1=  \frac{1.22\lambda}{d}</script><p>定义最小分辨角的倒数为透镜的分辨本领.</p>
+<script type="math/tex; mode=display">
+    R=\frac{d}{1.22\lambda}</script><p>$d$ 为透光孔径. </p>
+<h2 id="X射线的衍射"><a href="#X射线的衍射" class="headerlink" title="X射线的衍射"></a>X射线的衍射</h2><p>布拉格公式</p>
 <script type="math/tex; mode=display">
     2d\sin \theta=k \lambda</script>
               

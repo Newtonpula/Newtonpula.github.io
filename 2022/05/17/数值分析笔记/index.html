@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/numerical.jpg">
 <meta property="article:published_time" content="2022-05-17T02:35:06.000Z">
-<meta property="article:modified_time" content="2022-06-12T15:23:28.141Z">
+<meta property="article:modified_time" content="2022-06-13T03:55:29.898Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -342,6 +342,9 @@
 <p><strong>三点中心差分公式（二阶中心差分公式）</strong></p>
 <script type="math/tex; mode=display">
     f'(x)= \frac{f(x+h)-f(x-h)}{2h}- \frac{h^{2}}{6}f'''(c)</script><p>其中 $x-h&lt;c&lt;x+h$</p>
+<p><strong>五点中心差分公式</strong></p>
+<script type="math/tex; mode=display">
+    f'(x)\thickapprox  \frac{f(x-2h)-8f(x-h)+8f(x+h)-f(x+2h)}{12h}</script><p>误差 $O(h^{4})$</p>
 <p><strong>二阶导数的三点中心差分公式</strong></p>
 <script type="math/tex; mode=display">
     f''(x)= \frac{f(x+h)-2f(x)+f(x-h)}{h^{2}}-\frac{h^{2}}{12} f^{(4)}(c)</script><p>其中 $x-h&lt;c&lt;x+h$</p>
@@ -353,21 +356,45 @@
 <script type="math/tex; mode=display">
     Q\thickapprox \frac{2^{n}F(h/2)-F(h)}{2^{n}-1}</script><p>$F_{n+1}(h)$ 至少是 $n+1$ 阶近似 $Q$ 的公式 </p>
 <p>一个例子是用二阶中心差分公式进行外推，得到的其实是四阶公式. 且误差项仅和 $h$ 的偶数阶有关.</p>
-<h2 id="数值积分的Newton-Cotes公式"><a href="#数值积分的Newton-Cotes公式" class="headerlink" title="数值积分的Newton-Cotes公式"></a>数值积分的Newton-Cotes公式</h2><h3 id="Simpson法则的误差"><a href="#Simpson法则的误差" class="headerlink" title="Simpson法则的误差"></a>Simpson法则的误差</h3><p><strong>Simpson法则</strong>：</p>
-<script type="math/tex; mode=display">
+<h2 id="数值积分"><a href="#数值积分" class="headerlink" title="数值积分"></a>数值积分</h2><p>基本上都是用插值公式和误差导出积分的公式和误差.</p>
+<h3 id="梯形法则"><a href="#梯形法则" class="headerlink" title="梯形法则"></a>梯形法则</h3><script type="math/tex; mode=display">
+    \int_{x_0}^{x_1} P(x) \mathrm{d}x= \frac{h}{2}(f(x_0)+f(x_1))</script><script type="math/tex; mode=display">
+    \int_{x_0}^{x_1} E(x) \mathrm{d}x= -\frac{h^{3}}{12}f''(c)</script><h3 id="Simpson法则"><a href="#Simpson法则" class="headerlink" title="Simpson法则"></a>Simpson法则</h3><script type="math/tex; mode=display">
     \int_{x_0}^{x_2} f(x) \mathrm{d}x=\frac{h}{3}(y_0+4y_1+y_2)-\frac{h^{5}}{90}f^{(4)}(c)</script><p>其中 $h=x_2-x_1=x_1-x_0$，$c$在 $x_0$和 $x_2$之间.</p>
-<p>首先回顾Hermite插值：可将Hermite插值等价表示为经过 $z_1,z_2,\cdots,z_2n$，其中 $z_{2i-1}=z{2i}=x_i$，的Newton插值.<br>Newton插值的三次项为奇函数，故在 $x_0~ x_2$上积分为零，再对误差项利用积分第一中值定理知最后误差项.</p>
-<p>从该表达式知Simpson法则的代数精度为3.</p>
-<h3 id="3阶Newton-Cotes公式（Simpson3-8公式）"><a href="#3阶Newton-Cotes公式（Simpson3-8公式）" class="headerlink" title="3阶Newton-Cotes公式（Simpson3/8公式）"></a>3阶Newton-Cotes公式（Simpson3/8公式）</h3><script type="math/tex; mode=display">
-    \int_{x_0}^{x_3} f(x) \mathrm{d} \thickapprox \frac{3h}{8}(f_0+3f_1+3f_2+f_3)</script><p>其误差也为 $h^{5}$量级，而因计算更复杂而通常不使用.</p>
-<h3 id="复合梯形法则"><a href="#复合梯形法则" class="headerlink" title="复合梯形法则"></a>复合梯形法则</h3><p>对于 $\displaystyle  x_j=x_0+jh, x_0=a, x_n=b, h=(b-a)/n$ 有 </p>
+<p><strong>误差的证明</strong></p>
+<p>首先误差</p>
 <script type="math/tex; mode=display">
-    \int_{a}^{b} f(x) \mathrm{d}=\frac{h}{2}(f_0+2f_1+\cdots +2f_{n-1}+f_n)-\frac{(b-a)h^{2}}{12}f''(c)</script><p>数值精度是2阶，代数精度是1阶.</p>
-<h3 id="复合Simpson公式"><a href="#复合Simpson公式" class="headerlink" title="复合Simpson公式"></a>复合Simpson公式</h3><p>类似，求和比较繁琐.</p>
+    E_s= \int_{x_0}^{x_2} \frac{(x-x_0)(x-x_1)(x-x_2)}{3!}f'''(c(x)) \mathrm{d}x</script><p>因为会变号，所以不能使用积分中值定理，尝试改写 $f’’’(c(x))$ 得到 </p>
+<script type="math/tex; mode=display">
+    f'''(c(x))=f'''(c(x_1))+(x-x_1)f^{(4)}(c(\bar{x}))c'(\bar{x})</script><p>代入 $E_s$ 后 $f’’’(c(x_1))$ 对应项积分为零，这可以解释为什么误差是跟 $f^{(4)}(x)$ 有关. </p>
+<p>另一方面，用Newton插值，可以认为再在 $x_1$ 点插值</p>
+<script type="math/tex; mode=display">
+    P_3(x)=P_2(x)+D(x-x_0)(x-x_1)(x-x_2)</script><p>那么</p>
+<script type="math/tex; mode=display">
+    \int_{x_0}^{x_2} P_2(x)  \mathrm{d}x=\int_{x_0}^{x_2} P_3(x) \mathrm{d}x</script><p>而由插值误差即知</p>
+<script type="math/tex; mode=display">
+    E_s=\int_{x_0}^{x_2} \frac{(x-x_0)(x-x_1)^{2}(x-x_2)}{4!}f^{(4)}(c) \mathrm{d}x</script><p>这下可以使用积分中值定理了，计算得到 </p>
+<script type="math/tex; mode=display">
+    E_s=-\frac{h^{5}}{90} f^{(4)}(c)</script><p>从该表达式知Simpson法则的代数精度为3.</p>
+<h3 id="3阶Newton-Cotes公式（Simpson3-8公式）"><a href="#3阶Newton-Cotes公式（Simpson3-8公式）" class="headerlink" title="3阶Newton-Cotes公式（Simpson3/8公式）"></a>3阶Newton-Cotes公式（Simpson3/8公式）</h3><script type="math/tex; mode=display">
+    \int_{x_0}^{x_3} f(x) \mathrm{d}x \thickapprox \frac{3h}{8}(f_0+3f_1+3f_2+f_3)</script><p>其误差也为 $O(h^{5})$，而因计算更复杂而通常不使用.</p>
+<h3 id="复合梯形法则"><a href="#复合梯形法则" class="headerlink" title="复合梯形法则"></a>复合梯形法则</h3><p>对于 $\displaystyle  x_j=x_0+jh, x_0=a, x_n=b, h=(b-a)/n$，如果 $f’’$ 在区间 $[a,b]$ 连续，有 </p>
+<script type="math/tex; mode=display">
+    \int_{a}^{b} f(x) \mathrm{d}x=\frac{h}{2}(f_0+2f_1+\cdots +2f_{n-1}+f_n)-\frac{(b-a)h^{2}}{12}f''(c)</script><p>数值精度是2阶，代数精度是1阶.</p>
+<h3 id="复合Simpson公式"><a href="#复合Simpson公式" class="headerlink" title="复合Simpson公式"></a>复合Simpson公式</h3><p>如果 $f^{(4)}$ 在 $[a,b]$ 上连续，有 </p>
+<script type="math/tex; mode=display">
+    \int_{a}^{b} f(x) \mathrm{d}x=\frac{h}{3}(y_0+y_{2m}+4\sum_{i=1}^{m} y_{2i-1}+2\sum_{i=1}^{m-1} y_{2i})-\frac{(b-a)h^{4}}{180}f^{(4)}(c)</script><p>注意使用 $m$ 次Simpson公式需要 $2m$ 等分. $h=(b-a)/2m$</p>
 <h3 id="舍入误差对复合积分公式的影响"><a href="#舍入误差对复合积分公式的影响" class="headerlink" title="舍入误差对复合积分公式的影响"></a>舍入误差对复合积分公式的影响</h3><script type="math/tex; mode=display">
     \int_{a}^{b} f(x) \mathrm{d}x\thickapprox \frac{h}{2}(f_0+2f_1+\cdots +2f_{n-1}+f_n)+\varepsilon_R</script><p>有</p>
 <script type="math/tex; mode=display">
-    \varepsilon_R \thickapprox (b-a)\varepsilon_h</script><h3 id="开Newton-Cotes公式"><a href="#开Newton-Cotes公式" class="headerlink" title="开Newton-Cotes公式"></a>开Newton-Cotes公式</h3><h2 id="Romberg积分"><a href="#Romberg积分" class="headerlink" title="Romberg积分"></a>Romberg积分</h2><p>一个表格 </p>
+    \varepsilon_R \thickapprox (b-a)\varepsilon_h</script><h3 id="中点法则"><a href="#中点法则" class="headerlink" title="中点法则"></a>中点法则</h3><p>当 $f \in C^{2}[a,b]$ 时，</p>
+<script type="math/tex; mode=display">
+    \int_{x_0}^{x_1} f(x) \mathrm{d}x=hf(w)+\frac{h^{3}}{24}f''(c)</script><p>其中 $h=x_1-x_0$，$w$ 是中点 $x_0+h/2$，$x_0\leqslant c\leqslant x_1$</p>
+<p>Taylor展开至二阶即可得到误差. 与梯形法则相比，中点法则的误差只有一半.</p>
+<h3 id="复合中点法则"><a href="#复合中点法则" class="headerlink" title="复合中点法则"></a>复合中点法则</h3><script type="math/tex; mode=display">
+    \int_{a}^{b} f(x) \mathrm{d}x= h\sum_{i=1}^{m} f(w_i)+\frac{(b-a)h^{2}}{24}f''(c)</script><p>其中 $h=(b-a)/m$，$w$ 是 $[a,b]$ 中 $m$ 个相等子区间的中点</p>
+<h3 id="另一个开Newton-Cotes法则"><a href="#另一个开Newton-Cotes法则" class="headerlink" title="另一个开Newton-Cotes法则"></a>另一个开Newton-Cotes法则</h3><script type="math/tex; mode=display">
+    \int_{x_0}^{x_4} f(x) \mathrm{d}x=\frac{4h}{3}[2f(x_1)-f(x_2)+2f(x_3)]+\frac{14h^{5}}{45}f^{(4)}(c)</script><h2 id="Romberg积分"><a href="#Romberg积分" class="headerlink" title="Romberg积分"></a>Romberg积分</h2><p>一个表格 </p>
 <script type="math/tex; mode=display">
     \begin{aligned}
     &R_{11} \\ 
@@ -379,7 +406,9 @@
     h_j=\frac{1}{2^{j-1}}(b-a)</script><p>其中</p>
 <script type="math/tex; mode=display">
     R_{j1}=\frac{1}{2}R_{j-1,1}+h_j\sum_{i=1}^{2^{j-2}} f(a+(2i-1)h_j)</script><script type="math/tex; mode=display">
-    R_{jk}=\frac{4^{k-1}R_{j,k-1}-R_{j-1,k-1}}{4^{k-1}-1}</script><p>这里 $R_{jj}$是 $2j$阶的近似.</p>
+    R_{jk}=\frac{4^{k-1}R_{j,k-1}-R_{j-1,k-1}}{4^{k-1}-1}</script><p>这里 $R_{jj}$是 $2j$阶的近似. </p>
+<p>Romberg积分第二列最后一项和复合Simpson法则的结果一致. 事实上，Romberg积分的第一列定义为连续的复合梯形法则，第二列是复合Simpson项，即复合梯形法则的外推是复合Simpson法则. </p>
+<p>Romberg积分的常用停止条件是计算新的一行直到相邻的对角线元素 $R_{jj}$差异小于当前的容差.</p>
 <h2 id="自适应积分"><a href="#自适应积分" class="headerlink" title="自适应积分"></a>自适应积分</h2><p>为什么要自适应：</p>
 <ul>
 <li>高阶导数不易计算</li>
@@ -389,14 +418,32 @@
 <p>三点Gauss积分 </p>
 <script type="math/tex; mode=display">
     x_1=-\sqrt{\frac{3}{5}} \quad x_2=0 \quad x_3=\sqrt{\frac{3}{5}} \\
-    c_1=\frac{5}{9} \quad c_2=\frac{8}{9} \quad c_3=\frac{5}{9}</script><p>关于正交多项式系，有这样的定理 ：如果 $\{p_0,p_1,p_2,\cdots,p_n\}$在 $[a,b]$区间上是多项式的正交集，并且如果deg $p_i=i$ ，则 $p_i$在区间 $(a,b)$上有 $i$个不同的根</p>
-<p>回忆Legendre多项式：在 $[-1,1]$上以权函数 $w(x)=1$的正交多项式. 它们满足递推关系 </p>
+    c_1=\frac{5}{9} \quad c_2=\frac{8}{9} \quad c_3=\frac{5}{9}</script><p>关于正交多项式系，有这样的定理：</p>
+<p>如果 $\{p_0,p_1,p_2,\cdots,p_n\}$在 $[a,b]$区间上是多项式的正交集，并且如果deg $p_i=i$ ，则 $p_i$在区间 $(a,b)$上有 $i$个不同的根</p>
+<p>证明可以参考</p>
+<hr>
+<p>多项式以及相关内容<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/270620896">https://zhuanlan.zhihu.com/p/270620896</a></p>
+<hr>
+<h3 id="正交多项式"><a href="#正交多项式" class="headerlink" title="正交多项式"></a>正交多项式</h3><p>Legendre多项式：在 $[-1,1]$上以权函数 $w(x)=1$的正交多项式. 它们满足递推关系 </p>
 <script type="math/tex; mode=display">
-    (n+1)P_{n+1}(x)=(2n+1)x P_n(x)-nP_{n-1}(x)</script><p>其中 $P_0(x)=1$，$P_1(x)=x$</p>
+    (n+1)P_{n+1}(x)=(2n+1)x P_n(x)-nP_{n-1}(x)</script><p>或者</p>
+<script type="math/tex; mode=display">
+    p_i(x)=\frac{1}{2^{i}i!} \frac{\mathrm{d}^{i}}{\mathrm{d}x^{i}}[(x^{2}-1)^{i}]</script><p>其中 $P_0(x)=1$，$P_1(x)=x$</p>
 <p>这里Legendre多项式非首一，而是满足 $P_n(1)=1$.</p>
-<p>接下去我们要证明插值节点恰为Legendre多项式的根，这跟首项系数无关.</p>
-<p><strong>Gauss积分</strong>：</p>
+<p>正交性：</p>
 <script type="math/tex; mode=display">
+    (P_n,P_m)=\int_{-1}^{1} P_n(x)P_m(x) \mathrm{d}x=
+    \begin{cases}
+        0, \quad m \neq n \\
+        \frac{2}{2n+1}, m = n 
+    \end{cases}</script><p>奇偶性：$P_{2k}(x)$ 只含有偶次幂， $P_{2k+1}$ 只含有奇次幂</p>
+<p>若令 $\tilde{P}_n(x)= \frac{2^{n}(n!)^{2}}{(2n)!}P_n(x)$，则称 $\tilde{P}_n(x)$ 为首一的Legendre多项式.</p>
+<p>更多关于正交多项式还可以参考</p>
+<hr>
+<p>逆问题解析<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/352724194">https://zhuanlan.zhihu.com/p/352724194</a></p>
+<hr>
+<p>接下去我们要证明插值节点恰为Legendre多项式的根，这跟首项系数无关.</p>
+<h3 id="高斯积分-1"><a href="#高斯积分-1" class="headerlink" title="高斯积分"></a>高斯积分</h3><script type="math/tex; mode=display">
     \int_{-1}^{1} 1 \cdot f(x) \mathrm{d}x \thickapprox \sum_{i=1}^{n} c_if(x_i)</script><p>其中</p>
 <script type="math/tex; mode=display">
     c_i=\int_{-1}^{1} 1 \cdot L_i(x) \mathrm{d}x, \quad i=1,\cdots ,n</script><p>$L_i$是Lagrange插值基. $x_i$是Legendre多项式的根. 写出1是为了强调权函数.</p>
@@ -424,7 +471,7 @@
 <script type="math/tex; mode=display">
     \int_{a}^{b} \frac{g(x)-g(a)}{(x-a)^{p}} \mathrm{d}x+ \int_{a}^{b} \frac{g(a)}{(x-a)^{p}} \mathrm{d}x</script><p>这样 $\displaystyle G(x)=\frac{g(x)-Q_4(x)}{(x-a)^{p}}\in C^{4}[a,b]$就可以利用之前说过的公式计算. （ $Q_4(x)$为 $g(x)$在 $x=a$处展开的前5项.</p>
 <h3 id="高维积分的计算"><a href="#高维积分的计算" class="headerlink" title="高维积分的计算"></a>高维积分的计算</h3><p>这会牵扯到许多极限换序和收敛性的问题.</p>
-<h1 id="特征值与奇异值"><a href="#特征值与奇异值" class="headerlink" title="特征值与奇异值"></a>特征值与奇异值</h1><h1 id="三角插值和FFT"><a href="#三角插值和FFT" class="headerlink" title="三角插值和FFT"></a>三角插值和FFT</h1><h2 id="正交多项式"><a href="#正交多项式" class="headerlink" title="正交多项式"></a>正交多项式</h2><h3 id="最小二乘问题"><a href="#最小二乘问题" class="headerlink" title="最小二乘问题"></a>最小二乘问题</h3><p>给定函数 $f$，$w(x)$为权函数，求 $P_n(x)=\sum_{k=0}^{n} a_k\varphi_k(x)$使误差 </p>
+<h1 id="特征值与奇异值"><a href="#特征值与奇异值" class="headerlink" title="特征值与奇异值"></a>特征值与奇异值</h1><h1 id="三角插值和FFT"><a href="#三角插值和FFT" class="headerlink" title="三角插值和FFT"></a>三角插值和FFT</h1><h2 id="正交多项式-1"><a href="#正交多项式-1" class="headerlink" title="正交多项式"></a>正交多项式</h2><h3 id="最小二乘问题"><a href="#最小二乘问题" class="headerlink" title="最小二乘问题"></a>最小二乘问题</h3><p>给定函数 $f$，$w(x)$为权函数，求 $P_n(x)=\sum_{k=0}^{n} a_k\varphi_k(x)$使误差 </p>
 <script type="math/tex; mode=display">
     E(a_0,\cdots ,a_n)=\int_{a}^{b} w(x)[f(x)-P_n(x)]^{2} \mathrm{d}x</script><p>极小，称 $P_n(x)$为该函数以 $w(x)$  为权函数的<strong>最小二乘函数逼近</strong>.</p>
 <p>如果 $\{\varphi_0,\cdots ,\varphi_n\}$为一组正交函数系，则</p>
