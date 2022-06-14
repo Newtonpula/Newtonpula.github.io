@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/numerical.jpg">
 <meta property="article:published_time" content="2022-05-17T02:35:06.000Z">
-<meta property="article:modified_time" content="2022-06-14T10:56:15.506Z">
+<meta property="article:modified_time" content="2022-06-14T13:06:11.952Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          175 字
+          12k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          2 分钟
+          103 分钟
         
       </span>
     
@@ -335,7 +335,57 @@
 <blockquote>
 <p>如果误差小于 $0.5 \times 10^{-p}$，解精确到小数点后 $p$位.</p>
 </blockquote>
-<h1 id="求解方程"><a href="#求解方程" class="headerlink" title="求解方程"></a>求解方程</h1><h1 id="方程组"><a href="#方程组" class="headerlink" title="方程组"></a>方程组</h1><h1 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h1><h1 id="最小二乘"><a href="#最小二乘" class="headerlink" title="最小二乘"></a>最小二乘</h1><h1 id="数值微分和积分"><a href="#数值微分和积分" class="headerlink" title="数值微分和积分"></a>数值微分和积分</h1><h2 id="数值微分"><a href="#数值微分" class="headerlink" title="数值微分"></a>数值微分</h2><h3 id="有限差分公式"><a href="#有限差分公式" class="headerlink" title="有限差分公式"></a>有限差分公式</h3><p><strong>二点前向差分公式</strong></p>
+<h1 id="求解方程"><a href="#求解方程" class="headerlink" title="求解方程"></a>求解方程</h1><h1 id="方程组"><a href="#方程组" class="headerlink" title="方程组"></a>方程组</h1><h1 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h1><h1 id="最小二乘"><a href="#最小二乘" class="headerlink" title="最小二乘"></a>最小二乘</h1><h2 id="正交多项式"><a href="#正交多项式" class="headerlink" title="正交多项式"></a>正交多项式</h2><p>在一般的Euclid空间中，给定函数 $f$，求 $P_n(x)$ 使误差</p>
+<script type="math/tex; mode=display">
+    E= \int_{a}^{b} [f(x)-P_n(x)]^{2} \mathrm{d}x</script><p>最小，称 $P_n(x)$ 为该函数的<strong>最小二乘逼近多项式</strong>，假设 $P_n(x)=a_nx^{n}+\cdots +a_1x+a_0$，那么法线方程</p>
+<script type="math/tex; mode=display">
+    \frac{\partial E}{\partial a_j}=0</script><p>即为 </p>
+<script type="math/tex; mode=display">
+    \sum_{k=0}^{n} a_k \int_{a}^{b} x^{k+j} \mathrm{d}x= \int_{a}^{b} f(x) x^{j} \mathrm{d}x</script><p>如果我们令 $\varphi_k=x^{k}$ 为基函数，并赋予Euclid空间的典范内积则法线方程变为</p>
+<script type="math/tex; mode=display">
+    \begin{bmatrix}
+    (\varphi_0,\varphi_0) & \cdots & (\varphi_0,\varphi_n) \\ 
+    \vdots & & \vdots \\ 
+    (\varphi_n,\varphi_0) & \cdots & (\varphi_n,\varphi_n) \\ 
+    \end{bmatrix}
+    \begin{bmatrix}
+    a_0 \\ 
+    \vdots \\ 
+    a_n \\ 
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    (f,\varphi_0) \\ 
+    \vdots \\ 
+    (f,\varphi_n) \\ 
+    \end{bmatrix}</script><p>比如如果我们用 $\varphi_k$ 求 $f(x)=\sin \pi x$ 的最小二乘逼近多项式，那么得到的系数矩阵是Hilbert矩阵，条件数很大，求解困难. 通常需要采用<strong>正交基</strong>. </p>
+<h3 id="权函数和正交基"><a href="#权函数和正交基" class="headerlink" title="权函数和正交基"></a>权函数和正交基</h3><p><strong>权函数</strong> $w(x)$ 满足 $\forall x \in I=[a,b],(w(x)\geqslant 0)$，且对于 $I$ 上的任意子区间不恒为零. 从而可以定义内积 </p>
+<script type="math/tex; mode=display">
+    (f,g)_{w}= \int_{a}^{b} w(x)f(x)g(x) \mathrm{d}x</script><p>如果 $\{\varphi_0,\cdots ,\varphi_n\}$ 满足 </p>
+<script type="math/tex; mode=display">
+    \int_{a}^{b} w(x)\varphi_j(x)\varphi_k(x) \mathrm{d}x=
+    \begin{cases}
+        0,\quad j\neq k \\
+        \alpha_k>0,\quad j=k
+    \end{cases}</script><p>那么它们就是一组正交基，如果 $\alpha_k=1$，则标准正交.</p>
+<h3 id="最小二乘问题"><a href="#最小二乘问题" class="headerlink" title="最小二乘问题"></a>最小二乘问题</h3><p>给定函数 $f$，$w(x)$ 为权函数，求 $P_n(x)=\sum_{k=0}^{n} a_k\varphi_k(x)$ 使误差 </p>
+<script type="math/tex; mode=display">
+    E(a_0,\cdots ,a_n)=\int_{a}^{b} w(x)[f(x)-P_n(x)]^{2} \mathrm{d}x</script><p>极小，称 $P_n(x)$为该函数以 $w(x)$  为权函数的<strong>最小二乘函数逼近</strong>.</p>
+<p>如果 $\{\varphi_0,\cdots ,\varphi_n\}$ 为一组正交函数系，则</p>
+<script type="math/tex; mode=display">
+    a_k=\frac{(\varphi_k,f)_{w}}{(\varphi_k,\varphi_k)_{w}}</script><h3 id="Gram-Schmidt-正交化过程"><a href="#Gram-Schmidt-正交化过程" class="headerlink" title="Gram-Schmidt 正交化过程"></a>Gram-Schmidt 正交化过程</h3><p>是想把 $\{1,x,\cdots ,x^{n}\}\rightarrow \{\varphi_0,\cdots ,\varphi _n\}$ 成为正交基.</p>
+<p>设 $w(x)$为 $[a,b]$上的权函数. 令 $\varphi_0(x)=1$，$\varphi_1(x)=x-B_1$，其中</p>
+<script type="math/tex; mode=display">
+    B_1=\frac{(x\varphi_0,\varphi_0)_{w}}{(\varphi_0,\varphi_0)_{w}}</script><p>对于权函数 $w(x)\equiv 1$的情况</p>
+<script type="math/tex; mode=display">
+    B_1=\frac{\int_{-1}^{1} x \mathrm{d}x}{\int_{-1}^{1} 1 \mathrm{d}x}=0</script><p>当 $k\geqslant 2$时，有 </p>
+<script type="math/tex; mode=display">
+    \varphi_k(x)=(x-B_k)\varphi_{k-1}-C_k\varphi_{k-2}</script><p>其中 </p>
+<script type="math/tex; mode=display">
+    B_k=\frac{(x\varphi_{k-1},\varphi_{k-1})_{w}}{(\varphi_{k-1},\varphi_{k-1})_{w}}, \qquad C_k=\frac{(x\varphi_{k-2},\varphi_{k-1})_{w}}{(\varphi_{k-2},\varphi_{k-2})_{w}}</script><p>则所得到的集合 $\{\varphi_0,\cdots ,\varphi_n\}$是正交的. 按这种办法求出来的多项是首一的，可能与一般定义的Legendre多项式或Chebyshev多项式不同.</p>
+<p>首一性还可以得到以下性质 </p>
+<script type="math/tex; mode=display">
+    (x\varphi_{k-2},\varphi_{k-1})_{w}=(\varphi_{k-1},\varphi_{k-1})_{w}</script><h1 id="数值微分和积分"><a href="#数值微分和积分" class="headerlink" title="数值微分和积分"></a>数值微分和积分</h1><h2 id="数值微分"><a href="#数值微分" class="headerlink" title="数值微分"></a>数值微分</h2><h3 id="有限差分公式"><a href="#有限差分公式" class="headerlink" title="有限差分公式"></a>有限差分公式</h3><p><strong>二点前向差分公式</strong></p>
 <script type="math/tex; mode=display">
     f'(x) =\frac{f(x+h)-f(x)}{h} - \frac{h}{2} f''(c)</script><p>其中 $c$ 在 $x$ 和 $x+h$ 之间 </p>
 <p>如果误差是 $O(h^{n})$，称公式为 $n$ 阶近似 </p>
@@ -424,7 +474,7 @@
 <hr>
 <p>多项式以及相关内容<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/270620896">https://zhuanlan.zhihu.com/p/270620896</a></p>
 <hr>
-<h3 id="正交多项式"><a href="#正交多项式" class="headerlink" title="正交多项式"></a>正交多项式</h3><p>Legendre多项式：在 $[-1,1]$上以权函数 $w(x)=1$的正交多项式. 它们满足递推关系 </p>
+<h3 id="正交多项式-1"><a href="#正交多项式-1" class="headerlink" title="正交多项式"></a>正交多项式</h3><p>Legendre多项式：在 $[-1,1]$上以权函数 $w(x)=1$的正交多项式. 它们满足递推关系 </p>
 <script type="math/tex; mode=display">
     (n+1)P_{n+1}(x)=(2n+1)x P_n(x)-nP_{n-1}(x)</script><p>或者</p>
 <script type="math/tex; mode=display">
@@ -465,7 +515,7 @@
 <script type="math/tex; mode=display">
     \int_{-1}^{1} f(x) \mathrm{d}x= \int_{-1}^{1} w(x)g(x) \mathrm{d}x \thickapprox  \sum_{i=1}^{n} c_i g(x_i)</script><p>其中 $g(x)= \sqrt{1-x^{2}}f(x)$. 这时我们得到的正交多项式为Chebyshev多项式 $p_i(x)$，满足</p>
 <script type="math/tex; mode=display">
-    \int_{-1}^{1} \frac{1}{\sqrt{1-x^{2}}}p_m(x)p_n(x) \mathrm{d}x=0, m\neq n</script><p>诸零点为 $\displaystyle x_i=\cos \frac{2i-1}{2n}\pi,i=1,2,\cdots ,n$，而 $\displaystyle c_i=\int_{-1}^{1} \frac{L_i(x)}{\sqrt{1-x^{2}}} \mathrm{d}x$</p>
+    \int_{-1}^{1} \frac{1}{\sqrt{1-x^{2}}}p_m(x)p_n(x) \mathrm{d}x=0, m\neq n</script><p>诸零点为 $\displaystyle x_i=\cos \frac{2i-1}{2n}\pi,i=1,2,\cdots ,n$，而 $\displaystyle c_i=\int_{-1}^{1} \frac{L_i(x)}{\sqrt{1-x^{2}}} \mathrm{d}x= \frac{\pi}{n}$</p>
 <h3 id="反常积分的计算"><a href="#反常积分的计算" class="headerlink" title="反常积分的计算"></a>反常积分的计算</h3><p>尝试利用数值方法计算 </p>
 <script type="math/tex; mode=display">
     \int_{a}^{b} \frac{g(x)}{(x-a)^{p}} \mathrm{d}x</script><p>其中 $0&lt;p&lt;1$</p>
@@ -476,26 +526,14 @@
 </ul>
 <p>最简单的想法</p>
 <script type="math/tex; mode=display">
-    \int_{a}^{b} \frac{g(x)-g(a)}{(x-a)^{p}} \mathrm{d}x+ \int_{a}^{b} \frac{g(a)}{(x-a)^{p}} \mathrm{d}x</script><p>这样 $\displaystyle G(x)=\frac{g(x)-Q_4(x)}{(x-a)^{p}}\in C^{4}[a,b]$就可以利用之前说过的公式计算. （ $Q_4(x)$为 $g(x)$在 $x=a$处展开的前5项.</p>
-<h3 id="高维积分的计算"><a href="#高维积分的计算" class="headerlink" title="高维积分的计算"></a>高维积分的计算</h3><p>这会牵扯到许多极限换序和收敛性的问题.</p>
-<h1 id="特征值与奇异值"><a href="#特征值与奇异值" class="headerlink" title="特征值与奇异值"></a>特征值与奇异值</h1><h1 id="三角插值和FFT"><a href="#三角插值和FFT" class="headerlink" title="三角插值和FFT"></a>三角插值和FFT</h1><h2 id="正交多项式-1"><a href="#正交多项式-1" class="headerlink" title="正交多项式"></a>正交多项式</h2><h3 id="最小二乘问题"><a href="#最小二乘问题" class="headerlink" title="最小二乘问题"></a>最小二乘问题</h3><p>给定函数 $f$，$w(x)$为权函数，求 $P_n(x)=\sum_{k=0}^{n} a_k\varphi_k(x)$使误差 </p>
+    \int_{a}^{b} \frac{g(x)-g(a)}{(x-a)^{p}} \mathrm{d}x+ \int_{a}^{b} \frac{g(a)}{(x-a)^{p}} \mathrm{d}x</script><p>这样第一项的被积函数是连续函数. 可以使用之前说到的积分方法. 当然我们可以做得更加精细：Simpson 将 $g(x)$ Taylor 展开至4阶，这样 $\displaystyle G(x)=\frac{g(x)-Q_4(x)}{(x-a)^{p}}\in C^{4}[a,b]$ 就可以利用之前说过的公式计算. （ $Q_4(x)$ 为 $g(x)$ 在 $x=a$ 处Taylor展开的前5项. 而 </p>
 <script type="math/tex; mode=display">
-    E(a_0,\cdots ,a_n)=\int_{a}^{b} w(x)[f(x)-P_n(x)]^{2} \mathrm{d}x</script><p>极小，称 $P_n(x)$为该函数以 $w(x)$  为权函数的<strong>最小二乘函数逼近</strong>.</p>
-<p>如果 $\{\varphi_0,\cdots ,\varphi_n\}$为一组正交函数系，则</p>
+    \int_{a}^{b} \frac{Q_4(x)}{(x-a)^{p}} \mathrm{d}x= \sum_{k=0}^{4} \frac{g^{(k)}(a)}{k!}\frac{(b-a)^{k+1-p}}{k+1-p}</script><p>令 </p>
 <script type="math/tex; mode=display">
-    a_k=\frac{(\varphi_k,f)_{w}}{(\varphi_k,\varphi_k)_{w}}</script><h3 id="Gram-Schmidt-正交化过程"><a href="#Gram-Schmidt-正交化过程" class="headerlink" title="Gram-Schmidt 正交化过程"></a>Gram-Schmidt 正交化过程</h3><p>是想把 $\{1,x,\cdots ,x^{n}\}\rightarrow \{\varphi_0,\cdots ,\varphi _n\}$成为正交基.</p>
-<p>设 $w(x)$为 $[a,b]$上的权函数. 令 $\varphi_0(x)=1$，$\varphi_1(x)=x-B_1$，其中</p>
+    G(x)= \frac{g(x)-Q_4(x)}{(x-a)^{p}}</script><p>则相应误差</p>
 <script type="math/tex; mode=display">
-    B_1=\frac{(x\varphi_0,\varphi_0)_{w}}{(\varphi_0,\varphi_0)_{w}}</script><p>对于权函数 $w(x)\equiv 1$的情况</p>
-<script type="math/tex; mode=display">
-    B_1=\frac{\int_{-1}^{1} x \mathrm{d}x}{\int_{-1}^{1} 1 \mathrm{d}x}=0</script><p>当 $k\geqslant 2$时，有 </p>
-<script type="math/tex; mode=display">
-    \varphi_k(x)=(x-B_k)\varphi_{k-1}-C_k\varphi_{k-2}</script><p>其中 </p>
-<script type="math/tex; mode=display">
-    B_k=\frac{(x\varphi_{k-1},\varphi_{k-1})_{w}}{(\varphi_{k-1},\varphi_{k-1})_{w}}, \qquad C_k=\frac{(x\varphi_{k-2},\varphi_{k-1})_{w}}{(\varphi_{k-2},\varphi_{k-2})_{w}}</script><p>则所得到的集合 $\{\varphi_0,\cdots ,\varphi_n\}$是正交的. 按这种办法求出来的多项是首一的，可能与一般定义的Legendre多项式或Chebyshev多项式不同.</p>
-<p>首一性还可以得到以下性质 </p>
-<script type="math/tex; mode=display">
-    (x\varphi_{k-2},\varphi_{k-1})_{w}=(\varphi_{k-1},\varphi_{k-1})_{w}</script><h2 id="数值代数"><a href="#数值代数" class="headerlink" title="数值代数"></a>数值代数</h2><h3 id="方程组的求解——高斯消去法和LU分解"><a href="#方程组的求解——高斯消去法和LU分解" class="headerlink" title="方程组的求解——高斯消去法和LU分解"></a>方程组的求解——高斯消去法和LU分解</h3><p>朴素的Gauss消去法时，$n$个方程 $n$个未知数的消去计算，可以在 $\displaystyle \frac{2}{3}n^{3}+\frac{1}{2}n^{2}-\frac{7}{6}n$次操作后完成. $\displaystyle \frac{1}{3}n^{3}$ 次操作是加减， $\displaystyle \frac{1}{3}n^{3}$次操作是乘除. 所有操作完成后，变为上三角矩阵.</p>
+    E=-\frac{h^{4}}{180}(b-a) G^{(4)}(\xi)</script><h3 id="高维积分的计算"><a href="#高维积分的计算" class="headerlink" title="高维积分的计算"></a>高维积分的计算</h3><p>这会牵扯到许多极限换序和收敛性的问题.</p>
+<h1 id="特征值与奇异值"><a href="#特征值与奇异值" class="headerlink" title="特征值与奇异值"></a>特征值与奇异值</h1><h1 id="三角插值和FFT"><a href="#三角插值和FFT" class="headerlink" title="三角插值和FFT"></a>三角插值和FFT</h1><h2 id="数值代数"><a href="#数值代数" class="headerlink" title="数值代数"></a>数值代数</h2><h3 id="方程组的求解——高斯消去法和LU分解"><a href="#方程组的求解——高斯消去法和LU分解" class="headerlink" title="方程组的求解——高斯消去法和LU分解"></a>方程组的求解——高斯消去法和LU分解</h3><p>朴素的Gauss消去法时，$n$个方程 $n$个未知数的消去计算，可以在 $\displaystyle \frac{2}{3}n^{3}+\frac{1}{2}n^{2}-\frac{7}{6}n$次操作后完成. $\displaystyle \frac{1}{3}n^{3}$ 次操作是加减， $\displaystyle \frac{1}{3}n^{3}$次操作是乘除. 所有操作完成后，变为上三角矩阵.</p>
 <p>再经历回代的操作，回代计算复杂度是 $O(n^{2})$，加减与乘除也是一半一半.</p>
 <p>LU分解是Gauss消去法的矩阵形式，L代表下三角，U代表上三角</p>
 <h3 id="矩阵的条件数"><a href="#矩阵的条件数" class="headerlink" title="矩阵的条件数"></a>矩阵的条件数</h3><p><strong>Q:</strong> 证明矩阵 $A$的条件数为 $\text{cond}(A)=\left| A \right|_{}\left| A ^{-1} \right|_{}$</p>
