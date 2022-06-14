@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/numerical.jpg">
 <meta property="article:published_time" content="2022-05-17T02:35:06.000Z">
-<meta property="article:modified_time" content="2022-06-13T03:55:29.898Z">
+<meta property="article:modified_time" content="2022-06-14T10:56:15.506Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -443,13 +443,16 @@
 <p>逆问题解析<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/352724194">https://zhuanlan.zhihu.com/p/352724194</a></p>
 <hr>
 <p>接下去我们要证明插值节点恰为Legendre多项式的根，这跟首项系数无关.</p>
-<h3 id="高斯积分-1"><a href="#高斯积分-1" class="headerlink" title="高斯积分"></a>高斯积分</h3><script type="math/tex; mode=display">
+<h3 id="高斯积分-1"><a href="#高斯积分-1" class="headerlink" title="高斯积分"></a>高斯积分</h3><p>我们想用 $n$ 阶插值多项式尽可能拟合高阶多项式的积分.</p>
+<script type="math/tex; mode=display">
+    \int_{-1}^{1} x^{k} \mathrm{d}x=\sum_{i=1}^{n} c_i x_i^{k}</script><p>一共有 $x_i,c_i,i=1,2,\cdots,n$ 这 $2n$ 个未知数，因此我们希望 $k=0,1,\cdots ,2n-1$，即 Gauss 积分的代数精度为 $2n-1$. 事实上有</p>
+<script type="math/tex; mode=display">
     \int_{-1}^{1} 1 \cdot f(x) \mathrm{d}x \thickapprox \sum_{i=1}^{n} c_if(x_i)</script><p>其中</p>
 <script type="math/tex; mode=display">
     c_i=\int_{-1}^{1} 1 \cdot L_i(x) \mathrm{d}x, \quad i=1,\cdots ,n</script><p>$L_i$是Lagrange插值基. $x_i$是Legendre多项式的根. 写出1是为了强调权函数.</p>
 <p><strong>定理</strong>：Gauss积分方法，在 $[-1,1]$上使用 $n$阶Legendre多项式，具有 $2n-1$阶代数精度.</p>
 <blockquote>
-<p>并不需要解那个很复杂的非线性方程组，只要说明Gauss积分方法能够具有 $2n-1$阶代数精度，就可由唯一性得知它就是最好的插值法.</p>
+<p>并不需要解那个很复杂的非线性方程组，只要说明Gauss积分方法能够具有 $2n-1$阶代数精度，就可由唯一性得知它就是最好的插值法. 然而事实上Lengdre多项式的根确实是那个很复杂的非线性方程组的根，这一点很难直接证明.</p>
 </blockquote>
 <p>在一般区间 $[a,b]$上近似积分，作变换 $t=(2x-a-b)/(b-a)$，容易检验</p>
 <script type="math/tex; mode=display">
@@ -457,8 +460,12 @@
 <script type="math/tex; mode=display">
     R=\int_{-1}^{1} f(x) \mathrm{d}x-\sum_{i=1}^{n} c_if(x_i)=\frac{f^{(2n)}(\xi)}{(2n)!}\int_{-1}^{1} q(x) \mathrm{d}x</script><p>其中 $q(x)=[(x-x_1)\cdots (x-x_n)]^{2}$</p>
 <p>可以考虑 $x_1,x_2,\cdots,x_n$的Hermite插值.</p>
-<h3 id="Gauss-Chebyshev-积分"><a href="#Gauss-Chebyshev-积分" class="headerlink" title="Gauss-Chebyshev 积分"></a>Gauss-Chebyshev 积分</h3><p>权函数 $\displaystyle w(x)=\frac{1}{\sqrt{1-x^{2}}}$.</p>
-<p>此时取的诸 $\displaystyle x_i=\cos \frac{2i-1}{2n}\pi,i=1,2,\cdots ,n$，而 $\displaystyle c_i=\int_{-1}^{1} \frac{L_i(x)}{\sqrt{1-x^{2}}} \mathrm{d}x$</p>
+<h3 id="Gauss-Chebyshev-积分"><a href="#Gauss-Chebyshev-积分" class="headerlink" title="Gauss-Chebyshev 积分"></a>Gauss-Chebyshev 积分</h3><p>权函数 $\displaystyle w(x)=\frac{1}{\sqrt{1-x^{2}}}$，实际上是换了一个Hilbert空间. </p>
+<p>此时希望</p>
+<script type="math/tex; mode=display">
+    \int_{-1}^{1} f(x) \mathrm{d}x= \int_{-1}^{1} w(x)g(x) \mathrm{d}x \thickapprox  \sum_{i=1}^{n} c_i g(x_i)</script><p>其中 $g(x)= \sqrt{1-x^{2}}f(x)$. 这时我们得到的正交多项式为Chebyshev多项式 $p_i(x)$，满足</p>
+<script type="math/tex; mode=display">
+    \int_{-1}^{1} \frac{1}{\sqrt{1-x^{2}}}p_m(x)p_n(x) \mathrm{d}x=0, m\neq n</script><p>诸零点为 $\displaystyle x_i=\cos \frac{2i-1}{2n}\pi,i=1,2,\cdots ,n$，而 $\displaystyle c_i=\int_{-1}^{1} \frac{L_i(x)}{\sqrt{1-x^{2}}} \mathrm{d}x$</p>
 <h3 id="反常积分的计算"><a href="#反常积分的计算" class="headerlink" title="反常积分的计算"></a>反常积分的计算</h3><p>尝试利用数值方法计算 </p>
 <script type="math/tex; mode=display">
     \int_{a}^{b} \frac{g(x)}{(x-a)^{p}} \mathrm{d}x</script><p>其中 $0&lt;p&lt;1$</p>
