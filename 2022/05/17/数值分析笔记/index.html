@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/numerical.jpg">
 <meta property="article:published_time" content="2022-05-17T02:35:06.000Z">
-<meta property="article:modified_time" content="2022-06-14T13:06:11.952Z">
+<meta property="article:modified_time" content="2022-06-15T15:08:11.727Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          103 分钟
+          104 分钟
         
       </span>
     
@@ -323,7 +323,7 @@
             
             <div class="markdown-body">
               
-              <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h3 id="1-1-二分法"><a href="#1-1-二分法" class="headerlink" title="1.1 二分法"></a>1.1 二分法</h3><p>时间复杂度：$O(\log n)$<br>n步二分法操作后，得到</p>
+              <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h1 id="求解方程"><a href="#求解方程" class="headerlink" title="求解方程"></a>求解方程</h1><h2 id="二分法"><a href="#二分法" class="headerlink" title="二分法"></a>二分法</h2><p>时间复杂度：$O(\log n)$<br>n步二分法操作后，得到</p>
 <script type="math/tex; mode=display">\lvert x_c-r \rvert < \frac{b-a}{2^{n+1}}</script><p>如果误差小于$0.5 \times 10^{-p}$，精确到小数点后p位。</p>
 <p><strong>定义1.5</strong> 令$e_i$表示迭代过程中第i步时的误差，如果</p>
 <script type="math/tex; mode=display">\lim_{i \to \infty}\frac{e_{i+1}}{e_i}=S<1</script><p>该方法被称为满足<strong>线性收敛</strong>，收敛速度为$S$。</p>
@@ -335,7 +335,118 @@
 <blockquote>
 <p>如果误差小于 $0.5 \times 10^{-p}$，解精确到小数点后 $p$位.</p>
 </blockquote>
-<h1 id="求解方程"><a href="#求解方程" class="headerlink" title="求解方程"></a>求解方程</h1><h1 id="方程组"><a href="#方程组" class="headerlink" title="方程组"></a>方程组</h1><h1 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h1><h1 id="最小二乘"><a href="#最小二乘" class="headerlink" title="最小二乘"></a>最小二乘</h1><h2 id="正交多项式"><a href="#正交多项式" class="headerlink" title="正交多项式"></a>正交多项式</h2><p>在一般的Euclid空间中，给定函数 $f$，求 $P_n(x)$ 使误差</p>
+<h2 id="牛顿法"><a href="#牛顿法" class="headerlink" title="牛顿法"></a>牛顿法</h2><p>用 $x_i$ 点上切线解作为迭代的下一步 $x_{i+1}$</p>
+<script type="math/tex; mode=display">
+    x_{i+1}=x_i- \frac{f(x_i)}{f'(x_i)}</script><h3 id="二次收敛性"><a href="#二次收敛性" class="headerlink" title="二次收敛性"></a>二次收敛性</h3><p><strong>定义</strong> 令 $e_i$ 表示第 $i$ 步的误差，若满足条件</p>
+<script type="math/tex; mode=display">
+    M= \lim_{i \to \infty} \frac{e_{i+1}}{e_i^{2}} < \infty</script><p>则称迭代<strong>二次收敛</strong></p>
+<p><strong>定理</strong> 令 $f$ 为二阶连续可导函数，满足 $f(r)=0$ 和 $f’(r)\neq 0$，则 Newton方法局部二次收敛，误差满足 </p>
+<script type="math/tex; mode=display">
+    \lim_{i \to \infty}= \frac{e_{i+1}}{e_i^{2}}=M=\frac{f''(r)}{2f'(r)}</script><h3 id="重根问题和改进的Newton方法"><a href="#重根问题和改进的Newton方法" class="headerlink" title="重根问题和改进的Newton方法"></a>重根问题和改进的Newton方法</h3><p>Newton方法不能二次收敛到重根，如 </p>
+<script type="math/tex; mode=display">
+    f(x)=x^{m}</script><p><strong>定理</strong> $f \in C^{m+1}[a,b]$，$f$ 在 $r$ 点有 $m$ 阶多重根，则Newton方法局部线性收敛到 $r$，常数 $S=(m-1)/m$</p>
+<p><strong>定理</strong> 若已知 $m&gt;1$ 重根，则改进的Newton方法</p>
+<script type="math/tex; mode=display">
+    x_{i+1}=x_i-\frac{mf(x_i)}{f'(x_i)}</script><p>二次收敛到 $r$. 设 $f(x)=(x-r)^{m}g(x)$，则</p>
+<script type="math/tex; mode=display">
+    \lim_{i \to \infty} \frac{e_{i+1}}{e_{i}^{2}}=\frac{g'(r)}{mg(r)}</script><p>或者可以通过计算 $\displaystyle \mu(x)=\frac{f(x)}{f’(x)}$ 的根（注意它没有重根）来得到 $f(x)$ 的根.</p>
+<h3 id="割线法"><a href="#割线法" class="headerlink" title="割线法"></a>割线法</h3><p>思想是用差商代替Newton法中的导数. 取 $x_0$为初始估计</p>
+<script type="math/tex; mode=display">
+    x_{i+1}=x_i-\frac{f(x_i)(x_i-x_{i-1})}{f(x_i)-f(x_{i-1})}</script><p>它满足<strong>超线性收敛</strong></p>
+<script type="math/tex; mode=display">
+    e_{i+1} \thickapprox \lvert \frac{f''(r)}{2f'(r)} \rvert ^{\alpha-1}e_i^{\alpha}</script><p>其中 $\alpha=(1+\sqrt{5})/2$</p>
+<p>一般当 $1&lt;\alpha&lt;2$ 时都称为超线性收敛.</p>
+<p>事实上对于割线法的收敛阶有（当 $f’(r),f’’(r)\neq 0$）</p>
+<script type="math/tex; mode=display">
+    e_{i+1}= \lvert f''(r)/2f'(r) \rvert e_i e_{i-1}</script><p>成立. 这可以推出上面的 $\alpha$. </p>
+<h1 id="插值"><a href="#插值" class="headerlink" title="插值"></a>插值</h1><h3 id="数据和插值函数"><a href="#数据和插值函数" class="headerlink" title="数据和插值函数"></a>数据和插值函数</h3><p>对 $n$ 个不同点，存在唯一一个不高于 $n-1$ 次的插值多项式</p>
+<p>方便的做法是利用Newton差商. $f[x_1\cdots x_n]$ 表示（唯一）多项式的 $x^{n-1}$ 项的系数，有递归式 </p>
+<script type="math/tex; mode=display">
+    略</script><p>或者 </p>
+<script type="math/tex; mode=display">
+    f[x_1\cdots x_k]= \sum_{j=1}^{k} \frac{f(x_j)}{(x_j-1)\cdots (x_j-x_{j-1})(x_j-x_{j+1})\cdots (x_j-x_k)}</script><p>从而</p>
+<script type="math/tex; mode=display">
+    f[x_1\cdots x_n]=f[\sigma(x_1)\cdots \sigma(x_n)]</script><p>如果 $f(x)$ 在区间内有 $n-1$ 阶导数，则在区间内存在一点 $c$使得 </p>
+<script type="math/tex; mode=display">
+    f[x_1\cdots x_n]=\frac{f^{(n-1)}(c)}{(n-1)!}</script><p>Newton插值多项式</p>
+<script type="math/tex; mode=display">
+    P(x)=f[x_1]+f[x_1 x_2](x-x_1)+\cdots +f[x_1\cdots x_n](x-x_1)\cdots (x-x_{n-1})</script><h3 id="插值误差"><a href="#插值误差" class="headerlink" title="插值误差"></a>插值误差</h3><script type="math/tex; mode=display">
+    f(x)-P_{n-1}(x)=f[x_1\cdots x_nx](x-x_1)\cdots (x-x_n)= \frac{f^{(n)}(c)}{n!}(x-x_1)\cdots (x-x_n)</script><h3 id="龙格现象"><a href="#龙格现象" class="headerlink" title="龙格现象"></a>龙格现象</h3><p>略，大一上写过文章.</p>
+<h3 id="Hermite插值"><a href="#Hermite插值" class="headerlink" title="Hermite插值"></a>Hermite插值</h3><p>$f(x) \in C^{1}[a,b]$，$a\leqslant x_0&lt;x_1&lt;\cdots &lt;x_n\leqslant b$. 则 </p>
+<script type="math/tex; mode=display">
+    H_{2n+1}(x)= \sum_{i=0}^{n} f(x_i)A_i(x)+ \sum_{i=0}^{n} f'(x_i)B_i(x)</script><script type="math/tex; mode=display">
+    A_i(x)=[1-2(x-x_i)l_i'(x_i)]l_i^{2}(x)</script><script type="math/tex; mode=display">
+    B_i(x)=(x-x_i)l_i^{2}(x)</script><p>其中 $l_i$ 是Lagrange插值基. </p>
+<h3 id="Chebyshev插值"><a href="#Chebyshev插值" class="headerlink" title="Chebyshev插值"></a>Chebyshev插值</h3><p>希望找到最佳的一致逼近</p>
+<p>取</p>
+<script type="math/tex; mode=display">
+    x_i= \cos \frac{(2i-1)\pi}{2n}, i=1,\cdots,n</script><p>则此时</p>
+<script type="math/tex; mode=display">
+    \max_{-1\leqslant x\leqslant 1} \lvert (x-x_1)\cdots (x-x_n) \rvert = \frac{1}{2^{n-1}} T_n(x)\leqslant \frac{1}{2^{n-1}}</script><p>取到最小值</p>
+<p><strong>Chebyshev多项式</strong> 满足 $T_n(x)=\cos (n \arccos x)$，且有递推关系 </p>
+<script type="math/tex; mode=display">
+    T_0(x)=1, \quad T_1(x)=x</script><script type="math/tex; mode=display">
+    T_{n+1}(x)=2x T_n(x)- T_{n-1}(x)</script><ul>
+<li>$T_n(x)$ 为 $n$ 次多项式.</li>
+<li>最高次项系数为 $2^{n-1}$. $T_n(1)=1, T_n(-1)=(-1)^{n}$.</li>
+<li>最大绝对值为 $1$.</li>
+<li>$T_n(x)=\cos (n \arccos x)$ 的极值点为<script type="math/tex; mode=display">
+  x_i= \cos \frac{i\pi}{n}, i=0,\cdots ,n</script></li>
+</ul>
+<p>令 $\displaystyle y=\frac{b-a}{2}x+\frac{b+a}{2}, x\in [-1,1]$，则 </p>
+<script type="math/tex; mode=display">
+    \lvert (y-y_1)\cdots (y-y_n) \rvert =(\frac{b-a}{2})^{n}\lvert (x-x_1)\cdots (x-x_n) \rvert \leqslant (\frac{b-a}{2})^{n} \frac{1}{2^{n-1}}</script><h3 id="三次样条插值"><a href="#三次样条插值" class="headerlink" title="三次样条插值"></a>三次样条插值</h3><p>$n$ 个点 $(x_i,y_i)$ 一共 $3n-5$ 个方程，$3n-3$ 个未知数. 需要补充两个条件. 具体计算见p152-153.</p>
+<ul>
+<li>自然三次样条：$S_1’’(x_1)=S_{n-1}’’(x_n)=0$.</li>
+<li>曲率调整样条：$S_1’’(x_1)=2c_1=v_1, S_{n-1}’’(x_n)=2c_n=v_n$. </li>
+<li>钳制边界条件：$S_1’(x_1)=v_1, S_{n-1}’(x_n)=v_n$.</li>
+<li>抛物线端点的三次样条：$d_1=0=d_{n-1}$.</li>
+<li>非纽结三次样条：$S_1=S_2,S_{n-2}=S_{n-1}$</li>
+</ul>
+<p><strong>误差</strong>：设 $f(x) \in C^{4}[a,b]$，对于曲率调整样条或钳制样条 $S(x)$，令 $\delta = \max_{i} \delta_i$，有估计式 </p>
+<script type="math/tex; mode=display">
+    \max_{a\leqslant x\leqslant b} \lvert f(x)- S(x) \rvert \leqslant \frac{5}{384} \max_{a\leqslant x\leqslant b} \lvert f^{(4)}(x) \rvert \delta^{4}</script><h3 id="Bezier曲线"><a href="#Bezier曲线" class="headerlink" title="Bezier曲线"></a>Bezier曲线</h3><h1 id="最小二乘"><a href="#最小二乘" class="headerlink" title="最小二乘"></a>最小二乘</h1><h3 id="离散"><a href="#离散" class="headerlink" title="离散"></a>离散</h3><p>给定函数 $f$，求 $P_n(x)$ 使误差</p>
+<script type="math/tex; mode=display">
+    E=\frac{1}{m} \sum_{i=1}^{m} (y_i-P_{n-1}(x_i))^{2}</script><p>最小<br>设</p>
+<script type="math/tex; mode=display">
+    A=
+    \begin{bmatrix}
+    1 & x_1 & \cdots & x_1^{n-1} \\ 
+    \vdots & & & \vdots \\ 
+    1 & x_{m} & \cdots & x_m^{n-1} \\ 
+    \end{bmatrix}</script><p>则法线方程（$a=(a_0,a_1,\cdots ,a_{n-1})^{\mathsf{T}},y=(y_1,\cdots ,y_m)^{\mathsf{T}}$）</p>
+<script type="math/tex; mode=display">
+    A^{\mathsf{T}}A a= A^{\mathsf{T}}y</script><p>给定 $(t_1,y_1),\cdots ,(t_n,y_n)$，则平方误差最小逼近的直线 $y=a_0+a_1t$满足</p>
+<script type="math/tex; mode=display">
+    \begin{bmatrix}
+    \sum_{i=1}^{m} 1 & \sum_{i=1}^{m} t_i \\ 
+    \sum_{i=1}^{m} t_i & \sum_{i=1}^{m} t_i^{2} \\ 
+    \end{bmatrix}
+    \begin{bmatrix}
+    a_0 \\ 
+    a_1 
+    \end{bmatrix}
+    = 
+    \begin{bmatrix}
+    \sum_{i=1}^{m} y_i \\ 
+    \sum_{i=1}^{m} t_i y_i \\ 
+    \end{bmatrix}</script><p>有时 $A^{\mathsf{T}}A$ 的条件数过高，可以考虑QR分解. 设 $A=QR$，</p>
+<script type="math/tex; mode=display">
+    \left\| QRx-b \right\|_{2}= \left\| Rx-Q^{\mathsf{T}}b \right\|_{2}</script><p>考虑到</p>
+<script type="math/tex; mode=display">
+    R=\begin{bmatrix}
+    R_1 \\ 
+    0 \\ 
+    \end{bmatrix}</script><p>再令</p>
+<script type="math/tex; mode=display">
+    Q^{\mathsf{T}}b=\begin{bmatrix}
+    b_1 \\ 
+    b_2 \\ 
+    \end{bmatrix}</script><p>而 $R_1$ 是上三角方阵，所以法线方程即为 </p>
+<script type="math/tex; mode=display">
+    R_1 x=b_1</script><p><strong>数据线性化</strong></p>
+<script type="math/tex; mode=display">
+    y=c_1 \mathrm{e}^{c_2t} \Rightarrow \ln y= \ln c_1+ c_2t</script><h3 id="连续"><a href="#连续" class="headerlink" title="连续"></a>连续</h3><p>在一般的Euclid空间中，给定函数 $f$，求 $P_n(x)$ 使误差</p>
 <script type="math/tex; mode=display">
     E= \int_{a}^{b} [f(x)-P_n(x)]^{2} \mathrm{d}x</script><p>最小，称 $P_n(x)$ 为该函数的<strong>最小二乘逼近多项式</strong>，假设 $P_n(x)=a_nx^{n}+\cdots +a_1x+a_0$，那么法线方程</p>
 <script type="math/tex; mode=display">
@@ -382,7 +493,7 @@
 <script type="math/tex; mode=display">
     \varphi_k(x)=(x-B_k)\varphi_{k-1}-C_k\varphi_{k-2}</script><p>其中 </p>
 <script type="math/tex; mode=display">
-    B_k=\frac{(x\varphi_{k-1},\varphi_{k-1})_{w}}{(\varphi_{k-1},\varphi_{k-1})_{w}}, \qquad C_k=\frac{(x\varphi_{k-2},\varphi_{k-1})_{w}}{(\varphi_{k-2},\varphi_{k-2})_{w}}</script><p>则所得到的集合 $\{\varphi_0,\cdots ,\varphi_n\}$是正交的. 按这种办法求出来的多项是首一的，可能与一般定义的Legendre多项式或Chebyshev多项式不同.</p>
+    B_k=\frac{(x\varphi_{k-1},\varphi_{k-1})_{w}}{(\varphi_{k-1},\varphi_{k-1})_{w}}, \qquad C_k=\frac{(x\varphi_{k-2},\varphi_{k-1})_{w}}{(\varphi_{k-2},\varphi_{k-2})_{w}}</script><p>则所得到的集合 $\{\varphi_0,\cdots ,\varphi_n\}$ 是正交的. 按这种办法求出来的多项是首一的，可能与一般定义的Legendre多项式或Chebyshev多项式不同.（标准定义的Legendre多项式要求 $P_n(1)=1$）</p>
 <p>首一性还可以得到以下性质 </p>
 <script type="math/tex; mode=display">
     (x\varphi_{k-2},\varphi_{k-1})_{w}=(\varphi_{k-1},\varphi_{k-1})_{w}</script><h1 id="数值微分和积分"><a href="#数值微分和积分" class="headerlink" title="数值微分和积分"></a>数值微分和积分</h1><h2 id="数值微分"><a href="#数值微分" class="headerlink" title="数值微分"></a>数值微分</h2><h3 id="有限差分公式"><a href="#有限差分公式" class="headerlink" title="有限差分公式"></a>有限差分公式</h3><p><strong>二点前向差分公式</strong></p>
@@ -474,7 +585,7 @@
 <hr>
 <p>多项式以及相关内容<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/270620896">https://zhuanlan.zhihu.com/p/270620896</a></p>
 <hr>
-<h3 id="正交多项式-1"><a href="#正交多项式-1" class="headerlink" title="正交多项式"></a>正交多项式</h3><p>Legendre多项式：在 $[-1,1]$上以权函数 $w(x)=1$的正交多项式. 它们满足递推关系 </p>
+<h3 id="正交多项式"><a href="#正交多项式" class="headerlink" title="正交多项式"></a>正交多项式</h3><p>Legendre多项式：在 $[-1,1]$上以权函数 $w(x)=1$的正交多项式. 它们满足递推关系 </p>
 <script type="math/tex; mode=display">
     (n+1)P_{n+1}(x)=(2n+1)x P_n(x)-nP_{n-1}(x)</script><p>或者</p>
 <script type="math/tex; mode=display">
@@ -492,6 +603,7 @@
 <hr>
 <p>逆问题解析<br><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/352724194">https://zhuanlan.zhihu.com/p/352724194</a></p>
 <hr>
+<p>还有一类正交多项式Laguerre多项式，其对应的权函数 $w(x)=\mathrm{e}^{-x} $</p>
 <p>接下去我们要证明插值节点恰为Legendre多项式的根，这跟首项系数无关.</p>
 <h3 id="高斯积分-1"><a href="#高斯积分-1" class="headerlink" title="高斯积分"></a>高斯积分</h3><p>我们想用 $n$ 阶插值多项式尽可能拟合高阶多项式的积分.</p>
 <script type="math/tex; mode=display">
@@ -533,8 +645,8 @@
     G(x)= \frac{g(x)-Q_4(x)}{(x-a)^{p}}</script><p>则相应误差</p>
 <script type="math/tex; mode=display">
     E=-\frac{h^{4}}{180}(b-a) G^{(4)}(\xi)</script><h3 id="高维积分的计算"><a href="#高维积分的计算" class="headerlink" title="高维积分的计算"></a>高维积分的计算</h3><p>这会牵扯到许多极限换序和收敛性的问题.</p>
-<h1 id="特征值与奇异值"><a href="#特征值与奇异值" class="headerlink" title="特征值与奇异值"></a>特征值与奇异值</h1><h1 id="三角插值和FFT"><a href="#三角插值和FFT" class="headerlink" title="三角插值和FFT"></a>三角插值和FFT</h1><h2 id="数值代数"><a href="#数值代数" class="headerlink" title="数值代数"></a>数值代数</h2><h3 id="方程组的求解——高斯消去法和LU分解"><a href="#方程组的求解——高斯消去法和LU分解" class="headerlink" title="方程组的求解——高斯消去法和LU分解"></a>方程组的求解——高斯消去法和LU分解</h3><p>朴素的Gauss消去法时，$n$个方程 $n$个未知数的消去计算，可以在 $\displaystyle \frac{2}{3}n^{3}+\frac{1}{2}n^{2}-\frac{7}{6}n$次操作后完成. $\displaystyle \frac{1}{3}n^{3}$ 次操作是加减， $\displaystyle \frac{1}{3}n^{3}$次操作是乘除. 所有操作完成后，变为上三角矩阵.</p>
-<p>再经历回代的操作，回代计算复杂度是 $O(n^{2})$，加减与乘除也是一半一半.</p>
+<h1 id="特征值与奇异值"><a href="#特征值与奇异值" class="headerlink" title="特征值与奇异值"></a>特征值与奇异值</h1><h1 id="三角插值和FFT"><a href="#三角插值和FFT" class="headerlink" title="三角插值和FFT"></a>三角插值和FFT</h1><h1 id="数值代数"><a href="#数值代数" class="headerlink" title="数值代数"></a>数值代数</h1><h2 id="方程组的求解——高斯消去法和LU分解"><a href="#方程组的求解——高斯消去法和LU分解" class="headerlink" title="方程组的求解——高斯消去法和LU分解"></a>方程组的求解——高斯消去法和LU分解</h2><p>朴素的Gauss消去法时，$n$个方程 $n$个未知数的消去计算，可以在 $\displaystyle \frac{2}{3}n^{3}+\frac{1}{2}n^{2}-\frac{7}{6}n$次操作后完成. $\displaystyle \frac{1}{3}n^{3}$ 次操作是加减， $\displaystyle \frac{1}{3}n^{3}$次操作是乘除. 所有操作完成后，变为上三角矩阵.</p>
+<p>再经历回代的操作，回代计算复杂度是 $O(n^{2})$（实际上就是 $n^{2}$ 次），加减与乘除也是一半一半.</p>
 <p>LU分解是Gauss消去法的矩阵形式，L代表下三角，U代表上三角</p>
 <h3 id="矩阵的条件数"><a href="#矩阵的条件数" class="headerlink" title="矩阵的条件数"></a>矩阵的条件数</h3><p><strong>Q:</strong> 证明矩阵 $A$的条件数为 $\text{cond}(A)=\left| A \right|_{}\left| A ^{-1} \right|_{}$</p>
 <p><strong>证:</strong> 注意误差放大因子 </p>
