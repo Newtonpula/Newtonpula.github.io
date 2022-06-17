@@ -4,31 +4,6 @@
   
   
   <entry>
-    <title>About Interpolation</title>
-    <link href="/2022/06/16/About-Interpolation/"/>
-    <url>/2022/06/16/About-Interpolation/</url>
-    
-    <content type="html"><![CDATA[<h1 id="About-Interpolation"><a href="#About-Interpolation" class="headerlink" title="About Interpolation"></a>About Interpolation</h1><p>大一上的时候写过的Runge现象的文章和这学期的数值分析课中提到了Hermite插值. 网络上能查到的Hermite插值好像都是只有一阶导数的，笔者想找赋予任意阶导数的Hermite插值多项式. </p><p>假设插值节点为 $x_1&lt;x_2&lt;\cdots &lt;x_n$，问题的关键是找到 $mn$ 个多项式 $f_{i,k}(x)$，使得</p><script type="math/tex; mode=display">    f^{(l)}_{i,k}(x_j)= \delta_{i,j} \delta_{k,l}, \quad 1\leqslant j\leqslant n, \quad 0\leqslant l\leqslant m-1</script><p>其中 $1\leqslant i\leqslant n,0\leqslant k\leqslant m-1$. </p><p>对于固定的 $i$ 和 $k$，共有 $mn$ 个条件，故 $f_{ik}$ 次数不大于 $mn-1$. 考虑赋予一阶导数信息的情况和赋予二阶导数信息的情况，发现不妨设</p><script type="math/tex; mode=display">    f_{i,k}(x)= P_{i,k}(x) l_i^{m}(x)</script><p>其中 $l_i(x)$ 是Lagrange插值基. $P_{i,k}(x)$ 大致为 $m-1$ 阶多项式. </p><p>容易发现</p><script type="math/tex; mode=display">    P_{i,m-1}=\frac{1}{(m-1)!}(x-x_i)^{m-1}</script>]]></content>
-    
-    
-    <categories>
-      
-      <category>杂项</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>数学</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Chapter19</title>
     <link href="/2022/06/11/Chapter19/"/>
     <url>/2022/06/11/Chapter19/</url>
