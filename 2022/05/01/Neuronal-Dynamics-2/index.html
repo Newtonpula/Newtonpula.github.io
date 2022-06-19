@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-05-01T12:38:49.000Z">
-<meta property="article:modified_time" content="2022-05-20T02:46:27.357Z">
+<meta property="article:modified_time" content="2022-06-19T06:59:02.045Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          3.9k 字
+          4.5k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          33 分钟
+          38 分钟
         
       </span>
     
@@ -380,7 +380,23 @@
     \frac{\mathrm{d}h}{\mathrm{d}t}=\alpha_h(u)(1-h)-\beta_h(u)h</script><p>The asymptotic value $x_0(u)$ and the time constant $\tau_x(u)$ are given by $x_0(u)=\alpha_x(u)/[\alpha_x(u)+\beta_x(u)]$ and $\tau_x(u)=[\alpha_x(u)+\beta_x(u)]^{-1}$.</p>
 <p>$n$ can be intepreted as the probability of finding a single potassium channel open. In a patch with $K$ channels, approximately $k \thickapprox (1-n)K$ channels are expected to be closed.<br>We may interpret $\alpha_n(u)\Delta t$ as the probability that in a short time interval $\Delta t$ one of the momentarily closed channels switches to the open state.</p>
 </blockquote>
-<h2 id="2-3-The-Zoo-of-Ion-Channels"><a href="#2-3-The-Zoo-of-Ion-Channels" class="headerlink" title="2.3 The Zoo of Ion Channels"></a>2.3 The Zoo of Ion Channels</h2><h2 id="2-4-Summary"><a href="#2-4-Summary" class="headerlink" title="2.4 Summary"></a>2.4 Summary</h2>
+<h2 id="2-3-The-Zoo-of-Ion-Channels"><a href="#2-3-The-Zoo-of-Ion-Channels" class="headerlink" title="2.3 The Zoo of Ion Channels"></a>2.3 The Zoo of Ion Channels</h2><h3 id="Framework-for-biophysical-neuron-models"><a href="#Framework-for-biophysical-neuron-models" class="headerlink" title="Framework for biophysical neuron models"></a>Framework for biophysical neuron models</h3><h3 id="Sodium-Ion-Channels-and-the-Type-I-Regime"><a href="#Sodium-Ion-Channels-and-the-Type-I-Regime" class="headerlink" title="Sodium Ion Channels and the Type-I Regime"></a>Sodium Ion Channels and the Type-I Regime</h3><h3 id="Adaptation-and-Refractoriness"><a href="#Adaptation-and-Refractoriness" class="headerlink" title="Adaptation and Refractoriness"></a>Adaptation and Refractoriness</h3><p>I have a constant input current, an adaptation means that in the spike intervals, get longer and longer. </p>
+<p>Ex: </p>
+<script type="math/tex; mode=display">
+    I_{M}= g_{M} m(u-E_{k})</script><ul>
+<li>Potassium current </li>
+<li>Kv7 subunits</li>
+<li>slow time constant </li>
+</ul>
+<p>A current such as $I_{M}$ is one of the potentially many sources of adaptation. It works by lowering the membrane potential, by lowering the spike after potential(SAP). </p>
+<p>Another way of generating adaptation: not by changing SAP, but by increasing the firing threshold. </p>
+<script type="math/tex; mode=display">
+    I_{NaP} = g_{NaP} mh(u-E_{Na})</script><ul>
+<li>persistent sodium current </li>
+<li>fast activation time constant </li>
+<li>slow inactivation (~1s)</li>
+</ul>
+<h3 id="Subthreshold-Effects"><a href="#Subthreshold-Effects" class="headerlink" title="Subthreshold Effects"></a>Subthreshold Effects</h3><h3 id="Calcium-spikes-and-postinhibitory-rebound"><a href="#Calcium-spikes-and-postinhibitory-rebound" class="headerlink" title="Calcium spikes and postinhibitory rebound"></a>Calcium spikes and postinhibitory rebound</h3><h2 id="2-4-Summary"><a href="#2-4-Summary" class="headerlink" title="2.4 Summary"></a>2.4 Summary</h2>
               
             </div>
             <hr/>
