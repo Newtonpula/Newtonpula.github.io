@@ -16,24 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本节主要与奇解有关">
+    <meta name="description" content="大一下第二学期数值分析Project2中我的部分">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常微分方程（四）">
-<meta property="og:url" content="http://example.com/2022/04/06/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89/index.html">
+<meta property="og:title" content="About Bezier Curve">
+<meta property="og:url" content="http://example.com/2022/06/20/About-Bezier-Curve/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="本节主要与奇解有关">
+<meta property="og:description" content="大一下第二学期数值分析Project2中我的部分">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
-<meta property="article:published_time" content="2022-04-06T12:42:30.000Z">
-<meta property="article:modified_time" content="2022-04-09T01:57:51.524Z">
+<meta property="og:image" content="http://example.com/img/index/bezier_curve.jpg">
+<meta property="article:published_time" content="2022-06-20T13:58:06.000Z">
+<meta property="article:modified_time" content="2022-06-20T14:44:15.479Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta name="twitter:image" content="http://example.com/img/index/bezier_curve.jpg">
   
   
   
-  <title>常微分方程（四） - Newtonpula的自留地</title>
+  <title>About Bezier Curve - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="常微分方程（四）"></span>
+            <span id="subtitle" data-typed-text="About Bezier Curve"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-06 20:42" pubdate>
-          2022年4月6日 晚上
+        <time datetime="2022-06-20 21:58" pubdate>
+          2022年6月20日 晚上
         </time>
       </span>
     
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          3.1k 字
+          6.5k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          26 分钟
+          54 分钟
         
       </span>
     
@@ -319,153 +319,110 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">常微分方程（四）</h1>
+            <h1 style="display: none">About Bezier Curve</h1>
             
             <div class="markdown-body">
               
-              <h1 id="奇解"><a href="#奇解" class="headerlink" title="奇解"></a>奇解</h1><h2 id="一阶隐式微分方程"><a href="#一阶隐式微分方程" class="headerlink" title="一阶隐式微分方程"></a>一阶隐式微分方程</h2><p>本节讨论一阶隐式方程</p>
+              <p>Bezier 曲线是本学期学过相当好用的东西. 本学期的Project2中涉及到Bezier曲线的部分大有可为. 搜索资料的过程中我找到了一个非常好的相关博客：</p>
+<p><a target="_blank" href="https://raphlinus.github.io/curves/2021/03/11/bezier-fitting.html" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">Fitting cubic Bézier curves | Raph Levien’s blog</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://raphlinus.github.io/curves/2021/03/11/bezier-fitting.html</span>&lt;/span&gt;&lt;/span&gt;</a></p>
+<p>Project2中，问题的核心是：当曲线两端点处斜率确定，如何取控制点使得Bezier曲线与原曲线最接近. 下面读者将主要看到：千方百计凑字数造成的语义冗余、对上述博客的拙劣翻译、LaTeX文档转Markdown后丢失的图片标题（不想搞啦）、不明觉厉其实很naive的公式推导、由于公式过长导致显示出大问题（以后可能会想办法解决这个问题）、第一第三问丢失导致的没见过Project2的读者完全一头雾水的情况。</p>
+<p>由于.png的透明格式，请在日间模式下阅读以获得最佳的阅读体验。</p>
+<p>用三次样条插值得到的导数值控制贝塞尔曲线两个端点的斜率，用贝塞尔曲线画出图一曲线。结果如图四，其中参数 $h$的意义下面解释。图四中用不同的颜色画出了Curve1，Curve2和Curve3，并将插值的端点标出。</p>
+<p><img src="/img/bezier_curve/fig4.jpg" srcset="/img/loading.gif" lazyload alt="fig4"></p>
+<p>考虑到图一只给出了曲线的端点和端点处切线的斜率，我们引入参数 $h_1$和$h_2$。在 $P_1=(x_i,y_i)$和$P_2=(x_{i+1},y_{i+1})$之间绘制Bezier曲线时，$h_1$定义为第一个控制点 $Q_1=(x_3,y_3)$到$P_1$的距离，$h_2$定义为第二个控制点 $Q_2=(x_4,y_4)$到$P_2$的距离。设曲线在$P_1$处斜率为 $p$，在 $P_2$处斜率为 $q$。则有</p>
 <script type="math/tex; mode=display">
-    F(x, y,\frac{\mathrm{d}y}{\mathrm{d}x})=0 \tag{1}</script><p>的几个特殊解法，隐式指的是 $\frac{\mathrm{d}y}{\mathrm{d}x}$没有预先表示为 $(x, y)$的显函数.</p>
-<h3 id="微分法"><a href="#微分法" class="headerlink" title="微分法"></a>微分法</h3><p>设从微分方程（1）中可显式解出未知函数</p>
+    \begin{aligned}
+        x_3 & =x_1+\frac{h_1}{\sqrt{1+p^{2}}}, & y_3 & =y_1+\frac{ph_1}{\sqrt{1+p^{2}}}, \\
+        x_4 & =x_2-\frac{h_2}{\sqrt{1+q^{2}}}, & y_4 & =y_2-\frac{qh_2}{\sqrt{1+q^{2}}}  \\
+    \end{aligned}</script><p>由Bezier曲线的计算公式</p>
 <script type="math/tex; mode=display">
-    y=f(x, p) \tag{2}</script><p>其中 $p=\frac{\mathrm{d}y}{\mathrm{d}x}$. 设函数 $f(x,p)$对 $(x,p)$是连续可微的. 则由方程（2）对 $x$进行微分，得</p>
+    \begin{aligned}
+        b_x & =\frac{3h_1}{\sqrt{1+p^{2}}},                                         & b_y & =\frac{3ph_1}{\sqrt{1+p^{2}}},                                         \\
+        c_x & =3(x_2-x_1)-\frac{6h_1}{\sqrt{1+p^{2}}}-\frac{3h_2}{\sqrt{1+q^{2}}},  & c_y & =3(y_2-y_1)-\frac{6ph_1}{\sqrt{1+p^{2}}}-\frac{3qh_2}{\sqrt{1+q^{2}}}  \\
+        d_x & =-2(x_2-x_1)+\frac{3h_1}{\sqrt{1+p^{2}}}+\frac{3h_2}{\sqrt{1+q^{2}}}, & d_y & =-2(y_2-y_1)+\frac{3ph_1}{\sqrt{1+p^{2}}}+\frac{3qh_2}{\sqrt{1+q^{2}}} \\
+    \end{aligned}</script><p>从而Bezier曲线</p>
 <script type="math/tex; mode=display">
-    p=f'_x(x,p)+f'_p(x,p)\frac{\mathrm{d}p}{\mathrm{d}x}</script><p>或</p>
+    \begin{aligned}
+        x(t) & =x_1+b_xt+c_xt^{2}+d_xt^{3} \\
+        y(t) & =y_1+b_yt+c_yt^{2}+d_yt^{3} \\
+    \end{aligned}</script><p>记该曲线为 $p_f$。</p>
+<h2 id="h-1-h-2-与Bezier曲线的关系"><a href="#h-1-h-2-与Bezier曲线的关系" class="headerlink" title="$h_1,h_2$与Bezier曲线的关系"></a>$h_1,h_2$与Bezier曲线的关系</h2><p>图五给出了当 $h_1=h_2=h$变动时 $p_f$的变化。注意当 $h \to 0$时</p>
 <script type="math/tex; mode=display">
-    [f'_(x,p)-p]\mathrm{d}x+f'_p(x,p)\mathrm{d}p=0 \tag{3}</script><p>这是一个关于变量 $x$和 $p$的一阶显式微分方程.</p>
-<p>求得（3）的通解 $p=u(x,C)$，得到（2）的通解 </p>
+    \frac{y(t)-y_1}{x(t)-x_1}=\frac{p+[\frac{\sqrt{1+p^{2}}(y_2-y_1)}{h}-2p-\frac{\sqrt{1+p^{2}}q}{\sqrt{1+q^{2}}}]t+[-\frac{2\sqrt{1+p^{2}}(y_2-y_1)}{3h}+p+\frac{\sqrt{1+p^{2}}q}{\sqrt{1+q^{2}}}]t^{2}}{1+[\frac{\sqrt{1+p^{2}}(x_2-x_1)}{h}-2-\frac{\sqrt{1+p^{2}}}{\sqrt{1+q^{2}}}]t+[-\frac{2\sqrt{1+p^{2}}(x_2-x_1)}{3h}+1+\frac{\sqrt{1+p^{2}}}{\sqrt{1+q^{2}}}]t^{2}}\to p</script><p>即当 $h\to 0$时 $p_f$趋向于线性，而端点处仍然满足切线的斜率条件。</p>
+<p>而当 $h$较大时，相应的 $p_f$会出现尖点，当 $h$继续增大时，相应的 $p_f$会出现自交点。事实上，1989年，Lasser提出了一种曲线曲线算法，通过使用de Casteljau算法对曲线的控制多边形进行细分来计算贝塞尔曲线的自交点。该方法需要在算法开始之前通过控制多边形的旋转角度之和来检查曲线与自交的可能性，即：当Bezier曲线的控制多边形外角和不大于 $\pi$时，Bezier曲线一定没有自交点。在图四的情况中，只有当线段$P_1Q_1$和线段$P_2Q_2$相交时， $p_f$才可能有自交点。</p>
+<p>图五展示了使用不同方法绘制Curve2的图像，可以看到，关于h取值过小时过于接近线性的问题可以通过增加插值点避免。</p>
+<p><img src="/img/bezier_curve/fig5.jpg" srcset="/img/loading.gif" lazyload alt="fig5"></p>
+<h2 id="h-1-h-2-的最佳取法"><a href="#h-1-h-2-的最佳取法" class="headerlink" title="$h_1,h_2$的最佳取法"></a>$h_1,h_2$的最佳取法</h2><p>我们认为三次样条插值得到的曲线为标准曲线 $s$，讨论 $h_1$和 $h_2$取何值时 $p_f$与 $s$最为“接近”。其中“接近”的不同含义分类讨论。</p>
+<h3 id="G2几何Hermite插值-Alvin-Penner的三种方法"><a href="#G2几何Hermite插值-Alvin-Penner的三种方法" class="headerlink" title="G2几何Hermite插值/Alvin Penner的三种方法"></a>G2几何Hermite插值/Alvin Penner的三种方法</h3><p>一个自然的想法是 $p_f$与 $s$在端点处的二阶导数值相等。$p_f$使用的是曲线的参数方程，由相关数学知识得</p>
 <script type="math/tex; mode=display">
-    y=f(x,u(x,C))</script><p>其中 $C$是一个任意常数；另外若（3）有特解 $p=w(x)$则方程（2）有相应的特解</p>
+    \frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}=\frac{y''(t)x'(t)-x''(t)y'(t)}{(x'(t))^{3}}</script><p>计算得到三次样条插值</p>
 <script type="math/tex; mode=display">
-    y=f(x,w(x))</script><p>另一方面，若（3）的通解可写成 $x=v(p,C)$的形式，则（2）的通解可写成 </p>
+    s(x)=y_1+p(x-x_1)+\biggl[\frac{3(y_2-y_1)}{(x_2-x_1)^{2}}-\frac{2p+q}{x_2-x_1}\biggr](x-x_1)^{2}+\biggl[\frac{p+q}{(x_2-x_1)^{2}}-\frac{2(y_2-y_1)}{(x_2-x_1)^{3}}\biggr](x-x_1)^{3}</script><p>那么相应端点二阶导数值相等得方程即为</p>
 <script type="math/tex; mode=display">
-    \begin{cases}
-        x=v(p,C) \\
-        y=f(v(p,C),p)
-    \end{cases}</script><p>这里 $p$视作一个参变量；同样如果（3）有特解 $x=z(p)$，则（2）有相应的特解</p>
+    \begin{aligned}
+        s''(x_1) & =\frac{y''(0)x'(0)-x''(0)y'(0)}{(x'(0))^{3}} \\
+        s''(x_2) & =\frac{y''(1)x'(1)-x''(1)y'(1)}{(x'(1))^{3}} \\
+    \end{aligned}</script><p>化简得到</p>
 <script type="math/tex; mode=display">
-    \begin{cases}
-        x=z(p) \\
-        y=f(z(p),)     
-    \end{cases}</script><h3 id="参数法"><a href="#参数法" class="headerlink" title="参数法"></a>参数法</h3><p>设微分方程不明显包含自变量，即</p>
+    \begin{aligned}
+        \frac{(1+p^{2})(h_2(p-q)+\sqrt{1+q^{2}}(p(x_1-x_2)-y_1+y_2))}{3h_1^{2}\sqrt{1+q^{2}}} & = \frac{(2p+q)(x_1-x_2)-3(y_1-y_2)}{(x_1-x_2)^{2}}  \\
+        \frac{(1+q^{2})(h_1(p-q)-\sqrt{1+p^{2}}(q(x_1-x_2)-y_1+y_2))}{3h_2^{2}\sqrt{1+p^{2}}} & = \frac{-(p+2q)(x_1-x_2)+3(y_1-y_2)}{(x_1-x_2)^{2}} \\
+    \end{aligned}</script><p>经过消元可以得到关于 $h_1$和 $h_2$的一元四次方程，求该方程在一般情况下的解析解不具有实际意义。而特别的，当 $p=q$，即两端点处切线斜率相等时，我们有</p>
 <script type="math/tex; mode=display">
-    F(y,p)=0 \quad \biggl(p=\frac{\mathrm{d}y}{\mathrm{d}x}\biggr) \tag{4}</script><p>作为变元 $y$和 $p$之间的联系，方程（4）在 $(y,p)$平面上一般表示若干条曲线. 设 </p>
+    h_1=h_2=\frac{\sqrt{1+p^{2}}}{3}(x_2-x_1)</script><p>对于 $p \neq q$的情况，$h_1$和 $h_2$可能根本没有解。即使有解，最小的正实数解也很可能较大，从而出现Bezier曲线自交的情况。例如 $(x_1,x_2,y_1,y_2,p,q)=(17,20,4.5,7.0,3,-0.198)$时，$h_1$的最小正实数解为 $3.162$，$h_2$的最小正实数解为 $1.019$，此时曲线会出现明显的自交点。</p>
+<p>查询相关资料后我们发现这是Carl de Boor et al在1987年的论文中分析的情况。由数据的不同，$h_1,h_2$可以有 $0,1,2,3$个正实数解。这篇论文还证明了 $\text{dist}(s,p_f)=O(\lvert P_1P_2 \rvert^{6})$。由于范数的等价性，我们可以任选 $\text{dist}(s,p_f)$的定义。在本文的例子中 $\lvert P_1P_2 \rvert $远大于 $1$，故该估计不具有实际意义。</p>
+<p>最近的一个结果是Alvin Penner于2019年发表的。他在文章中提出了三种方法。这些方法的优缺点总结可以见Rahp Levien’s Blog。</p>
+<h3 id="利用有向面积和图像矩进行曲线拟合"><a href="#利用有向面积和图像矩进行曲线拟合" class="headerlink" title="利用有向面积和图像矩进行曲线拟合"></a>利用有向面积和图像矩进行曲线拟合</h3><p>该方法来源于Raph Levien’s Blog。</p>
+<p>首先改述这个问题，作数学上的简化。我们可以排除平移，均匀缩放和旋转，只需考虑从 $(0,0)$到 $(1,0)$的曲线，给定 $\theta_0$和 $\theta_1$。两条控制臂的长度设为 $\delta_0$和 $\delta_1$。我们仍记原曲线为 $s$，记Bezier曲线为 $p_f$</p>
+<p><img src="/img/bezier_curve/cubic.png" srcset="/img/loading.gif" lazyload alt="cubic"></p>
+<p>那么两个控制点的坐标为 $(\delta_0\cos \theta_0,\delta_0\sin \theta_0)$和 $(1-\delta_1\cos \theta_1,\delta_1\sin \theta_1)$。</p>
+<p>三次样条插值（注意 $q=-\tan \theta_1$）：</p>
 <script type="math/tex; mode=display">
-    y=g(t),\quad p=h(t) \tag{5}</script><p>是其中一条. 称（5）为（4）的一个<strong>参数表示</strong>. 一般来说 $g(t)$，$g’(t)$和 $h(t)$都是参数 $t$的连续函数，并且 $h(t) \neq 0$. 根据上述微分方程的参数表示，我们有</p>
+    s(x)=\tan \theta_0 x-(2\tan \theta_0-\tan \theta_1)x^{2}+(\tan \theta_0-\tan \theta_1)x^{3}</script><p>Bezier曲线：</p>
 <script type="math/tex; mode=display">
-    \mathrm{d}x=\frac{1}{p}\mathrm{d}y=\frac{g'(t)}{h(t)}\mathrm{d}t</script><p>再利用积分，可得</p>
+    \begin{aligned}
+        x(t) & =3\delta_0 \cos \theta_0 t+3(1-2\delta_0 \cos \theta_0+\delta_1\cos \theta_1)t^{2}+(-2+3\delta_0 \cos \theta_0-3\delta_1 \cos \theta_1)t^{3} \\
+        y(t) & =3\delta_0\sin \theta_0t-3(2\delta_0\sin \theta_0+\delta\sin \theta_1)t^2+3(\delta_0\sin \theta_0+\delta_1\sin \theta_1)t_3                  \\
+    \end{aligned}</script><p>第一个做法是使得 $p_f$和 $x$轴围成的有向面积与 $s$和 $x$轴围成的有向面积相同，这是自然的。如图七所示，当围成面积不同时，拟合程度应当不会很高。</p>
+<p><img src="/img/bezier_curve/area.png" srcset="/img/loading.gif" lazyload alt="area"></p>
+<p>由Green公式，有</p>
 <script type="math/tex; mode=display">
-    x=\int_{}^{} \frac{g'(t)}{h(t)} \mathrm{d}t+C</script><p>因此，微分方程（4）有通解</p>
+    \text{area}=\frac{3}{20}(2\delta_0\sin \theta_0+2\delta_1\sin \theta_1-\delta_0\delta_1\sin (\theta_0+\theta_1))</script><p>对于现在的情况，</p>
 <script type="math/tex; mode=display">
-    x=\int_{}^{} \frac{g'(t)}{h(t)} \mathrm{d}t+C, \quad y=g(t) \tag{6}</script><p>一般而言，一阶隐式微分方程</p>
+    \frac{1}{12}(\tan \theta_0+ \tan \theta_1)=\frac{3}{20}(2\delta_0\sin \theta_0+2\delta_1\sin \theta_1-\delta_0\delta_1\sin (\theta_0+\theta_1))</script><p>从该式可以从给定的 $\delta_0$中解出唯一的 $\delta_1$：</p>
 <script type="math/tex; mode=display">
-    F(x, y,p)=0 \quad \biggl( p=\frac{\mathrm{d}y}{\mathrm{d}x} \biggr) \tag{7}</script><p>在 $(x, y, p)$空间表示曲面. 设它的参数表达式为</p>
+    \delta_1=\frac{\frac{5}{9}(\tan \theta_0+\tan \theta_1)-2\delta_0 \sin \theta_0}{2\sin \theta_1-\delta_0 \sin (\theta_0+\theta_1)}</script><p>第二个做法是利用图像矩（image moment）。在图六化简的情形中，图像矩即为x-矩。图八展示了图像矩对于曲线的影响。所有红色曲线都具有相同的有向面积。</p>
+<p><img src="/img/bezier_curve/xmoment.png" srcset="/img/loading.gif" lazyload alt="xmoment"></p>
+<p>由Green公式也可以化简计算</p>
 <script type="math/tex; mode=display">
-    x=f(u,v), \quad y=g(u,v), \quad p=h(u,v)</script><p>这里 $u$和 $v$ 是两个参数. 则 $\mathrm{d}y=p\mathrm{d}x$可写成如下形式</p>
+    \begin{aligned}
+        \text{moment}_x & = \int_{0}^{1} x p_f(x) \mathrm{d}=\int_{0}^{1} x(t)y(t)x'(t) \mathrm{d}t                                                                         \\
+                        & = \frac{1}{280}(34\delta_0\sin \theta_0+50\delta_1\sin \theta_1+15\delta_0^{2}\sin \theta_0\cos \theta_0-15\delta_1^{2}\sin \theta_1\cos \theta_1 \\
+                        & -\delta_0\delta_1(33\sin \theta_0\cos \theta_1+9\cos \theta_0\sin \theta_1)-9\delta_0^{2}\delta_1\sin (\theta_0+\theta_1)\cos \theta_0            \\
+                        & +9\delta_0\delta_1^{2}\sin (\theta_0+\theta_1)\cos \theta_1)
+    \end{aligned}</script><p>同样得到方程</p>
 <script type="math/tex; mode=display">
-    M(u,v)\mathrm{d}u+N(u,v)\mathrm{d}v=0 \tag{8}</script><p>其中</p>
+\begin{equation}
+    \begin{aligned}
+        \frac{\tan \theta_0}{30}+\frac{\tan \theta_1}{20} & =
+        \frac{1}{280}(34\delta_0\sin \theta_0+50\delta_1\sin \theta_1+15\delta_0^{2}\sin \theta_0\cos \theta_0-15\delta_1^{2}\sin \theta_1\cos \theta_1                                            \\
+                                                          & -\delta_0\delta_1(33\sin \theta_0\cos \theta_1+9\cos \theta_0\sin \theta_1)-9\delta_0^{2}\delta_1\sin (\theta_0+\theta_1)\cos \theta_0 \\
+                                                          & +9\delta_0\delta_1^{2}\sin (\theta_0+\theta_1)\cos \theta_1)
+    \end{aligned}
+\end{equation}</script><p>将（1）与（3）联立可以得到 $\delta_0$和 $\delta_1$的解。消元后得到的是两个一元四次方程，它们不一定有正实数解。在Raph Levien’s Blog中提到了还需要考虑 $\text{moment}_x$的极值点（将 $\delta_1$用 $\delta_0$消去）。</p>
+<h3 id="将一般情况转化为简单情形"><a href="#将一般情况转化为简单情形" class="headerlink" title="将一般情况转化为简单情形"></a>将一般情况转化为简单情形</h3><p>第二问的最后，我们求出 $h_1,h_2$与 $\delta_0,\delta_1$的关系。记 $\displaystyle k=\frac{y_2-y_1}{x_2-x_1}$</p>
+<p>作坐标变换</p>
 <script type="math/tex; mode=display">
-    \begin{cases}
-        M(u,v)=g'_u(u,v)-h(u,v)f'_u(u,v) \\
-        N(u,v)=g'_v(u,v)-h(u,v)f'_v(u,v)
-    \end{cases}</script><p>若能求得一阶显式微分方程（8）的通解 </p>
+    x'=\frac{x-x_1}{x_2-x_1}, \quad y'=\frac{y-y_1}{x_2-x_1}-\frac{y_2-y_1}{(x_2-x_1)^{2}}(x-x_1)</script><p>该变换将 $(x_1,y_1)$和 $(x_2,y_2)$映到 $(0,0)$和 $(1,0)$，且保持比例与相切关系，我们有</p>
 <script type="math/tex; mode=display">
-    v=Q(u,C) \tag{9}</script><p>则微分方程（7）有通解 </p>
+    \tan \theta_0=p-k, \quad \tan \theta_1=-q+k</script><p>该变换的逆变换是</p>
 <script type="math/tex; mode=display">
-    x=f(u,Q(u,C)), \quad y=g(u,Q(u,C))</script><p>其中 $u$是参变量，而 $C$是一个积分常数；若其有特解 $v=S(u)$，则</p>
+    x=x_1+(x_2-x_1)x', \quad y=y_1+(y_2-y_1)x'+(x_2-x_1)y'</script><p>那么就有</p>
 <script type="math/tex; mode=display">
-    x=f(u,S(u)),\quad y=g(u,S(u))</script><p>是微分方程（7）的特解.</p>
-<h2 id="奇解-1"><a href="#奇解-1" class="headerlink" title="奇解"></a>奇解</h2><p>【定义】设一阶微分方程</p>
-<script type="math/tex; mode=display">
-    F(x, y, \frac{\mathrm{d}y}{\mathrm{d}x})=0 \tag{10}</script><p>有一特解 </p>
-<script type="math/tex; mode=display">
-    \Gamma: y=\varphi(x) \quad(x\in J)</script><p>如果对每一点 $Q\in \Gamma$，在 $Q$任何领域内方程（10）有一个不同于 $\Gamma$的解在 $Q$点与 $\Gamma$相切，则称 $\Gamma$是微分方程（10）的<strong>奇解</strong>.</p>
-<p><strong>定理4.1（奇解存在的必要条件）</strong>：设函数 $F(x, y,p)$对 $(x, y, p)\in G$是连续的，而且对 $y$和 $p$有连续的偏导数 $F’_y$和 $F’_p$，若函数 $y=\varphi(x),(x\in J)$是微分方程（10）的一个奇解，并且</p>
-<script type="math/tex; mode=display">
-    (x,\varphi(x)\varphi'(x))\in G \quad(x\in J)</script><p>则奇解 $y=\varphi(x)$满足一个称之为<strong>p-判别式</strong>的联立方程</p>
-<script type="math/tex; mode=display">
-    F(x, y, p)=0, \quad F'_p(x, y, p)=0 \quad(p=\frac{\mathrm{d}y}{\mathrm{d}x}) \tag{11}</script><p>设从（11）中消去 $p$得到方程</p>
-<script type="math/tex; mode=display">
-    \Delta(x, y)=0 \tag{12}</script><p>则称由此所决定的曲线为方程（10）的<strong>P-判别曲线</strong>. 因此，微分方程（10）的奇解是一条p-判别曲线.</p>
-<p><strong>证</strong>：用反证法，假设 $\exists x_0\in J$，使得 </p>
-<script type="math/tex; mode=display">
-    F'_p(x_0, y_0, p_0) \neq 0</script><p>利用隐函数定理，$F$关于 $p$的偏导数不为零保证在 $(x_0,y_0)$附近唯一确定函数</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y)</script><p>推得 $f(x, y)$在 $(x_0, y_0)$附近关于 $y$有连续的偏导数，再用Picard定理知在 $(x_0,y_0)$附近有唯一解，从而与奇解的假设矛盾.</p>
-<p>注意，由p-判别式确定的函数 $y=\psi(x)$不一定是相应微分方程的解；即使是解，也不一定是奇解. </p>
-<p>上面的定理要求出通解才能验证奇解与否，下面的定理在某种条件下克服了这一困难.</p>
-<p><strong>定理4.2</strong>：设函数 $F(x, y, p)$对 $(x, y,p)\in G$是二阶连续可微的. 又设由微分方程（10）的p-判别式 </p>
-<script type="math/tex; mode=display">
-    F(x, y, p)=0, \quad F'_p(x, y, p)=0</script><p>消去$p$后得到的函数 $y=\psi(x)(x\in J)$是微分方程（10）的解（注意上面定理的注）.而且设条件</p>
-<script type="math/tex; mode=display">
-    F'_y(x,\psi(x),\psi'(x)) \neq 0,\quad F''_{pp}(x,\psi(x),\psi'(x)) \neq 0 \tag{13}</script><p>以及</p>
-<script type="math/tex; mode=display">
-    F'_p(x,\psi(x),\psi'(x))=0 \tag{14}</script><p>对 $x\in J$成立. 则 $y=\psi(x)$是微分方程（10）的奇解.</p>
-<p><strong>证</strong>：放到了文章最后.</p>
-<p>我们说明该定理中（13）（14）都是不可去的.</p>
-<p>考虑方程</p>
-<script type="math/tex; mode=display">
-    \biggl( \frac{\mathrm{d}y}{\mathrm{d}x} \biggr)^{2}-y^{2}=0</script><p>得到 $y=0$，此时有 $F’_y(x,0,0)=0$，而原方程的通解为 $y=x\exp {\pm x}$.</p>
-<p>考虑方程</p>
-<script type="math/tex; mode=display">
-    \sin (y \frac{\mathrm{d}y}{\mathrm{d}x})=y</script><p>得到 $y=0$，此时有 $F’’_{pp}(x,0,0)=0$，$y=0$不是原方程的奇解.</p>
-<p>考虑方程</p>
-<script type="math/tex; mode=display">
-    y=2x+y'-\frac{1}{3}(y')^3</script><p>此时 $F’_p(x,\psi(x),\psi’(x))=0$</p>
-<p>另一个类似于2.2中的结果：设连续函数 $E(y)$满足条件：</p>
-<script type="math/tex; mode=display">
-    \begin{cases}
-        E(y)=0, \quad y=0\\
-        E(y)\neq 0, \quad 0<y\leqslant 1
-    \end{cases}</script><p>则 $y=0$是微分方程</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}y}{\mathrm{d}x}=E(y)</script><p>的奇解当且仅当瑕积分</p>
-<script type="math/tex; mode=display">
-    \int_{0}^{1} \frac{\mathrm{d}y}{E(y)}</script><p>收敛.<br><strong>证</strong>：$\Rightarrow$：若 $y=0$为奇解，则存在局部解使得 $y\neq 0$，故有 $\frac{\mathrm{d}y}{E}=\mathrm{d}x \Rightarrow \int_{0}^{1} \frac{\mathrm{d}y}{E}$收敛.</p>
-<p>$\Leftarrow$：$ \int_{0}^{1} \frac{\mathrm{d}y}{E}$收敛，可令 $x(y)=x_0+\int_{0}^{y} \frac{\mathrm{d}y}{E}$是异于 $y=0$的解，由于 $y’(0)=0$，得到 $y=0$是奇解.</p>
-<h2 id="包络"><a href="#包络" class="headerlink" title="包络"></a>包络</h2><p>这一节想利用有关曲线族的包络的概念来阐明奇解与通解之间的联系，以及讨论寻求奇解的方法.</p>
-<p>设单参数 $C$的曲线族 </p>
-<script type="math/tex; mode=display">
-    K(C): \qquad V(x,y,C)=0 \tag{15}</script><p>其中函数 $V(x, y, C)$对 $(x, y, C)\in D$是连续可微的. </p>
-<p>【定义】设在平面上有一条连续可微的曲线 $\Gamma$. 如果对于任一点 $q\in \Gamma$，在曲线族（15）中都有一条曲线 $K(C^<em>)$通过 $q$点且在该点与 $\Gamma$相切，而且 $K(C^</em>)$在 $q$点的某一领域内不同于 $\Gamma$. 则称曲线 $\Gamma$为曲线族（15）的一支<strong>包络</strong>.</p>
-<p>注：这个定义与微分几何中的定义稍有不同.</p>
-<p><strong>定理4.3</strong>：设微分方程 </p>
-<script type="math/tex; mode=display">
-    F(x, y, \frac{\mathrm{d}y}{\mathrm{d}x})=0 \tag{16}</script><p>有通积分为 </p>
-<script type="math/tex; mode=display">
-    U(x, y, C)=0 \tag{17}</script><p>又设（积分）曲线族（17）有包络为</p>
-<script type="math/tex; mode=display">
-    \Gamma: \qquad y=\varphi(x) \quad (x\in J)</script><p>则包络 $y=\varphi(x)$是微分方程（16）的奇解.</p>
-<p><strong>证</strong>：任取 $\Gamma$上一点，由包络的性质即可.</p>
-<div class="note note-success">
-            <p>由奇解的定义可知，奇解是通解的包络. 因此，由上定理可知，求微分方程的奇解归结到求它的通积分的包络. 通积分的包络就是原方程的奇解.</p>
-          </div>
-<p><strong>定理4.4</strong>：设 $\Gamma$是曲线族（15）的一支包络. 则它满足如下的<strong>C-判别式</strong>：</p>
-<script type="math/tex; mode=display">
-    V(x, y, C)=0, \quad V'_C(x, y, C)=0 \tag{18}</script><p>或（消去 $C$，所得到的关系式）</p>
-<script type="math/tex; mode=display">
-    \Omega(x, y)=0 \tag{19}</script><p><strong>证</strong>：设包络的参数方程为</p>
-<script type="math/tex; mode=display">
-    \begin{cases}
-        x=f(C) \\
-        y=g(C)
-    \end{cases}</script><p>根据切向量共线得出一个式子，然后对 $V(x, y,C)=0$对 $C$求导即可.</p>
-<p>满足C-判别式的曲线未必是相应曲线族的包络，如 </p>
-<script type="math/tex; mode=display">
-    (y-1)^{2}\biggl(\frac{\mathrm{d}y}{\mathrm{d}x}\biggr)^{2}=\frac{4}{9}y</script><p>解它的通积分和C-判别式得 $y=0$或 $y=3$，然而只有前一个是曲线的包络.</p>
-<p>下面的定理给出了包络的一个充分条件.<br><strong>定理4.5</strong>：设由曲线族（15）的C-判别式 </p>
-<script type="math/tex; mode=display">
-    V(x, y,C)=0 \quad V'_C(x, y, C)=0</script><p>确定一支连续可微且不含于族（15）的曲线 </p>
-<script type="math/tex; mode=display">
-    \Lambda: \quad x=\varphi(C), \quad y=\psi(C) \quad (C\in J)</script><p>而且它满足<strong>非蜕化性条件</strong>（即切向量不退化）</p>
-<script type="math/tex; mode=display">
-    (\varphi'(C),\psi'(C))\neq (0,0), \quad (V'_x,V'_y)\neq (0,0)</script><p>其中 $V’_x=V’_x(\varphi(C),\psi(C),C)$与 $V’_y=V’_y(\varphi(C),\psi(C),C)$. 则 $\Lambda$是曲线族（15）的一支包络.<br><strong>证</strong>：在 $\Lambda$上任取一点，在这一点附近用隐函数定理找到一条曲线族中的曲线，然后证明它在这一点与 $\Lambda$相切，即其切向量共线.</p>
-<div class="note note-success">
-            <p>该定理基本上只适用于能求出通积分的情形，使用时通常配合4.3，这是因为若能判定C-曲线不是积分曲线，则它不是解，从而不是奇解，从而不是包络.</p>
-          </div>
-<h2 id="奇解的存在定理"><a href="#奇解的存在定理" class="headerlink" title="奇解的存在定理"></a>奇解的存在定理</h2><p>这是定理4.2的证明，可以参考教材117-120页<br>或者如下链接：<br><a target="_blank" href="https://zhuanlan.zhihu.com/p/97414951" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">常微分方程学习笔记（4）</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://zhuanlan.zhihu.com/p/97414951</span>&lt;/span&gt;&lt;/span&gt;</a></p>
-<p>下一章就进入高阶微分方程了.</p>
-
+    \begin{aligned}
+        h_1 & =\delta_0(x_2-x_1) \\
+        h_2 & =\delta_1(x_2-x_1) \\
+    \end{aligned}</script>
               
             </div>
             <hr/>
@@ -487,7 +444,7 @@
   
     <span>></span>
     
-  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" class="category-chain-item">数值分析</a>
   
   
 
@@ -516,8 +473,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>常微分方程（四）</div>
-      <div>http://example.com/2022/04/06/常微分方程（四）/</div>
+      <div>About Bezier Curve</div>
+      <div>http://example.com/2022/06/20/About-Bezier-Curve/</div>
     </div>
     <div class="license-meta">
       
@@ -529,7 +486,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月6日</div>
+          <div>2022年6月20日</div>
         </div>
       
       
@@ -559,18 +516,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%BA%94%EF%BC%89/" title="常微分方程（五）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">常微分方程（五）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/05/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/" title="常微分方程（三）">
-                        <span class="hidden-mobile">常微分方程（三）</span>
+                      <a href="/2022/06/20/Neuronal-Dynamics-3/" title="Neuronal Dynamics (3)">
+                        <span class="hidden-mobile">Neuronal Dynamics (3)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
