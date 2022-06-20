@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-06-20T12:04:18.000Z">
-<meta property="article:modified_time" content="2022-06-20T12:48:17.152Z">
+<meta property="article:modified_time" content="2022-06-20T13:52:51.250Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.4k 字
+          2.6k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          12 分钟
+          22 分钟
         
       </span>
     
@@ -341,7 +341,15 @@
 <p>A simple choice for the time course of the synaptic conductance in (3.1) is  </p>
 <script type="math/tex; mode=display">
     g_{syn}(t)= \sum_{f}^{} \bar{g}_{syn} \mathrm{e}^{-(t-t^{(f)})/\tau} \Theta (t-t^{(f)}  ) \tag{3.2}</script><p>with a time constant of , e.g., $\tau=5$ ms and an amplitude of $\bar{g}_{syn}=40$ pS. $t^{(f)}$ denotes the arrival time of a presynaptic action porential and $\Theta(x)$ is the Heaviside step function. </p>
-<h2 id="Spatial-Structure-The-Dendritic-Tree"><a href="#Spatial-Structure-The-Dendritic-Tree" class="headerlink" title="Spatial Structure: The Dendritic Tree"></a>Spatial Structure: The Dendritic Tree</h2><h2 id="Spatial-Structure-Axons"><a href="#Spatial-Structure-Axons" class="headerlink" title="Spatial Structure: Axons"></a>Spatial Structure: Axons</h2><h2 id="Compartmental-Models"><a href="#Compartmental-Models" class="headerlink" title="Compartmental Models"></a>Compartmental Models</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
+<p>For some synapse types, the postsynaptic current is made up of two different components. If we also take into account the smooth rise of the synaptic response, then </p>
+<script type="math/tex; mode=display">
+    g_{syn}(t)= \sum_{f}^{} \bar{g}_{syn}[1-\mathrm{e}^{-(t-t^{(f)})/\tau_{rise}} ][a\mathrm{e}^{-(t-t^{(f)})/\tau_{fase}}+(1-a) \mathrm{e}^{-(t-t^{(f)})/\tau_{slow}}  ]\Theta(t-t^{(f)})</script><p>where $a$ is the relative weight of the fast component. The time constant $\tau_{rise}$ characterizes the rise time of the synaptic conductance. </p>
+<p>For a more detailed synapse model, we describe the synaptic conductance $g_{syn}(t)= g_{max}R(t)$ where $R(t)$ is the fraction of open synaptic channels (gating variable). Channels open when neurotransmitter $N$ binds to the synapses </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}R}{\mathrm{d}t}= \alpha N(1-R) -\beta R \tag{3.4}</script><p>where $\alpha$ is the binding constant, $\beta$ the unbinding constant and $(1-R)$ the fraction of closed channels where binding of neurotransmitter can occur. Neurotransmitter $N$ is released with each presynaptic spike so that the total amount of neurotransmitter at synapse $j$ is </p>
+<script type="math/tex; mode=display">
+    N(t)= \int_{0}^{\infty} \gamma(s) S_j(t-s) \mathrm{d}s \tag{3.5}</script><p>where $S_j= \sum_{f}^{} \delta(t-t_{j}^{(f)})$ is the presynaptic spike train and $\gamma(s)$ is the time course of the neurotransmitter density as measured at the site of the postsynaptic receptor. </p>
+<h3 id="Inhibitory-Synapses"><a href="#Inhibitory-Synapses" class="headerlink" title="Inhibitory Synapses"></a>Inhibitory Synapses</h3><h3 id="Excitatory-Synapses"><a href="#Excitatory-Synapses" class="headerlink" title="Excitatory Synapses"></a>Excitatory Synapses</h3><h3 id="Rapid-Synaptic-Dynamics"><a href="#Rapid-Synaptic-Dynamics" class="headerlink" title="Rapid Synaptic Dynamics"></a>Rapid Synaptic Dynamics</h3><h2 id="Spatial-Structure-The-Dendritic-Tree"><a href="#Spatial-Structure-The-Dendritic-Tree" class="headerlink" title="Spatial Structure: The Dendritic Tree"></a>Spatial Structure: The Dendritic Tree</h2><h2 id="Spatial-Structure-Axons"><a href="#Spatial-Structure-Axons" class="headerlink" title="Spatial Structure: Axons"></a>Spatial Structure: Axons</h2><h2 id="Compartmental-Models"><a href="#Compartmental-Models" class="headerlink" title="Compartmental Models"></a>Compartmental Models</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
               
             </div>
             <hr/>
