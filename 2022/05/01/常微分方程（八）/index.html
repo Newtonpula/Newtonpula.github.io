@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
 <meta property="article:published_time" content="2022-05-01T12:39:18.000Z">
-<meta property="article:modified_time" content="2022-06-21T15:20:21.447Z">
+<meta property="article:modified_time" content="2022-06-22T01:45:08.288Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -337,9 +337,9 @@
 <p>(1) defines a <strong>vector field</strong> in the phase space. </p>
 <script type="math/tex; mode=display">
     \mathbf{v}(\mathbf{x})=(v_1(\mathbf{x}),\cdots ,v_n(\mathbf{x})) \tag{4}</script><p>The solution (3) gives a <strong>trajectory</strong> in the phase space.</p>
-<blockquote>
-<p>Trajectory is the projection of integral curve on the phase space.</p>
-</blockquote>
+<div class="note note-info">
+            <p>Trajectory is the projection of integral curve on the phase space. </p>
+          </div>
 <p>If $\mathbf{x}_0$ is a zero point of (4), namely $v(\mathbf{x}_0)=0$, then (1) has a constant solution $\mathbf{x}=\mathbf{x}_0$. We call $\mathbf{x}_0$ is a <strong>balance point</strong> to (1). The balance points to (1) is called <strong>singularities</strong>.</p>
 <p>If (3) is an unsteady periodic motion, namely $\exists T&gt;0$, s.t.</p>
 <script type="math/tex; mode=display">
@@ -394,10 +394,7 @@
 <script type="math/tex; mode=display">
     u_n(t)\leqslant u_0(t)+ \int_{t_0}^{t} v(s)u_{n-1}(s) \mathrm{d}s</script><p>则有估计式 </p>
 <script type="math/tex; mode=display">
-    u_n(t)\leqslant u_0(t) \mathrm{e}^{\int_{t_0}^{t} v(s) \mathrm{d}s}</script><blockquote>
-<p>好像并不需要用到Gronwall不等式</p>
-</blockquote>
-<p><strong>证</strong>：直接依次代入，然后用 $\mathrm{e}^{x} $ 的Taylor展开即可. </p>
+    u_n(t)\leqslant u_0(t) \mathrm{e}^{\int_{t_0}^{t} v(s) \mathrm{d}s}</script><p><strong>证</strong>：直接依次代入，然后用 $\mathrm{e}^{x} $ 的Taylor展开即可. </p>
 <p>回到上面两个定理</p>
 <p><strong>证</strong>：首先原方程（7）等价于积分方程</p>
 <script type="math/tex; mode=display">
@@ -413,11 +410,14 @@
 <script type="math/tex; mode=display">
     \lvert \mathbf{x}_{n}(t)-\mathbf{x}_{n-1}(t) \rvert \leqslant \frac{(L(t-t_0))^{n}\mathrm{e}^{(t-t_0)\mathbf{A}}\mathbf{x}_0 }{n!}</script><p>这就说明如果 $\lvert \mathbf{x}_0 \rvert $ 足够小，那么 $\mathbf{x}_n(t)$ 在 $t\geqslant t_0$ 上一致收敛，设极限为 $\mathbf{x}(t)$，那么有</p>
 <script type="math/tex; mode=display">
-    \lvert \mathbf{x}(t) \rvert \leqslant \mathrm{e}^{L(t-t_0)} \mathrm{e}^{(t-t_0)\mathbf{A}} \mathbf{x}_0</script><p>证明零解的渐近稳定性，故考虑 $\lvert \mathbf{x}_0 \rvert $ 充分小，此时因为 $L=o(\mathbf{x}_0)$，故对于 $\lvert \mathbf{x}_0 \rvert $ 足够小，</p>
+    \lvert \mathbf{x}(t) \rvert \leqslant \mathrm{e}^{L(t-t_0)} \mathrm{e}^{(t-t_0)\mathbf{A}} \mathbf{x}_0</script><div class="note note-info">
+            <p>这里的证明是很微妙的. 先取 $\lvert \mathbf{x}_0 \rvert $ 足够小，那么可以证明 $\lvert \mathbf{x}_1(t) \rvert $ 也足够小，进而可以先验地得到 $\lvert \mathbf{x}_n(t) \rvert $ 都足够小，然后再有每一步的 $L$ 都足够小，可以认为这里用到了Gronwall不等式，并且有一种归纳的思想在. </p>
+          </div>
+<p>证明零解的渐近稳定性，故考虑 $\lvert \mathbf{x}_0 \rvert $ 充分小，此时因为 $L=o(\mathbf{x}_0)$，故对于 $\lvert \mathbf{x}_0 \rvert $ 足够小，</p>
 <script type="math/tex; mode=display">
-    \lim_{t \to \infty}\mathrm{e}^{L(t-t_0)} \mathrm{e}^{(t-t_0)\mathbf{A}} \mathbf{x}_0= \mathbf{0}</script><blockquote>
-<p>这个证明很大的缺陷是只有 $\lvert \mathbf{x}_0 \rvert $ 足够小时构造的序列才一致收敛. 希望之后能找到更好的证法（估计确实要用Gronwall不等式）</p>
-</blockquote>
+    \lim_{t \to \infty}\mathrm{e}^{L(t-t_0)} \mathrm{e}^{(t-t_0)\mathbf{A}} \mathbf{x}_0= \mathbf{0}</script><div class="note note-info">
+            <p>这个证明很大的缺陷是只有 $\lvert \mathbf{x}_0 \rvert $ 足够小时构造的序列才一致收敛. 希望之后能找到更好的证法</p>
+          </div>
 <p>定理8.3的证明只要构造一个 $\mathbf{x}_0$ 任意小，但是对应的解不稳定即可.</p>
 <p>还有一个相关的结论：</p>
 <p><strong>结论</strong>：线性方程零解的渐近稳定性等价于它的全局渐近稳定性.</p>
@@ -443,9 +443,12 @@
 <li>若I和II*成立，则方程（9）的零解是稳定的；</li>
 <li>若I和III成立，则方程（9）的零解是不稳定的.</li>
 </ul>
-<blockquote>
-<p>当条件I到III的不等号全部反置时，定理8.4仍然成立.<br>当条件I和III成立时，方程（9）的零解负向渐近稳定，因此它用于判断零解的不稳定性十分苛刻；一般的不稳定性判据可以提较弱条件.</p>
-</blockquote>
+<div class="note note-info">
+            <p>当条件I到III的不等号全部反置时，定理8.4仍然成立.</p>
+          </div>
+<div class="note note-info">
+            <p>当条件I和III成立时，方程（9）的零解负向渐近稳定，因此它用于判断零解的不稳定性十分苛刻；一般的不稳定性判据可以提较弱条件.</p>
+          </div>
 <p><strong>证</strong>：</p>
 <p><a target="_blank" href="https://www.zhihu.com/question/38156489" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">如何用李雅普诺夫第二法分析非线性系统在每个平衡点处的稳定性？</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://www.zhihu.com/question/38156489</span>&lt;/span&gt;&lt;/span&gt;</a></p>
 <p>李雅普诺夫函数的构造是个玄学问题. 除了书上例子外可以看看</p>
