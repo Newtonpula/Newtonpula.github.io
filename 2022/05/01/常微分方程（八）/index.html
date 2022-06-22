@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
 <meta property="article:published_time" content="2022-05-01T12:39:18.000Z">
-<meta property="article:modified_time" content="2022-06-22T01:45:08.288Z">
+<meta property="article:modified_time" content="2022-06-22T10:51:05.436Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -451,10 +451,66 @@
           </div>
 <p><strong>证</strong>：</p>
 <p><a target="_blank" href="https://www.zhihu.com/question/38156489" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">如何用李雅普诺夫第二法分析非线性系统在每个平衡点处的稳定性？</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://www.zhihu.com/question/38156489</span>&lt;/span&gt;&lt;/span&gt;</a></p>
-<p>李雅普诺夫函数的构造是个玄学问题. 除了书上例子外可以看看</p>
+<p>李雅普诺夫函数的构造是个玄学问题. 给几个例子</p>
+<p>（1）常系数线性微分方程组 $\frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}= \mathbf{A} \mathbf{x}$</p>
+<p>令 $V(\mathbf{x})= \mathbf{x} ^{\mathsf{T}} \mathbf{B} \mathbf{x}$，$\mathbf{B}$ 是待定实对称矩阵，则其全导数为 $2\mathbf{x} ^{\mathsf{T}}\mathbf{BAx}= \mathbf{x}^{\mathsf{T}}(\mathbf{A}^{\mathsf{T}}\mathbf{B}+\mathbf{B}\mathbf{A})\mathbf{x}$. 这时候问题变成找一个正定矩阵 $\mathbf{B}$ 使得矩阵 $\mathbf{A}^{\mathsf{T}}\mathbf{B}+\mathbf{BA}$ 为负定/半负定/正定. 可以预先找一个负定/半负定/正定矩阵 $\mathbf{C}$，问题变成矩阵方程 $\mathbf{A}^{\mathsf{T}}\mathbf{B}+ \mathbf{BA}=\mathbf{C}$</p>
+<p>（2） $\frac{\mathrm{d}x}{\mathrm{d}t}= y-x f(x, y), \frac{\mathrm{d}y}{\mathrm{d}t}= -x-y f(x, y)$. （$f$ 在原点附近可微）</p>
+<p>令 $V (x, y)= x^{2}+y^{2}$，此时 </p>
+<script type="math/tex; mode=display">
+    \frac{1}{2} \frac{\mathrm{d}(x^{2}+y^{2})}{\mathrm{d}t}=-(x^{2}+y^{2}) f(x, y)</script><p>这就说明方程的稳定性与 $f(x, y)$ 的性质有关.</p>
+<p>（3） $x’’+g(x)=0$，其中 $xg(x)&gt;0, \forall x \neq 0$</p>
+<p>方程可以化为 $\frac{\mathrm{d}x}{\mathrm{d}t}=y, \frac{\mathrm{d}y}{\mathrm{d}t}=-g(x)$. 将Lyapunov函数看成一种能量，系统的能量为 $E=\frac{1}{2}y^{2}+\int_{0}^{x} g(s) \mathrm{d}s$. 显然 $E$ 是正定的，$E$ 的全导数是常负的，故零解是稳定但不渐近稳定的.</p>
 <p><a target="_blank" href="https://zhuanlan.zhihu.com/p/410896233" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">构造李亚普诺夫函数的规则化方法</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://zhuanlan.zhihu.com/p/410896233</span>&lt;/span&gt;&lt;/span&gt;</a></p>
 <p><a target="_blank" href="https://www.zhihu.com/question/38006572" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">如何构建李雅普诺夫方程（或者说有什么构建方程的技巧吗）？</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://www.zhihu.com/question/38006572</span>&lt;/span&gt;&lt;/span&gt;</a></p>
-<h2 id="平面上的动力系统，奇点与极限环"><a href="#平面上的动力系统，奇点与极限环" class="headerlink" title="平面上的动力系统，奇点与极限环"></a>平面上的动力系统，奇点与极限环</h2><h2 id="结构稳定与分支现象"><a href="#结构稳定与分支现象" class="headerlink" title="结构稳定与分支现象"></a>结构稳定与分支现象</h2>
+<h2 id="平面上的动力系统，奇点与极限环"><a href="#平面上的动力系统，奇点与极限环" class="headerlink" title="平面上的动力系统，奇点与极限环"></a>平面上的动力系统，奇点与极限环</h2><p>考虑平面上的动力系统</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}x}{\mathrm{d}t}=X(x,y), \quad \frac{\mathrm{d}y}{\mathrm{d}t}= Y(x,y) \tag{10}</script><p>其中 $X (x, y)$ 和 $Y (x, y)$ 在 $(x, y)$ 平面上连续，且保证初值问题的解唯一. </p>
+<p>消去 $t$ 得到</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}y}{\mathrm{d}x}= \frac{Y(x,y)}{X(x,y)} \tag{11}</script><h3 id="初等奇点"><a href="#初等奇点" class="headerlink" title="初等奇点"></a>初等奇点</h3><p>以 $(0,0)$ 为奇点的线性系统</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}}{\mathrm{d}t} \begin{pmatrix}
+    x \\ 
+    y \\
+    \end{pmatrix}
+    =
+    \mathbf{A}
+    \begin{pmatrix}
+    x \\ 
+    y \\
+    \end{pmatrix} \tag{12}</script><p>其中  $\mathbf{A}$ 为常矩阵.</p>
+<ul>
+<li>$\mathbf{A}$ 非退化，称 $(0,0)$ 为<strong>初等奇点</strong>.</li>
+<li>$\mathbf{A}$ 退化，称 $(0,0)$ 为<strong>高阶奇点</strong>.</li>
+</ul>
+<p>初等奇点都是孤立奇点，线性高阶奇点都是非孤立的. 高阶奇点常可视为两个或多个初等奇点的复合</p>
+<p>不妨 $\mathbf{A}$ 已是Jordan标准型. 具体的定性结构看书吧，太多了.</p>
+<p><strong>定理8.5</strong>（初等奇点类型的判定）对于系统（12），记</p>
+<script type="math/tex; mode=display">
+    p=-\text{tr}(\mathbf{A})=-(a+d) 和 q= \det(\mathbf{A})=ad-bc</script><p>则有</p>
+<ul>
+<li>当 $q&lt;0$ 时，$(0,0)$ 为鞍点；</li>
+<li>当 $q&gt;0$ 且 $p^{2}&gt;4q$ 时， $(0,0)$ 为两向结点；</li>
+<li>当 $q&gt;0$ 且 $p^{2}=4q$ 时， $(0,0)$ 为单向结点或星形结点；</li>
+<li>当 $q&gt;0$ 且 $0&lt;p^{2}&lt;4q$ 时， $(0,0)$ 为焦点；</li>
+<li>当 $q&gt;0$ 且 $p=0$ 时，$(0,0)$ 为中心点；</li>
+</ul>
+<p>此外，在第2到第4种情形中，当 $p&gt;0$ 时奇点 $(0,0)$ 是稳定的，而当 $p&lt;0$ 时是不稳定的.</p>
+<p>书上还介绍了当矩阵 $\mathbf{A}$ 不是 jordan 标准型时判断定性结构的方法，参见第二版p266.</p>
+<p>对于非线性系统（10）. 假设 $(0,0)$ 是孤立奇点，将右端分解成线性部分与高次项之和</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        \frac{\mathrm{d}x}{\mathrm{d}t}= ax+by+\varphi(x,y) \\
+        \frac{\mathrm{d}y}{\mathrm{d}t}= cx+dy+ \psi (x, y) \\ 
+    \end{cases} \tag{13}</script><p>提出三组条件（其中 $r=\sqrt{x^{2}+y^{2}}$：<br><strong>条件A</strong> $\varphi (x, y), \psi (x, y)=o(r), r\to 0$.<br><strong>条件A*</strong> $\varphi (x, y),\psi (x, y)= o(r^{1+\varepsilon}),r\to 0$，其中 $\varepsilon$ 是一个任意小的正数.<br><strong>条件B</strong> $\varphi (x, y)$ 和 $\psi (x, y)$ 在原点的一个小领域内对 $x$ 和 $y$ 连续可微</p>
+<p><strong>定理8.6</strong> 太长了，看第二版书p268</p>
+<p>总的就是说当系统满足一些条件时，系统（10）和（12）有相同的<strong>定性结构</strong>.</p>
+<p>比保持定性结构更弱的要求：保持拓扑结构. 概念太多，不抄了，开摆！</p>
+<p><strong>定理8.7</strong> 如果系统（13）的线性部分矩阵的特征根实部都不为零（此时称 $(0,0)$ 为它的<strong>双曲奇点</strong>），则它在奇点 $(0,0)$ 附近是（局部）结构稳定的，并轨道拓扑等价于它的线性化系统.</p>
+<div class="note note-info">
+            <p>定理8.7推广到 $\mathbb{R}^{n}$ 中称为Hartman-Grobman定理</p>
+          </div>
+<h3 id="极限环"><a href="#极限环" class="headerlink" title="极限环"></a>极限环</h3><h3 id="Lienard-作图法"><a href="#Lienard-作图法" class="headerlink" title="Liénard 作图法"></a>Liénard 作图法</h3><h3 id="Poincare-映射与后继函数法"><a href="#Poincare-映射与后继函数法" class="headerlink" title="Poincaré 映射与后继函数法"></a>Poincaré 映射与后继函数法</h3><h2 id="结构稳定与分支现象"><a href="#结构稳定与分支现象" class="headerlink" title="结构稳定与分支现象"></a>结构稳定与分支现象</h2><h3 id="一个大范围的结构稳定性定理"><a href="#一个大范围的结构稳定性定理" class="headerlink" title="一个大范围的结构稳定性定理"></a>一个大范围的结构稳定性定理</h3><h3 id="高阶奇点的分支"><a href="#高阶奇点的分支" class="headerlink" title="高阶奇点的分支"></a>高阶奇点的分支</h3><h3 id="Hopf-分支"><a href="#Hopf-分支" class="headerlink" title="Hopf 分支"></a>Hopf 分支</h3><h3 id="Poincare-分支"><a href="#Poincare-分支" class="headerlink" title="Poincaré 分支"></a>Poincaré 分支</h3><h3 id="多重闭轨的分支"><a href="#多重闭轨的分支" class="headerlink" title="多重闭轨的分支"></a>多重闭轨的分支</h3><h3 id="同宿轨线的分支"><a href="#同宿轨线的分支" class="headerlink" title="同宿轨线的分支"></a>同宿轨线的分支</h3><h3 id="奇异向量场的普适开折"><a href="#奇异向量场的普适开折" class="headerlink" title="奇异向量场的普适开折"></a>奇异向量场的普适开折</h3>
               
             </div>
             <hr/>

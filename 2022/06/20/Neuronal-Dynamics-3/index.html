@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-06-20T12:04:18.000Z">
-<meta property="article:modified_time" content="2022-06-20T13:52:51.250Z">
+<meta property="article:modified_time" content="2022-06-22T12:33:33.237Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.7k 字
+          4.2k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          23 分钟
+          35 分钟
         
       </span>
     
@@ -336,6 +336,8 @@
 <p>transmitter-activated ion channels:</p>
 <script type="math/tex; mode=display">
     I_{syn}(t)= g_{syn}(t)(u(t)-E_{syn})        \tag{3.1}</script><p>For inhibitory synapses $E_{syn}$ is usually set to $-75$ mV, whereas for excitatory synapses $E_{syn}\thickapprox 0$.</p>
+<p>So the same spike will have a much smaller effect at the inhibitory synapses if the neuron is at rest. </p>
+<p>If the neuron is exactly at the reversal potential, then the driving force is 0. This is called <strong>shunting inhibition</strong></p>
 <p>A simple choice for the time course of the synaptic conductance in (3.1) is  </p>
 <script type="math/tex; mode=display">
     g_{syn}(t)= \sum_{f}^{} \bar{g}_{syn} \mathrm{e}^{-(t-t^{(f)})/\tau} \Theta (t-t^{(f)}  ) \tag{3.2}</script><p>with a time constant of , e.g., $\tau=5$ ms and an amplitude of $\bar{g}_{syn}=40$ pS. $t^{(f)}$ denotes the arrival time of a presynaptic action porential and $\Theta(x)$ is the Heaviside step function. </p>
@@ -347,7 +349,28 @@
     \frac{\mathrm{d}R}{\mathrm{d}t}= \alpha N(1-R) -\beta R \tag{3.4}</script><p>where $\alpha$ is the binding constant, $\beta$ the unbinding constant and $(1-R)$ the fraction of closed channels where binding of neurotransmitter can occur. Neurotransmitter $N$ is released with each presynaptic spike so that the total amount of neurotransmitter at synapse $j$ is </p>
 <script type="math/tex; mode=display">
     N(t)= \int_{0}^{\infty} \gamma(s) S_j(t-s) \mathrm{d}s \tag{3.5}</script><p>where $S_j= \sum_{f}^{} \delta(t-t_{j}^{(f)})$ is the presynaptic spike train and $\gamma(s)$ is the time course of the neurotransmitter density as measured at the site of the postsynaptic receptor. </p>
-<h3 id="Inhibitory-Synapses"><a href="#Inhibitory-Synapses" class="headerlink" title="Inhibitory Synapses"></a>Inhibitory Synapses</h3><h3 id="Excitatory-Synapses"><a href="#Excitatory-Synapses" class="headerlink" title="Excitatory Synapses"></a>Excitatory Synapses</h3><h3 id="Rapid-Synaptic-Dynamics"><a href="#Rapid-Synaptic-Dynamics" class="headerlink" title="Rapid Synaptic Dynamics"></a>Rapid Synaptic Dynamics</h3><h2 id="Spatial-Structure-The-Dendritic-Tree"><a href="#Spatial-Structure-The-Dendritic-Tree" class="headerlink" title="Spatial Structure: The Dendritic Tree"></a>Spatial Structure: The Dendritic Tree</h2><h2 id="Spatial-Structure-Axons"><a href="#Spatial-Structure-Axons" class="headerlink" title="Spatial Structure: Axons"></a>Spatial Structure: Axons</h2><h2 id="Compartmental-Models"><a href="#Compartmental-Models" class="headerlink" title="Compartmental Models"></a>Compartmental Models</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
+<h3 id="Inhibitory-Synapses"><a href="#Inhibitory-Synapses" class="headerlink" title="Inhibitory Synapses"></a>Inhibitory Synapses</h3><p>GABA(gamma-aminobutyric acid): Important neurotransmitter at inhibitory synapses</p>
+<p>Channel subtypes GABA-A and GABA-B</p>
+<ul>
+<li>GABA-A: ionotropic and open exclusively for chloride ions </li>
+<li>GABA-B: have metabotropic receptors that trigger a comparatively slow signaling signaling chain ultimately leading to the opening of $K^{+}$ channels</li>
+</ul>
+<h3 id="Excitatory-Synapses"><a href="#Excitatory-Synapses" class="headerlink" title="Excitatory Synapses"></a>Excitatory Synapses</h3><p>Glutamate: Important neurotransmitter at excitatory synapses.</p>
+<ul>
+<li>AMPA channel: rapid, calcium cannot pass if open </li>
+<li>NMDA(N-methyl-D-aspartate) channel: slow, calcium can pass if open</li>
+</ul>
+<p>In the subthreshold regime, excitatory synapses always depolarize the membrane, i.e, shift the membrane potential to more positive values. </p>
+<h3 id="Rapid-Synaptic-Dynamics"><a href="#Rapid-Synaptic-Dynamics" class="headerlink" title="Rapid Synaptic Dynamics"></a>Rapid Synaptic Dynamics</h3><p>We concentrate on dyamic changes of the synapse that do not persist but decay back to their normal values within hundreds of milliseconds or a few seconds. Thes changes are called <strong>short-term synaptic plasticity</strong>.</p>
+<p><strong>Synaptic Facilitaion</strong></p>
+<p>$P_{rel}$ represents the fraction of presynaptic sites releasing neurotransmitter. </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}P_{rel}}{\mathrm{d}t}=-\frac{P_{rel}-P_0}{\tau_{P}}+f_{F}(1-P_{rel}) \sum_{f}^{} \delta(t-t^{f}) \tag{3.7}</script><p>where $\tau_{P}$ is a time constant, $f_{F}$ controls the degree of facilitation, and $t^{f}$ denotes the times of presynaptic spike arrivals. </p>
+<p><strong>Synaptic Depression</strong></p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}P_{rel}}{\mathrm{d}t}=-\frac{P_{rel}-P_0}{\tau_{P}}-f_{D}P_{rel} \sum_{f}^{} \delta(t-t^{f}) \tag{3.8}</script><p>$0&lt;f_{D}&lt;1$ controls the amount of depression per spike. </p>
+<p>For depressing or facilitating synapses, we can use 3.2 with a value $\bar{g}_{syn}=P_{rel}g_0$.</p>
+<h2 id="Spatial-Structure-The-Dendritic-Tree"><a href="#Spatial-Structure-The-Dendritic-Tree" class="headerlink" title="Spatial Structure: The Dendritic Tree"></a>Spatial Structure: The Dendritic Tree</h2><h2 id="Spatial-Structure-Axons"><a href="#Spatial-Structure-Axons" class="headerlink" title="Spatial Structure: Axons"></a>Spatial Structure: Axons</h2><h2 id="Compartmental-Models"><a href="#Compartmental-Models" class="headerlink" title="Compartmental Models"></a>Compartmental Models</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
               
             </div>
             <hr/>
