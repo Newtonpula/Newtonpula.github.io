@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
 <meta property="article:published_time" content="2022-05-01T12:39:18.000Z">
-<meta property="article:modified_time" content="2022-06-22T10:51:05.436Z">
+<meta property="article:modified_time" content="2022-06-23T04:58:17.966Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -510,7 +510,17 @@
 <div class="note note-info">
             <p>定理8.7推广到 $\mathbb{R}^{n}$ 中称为Hartman-Grobman定理</p>
           </div>
-<h3 id="极限环"><a href="#极限环" class="headerlink" title="极限环"></a>极限环</h3><h3 id="Lienard-作图法"><a href="#Lienard-作图法" class="headerlink" title="Liénard 作图法"></a>Liénard 作图法</h3><h3 id="Poincare-映射与后继函数法"><a href="#Poincare-映射与后继函数法" class="headerlink" title="Poincaré 映射与后继函数法"></a>Poincaré 映射与后继函数法</h3><h2 id="结构稳定与分支现象"><a href="#结构稳定与分支现象" class="headerlink" title="结构稳定与分支现象"></a>结构稳定与分支现象</h2><h3 id="一个大范围的结构稳定性定理"><a href="#一个大范围的结构稳定性定理" class="headerlink" title="一个大范围的结构稳定性定理"></a>一个大范围的结构稳定性定理</h3><h3 id="高阶奇点的分支"><a href="#高阶奇点的分支" class="headerlink" title="高阶奇点的分支"></a>高阶奇点的分支</h3><h3 id="Hopf-分支"><a href="#Hopf-分支" class="headerlink" title="Hopf 分支"></a>Hopf 分支</h3><h3 id="Poincare-分支"><a href="#Poincare-分支" class="headerlink" title="Poincaré 分支"></a>Poincaré 分支</h3><h3 id="多重闭轨的分支"><a href="#多重闭轨的分支" class="headerlink" title="多重闭轨的分支"></a>多重闭轨的分支</h3><h3 id="同宿轨线的分支"><a href="#同宿轨线的分支" class="headerlink" title="同宿轨线的分支"></a>同宿轨线的分支</h3><h3 id="奇异向量场的普适开折"><a href="#奇异向量场的普适开折" class="headerlink" title="奇异向量场的普适开折"></a>奇异向量场的普适开折</h3>
+<h3 id="极限环"><a href="#极限环" class="headerlink" title="极限环"></a>极限环</h3><p>动力系统（10）在闭轨 $\Gamma$ 的某个（环形）领域内不再有别的闭轨，即 $\Gamma$ 为孤立闭轨，则称它为（10）的<strong>极限环</strong>. 极限环 $\Gamma$ 有一个外侧和内侧领域，使得在这个领域内出发的所有轨线当 $t \to +\infty$ 或 $-\infty$ 时都盘旋趋向 $\Gamma$. 如果 $\Gamma$ 内外两侧轨线都在 $t \to +\infty$ （或 $-\infty$ ）时盘旋趋于 $\Gamma$，则称 $\Gamma$ 为<strong>稳定</strong>（或<strong>不稳定</strong>）<strong>极限环</strong>；若一侧是当 $t \to +\infty$ 时盘旋趋于 $\Gamma$，另一侧是 $-\infty$，则称 $\Gamma$ 为<strong>半稳定极限环</strong>.</p>
+<p>这种闭轨 $\Gamma$ 的稳定性称为<strong>轨道稳定性</strong>. </p>
+<p><strong>Poincaré-Bendixson 环域定理</strong>：设区域 $D$ 是由两条简单闭曲线 $L_1$ 和 $L_2$ 所围成的环域，并且在 $\bar{D}=L_1 \cup D \cup L_2$ 上动力系统（10）无奇点；从 $L_1$ 和 $L_2$ 上出发的轨线都不能离开（或都不能进入） $\bar{D}$. 设 $L_1$ 和 $L_2$ 均不是闭轨线，则系统（10）在 $D$ 内至少存在一条闭轨线 $\Gamma$，即 $\Gamma$ 在 $D$ 内不能收缩到一点. </p>
+<p>把动力系统（10）看成一平面流体的运动方程，上述环域定理表明：如果流体从环域 $D$ 的边界流入 $D$，而在 $D$ 内又没有渊和源，那么流体在 $D$ 内有环流存在. $\Gamma$ 不一定是孤立的闭轨；但如果是解析向量场，那环域中的闭轨都是孤立的，因而它们都是极限环.</p>
+<p><strong>Liénard 方程</strong></p>
+<script type="math/tex; mode=display">
+    x''+f(x)x'+g(x)=0 \tag{14}</script><p>其中 $f(x)$ 和 $g(x)$ 连续，且 $xg(x)&gt;0$，当 $x \neq 0$. 它等价于 </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}x}{\mathrm{d}t}= y-F(x), \quad \frac{\mathrm{d}y}{\mathrm{d}t}= -g(x) \tag{15}</script><p>其中 $F(x)= \int_{0}^{x} f(x) \mathrm{d}x$. 当 $g(x)=-x$ 时，可以画出（15）在相平面上的向量场 $(y-F(x),-x)$ 在任一点 $P(x,y)$ 处的方向. </p>
+<h3 id="Lienard-作图法"><a href="#Lienard-作图法" class="headerlink" title="Liénard 作图法"></a>Liénard 作图法</h3><h3 id="Poincare-映射与后继函数法"><a href="#Poincare-映射与后继函数法" class="headerlink" title="Poincaré 映射与后继函数法"></a>Poincaré 映射与后继函数法</h3><p><strong>定理8.9</strong>：系统（10）的单重极限环 $\Gamma$ 是结构稳定的，亦即：存在 $\varepsilon&gt;0$ 和 $\Gamma$ 的环形领域 $\mathcal{U}$，使得（10）的任何 $\varepsilon-$ 邻近系统在 $\mathcal{U}$ 内仍有唯一闭轨，而且它与 $\Gamma$ 有相同的稳定性. </p>
+<h2 id="结构稳定与分支现象"><a href="#结构稳定与分支现象" class="headerlink" title="结构稳定与分支现象"></a>结构稳定与分支现象</h2><h3 id="一个大范围的结构稳定性定理"><a href="#一个大范围的结构稳定性定理" class="headerlink" title="一个大范围的结构稳定性定理"></a>一个大范围的结构稳定性定理</h3><h3 id="高阶奇点的分支"><a href="#高阶奇点的分支" class="headerlink" title="高阶奇点的分支"></a>高阶奇点的分支</h3><h3 id="Hopf-分支"><a href="#Hopf-分支" class="headerlink" title="Hopf 分支"></a>Hopf 分支</h3><h3 id="Poincare-分支"><a href="#Poincare-分支" class="headerlink" title="Poincaré 分支"></a>Poincaré 分支</h3><h3 id="多重闭轨的分支"><a href="#多重闭轨的分支" class="headerlink" title="多重闭轨的分支"></a>多重闭轨的分支</h3><h3 id="同宿轨线的分支"><a href="#同宿轨线的分支" class="headerlink" title="同宿轨线的分支"></a>同宿轨线的分支</h3><h3 id="奇异向量场的普适开折"><a href="#奇异向量场的普适开折" class="headerlink" title="奇异向量场的普适开折"></a>奇异向量场的普适开折</h3>
               
             </div>
             <hr/>

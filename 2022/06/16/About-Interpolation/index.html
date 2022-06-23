@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/interpolation.png">
 <meta property="article:published_time" content="2022-06-16T14:58:37.000Z">
-<meta property="article:modified_time" content="2022-06-17T05:53:09.173Z">
+<meta property="article:modified_time" content="2022-06-23T07:06:34.959Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          631 字
+          871 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          6 分钟
+          8 分钟
         
       </span>
     
@@ -327,7 +327,10 @@
 <p>假设插值节点为 $x_1&lt;x_2&lt;\cdots &lt;x_n$，问题的关键是找到 $mn$ 个多项式 $f_{i,k}(x)$，使得</p>
 <script type="math/tex; mode=display">
     f^{(l)}_{i,k}(x_j)= \delta_{i,j} \delta_{k,l}, \quad 1\leqslant j\leqslant n, \quad 0\leqslant l\leqslant m-1</script><p>其中 $1\leqslant i\leqslant n,0\leqslant k\leqslant m-1$. </p>
-<p>对于固定的 $i$ 和 $k$，共有 $mn$ 个条件，故 $f_{ik}$ 次数不大于 $mn-1$. 考虑赋予一阶导数信息的情况和赋予二阶导数信息的情况，发现不妨设</p>
+<p>对于固定的 $i$ 和 $k$，共有 $mn$ 个条件，当 $l&gt;k$ 时， $f_{i,k}$ 在已知点的 $l$ 阶导数全为零，有一个想法是设 $f_{i,k}$ 的次数为 $(k+1)n-1$，然后取</p>
+<script type="math/tex; mode=display">
+    f_{i,k}(x)= \frac{1}{k!}(x-x_i)^{k}l_i^{k+1}(x)</script><p>遗憾的是当 $l&gt;k$ 时，$f_{i,k}^{(l)}$ 并不能在诸 $x_i$ 处取零，我们对 $(l_{i}^{k+1}(x))^{(l)}$ 知之甚少.</p>
+<p>故 $f_{ik}$ 大概只能取 $mn-1$. 考虑赋予一阶导数信息的情况和赋予二阶导数信息的情况，发现不妨设</p>
 <script type="math/tex; mode=display">
     f_{i,k}(x)= P_{i,k}(x) l_i^{m}(x)</script><p>其中 $l_i(x)$ 是Lagrange插值基. $P_{i,k}(x)$ 大致为 $m-1$ 阶多项式. </p>
 <p>容易发现</p>
@@ -336,7 +339,7 @@
 <ul>
 <li>$l_i(x)$ 是 $n-1$ 阶多项式 </li>
 <li>$l_i(x_j)=\delta_{ij}$</li>
-<li>$(l_i^{m}(x))^{(l-w)}$ 在 $x_j(j\neq i)$ 处取值为 $0$.</li>
+<li>$(l_i^{m}(x))^{(l-w)}$ 在 $x_j(j\neq i)$ 处取值为 $0$，其中 $0\leqslant l\leqslant m-1,0\leqslant w\leqslant l$</li>
 </ul>
 
               
