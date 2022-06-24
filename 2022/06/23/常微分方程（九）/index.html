@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
 <meta property="article:published_time" content="2022-06-23T04:58:46.000Z">
-<meta property="article:modified_time" content="2022-06-23T07:06:41.349Z">
+<meta property="article:modified_time" content="2022-06-24T08:06:25.100Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          51 字
+          1.2k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          1 分钟
+          11 分钟
         
       </span>
     
@@ -323,7 +323,48 @@
             
             <div class="markdown-body">
               
-              <h1 id="边值问题"><a href="#边值问题" class="headerlink" title="边值问题"></a>边值问题</h1><h2 id="Sturm-比较定理"><a href="#Sturm-比较定理" class="headerlink" title="Sturm 比较定理"></a>Sturm 比较定理</h2><h2 id="S-L-边值问题的特征值"><a href="#S-L-边值问题的特征值" class="headerlink" title="S-L 边值问题的特征值"></a>S-L 边值问题的特征值</h2><h2 id="特征函数系的正交性"><a href="#特征函数系的正交性" class="headerlink" title="特征函数系的正交性"></a>特征函数系的正交性</h2><h2 id="一个非线性边值问题的例子"><a href="#一个非线性边值问题的例子" class="headerlink" title="一个非线性边值问题的例子"></a>一个非线性边值问题的例子</h2><h2 id="周期边值问题"><a href="#周期边值问题" class="headerlink" title="周期边值问题"></a>周期边值问题</h2>
+              <h1 id="边值问题"><a href="#边值问题" class="headerlink" title="边值问题"></a>边值问题</h1><h2 id="Sturm-比较定理"><a href="#Sturm-比较定理" class="headerlink" title="Sturm 比较定理"></a>Sturm 比较定理</h2><p>考虑二阶线性微分方程</p>
+<script type="math/tex; mode=display">
+    y''+p(x)y'+q(x)y=0 \tag{9.1}</script><p>其中 $p(x)$ 和 $q(x)$ 在区间 $J$ 上是连续的.</p>
+<p><strong>引理9.1</strong>：（9.1）的任何非零解在区间 $J$ 内的零点都是孤立的.</p>
+<p>由解的唯一性易知.</p>
+<p><strong>定理9.1</strong>：设 $y=\varphi_1(x)$ 和 $y=\varphi_2(x)$ 是（9.1）的两个非零解，则</p>
+<ul>
+<li>它们线性无关，当且仅当它们有相同的零点；</li>
+<li>它们线性无关，当且仅当它们的零点互相交错.</li>
+</ul>
+<p><strong>证</strong>；利用 Wronsky 行列式和 Liouville 公式，考虑相邻零点处的导数值即可.</p>
+<p><strong>定理9.2（Sturm 比较定理）</strong>：两个齐次线性微分方程</p>
+<script type="math/tex; mode=display">
+    y''+P(x)y'+Q(x)y=0 \tag{9.6}</script><p>和</p>
+<script type="math/tex; mode=display">
+    y''+p(x)y'+R(x)y=0 \tag{9.7}</script><p>这里系数函数 $p(x),Q(x)$ 和 $R(x)$ 在区间 $J$ 上是连续的，而且假设不等式</p>
+<script type="math/tex; mode=display">
+    R(x)\geqslant Q(x) \quad (x \in J) \tag{9.8}</script><p>成立. 又设 $y=\varphi(x)$ 是方程（9.6）的一个非零解，而且 $x_1$ 和 $x_2$ 是它的两个相邻的零点. 则（9.7）的任何非零解 $y=\psi(x)$ 在 $x_1$ 和 $x_2$ 之间至少有一个零点 $x_0$（$x_0 \in [x_1,x_2]$）.</p>
+<p>如果（9.8）变为</p>
+<script type="math/tex; mode=display">
+    R(x)>Q(x) \tag{9.8*}</script><p>那么可以加强为 $x_0 \in (x_1,x_2)$</p>
+<p><strong>证</strong>：关键是构造出函数 $v(x)=\psi(x)\varphi’(x)-\varphi(x)\psi’(x)$ 并讨论 $v’(x)+p(x)v(x)$ 在 $[x_1,x_2]$ 上恒正或恒负. </p>
+<p><strong>推论</strong>：方程（9.1）的任何两个线性无关的解的零点是相互交错的. （令 $R(x)=Q(x)$）</p>
+<p>设 $y=\varphi(x)$ 是（9.1）的一个非零解. 若 $y=\varphi(x)$ 在区间 $J$ 上最多只有一个零点，则称它在 $J$ 上是<strong>非振动的</strong>；否则，称它在 $J$ 上是<strong>振动的</strong>. 如果 $y=\varphi(x)$ 在区间 $J$ 上有无限个零点，则称它在 $J$ 上是<strong>无限振动的</strong>.</p>
+<p><strong>判别法1</strong>：设（9.1）中的系数函数</p>
+<script type="math/tex; mode=display">
+    q(x)\leqslant 0 \quad(x \in J)</script><p>则它的一切非零解都是非振动的. （与 $y’’+p(x)y’=0$ 的非零解 $y=\psi(x) \equiv 1$ 比较即可）</p>
+<p><strong>判别法2</strong>：设微分方程</p>
+<script type="math/tex; mode=display">
+    y''+Q(x)y=0 \tag{9.13}</script><p>其中 $Q(x)$ 在区间 $a\leqslant x&lt;\infty$ 上是连续的，而且满足不等式</p>
+<script type="math/tex; mode=display">
+    Q(x)\geqslant m>0 \quad(m 是常数)</script><p>则（9.13）的任何非零解 $y=\varphi(x)$ 在区间 $[a,\infty)$ 上是无限振动的；而且它的任何两个相邻零点的间距不大于 $\displaystyle \frac{\pi}{\sqrt{m}}$.</p>
+<p>由方程</p>
+<script type="math/tex; mode=display">
+    y''+\frac{1}{4x^{2}}y=0 \quad(1\leqslant x<\infty)</script><p>的非零解 </p>
+<script type="math/tex; mode=display">
+    y=\sqrt{x}(C_1+C_2 \ln x)</script><p>知判别法2不能减弱为 $Q(x)&gt;0\quad(a\leqslant x&lt;\infty)$</p>
+<p>与判别法相对偶的有：如果 $Q(x)$ 满足不等式</p>
+<script type="math/tex; mode=display">
+    Q(x)\leqslant M \quad(a\leqslant x<\infty)</script><p>其中常数 $M&gt;0$. 则它的任何非零解 $y=\varphi(x)$ 的相邻零点的间距不小于常数 $\displaystyle \frac{\pi}{\sqrt{M}}$</p>
+<p>证明时与 $y’’+My=0$ 的非零解 $y=\sin [\sqrt{M}(x-c)]$ 且 $c$ 可以任意跑比较.</p>
+<h2 id="S-L-边值问题的特征值"><a href="#S-L-边值问题的特征值" class="headerlink" title="S-L 边值问题的特征值"></a>S-L 边值问题的特征值</h2><h2 id="特征函数系的正交性"><a href="#特征函数系的正交性" class="headerlink" title="特征函数系的正交性"></a>特征函数系的正交性</h2><h2 id="一个非线性边值问题的例子"><a href="#一个非线性边值问题的例子" class="headerlink" title="一个非线性边值问题的例子"></a>一个非线性边值问题的例子</h2><h2 id="周期边值问题"><a href="#周期边值问题" class="headerlink" title="周期边值问题"></a>周期边值问题</h2>
               
             </div>
             <hr/>
