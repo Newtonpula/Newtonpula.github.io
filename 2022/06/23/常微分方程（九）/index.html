@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
 <meta property="article:published_time" content="2022-06-23T04:58:46.000Z">
-<meta property="article:modified_time" content="2022-06-24T08:06:25.100Z">
+<meta property="article:modified_time" content="2022-06-25T15:24:00.854Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.2k 字
+          2.7k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          11 分钟
+          23 分钟
         
       </span>
     
@@ -364,7 +364,41 @@
 <script type="math/tex; mode=display">
     Q(x)\leqslant M \quad(a\leqslant x<\infty)</script><p>其中常数 $M&gt;0$. 则它的任何非零解 $y=\varphi(x)$ 的相邻零点的间距不小于常数 $\displaystyle \frac{\pi}{\sqrt{M}}$</p>
 <p>证明时与 $y’’+My=0$ 的非零解 $y=\sin [\sqrt{M}(x-c)]$ 且 $c$ 可以任意跑比较.</p>
-<h2 id="S-L-边值问题的特征值"><a href="#S-L-边值问题的特征值" class="headerlink" title="S-L 边值问题的特征值"></a>S-L 边值问题的特征值</h2><h2 id="特征函数系的正交性"><a href="#特征函数系的正交性" class="headerlink" title="特征函数系的正交性"></a>特征函数系的正交性</h2><h2 id="一个非线性边值问题的例子"><a href="#一个非线性边值问题的例子" class="headerlink" title="一个非线性边值问题的例子"></a>一个非线性边值问题的例子</h2><h2 id="周期边值问题"><a href="#周期边值问题" class="headerlink" title="周期边值问题"></a>周期边值问题</h2>
+<h2 id="S-L-边值问题的特征值"><a href="#S-L-边值问题的特征值" class="headerlink" title="S-L 边值问题的特征值"></a>S-L 边值问题的特征值</h2><p>考虑比较一般的二阶齐次线性微分方程 </p>
+<script type="math/tex; mode=display">
+    [p(x)y']'+[q(x)+\lambda r(x)]y=0 \tag{9.16}</script><p>其中 $\lambda$ 是一个参数，系数函数 $p(x),q(x)$ 和 $r(x)$ 在区间 $a\leqslant x\leqslant b$ 上是连续的，$p(x)$ 是可微的，而且 $p(x)&gt;0$ 和 $r(x)&gt;0$. 另外，设边值条件</p>
+<script type="math/tex; mode=display">
+    Ky(a)+Ly'(a)=0,\quad My(b)+Ny'(b)=0, \tag{9.17}</script><p>其中常数 $K,L,M,N$ 满足条件</p>
+<script type="math/tex; mode=display">
+    K^{2}+L^{2}>0, \quad M^{2}+N^{2}>0.</script><p>上述形式的边值问题通常称为 <strong>Sturm-Liouville 问题</strong>. 设 $\lambda= \lambda_0$ 时边值问题有非零解 $y=\varphi_0(x)$. 则称 $\lambda_0$ 为该问题的<strong>特征值</strong>，$y=\varphi_0(x)$ 为相应的<strong>特征函数</strong>，注意那么对于任何常数 $C \neq 0$，$y=C \varphi_0(x)$ 仍是相应的特征函数.</p>
+<p>作 Prüfer 变换<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="邓宗琦. 常微分方程边值问题和Sturm比较理论引论. 湖北：华中师范大学出版社，1987
+">[1]</span></a></sup></p>
+<script type="math/tex; mode=display">
+    y(x)=\rho(x) \sin \theta(x), \quad p(x)y'(x)=\rho(x) \cos \theta(x)</script><p>（9.16）变为</p>
+<script type="math/tex; mode=display">
+    \theta'(x)= \frac{\cos ^{2}\theta(x)}{p(x)}+[q(x)+\lambda r(x)] \sin ^{2}\theta(x),</script><script type="math/tex; mode=display">
+    \rho'(x)= \rho(x)[\frac{1}{p(x)}-q(x)- \lambda r(x)] \cos \theta(x) \sin \theta(x);</script><p>而边界条件变为</p>
+<script type="math/tex; mode=display">
+    y(a) \cos \theta_a-p(a)y'(a) \sin \theta_a=0, \quad y(b) \cos \theta_b- p(b)y'(b) \sin \theta_b=0.</script><p>将（9.16）化成如下形式：</p>
+<script type="math/tex; mode=display">
+    y''+(\lambda+q(x))y=0, \tag{9.20}</script><p>其中 $q(x)$ 在区间 $[0,1]$ 上连续，而且把边值条件（9.17）化成</p>
+<script type="math/tex; mode=display">
+    y(0)\cos \alpha - y'(0) \sin \alpha=0, \quad y(1)\cos \beta- y'(1) \sin \beta=0, \tag{9.21}</script><p>这里规定常数 $0\leqslant \alpha&lt;\pi, 0&lt;\beta\leqslant \pi$.</p>
+<p>希望存在（9.20）的形如 $y=\varphi(x,\lambda)$ 的解，满足初值条件</p>
+<script type="math/tex; mode=display">
+    \varphi(0,\lambda)= \sin \alpha, \quad \varphi'(0,\lambda)=\cos \alpha. \tag{9.22}</script><p>想让它也满足（9.21）的第二式. 令</p>
+<script type="math/tex; mode=display">
+    \varphi(x,\lambda)= \rho(x,\lambda)\sin \theta(x,\lambda), \quad \varphi'(x,\lambda)=\rho(x,\lambda) \cos \theta(x,\lambda),</script><p>其中</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        \rho(x,\lambda)= \sqrt{[\varphi(x,\lambda)]^{2}+[\varphi'(x,\lambda)]^{2}}\quad (>0), \\
+        \theta(x,\lambda)= \arctan \frac{\varphi(x,\lambda)}{\varphi'(x,\lambda)} \quad (0\leqslant x\leqslant 1).          
+    \end{cases}</script><p>由（9.21）的第一式，有 </p>
+<script type="math/tex; mode=display">
+    \theta(0,\lambda)= \arctan \frac{\sin \alpha}{\cos \alpha}=\alpha+j\pi, \tag{9.23}</script><p>这里 $j$ 是某个整数. 满足第二式，只要使 $\theta=\theta(x,\lambda)$ 满足条件 </p>
+<script type="math/tex; mode=display">
+    \theta(1,\lambda)= \beta+ k\pi, \tag{9.24}</script><h2 id="特征函数系的正交性"><a href="#特征函数系的正交性" class="headerlink" title="特征函数系的正交性"></a>特征函数系的正交性</h2><h2 id="一个非线性边值问题的例子"><a href="#一个非线性边值问题的例子" class="headerlink" title="一个非线性边值问题的例子"></a>一个非线性边值问题的例子</h2><h2 id="周期边值问题"><a href="#周期边值问题" class="headerlink" title="周期边值问题"></a>周期边值问题</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>邓宗琦. 常微分方程边值问题和Sturm比较理论引论. 湖北：华中师范大学出版社，1987
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
               
             </div>
             <hr/>
