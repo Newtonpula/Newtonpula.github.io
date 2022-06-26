@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
 <meta property="article:published_time" content="2022-06-23T04:58:46.000Z">
-<meta property="article:modified_time" content="2022-06-25T15:24:00.854Z">
+<meta property="article:modified_time" content="2022-06-26T06:27:23.121Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.7k 字
+          4.3k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          23 分钟
+          36 分钟
         
       </span>
     
@@ -377,13 +377,18 @@
     y(x)=\rho(x) \sin \theta(x), \quad p(x)y'(x)=\rho(x) \cos \theta(x)</script><p>（9.16）变为</p>
 <script type="math/tex; mode=display">
     \theta'(x)= \frac{\cos ^{2}\theta(x)}{p(x)}+[q(x)+\lambda r(x)] \sin ^{2}\theta(x),</script><script type="math/tex; mode=display">
-    \rho'(x)= \rho(x)[\frac{1}{p(x)}-q(x)- \lambda r(x)] \cos \theta(x) \sin \theta(x);</script><p>而边界条件变为</p>
+    \rho'(x)= \rho(x)[\frac{1}{p(x)}-q(x)- \lambda r(x)] \cos \theta(x) \sin \theta(x);</script><p>又（9.16）即</p>
+<script type="math/tex; mode=display">
+    y''(x)=-\frac{\rho(x)}{p(x)}[q(x)+\lambda r(x)] \sin \theta(x)- \frac{\rho(x)p'(x)}{p^{2}(x)} \cos \theta(x)</script><p>而边界条件变为</p>
 <script type="math/tex; mode=display">
     y(a) \cos \theta_a-p(a)y'(a) \sin \theta_a=0, \quad y(b) \cos \theta_b- p(b)y'(b) \sin \theta_b=0.</script><p>将（9.16）化成如下形式：</p>
 <script type="math/tex; mode=display">
     y''+(\lambda+q(x))y=0, \tag{9.20}</script><p>其中 $q(x)$ 在区间 $[0,1]$ 上连续，而且把边值条件（9.17）化成</p>
 <script type="math/tex; mode=display">
     y(0)\cos \alpha - y'(0) \sin \alpha=0, \quad y(1)\cos \beta- y'(1) \sin \beta=0, \tag{9.21}</script><p>这里规定常数 $0\leqslant \alpha&lt;\pi, 0&lt;\beta\leqslant \pi$.</p>
+<blockquote>
+<p>搞不定了，到时候问老师.</p>
+</blockquote>
 <p>希望存在（9.20）的形如 $y=\varphi(x,\lambda)$ 的解，满足初值条件</p>
 <script type="math/tex; mode=display">
     \varphi(0,\lambda)= \sin \alpha, \quad \varphi'(0,\lambda)=\cos \alpha. \tag{9.22}</script><p>想让它也满足（9.21）的第二式. 令</p>
@@ -397,7 +402,43 @@
 <script type="math/tex; mode=display">
     \theta(0,\lambda)= \arctan \frac{\sin \alpha}{\cos \alpha}=\alpha+j\pi, \tag{9.23}</script><p>这里 $j$ 是某个整数. 满足第二式，只要使 $\theta=\theta(x,\lambda)$ 满足条件 </p>
 <script type="math/tex; mode=display">
-    \theta(1,\lambda)= \beta+ k\pi, \tag{9.24}</script><h2 id="特征函数系的正交性"><a href="#特征函数系的正交性" class="headerlink" title="特征函数系的正交性"></a>特征函数系的正交性</h2><h2 id="一个非线性边值问题的例子"><a href="#一个非线性边值问题的例子" class="headerlink" title="一个非线性边值问题的例子"></a>一个非线性边值问题的例子</h2><h2 id="周期边值问题"><a href="#周期边值问题" class="headerlink" title="周期边值问题"></a>周期边值问题</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>邓宗琦. 常微分方程边值问题和Sturm比较理论引论. 湖北：华中师范大学出版社，1987
+    \theta(1,\lambda)= \beta+ k\pi, \tag{9.24}</script><p>$\theta(x)$ 显然满足</p>
+<script type="math/tex; mode=display">
+    \theta'=\cos ^{2}\theta+[\lambda+q(x)]\sin ^{2}\theta \tag{9.25}</script><p>且在（9.23）中取 $j=0$，即 $\theta(0,\lambda)=\alpha$. </p>
+<p><strong>引理 9.2</strong>：令 $\omega(\lambda)=\theta(1,\lambda)$. 则函数 $\omega(\lambda)$ 在区间 $-\infty&lt;\lambda&lt;\infty$ 上是连续的，而且是严格上升的.</p>
+<p><strong>证</strong>：（9.25）得到 $\lambda$ 的变分方程为 </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}}{\mathrm{d}x} \frac{\partial \theta}{\partial \lambda}= [\lambda+q(x)-1] \sin 2\theta \frac{\partial \theta}{\partial \lambda} + \sin ^{2} \theta, \tag{9.27}</script><p>又由 $\theta(0,\lambda)=\alpha$ 知 </p>
+<script type="math/tex; mode=display">
+    \frac{\partial \theta}{\partial \lambda}(0,\lambda)=0. \tag{9.28}</script><p>而方程（9.27）关于 $\displaystyle \frac{\partial \theta}{\partial \lambda}$ 是一阶线性的. 因此，再利用初值条件（9.28），得到</p>
+<script type="math/tex; mode=display">
+    \frac{\partial \theta}{\partial \lambda}(x,\lambda)= \int_{0}^{x} \mathrm{e}^{\int_{t}^{x} E(s,\lambda) \mathrm{d}s} \sin ^{2}\theta(t,\lambda) \mathrm{d}t</script><p>其中</p>
+<script type="math/tex; mode=display">
+    E(s,\lambda)= [\lambda+q(s)-1] \sin 2\theta(s,\lambda).</script><p>易知 $\sin ^{2} \theta(x,\lambda)$ 不恒为零（$0\leqslant x\leqslant 1$）. 因此上式可见</p>
+<script type="math/tex; mode=display">
+    \omega'(\lambda)=\frac{\partial \theta}{\partial \lambda}(1,\lambda)>0,</script><p>引理证毕.</p>
+<p><strong>引理 9.3</strong>：当 $-\infty&lt;\lambda&lt;\infty$ 时，$\omega(\lambda)&gt;0$，并且 </p>
+<script type="math/tex; mode=display">
+    \lim_{\lambda \to -\infty} \omega(\lambda)=0.</script><p><strong>证</strong>：先利用（9.25）证明 $\theta(x,\lambda)&gt;0, 0<x\leqslant 1$. 那么就有 $\omega(\lambda)=\theta(1,\lambda)>0,-\infty&lt;\lambda&lt;\infty$. </p>
+<p>考虑到 $0\leqslant \alpha&lt;\pi$，在 $(x,\theta)$ 平面上取两点 $A(0,\pi-\varepsilon)$ 和 $B(1,\varepsilon)$. 如果积分曲线 $\theta=\theta(x,\lambda)$ 与直线第一次交于 $x= \bar{x}_1$，则斜率 $\theta’(\bar{x}_1,\lambda)\geqslant 直线 AB 的斜率 K=2 \varepsilon-\pi$. 又注意到由（9.25）</p>
+<script type="math/tex; mode=display">
+    \theta'(\bar{x}_1,\lambda)=\cos ^{2}\theta +[\lambda+q(\bar{x}_1)]\sin ^{2}\theta</script><p>考虑到要让 $\lambda \to -\infty$，想让 $\theta’(\bar{x}_1,\lambda)&lt;2 \varepsilon-\pi$ 从而导出矛盾. 而 $\sin \theta \geqslant \varepsilon$，故只要</p>
+<script type="math/tex; mode=display">
+    1+[\lambda+M]\sin ^{2}\varepsilon<2 \varepsilon-\pi</script><p>其中 $M= \max\{q(x)\colon 0\leqslant x\leqslant 1\}$，就有积分曲线不可能与 $AB$ 相交，解出 $\lambda$ 的取值. 这说明当 $\lambda \to -\infty$ 时，$\omega(\lambda)\to 0$.</p>
+<p>也可以参考</p>
+<p><a target="_blank" href="https://zhuanlan.zhihu.com/p/151401565" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">(万年老坑)常微分方程学习笔记(10)</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://zhuanlan.zhihu.com/p/151401565</span>&lt;/span&gt;&lt;/span&gt;</a></p>
+<p><strong>引理 9.4</strong>：当 $\lambda \to \infty$ 时， $\omega(\lambda)\to \infty$.</p>
+<p><strong>证</strong>：关键是注意到</p>
+<script type="math/tex; mode=display">
+    \int_{0}^{1} \frac{\theta'}{\cos ^{2}\theta+[\lambda+q(x)]\sin ^{2}\theta} \mathrm{d}x=\int_{\alpha}^{\omega(\lambda)}  \frac{\mathrm{d}\theta}{\cos ^{2}\theta+[\lambda+q(x)]\sin ^{2}\theta}=1</script><p>如果 $\omega(\lambda)$ 有界，令 $\lambda \to \infty$，可以预想中间式子积分其实应该很小，分 $\sin \theta$ 的零点附近（注意只有有限个零点）和剩下的部分分别计算积分，导出矛盾.</p>
+<p><strong>定理 9.3</strong>：S-L 边值问题有无限多个（简单的）特征值，而且可排列如下：</p>
+<script type="math/tex; mode=display">
+    \lambda_0<\lambda_1<\cdots <\lambda_k<\cdots</script><p>其中 </p>
+<script type="math/tex; mode=display">
+    \lim_{k \to \infty} \lambda_{k} = \infty.</script><blockquote>
+<p>习题 9-2 第二题为什么不与定理矛盾？</p>
+<h2 id="特征函数系的正交性"><a href="#特征函数系的正交性" class="headerlink" title="特征函数系的正交性"></a>特征函数系的正交性</h2></blockquote>
+<h2 id="一个非线性边值问题的例子"><a href="#一个非线性边值问题的例子" class="headerlink" title="一个非线性边值问题的例子"></a>一个非线性边值问题的例子</h2><h2 id="周期边值问题"><a href="#周期边值问题" class="headerlink" title="周期边值问题"></a>周期边值问题</h2><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>邓宗琦. 常微分方程边值问题和Sturm比较理论引论. 湖北：华中师范大学出版社，1987
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
               
             </div>
