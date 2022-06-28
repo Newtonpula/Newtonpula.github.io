@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-06-20T12:04:18.000Z">
-<meta property="article:modified_time" content="2022-06-23T15:34:17.183Z">
+<meta property="article:modified_time" content="2022-06-28T14:54:23.855Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          5.4k 字
+          7.3k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          46 分钟
+          61 分钟
         
       </span>
     
@@ -386,6 +386,26 @@
     \frac{\partial }{\partial x}i(t,x)= c \frac{\partial }{\partial t}u(t,x)+ \sum_{ion}^{} i_{ion}(t,x)- i_{ext}(t,x) \tag{3.12b}</script><p>Taking the derivative in 3.12a with respect to $x$ and substituting the result into 3.12b yields </p>
 <script type="math/tex; mode=display">
     \frac{\partial ^{2}}{\partial x^{2}}u(t,x)= cr_{L} \frac{\partial }{\partial t}u(t,x)+r_{L}\sum_{ion}^{} i_{ion}(t,x)-r_{L}i_{ext}(t,x) \tag{3.13}</script><p>3.13 is called the general cable equation.</p>
+<hr>
+<p>A passive dendrite means that I only have an ohmic current, a current that corresponds to Ohm’s law, a current that does not give rise to action potentials.</p>
+<p>Let $\displaystyle \lambda^{2}= \frac{r_m}{r_l}$, $c\cdot r_m=\tau$, then </p>
+<script type="math/tex; mode=display">
+    \lambda^{2} \frac{\mathrm{d}^{2}}{\mathrm{d}x^{2}}u(t,x)=\tau_m \frac{\mathrm{d}}{\mathrm{d}t}u(t,x)+u-r_m i_{ext}(t,x)</script><p>This is the cable equation for the passive dendrite, or the passive cable equation. $\tau_m$ is a time constant. $\lambda$ is a length.</p>
+<p>For dendritic stimulation, as a function of time, the voltage at the soma first increases to the maximal a few milliseconds after the end of the injection, and then decreases again. (when injection is near the soma)</p>
+<p><strong>solutions of the cable equation</strong></p>
+<p>for solutions with $\frac{\partial u(t,x)}{\partial t}=0$, then (by change the variable, suppose the equation is in an elegant unit-free form)</p>
+<script type="math/tex; mode=display">
+    \frac{\partial ^{2}}{\partial x^{2}}u(t,x)-u(t,x)=-i_{ext}(t,x).</script><p>The general solution to the homogenous equation with $i_{ext(t,x)\equiv 0}$ is </p>
+<script type="math/tex; mode=display">
+    u(t,x)=c_1 \sinh (x)=c_2 \cosh (x),</script><p>Here, $c_1$ and $c_2$ are constants that are determined by the boundary conditions.</p>
+<p>For a stationary input current $i_{ext}(t,x)=\delta(x)$ localized at $x=0$ and boundary conditions $u(\pm \infty)=0$ we find </p>
+<script type="math/tex; mode=display">
+    u(t,x)=\frac{1}{2} \mathrm{e}^{-\lvert x \rvert } ,\tag{3.20}</script><p>If we re-substitute the physical units, we see that $\lambda$ is the length over which the stationary membrane potential drops by a factor $1/\mathrm{e}$. </p>
+<p>Typical values for the specific resistance of the intracellular medium and the cell membrane are $100\Omega cm$ and $30 k\Omega cm^{2}$, respectively. </p>
+<p>Note that the electrotonic length can be significantly smaller if the transversal conductivity is increased, e.g., due to open ion channels.</p>
+<p>For arbitrary stationary input current $i_{ext}(x)$ the solution can be found by a superposition of translated fundamental solutions (3.20), viz.,</p>
+<script type="math/tex; mode=display">
+    u(t,x)=\int_{}^{} \frac{1}{2} \mathrm{e}^{-\lvert x-x' \rvert } i_{ext}(x') \mathrm{d}x'. \tag{3.21}</script><p>This is an exmple of the Green’s function approach applied here to the stationary case. The generel time-dependent case will be treated in the next section. </p>
 <h3 id="Green’s-Function-of-the-passive-Cable"><a href="#Green’s-Function-of-the-passive-Cable" class="headerlink" title="Green’s Function of the passive Cable"></a>Green’s Function of the passive Cable</h3><h3 id="Non-linear-Extensions-to-the-Cable-Equation"><a href="#Non-linear-Extensions-to-the-Cable-Equation" class="headerlink" title="Non-linear Extensions to the Cable Equation"></a>Non-linear Extensions to the Cable Equation</h3><h2 id="Spatial-Structure-Axons"><a href="#Spatial-Structure-Axons" class="headerlink" title="Spatial Structure: Axons"></a>Spatial Structure: Axons</h2><h2 id="Compartmental-Models"><a href="#Compartmental-Models" class="headerlink" title="Compartmental Models"></a>Compartmental Models</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
               
             </div>
