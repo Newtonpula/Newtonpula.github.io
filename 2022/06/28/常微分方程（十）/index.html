@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
 <meta property="article:published_time" content="2022-06-28T10:52:28.000Z">
-<meta property="article:modified_time" content="2022-06-29T09:35:57.928Z">
+<meta property="article:modified_time" content="2022-06-30T09:57:05.273Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.5k 字
+          3.9k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          21 分钟
+          33 分钟
         
       </span>
     
@@ -367,7 +367,31 @@
 <p>如果给定首次积分（10.35），又设 $H(z_1,\cdots ,z_k)$ 是连续可微的函数，而且它不是常数，则</p>
 <script type="math/tex; mode=display">
     H(V_1(x,y_1,\cdots ,y_n),\cdots ,V_k(x,y_1,\cdots ,y_n))=C</script><p>是（10.14）的一个首次积分. （但是好像并不能保证它与诸 $V_i$ 互相独立）</p>
-<h2 id="首次积分的存在性"><a href="#首次积分的存在性" class="headerlink" title="首次积分的存在性"></a>首次积分的存在性</h2><h2 id="大范围的首次积分"><a href="#大范围的首次积分" class="headerlink" title="大范围的首次积分"></a>大范围的首次积分</h2>
+<h2 id="首次积分的存在性"><a href="#首次积分的存在性" class="headerlink" title="首次积分的存在性"></a>首次积分的存在性</h2><p><strong>定理 10.4</strong> 设 $P_0=(x_0,y_1^{0},\cdots ,y_n^{0})\in G$. 则存在 $P_0$ 点的一个领域 $G_0 \subset  G$，使得微分方程（10.14）在区域 $G_0$ 内有 $n$ 个互相独立的首次积分.</p>
+<p><strong>证</strong>：取 $P_0$ 点附近的初值条件. 然后利用隐函数定理得到 $n$ 个互相独立的首次积分. </p>
+<p><strong>定理 10.5</strong> 微分方程（10.14）最多只有 $n$ 个独立的首次积分.</p>
+<p><strong>定理 10.6</strong> 设（10.28）是微分方程（10.14）在区域 $G_0$ 内的 $n$ 个独立的首次积分. 则在区域 $G_0$ 内微分方程（10.14）的任何首次积分</p>
+<script type="math/tex; mode=display">
+    V(x,y_1,\cdots ,y_n)=C</script><p>可以用（10.28）来表达，亦即</p>
+<script type="math/tex; mode=display">
+    V(x,y_1,\cdots ,y_n)=h[\Phi_1(x,y_1,\cdots ,y_n),\cdots ,\Phi_n(x,y_1,\cdots ,y_n)], \tag{10.41}</script><p>其中 $h$ 是某个连续可微的函数.</p>
+<p><strong>证</strong>：注意到 </p>
+<script type="math/tex; mode=display">
+    J:=\frac{\partial (\Phi,\cdots ,\Phi_n)}{\partial (y_1,\cdots ,y_n)}\neq 0,</script><p>再次由隐函数定理得到，</p>
+<script type="math/tex; mode=display">
+    y_i=y_i(x,\Phi_1,\cdots ,\Phi_n),i=1,\cdots ,n,</script><p>设 $V$ 是任意一个首次积分，定义函数 $H$</p>
+<script type="math/tex; mode=display">
+    H(x,\Phi_1,\cdots ,\Phi_n) :=V(x,y_1,\cdots ,y_n).</script><p>下证 $H$ 与 $x$ 无关. 计算</p>
+<script type="math/tex; mode=display">
+    \frac{\partial H}{\partial x}=\frac{\partial V}{\partial x}+\sum_{i=1}^{n} \frac{\partial V}{\partial y_i}\frac{\partial y_i}{\partial x}.</script><p>然后由隐函数定理 </p>
+<script type="math/tex; mode=display">
+    \frac{\partial y_i}{\partial x}=-\frac{1}{J} \frac{\partial (\Phi_1,\cdots ,\Phi_i,\cdots ,\Phi_n)}{\partial (y_1,\cdots ,x,\cdots ,y_n)}.</script><p>根据行列式展开的规律可以得到</p>
+<script type="math/tex; mode=display">
+    \frac{\partial H}{\partial x}=\frac{\partial V}{\partial x}-\frac{1}{J}\sum_{i=1}^{n} \frac{\partial V}{\partial y_i} \frac{\partial (\Phi_1,\cdots ,\Phi_i,\cdots ,\Phi_n)}{\partial (y_1,\cdots ,x,\cdots ,y_n)}=\frac{1}{J}\frac{\partial (V,\Phi_1,\cdots ,\Phi_n)}{\partial (x,y_1,\cdots ,y_n)}</script><p>利用首次积分的充要条件</p>
+<script type="math/tex; mode=display">
+    \frac{\partial V}{\partial x}+\sum_{i=1}^{n} \frac{\partial V}{\partial y_i}f_i=0,</script><p>可以发现上面的行列式为零（对 $V$ 和诸 $\Phi$ 都用充要条件，并看成一个有非零解 $(1,f_1,\cdots ,f_n)$ 的线性方程组），所以 $\displaystyle \frac{\partial H}{\partial x}=0$，得证.</p>
+<p>也就是 $V=H(\Phi_1,\cdots ,\Phi_n)$. </p>
+
               
             </div>
             <hr/>
