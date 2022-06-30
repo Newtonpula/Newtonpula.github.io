@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-06-20T12:04:18.000Z">
-<meta property="article:modified_time" content="2022-06-28T14:54:23.855Z">
+<meta property="article:modified_time" content="2022-06-30T02:52:29.046Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          7.3k 字
+          11k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          61 分钟
+          91 分钟
         
       </span>
     
@@ -373,31 +373,37 @@
 <h2 id="Spatial-Structure-The-Dendritic-Tree"><a href="#Spatial-Structure-The-Dendritic-Tree" class="headerlink" title="Spatial Structure: The Dendritic Tree"></a>Spatial Structure: The Dendritic Tree</h2><h3 id="Derivation-of-the-Cable-Equation"><a href="#Derivation-of-the-Cable-Equation" class="headerlink" title="Derivation of the Cable Equation"></a>Derivation of the Cable Equation</h3><p>Consider a piece of dendrite decomposed into short cylindric segments of length $\mathrm{d}x$ each. </p>
 <p>A longitudinal current $i(x)$ passing through the dendrite causes a voltage drop across the longitudinal resistor $R_{L}$. </p>
 <script type="math/tex; mode=display">
-    u(t,x+\mathrm{d}x)-u(t,x)=R_{L} i(t,x) \tag{3.9}</script><p>The transversal current that passes through the RC-circuit is given by </p>
+    u(t,x)-u(t,x+\mathrm{d}x)=R_{L} i(t,x) \tag{3.9}</script><p>The transversal current that passes through the RC-circuit is given by </p>
 <script type="math/tex; mode=display">
     C \frac{\partial u(t,x)}{\partial t}+ \sum_{ion}^{} I_{ion}</script><p>where the sum runs over all ion channel types present in the dendrite. </p>
 <p>Kirchhoff’s law regarding the conservation of current at each node leads to </p>
 <script type="math/tex; mode=display">
-    i(t,x+\mathrm{d}x)-i(t,x)= C \frac{\partial }{\partial t}u(t,x)+ \sum_{ion}^{} I_{ion}-I_{ext}(t,x) \tag{3.10}</script><p>where</p>
+    -i(t,x+\mathrm{d}x)+i(t,x)= C \frac{\partial }{\partial t}u(t,x)+ \sum_{ion}^{} I_{ion}-I_{ext}(t,x) \tag{3.10}</script><p>where</p>
 <script type="math/tex; mode=display">
     R_{L}= r_{L} \mathrm{d}x, \quad C=c \mathrm{d}x,\quad I_{ext}(t,x)= i_{ext}(t,x)\mathrm{d}x \quad I_{ion}(t,x)= i_{ion}(t,x)\mathrm{d}x \tag{3.11}</script><p>So </p>
 <script type="math/tex; mode=display">
-    \frac{\partial }{\partial x}u(t,x)= r_{L} i(t,x) \tag{3.12a}</script><script type="math/tex; mode=display">
-    \frac{\partial }{\partial x}i(t,x)= c \frac{\partial }{\partial t}u(t,x)+ \sum_{ion}^{} i_{ion}(t,x)- i_{ext}(t,x) \tag{3.12b}</script><p>Taking the derivative in 3.12a with respect to $x$ and substituting the result into 3.12b yields </p>
+    -\frac{\partial }{\partial x}u(t,x)= r_{L} i(t,x) \tag{3.12a}</script><script type="math/tex; mode=display">
+    -\frac{\partial }{\partial x}i(t,x)= c \frac{\partial }{\partial t}u(t,x)+ \sum_{ion}^{} i_{ion}(t,x)- i_{ext}(t,x) \tag{3.12b}</script><p>Taking the derivative in 3.12a with respect to $x$ and substituting the result into 3.12b yields </p>
 <script type="math/tex; mode=display">
     \frac{\partial ^{2}}{\partial x^{2}}u(t,x)= cr_{L} \frac{\partial }{\partial t}u(t,x)+r_{L}\sum_{ion}^{} i_{ion}(t,x)-r_{L}i_{ext}(t,x) \tag{3.13}</script><p>3.13 is called the general cable equation.</p>
 <hr>
 <p>A passive dendrite means that I only have an ohmic current, a current that corresponds to Ohm’s law, a current that does not give rise to action potentials.</p>
-<p>Let $\displaystyle \lambda^{2}= \frac{r_m}{r_l}$, $c\cdot r_m=\tau$, then </p>
+<p>Let $\displaystyle \lambda^{2}= \frac{r_m}{r_L}$, $c\cdot r_m=\tau$, then </p>
 <script type="math/tex; mode=display">
-    \lambda^{2} \frac{\mathrm{d}^{2}}{\mathrm{d}x^{2}}u(t,x)=\tau_m \frac{\mathrm{d}}{\mathrm{d}t}u(t,x)+u-r_m i_{ext}(t,x)</script><p>This is the cable equation for the passive dendrite, or the passive cable equation. $\tau_m$ is a time constant. $\lambda$ is a length.</p>
-<p>For dendritic stimulation, as a function of time, the voltage at the soma first increases to the maximal a few milliseconds after the end of the injection, and then decreases again. (when injection is near the soma)</p>
+    \lambda^{2} \frac{\mathrm{d}^{2}}{\mathrm{d}x^{2}}u(t,x)=\tau_m \frac{\mathrm{d}}{\mathrm{d}t}u(t,x)+(u(t,x)-E_l)-r_m i_{ext}(t,x)</script><p>This is the cable equation for the passive dendrite, or the passive cable equation. $\tau_m$ is a time constant. $\lambda$ is a length.</p>
+<p>Transformation to unit-free coordinates,</p>
+<script type="math/tex; mode=display">
+    x \to \hat{x}=x/\lambda, \quad t \to \hat{t}=t/\tau, \tag{3.15}</script><p>and a rescaling of the current and voltage variables,</p>
+<script type="math/tex; mode=display">
+    i \to \hat{i}=\sqrt{r_mr_l} i, \quad i_{ext} \to \hat{i}_{ext}=r_m i_{ext}, \quad u\to \hat{u}=u-E_l, \tag{3.15}</script><p>we obtain the cable equation (where we have dropped the hats)</p>
+<script type="math/tex; mode=display">
+    \frac{\partial }{\partial t}u(t,x)=\frac{\partial ^{2}}{\partial x^{2}}u(t,x)-u(t,x)+i_{ext}(t,x), \tag{3.17}</script><p>For dendritic stimulation, as a function of time, the voltage at the soma first increases to the maximal a few milliseconds after the end of the injection, and then decreases again. (when injection is near the soma)</p>
 <p><strong>solutions of the cable equation</strong></p>
 <p>for solutions with $\frac{\partial u(t,x)}{\partial t}=0$, then (by change the variable, suppose the equation is in an elegant unit-free form)</p>
 <script type="math/tex; mode=display">
-    \frac{\partial ^{2}}{\partial x^{2}}u(t,x)-u(t,x)=-i_{ext}(t,x).</script><p>The general solution to the homogenous equation with $i_{ext(t,x)\equiv 0}$ is </p>
+    \frac{\partial ^{2}}{\partial x^{2}}u(t,x)-u(t,x)=-i_{ext}(t,x).</script><p>The general solution to the homogenous equation with $i_{ext}(t,x)\equiv 0$ is </p>
 <script type="math/tex; mode=display">
-    u(t,x)=c_1 \sinh (x)=c_2 \cosh (x),</script><p>Here, $c_1$ and $c_2$ are constants that are determined by the boundary conditions.</p>
+    u(t,x)=c_1 \sinh (x)+c_2 \cosh (x),</script><p>Here, $c_1$ and $c_2$ are constants that are determined by the boundary conditions.</p>
 <p>For a stationary input current $i_{ext}(t,x)=\delta(x)$ localized at $x=0$ and boundary conditions $u(\pm \infty)=0$ we find </p>
 <script type="math/tex; mode=display">
     u(t,x)=\frac{1}{2} \mathrm{e}^{-\lvert x \rvert } ,\tag{3.20}</script><p>If we re-substitute the physical units, we see that $\lambda$ is the length over which the stationary membrane potential drops by a factor $1/\mathrm{e}$. </p>
@@ -406,7 +412,37 @@
 <p>For arbitrary stationary input current $i_{ext}(x)$ the solution can be found by a superposition of translated fundamental solutions (3.20), viz.,</p>
 <script type="math/tex; mode=display">
     u(t,x)=\int_{}^{} \frac{1}{2} \mathrm{e}^{-\lvert x-x' \rvert } i_{ext}(x') \mathrm{d}x'. \tag{3.21}</script><p>This is an exmple of the Green’s function approach applied here to the stationary case. The generel time-dependent case will be treated in the next section. </p>
-<h3 id="Green’s-Function-of-the-passive-Cable"><a href="#Green’s-Function-of-the-passive-Cable" class="headerlink" title="Green’s Function of the passive Cable"></a>Green’s Function of the passive Cable</h3><h3 id="Non-linear-Extensions-to-the-Cable-Equation"><a href="#Non-linear-Extensions-to-the-Cable-Equation" class="headerlink" title="Non-linear Extensions to the Cable Equation"></a>Non-linear Extensions to the Cable Equation</h3><h2 id="Spatial-Structure-Axons"><a href="#Spatial-Structure-Axons" class="headerlink" title="Spatial Structure: Axons"></a>Spatial Structure: Axons</h2><h2 id="Compartmental-Models"><a href="#Compartmental-Models" class="headerlink" title="Compartmental Models"></a>Compartmental Models</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
+<h3 id="Green’s-Function-of-the-passive-Cable"><a href="#Green’s-Function-of-the-passive-Cable" class="headerlink" title="Green’s Function of the passive Cable"></a>Green’s Function of the passive Cable</h3><p>The Green’s function is defined as the solution of a linear equation such as (3.17) with a dirac $\delta-$pulse as its input. The solution for any given input can be constructed as a superposition of these Green’s functions.</p>
+<p>Suppose a short current pulse $i_{ext}(t,x)$ is injected at time $t=0$ at location $x=0$. As we will show below, the time course of the voltage at an arbitrary position $x$ is given by </p>
+<script type="math/tex; mode=display">
+    u(t,x)=\frac{\Theta(t)}{\sqrt{4\pi t}}\exp \left[ -t-\frac{x^{2}}{4t}\right] \equiv G_{\infty}(t,x), \tag{3.22}</script><p>where $G_{\infty}(t,x)$ is the Green’s function. Knowing the Green’s function, the general solution for an infinitely long cable is given by </p>
+<script type="math/tex; mode=display">
+    u(t,x)=\int_{-\infty}^{t} \int_{-\infty}^{\infty} G_{\infty}(t-t',x-x')i_{ext}(t',x') \mathrm{d}x' \mathrm{d}t'. \tag{3.23}</script><p><strong>Checking the Green’s property</strong></p>
+<script type="math/tex; mode=display">
+    \left[ \frac{\partial }{\partial t}-\frac{\partial ^{2}}{\partial x^{2}}+1\right] G_{\infty}(t,x)=\frac{1}{\sqrt{4\pi t}}\exp \left( -t-\frac{x^{2}}{4t}\right) \delta(t), \tag{3.24}</script><p>where we have used $\displaystyle \frac{\partial \Theta(t)}{\partial t}=\delta(t)$. As long as $t \neq 0$ the right-hand side of (3.24) vanishes, as required by (3.28). For $t \to 0$ we find </p>
+<script type="math/tex; mode=display">
+    \lim_{t \to \infty}\frac{1}{\sqrt{4\pi t}}\exp \left(-t-\frac{x^{2}}{4t}\right) =\delta(x), \tag{3.25}</script><p>Having established that </p>
+<script type="math/tex; mode=display">
+    \left[ \frac{\partial }{\partial t}-\frac{\partial ^{2}}{\partial x^{2}}+1\right] G_{\infty}(t,x)=\delta(x)\delta(t), \tag{3.26}</script><p>We can readily show that (3.23) is the general solution of the cable equation for arbitrary input currents $i_{ext}(t_0,x_0)$. </p>
+<script type="math/tex; mode=display">
+    \begin{aligned}
+        \left[ \frac{\partial }{\partial t}-\frac{\partial ^{2}}{\partial x^{2}}+1\right]u(t,x)&=\int_{-\infty}^{t} \int_{-\infty}^{\infty} \left[ \frac{\partial }{\partial t}-\frac{\partial ^{2}}{\partial x^{2}}+1\right] G_{\infty}(t-t',x-x')i_{ext}(t',x') \mathrm{d}x'\mathrm{d}t' \\
+        &= \int_{-\infty}^{t} \int_{-\infty}^{\infty}  \delta(x-x')\delta(t-t')i_{ext}(t',x')\mathrm{d}x'\mathrm{d}t'=i_{ext}(t,x), \tag{3.27}
+    \end{aligned}</script><p><strong>Derivation of the Green’s function</strong></p>
+<script type="math/tex; mode=display">
+    \frac{\partial }{\partial t}u(t,x)-\frac{\partial ^{2}}{\partial x^{2}}u(t,x)+u(t,x)=\delta(t)\delta(x). \tag{3.28}</script><p>Fourier transformation with respect to the spatial variable yields </p>
+<script type="math/tex; mode=display">
+    \frac{\partial }{\partial t}\hat{u}(t,k)+4\pi^{2}k^{2}\hat{u}(t,k)+\hat{u}(t,k)=\delta(t). \tag{3.29}</script><p>This is an ODE in $t$ and has a solution of the form </p>
+<script type="math/tex; mode=display">
+    \hat{u}(t,k)=\exp [-(1+4\pi^{2}k^{2})t] \Theta(t), \tag{3.30}</script><p>with $\Theta(t)$ denoting the Heaviside function. After an inverse Fourier transform we obtain the desired Green’s function $G_{\infty}(t,x)$,</p>
+<script type="math/tex; mode=display">
+    u(t,x)=\frac{\Theta(t)}{\sqrt{4\pi t}}\exp \left[ -t-\frac{x^{2}}{4t}\right]\equiv G_{\infty}(t,x). \tag{3.31}</script><p><strong>Finite cable</strong></p>
+<p>We consider a finite cable extending from $x=0$ to $x=L$ with sealed ends, i.e., $i(t,x=0)=i(t,x=L)=0$ or, equivalently, $\frac{\partial }{\partial x}u(t,x=0)=\frac{\partial }{\partial x}u(t,x=L)=0$.</p>
+<p>The Green’s function $G_{0,L}$ for a cable with sealed ends can be constructed from $G_{\infty}$ by applying a trick from electro-statics called “mirror charges”.</p>
+<script type="math/tex; mode=display">
+    G_{0,L}(t_0,x_0;t,x)=\sum_{n=-\infty}^{\infty} G_{\infty}(t-t_0,x-2nL-x_0)+G_{\infty}(t-t_0,x-2nL+x_0). \tag{3.32}</script><p>We have to specify both $(t_0,x_0)$ and $(t,x)$ because the setup is no longer translation invariant. The general solution on the interval $[0,L]$ is given by </p>
+<script type="math/tex; mode=display">
+    u(t,x)=\int_{-\infty}^{t} \int_{0}^{L} G_{0,L}(t_0,x_0;t,x)i_{ext}(t_0,x_0) \mathrm{d}x_0 \mathrm{d}t_0, \tag{3.33}</script><h3 id="Non-linear-Extensions-to-the-Cable-Equation"><a href="#Non-linear-Extensions-to-the-Cable-Equation" class="headerlink" title="Non-linear Extensions to the Cable Equation"></a>Non-linear Extensions to the Cable Equation</h3><h2 id="Spatial-Structure-Axons"><a href="#Spatial-Structure-Axons" class="headerlink" title="Spatial Structure: Axons"></a>Spatial Structure: Axons</h2><h2 id="Compartmental-Models"><a href="#Compartmental-Models" class="headerlink" title="Compartmental Models"></a>Compartmental Models</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
               
             </div>
             <hr/>
