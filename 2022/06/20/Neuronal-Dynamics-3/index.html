@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-06-20T12:04:18.000Z">
-<meta property="article:modified_time" content="2022-06-30T13:52:29.781Z">
+<meta property="article:modified_time" content="2022-07-01T15:17:46.577Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          12k 字
+          15k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          104 分钟
+          127 分钟
         
       </span>
     
@@ -453,7 +453,41 @@
 <h2 id="Spatial-Structure-Axons"><a href="#Spatial-Structure-Axons" class="headerlink" title="Spatial Structure: Axons"></a>Spatial Structure: Axons</h2><p>In terms of propagation dynamics, we distinguish two types of axons: the myelinated and the unmyelinated axons. Myelin is useful to increase propagation speed in far-reaching projections. </p>
 <h3 id="Unmyelinated-Axons"><a href="#Unmyelinated-Axons" class="headerlink" title="Unmyelinated Axons"></a>Unmyelinated Axons</h3><p>Unmyelinated axons contain sodium and potassium channels uniformly distributed over their entire length. The general equation for ion channels imbedded on a passive membrane is </p>
 <script type="math/tex; mode=display">
-    cr_{L}\frac{\partial }{\partial t}u(t,x)=\frac{\partial ^{2}}{\partial x^{2}}u(t,x)-r_{L}(u(t,x)-E_l)-r_{L}i_{ion}[u](t,x). \tag{3.37}</script><h3 id="Myelinated-Axons"><a href="#Myelinated-Axons" class="headerlink" title="Myelinated Axons"></a>Myelinated Axons</h3><h2 id="Compartmental-Models"><a href="#Compartmental-Models" class="headerlink" title="Compartmental Models"></a>Compartmental Models</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
+    cr_{L}\frac{\partial }{\partial t}u(t,x)=\frac{\partial ^{2}}{\partial x^{2}}u(t,x)-r_{L}(u(t,x)-E_l)-r_{L}i_{ion}[u](t,x). \tag{3.37}</script><p>For the giant squid axon, the ionic current are described by the Hodgkin-Huxley model </p>
+<script type="math/tex; mode=display">
+    i_{ion}[u](t,x)=g_{Na}m^{3}(t,x)h(t,x)(u(t,x)-E_{Na})+g_{K}n^{4}(t,x)(u(t,x)-E_{K}). \tag{3.38}</script><p>In other systems, the axon may be covered with other types of sodium or potassium ion channels.</p>
+<p>The action potential propagates by activating sodium channels along the cable rather than by spreading the charges such as in a passive dendrite. The properties of the ion channels strongly influence conduction velocity. </p>
+<p>Two spikes traveling in opposite direction will collide and annihilate each other. </p>
+<p>When the impedance mismatch at the point where a single axon splits into two can is significant, the action potential can reflect and start travelling in the direction it came from.</p>
+<p><strong>Speed of Propagation with Simplified Action Potential Dynamics</strong></p>
+<p>Replace the active properties of a small axonal segment by a bistable switch. We can write the time-and space-dependent membrane potential as </p>
+<script type="math/tex; mode=display">
+    cr_{L}\frac{\partial }{\partial t}u(t,x)=\frac{\partial ^{2}}{\partial x^{2}}u(t,x)-\frac{r_{L}g}{1-a}u(t,x)(u(t,x)-1)(u(t,x)-a). \tag{3.39}</script><p>where $a&lt;1/2$ and $g$ are parameters. The membrane potential is scaled such that it rests at zero but may be activated to $u=1$. The reduced model can switch between $u=0$ and $u=1$ if it is pushed above $u=a$, but does not reproduce the full upswing followed by downswing of action potentials.</p>
+<p>The solution of this equation follows </p>
+<script type="math/tex; mode=display">
+    u(x,t)=\frac{1}{1+\exp (\frac{x-vt}{\sqrt{2}\lambda^{*}})} \tag{3.40}</script><p>with traveling speed </p>
+<script type="math/tex; mode=display">
+    v=\frac{c(1-2a)}{\sqrt{2(1-a)r_{L}/g}}. \tag{3.41}</script><p>Since $c \propto \rho$, $g\propto \rho$ and $r_{L}\propto \rho^{2}$(!?WHY?!), We obtain $v \propto \sqrt{\rho}$.</p>
+<h3 id="Myelinated-Axons"><a href="#Myelinated-Axons" class="headerlink" title="Myelinated Axons"></a>Myelinated Axons</h3><p>Myelinated axons have sodium and potassium channels only in restricted segments called <strong>nodes of Ranvier</strong>. These nodes form only 0.2% of the axonal length, the rest is considered a passive membrane that is wrapped into a myelin sheath. </p>
+<p>Myelin mainly decrease the membrane capacitance $C$ and increase the resistance $R_{T}$ by a factor of up to 300.</p>
+<p>Assuming that the nodes are equally separated by a myelinated segment of length $L$, we can model the evolution of the membrane potential at each node $u_n$. The dynamics of idealized myelinated axons follow Kirchoff’s equation with a resistance $R_{L}=Lr_{L}$ replacing the myelinated segment </p>
+<script type="math/tex; mode=display">
+    C\frac{\mathrm{d}u_n}{\mathrm{d}t}=\frac{1}{Lr_{L}}(u_{n+1}(t)-2 u_n(t)+u_{n-1}(t))-\sum_{ion}^{} I_{ion,n}(t) \tag{3.42}</script><p>where $C$ is the total capacitance of the node. </p>
+<p>The conduction velocity is greatly increased by myelin such that some nerves reach 70-80 m/s.</p>
+<p><strong>Example: Propagation Speed with Simplified Action Potential Dynamics</strong></p>
+<p>Using the simplification of the ion channel dynamics in Eq. (3.39) for each node</p>
+<script type="math/tex; mode=display">
+    C\frac{\mathrm{d}u_n}{\mathrm{d}t}=\frac{1}{Lr_{L}}(u_{n+1}(t)-2 u_n(t)+u_{n-1}(t))-\frac{g}{1-a}u_n(t)(u_n(t)-1)(u_n(t)-a). \tag{3.43}</script><p>where $g$ and $a&lt;1/2$ are parameters regulating the excitability of the node. </p>
+<p>An activated node may fail to excite the adjacent nodes if the membrane potential does not reach $u=a$. </p>
+<p>The internodal distance must satisfy<sup><a href="#fn_1" id="reffn_1">1</a></sup></p>
+<script type="math/tex; mode=display">
+    L<L^{*}=\frac{1-a}{4a^{2}r_{L}g} \tag{3.44}</script><p>for propagation to be sustained. </p>
+<p>The propagation velocity for small $L^{*}-L$ follows </p>
+<script type="math/tex; mode=display">
+    v \thickapprox \frac{\pi ga}{(1-a)C}\sqrt{L(L^{*}-L)} \tag{3.45}</script><p>which is maximum at $L=L^{*}/2$. </p>
+<p>Since in most myelinated axons, internodal distance scales linearly with their radius, the velocity of myelinated axons also scales linearly with radius $v\propto L\propto \rho$. </p>
+<h2 id="Compartmental-Models"><a href="#Compartmental-Models" class="headerlink" title="Compartmental Models"></a>Compartmental Models</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><sup><a href="#fn_1" id="reffn_1">1</a></sup> T. Erneux and G. Nicolis (1993) Propagating waves in discrete bistable reaction-diffusion systems. Physica D: Nonlinear Phenomena 67 (1), pp. 237–244.</p>
+
               
             </div>
             <hr/>
