@@ -16,16 +16,16 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Bits and Codes">
+    <meta name="description" content="Chapter 1~5">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Information and Entropy (1)">
 <meta property="og:url" content="http://example.com/2022/07/01/Information-and-Entropy-1/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="Bits and Codes">
+<meta property="og:description" content="Chapter 1~5">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/shannon.jpg">
 <meta property="article:published_time" content="2022-07-01T11:42:26.000Z">
-<meta property="article:modified_time" content="2022-07-01T13:21:05.507Z">
+<meta property="article:modified_time" content="2022-07-02T12:07:21.055Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2k 字
+          3.9k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          17 分钟
+          33 分钟
         
       </span>
     
@@ -342,7 +342,22 @@
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">b_15</span>=N <br><span class="hljs-attr">b_14</span>=NAND(A,B)<br><span class="hljs-attr">b_13</span>=NAND(b_14,A)<br><span class="hljs-attr">b_12</span>=NAND(A,<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_11</span>=NAND(b_12,B)<br><span class="hljs-attr">b_10</span>=NAND(B,<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_9</span>=NAND(NAND(A,B),NAND(b_12,b_10))<br><span class="hljs-attr">b_8</span>=NAND(NAND(b_10,b_12),<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_7</span>=NAND(b_8,<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_6</span>=NAND(b_9,<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_5</span>=NAND(b_10,<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_4</span>=NAND(b_11,<span class="hljs-number">1</span>) <br><span class="hljs-attr">b_3</span>=NAND(b_12,<span class="hljs-number">1</span>) <br><span class="hljs-attr">b_2</span>=NAND(b_14,<span class="hljs-number">1</span>) <br><span class="hljs-attr">b_1</span>=NAND(b_13,<span class="hljs-number">1</span>) <br><span class="hljs-attr">b_0</span>=Z <br></code></pre></td></tr></table></figure>
 </li>
 </ul>
-
+<h1 id="Compression"><a href="#Compression" class="headerlink" title="Compression"></a>Compression</h1><p>two types of compression:</p>
+<ul>
+<li>Lossless or reversible compression </li>
+<li>Lossy or irreversible compression</li>
+</ul>
+<h2 id="Variable-Length-Encoding"><a href="#Variable-Length-Encoding" class="headerlink" title="Variable-Length Encoding"></a>Variable-Length Encoding</h2><p>We put off the discussion of this technique until Chapter 5.</p>
+<h2 id="Run-Length-Encoding"><a href="#Run-Length-Encoding" class="headerlink" title="Run Length Encoding"></a>Run Length Encoding</h2><p>Ex: “a B B B B B a a a B B a a a a” could be encoded as “a 1 B 5 a 3 B 2 a 4”.</p>
+<h2 id="Static-Dictionary"><a href="#Static-Dictionary" class="headerlink" title="Static Dictionary"></a>Static Dictionary</h2><h2 id="Semi-adaptive-Dictionary"><a href="#Semi-adaptive-Dictionary" class="headerlink" title="Semi-adaptive Dictionary"></a>Semi-adaptive Dictionary</h2><h2 id="Dynamic-Dictionary"><a href="#Dynamic-Dictionary" class="headerlink" title="Dynamic Dictionary"></a>Dynamic Dictionary</h2><p><strong>LZW compression technique</strong></p>
+<h3 id="The-LZW-Patent"><a href="#The-LZW-Patent" class="headerlink" title="The LZW Patent"></a>The LZW Patent</h3><h2 id="Irreversible-Techniques"><a href="#Irreversible-Techniques" class="headerlink" title="Irreversible Techniques"></a>Irreversible Techniques</h2><h2 id="Detail-LZW-Compression"><a href="#Detail-LZW-Compression" class="headerlink" title="Detail: LZW Compression"></a>Detail: LZW Compression</h2><p><a target="_blank" href="https://blog.csdn.net/krossford/article/details/49157531?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3&utm_source=qq&utm_medium=social&utm_oi=808074114588893184" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">LZW编码的学习与实现</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://blog.csdn.net/krossford/article/details/49157531?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3&amp;utm_source=qq&amp;utm_medium=social&amp;utm_oi=808074114588893184</span>&lt;/span&gt;&lt;/span&gt;</a></p>
+<p>LZW算法可以实现动态字典，可以做到实时编码、传输、解码（而不是将输入全部分析一遍后利用字符出现频率什么的来编码压缩）。一般来说传输会比输入延迟一个字符，这也意味着输入相比传输要提前看一个字符从而确定动态字典的编写。通常是输入 $\Rightarrow$ （输入方）添加入字典 $\Rightarrow$ 传输 $\Rightarrow$ （输出方）添加入字典 $\Rightarrow$ 输出。在ASCII码的语境下，输入使用8位字符（0-255），而传输使用9位字符（0-511）</p>
+<p>关于LZW算法还有一个特殊点：当输入的字符串第一次出现连续三个相同字符时（比如说rrr），将会出现传输某个（输出方）字典中没有的编码的编码。当输入第二个r之后，才会传输第一个r；输入第三个r后并不会传输（因为rr在输入方字典中出现过）；输入第三个r后的字符（比如说i）后传输rr的编码，当然此时这个编码不存在于输出方的字典中，输出方需要对该情况作特殊处理。书上给出的我看不懂</p>
+<blockquote>
+<p>Normally, on receipt of a transmitted codeword, the decoder can look up its string in the dictionary and then output it and use its first character to complete the partially formed last dictionary entry, and then start the next dictionary entry. Thus only one dictionary lookup is needed. However, the algorithm presented above uses two lookups, one for the first character, and a later one for the entire string. Why not use just one lookup for greater efficiency?</p>
+<p>There is a special case illustrated by the transmission of code 271 in this example, where the string corresponding to the received code is not complete. The first character can be found but then before the entire string is retrieved, the entry must be completed. This happens when a character or a string appears for the first time three times in a row, and is therefore rare. The algorithm above works correctly, at a cost of an extra lookup that is seldom needed and may slow the algorithm down.</p>
+</blockquote>
+<h2 id="Detail-2-D-Discrete-Cosine-Transformation"><a href="#Detail-2-D-Discrete-Cosine-Transformation" class="headerlink" title="Detail: 2-D Discrete Cosine Transformation"></a>Detail: 2-D Discrete Cosine Transformation</h2><h3 id="Discrete-Cosine-Transformation"><a href="#Discrete-Cosine-Transformation" class="headerlink" title="Discrete Cosine Transformation"></a>Discrete Cosine Transformation</h3>
               
             </div>
             <hr/>
