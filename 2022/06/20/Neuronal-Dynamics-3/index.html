@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-06-20T12:04:18.000Z">
-<meta property="article:modified_time" content="2022-07-01T15:17:46.577Z">
+<meta property="article:modified_time" content="2022-07-04T12:22:23.982Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -365,7 +365,7 @@
 <p><strong>Synaptic Facilitaion</strong></p>
 <p>$P_{rel}$ represents the fraction of presynaptic sites releasing neurotransmitter. </p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}P_{rel}}{\mathrm{d}t}=-\frac{P_{rel}-P_0}{\tau_{P}}+f_{F}(1-P_{rel}) \sum_{f}^{} \delta(t-t^{f}) \tag{3.7}</script><p>where $\tau_{P}$ is a time constant, $f_{F}$ controls the degree of facilitation, and $t^{f}$ denotes the times of presynaptic spike arrivals. </p>
+    \frac{\mathrm{d}P_{rel}}{\mathrm{d}t}=-\frac{P_{rel}-P_0}{\tau_{P}}+f_{F}(1-P_{rel}) \sum_{f}^{} \delta(t-t^{(f)}) \tag{3.7}</script><p>where $\tau_{P}$ is a time constant, $f_{F}$ controls the degree of facilitation, and $t^{(f)}$ denotes the times of presynaptic spike arrivals. </p>
 <p><strong>Synaptic Depression</strong></p>
 <script type="math/tex; mode=display">
     \frac{\mathrm{d}P_{rel}}{\mathrm{d}t}=-\frac{P_{rel}-P_0}{\tau_{P}}-f_{D}P_{rel} \sum_{f}^{} \delta(t-t^{f}) \tag{3.8}</script><p>$0&lt;f_{D}&lt;1$ controls the amount of depression per spike. </p>
@@ -467,7 +467,10 @@
 <script type="math/tex; mode=display">
     u(x,t)=\frac{1}{1+\exp (\frac{x-vt}{\sqrt{2}\lambda^{*}})} \tag{3.40}</script><p>with traveling speed </p>
 <script type="math/tex; mode=display">
-    v=\frac{c(1-2a)}{\sqrt{2(1-a)r_{L}/g}}. \tag{3.41}</script><p>Since $c \propto \rho$, $g\propto \rho$ and $r_{L}\propto \rho^{2}$(!?WHY?!), We obtain $v \propto \sqrt{\rho}$.</p>
+    v=\frac{c(1-2a)}{\sqrt{2(1-a)r_{L}/g}}. \tag{3.41}</script><p>Since $c \propto \rho$, $g\propto \rho$ and $r_{L}\propto \rho^{2}$, We obtain $v \propto \sqrt{\rho}$.</p>
+<div class="note note-warning">
+            <p>找不到解（3.39）的文献，不会解（3.39），不知道 $\lambda^{*}$ 是什么东西，为什么 $r_{L}$ 会与横截面积的平方成正比（而不是反比）？</p>
+          </div>
 <h3 id="Myelinated-Axons"><a href="#Myelinated-Axons" class="headerlink" title="Myelinated Axons"></a>Myelinated Axons</h3><p>Myelinated axons have sodium and potassium channels only in restricted segments called <strong>nodes of Ranvier</strong>. These nodes form only 0.2% of the axonal length, the rest is considered a passive membrane that is wrapped into a myelin sheath. </p>
 <p>Myelin mainly decrease the membrane capacitance $C$ and increase the resistance $R_{T}$ by a factor of up to 300.</p>
 <p>Assuming that the nodes are equally separated by a myelinated segment of length $L$, we can model the evolution of the membrane potential at each node $u_n$. The dynamics of idealized myelinated axons follow Kirchoff’s equation with a resistance $R_{L}=Lr_{L}$ replacing the myelinated segment </p>
@@ -486,7 +489,94 @@
 <script type="math/tex; mode=display">
     v \thickapprox \frac{\pi ga}{(1-a)C}\sqrt{L(L^{*}-L)} \tag{3.45}</script><p>which is maximum at $L=L^{*}/2$. </p>
 <p>Since in most myelinated axons, internodal distance scales linearly with their radius, the velocity of myelinated axons also scales linearly with radius $v\propto L\propto \rho$. </p>
-<h2 id="Compartmental-Models"><a href="#Compartmental-Models" class="headerlink" title="Compartmental Models"></a>Compartmental Models</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><sup><a href="#fn_1" id="reffn_1">1</a></sup> T. Erneux and G. Nicolis (1993) Propagating waves in discrete bistable reaction-diffusion systems. Physica D: Nonlinear Phenomena 67 (1), pp. 237–244.</p>
+<div class="note note-warning">
+            <p>这里我也不知道 $L^{*}$ 是怎么出来的，想要PDE入门. </p>
+          </div>
+<h2 id="Compartmental-Models"><a href="#Compartmental-Models" class="headerlink" title="Compartmental Models"></a>Compartmental Models</h2><p><img src="img/neu_dyn/x82.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>We have</p>
+<script type="math/tex; mode=display">
+    \frac{u(t,\mu-1)-u(t,\mu)}{0.5(R_{L}^{\mu}+R_{L}^{\mu-1})}-\frac{u(t,\mu)-u(t,\mu+1)}{0.5(R_{L}^{\mu}+R_{L}^{\mu+1})}=C^{\mu}\frac{\mathrm{d}}{\mathrm{d}t}u(t,\mu)+\sum_{ion}^{} u(t,\mu)-I^{\mu}(t)</script><p>Morphological reconstruction </p>
+<ul>
+<li>Branching points </li>
+<li>200 compartments $(\leqslant 20 \mu m)$</li>
+<li>spatial distribution of ion currents </li>
+</ul>
+<p>Sodium current (2 types)</p>
+<ul>
+<li>$I_{Na,transient}$ HH-type (inactivating)</li>
+<li>$I_{NaP}$ persistent (non-inactivating)<br>Calcium current (2 types and calcium pump). Some of the calcium channels have a higher density at some singular spots that are called the hot spots of the model.<br>Potassium currents (3 types, include $I_{M}$)<br>Unspecific current</li>
+</ul>
+<p><strong>BPAP</strong>:<br>Back-propagating action potential is broader than the sharp, narrow action potential at the soma. It is the presence of sodium and potassium currents throughout the dendrites that support the back-propagation.</p>
+<p><strong>Dendritic Ca spike</strong>:<br>activation of Ca channels </p>
+<p><strong>Ping-Pong</strong>:<br>BPAP and Ca spike </p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p><a target="_blank" href="https://neuromorpho.org/" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">NeuroMorpho.Org - a centrally curated inventory of digitally reconstructed neurons and glia</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://neuromorpho.org/</span>&lt;/span&gt;&lt;/span&gt;</a></p>
+<h3 id="Exercises"><a href="#Exercises" class="headerlink" title="Exercises"></a>Exercises</h3><ol>
+<li>Biophysical synapse model and its relation to other models.</li>
+</ol>
+<ul>
+<li>Consider (3.4) and discuss its relation to (3.2).</li>
+<li>Discuss the relation of the depressive synapse model in (3.8) with the biophysically model in (3.4).</li>
+</ul>
+<p>The solution to (3.4) is </p>
+<script type="math/tex; mode=display">
+    R(t)=\mathrm{e}^{-(\alpha N+\beta)(t-t_0)} R(t_0)+\frac{\alpha N}{\alpha N+\beta}\left[ 1- \mathrm{e}^{-(\alpha N+\beta)(t-t_0)} \right], \tag{3.46}</script><p>As the initial value $R(t^{(f)})$ changes, the function also changes.</p>
+<p>The solution to (3.8) is </p>
+<script type="math/tex; mode=display">
+    P_{rel}(t)=\mathrm{e}^{-\frac{t-t_0}{\tau_P}}P_{rel}(t_0)+P_0(1-\mathrm{e}^{-\frac{t-t_0}{\tau_P}})-f_{P}\sum_{t_0<t^{(f)}<t}^{} \mathrm{e}^{-\frac{t-t^{(f)}}{\tau_P}} P_{rel}(t^{(f)})\Theta(t-t^{(f)}),   \tag{3.47}</script><p>analysis omitted.</p>
+<ol>
+<li>Cable equation </li>
+</ol>
+<ul>
+<li>Show that the passive cable equation for the current is <script type="math/tex; mode=display">
+  \frac{\partial }{\partial t}i(t,x)=\frac{\partial ^{2}}{\partial x^{2}}i(t,x)-i(t,x)-\frac{\partial }{\partial x}i_{ext}(t,x), \tag{3.48}</script></li>
+<li>Set the external current to zero and find the mapping to the heat equation <script type="math/tex; mode=display">
+  \frac{\partial }{\partial t}y(t,x)=\frac{\partial ^{2}}{\partial x^{2}}y(t,x). \tag{3.49}</script></li>
+<li>Find the solution to the current equation in (3.48) for the infinite cable receiving a short current pulse at time $t=0$ and show that the corresponding equation for $y$ satisfies the heat equation in (3.49)</li>
+</ul>
+<p>Let $y=\mathrm{e}^{t}i(t,x)$. </p>
+<p>Now solve </p>
+<script type="math/tex; mode=display">
+    \frac{\partial }{\partial t}i(t,x)=\frac{\partial ^{2}}{\partial x^{2}}i(t,x)-i(t,x)-\frac{\partial }{\partial x}\delta(t)\delta(x).</script><p>After Fourier transformation,</p>
+<script type="math/tex; mode=display">
+    \frac{\partial }{\partial t}\hat{i}(t,k)+(1+4\pi^{2}k^{2})\hat{i}(t,k)=-2\pi jk\delta(t),</script><p>where $j$ is the imaginary unit. Solve this ODE with regard to $t$,</p>
+<script type="math/tex; mode=display">
+    \hat{i}(t,k)=-2\pi jk \mathrm{e}^{-(1+4\pi^{2} k^{2})t} \Theta(t)</script><p>After an inverse Fourier transform we obtain</p>
+<script type="math/tex; mode=display">
+    i(t,x)=\frac{\mathrm{e}^{-t-\frac{x^{2}}{4t}} x}{4\pi^{1/2} t^{3/2}}\Theta(t).</script><script type="math/tex; mode=display">
+    y(t,x)=\frac{1}{\sqrt{4\pi t}} \exp \left(-\frac{x^{2}}{4t}\right)</script><p>satisfies (3.49)</p>
+<ol>
+<li>Nonleaky Cable </li>
+</ol>
+<ul>
+<li>Redo the derivation of the cable equation for the case of an infinite one-dimensional passive dendrite without transversal leak and show that the solution to the equation is of the form <script type="math/tex; mode=display">
+  u(x,t)=\int_{-\infty}^{t} \int_{-\infty}^{\infty} G_{d}(t-t',x-x')i_{ext}(t',x') \mathrm{d}x' \mathrm{d}t' \tag{3.50}</script>where $G_{d}$ is a Gaussian of the form <script type="math/tex; mode=display">
+  G_{d}(x,t)=\frac{1}{\sqrt{2\pi \sigma(t)}}\exp \left( -\frac{x^{2}}{2\sigma^{2}(t)}\right)\Theta(t).</script>Determine $\sigma(t)$ and discuss the result.</li>
+<li>Use the method of mirror charges to discuss how the solution changes if the cable is semi-infinite and extends from zero to infinity.</li>
+<li>Take the integral over space of the elementary solution of the non-leaky cable equation and show that the value of the integral does not change over time. Give an interpretation of this result.</li>
+<li>Take the integral over space of the elementary solution of the normal leaky cable equation of a passive dendrite and derive an expression for its temporal evolution. Give an interpretation of your result.</li>
+</ul>
+<p>No transversal leak means absence of $-u(t,x)$ in (3.17).</p>
+<script type="math/tex; mode=display">
+    \sigma(t)=\sqrt{2}t.</script><p>(3.50) is obvious.</p>
+<p>If the cable is semi-infinite and extends from zero to infinity, then </p>
+<script type="math/tex; mode=display">
+    u(x,t)=\int_{-\infty}^{t} \int_{-\infty}^{\infty} (G_{d}(t-t',x-x_0-x')+G_{d}(t-t',x+x_0-x'))i_{ext}(t',x')\mathrm{d}x' \mathrm{d}t'</script><p>For non-leaky cable equation,the value of integral means charge conservation. </p>
+<p>For the normal leaky cable equation, the integral over space is $\exp (-t)$.</p>
+<ol>
+<li>Conduction velocity in unmyelinated axons</li>
+</ol>
+<ul>
+<li>Using the simplified ion channel dynamics of (3.39), transform $x$ and $t$ to dimensionless variables using effective time and electrotonic constants.</li>
+<li>A traveling pulse solution will have the form $u(x,t)=\tilde{u}(x-vt)$ where $v$ is the conduction velocity. Find the ordinary differential equation that rules $\tilde{u}$.</li>
+<li>Show that $\tilde{u}(y)=\frac{1}{1+\exp (y)}$ with traveling speed $ v=\frac{1-2a}{\sqrt{2}}$ is a solution.</li>
+</ul>
+<p>$\tilde{u}$ satisfies </p>
+<script type="math/tex; mode=display">
+    \tilde{u}''+cr_{L}v\tilde{u}'-\frac{r_{L}g}{1-a}\tilde{u}(\tilde{u}-1)(\tilde{u}-a)=0</script><p>我不知道第一问化简是什么意思，直接尝试解（3.39）得到</p>
+<script type="math/tex; mode=display">
+    \tilde{u}(x-vt)=\frac{1}{1+\exp(\sqrt{\frac{r_{L}g}{2(1-a)}}(x-vt))}</script><p>和 </p>
+<script type="math/tex; mode=display">
+    v=\sqrt{\frac{g}{2(1-a)r_{L}}}\frac{1-2a}{c}</script><h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><sup><a href="#fn_1" id="reffn_1">1</a></sup> T. Erneux and G. Nicolis (1993) Propagating waves in discrete bistable reaction-diffusion systems. Physica D: Nonlinear Phenomena 67 (1), pp. 237–244.</p>
 
               
             </div>
