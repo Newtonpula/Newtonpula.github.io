@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-07-04T12:23:30.000Z">
-<meta property="article:modified_time" content="2022-07-04T12:26:59.202Z">
+<meta property="article:modified_time" content="2022-07-05T09:42:52.783Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -163,7 +163,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="iconfont-icon-code-fill"></i>
+                <i class="iconfont icon-code-fill"></i>
                 HTML
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          371 字
+          2.2k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          4 分钟
+          19 分钟
         
       </span>
     
@@ -325,7 +325,28 @@
               
               <h1 id="Chapter-4"><a href="#Chapter-4" class="headerlink" title="Chapter 4"></a>Chapter 4</h1><h1 id="Dimensionality-Reduction-and-Phase-Plane-Analysis"><a href="#Dimensionality-Reduction-and-Phase-Plane-Analysis" class="headerlink" title="Dimensionality Reduction and Phase Plane Analysis"></a>Dimensionality Reduction and Phase Plane Analysis</h1><p>The online version of this chapter:</p>
 <p><a target="_blank" href="https://neuronaldynamics.epfl.ch/online/Ch4.html" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">Chapter 4 Dimensionality Reduction and Phase Plane Analysis</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://neuronaldynamics.epfl.ch/online/Ch4.html</span>&lt;/span&gt;&lt;/span&gt;</a></p>
-<h2 id="Threshold-effects"><a href="#Threshold-effects" class="headerlink" title="Threshold effects"></a>Threshold effects</h2><h2 id="Reduction-to-two-dimensions"><a href="#Reduction-to-two-dimensions" class="headerlink" title="Reduction to two dimensions"></a>Reduction to two dimensions</h2><h2 id="Phase-plane-analysis"><a href="#Phase-plane-analysis" class="headerlink" title="Phase plane analysis"></a>Phase plane analysis</h2><h2 id="Type-I-and-Type-II-neuron-models"><a href="#Type-I-and-Type-II-neuron-models" class="headerlink" title="Type I and Type II neuron models"></a>Type I and Type II neuron models</h2><h2 id="Threshold-and-excitability"><a href="#Threshold-and-excitability" class="headerlink" title="Threshold and excitability"></a>Threshold and excitability</h2><h2 id="Separation-of-time-scales-and-reduction-to-one-dimension"><a href="#Separation-of-time-scales-and-reduction-to-one-dimension" class="headerlink" title="Separation of time scales and reduction to one dimension"></a>Separation of time scales and reduction to one dimension</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
+<h2 id="Threshold-effects"><a href="#Threshold-effects" class="headerlink" title="Threshold effects"></a>Threshold effects</h2><p>In this section we use current pulses ans steps in order to explore the threshold behavior of the Hodgkin-Huxley model.</p>
+<h3 id="Pulse-Input"><a href="#Pulse-Input" class="headerlink" title="Pulse Input"></a>Pulse Input</h3><p>The threshold depends on the stimulation protocol.</p>
+<h3 id="Step-Current-Input"><a href="#Step-Current-Input" class="headerlink" title="Step Current Input"></a>Step Current Input</h3><p>We study the response of the Hodgkin-Huxley model to a step current of the form </p>
+<script type="math/tex; mode=display">
+    I(t)=I_1+\Delta I \mathscr{H}(t)</script><p>where $\mathscr{H}$ denotes the Heaviside step function.</p>
+<p><img src="/img/neu_dyn/x87.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>When probing with step currents, there is neither a unique current threshold for spike initiation nor for repetitive firing. The trigger mechanism for action potentials depends not only on $I_2$ but also on the size of the current step $\Delta I$.</p>
+<p>Biologically, the dependence upon the step size arises from the different time constants of activation and inactivation of the ion channels. We’ll see it below. </p>
+<h2 id="Reduction-to-two-dimensions"><a href="#Reduction-to-two-dimensions" class="headerlink" title="Reduction to two dimensions"></a>Reduction to two dimensions</h2><h3 id="General-approach"><a href="#General-approach" class="headerlink" title="General approach"></a>General approach</h3><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x26.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x27.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
+<p>Note that the time scale of $m$ is much faster than $n$ and $h$. Moreover, $m$ is fast compared to the membrane time constant $\tau=C/g_{L}$ of a passive membrane, which characterizes the evolution of the voltage $u$ when all channels are closed. So we may treat $m$ as an instantaneous variable, therefore it can be replaced by its steady-state value, $m(t) \to m_0[u(t)]$. (<strong>quasi steady state approximation</strong>)</p>
+<p>Note that the time constants $\tau_n(u)$ and $\tau_{h}(u)$ have similar dynamics over the voltage $u$. Moreover, the graphs of $n_0(u)$ and $1-h_0(u)$ are also similar. </p>
+<p>We use a linear approximation $(b-h)\thickapprox an$ with some constants $a,b$ and set $w=b-h=an$. With $h=b-w$, $n=w/a$, and $m=m_0(u)$, equations (2.4)-(2.5) become</p>
+<script type="math/tex; mode=display">
+    C\frac{\mathrm{d}u}{\mathrm{d}t}=-g_{Na}[m_0(u)]^{3}(b-w)(u-E_{Na})-g_{K}(\frac{w}{a})^{4}(u-E_{K})-g_{L}(u-E_{L})+I, \tag{4.3}</script><p>or</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}u}{\mathrm{d}t}=\frac{1}{\tau}[F(u,w)+RI], \tag{4.4}</script><p>with $R=g_{L}^{-1}$, $\tau=RC$ and some function $F$. We also have </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}w}{\mathrm{d}t}=\frac{1}{\tau_{w}}G(u,w), \tag{4.5}</script><p><strong>Example: Morris-Lecar model</strong></p>
+<p>The Morris-Lecar equations read </p>
+<script type="math/tex; mode=display">
+    C\frac{\mathrm{d}u}{\mathrm{d}t}=-g_1 \hat{m}_0(u)(u-V_1)-g_2 \hat{w}(u-V_2)-g_{L}(u-V_{L})+I, \tag{4.6}</script><script type="math/tex; mode=display">
+    \frac{\mathrm{d}\hat{w}}{\mathrm{d}t}=-\frac{1}{\tau(u)}[\hat{w}-w_0(u)]. \tag{4.7}</script><h2 id="Phase-plane-analysis"><a href="#Phase-plane-analysis" class="headerlink" title="Phase plane analysis"></a>Phase plane analysis</h2><h2 id="Type-I-and-Type-II-neuron-models"><a href="#Type-I-and-Type-II-neuron-models" class="headerlink" title="Type I and Type II neuron models"></a>Type I and Type II neuron models</h2><h2 id="Threshold-and-excitability"><a href="#Threshold-and-excitability" class="headerlink" title="Threshold and excitability"></a>Threshold and excitability</h2><h2 id="Separation-of-time-scales-and-reduction-to-one-dimension"><a href="#Separation-of-time-scales-and-reduction-to-one-dimension" class="headerlink" title="Separation of time scales and reduction to one dimension"></a>Separation of time scales and reduction to one dimension</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
               
             </div>
             <hr/>
