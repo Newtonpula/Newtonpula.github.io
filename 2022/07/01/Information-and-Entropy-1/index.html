@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/shannon.jpg">
 <meta property="article:published_time" content="2022-07-01T11:42:26.000Z">
-<meta property="article:modified_time" content="2022-07-03T14:48:09.030Z">
+<meta property="article:modified_time" content="2022-07-05T15:21:59.200Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          4k 字
+          5k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          34 分钟
+          43 分钟
         
       </span>
     
@@ -358,7 +358,13 @@
 <p>There is a special case illustrated by the transmission of code 271 in this example, where the string corresponding to the received code is not complete. The first character can be found but then before the entire string is retrieved, the entry must be completed. This happens when a character or a string appears for the first time three times in a row, and is therefore rare. The algorithm above works correctly, at a cost of an extra lookup that is seldom needed and may slow the algorithm down.</p>
 </blockquote>
 <h2 id="Detail-2-D-Discrete-Cosine-Transformation"><a href="#Detail-2-D-Discrete-Cosine-Transformation" class="headerlink" title="Detail: 2-D Discrete Cosine Transformation"></a>Detail: 2-D Discrete Cosine Transformation</h2><h3 id="Discrete-Linear-Transformation"><a href="#Discrete-Linear-Transformation" class="headerlink" title="Discrete Linear Transformation"></a>Discrete Linear Transformation</h3><h3 id="Discrete-Cosine-Transformation"><a href="#Discrete-Cosine-Transformation" class="headerlink" title="Discrete Cosine Transformation"></a>Discrete Cosine Transformation</h3><p>这部分看Timothy Sauer的数值分析p409-p449，但注意这本书的DFT插值好像有非常大的问题. </p>
-
+<h1 id="Errors"><a href="#Errors" class="headerlink" title="Errors"></a>Errors</h1><h2 id="Extension-of-System-Model"><a href="#Extension-of-System-Model" class="headerlink" title="Extension of System Model"></a>Extension of System Model</h2><p>Extend the model for information handling to include “channel coding.” The channel encoder adds bits to the message so that in case it gets corrupted in some way, the channel encoder will know that and possibly even be able to repair the damage.</p>
+<h2 id="How-do-Errors-Happen"><a href="#How-do-Errors-Happen" class="headerlink" title="How do Errors Happen?"></a>How do Errors Happen?</h2><p>In the usual case, we will usually assume that different bits get corrupted independently, but in some cases errors in adjacent bits are not independent of each other, but instead have a common underlying cause (i.e., the errors may happen in bursts).</p>
+<h2 id="Detection-vs-Correction"><a href="#Detection-vs-Correction" class="headerlink" title="Detection vs. Correction"></a>Detection vs. Correction</h2><p>detect the error and then let the person or system that uses the output know that an error has occurred.</p>
+<p>Have the channel decoder attempt to repair the message by correcting the error. </p>
+<p>In both cases, extra bits are added to the messages to make them longer, so the message contains redundancy. The channel, by allowing errors to occur, actually introduces information. The decoder is irreversible in that it discards some information but keep the original information if well designed.</p>
+<h2 id="Hamming-Distance"><a href="#Hamming-Distance" class="headerlink" title="Hamming Distance"></a>Hamming Distance</h2><p>The number of bits that are different between the two.</p>
+<h2 id="Single-Bits"><a href="#Single-Bits" class="headerlink" title="Single Bits"></a>Single Bits</h2><h2 id="Multiple-Bits"><a href="#Multiple-Bits" class="headerlink" title="Multiple Bits"></a>Multiple Bits</h2><h3 id="Parity"><a href="#Parity" class="headerlink" title="Parity"></a>Parity</h3><h3 id="Rectangular-Codes"><a href="#Rectangular-Codes" class="headerlink" title="Rectangular Codes"></a>Rectangular Codes</h3><h3 id="Hamming-Code"><a href="#Hamming-Code" class="headerlink" title="Hamming Code"></a>Hamming Code</h3><h2 id="Block-Codes"><a href="#Block-Codes" class="headerlink" title="Block Codes"></a>Block Codes</h2><h2 id="Advanced-Codes"><a href="#Advanced-Codes" class="headerlink" title="Advanced Codes"></a>Advanced Codes</h2><h2 id="Detail-Check-Digits"><a href="#Detail-Check-Digits" class="headerlink" title="Detail: Check Digits"></a>Detail: Check Digits</h2>
               
             </div>
             <hr/>
