@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-07-04T12:23:30.000Z">
-<meta property="article:modified_time" content="2022-07-05T09:42:52.783Z">
+<meta property="article:modified_time" content="2022-07-05T12:04:42.430Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -163,7 +163,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" target="_self" href="javascript:;" role="button"
                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="iconfont icon-code-fill"></i>
+                <i class="iconfont icon-code"></i>
                 HTML
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          2.2k 字
+          5.1k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          19 分钟
+          43 分钟
         
       </span>
     
@@ -346,7 +346,74 @@
 <p>The Morris-Lecar equations read </p>
 <script type="math/tex; mode=display">
     C\frac{\mathrm{d}u}{\mathrm{d}t}=-g_1 \hat{m}_0(u)(u-V_1)-g_2 \hat{w}(u-V_2)-g_{L}(u-V_{L})+I, \tag{4.6}</script><script type="math/tex; mode=display">
-    \frac{\mathrm{d}\hat{w}}{\mathrm{d}t}=-\frac{1}{\tau(u)}[\hat{w}-w_0(u)]. \tag{4.7}</script><h2 id="Phase-plane-analysis"><a href="#Phase-plane-analysis" class="headerlink" title="Phase plane analysis"></a>Phase plane analysis</h2><h2 id="Type-I-and-Type-II-neuron-models"><a href="#Type-I-and-Type-II-neuron-models" class="headerlink" title="Type I and Type II neuron models"></a>Type I and Type II neuron models</h2><h2 id="Threshold-and-excitability"><a href="#Threshold-and-excitability" class="headerlink" title="Threshold and excitability"></a>Threshold and excitability</h2><h2 id="Separation-of-time-scales-and-reduction-to-one-dimension"><a href="#Separation-of-time-scales-and-reduction-to-one-dimension" class="headerlink" title="Separation of time scales and reduction to one dimension"></a>Separation of time scales and reduction to one dimension</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
+    \frac{\mathrm{d}\hat{w}}{\mathrm{d}t}=-\frac{1}{\tau(u)}[\hat{w}-w_0(u)]. \tag{4.7}</script><p>(4.6) doesn’t have the factor $(b-w)$ which closes the channel for high voltage. Another difference is that neither $\hat{m}_0$ nor $\hat{w}$ have exponents. In the following we consider (4.6) and (4.7) as a model in its own right and drop the hats over m0 and w.</p>
+<p>It’s reasonable to approximate the voltage dependence by </p>
+<script type="math/tex; mode=display">
+    m_0(u)=\frac{1}{2}\left[ 1+ \tanh \left( \frac{u-u_1}{u_2}\right)\right] \tag{4.8}</script><script type="math/tex; mode=display">
+    w_0(u)=\frac{1}{2}\left[ 1+ \tanh \left( \frac{u-u_3}{u_4}\right)\right] \tag{4.9}</script><p>with parameters $u_1,\cdots ,u_4$, and to approximate the time constant by </p>
+<script type="math/tex; mode=display">
+    \tau(u)=\frac{\tau_{w}}{\cosh(\frac{u-u_3}{2u_4})}</script><p>with a further parameter $\tau_{w}$. </p>
+<p><strong>Example: FitzHugh-Nagumo model</strong></p>
+<p>FitzHugh and Nagumo obtained sharp pulse-like oscillations reminiscent of trains of action potentials by defining the function $F(u,w)$ and $G(u,w)$ as  </p>
+<script type="math/tex; mode=display">
+    F(u,w)=u-\frac{1}{3}u^{3}-w \\ 
+    G(u,w)=b_0+b_1u-w, \tag{4.11}</script><p>where $u$ is the membrane voltage and $w$ is a recovery variable. </p>
+<h3 id="Mathematical-steps"><a href="#Mathematical-steps" class="headerlink" title="Mathematical steps"></a>Mathematical steps</h3><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x92.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x93.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
+<p>The overall aim of the approach is to replace the variables $n$ and $h$ in the Hodgkin-Huxley model by a single effective variable $w$. During an action potential, the variables $n(t)$ and $h(t)$ stay close to a straight line. </p>
+<p>A minimal condition for the projection is that the approximation is perfect while the neuron is at rest. First, we introduces new variables</p>
+<script type="math/tex; mode=display">
+    x=n-n_0(u_{rest}) \tag{4.12}</script><script type="math/tex; mode=display">
+    y=h-h_0(u_{rest}). \tag{4.13}</script><p>At rest, we have $x=y=0$.</p>
+<p>Second, the points $(n_0(u),h_0(u))$ as a function of $u$ define a curve. The slope of the curve at $u=u_{rest}$ yields the rotation angle $\alpha$ via </p>
+<script type="math/tex; mode=display">
+    \tan \alpha=\frac{ \frac{\mathrm{d}h_0}{\mathrm{d}u}\big |_{u_{rest}}}{ \frac{\mathrm{d}n_0}{\mathrm{d}u}\big |_{u_{rest}}}</script><p>Rotate the coordinates </p>
+<script type="math/tex; mode=display">
+    \begin{pmatrix}
+    z_1 \\ 
+    z_2 \\ 
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    \cos \alpha & \sin \alpha \\ 
+    -\sin \alpha & \cos \alpha \\ 
+    \end{pmatrix}
+    \begin{pmatrix}
+    x \\ 
+    y \\ 
+    \end{pmatrix}.</script><p><img src="/img/neu_dyn/x94.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>The inverse transform </p>
+<script type="math/tex; mode=display">
+    \begin{pmatrix}
+    x \\ 
+    y \\ 
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    \cos \alpha & -\sin \alpha \\ 
+    \sin \alpha & \cos \alpha \\ 
+    \end{pmatrix}
+    \begin{pmatrix}
+    z_1 \\ 
+    z_2 \\ 
+    \end{pmatrix}.</script><p>Project $(n,h)$ to the line expanded by $z_1$, namely, $z_2=0$.</p>
+<script type="math/tex; mode=display">
+    n'=n_0(u_{rest})+z_1\cos \alpha, \tag{4.17}</script><script type="math/tex; mode=display">
+    h'=h_0(u_{rest})+z_1\sin \alpha. \tag{4.18}</script><p>From (4.15) we find </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}z_1}{\mathrm{d}t}=\cos \alpha \frac{\mathrm{d}n}{\mathrm{d}t}+\sin \alpha \frac{\mathrm{d}h}{\mathrm{d}t}. \tag{4.19}</script><p>Since </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}n}{\mathrm{d}t}=-\frac{1}{\tau_n(u)}[n-n_0(u)]</script><p>and an similar equation for $h$, we have </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}z_1}{\mathrm{d}t}=-\cos \alpha \frac{z_1 \cos \alpha+n_0(u_{rest})-n_0(u)}{\tau_{n}(u)}- \sin \alpha \frac{z_1 \sin \alpha+h_0(u_{rest})-h_0(u)}{\tau_{h}(u)}. \tag{4.20}</script><p>which is of the form $\mathrm{d}z_1/\mathrm{d}t=G(u,z_1)$, as desired. </p>
+<p>It is convenient to rescale $z_1$ and define </p>
+<script type="math/tex; mode=display">
+    w=- n_0(u_{rest})\tan \alpha-z_1 \sin \alpha. \tag{4.21}</script><p>If we introduce $a=-\tan \alpha$ and $b=a n_0(u_{rest})+h_0(u_{rest})$, we find from (4.17) $n’=w/a$ and from (4.18) $h’=b-w$. We also have $\mathrm{d}w/\mathrm{d}t=G(u,w)$. Actually,</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}w}{\mathrm{d}t}=-\frac{1}{\tau(u)}[w-w_0(u)]. \tag{4.22}</script><p>with </p>
+<script type="math/tex; mode=display">
+    w_0(u)=-\sin \alpha[n_0(u)\cos \alpha+h_0(u)\sin \alpha-b\sin \alpha] \tag{4.23}</script><p>In practice, $w_0(u)$ and $\tau(u)$ can be fitted by (4.9) and (4.10), respectively.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x95.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x96.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
+<h2 id="Phase-plane-analysis"><a href="#Phase-plane-analysis" class="headerlink" title="Phase plane analysis"></a>Phase plane analysis</h2><h2 id="Type-I-and-Type-II-neuron-models"><a href="#Type-I-and-Type-II-neuron-models" class="headerlink" title="Type I and Type II neuron models"></a>Type I and Type II neuron models</h2><h2 id="Threshold-and-excitability"><a href="#Threshold-and-excitability" class="headerlink" title="Threshold and excitability"></a>Threshold and excitability</h2><h2 id="Separation-of-time-scales-and-reduction-to-one-dimension"><a href="#Separation-of-time-scales-and-reduction-to-one-dimension" class="headerlink" title="Separation of time scales and reduction to one dimension"></a>Separation of time scales and reduction to one dimension</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
               
             </div>
             <hr/>
