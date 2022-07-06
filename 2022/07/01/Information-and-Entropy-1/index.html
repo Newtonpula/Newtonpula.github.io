@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/shannon.jpg">
 <meta property="article:published_time" content="2022-07-01T11:42:26.000Z">
-<meta property="article:modified_time" content="2022-07-05T15:21:59.200Z">
+<meta property="article:modified_time" content="2022-07-06T08:05:29.313Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          5k 字
+          6.2k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          43 分钟
+          52 分钟
         
       </span>
     
@@ -364,7 +364,78 @@
 <p>Have the channel decoder attempt to repair the message by correcting the error. </p>
 <p>In both cases, extra bits are added to the messages to make them longer, so the message contains redundancy. The channel, by allowing errors to occur, actually introduces information. The decoder is irreversible in that it discards some information but keep the original information if well designed.</p>
 <h2 id="Hamming-Distance"><a href="#Hamming-Distance" class="headerlink" title="Hamming Distance"></a>Hamming Distance</h2><p>The number of bits that are different between the two.</p>
-<h2 id="Single-Bits"><a href="#Single-Bits" class="headerlink" title="Single Bits"></a>Single Bits</h2><h2 id="Multiple-Bits"><a href="#Multiple-Bits" class="headerlink" title="Multiple Bits"></a>Multiple Bits</h2><h3 id="Parity"><a href="#Parity" class="headerlink" title="Parity"></a>Parity</h3><h3 id="Rectangular-Codes"><a href="#Rectangular-Codes" class="headerlink" title="Rectangular Codes"></a>Rectangular Codes</h3><h3 id="Hamming-Code"><a href="#Hamming-Code" class="headerlink" title="Hamming Code"></a>Hamming Code</h3><h2 id="Block-Codes"><a href="#Block-Codes" class="headerlink" title="Block Codes"></a>Block Codes</h2><h2 id="Advanced-Codes"><a href="#Advanced-Codes" class="headerlink" title="Advanced Codes"></a>Advanced Codes</h2><h2 id="Detail-Check-Digits"><a href="#Detail-Check-Digits" class="headerlink" title="Detail: Check Digits"></a>Detail: Check Digits</h2>
+<h2 id="Single-Bits"><a href="#Single-Bits" class="headerlink" title="Single Bits"></a>Single Bits</h2><h2 id="Multiple-Bits"><a href="#Multiple-Bits" class="headerlink" title="Multiple Bits"></a>Multiple Bits</h2><h3 id="Parity"><a href="#Parity" class="headerlink" title="Parity"></a>Parity</h3><p>Detect: Chang the 8-bit string into 9 bits. The added bit would be 1 if the number of bits equal to 1 is odd, and 0 otherwise. It is most often used when the likelihood of an error is very small, and there is no reason to suppose that errors of adjacent bits occur together, and the receiver is able to request a retransmission of the data.</p>
+<h3 id="Rectangular-Codes"><a href="#Rectangular-Codes" class="headerlink" title="Rectangular Codes"></a>Rectangular Codes</h3><p>Rectangular codes can provide single error correction and double error detection simultaneously. Refer to p48.</p>
+<h3 id="Hamming-Code"><a href="#Hamming-Code" class="headerlink" title="Hamming Code"></a>Hamming Code</h3><p><a target="_blank" href="https://www.cnblogs.com/Philip-Tell-Truth/p/6669854.html" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">汉明码（Hamming Code）原理及实现</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://www.cnblogs.com/Philip-Tell-Truth/p/6669854.html</span>&lt;/span&gt;&lt;/span&gt;</a></p>
+<h2 id="Block-Codes"><a href="#Block-Codes" class="headerlink" title="Block Codes"></a>Block Codes</h2><p>If the number of data bits in the block is $k$, the the number of parity bits is $n-k$, and it is customary to call such a code an $(n,k)$ block code. Thus the Hamming Code just described is $(7,4)$.</p>
+<p>It is also customary to include in the parentheses the minimum Hamming distance $d$ between any two valid codewords, or original data items, in the form $(n,k,d)$. We have following block types </p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Parity bits</th>
+<th>Block size</th>
+<th>Payload</th>
+<th>Code rate</th>
+<th>Block code type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>0.33</td>
+<td>(3,1,3)</td>
+</tr>
+<tr>
+<td>3</td>
+<td>7</td>
+<td>4</td>
+<td>0.57</td>
+<td>(7,4,3)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>15</td>
+<td>11</td>
+<td>0.73</td>
+<td>(15,11,3)</td>
+</tr>
+<tr>
+<td>5</td>
+<td>31</td>
+<td>26</td>
+<td>0.84</td>
+<td>(31,26,3)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>63</td>
+<td>57</td>
+<td>0.90</td>
+<td>(63,57,3)</td>
+</tr>
+<tr>
+<td>7</td>
+<td>127</td>
+<td>120</td>
+<td>0.94</td>
+<td>(127,120,3)</td>
+</tr>
+<tr>
+<td>8</td>
+<td>255</td>
+<td>247</td>
+<td>0.97</td>
+<td>(255,247,3)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="Advanced-Codes"><a href="#Advanced-Codes" class="headerlink" title="Advanced Codes"></a>Advanced Codes</h2><p>Bose-Chaudhuri-Hocquenhem (BCH) codes.</p>
+<p>Irving S. Reed and Gustave Solomon of MIT Lincoln Laboratory. The $(256,224,5)$ and $(224,192,5)$ Reed-Solomon codes are used in CD players. </p>
+<h2 id="Detail-Check-Digits"><a href="#Detail-Check-Digits" class="headerlink" title="Detail: Check Digits"></a>Detail: Check Digits</h2><h3 id="Credit-Cards"><a href="#Credit-Cards" class="headerlink" title="Credit Cards"></a>Credit Cards</h3><h3 id="ISBN"><a href="#ISBN" class="headerlink" title="ISBN"></a>ISBN</h3><h3 id="ISSN"><a href="#ISSN" class="headerlink" title="ISSN"></a>ISSN</h3>
               
             </div>
             <hr/>
