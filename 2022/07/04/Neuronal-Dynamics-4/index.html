@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-07-04T12:23:30.000Z">
-<meta property="article:modified_time" content="2022-07-07T04:46:17.221Z">
+<meta property="article:modified_time" content="2022-07-09T08:09:17.779Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -345,7 +345,7 @@
     \frac{\mathrm{d}w}{\mathrm{d}t}=\frac{1}{\tau_{w}}G(u,w), \tag{4.5}</script><h4 id="Example-Morris-Lecar-model"><a href="#Example-Morris-Lecar-model" class="headerlink" title="Example: Morris-Lecar model"></a>Example: Morris-Lecar model</h4><p>The Morris-Lecar equations read </p>
 <script type="math/tex; mode=display">
     C\frac{\mathrm{d}u}{\mathrm{d}t}=-g_1 \hat{m}_0(u)(u-V_1)-g_2 \hat{w}(u-V_2)-g_{L}(u-V_{L})+I, \tag{4.6}</script><script type="math/tex; mode=display">
-    \frac{\mathrm{d}\hat{w}}{\mathrm{d}t}=-\frac{1}{\tau(u)}[\hat{w}-w_0(u)]. \tag{4.7}</script><p>(4.6) doesn’t have the factor $(b-w)$ which closes the channel for high voltage. Another difference is that neither $\hat{m}_0$ nor $\hat{w}$ have exponents. In the following we consider (4.6) and (4.7) as a model in its own right and drop the hats over m0 and w.</p>
+    \frac{\mathrm{d}\hat{w}}{\mathrm{d}t}=-\frac{1}{\tau(u)}[\hat{w}-w_0(u)]. \tag{4.7}</script><p>(4.6) doesn’t have the factor $(b-w)$ which closes the channel for high voltage. Another difference is that neither $\hat{m}_0$ nor $\hat{w}$ have exponents. In the following we consider (4.6) and (4.7) as a model in its own right and drop the hats over $m_0$ and $w$.</p>
 <p>It’s reasonable to approximate the voltage dependence by </p>
 <script type="math/tex; mode=display">
     m_0(u)=\frac{1}{2}\left[ 1+ \tanh \left( \frac{u-u_1}{u_2}\right)\right] \tag{4.8}</script><script type="math/tex; mode=display">
@@ -468,7 +468,35 @@
 <p>In a supercritical Hopf bifurcation, the amplitude of the oscillation grows with the stimulation $I$. Such periodic oscillations of small amplitude should be intepreted as spontaneous subthreshold oscillations. </p>
 <p>Only models with a subcritical Hopf-bifurcation give rise to large-amplitude oscillations close to the bifurcation point. </p>
 <h4 id="Example-FitzHugh-Nagumo-model"><a href="#Example-FitzHugh-Nagumo-model" class="headerlink" title="Example: FitzHugh-Nagumo model"></a>Example: FitzHugh-Nagumo model</h4><p>In Fig. 4.10, if the slope of the $w-$nullcline is larger than one, there is only one fixed point, whatever $I$. With increasing current $I$, the fixed point moves to the right. Eventually it loses stability via a Hopf bifurcation.</p>
-<h2 id="Threshold-and-excitability"><a href="#Threshold-and-excitability" class="headerlink" title="Threshold and excitability"></a>Threshold and excitability</h2><h2 id="Separation-of-time-scales-and-reduction-to-one-dimension"><a href="#Separation-of-time-scales-and-reduction-to-one-dimension" class="headerlink" title="Separation of time scales and reduction to one dimension"></a>Separation of time scales and reduction to one dimension</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
+<h2 id="Threshold-and-excitability"><a href="#Threshold-and-excitability" class="headerlink" title="Threshold and excitability"></a>Threshold and excitability</h2><p>The Hodgkin-Huxley model does not have a clear-cut firing threshold. </p>
+<p>For stimulation with a short current pulse of variable amplitude, models with saddle-node bifurcation (on or off a limit cycle) indeed have a threshold whereas models where firing arises via a Hopf bifurcation have not. However, even models with Hopf bifurcation can show threshold-like behavior for current pulse if the dynamics of $w$ are consideraby slower than that of $u$.</p>
+<h3 id="Type-I-models"><a href="#Type-I-models" class="headerlink" title="Type I models"></a>Type I models</h3><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x124.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x125.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
+<p>The stable manifold of an saddle point. All trajectories with initial condition to the right of the stable manifold must make a detour around the unstable fixed point before they can reach the stable fixed point. Trajectories with initial conditions to the left of the stable manifold return immediately toward the stable fixed point.</p>
+<p>The stable manifold acts as a threshold for spike initiation, if the neuron model is probed with a isolated current pulse.</p>
+<h4 id="Example-Canonical-type-I-model"><a href="#Example-Canonical-type-I-model" class="headerlink" title="Example: Canonical type I model"></a>Example: Canonical type I model</h4><p>Consider the one-dimensional model </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}\phi}{\mathrm{d}t}=q(1-\cos \phi)+I(1+\cos \phi) \tag{4.32}</script><p>where $q&gt;0$ is a parameter and $I$ with $0&lt;\lvert I \rvert &lt;q$ the applied current. The variable $\phi$ is the phase along the limit cycle trajectory. Formally, a spike is said to occur whenever $\phi=\pi$. </p>
+<p>For $I&lt;0$, the phase equation $\mathrm{d}\phi/\mathrm{d}t$ has two fixed points. The resting state is at the stable fixed point $\phi=\phi_r$. The unstable fixed point at $\phi=\theta$ acts as a threshold. </p>
+<p>For all currents $I&gt;0$, we have $\mathrm{d}\phi/\mathrm{d}t&gt;0$, so that the system is circling along the limit cycle. For $I \to 0$, the velocity along the trajectory around $\phi=0$ tends to zero. Therefore the frequency of the oscillation $\nu=1/T(I)$ decreases to zero. </p>
+<h3 id="Hopf-Bifurcations"><a href="#Hopf-Bifurcations" class="headerlink" title="Hopf Bifurcations"></a>Hopf Bifurcations</h3><p>There is a continuum of trajectories.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x127.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x128.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
+<p>Nevertheless, if the time scale of the $u$ dynamics is much faster than that of the $w-$dynamics, then there is a critical regime where the sensitivity to the amplitude of the input current pulse can be extremely high. </p>
+<p>In models with Hopf bifurcation, the peak of the response is always reached with roughly the same delay, independently of the size of the input pulse. It is the amplitude of the response that increases rapidly but continuously. </p>
+<h2 id="Separation-of-time-scales-and-reduction-to-one-dimension"><a href="#Separation-of-time-scales-and-reduction-to-one-dimension" class="headerlink" title="Separation of time scales and reduction to one dimension"></a>Separation of time scales and reduction to one dimension</h2><p>We measure time in units of $\tau$ and take $R=1$ in (4.4) and (4.5). Then </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}u}{\mathrm{d}t}=F(u,w)+I \tag{4.33}</script><script type="math/tex; mode=display">
+    \frac{\mathrm{d}w}{\mathrm{d}t}=\varepsilon G(u,w) \tag{4.34}</script><p>where $\varepsilon=\tau/\tau_w$. If $\tau_w\gg \tau$, then $\varepsilon\ll 1$. In this situation the time scale the governs the evolution of $u$ is much faster than that of $w$. In the mathematical literature the limit of $\varepsilon \to 0$ is called ‘singular perturbation’. Oscillatory behavior for small $\varepsilon$ is called a ‘relaxation oscillation’. Trajectories slowly follow the $u-$nullcline, except at the knees of the nullcline where they jump to a different branch.</p>
+<p><img src="/img/neu_dyn/x129.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>In the above figure the middle branch of the $u-$nullcline (where $\dot{u}&gt;0$) acts as a threshold for spike initiation. </p>
+<p>We can exploit the separation of times scales for a further reduction of the two-dimensional system of equations to a single variable. An input current $I(t)$ acts on the voltage dynamics, but has no direct influence on the variable $w$. Moreover, in the limit of $\varepsilon\ll 1$, the influence of the voltage $u$ on the $w-$variable via (4.34) is negligible. Hence, we can set $w=w_{rest}$ and summarize the voltage dynamics of spike initiation by a single equation </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}u}{\mathrm{d}t}=F(u,w_{rest})+I. \tag{4.35}</script><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x130.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x131.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
+<h4 id="Example-Piecewise-linear-nullclines"><a href="#Example-Piecewise-linear-nullclines" class="headerlink" title="Example: Piecewise linear nullclines"></a>Example: Piecewise linear nullclines</h4><p><img src="/img/neu_dyn/x132.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}u}{\mathrm{d}t}=f(u)-w+I \tag{4.36}</script><script type="math/tex; mode=display">
+    \frac{\mathrm{d}w}{\mathrm{d}t}=\varepsilon(bu-w) \tag{4.37}</script><p>with $f(u)=au$ for $u<0.5$, $f(u)=a(1-u)$ for $0.5< u< 1.5$ and $f(u)=c_0+c_1u$ for $u>1.5$ where $a$,$c_1<0$ are parameters and $c_0=-0.5a-1.5c_1$. Furthermore, $b>0$ and $0&lt;\varepsilon\ll 1$. </p>
+<p>The rest state is at $u=w=0$. $u=1$ acts as a threshold. Let us now suppose that neuron receives a weak and constant background current during our threshold-search experiments. A constant current shifts the $u-$nullcline vertically upward. Hence the point where $\dot{u}=0$ shifts leftward and therefore the voltage threshold for pulse stimulation sits now at a lower value.</p>
+
               
             </div>
             <hr/>
@@ -554,6 +582,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2022/07/08/Information-and-Entropy-2/" title="Information and Entropy (2)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Information and Entropy (2)</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
