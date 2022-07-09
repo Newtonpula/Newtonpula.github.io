@@ -16,24 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Chapter 6~10">
+    <meta name="description" content="Nonlinear Integrate-and-Fire Models">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Information and Entropy (2)">
-<meta property="og:url" content="http://example.com/2022/07/08/Information-and-Entropy-2/index.html">
+<meta property="og:title" content="Neuronal Dynamics (5)">
+<meta property="og:url" content="http://example.com/2022/07/09/Neuronal-Dynamics-5/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="Chapter 6~10">
+<meta property="og:description" content="Nonlinear Integrate-and-Fire Models">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/index/shannon.jpg">
-<meta property="article:published_time" content="2022-07-08T07:45:58.000Z">
-<meta property="article:modified_time" content="2022-07-09T05:15:14.997Z">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-07-09T10:50:00.000Z">
+<meta property="article:modified_time" content="2022-07-09T10:52:38.700Z">
 <meta property="article:author" content="Yixiao Feng">
-<meta property="article:tag" content="数学">
+<meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/index/shannon.jpg">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
   
   
   
-  <title>Information and Entropy (2) - Newtonpula的自留地</title>
+  <title>Neuronal Dynamics (5) - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Information and Entropy (2)"></span>
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (5)"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-08 15:45" pubdate>
-          2022年7月8日 下午
+        <time datetime="2022-07-09 18:50" pubdate>
+          2022年7月9日 晚上
         </time>
       </span>
     
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          8.8k 字
+          289 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          74 分钟
+          3 分钟
         
       </span>
     
@@ -319,118 +319,13 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Information and Entropy (2)</h1>
+            <h1 style="display: none">Neuronal Dynamics (5)</h1>
             
             <div class="markdown-body">
               
-              <h1 id="Communications"><a href="#Communications" class="headerlink" title="Communications"></a>Communications</h1><h2 id="Source-Model"><a href="#Source-Model" class="headerlink" title="Source Model"></a>Source Model</h2><p>The source is assumed to produce symbols at a rate of $R$ symbols per second. The event of the selection of symbol $i$ will be denoted $A_i$.</p>
-<p>Suppose that each event $A_i$ is represented by a different codeword $C_i$ with a length $L_i$. </p>
-<p>An important property of such codewords is that none can be the same as the first portion of another, longer, codeword. A code that obeys this property is called a <strong>prefix-condition code</strong>, or sometimes an <strong>instantaneous code</strong>.</p>
-<h3 id="Kraft-Inequality"><a href="#Kraft-Inequality" class="headerlink" title="Kraft Inequality"></a>Kraft Inequality</h3><p>An important limitation on the distribution of code lengths $L_i$ was given by L.G.Kraft, which is known as the Kraft inequality:</p>
-<script type="math/tex; mode=display">
-    \sum_{i}^{} \frac{1}{2^{L_i}}\leqslant 1 \tag{6.1}</script><p>Any valid set of distinct codewords obeys this inequality, and conversely for any proposed $L_i$ that obey it, a code can be found.</p>
-<p>Proof: Let $L_{max}$ be the length of the longest codeword of a prefix-condition code. There are exactly $2^{L_{max}}$ different patterns of $0$ and $1$ of this length. Thus </p>
-<script type="math/tex; mode=display">
-    \sum_{i}^{} \frac{1}{2^{L_{max}}}=1 \tag{6.2}</script><p>where this sum is over these patterns. For each shorter codeword of length $k(k&lt;L_{max})$ there are exactly $2^{L_{max}-k}$ patterns that begin with this codeword, and none of those is a valid codeword. In the sum of (6.2) replace the terms corresponding to those patterns by a single term equal to $1/2^{k}$. The sum is unchanged. Continue this process with other short codewords. Some terms that are not codewords are eliminated. Q.E.D.</p>
-<h3 id="Source-Entropy"><a href="#Source-Entropy" class="headerlink" title="Source Entropy"></a>Source Entropy</h3><p>The uncertainty of the identity of the next symbol chosen $H$ is the average information gained when the next symbol is made known:</p>
-<script type="math/tex; mode=display">
-    H=\sum_{i} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right) \tag{6.3}</script><p>This quantity is also known as the entropy of the source. The information rate, in bits per second, is $H\cdot R$ where $R$ is the  rate at which the source selects the symbols, measured in symbols per second. </p>
-<h3 id="Gibbs-Inequality"><a href="#Gibbs-Inequality" class="headerlink" title="Gibbs Inequality"></a>Gibbs Inequality</h3><p>This inequality states that the entropy is smaller than or equal to any other average formed using the same probabilities but a different but a different function in the logarithm. Specifically,</p>
-<script type="math/tex; mode=display">
-    \sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)\leqslant \sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p'(A_i)}\right) \tag{6.4}</script><p>where $p(A_i)$ is any probability distribution and $p’(A_i)$ is any other probability distribution, namely, </p>
-<script type="math/tex; mode=display">
-    0\leqslant p'(A_i)\leqslant 1 \tag{6.5}</script><p>and </p>
-<script type="math/tex; mode=display">
-    \sum_{i}^{} p'(A_i)\leqslant 1. \tag{6.6}</script><p>As is true for all probability distributions, </p>
-<script type="math/tex; mode=display">
-    \sum_{i}^{} p(A_i)=1. \tag{6.7}</script><p>Proof: </p>
-<script type="math/tex; mode=display">
-    \begin{aligned}
-        \sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)-\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p'(A_i)}\right)&= \sum_{i}^{} p(A_i)\log _{2}\left(\frac{p'(A_i)}{p(A_i)}\right)  \\
-        &\leqslant \log _{2}\mathrm{e} \sum_{i}^{} p(A_i)\left[\frac{p'(A_i)}{p(A_i)}-1\right] \\ 
-        &= \log _{2} \mathrm{e} \left(\sum_{i}^{} p'(A_i)-1 \right) \\ 
-        &\leqslant 0
-    \end{aligned}</script><h2 id="Source-Coding-Theorem"><a href="#Source-Coding-Theorem" class="headerlink" title="Source Coding Theorem"></a>Source Coding Theorem</h2><p>The codewords have an average length, in bits per symbol,</p>
-<script type="math/tex; mode=display">
-    L=\sum_{i}^{} p(A_i)L_i \tag{6.11}</script><p>The Source Coding Theorem states that the average information per symbol is always less than or equal to the average length of a codeword:</p>
-<script type="math/tex; mode=display">
-    H\leqslant L \tag{6.12}</script><p>This inequality is easy to prove using the Gibbs and Kraft inequalities. Use the Gibbs inequality with $p’(A_i)=1/2^{L_i}$. Thus </p>
-<script type="math/tex; mode=display">
-    \begin{aligned}
-        H&=\sum_{i}^{} p(A_i)\log _{2}\left( \frac{1}{p(A_i)}\right) \\
-        &\leqslant  \sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p'(A_i)}\right) \\ 
-        &= \sum_{i}^{} p(A_i)\log _{2}2^{L_i}\\ 
-        &= \sum_{i}^{} p(A_i)L_i \\ 
-        &= L
-    \end{aligned}</script><p>The Source Coding Theorem can also be expressed in terms of rates of transmission in bits per second by multiplying (6.12) by the symbols per second $R$:</p>
-<script type="math/tex; mode=display">
-    HR\leqslant LR \tag{6.14}</script><h2 id="Channel-Model"><a href="#Channel-Model" class="headerlink" title="Channel Model"></a>Channel Model</h2><p>If the channel perfectly changes its output state in conformance with its input state, it is said to be <strong>noiseless</strong> and in that case nothing affects the output except the input.</p>
-<p>Suppose that the channel has a certain maximum rate $W$ at which its output can follow changes at the input.</p>
-<p>The <strong>binary</strong> channel has two mutually exclusive input states.</p>
-<p>The maximum rate at which information supplied to the input can affect the output is called the <strong>channel capacity</strong> $C=W \log _{2}n$ bits per second. For the binary channel, $C=W$. </p>
-<h2 id="Noiseless-Channel-Theorem"><a href="#Noiseless-Channel-Theorem" class="headerlink" title="Noiseless Channel Theorem"></a>Noiseless Channel Theorem</h2><p>It may be necessary to provide temporary storage buffers to accommodate bursts of adjacent infrequently occurring symbols with long codewords, and the symbols may not materialize at the output of the system at a uniform rate.</p>
-<p>Also, to encode the symbols efficiently it may be necessary to consider several of them together, in which case the first symbol would not be available at the output until several symbols had been presented at the input. Therefore high speed operation may lead to high latency.</p>
-<h2 id="Noisy-Channel"><a href="#Noisy-Channel" class="headerlink" title="Noisy Channel"></a>Noisy Channel</h2><p>For every possible input there may be more than one possible output outcome. Denote <strong>transition probabilities</strong> $c_{ji}$ the probability of the output event $B_j$ occuring when event $A_i$ happens. So </p>
-<script type="math/tex; mode=display">
-    0\leqslant c_{ji}\leqslant 1 \tag{6.15}</script><p>and </p>
-<script type="math/tex; mode=display">
-    1=\sum_{j}^{} c_{ji} \tag{6.16}</script><p>If the channel is noiseless, for each value of $i$ exactly one of the various $c_{ji}$ is equal to $1$ and all others are $0$.</p>
-<script type="math/tex; mode=display">
-    p(B_j|A_i)=c_{ji} \tag{6.17}</script><p>The unconnditional probability of each output $p(B_j)$ is </p>
-<script type="math/tex; mode=display">
-    p(B_j)=\sum_{i}^{} c_{ji}p(A_i) \tag{6.18}</script><p>So by Bayes’ Theorem:</p>
-<script type="math/tex; mode=display">
-    p(A_i|B_j)=\frac{p(A_i)c_{ji}}{p(B_j)} \tag{6.19}</script><p>The simplest noisy channel is the symmetric binary channel, for which there is a probability $\varepsilon$ of an error, so </p>
-<script type="math/tex; mode=display">
-    \begin{bmatrix}
-    c_{00} & c_{01} \\ 
-    c_{10} & c_{11} \\ 
-    \end{bmatrix}
-    =
-    \begin{bmatrix}
-    1-\varepsilon & \varepsilon \\ 
-    \varepsilon & 1-\varepsilon \\ 
-    \end{bmatrix}</script><p>Define the information that we have learned about the input as a result of knowing the output as the <strong>mutual information</strong>.</p>
-<p>Before we know the output, our uncertainty $U_{before}$ about the identity of the input event is he entropy of the input:</p>
-<script type="math/tex; mode=display">
-    U_{before}=\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right) \tag{6.21}</script><p>After some particular output event $B_j$ has been observed, the residual uncertainty $U_{after}(B_j)$ about the input event is:</p>
-<script type="math/tex; mode=display">
-    U_{after}(B_j)=\sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i|B_j)}\right) \tag{6.22}</script><p>The mutual information $M$ is defined as the average, over all outputs, of the amount so learned,</p>
-<script type="math/tex; mode=display">
-    M=U_{before}-\sum_{j}^{} p(B_j)U_{after}(B_j) \tag{6.23}</script><p>It is not difficult to prove that $M\geqslant 0$. To prove this, the Gibbs inequality is used, for each $j$:</p>
-<script type="math/tex; mode=display">
-    \begin{aligned}
-        U_{after}(B_j)&=\sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i|B_j)}\right) \\
-        &\leqslant \sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i)}\right) \tag{6.24}      
-    \end{aligned}</script><p>So </p>
-<script type="math/tex; mode=display">
-    \begin{aligned}
-        \sum_{j}^{} p(B_j)U_{after}(B_j) &\leqslant \sum_{j}^{} p(B_j)\sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i)}\right)  \\
-        &= \sum_{ji}^{} p(B_j)p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i)}\right) \\ 
-        &= \sum_{ij}^{} p(B_j|A_i)p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right) \\
-        &=\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right) \\ 
-        &=U_{before} \tag{6.25}                 
-    \end{aligned}</script><p>Substitution in (6.23) and simplification leads to </p>
-<script type="math/tex; mode=display">
-    M=\sum_{j}^{} \left(\sum_{i}^{} p(A_i)c_{ji}\right)\log _{2}\left(\frac{1}{\sum_{i}^{} p(A_i)c_{ji}}\right)-\sum_{ij}^{} p(A_i)c_{ji}\log _{2}\left(\frac{1}{c_{ji}}\right)</script><p>(6.26)</p>
-<p>(6.26) was derived for the case where the input “causes” the output. However, such a cause-and-effect relationship is not necessary. The term <strong>mutual information</strong> suggests that it is just as valid to view the output as causing the input, or to ignore completely the question of what causes what. Two alternate formulas for $M$ shows that $M$ can be interpreted in either direction:</p>
-<script type="math/tex; mode=display">
-    \begin{aligned}
-        M &= \sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)-\sum_{j}^{} p(B_j)\sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i|B_j)}\right) \\
-        &= \sum_{j}^{} p(B_j)\log _{2}\left(\frac{1}{p(B_j)}\right)-\sum_{i}^{} p(A_i)\sum_{j}^{} p(B_j|A_i)\log _{2}\left(\frac{1}{p(B_j|A_i)}\right)
-    \end{aligned}</script><p>(6.27)</p>
-<p>So (6.26) is easily checked.</p>
-<h2 id="Noisy-Channel-Capacity-Theorem"><a href="#Noisy-Channel-Capacity-Theorem" class="headerlink" title="Noisy Channel Capacity Theorem"></a>Noisy Channel Capacity Theorem</h2><p>It is more useful to define the channel capacity so that it depends only on the channel, so $M_{max}$, the maximum mutual information that results from any possible input probability distribution, is used. </p>
-<p>Generally speaking, going away from the symmetric case offers few if any advantages in engineered systems, and in particular the fundamental limits given by the theorems in this chapter cannot be evaded through such techniques. Therefore the symmetric case gives the right intuitive understanding.</p>
-<p>The channel capacity is defined as </p>
-<script type="math/tex; mode=display">
-    C=M_{max}W \tag{6.29}</script><p>where $W$ is the maximum rate at which the output state can follow changes at the input. Thus $C$ is expressed in bits per second.</p>
-<p>The channel capacity theorem states that: if the input information rate in bits per decond $D$ is less than $C$ then it is possible (perhaps by dealing with long sequences of inputs together) to code the data in such a way that the error rate is as low as desired.</p>
-<p>The proof is not a constructive proof. However, there is not yet any general theory of how to design codes from scratch.</p>
-<h2 id="Reversibility"><a href="#Reversibility" class="headerlink" title="Reversibility"></a>Reversibility</h2><p>Some Boolean operations had the property that the input could not be deduced from the output. The $AND$ and $OR$ gates are examples. Other operations were reversible——the $EXOR$ gate, when the output is augmented by one of the two inputs, is an example. </p>
-<h2 id="Detail-Communication-System-Requirements"><a href="#Detail-Communication-System-Requirements" class="headerlink" title="Detail: Communication System Requirements"></a>Detail: Communication System Requirements</h2><p>The systems are characterized by four measures: throughput, latency, tolerance of errors, and tolerance to nonuniform rate (bursts). Throghput is simply the number of bits per second that such a system should, to be successful, accommodate. Latency is the time delay of the message; it could be defined either as the delay of the start of the output after the source begins, or a similar quantity about the end of the message (or, for that matter, about any particular features in the message). The numbers for throughput, in MB (megabytes) or kb (kilobits) are approximate.</p>
-<p><a target="_blank" href="http://web.archive.org/web/20080126223204/http://www.cs.ucl.ac.uk/staff/S.Bhatti/D51-notes/node31.html" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">Channel capacity </span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>http://web.archive.org/web/20080126223204/http://www.cs.ucl.ac.uk/staff/S.Bhatti/D51-notes/node31.html</span>&lt;/span&gt;&lt;/span&gt;</a></p>
-
+              <h1 id="Nonlinear-Integrate-and-Fire-Models"><a href="#Nonlinear-Integrate-and-Fire-Models" class="headerlink" title="Nonlinear Integrate-and-Fire Models"></a>Nonlinear Integrate-and-Fire Models</h1><p>The online version of this chapter:</p>
+<p><a target="_blank" href="https://neuronaldynamics.epfl.ch/online/Ch5.html" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">Chapter 5 Nonlinear Integrate-and-Fire Models</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://neuronaldynamics.epfl.ch/online/Ch5.html</span>&lt;/span&gt;&lt;/span&gt;</a></p>
+<h2 id="Thresholds-in-a-nonlinear-integrate-and-fire-model"><a href="#Thresholds-in-a-nonlinear-integrate-and-fire-model" class="headerlink" title="Thresholds in a nonlinear integrate-and-fire model"></a>Thresholds in a nonlinear integrate-and-fire model</h2><h2 id="Exponential-Integrate-and-Fire-Model"><a href="#Exponential-Integrate-and-Fire-Model" class="headerlink" title="Exponential Integrate-and-Fire Model"></a>Exponential Integrate-and-Fire Model</h2><h2 id="Quadratic-Integrate-and-Fire"><a href="#Quadratic-Integrate-and-Fire" class="headerlink" title="Quadratic Integrate and Fire"></a>Quadratic Integrate and Fire</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
               
             </div>
             <hr/>
@@ -447,7 +342,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E4%BF%A1%E6%81%AF%E8%AE%BA/" class="category-chain-item">信息论</a>
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
   
   
 
@@ -462,7 +357,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/">#神经科学</a>
       
     </div>
   
@@ -474,8 +369,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Information and Entropy (2)</div>
-      <div>http://example.com/2022/07/08/Information-and-Entropy-2/</div>
+      <div>Neuronal Dynamics (5)</div>
+      <div>http://example.com/2022/07/09/Neuronal-Dynamics-5/</div>
     </div>
     <div class="license-meta">
       
@@ -487,7 +382,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月8日</div>
+          <div>2022年7月9日</div>
         </div>
       
       
@@ -517,18 +412,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/09/Neuronal-Dynamics-5/" title="Neuronal Dynamics (5)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Neuronal Dynamics (5)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/07/04/Neuronal-Dynamics-4/" title="Neuronal Dynamics (4)">
-                        <span class="hidden-mobile">Neuronal Dynamics (4)</span>
+                      <a href="/2022/07/08/Information-and-Entropy-2/" title="Information and Entropy (2)">
+                        <span class="hidden-mobile">Information and Entropy (2)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
