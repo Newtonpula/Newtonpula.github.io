@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/shannon.jpg">
 <meta property="article:published_time" content="2022-07-08T07:45:58.000Z">
-<meta property="article:modified_time" content="2022-07-10T06:43:47.490Z">
+<meta property="article:modified_time" content="2022-07-10T06:46:27.281Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -401,16 +401,17 @@
 <script type="math/tex; mode=display">
     \begin{aligned}
         U_{after}(B_j)&=\sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i|B_j)}\right) \\
-        &\leqslant \sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i)}\right) \tag{6.24}      
-    \end{aligned}</script><p>So </p>
+        &\leqslant \sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i)}\right)     
+    \end{aligned}</script><p>(6.24)<br>So </p>
 <script type="math/tex; mode=display">
     \begin{aligned}
         \sum_{j}^{} p(B_j)U_{after}(B_j) &\leqslant \sum_{j}^{} p(B_j)\sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i)}\right)  \\
         &= \sum_{ji}^{} p(B_j)p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i)}\right) \\ 
         &= \sum_{ij}^{} p(B_j|A_i)p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right) \\
         &=\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right) \\ 
-        &=U_{before} \tag{6.25}                 
-    \end{aligned}</script><p>Substitution in (6.23) and simplification leads to </p>
+        &=U_{before}          
+    \end{aligned}</script><p>(6.25)</p>
+<p>Substitution in (6.23) and simplification leads to </p>
 <script type="math/tex; mode=display">
     M=\sum_{j}^{} \left(\sum_{i}^{} p(A_i)c_{ji}\right)\log _{2}\left(\frac{1}{\sum_{i}^{} p(A_i)c_{ji}}\right)-\sum_{ij}^{} p(A_i)c_{ji}\log _{2}\left(\frac{1}{c_{ji}}\right)</script><p>(6.26)</p>
 <p>(6.26) was derived for the case where the input “causes” the output. However, such a cause-and-effect relationship is not necessary. The term <strong>mutual information</strong> suggests that it is just as valid to view the output as causing the input, or to ignore completely the question of what causes what. Two alternate formulas for $M$ shows that $M$ can be interpreted in either direction:</p>
