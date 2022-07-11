@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/shannon.jpg">
 <meta property="article:published_time" content="2022-07-08T07:45:58.000Z">
-<meta property="article:modified_time" content="2022-07-10T06:46:27.281Z">
+<meta property="article:modified_time" content="2022-07-11T09:46:19.690Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          13k 字
+          15k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          109 分钟
+          129 分钟
         
       </span>
     
@@ -488,7 +488,45 @@
 <script type="math/tex; mode=display">
     M=J-N \tag{7.24}</script><p>It follows from these results that</p>
 <script type="math/tex; mode=display">
-    J-I=N-L \tag{7.27}</script><h3 id="Example-Symmetric-Binary-Channel"><a href="#Example-Symmetric-Binary-Channel" class="headerlink" title="Example: Symmetric Binary Channel"></a>Example: Symmetric Binary Channel</h3><h2 id="Deterministic-Examples"><a href="#Deterministic-Examples" class="headerlink" title="Deterministic Examples"></a>Deterministic Examples</h2><h3 id="Error-Correcting-Example"><a href="#Error-Correcting-Example" class="headerlink" title="Error Correcting Example"></a>Error Correcting Example</h3><h2 id="Capacity"><a href="#Capacity" class="headerlink" title="Capacity"></a>Capacity</h2><h2 id="Information-Diagrams"><a href="#Information-Diagrams" class="headerlink" title="Information Diagrams"></a>Information Diagrams</h2><h3 id="Notation"><a href="#Notation" class="headerlink" title="Notation"></a>Notation</h3><h2 id="Cascaded-Processes"><a href="#Cascaded-Processes" class="headerlink" title="Cascaded Processes"></a>Cascaded Processes</h2>
+    J-I=N-L \tag{7.27}</script><h3 id="Example-Symmetric-Binary-Channel"><a href="#Example-Symmetric-Binary-Channel" class="headerlink" title="Example: Symmetric Binary Channel"></a>Example: Symmetric Binary Channel</h3><p>For the SBC with bit error probability $\varepsilon$, these formulas can be evaluated, even if the two input probabilities $p(A_0)$ and $p(A_1)$ are not equal. If they happen to be equal (each 0.5), then </p>
+<script type="math/tex; mode=display">
+    I=1\ \text{bit}</script><script type="math/tex; mode=display">
+    J=1\ \text{bit}</script><script type="math/tex; mode=display">
+    L=N=\varepsilon \log _{2}\left(\frac{1}{\varepsilon}\right)+(1-\varepsilon) \log _{2}\left(\frac{1}{1-\varepsilon}\right)</script><script type="math/tex; mode=display">
+    M=1-\varepsilon \log _{2}\left(\frac{1}{\varepsilon}\right)-(1-\varepsilon)\log _{2}\left(\frac{1}{1-\varepsilon}\right)</script><h2 id="Deterministic-Examples"><a href="#Deterministic-Examples" class="headerlink" title="Deterministic Examples"></a>Deterministic Examples</h2><p>p88-89</p>
+<h3 id="Error-Correcting-Example"><a href="#Error-Correcting-Example" class="headerlink" title="Error Correcting Example"></a>Error Correcting Example</h3><p>p89-90</p>
+<h2 id="Capacity"><a href="#Capacity" class="headerlink" title="Capacity"></a>Capacity</h2><p>Call $W$ the maximum rate at which the input state of the process can be detected at the output. Then the rate at which information flows through the process can be as large as $WM$. However, this product is not a property of the process itself, but on how it is used. The <strong>process capacity</strong> $C$ is defined as </p>
+<script type="math/tex; mode=display">
+    C=WM_{max} \tag{7.32}</script><h2 id="Information-Diagrams"><a href="#Information-Diagrams" class="headerlink" title="Information Diagrams"></a>Information Diagrams</h2><p>p91</p>
+<h2 id="Cascaded-Processes"><a href="#Cascaded-Processes" class="headerlink" title="Cascaded Processes"></a>Cascaded Processes</h2><p><img src="/img/inf_and_ent/2022-07-11-17-42-53.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>Consider two processes in <strong>cascade</strong>. This term refers to having the output from one process serve as the input to another process.</p>
+<p>The matrix of transition probabilities is merely the matrix product of the two transition probability matrices for process 1 and process 2.</p>
+<p>Now we seek formulas for $I,J,L,N$ and $M$ of the overall process in terms of the corresponding quantities for the component processes. </p>
+<p>$I=I_1$ and $J=J_2$. $L$ and $N$ cannot generally be found exactly from $L_1,L_2,N_1$ and $N_2$, it is possible to find upper and lower bounds for them.</p>
+<script type="math/tex; mode=display">
+    L-N=(L_1+L_2)-(N_1+N_2)\tag{7.33}</script><p>The loss $L$ for the overall process is not always equal to the sum of the losses for the two components $L_1+L_2$, but instead </p>
+<script type="math/tex; mode=display">
+    0\leqslant L_1\leqslant L\leqslant L_1+L_2 \tag{7.34}</script><p>so that the loss is bound from above and below. Also,</p>
+<script type="math/tex; mode=display">
+    L_1+L_2-N_1\leqslant L\leqslant L_1+L_2 \tag{7.35}</script><p>so that if the first process is noise-free then $L$ is exactly $L_1+L_2$.</p>
+<p>There are similar formulas for $N$ in terms of $N_1+N_2$:</p>
+<script type="math/tex; mode=display">
+    0\leqslant N_2\leqslant N\leqslant N_1+N_2 \tag{7.36}</script><script type="math/tex; mode=display">
+    N_1+N_2-L_2\leqslant N\leqslant N_1+N_2 \tag{7.37}</script><p>Similar formulas for the mutual information of the cascade $M$ follow from these results:</p>
+<script type="math/tex; mode=display">
+    M_1-L_2\leqslant M\leqslant M_1\leqslant I \tag{7.38}</script><script type="math/tex; mode=display">
+    M_1-L_2\leqslant M\leqslant M_1+N_1-L_2 \tag{7.39}</script><script type="math/tex; mode=display">
+    M_2-N_1\leqslant M\leqslant M_2\leqslant J \tag{7.40}</script><script type="math/tex; mode=display">
+    M_2-N_1\leqslant M\leqslant M_2+L_2-N_1 \tag{7.41}</script><p>Other formulas for $M$ are easily derived from $0\leqslant M\leqslant I$ applied to the first process and the cascade, and $M=J-N$ applied to the second process and the cascade:</p>
+<script type="math/tex; mode=display">
+    \begin{aligned}
+        M &= M_1+L_1-L \\
+        &=M_1+N_1+N_2-N-L_2 \\ 
+        &=M_2+N_2-N \\ 
+        &=M_2+L_2+L_1-L-N_1     
+    \end{aligned}</script><p>where the second formula in each case comes from the use of (7.33).</p>
+<p>$M$ cannont exceed either $M_1$ or $M_2$. If the second process is lossless, $L_2=0$ and then $M=M_1$. Similarly if the first process is noiseless, then $N_1=0$ and $M=M_2$.</p>
+
               
             </div>
             <hr/>
