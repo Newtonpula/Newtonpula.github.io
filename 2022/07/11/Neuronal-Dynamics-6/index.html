@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-07-11T07:50:54.000Z">
-<meta property="article:modified_time" content="2022-07-11T07:53:40.584Z">
+<meta property="article:modified_time" content="2022-07-12T11:19:09.111Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          276 字
+          5.2k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          3 分钟
+          44 分钟
         
       </span>
     
@@ -325,7 +325,49 @@
               
               <h1 id="Adaptation-and-Firing-Patterns"><a href="#Adaptation-and-Firing-Patterns" class="headerlink" title="Adaptation and Firing Patterns"></a>Adaptation and Firing Patterns</h1><p>The online version of this chapter:</p>
 <p><a target="_blank" href="https://neuronaldynamics.epfl.ch/online/Ch6.html" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">Chapter 6 Adaptation and Firing Patterns</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://neuronaldynamics.epfl.ch/online/Ch6.html</span>&lt;/span&gt;&lt;/span&gt;</a></p>
-<h2 id="Adaptive-Exponential-Integrate-and-Fire"><a href="#Adaptive-Exponential-Integrate-and-Fire" class="headerlink" title="Adaptive Exponential Integrate-and-Fire"></a>Adaptive Exponential Integrate-and-Fire</h2><h2 id="Firing-Patterns"><a href="#Firing-Patterns" class="headerlink" title="Firing Patterns"></a>Firing Patterns</h2><h2 id="Biophysical-Origin-of-Adaptation"><a href="#Biophysical-Origin-of-Adaptation" class="headerlink" title="Biophysical Origin of Adaptation"></a>Biophysical Origin of Adaptation</h2><h2 id="Spike-response-model-SRM"><a href="#Spike-response-model-SRM" class="headerlink" title="Spike response model (SRM)"></a>Spike response model (SRM)</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
+<h2 id="Adaptive-Exponential-Integrate-and-Fire"><a href="#Adaptive-Exponential-Integrate-and-Fire" class="headerlink" title="Adaptive Exponential Integrate-and-Fire"></a>Adaptive Exponential Integrate-and-Fire</h2><p>A single equation is not sufficient to describe the variety of firing patterns that neurons exhibit in response to a step current. We couplt the voltage equation to abstract current variables $w_k$. The set of equation is </p>
+<script type="math/tex; mode=display">
+    \tau_m \frac{\mathrm{d}u}{\mathrm{d}t}=f(u)-R \sum_{k}^{} w_k+RI(t)</script><p>(6.1)</p>
+<script type="math/tex; mode=display">
+    \tau_k \frac{\mathrm{d}w_k}{\mathrm{d}t}=a_k(u-u_{rest})-w_k+b_k\tau_k\sum_{t^{(f)}}^{} \delta(t-t^{(f)}).</script><p>(6.2)</p>
+<p>the adaptation current is fed back to the voltage equation with resistance $R$. The voltage variable $u$ is reset if the membrane potential reaches the numerical threshold $\Theta_{reset}$. The moment $u(t)=\Theta_{reset}$ defines the firing time $t^{(f)}=t$. After firing, integration of the voltage restarts at $u=u_r$. The parameters $b_k$ are the ‘jump’ of the spike-triggered adaptation. </p>
+<div class="note note-info">
+            <p>One possible biophysical interpretation of the increase is that during the action potential calcium enters into the cell so that the amplitude of a calcium-dependent potassium current is increased. </p>
+          </div>
+<p>The adaptive Exponential Integrate-and-Fire model (AdEx) consists of an exponential nonlinearity in the voltage equation coupled to a single adaptation variable $w$</p>
+<script type="math/tex; mode=display">
+    \tau_m \frac{\mathrm{d}u}{\mathrm{d}t}=-(u-u_{rest})+\Delta_{T} \exp \left(\frac{u-\theta_{rh}}{\Delta_{T}}\right)-Rw+RI(t)</script><p>(6.3)</p>
+<script type="math/tex; mode=display">
+    \tau_w \frac{\mathrm{d}w}{\mathrm{d}t}=a(u-u_{rest})-w+b\tau_w \sum_{t^{(f)}}^{} \delta(t-t^{(f)}).</script><p>(6.4)</p>
+<p>At each threshold crossing the voltage is reset to $u=u_r$ and the adaptation variable $w$ is increased by an amount $b$. Adaptation is characterized by two parameters: $a$ couples adaptation to the voltage and is the source of subthreshold adaptation. Spike-triggered adaptation is controlled by a combination of $a$ and $b$. The choice of $a$ and $b$ largely determines the firing patterns of the neuron and can be related to the dynamics of ion channels. </p>
+<h4 id="Example-Izhikevich-model"><a href="#Example-Izhikevich-model" class="headerlink" title="Example: Izhikevich model"></a>Example: Izhikevich model</h4><p>This model uses the quadratic integrate-and-fire model for the first equation </p>
+<script type="math/tex; mode=display">
+    \tau_m \frac{\mathrm{d}u}{\mathrm{d}t}=-(u-u_{rest})(u-\theta)-Rw+RI(t)</script><script type="math/tex; mode=display">
+    \tau_w \frac{\mathrm{d}w}{\mathrm{d}t}=a(u-u_{rest})-w+b\tau_w \sum_{t^{(f)}}^{} \delta(t-t^{(f)}).</script><p>If $u=\theta_{reset}$, the voltage is reset to $u=u_r$ and the adaptation variable $w$ is increased by an amount $b$. Normally $b$ is positive, but $b&lt;0$ is also possible.</p>
+<p><img src="/img/neu_dyn/x150.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>Multiple firing patterns in cortical neurons. For each type, the neuron is stimulated with a step current with low or high amplitude.</p>
+</blockquote>
+<p><img src="/img/neu_dyn/x151.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>Multiple firing patterns in the AdEx neuron model. The spiking response can be classified by the steady-state firing behavior (vertical axis: tonic, adapting, bursting) and by its transient initiation pattern as shown along the horizontal axis: tonic (i.e. no special transient behavior), initial burst, or delayed spike initiation.</p>
+</blockquote>
+<h2 id="Firing-Patterns"><a href="#Firing-Patterns" class="headerlink" title="Firing Patterns"></a>Firing Patterns</h2><h3 id="Classification-of-Firing-Patterns"><a href="#Classification-of-Firing-Patterns" class="headerlink" title="Classification of Firing Patterns"></a>Classification of Firing Patterns</h3><p>It is advisable to separate the steady-state pattern from the initial transient phase. The initiation phase refers to the firing pattern right after the onset of the current step. </p>
+<p>Three main initiation pattern: the initiation can not be distinguished from the rest of the spiking response (tonic); the neuron responds with a significantly greater spike frequency in the transient (initial burst) than in the steady state; the neuronal firing starts with a delay (delay).</p>
+<p>Three main steady state patterns: regularly spaced spikes (tonic); gradually increasing interspike intervals (adapting); or regular alternations between short and long interspike intervals (bursting).</p>
+<p>Irregular firing patterns are also possible in the AdEx model, but the discussion below is restricted to deterministic models.</p>
+<h4 id="Example-Tonic-Adapting-and-Facilitating"><a href="#Example-Tonic-Adapting-and-Facilitating" class="headerlink" title="Example: Tonic, Adapting and Facilitating"></a>Example: Tonic, Adapting and Facilitating</h4><p>When the subthreshold coupling $a$ is small and the voltage reset is low ($u_r \thickapprox u_{rest}$), the AdEx response is either tonic or adapting. This depends on the jump $b$ and the time scale $\tau_w$. </p>
+<p>A large jump with a small time scale creates evenly spaced spikes at low frequency.On the other hand, a small spike-triggered current decaying on a long timescale can accumulate strength over several spikes and therefore successively decreases the net driving current $I-w$. In general, weak but long-lasting spike-triggered currents cause spike-frequency adadptation while short but strong currents lead to a prolongation of the refactory period. There is a continuum between purely tonic spiking and strongly adapting.</p>
+<p>When the spike-triggered curent is depolarizing $(b&lt;0)$ the interspike interval may gradually decreases, leading to spike-frequency facilitation.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x152.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x153.png" srcset="/img/loading.gif" lazyload alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x154.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x155.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
+<h3 id="Phase-plane-analysis-of-non-linear-integrate-and-fire-models-in-two-dimensions"><a href="#Phase-plane-analysis-of-non-linear-integrate-and-fire-models-in-two-dimensions" class="headerlink" title="Phase plane analysis of non-linear integrate-and-fire models in two dimensions"></a>Phase plane analysis of non-linear integrate-and-fire models in two dimensions</h3><p>In the AdEx model, the $u-$nullcline is again linear in the subthreshold regime and rises exponentially when $u$ is close to $\theta$. Upon current injection, the $u-$nullcline is shifted vertically by an amount proportional to the magnitude of the current $I$. </p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x156.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x157.png" srcset="/img/loading.gif" lazyload alt=""></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x158.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x159.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
+<p>Each time the trajectory reaches $u=\theta_{reset}$, it will be re-initialized at a reset value $(u_r,w+b)$.</p>
+<p>There are three regions of the phase plane with qualitatively different ensuing dynamics. A ‘detour reset’ corresponds to a downswing of the membrane potential after the end of the action potential. The distinction between detour and direct resets is helpful to understand how different firing patterns arise.</p>
+<h4 id="Example-Bursting"><a href="#Example-Bursting" class="headerlink" title="Example: Bursting"></a>Example: Bursting</h4><div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x160.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x161.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
+<p>Initial burst: a neuron first fires a group of spikes at a considerably higher spiking frequency than the steady-state frequency. </p>
+<p>The shape of the voltage trajectory after the end of the action potential (downswing or not) can be used to distinguish between adapting (strictly detour or strictly direct resets) and initial bursting (first direct then detour resets).</p>
+<h3 id="Exploring-the-Space-of-Reset-Parameters"><a href="#Exploring-the-Space-of-Reset-Parameters" class="headerlink" title="Exploring the Space of Reset Parameters"></a>Exploring the Space of Reset Parameters</h3><h3 id="Exploring-the-Space-of-Subthreshold-Parameters"><a href="#Exploring-the-Space-of-Subthreshold-Parameters" class="headerlink" title="Exploring the Space of Subthreshold Parameters"></a>Exploring the Space of Subthreshold Parameters</h3><h2 id="Biophysical-Origin-of-Adaptation"><a href="#Biophysical-Origin-of-Adaptation" class="headerlink" title="Biophysical Origin of Adaptation"></a>Biophysical Origin of Adaptation</h2><h2 id="Spike-response-model-SRM"><a href="#Spike-response-model-SRM" class="headerlink" title="Spike response model (SRM)"></a>Spike response model (SRM)</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
               
             </div>
             <hr/>
