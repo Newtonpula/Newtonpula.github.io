@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-07-11T07:50:54.000Z">
-<meta property="article:modified_time" content="2022-07-12T11:53:42.848Z">
+<meta property="article:modified_time" content="2022-07-13T10:07:13.398Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          5.4k 字
+          7.4k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          46 分钟
+          62 分钟
         
       </span>
     
@@ -369,8 +369,67 @@
 <p>By alternation between direct and detour resets, regular bursting can arise.</p>
 <p>AdEx can also produce an irregular alternation. The parameters for irregular firing occupies a small and patchy volume in parameter space.</p>
 <div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x160.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x161.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
-<h3 id="Exploring-the-Space-of-Reset-Parameters"><a href="#Exploring-the-Space-of-Reset-Parameters" class="headerlink" title="Exploring the Space of Reset Parameters"></a>Exploring the Space of Reset Parameters</h3><p><img src="/img/neu_dyn/x162.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="Exploring-the-Space-of-Subthreshold-Parameters"><a href="#Exploring-the-Space-of-Subthreshold-Parameters" class="headerlink" title="Exploring the Space of Subthreshold Parameters"></a>Exploring the Space of Subthreshold Parameters</h3><h2 id="Biophysical-Origin-of-Adaptation"><a href="#Biophysical-Origin-of-Adaptation" class="headerlink" title="Biophysical Origin of Adaptation"></a>Biophysical Origin of Adaptation</h2><h2 id="Spike-response-model-SRM"><a href="#Spike-response-model-SRM" class="headerlink" title="Spike response model (SRM)"></a>Spike response model (SRM)</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
+<h3 id="Exploring-the-Space-of-Reset-Parameters"><a href="#Exploring-the-Space-of-Reset-Parameters" class="headerlink" title="Exploring the Space of Reset Parameters"></a>Exploring the Space of Reset Parameters</h3><p>Boundaries in the parameter space mark transitions between different types of firing pattern - which are often correlated with types of cells.</p>
+<p>Apply a step current with an amplitude twice as large as the minimal current necessary to elicit a spike and study the dependence of the observed firing pattern on the reset parameter $u_r$ and $b$. All the other parameters are kept fixed.</p>
+<p><img src="/img/neu_dyn/x162.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>The line separating initial bursting and tonic firing resembles the shape of the $u-$nullcline. That’s because the $u-$nullcline plays an important role in determining whether the reset is ‘direct’ or leads to a ‘detour’. </li>
+<li>Regular bursting is possible, if the voltage reset $u_r$ is located above the voltage threshold $\theta$. Irregular firing patterns are found within the bursting region of the parameter space.</li>
+<li>Adapting firing patterns occur only over a restricted range of jump amplitudes $b$ of the spike-triggered adaptation current.</li>
+</ul>
+<h4 id="Example-Piecewise-Linear-Model"><a href="#Example-Piecewise-Linear-Model" class="headerlink" title="Example: Piecewise-Linear Model"></a>Example: Piecewise-Linear Model</h4><p>Consider a piecewise linear version of the AdEx model</p>
+<script type="math/tex; mode=display">
+    f(u)=
+    \begin{cases}
+        -(u-u_{rest}) \quad u\leqslant \theta_{rh} \\
+        \Delta_{T}(u-u_p) \quad \text{otherwise}
+    \end{cases}</script><p>(6.9)</p>
+<p>with </p>
+<script type="math/tex; mode=display">
+    u_p=\theta_{rh}+\frac{\theta_{rh}-u_{rest}}{\Delta_T},</script><p>(6.10)<br>which we insert into the voltage equation $\tau_m \mathrm{d}u/\mathrm{d}t=f(u)+RI-Rw$. Note that the $u-$nullcline is given by $w=f(u)/R+I$ and takes at $u=\theta_{rh}$ its minimum value $w_{min}=f(\theta_{rh})/R+I$.</p>
+<p>We assume separation of timescale ($\tau_m/\tau_w \ll 1$) and exploit the fact that the trajectories in the phase plane are nearly horizontal - unless they approach the $u-$nullcline. </p>
+<p>Map the initial condition $(u_r,w_r)$ after a first reset to the value $w_e$ of the adaptation variable at the end of the trajectory: $w_e=M(u_r,w_r)$. The next reset starts then from $(u_r,w_e+b)$. All trajectories with $w_r&lt;w_{min}$ remain horizontal, so that $w_e=w_r$.</p>
+<p>If $w_r&gt;w_{min}$, we distinguish two possible cases. The first one corresponds to a voltage reset below the threshold, $u_r&lt;\theta_{rh}$. A trajectory initiated at $u_r&lt;\theta_{rh}$ evolves horizontally until it comes close to the left branch of the $u-$nullcline. It then follows the $u-$nullcline at a small distance $x(u)$ below it. The distance can be shown to be </p>
+<script type="math/tex; mode=display">
+    x(u)=\frac{\tau_m}{\tau_w}[I-(a+R^{-1})(u-u_{rest})],</script><p>(6.11)<br>which vanishes in the limit $\tau_m/\tau_w \to 0$. For $u_r&lt;\theta_{rh}$.</p>
+<script type="math/tex; mode=display">
+    M(u_r,w_r)=
+    \begin{cases}
+        w_r \quad w_r<f(u_r)/R+I \\
+        f(\theta_{rh})/R+I \quad \text{otherwise}
+    \end{cases}</script><p>(6.12)<br>If $u_r&gt;\theta_{rh}$ then we have a direct reset (i.e.,movement starts to the right) if $(u_r,w_r)$ lands below the right branch of the $u-$nullcline and a detour reset otherwise </p>
+<script type="math/tex; mode=display">
+    M(u_r,w_r)=
+    \begin{cases}
+        w_r \quad w_r<f(u_r)/R+I \\
+        f(\theta_{rh})/R+I \quad \text{otherwise}
+    \end{cases}</script><p>(6.13)</p>
+<p><img src="/img/neu_dyn/x163.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<blockquote>
+<p>Fig.6.7</p>
+</blockquote>
+<p>The map $M$ uniquely defines the firing pattern. Regular bursting is possible only if $u_r&gt;\theta_{rh}$ and $b<f(u_r)-f(\theta_{rh})$ so that at least one reset in each burst lands below the $u-$nullcline. For $u_r>\theta_{rh}$, we have tonic spiking with detour resets when $b&gt;f(u_r)+I$ and initial bursting if $f(u_r)+I&gt;b&gt;f(u_r)-f(\theta_{rh})+x(\theta_{rh})$.</p>
+<p>If $u_r\leqslant \theta$ we have tonic spiking with detour resets when $b&gt;f(u_r)+I$, tonic spiking with direct reset when $b<f(u_r)-f(\theta_{rh})$ and initial bursting if $f(u_r)+I>b&gt;f(u_r)-f(\theta_{rh})$. Note that the rough layout of the parameter regions in Fig.6.7A.</p>
+<h3 id="Exploring-the-Space-of-Subthreshold-Parameters"><a href="#Exploring-the-Space-of-Subthreshold-Parameters" class="headerlink" title="Exploring the Space of Subthreshold Parameters"></a>Exploring the Space of Subthreshold Parameters</h3><p>While the exponential integrate-and-fire model losses stability always via a saddle-node bifurcation, the AdEx can become unstable either via a Hopf or a saddle-node bifurcation. </p>
+<p>In the AdEx, an eigenvalue analysis shows that the stable fixed point looses stability via a Hopf bifurcation if $aR&gt;\tau_m/\tau_w$.</p>
+<div class="note note-info">
+            <p>Otherwise, when the coupling from voltage to adaptation (parameter $a$) and back from adaptation to voltage (parameter $R$) are both weak, an increase in the current causes the stable fixed point to merge with the unstable one, so that both disappear via a saddle-node bifurcation.</p>
+          </div>
+<div class="note note-warning">
+            <p>The type of bifurcation has no influence on the firing pattern (bursting, adapting, tonic) which depends mainly on the choice of reset parameters.</p>
+          </div>
+<p>However, the subthreshold parameters do control the presence or absence of oscillations in response to a short current pulse.</p>
+<p><strong>resonator</strong>: a model showing damped oscillations.</p>
+<p><strong>integrator</strong>: a model without damped oscillations.</p>
+<p>The presence of damped oscillations depends non-linearly on $a/g_{L}$ and $\tau_m/\tau_w$ as summarized in the figure below. </p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x164.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x165.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
+<p>The frequency of the damped oscillation is given by </p>
+<script type="math/tex; mode=display">
+    \omega=\frac{4}{\tau_w}\left[aR-\frac{2\tau_w}{\tau_m}\left(1-\frac{\tau_m}{\tau_w}\right)^{2}\right]</script><p>(6.14)</p>
+<h4 id="Example-Transient-Spiking"><a href="#Example-Transient-Spiking" class="headerlink" title="Example: Transient Spiking"></a>Example: Transient Spiking</h4><p>Upon the onset of a current step, some neurons may fire a small number of spikes and then remain silent, even if the stimulus is maintained for a very long time. An AdEx model with subthreshold coupling $a&gt;0$ can explain this phenomenon whereas pure spike-triggered adaptation ($a=0;b&gt;0$) cannot account for it, because adaptation would eventually decay back to zero so that the neuron fires another spike.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x166.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x167.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
+<p>Choose parameter $a$ and $\tau_w$ such that the neuron is in the resonator regime. The voltage response to a step input then exhibits damped oscillations. Phase plane analysis reveals that sometimes several resets are needed before the trajectory is attracted towards the fixed point.</p>
+<h2 id="Biophysical-Origin-of-Adaptation"><a href="#Biophysical-Origin-of-Adaptation" class="headerlink" title="Biophysical Origin of Adaptation"></a>Biophysical Origin of Adaptation</h2><h2 id="Spike-response-model-SRM"><a href="#Spike-response-model-SRM" class="headerlink" title="Spike response model (SRM)"></a>Spike response model (SRM)</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
               
             </div>
             <hr/>
