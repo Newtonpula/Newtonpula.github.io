@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/shannon.jpg">
 <meta property="article:published_time" content="2022-07-08T07:45:58.000Z">
-<meta property="article:modified_time" content="2022-07-12T07:52:30.088Z">
+<meta property="article:modified_time" content="2022-07-13T14:57:09.242Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          16k 字
+          19k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          130 分钟
+          160 分钟
         
       </span>
     
@@ -527,7 +527,114 @@
     \end{aligned}</script><p>where the second formula in each case comes from the use of (7.33).</p>
 <p>$M$ cannont exceed either $M_1$ or $M_2$. If the second process is lossless, $L_2=0$ and then $M=M_1$. Similarly if the first process is noiseless, then $N_1=0$ and $M=M_2$.</p>
 <p>The channel capacity $C$ of the cascade satisfies $C\leqslant C_1$ and $C\leqslant C_2$. However, other results relating the channel capacities are not a trivial consequence of the formulas above.</p>
-
+<h1 id="Inference"><a href="#Inference" class="headerlink" title="Inference"></a>Inference</h1><h2 id="Estimation"><a href="#Estimation" class="headerlink" title="Estimation"></a>Estimation</h2><p>We now try to determine the input event when the output has been observed. This is the case for communication systems and memory systems.</p>
+<p>The conditional output probabilities $c_{ji}$ are a property of the process, and do not depend on the input probabilities $p(A_i)$.</p>
+<p>The unconditional probability $p(B_j)$ of each output event $B_j$ is </p>
+<script type="math/tex; mode=display">
+    p(B_j)=\sum_{i}^{} c_{ji}p(A_i)  \tag{8.1}</script><p>and </p>
+<script type="math/tex; mode=display">
+    p(A_i,B_j)=p(A_i)c_{ji} \tag{8.2}</script><p>so </p>
+<script type="math/tex; mode=display">
+    p(A_i|B_j)=\frac{p(A_i)c_{ji}}{p(B_j)} \tag{8.3}</script><p>If the process has no loss ($L=0$) then for each $j$ exactly one of the input events $A_i$ has nonzero probability, and therefore its probability $p(A_i|B_j)$ is $1$. </p>
+<p>We know </p>
+<script type="math/tex; mode=display">
+    U_{before}=\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)</script><p>and the residual uncertainty after some particular output event is</p>
+<script type="math/tex; mode=display">
+    U_{after}(B_j)=\sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i|B_j)}\right)</script><p>The question is whether $U_{after}(B_j)\leqslant U_{before}$. The answer is often, but not always, yes.</p>
+<p><strong>On average</strong>, out uncertainty about the input state is never increased by learning something about the output state.</p>
+<h3 id="Non-symmetric-Binary-Channel"><a href="#Non-symmetric-Binary-Channel" class="headerlink" title="Non-symmetric Binary Channel"></a>Non-symmetric Binary Channel</h3><p>For a rare family genetic disease,</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$p(A)$</th>
+<th>$p(B)$</th>
+<th>$I$</th>
+<th>$L$</th>
+<th>$M$</th>
+<th>$N$</th>
+<th>$J$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Family history</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>1.00000</td>
+<td>0.11119</td>
+<td>0.88881</td>
+<td>0.11112</td>
+<td>0.99993</td>
+</tr>
+<tr>
+<td>Unknown Family history</td>
+<td>0.9995</td>
+<td>0.0005</td>
+<td>0.00620</td>
+<td>0.00346</td>
+<td>0.00274</td>
+<td>0.14141</td>
+<td>0.14416</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Inference-Strategy"><a href="#Inference-Strategy" class="headerlink" title="Inference Strategy"></a>Inference Strategy</h3><p>One simple strategy for inference is “maximum likelihood”. However, sometimes it does not work at all (rare family genetic disease test).</p>
+<h2 id="Principle-of-Maximum-Entropy-Simple-Form"><a href="#Principle-of-Maximum-Entropy-Simple-Form" class="headerlink" title="Principle of Maximum Entropy: Simple Form"></a>Principle of Maximum Entropy: Simple Form</h2><p>Before the Principle of Maximum Entropy can be used the problem domain needs to be set up. It is not assumed in this step which particular state the system is in (or which state is actually “occupied”); indeed it is assumed that we do not know and cannot know this with certainty, and so we deal instead with the probability of each of the states being occupied. </p>
+<h3 id="Berger’s-Burgers"><a href="#Berger’s-Burgers" class="headerlink" title="Berger’s Burgers"></a>Berger’s Burgers</h3><p>The Principle of Maximum Entropy will be introduced by means of an example. A fast-food restaurant, Berger’s Burgers, offers three meals: burger, chicken, and fish. The price, Calorie count, and probability of each meal being delivered cold are as listed below.</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Entree</th>
+<th>Cost</th>
+<th>Calories</th>
+<th>Probability of arriving hot</th>
+<th>probability of arriving cold</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Value Meal 1</td>
+<td>Burger</td>
+<td>1.00</td>
+<td>1000</td>
+<td>0.5</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>Value Meal 2</td>
+<td>Chicken</td>
+<td>2.00</td>
+<td>600</td>
+<td>0.8</td>
+<td>0.2</td>
+</tr>
+<tr>
+<td>Value Meal 3</td>
+<td>Fish</td>
+<td>3.00</td>
+<td>400</td>
+<td>0.9</td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Probabilities"><a href="#Probabilities" class="headerlink" title="Probabilities"></a>Probabilities</h3><p>If we do not know the outcome we may still have some knowledge, and we use probabilities to express this knowledge. </p>
+<h3 id="Entropy"><a href="#Entropy" class="headerlink" title="Entropy"></a>Entropy</h3><p>Our uncertainty is expressed as </p>
+<script type="math/tex; mode=display">
+    S=p(B)\log _{2}\left(\frac{1}{p(B)}\right)+p(C)\log _{2}\left(\frac{1}{p(C)}\right)+p(F)\log _{2}\left(\frac{1}{p(F)}\right)</script><p>In the context of physical systems this uncertainty is known as the entropy. In communication systems the uncertainty regarding which actual message is to be transmitted is also known as the entropy of the source. </p>
+<p>In general the entropy, because it is expressed in terms of probabilities, depends on the observer. One person may have different knowledge of the system from another, and therefore would calculate a different numerical value for entropy. </p>
+<p>The Principle of Maximum Entropy is used to discover the probability distribution which leads to the highest value for this uncertainty, thereby assuring that no information is inadvertently assumed. The resulting probability distribution is not observer-dependent.</p>
+<h3 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h3><p>If we have additional information then we ought to be able to find a probability distribution that is better in the sense that it has less uncertainty.</p>
+<p>We consider we know the expected value of some quantity (the Principle of Maximum Entropy can handle multiple constraints but the mathematical procedures and formulas become more complicated) If there is an attribute for which each of the states has a value $g(A_i)$ and for which we know the actual value $G$, then we should consider only those probability distributions for which the expected value is equal to $G$.</p>
+<script type="math/tex; mode=display">
+    G=\sum_{i}^{} p(A_i)g(A_i) \tag{8.15}</script><p>In the case that the average cost is 1.75, $S$ attains its maximum when $p(B)=0.466$, $p(C)=0.318$, $p(C)=0.318$, and $S=1.517$ bits.</p>
+<h1 id="Principle-of-Maximum-Entropy"><a href="#Principle-of-Maximum-Entropy" class="headerlink" title="Principle of Maximum Entropy"></a>Principle of Maximum Entropy</h1>
               
             </div>
             <hr/>
