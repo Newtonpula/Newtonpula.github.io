@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-06-20T12:04:18.000Z">
-<meta property="article:modified_time" content="2022-07-06T09:43:54.505Z">
+<meta property="article:modified_time" content="2022-07-14T11:39:58.545Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -378,9 +378,11 @@
     C \frac{\partial u(t,x)}{\partial t}+ \sum_{ion}^{} I_{ion}</script><p>where the sum runs over all ion channel types present in the dendrite. </p>
 <p>Kirchhoff’s law regarding the conservation of current at each node leads to </p>
 <script type="math/tex; mode=display">
-    -i(t,x+\mathrm{d}x)+i(t,x)= C \frac{\partial }{\partial t}u(t,x)+ \sum_{ion}^{} I_{ion}-I_{ext}(t,x) \tag{3.10}</script><p>where</p>
+    -i(t,x+\mathrm{d}x)+i(t,x)= C \frac{\partial }{\partial t}u(t,x)+ \sum_{ion}^{} I_{ion}-I_{ext}(t,x)</script><p>(3.10)</p>
+<p>where</p>
 <script type="math/tex; mode=display">
-    R_{L}= r_{L} \mathrm{d}x, \quad C=c \mathrm{d}x,\quad I_{ext}(t,x)= i_{ext}(t,x)\mathrm{d}x \quad I_{ion}(t,x)= i_{ion}(t,x)\mathrm{d}x \tag{3.11}</script><p>So </p>
+    R_{L}= r_{L} \mathrm{d}x, \quad C=c \mathrm{d}x,\quad I_{ext}(t,x)= i_{ext}(t,x)\mathrm{d}x \quad I_{ion}(t,x)= i_{ion}(t,x)\mathrm{d}x</script><p>(3.11)</p>
+<p>So </p>
 <script type="math/tex; mode=display">
     -\frac{\partial }{\partial x}u(t,x)= r_{L} i(t,x) \tag{3.12a}</script><script type="math/tex; mode=display">
     -\frac{\partial }{\partial x}i(t,x)= c \frac{\partial }{\partial t}u(t,x)+ \sum_{ion}^{} i_{ion}(t,x)- i_{ext}(t,x) \tag{3.12b}</script><p>Taking the derivative in 3.12a with respect to $x$ and substituting the result into 3.12b yields </p>
