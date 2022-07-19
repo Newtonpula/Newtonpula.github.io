@@ -16,16 +16,16 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本节介绍常微分方程的基本概念">
+    <meta name="description" content="本节介绍解的存在和唯一性定理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常微分方程（一）">
-<meta property="og:url" content="http://example.com/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:title" content="常微分方程（3）">
+<meta property="og:url" content="http://example.com/2022/04/05/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%883%EF%BC%89/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="本节介绍常微分方程的基本概念">
+<meta property="og:description" content="本节介绍解的存在和唯一性定理">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
-<meta property="article:published_time" content="2022-04-01T12:21:12.000Z">
-<meta property="article:modified_time" content="2022-04-06T02:04:40.283Z">
+<meta property="article:published_time" content="2022-04-05T01:01:17.000Z">
+<meta property="article:modified_time" content="2022-07-19T13:31:10.375Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
   
   
   
-  <title>常微分方程（一） - Newtonpula的自留地</title>
+  <title>常微分方程（3） - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="常微分方程（一）"></span>
+            <span id="subtitle" data-typed-text="常微分方程（3）"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-01 20:21" pubdate>
-          2022年4月1日 晚上
+        <time datetime="2022-04-05 09:01" pubdate>
+          2022年4月5日 上午
         </time>
       </span>
     
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          1.5k 字
+          1.2k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          13 分钟
+          10 分钟
         
       </span>
     
@@ -319,35 +319,130 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">常微分方程（一）</h1>
+            <h1 style="display: none">常微分方程（3）</h1>
             
             <div class="markdown-body">
               
-              <p>最近其他东西读得有点累了，开个ODE的新坑，这主要是因为一直在读的Neuronal Dynamics里用到了很多ODE。参考书基本是丁同仁的《常微分方程教程》，会查知乎上大佬整理的笔记，可能也会附加一点Arnold的《Ordinary Differential Equations》（大概吧），大概就不指望会有动力系统的东西了。</p>
-<p>【定义1.1】方程</p>
+              <h1 id="存在和唯一性定理"><a href="#存在和唯一性定理" class="headerlink" title="存在和唯一性定理"></a>存在和唯一性定理</h1><h2 id="Picard-存在和唯一性定理"><a href="#Picard-存在和唯一性定理" class="headerlink" title="Picard 存在和唯一性定理"></a>Picard 存在和唯一性定理</h2><p><strong>定理3.1</strong> 设初值问题</p>
 <script type="math/tex; mode=display">
-F(x,y,y',\cdots,y^{(n)})</script><p>叫作常微分方程，其中导数实际出现的最高阶数$n$叫作常微分方程的阶.</p>
-<p>一般会给一个初值条件：</p>
+    (E):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y),\quad y(x_0)=y_0 \tag{1}</script><p>其中 $f(x, y)$在矩形区域</p>
 <script type="math/tex; mode=display">
-y(x_0)=y_0,y'(x_0)=y'_0,\cdots,y^{(n-1)}(x_0)=y^{(n-1)}_0</script><p>【定义1.2】微分方程的解的概念. 设$n$阶微分方程的解</p>
+    R: \qquad \left\vert x-x_0 \right\vert \leqslant a,\quad \left\vert y-y_0 \right\vert \leqslant b</script><p>内连续，而且对 $y$ 满足Lipschitz条件，则 $(E)$在区间 $I=[x_0-h,x_0+h]$上有且仅有一个解，其中常数</p>
 <script type="math/tex; mode=display">
-y=\varphi(x,C_1,\cdots,C_n)</script><p>包含$n$个独立的任意常数$C_1,\cdots,C_n$（这是因为每做一次不定积分就会多一个常数），则称它为通解，独立的意思是Jacobi行列式</p>
+    h= \min\biggl\{a,\frac{b}{M}\biggr\},\quad M>\max_{(x, y)\in R} \left\vert f(x, y) \right\vert</script><p><strong>证</strong>：将微分方程(1)化为积分方程，构造Picard序列</p>
 <script type="math/tex; mode=display">
-\det 
-\begin{bmatrix}
-    \frac{\partial \varphi}{\partial C_1} & \frac{\partial \varphi}{\partial C_2} & \cdots & \frac{\partial \varphi}{\partial C_n} \\ 
-    \frac{\partial \varphi'}{\partial C_1} & \frac{\partial \varphi'}{\partial C_2} & \cdots & \frac{\partial \varphi'}{\partial C_n} \\
-    \vdots & \vdots & & \vdots \\ 
-    \frac{\partial \varphi^{(n-1)}}{\partial C_1} & \frac{\partial \varphi^{(n-1)}}{\partial C_2} & \cdots & \frac{\partial \varphi^{(n-1)}}{\partial C_n} \\ 
-\end{bmatrix}</script><p>不为零，若解$y=\varphi(x)$不包含任意常数，则称它为特解. 这个定义的合理性以后再说. </p>
-<p>利用初值条件，可以确定通解中的任意常数$C_1,\cdots,C_n$. 注意：由于分析方法的限制（如隐函数存在定理的局部性），一般只能在局部范围内讨论通解. 常数独立的条件保证可以反解出$C_1,\cdots,C_n$. 为此要求$F$是$C^1$的，不过一般遇到的ODE都是充分光滑的. </p>
-<p>考虑一阶微分方程</p>
+    y_{n+1}(x)=y_0+\int_{x_0}^{x} f(x,y_n(x)) \mathrm{d}x</script><p>用上确界判则证明 $\left\vert y_{n+1}(x)-y_n(x) \right\vert $在 $I$上一致收敛. 注意用Lipschitz条件作指数型估计. 证明唯一性也运用Lipschitz条件迭代得到.</p>
+<p>有了Picard定理，对于一般微分方程</p>
 <script type="math/tex; mode=display">
-\frac{\textrm{d}y}{\textrm{d}x}=f(x,y)</script><p>其中$f(x,y)$是平面区域$G$内的连续函数. 它的解$y=\varphi(x)$在$(x,y)$平面上的图形——一条光滑曲线$\Gamma$为微分方程的<strong>积分曲线</strong>. 即使并不知道积分曲线是什么，也可以知道在积分曲线任意一点处的切线方程. 书中给出了<strong>线素</strong>和<strong>线素场</strong>或<strong>方向场</strong>的概念，其实就是切向量场，可以回忆一下切丛等微分流形中的概念.</p>
-<p>利用由关系式$f(x,y)=k$确定的曲线$L_k$，称它为线素场的<strong>等斜线</strong>. 一般会利用等斜线上点的切向量方向来画出向量场的简图.</p>
-<p>如果一阶微分方程取如下形式：</p>
+    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y) \tag{2}</script><p>只要能判别函数 $f(x, y)$在某个区域 $D$ 内连续并且对 $y$有连续偏导数或满足Lipschitz条件，我们就可以断言区域 $D$内经过每一点有并且只有一个解.</p>
+<p><strong>Osgood 条件</strong>：设函数 $f(x, y)$在区域 $G$内连续，而且满足不等式</p>
 <script type="math/tex; mode=display">
-\frac{\textrm{d}y}{\textrm{d}x}=-\frac{P(x,y)}{Q(x,y)}</script><p>那么当$P(x_0,y_x)=Q(x_0,y_0)=0$时，称这样的点$(x_0,y_0)$为相应微分方程的<strong>奇异点</strong>. 线素场在奇异点没有意义. 奇异点的概念十分关键.</p>
+    \left\vert f(x, y_1)-f(x, y-2)\right\vert\leqslant F(\left\vert y_1-y_2 \right\vert)</script><p>其中 $F(r)&gt;0$是 $r&gt;0$的连续函数，而且瑕积分</p>
+<script type="math/tex; mode=display">
+    \int_{0}^{r_1} \frac{1}{F(r)} \mathrm{d}r=\infty</script><p>$r_1&gt;0$为常数. 则称 $f(x, y)$在 $G$内对 $y$满足<strong>Osgood</strong>条件. 取 $F(r)=Lr$知，Lipschitz条件是Osgood条件的特例.</p>
+<p><strong>定理3.2</strong>：设 $f(x, y)$在区域 $G$内对 $y$满足Osgood条件，则微分方程(2)在 $G$内经过每一点的解都是唯一的.</p>
+<p><strong>证</strong>：反证法.</p>
+<p><strong>Muller 的反例</strong>：不满足Lipschitz条件时，定理3.1中构造的Picard序列不一定是收敛的.</p>
+<p>设初值问题</p>
+<script type="math/tex; mode=display">
+    (E_0):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=F(x, y),\quad y(0)=0</script><p>其中函数</p>
+<script type="math/tex; mode=display">
+    F(x, y)=
+    \begin{cases}
+        0, \qquad x=0,-\infty<y<\infty; \\
+        2x,\qquad 0<x\leqslant 1, -\infty<y<0; \\ 
+        2x-\displaystyle{\frac{4y}{x}},\qquad 0<x\leqslant 1, 0\leqslant y<x^{2}; \\ 
+        -2x,\qquad 0<x\leqslant 1,x^{2}\leqslant y<\infty \\
+    \end{cases}</script><p>容易验证，函数 $F(x, y)$在条形区域</p>
+<script type="math/tex; mode=display">
+    S:\qquad 0\leqslant x\leqslant 1,\quad -\infty<y<\infty</script><p>内是连续的，可是对 $y$不满足Lipschitz条件.</p>
+<p>对于上述初值问题 $(E_0)$，我们有Picard序列</p>
+<script type="math/tex; mode=display">
+    y_{n+1}(x)=y_0+\int_{0}^{x} f(x,y_n(x)) \mathrm{d}x \quad(y_0(x)=0)</script><p>$(0\leqslant x\leqslant 1;n=0,1,2,\cdots )$. 而且容易推出</p>
+<script type="math/tex; mode=display">
+    y_n(x)=(-1)^{n+1}x^2 \quad (0\leqslant x\leqslant 1)</script><p>$(n=1,2,\cdots )$. 由此可见，初值问题 $(E_0)$的Picard序列是不收敛的. 然而 $y=\frac{1}{3}x^2(0\leqslant x\leqslant 1)$是 $(E_{0})$的唯一解.</p>
+<h2 id="Peano-存在定理"><a href="#Peano-存在定理" class="headerlink" title="Peano 存在定理"></a>Peano 存在定理</h2><p>说明：这个定理说明了，在Picard定理中如果只假定 $f(x, y)$在 $R$内的连续性，那么利用Euler折线仍可证明初值问题 $(E)$的解在区间  $\left\vert x-x_0 \right\vert \leqslant h$上是存在的（但不一定是唯一的）.</p>
+<h3 id="Euler-折线"><a href="#Euler-折线" class="headerlink" title="Euler 折线"></a>Euler 折线</h3><p>定义比较繁琐，大概就是将区间划分，从中心点开始向左右，各作一条折线，在每个分点沿线素方向构造一条小折线段. </p>
+<p>令Euler折线 $\gamma_n$的表达式为</p>
+<script type="math/tex; mode=display">
+    y=\varphi_n(x) \quad (\left\vert x-x_0 \right\vert <h) \tag{3}</script><p>Euler折线的计算公式：</p>
+<script type="math/tex; mode=display">
+    \varphi_n(x)=y_0+\sum_{k=0}^{s-1} f(x_k, y_k)(x_{k+1}-x_k)+f(x_s, y_s)(x-x_s), \quad x_s<x\leqslant x_{0}+h</script><p>和</p>
+<script type="math/tex; mode=display">
+    \varphi_n(x)=y_0+\sum_{k=0}^{-s+1} f(x_k, y_k)(x_{k-1}-x_k)+f(x_{-s}, y{-s})(x-x_{-s}), \quad x_0-h\leqslant x<x_0</script><p>下面证明Euler折线在区间 $\left\vert x-x_0 \right\vert \leqslant h$上收敛（或至少有一个收敛的子序列）.</p>
+<h3 id="Ascoli-引理"><a href="#Ascoli-引理" class="headerlink" title="Ascoli 引理"></a>Ascoli 引理</h3><p>设函数列</p>
+<script type="math/tex; mode=display">
+    f_1(x),f_2(x),\cdots,f_n(x)</script><p>在有限闭区间 $I$上是一致有界和等度连续的，则可以选取它的一个子序列</p>
+<script type="math/tex; mode=display">
+    f_{n_1}(x),f_{n_2}(x),\cdots,f_{n_k}(x)</script><p>使它在区间 $I$上是一致收敛的.</p>
+<h3 id="Peano-存在定理-1"><a href="#Peano-存在定理-1" class="headerlink" title="Peano 存在定理"></a>Peano 存在定理</h3><p><strong>引理3.1</strong> Euler序列(3)在区间 $\left\vert x-x_0 \right\vert \leqslant h$上至少有一个一致收敛的子序列.</p>
+<p><strong>证</strong>：由Ascoli 引理显然.</p>
+<p><strong>引理3.2</strong> Euler折线 $y=\varphi_n(x)$在区间 $\left\vert x-x_0 \right\vert \leqslant h$上满足关系式</p>
+<script type="math/tex; mode=display">
+    \varphi_n(x)=y_0+\int_{x_0}^{x} f(x,\varphi_n(x)) \mathrm{d}x+\delta_n(x)</script><p>其中函数 $\delta_n(x)$趋于零，即</p>
+<script type="math/tex; mode=display">
+    \lim_{n \to \infty}\delta_n(x)=0 \quad(\left\vert x-x_0 \right\vert \leqslant h)</script><p><strong>证</strong>：omitted.</p>
+<p><strong>定理3.3（Peano 存在定理）</strong>：设函数 $f(x, y)$在矩形区域 $R$内连续，则初值问题</p>
+<script type="math/tex; mode=display">
+    (E):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y),\quad y(x_0)=y_0 \tag{4}</script><p>在区间 $\left\vert x-x_0 \right\vert \leqslant h$上至少有一个解 $y=y(x)$，这里矩形区域 $R$和正数 $h$的定义同定理3.1.</p>
+<p><strong>证</strong>：用引理3.1取一个一致收敛的子函数列，再用引理3.2取 $k \to \infty$即可.</p>
+<p><strong>反例</strong>：若不要求 $f(x, y)$的连续性，那么上面的初值问题 $(E)$可能是无解的. 例如，设函数</p>
+<script type="math/tex; mode=display">
+    f^*(x, y)=
+    \begin{cases}
+        1,\qquad 1\leqslant \left\vert x+y \right\vert <\infty \\
+        (-1)^{n}, \qquad \frac{1}{n+1}\leqslant \left\vert x+y \right\vert \leqslant \frac{1}{n} \quad (n=1,2,\cdots ) \\ 
+        0, \qquad \left\vert x+y \right\vert =0 
+    \end{cases}</script><p>则用反证法易证初值问题</p>
+<script type="math/tex; mode=display">
+    (E^*): \qquad \frac{\mathrm{d}y}{\mathrm{d}x}=f^*(x, y), \quad y(0)=0</script><p>没有（连续的）解.</p>
+<h2 id="解的延伸"><a href="#解的延伸" class="headerlink" title="解的延伸"></a>解的延伸</h2><p>本节的目的是把初值问题解的存在性从局部扩大到整体. </p>
+<p>设微分方程</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y) \tag{5}</script><p>其中函数 $f(x, y)$在区域 $G$内连续. </p>
+<p><strong>定理3.4</strong>：设 $P_0$为区域 $G$内任一点，并设 $\Gamma$为微分方程(5)经过 $P_0$点的任一条积分曲线. 则积分曲线 $\Gamma$将在区域 $G$内延伸到边界（换句话说，对于任何有界闭区域 $G(P_0 \in G_1 \subset G)$，积分曲线 $\Gamma$将延伸到 $G_1$之外）.</p>
+<p><strong>推论</strong>：设函数 $f(x, y)$在区域 $G$内连续，而且对 $y$满足局部Lipschitz条件，则微分方程(5)经过 $G$内任一点 $P_0$存在唯一的积分曲线 $\Gamma$，并且 $\Gamma$在 $G$内延伸到边界.</p>
+<p>这两个结论说明了最大存在区间的形式：开区间. 比如微分方程</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}y}{\mathrm{d}x}=x^{2}+y^{2}</script><p>任一解的存在区间是有界的.</p>
+<div class="note note-info">
+            <p>这个推论十分重要.一般遇到的大量微分方程都满足推论的条件.</p>
+          </div>
+<p>在特定的条件下，对解的存在区间可以作出先验断言.<br><strong>定理3.5</strong>：设微分方程</p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y) \tag{6}</script><p>其中函数 $f(x, y)$在条形区域 </p>
+<script type="math/tex; mode=display">
+    S: \qquad \alpha<x<\beta,\quad -\infty<y<\infty</script><p>内连续，而且满足不等式</p>
+<script type="math/tex; mode=display">
+    \left\vert f(x, y) \right\vert \leqslant A(x)\left\vert y \right\vert +B(x)</script><p>其中 $A(x)\geqslant 0$和 $B(x)\geqslant 0$在区间 $\alpha&lt;x&lt;\beta$上是连续的. 则微分方程(6)的每一个解都以区间 $\alpha&lt;x&lt;\beta$为最大存在区间.</p>
+<h2 id="比较定理及其应用"><a href="#比较定理及其应用" class="headerlink" title="比较定理及其应用"></a>比较定理及其应用</h2><p>在上节看到，仅应用延伸定理无法对微分方程的解的存在区间作出估计. 下面几个定理是对此的讨论<br><strong>定理3.6（第一比较定理）</strong>：设函数 $f(x, y)$与 $F(x, y)$都在平面区域 $G$内连续且满足不等式</p>
+<script type="math/tex; mode=display">
+    f(x, y)<F(x, y),\quad (x, y) \in G</script><p>又设函数 $y=\varphi(x)$与 $y=\Phi(x)$在区间 $a&lt;x&lt;b$上分别是初值问题</p>
+<script type="math/tex; mode=display">
+    (E_1):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y),\quad y(x_0)=y_0</script><p>与 </p>
+<script type="math/tex; mode=display">
+    (E_2):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=F(x, y),\quad y(x_0)=y_0</script><p>的解，其中 $(x_0,y_0)\in G$. 则我们有</p>
+<script type="math/tex; mode=display">
+    \begin{cases}
+        \varphi(x)<\Phi(x),\qquad x_0<x<b \\
+        \varphi(x)>\Phi(x),\qquad a<x<x_0
+    \end{cases}</script><p><strong>证</strong>：omitted</p>
+<p>对一般的初值问题(E)，有两个解 $y=Z(x)$和 $y=W(x)$，使得(E)的任何解 $y=y(x)$都满足不等式：</p>
+<script type="math/tex; mode=display">
+    W(x)\leqslant y(x)\leqslant Z(x),\quad(\left\vert x-x_0 \right\vert \leqslant h)</script><p>则称 $y=W(x)$和 $y=Z(x)$分别为初值问题(E)的<strong>最小解</strong>和<strong>最大解</strong>. </p>
+<p><strong>定理3.7</strong>：存在正数 $\sigma&lt;h$，使得在区间 $\left\vert x-x_0 \right\vert \leqslant \sigma$上，上述初值问题(E)有最小解和最大解.</p>
+<p>注意，由于初值问题(E)的所有解在 $(x_0,y_0)$点均相切，所以(E)的左行最大（小）解和右行最大（小）解就可拼接为整个区间上的最大（小）解.</p>
+<p>(E)的解是唯一的，当且仅当它的最小解和最大解是恒同的.</p>
+<p><strong>定理3.8（第二比较定理）</strong>：设函数 $f(x, y)$与 $F(x, y)$都在平面区域 $G$内连续且满足</p>
+<script type="math/tex; mode=display">
+    f(x, y)\leqslant F(x, y),\quad (x, y) \in G</script><p>又设函数 $y=\varphi(x)$与 $y=\Phi(x)$在区间 $a&lt;x&lt;b$上分别是初值问题 </p>
+<script type="math/tex; mode=display">
+    (E_1):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y),\quad y(x_0)=y_0</script><p>与 </p>
+<script type="math/tex; mode=display">
+    (E_2):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=F(x, y),\quad y(x_0)=y_0</script><p>的解，并且 $y=\varphi(x)$是 $(E_1)$的右行最小解和左行最大解（或者：$y=\Phi(x)$是 $(E_2)$的右行最大解和左行最小解），则有如下比较关系：</p>
+<script type="math/tex; mode=display">
+    \varphi(x)\leqslant \Phi(x),\qquad x_0\leqslant x<b; \\ 
+    \varphi(x)\geqslant \Phi(x),\qquad a<x\leqslant x_0</script><p><strong>证</strong>：此定理容易从定理3.6和定理3.7推出.</p>
 
               
             </div>
@@ -399,8 +494,8 @@ y=\varphi(x,C_1,\cdots,C_n)</script><p>包含$n$个独立的任意常数$C_1,\cd
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>常微分方程（一）</div>
-      <div>http://example.com/2022/04/01/常微分方程（一）/</div>
+      <div>常微分方程（3）</div>
+      <div>http://example.com/2022/04/05/常微分方程（3）/</div>
     </div>
     <div class="license-meta">
       
@@ -412,7 +507,7 @@ y=\varphi(x,C_1,\cdots,C_n)</script><p>包含$n$个独立的任意常数$C_1,\cd
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月1日</div>
+          <div>2022年4月5日</div>
         </div>
       
       
@@ -442,9 +537,9 @@ y=\varphi(x,C_1,\cdots,C_n)</script><p>包含$n$个独立的任意常数$C_1,\cd
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%BA%8C%EF%BC%89/" title="常微分方程（二）">
+                      <a href="/2022/04/06/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%884%EF%BC%89/" title="常微分方程（4）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">常微分方程（二）</span>
+                        <span class="hidden-mobile">常微分方程（4）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -452,8 +547,8 @@ y=\varphi(x,C_1,\cdots,C_n)</script><p>包含$n$个独立的任意常数$C_1,\cd
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/03/29/%E9%AB%98%E4%BB%A3%E8%AF%BE%E5%A4%96%E9%A2%982/" title="高代课外题2">
-                        <span class="hidden-mobile">高代课外题2</span>
+                      <a href="/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%882%EF%BC%89/" title="常微分方程（2）">
+                        <span class="hidden-mobile">常微分方程（2）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

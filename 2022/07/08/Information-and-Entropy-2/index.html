@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/shannon.jpg">
 <meta property="article:published_time" content="2022-07-08T07:45:58.000Z">
-<meta property="article:modified_time" content="2022-07-13T14:57:09.242Z">
+<meta property="article:modified_time" content="2022-07-19T13:26:17.082Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          19k 字
+          21k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          160 分钟
+          177 分钟
         
       </span>
     
@@ -634,7 +634,56 @@
 <p>We consider we know the expected value of some quantity (the Principle of Maximum Entropy can handle multiple constraints but the mathematical procedures and formulas become more complicated) If there is an attribute for which each of the states has a value $g(A_i)$ and for which we know the actual value $G$, then we should consider only those probability distributions for which the expected value is equal to $G$.</p>
 <script type="math/tex; mode=display">
     G=\sum_{i}^{} p(A_i)g(A_i) \tag{8.15}</script><p>In the case that the average cost is 1.75, $S$ attains its maximum when $p(B)=0.466$, $p(C)=0.318$, $p(C)=0.318$, and $S=1.517$ bits.</p>
-<h1 id="Principle-of-Maximum-Entropy"><a href="#Principle-of-Maximum-Entropy" class="headerlink" title="Principle of Maximum Entropy"></a>Principle of Maximum Entropy</h1>
+<h1 id="Principle-of-Maximum-Entropy"><a href="#Principle-of-Maximum-Entropy" class="headerlink" title="Principle of Maximum Entropy"></a>Principle of Maximum Entropy</h1><h2 id="Problem-Setup"><a href="#Problem-Setup" class="headerlink" title="Problem Setup"></a>Problem Setup</h2><p>The probelm domain needs to be setup. We’ll apply the general case to two examples, one a business model, and the other a model of physical system.</p>
+<h3 id="Berger’s-Burgers-1"><a href="#Berger’s-Burgers-1" class="headerlink" title="Berger’s Burgers"></a>Berger’s Burgers</h3><p>The menu has been extended to include a gourmet low-fat tofu meal.</p>
+<h3 id="Magnetic-Dipole-Model"><a href="#Magnetic-Dipole-Model" class="headerlink" title="Magnetic Dipole Model"></a>Magnetic Dipole Model</h3><p>Consider a system containing one dipole and a two-side environment</p>
+<h2 id="Probabilities-1"><a href="#Probabilities-1" class="headerlink" title="Probabilities"></a>Probabilities</h2><p>We assume that each of the possible states $A_i$ has some probability of occupancy $p(A_i)$ where $i$ is an index running over the possible states.</p>
+<script type="math/tex; mode=display">
+    1=\sum_{i}^{} p(A_i) \tag{9.1}</script><p>Probability, and all quantities that are based on probabilities, are subjective, or observer-dependent.</p>
+<h2 id="Entropy-1"><a href="#Entropy-1" class="headerlink" title="Entropy"></a>Entropy</h2><script type="math/tex; mode=display">
+    S=\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)</script><p>(9.2)</p>
+<p>Information is measured in bits.</p>
+<h2 id="Constraints-1"><a href="#Constraints-1" class="headerlink" title="Constraints"></a>Constraints</h2><p>We consider only one constraint here. If there is a quantity $G$ for which each of the states has a value $g(A_i)$ then we want to consider only those probability distributions for which the expected value is a known value $\widetilde{G}$</p>
+<script type="math/tex; mode=display">
+    \widetilde{G}=\sum_{i}^{} p(A_i)g(A_i) \tag{9.4}</script><h2 id="Maximum-Entropy-Single-Constraint"><a href="#Maximum-Entropy-Single-Constraint" class="headerlink" title="Maximum Entropy, Single Constraint"></a>Maximum Entropy, Single Constraint</h2><h3 id="Probability-Formula"><a href="#Probability-Formula" class="headerlink" title="Probability Formula"></a>Probability Formula</h3><p>The probability distribution $p(A_i)$ we want has been derived by others. It is a function of the dual variable $\beta$:</p>
+<script type="math/tex; mode=display">
+    p(A_i)=2^{-\alpha}2^{-\beta g(A_i)}</script><p>(9.12)</p>
+<p>which implies </p>
+<script type="math/tex; mode=display">
+    \log _{2}\left(\frac{1}{p(A_i)}\right)=\alpha+\beta g(A_i)</script><p>(9.13)</p>
+<p>where </p>
+<script type="math/tex; mode=display">
+    \alpha=\log _{2}\left(\sum_{i}^{} 2^{-\beta g(A_i)}\right)</script><p>(9.14)</p>
+<script type="math/tex; mode=display">
+    S=\alpha+\beta G \tag{9.15}</script><p>where $S$,$\alpha$, and $G$ are all functions of $\beta$.</p>
+<h3 id="Evaluating-the-Dual-Variable"><a href="#Evaluating-the-Dual-Variable" class="headerlink" title="Evaluating the Dual Variable"></a>Evaluating the Dual Variable</h3><script type="math/tex; mode=display">
+    0=\sum_{i}^{} [g(A_i)-G(\beta)]2^{-\beta g(A_i)}</script><p>(9.21)</p>
+<p>If this equation is multiplied by $2^{\beta G(\beta)}$, the result is </p>
+<script type="math/tex; mode=display">
+    0=f(\beta)</script><p>where the function $f(\beta)$ is </p>
+<script type="math/tex; mode=display">
+    f(\beta)=\sum_{i}^{} [g(A_i)-G(\beta)]2^{-\beta[g(A_i)-G(\beta)]}</script><p>(9.23)</p>
+<p>It is not difficult to show that $f(\beta)$ is a monotonic function of $\beta$ since $G(\beta)$ is a monotonic function of $\beta$.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>We only focus on the magnetic dipole example.</p>
+<script type="math/tex; mode=display">
+    1=p(U)+p(D)</script><p>(9.33)</p>
+<script type="math/tex; mode=display">
+    \begin{aligned}
+        \widetilde{E} &= e(U)p(U)+e(D)p(D) \\
+        &= m_{d}H[p(U)-p(D)] \\
+    \end{aligned}</script><p>(9.34)</p>
+<script type="math/tex; mode=display">
+    S=p(U)\log _{2}\left(\frac{1}{p(A)}\right)+p(D)\log _{2}\left(\frac{1}{p(D)}\right)</script><p>(9.35)</p>
+<p>The entropy is the largest, for the energy $\widetilde{E}$ and magnetic field $H$, if </p>
+<script type="math/tex; mode=display">
+    p(U)=2^{-\alpha}2^{-\beta m_{d}H}</script><p>(9.36)</p>
+<script type="math/tex; mode=display">
+    p(D)=2^{-\alpha}2^{\beta m_{d}H}</script><p>(9.37)</p>
+<p>where</p>
+<script type="math/tex; mode=display">
+    \alpha=\log _{2}(2^{-\beta m_{d}H}+2^{\beta m_{d}H})</script><p>(9.38)</p>
+<p>and an according $f(\beta)$.</p>
+<h1 id="Physical-Systems"><a href="#Physical-Systems" class="headerlink" title="Physical Systems"></a>Physical Systems</h1>
               
             </div>
             <hr/>

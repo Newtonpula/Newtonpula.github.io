@@ -16,16 +16,16 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="本节主要与奇解有关">
+    <meta name="description" content="本节介绍常微分方程的基本概念">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常微分方程（四）">
-<meta property="og:url" content="http://example.com/2022/04/06/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E5%9B%9B%EF%BC%89/index.html">
+<meta property="og:title" content="常微分方程（1）">
+<meta property="og:url" content="http://example.com/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%881%EF%BC%89/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="本节主要与奇解有关">
+<meta property="og:description" content="本节介绍常微分方程的基本概念">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
-<meta property="article:published_time" content="2022-04-06T12:42:30.000Z">
-<meta property="article:modified_time" content="2022-04-09T01:57:51.524Z">
+<meta property="article:published_time" content="2022-04-01T12:21:12.000Z">
+<meta property="article:modified_time" content="2022-07-19T13:29:19.379Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
   
   
   
-  <title>常微分方程（四） - Newtonpula的自留地</title>
+  <title>常微分方程（1） - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="常微分方程（四）"></span>
+            <span id="subtitle" data-typed-text="常微分方程（1）"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-06 20:42" pubdate>
-          2022年4月6日 晚上
+        <time datetime="2022-04-01 20:21" pubdate>
+          2022年4月1日 晚上
         </time>
       </span>
     
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          3.1k 字
+          1.5k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          26 分钟
+          13 分钟
         
       </span>
     
@@ -319,152 +319,35 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">常微分方程（四）</h1>
+            <h1 style="display: none">常微分方程（1）</h1>
             
             <div class="markdown-body">
               
-              <h1 id="奇解"><a href="#奇解" class="headerlink" title="奇解"></a>奇解</h1><h2 id="一阶隐式微分方程"><a href="#一阶隐式微分方程" class="headerlink" title="一阶隐式微分方程"></a>一阶隐式微分方程</h2><p>本节讨论一阶隐式方程</p>
+              <p>最近其他东西读得有点累了，开个ODE的新坑，这主要是因为一直在读的Neuronal Dynamics里用到了很多ODE。参考书基本是丁同仁的《常微分方程教程》，会查知乎上大佬整理的笔记，可能也会附加一点Arnold的《Ordinary Differential Equations》（大概吧），大概就不指望会有动力系统的东西了。</p>
+<p>【定义1.1】方程</p>
 <script type="math/tex; mode=display">
-    F(x, y,\frac{\mathrm{d}y}{\mathrm{d}x})=0 \tag{1}</script><p>的几个特殊解法，隐式指的是 $\frac{\mathrm{d}y}{\mathrm{d}x}$没有预先表示为 $(x, y)$的显函数.</p>
-<h3 id="微分法"><a href="#微分法" class="headerlink" title="微分法"></a>微分法</h3><p>设从微分方程（1）中可显式解出未知函数</p>
+F(x,y,y',\cdots,y^{(n)})</script><p>叫作常微分方程，其中导数实际出现的最高阶数$n$叫作常微分方程的阶.</p>
+<p>一般会给一个初值条件：</p>
 <script type="math/tex; mode=display">
-    y=f(x, p) \tag{2}</script><p>其中 $p=\frac{\mathrm{d}y}{\mathrm{d}x}$. 设函数 $f(x,p)$对 $(x,p)$是连续可微的. 则由方程（2）对 $x$进行微分，得</p>
+y(x_0)=y_0,y'(x_0)=y'_0,\cdots,y^{(n-1)}(x_0)=y^{(n-1)}_0</script><p>【定义1.2】微分方程的解的概念. 设$n$阶微分方程的解</p>
 <script type="math/tex; mode=display">
-    p=f'_x(x,p)+f'_p(x,p)\frac{\mathrm{d}p}{\mathrm{d}x}</script><p>或</p>
+y=\varphi(x,C_1,\cdots,C_n)</script><p>包含$n$个独立的任意常数$C_1,\cdots,C_n$（这是因为每做一次不定积分就会多一个常数），则称它为通解，独立的意思是Jacobi行列式</p>
 <script type="math/tex; mode=display">
-    [f'_(x,p)-p]\mathrm{d}x+f'_p(x,p)\mathrm{d}p=0 \tag{3}</script><p>这是一个关于变量 $x$和 $p$的一阶显式微分方程.</p>
-<p>求得（3）的通解 $p=u(x,C)$，得到（2）的通解 </p>
+\det 
+\begin{bmatrix}
+    \frac{\partial \varphi}{\partial C_1} & \frac{\partial \varphi}{\partial C_2} & \cdots & \frac{\partial \varphi}{\partial C_n} \\ 
+    \frac{\partial \varphi'}{\partial C_1} & \frac{\partial \varphi'}{\partial C_2} & \cdots & \frac{\partial \varphi'}{\partial C_n} \\
+    \vdots & \vdots & & \vdots \\ 
+    \frac{\partial \varphi^{(n-1)}}{\partial C_1} & \frac{\partial \varphi^{(n-1)}}{\partial C_2} & \cdots & \frac{\partial \varphi^{(n-1)}}{\partial C_n} \\ 
+\end{bmatrix}</script><p>不为零，若解$y=\varphi(x)$不包含任意常数，则称它为特解. 这个定义的合理性以后再说. </p>
+<p>利用初值条件，可以确定通解中的任意常数$C_1,\cdots,C_n$. 注意：由于分析方法的限制（如隐函数存在定理的局部性），一般只能在局部范围内讨论通解. 常数独立的条件保证可以反解出$C_1,\cdots,C_n$. 为此要求$F$是$C^1$的，不过一般遇到的ODE都是充分光滑的. </p>
+<p>考虑一阶微分方程</p>
 <script type="math/tex; mode=display">
-    y=f(x,u(x,C))</script><p>其中 $C$是一个任意常数；另外若（3）有特解 $p=w(x)$则方程（2）有相应的特解</p>
+\frac{\textrm{d}y}{\textrm{d}x}=f(x,y)</script><p>其中$f(x,y)$是平面区域$G$内的连续函数. 它的解$y=\varphi(x)$在$(x,y)$平面上的图形——一条光滑曲线$\Gamma$为微分方程的<strong>积分曲线</strong>. 即使并不知道积分曲线是什么，也可以知道在积分曲线任意一点处的切线方程. 书中给出了<strong>线素</strong>和<strong>线素场</strong>或<strong>方向场</strong>的概念，其实就是切向量场，可以回忆一下切丛等微分流形中的概念.</p>
+<p>利用由关系式$f(x,y)=k$确定的曲线$L_k$，称它为线素场的<strong>等斜线</strong>. 一般会利用等斜线上点的切向量方向来画出向量场的简图.</p>
+<p>如果一阶微分方程取如下形式：</p>
 <script type="math/tex; mode=display">
-    y=f(x,w(x))</script><p>另一方面，若（3）的通解可写成 $x=v(p,C)$的形式，则（2）的通解可写成 </p>
-<script type="math/tex; mode=display">
-    \begin{cases}
-        x=v(p,C) \\
-        y=f(v(p,C),p)
-    \end{cases}</script><p>这里 $p$视作一个参变量；同样如果（3）有特解 $x=z(p)$，则（2）有相应的特解</p>
-<script type="math/tex; mode=display">
-    \begin{cases}
-        x=z(p) \\
-        y=f(z(p),)     
-    \end{cases}</script><h3 id="参数法"><a href="#参数法" class="headerlink" title="参数法"></a>参数法</h3><p>设微分方程不明显包含自变量，即</p>
-<script type="math/tex; mode=display">
-    F(y,p)=0 \quad \biggl(p=\frac{\mathrm{d}y}{\mathrm{d}x}\biggr) \tag{4}</script><p>作为变元 $y$和 $p$之间的联系，方程（4）在 $(y,p)$平面上一般表示若干条曲线. 设 </p>
-<script type="math/tex; mode=display">
-    y=g(t),\quad p=h(t) \tag{5}</script><p>是其中一条. 称（5）为（4）的一个<strong>参数表示</strong>. 一般来说 $g(t)$，$g’(t)$和 $h(t)$都是参数 $t$的连续函数，并且 $h(t) \neq 0$. 根据上述微分方程的参数表示，我们有</p>
-<script type="math/tex; mode=display">
-    \mathrm{d}x=\frac{1}{p}\mathrm{d}y=\frac{g'(t)}{h(t)}\mathrm{d}t</script><p>再利用积分，可得</p>
-<script type="math/tex; mode=display">
-    x=\int_{}^{} \frac{g'(t)}{h(t)} \mathrm{d}t+C</script><p>因此，微分方程（4）有通解</p>
-<script type="math/tex; mode=display">
-    x=\int_{}^{} \frac{g'(t)}{h(t)} \mathrm{d}t+C, \quad y=g(t) \tag{6}</script><p>一般而言，一阶隐式微分方程</p>
-<script type="math/tex; mode=display">
-    F(x, y,p)=0 \quad \biggl( p=\frac{\mathrm{d}y}{\mathrm{d}x} \biggr) \tag{7}</script><p>在 $(x, y, p)$空间表示曲面. 设它的参数表达式为</p>
-<script type="math/tex; mode=display">
-    x=f(u,v), \quad y=g(u,v), \quad p=h(u,v)</script><p>这里 $u$和 $v$ 是两个参数. 则 $\mathrm{d}y=p\mathrm{d}x$可写成如下形式</p>
-<script type="math/tex; mode=display">
-    M(u,v)\mathrm{d}u+N(u,v)\mathrm{d}v=0 \tag{8}</script><p>其中</p>
-<script type="math/tex; mode=display">
-    \begin{cases}
-        M(u,v)=g'_u(u,v)-h(u,v)f'_u(u,v) \\
-        N(u,v)=g'_v(u,v)-h(u,v)f'_v(u,v)
-    \end{cases}</script><p>若能求得一阶显式微分方程（8）的通解 </p>
-<script type="math/tex; mode=display">
-    v=Q(u,C) \tag{9}</script><p>则微分方程（7）有通解 </p>
-<script type="math/tex; mode=display">
-    x=f(u,Q(u,C)), \quad y=g(u,Q(u,C))</script><p>其中 $u$是参变量，而 $C$是一个积分常数；若其有特解 $v=S(u)$，则</p>
-<script type="math/tex; mode=display">
-    x=f(u,S(u)),\quad y=g(u,S(u))</script><p>是微分方程（7）的特解.</p>
-<h2 id="奇解-1"><a href="#奇解-1" class="headerlink" title="奇解"></a>奇解</h2><p>【定义】设一阶微分方程</p>
-<script type="math/tex; mode=display">
-    F(x, y, \frac{\mathrm{d}y}{\mathrm{d}x})=0 \tag{10}</script><p>有一特解 </p>
-<script type="math/tex; mode=display">
-    \Gamma: y=\varphi(x) \quad(x\in J)</script><p>如果对每一点 $Q\in \Gamma$，在 $Q$任何领域内方程（10）有一个不同于 $\Gamma$的解在 $Q$点与 $\Gamma$相切，则称 $\Gamma$是微分方程（10）的<strong>奇解</strong>.</p>
-<p><strong>定理4.1（奇解存在的必要条件）</strong>：设函数 $F(x, y,p)$对 $(x, y, p)\in G$是连续的，而且对 $y$和 $p$有连续的偏导数 $F’_y$和 $F’_p$，若函数 $y=\varphi(x),(x\in J)$是微分方程（10）的一个奇解，并且</p>
-<script type="math/tex; mode=display">
-    (x,\varphi(x)\varphi'(x))\in G \quad(x\in J)</script><p>则奇解 $y=\varphi(x)$满足一个称之为<strong>p-判别式</strong>的联立方程</p>
-<script type="math/tex; mode=display">
-    F(x, y, p)=0, \quad F'_p(x, y, p)=0 \quad(p=\frac{\mathrm{d}y}{\mathrm{d}x}) \tag{11}</script><p>设从（11）中消去 $p$得到方程</p>
-<script type="math/tex; mode=display">
-    \Delta(x, y)=0 \tag{12}</script><p>则称由此所决定的曲线为方程（10）的<strong>P-判别曲线</strong>. 因此，微分方程（10）的奇解是一条p-判别曲线.</p>
-<p><strong>证</strong>：用反证法，假设 $\exists x_0\in J$，使得 </p>
-<script type="math/tex; mode=display">
-    F'_p(x_0, y_0, p_0) \neq 0</script><p>利用隐函数定理，$F$关于 $p$的偏导数不为零保证在 $(x_0,y_0)$附近唯一确定函数</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y)</script><p>推得 $f(x, y)$在 $(x_0, y_0)$附近关于 $y$有连续的偏导数，再用Picard定理知在 $(x_0,y_0)$附近有唯一解，从而与奇解的假设矛盾.</p>
-<p>注意，由p-判别式确定的函数 $y=\psi(x)$不一定是相应微分方程的解；即使是解，也不一定是奇解. </p>
-<p>上面的定理要求出通解才能验证奇解与否，下面的定理在某种条件下克服了这一困难.</p>
-<p><strong>定理4.2</strong>：设函数 $F(x, y, p)$对 $(x, y,p)\in G$是二阶连续可微的. 又设由微分方程（10）的p-判别式 </p>
-<script type="math/tex; mode=display">
-    F(x, y, p)=0, \quad F'_p(x, y, p)=0</script><p>消去$p$后得到的函数 $y=\psi(x)(x\in J)$是微分方程（10）的解（注意上面定理的注）.而且设条件</p>
-<script type="math/tex; mode=display">
-    F'_y(x,\psi(x),\psi'(x)) \neq 0,\quad F''_{pp}(x,\psi(x),\psi'(x)) \neq 0 \tag{13}</script><p>以及</p>
-<script type="math/tex; mode=display">
-    F'_p(x,\psi(x),\psi'(x))=0 \tag{14}</script><p>对 $x\in J$成立. 则 $y=\psi(x)$是微分方程（10）的奇解.</p>
-<p><strong>证</strong>：放到了文章最后.</p>
-<p>我们说明该定理中（13）（14）都是不可去的.</p>
-<p>考虑方程</p>
-<script type="math/tex; mode=display">
-    \biggl( \frac{\mathrm{d}y}{\mathrm{d}x} \biggr)^{2}-y^{2}=0</script><p>得到 $y=0$，此时有 $F’_y(x,0,0)=0$，而原方程的通解为 $y=x\exp {\pm x}$.</p>
-<p>考虑方程</p>
-<script type="math/tex; mode=display">
-    \sin (y \frac{\mathrm{d}y}{\mathrm{d}x})=y</script><p>得到 $y=0$，此时有 $F’’_{pp}(x,0,0)=0$，$y=0$不是原方程的奇解.</p>
-<p>考虑方程</p>
-<script type="math/tex; mode=display">
-    y=2x+y'-\frac{1}{3}(y')^3</script><p>此时 $F’_p(x,\psi(x),\psi’(x))=0$</p>
-<p>另一个类似于2.2中的结果：设连续函数 $E(y)$满足条件：</p>
-<script type="math/tex; mode=display">
-    \begin{cases}
-        E(y)=0, \quad y=0\\
-        E(y)\neq 0, \quad 0<y\leqslant 1
-    \end{cases}</script><p>则 $y=0$是微分方程</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}y}{\mathrm{d}x}=E(y)</script><p>的奇解当且仅当瑕积分</p>
-<script type="math/tex; mode=display">
-    \int_{0}^{1} \frac{\mathrm{d}y}{E(y)}</script><p>收敛.<br><strong>证</strong>：$\Rightarrow$：若 $y=0$为奇解，则存在局部解使得 $y\neq 0$，故有 $\frac{\mathrm{d}y}{E}=\mathrm{d}x \Rightarrow \int_{0}^{1} \frac{\mathrm{d}y}{E}$收敛.</p>
-<p>$\Leftarrow$：$ \int_{0}^{1} \frac{\mathrm{d}y}{E}$收敛，可令 $x(y)=x_0+\int_{0}^{y} \frac{\mathrm{d}y}{E}$是异于 $y=0$的解，由于 $y’(0)=0$，得到 $y=0$是奇解.</p>
-<h2 id="包络"><a href="#包络" class="headerlink" title="包络"></a>包络</h2><p>这一节想利用有关曲线族的包络的概念来阐明奇解与通解之间的联系，以及讨论寻求奇解的方法.</p>
-<p>设单参数 $C$的曲线族 </p>
-<script type="math/tex; mode=display">
-    K(C): \qquad V(x,y,C)=0 \tag{15}</script><p>其中函数 $V(x, y, C)$对 $(x, y, C)\in D$是连续可微的. </p>
-<p>【定义】设在平面上有一条连续可微的曲线 $\Gamma$. 如果对于任一点 $q\in \Gamma$，在曲线族（15）中都有一条曲线 $K(C^<em>)$通过 $q$点且在该点与 $\Gamma$相切，而且 $K(C^</em>)$在 $q$点的某一领域内不同于 $\Gamma$. 则称曲线 $\Gamma$为曲线族（15）的一支<strong>包络</strong>.</p>
-<p>注：这个定义与微分几何中的定义稍有不同.</p>
-<p><strong>定理4.3</strong>：设微分方程 </p>
-<script type="math/tex; mode=display">
-    F(x, y, \frac{\mathrm{d}y}{\mathrm{d}x})=0 \tag{16}</script><p>有通积分为 </p>
-<script type="math/tex; mode=display">
-    U(x, y, C)=0 \tag{17}</script><p>又设（积分）曲线族（17）有包络为</p>
-<script type="math/tex; mode=display">
-    \Gamma: \qquad y=\varphi(x) \quad (x\in J)</script><p>则包络 $y=\varphi(x)$是微分方程（16）的奇解.</p>
-<p><strong>证</strong>：任取 $\Gamma$上一点，由包络的性质即可.</p>
-<div class="note note-success">
-            <p>由奇解的定义可知，奇解是通解的包络. 因此，由上定理可知，求微分方程的奇解归结到求它的通积分的包络. 通积分的包络就是原方程的奇解.</p>
-          </div>
-<p><strong>定理4.4</strong>：设 $\Gamma$是曲线族（15）的一支包络. 则它满足如下的<strong>C-判别式</strong>：</p>
-<script type="math/tex; mode=display">
-    V(x, y, C)=0, \quad V'_C(x, y, C)=0 \tag{18}</script><p>或（消去 $C$，所得到的关系式）</p>
-<script type="math/tex; mode=display">
-    \Omega(x, y)=0 \tag{19}</script><p><strong>证</strong>：设包络的参数方程为</p>
-<script type="math/tex; mode=display">
-    \begin{cases}
-        x=f(C) \\
-        y=g(C)
-    \end{cases}</script><p>根据切向量共线得出一个式子，然后对 $V(x, y,C)=0$对 $C$求导即可.</p>
-<p>满足C-判别式的曲线未必是相应曲线族的包络，如 </p>
-<script type="math/tex; mode=display">
-    (y-1)^{2}\biggl(\frac{\mathrm{d}y}{\mathrm{d}x}\biggr)^{2}=\frac{4}{9}y</script><p>解它的通积分和C-判别式得 $y=0$或 $y=3$，然而只有前一个是曲线的包络.</p>
-<p>下面的定理给出了包络的一个充分条件.<br><strong>定理4.5</strong>：设由曲线族（15）的C-判别式 </p>
-<script type="math/tex; mode=display">
-    V(x, y,C)=0 \quad V'_C(x, y, C)=0</script><p>确定一支连续可微且不含于族（15）的曲线 </p>
-<script type="math/tex; mode=display">
-    \Lambda: \quad x=\varphi(C), \quad y=\psi(C) \quad (C\in J)</script><p>而且它满足<strong>非蜕化性条件</strong>（即切向量不退化）</p>
-<script type="math/tex; mode=display">
-    (\varphi'(C),\psi'(C))\neq (0,0), \quad (V'_x,V'_y)\neq (0,0)</script><p>其中 $V’_x=V’_x(\varphi(C),\psi(C),C)$与 $V’_y=V’_y(\varphi(C),\psi(C),C)$. 则 $\Lambda$是曲线族（15）的一支包络.<br><strong>证</strong>：在 $\Lambda$上任取一点，在这一点附近用隐函数定理找到一条曲线族中的曲线，然后证明它在这一点与 $\Lambda$相切，即其切向量共线.</p>
-<div class="note note-success">
-            <p>该定理基本上只适用于能求出通积分的情形，使用时通常配合4.3，这是因为若能判定C-曲线不是积分曲线，则它不是解，从而不是奇解，从而不是包络.</p>
-          </div>
-<h2 id="奇解的存在定理"><a href="#奇解的存在定理" class="headerlink" title="奇解的存在定理"></a>奇解的存在定理</h2><p>这是定理4.2的证明，可以参考教材117-120页<br>或者如下链接：<br><a target="_blank" href="https://zhuanlan.zhihu.com/p/97414951" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">常微分方程学习笔记（4）</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://zhuanlan.zhihu.com/p/97414951</span>&lt;/span&gt;&lt;/span&gt;</a></p>
-<p>下一章就进入高阶微分方程了.</p>
+\frac{\textrm{d}y}{\textrm{d}x}=-\frac{P(x,y)}{Q(x,y)}</script><p>那么当$P(x_0,y_x)=Q(x_0,y_0)=0$时，称这样的点$(x_0,y_0)$为相应微分方程的<strong>奇异点</strong>. 线素场在奇异点没有意义. 奇异点的概念十分关键.</p>
 
               
             </div>
@@ -516,8 +399,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>常微分方程（四）</div>
-      <div>http://example.com/2022/04/06/常微分方程（四）/</div>
+      <div>常微分方程（1）</div>
+      <div>http://example.com/2022/04/01/常微分方程（1）/</div>
     </div>
     <div class="license-meta">
       
@@ -529,7 +412,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月6日</div>
+          <div>2022年4月1日</div>
         </div>
       
       
@@ -559,9 +442,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/04/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%BA%94%EF%BC%89/" title="常微分方程（五）">
+                      <a href="/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%882%EF%BC%89/" title="常微分方程（2）">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">常微分方程（五）</span>
+                        <span class="hidden-mobile">常微分方程（2）</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -569,8 +452,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/04/05/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%88%E4%B8%89%EF%BC%89/" title="常微分方程（三）">
-                        <span class="hidden-mobile">常微分方程（三）</span>
+                      <a href="/2022/03/29/%E9%AB%98%E4%BB%A3%E8%AF%BE%E5%A4%96%E9%A2%982/" title="高代课外题2">
+                        <span class="hidden-mobile">高代课外题2</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
