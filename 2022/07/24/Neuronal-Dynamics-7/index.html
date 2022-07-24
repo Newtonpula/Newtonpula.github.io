@@ -16,24 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="ODE拾遗">
+    <meta name="description" content="Variability of Spike Trains and Neural Codes">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常微分方程（11）">
-<meta property="og:url" content="http://example.com/2022/07/19/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%8811%EF%BC%89/index.html">
+<meta property="og:title" content="Neuronal Dynamics (7)">
+<meta property="og:url" content="http://example.com/2022/07/24/Neuronal-Dynamics-7/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="ODE拾遗">
+<meta property="og:description" content="Variability of Spike Trains and Neural Codes">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
-<meta property="article:published_time" content="2022-07-19T13:27:33.000Z">
-<meta property="article:modified_time" content="2022-07-19T15:29:46.462Z">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-07-24T13:29:38.000Z">
+<meta property="article:modified_time" content="2022-07-24T14:41:11.851Z">
 <meta property="article:author" content="Yixiao Feng">
-<meta property="article:tag" content="数学">
+<meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
   
   
   
-  <title>常微分方程（11） - Newtonpula的自留地</title>
+  <title>Neuronal Dynamics (7) - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="常微分方程（11）"></span>
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (7)"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-19 21:27" pubdate>
-          2022年7月19日 晚上
+        <time datetime="2022-07-24 21:29" pubdate>
+          2022年7月24日 晚上
         </time>
       </span>
     
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          173 字
+          357 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          2 分钟
+          3 分钟
         
       </span>
     
@@ -319,134 +319,13 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">常微分方程（11）</h1>
+            <h1 style="display: none">Neuronal Dynamics (7)</h1>
             
             <div class="markdown-body">
               
-              <h1 id="常微分方程拾遗"><a href="#常微分方程拾遗" class="headerlink" title="常微分方程拾遗"></a>常微分方程拾遗</h1><p>我是个没有感情的抄书机器~</p>
-<h2 id="Green-函数相关"><a href="#Green-函数相关" class="headerlink" title="Green 函数相关"></a>Green 函数相关</h2><h3 id="二阶线性齐次常微分方程的跃度"><a href="#二阶线性齐次常微分方程的跃度" class="headerlink" title="二阶线性齐次常微分方程的跃度"></a>二阶线性齐次常微分方程的跃度</h3><p>首先我们知道任何一个二阶线性齐次常微分方程可以整理成如下形式：</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}x}\left[p(x)\frac{\mathrm{d}y(x)}{\mathrm{d}x}\right]+q(x)y(x)=0, \quad a<x<b.</script><p>考虑非奇异情形，即假设 $p(x)$，$p’(x)$ 和 $q(x)$ 都是定义域 $a&lt;x&lt;b$ 上的实连续函数，$p(x)$ 无零点. 因此该方程的两个线性无关解 $y_1(x)$ 和 $y_2(x)$ 都在定义域 $a&lt;x&lt;b$ 上连续. 而对非齐次项为 $\delta$ 函数的二阶线性常微分方程</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}x}\left[p(x)\frac{\mathrm{d}g(x;t)}{\mathrm{d}x}\right]+q(x)g(x;t)=\delta(x-t), \quad a<x<b, a<t<b</script><p>当 $x\neq t$ 时，它的解由 $y_1(x)$ 和 $y_2(x)$ 叠加得到：</p>
-<script type="math/tex; mode=display">
-    \begin{aligned}
-        g(x;t)&=
-        \begin{cases}
-        c_1(t)y_1(x)+c_2(t)y_2(x) \equiv g_{<}, \quad x<t \\
-        d_1(t)y_1(x)+d_2(t)y_2(x) \equiv g_{>}, \quad x>t
-        \end{cases} \\ 
-        &= g_{<}+(g_{>}-g_{<})\eta(x-t), \\
-    \end{aligned}</script><p>代回原方程，整理得到对于任何检验函数 $f(x)$，</p>
-<script type="math/tex; mode=display">
-    \left[p'(t)(g_{>}(t)-g_{<}(t))+2p(t) \left( \frac{\mathrm{d}g_{>}}{\mathrm{d}x}-\frac{\mathrm{d}g_{<}}{\mathrm{d}x}\right)_{x=t} -1\right]f(t)= p(t)(g_{>}(t)-g_{<}(t))f'(t).</script><p>由 $f(x)$ 的任意性，得 $g(x;t)$ 在 $x=t$ 处连续，而 $\frac{\mathrm{d}g(x;t)}{\mathrm{d}x}$ 在 $x=t$ 处有跃度 $\frac{1}{p(t)}$，即 </p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}g(x;t)}{\mathrm{d}x}\bigg |^{x=t+}_{x=t-}=\frac{1}{p(t)}</script><h3 id="常微分方程初值问题的-Green-函数"><a href="#常微分方程初值问题的-Green-函数" class="headerlink" title="常微分方程初值问题的 Green 函数"></a>常微分方程初值问题的 Green 函数</h3><p>初值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}g}{\mathrm{d}t^{2}}=\delta(t-\tau), \quad t>0, \tau>0,</script><script type="math/tex; mode=display">
-    g|_{t=0}=0, \quad \frac{\mathrm{d}g}{\mathrm{d}t}\bigg|_{t=0}=0</script><p>对原方程积分两次得到通解</p>
-<script type="math/tex; mode=display">
-    g(t;\tau)=(t-\tau)\eta(t-\tau)+\alpha(\tau)t+\beta(\tau).</script><p>由初值条件定出</p>
-<script type="math/tex; mode=display">
-    g(t;\tau)=(t-\tau)\eta(t-\tau).</script><hr>
-<p>那么初值问题 </p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}}=f(t), \quad t>0,</script><script type="math/tex; mode=display">
-    y(0)=0, \quad y'(0)=0.</script><p>就有解 </p>
-<script type="math/tex; mode=display">
-    y(t)=\int_{0}^{\infty} g(t;\tau)f(\tau) \mathrm{d}\tau=\int_{0}^{t} (t-\tau)f(\tau) \mathrm{d}\tau.</script><hr>
-<p>初值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}g(t;\tau)}{\mathrm{d}t^{2}}+k^{2}g(t;\tau)=\delta(t-\tau), \quad t>0, \tau >0,</script><script type="math/tex; mode=display">
-    g(0;\tau)=0, \quad \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}t}\bigg|_{t=0}=0.</script><p>有解</p>
-<script type="math/tex; mode=display">
-    g(t;\tau)=\frac{1}{k} \sin k(t-\tau)\eta(t-r)+C(r)\sin kt+D(r)\cos kt.</script><hr>
-<p>初值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}}+k^{2}y(t)=f(t), \quad t>0,</script><script type="math/tex; mode=display">
-    y(0)=0, \quad y'(0)=0</script><p>有解</p>
-<script type="math/tex; mode=display">
-    y(t)=\frac{1}{k}\int_{0}^{t} f(\tau)\sin k(t-\tau) \mathrm{d}\tau.</script><hr>
-<p>一般的初值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}t}\left[ p(t) \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}t}\right]+q(t) g(t;\tau)=\delta(t-\tau), \quad t>0,\tau>0;</script><script type="math/tex; mode=display">
-    g(0;\tau)=0, \quad \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}t}\bigg|_{t=0}=0,</script><p>其中 $p(t)$,$p’(t)$ 和 $q(t)$ 都是 $[0,\infty)$ 上的实连续函数， $p(t)$ 无零点.</p>
-<p>定义 $y_1(t)$ 和 $y_2(t)$ 是相应齐次线性方程的两个线性无关解. Wronsky 行列式</p>
-<script type="math/tex; mode=display">
-    W[y_1(t),y_2(t)]\equiv 
-    \begin{vmatrix}
-    y_1(t) & y_2(t) \\ 
-    y_1'(t) & y_2'(t) \\
-    \end{vmatrix}
-    \neq 0</script><p>原方程的解为</p>
-<script type="math/tex; mode=display">
-    g(t;\tau)=\frac{1}{p(\tau)}\frac{y_1(\tau)y_2(t)-y_2(\tau)y_1(t)}{W[y_1(\tau),y_2(\tau)]}\eta(t-\tau).</script><p>实际上可以去掉 $t,\tau&gt;0$ 的限制，补充条件</p>
-<script type="math/tex; mode=display">
-    p(t)=p(-t), \quad q(t)=q(-t),</script><p>并将初值条件变为 </p>
-<script type="math/tex; mode=display">
-    g(t;\tau)|_{t<\tau}=0, \quad \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}t}\bigg|_{t<\tau}=0.</script><hr>
-<p>进一步，初值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}t}\left[ p(t) \frac{\mathrm{d}y(t)}{\mathrm{d}t}\right]+q(t) y(t)=f(t), \quad t>0,</script><script type="math/tex; mode=display">
-    g(0;\tau)=0, \quad y'(0)=0</script><p>有解</p>
-<script type="math/tex; mode=display">
-    y(t)=\int_{0}^{t} g(t;\tau)f(\tau) \mathrm{d}\tau.</script><hr>
-<p>更一般的，初值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}t}\left[ p(t) \frac{\mathrm{d}y(t)}{\mathrm{d}t}\right]+q(t) y(t)=f(t), \quad t>0,</script><script type="math/tex; mode=display">
-    g(0;\tau)=A, \quad y'(0)=B</script><p>有解（需要用到 $g(t;\tau)=g(-\tau;-t)$）</p>
-<script type="math/tex; mode=display">
-    \begin{aligned}
-    y(t)&=\int_{0}^{\infty} g(t;\tau)f(\tau) \mathrm{d}\tau + \left\{ p(r)\left[ y(\tau) \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}\tau}-g(t;\tau)\frac{\mathrm{d}y(\tau)}{\mathrm{d}\tau}\right] \right\}^{\infty}_{\tau=0}         \\
-    &=\int_{0}^{t} g(t;\tau) f(\tau) \mathrm{d}\tau-p(0)\left[ A \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}\tau}-Bg(t;\tau)\right]_{\tau=0}
-    \end{aligned}</script><h3 id="常微分方程边值问题的-Green-函数"><a href="#常微分方程边值问题的-Green-函数" class="headerlink" title="常微分方程边值问题的 Green 函数"></a>常微分方程边值问题的 Green 函数</h3><p>边值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}g(x;\xi)}{\mathrm{d}x^{2}}=\delta(x-\xi), \quad a<x,\xi<b,</script><script type="math/tex; mode=display">
-    g(a,\xi)=0, \quad g(b;\xi)=0.</script><p>有解</p>
-<script type="math/tex; mode=display">
-    g(x;\xi)=(x-\xi)\eta(x-\xi)-\frac{b-\xi}{b-a}(x-a).</script><hr>
-<p>边值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}g(x;\xi)}{\mathrm{d}x^{2}}+k^{2} g(x;\xi)=\delta(x-\xi), \quad a<x,\xi<b,</script><script type="math/tex; mode=display">
-    g(a;\xi)=0, \quad g(b;\xi)=0.</script><p>有解 </p>
-<script type="math/tex; mode=display">
-    g(x;\xi)=
-    \begin{cases}
-        \displaystyle -\frac{1}{k}\frac{\sin k(b-\xi)}{\sin k(b-a)}\sin k(x-a), \quad a<x<\xi, \\
-        \displaystyle -\frac{1}{k}\frac{\sin k(\xi-a)}{\sin k(b-a)} \sin k(b-x), \quad \xi<x<b.
-    \end{cases}</script><hr>
-<p>一般的边值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}x}\left[ p(x) \frac{\mathrm{d}g(x;\xi)}{\mathrm{d}x}\right]+q(x) g(x;\xi)=\delta(x-\xi), \quad a<x,\xi<b.</script><script type="math/tex; mode=display">
-    g(a;\xi)=0, \quad g(b;\xi)=0</script><p>有解 </p>
-<script type="math/tex; mode=display">
-    \begin{aligned}
-    g(x;\xi)=&-\frac{1}{p(\xi)}\frac{y_2(b)y_1(\xi)-y_1(b)y_2(\xi)}{y_1(b)y_2(a)-y_1(a)y_2(b)}\frac{y_2(a)y_1(x)-y_1(a)y_2(x)}{W[y_1(\xi),y_2(\xi)]}         \\
-    &+\frac{1}{p(\xi)}\frac{y_1(\xi)y_2(x)-y_2(\xi)y_1(x)}{W[y_1(\xi),y_2(\xi)]}\eta(x-\xi).
-    \end{aligned}</script><p>从该表达式或者构造新的 Green 函数可以得到</p>
-<script type="math/tex; mode=display">
-    g(x;\xi)=g(\xi;x).</script><hr>
-<p>边值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}x}\left[ p(x) \frac{\mathrm{d}y(x)}{\mathrm{d}x}\right]+q(x) y(x)=f(x), \quad a<x<b,</script><script type="math/tex; mode=display">
-    y(a)=A, \quad y(b)=B,</script><p>有解 </p>
-<script type="math/tex; mode=display">
-    \begin{aligned}
-    y(x)&=\int_{a}^{b} g(x;\xi)f(\xi) \mathrm{d}\xi+\left\{p(\xi)\left[ y(\xi)\frac{\mathrm{d}g(x;\xi)}{\mathrm{d}\xi}-g(x;\xi)\frac{\mathrm{d}y(\xi)}{\mathrm{d}\xi}\right]\right\}^{\xi=b}_{\xi=a}         \\
-    &=\int_{a}^{b} g(x;\xi)f(\xi) \mathrm{d}\xi +Bp(b)\frac{\mathrm{d}g(x;\xi)}{\mathrm{d}\xi}\bigg|_{\xi=b}-Ap(a)\frac{\mathrm{d}g(x;\xi)}{\mathrm{d}\xi}\bigg|_{\xi=a}
-    \end{aligned}</script><hr>
-<p>无界区间上的边值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}g(x;\xi)}{\mathrm{d}x^{2}}-k^{2}g(x;\xi)=\delta(x-\xi), \quad -\infty<x,\xi<\infty,</script><script type="math/tex; mode=display">
-    g(x;\xi)\big|_{x\to \pm \infty} 有界，</script><p>有解（其中 $k&gt;0$）</p>
-<script type="math/tex; mode=display">
-    g(x;\xi)=-\frac{1}{2k}\mathrm{e}^{-k\lvert x-\xi \rvert }</script><hr>
-<p>无界区间上的边值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}y(x)}{\mathrm{d}x^{2}}-k^{2}y(x)=f(x), \quad -\infty<x<\infty,</script><script type="math/tex; mode=display">
-    y(x)\big|_{x\to \pm \infty} 有界，</script><p>有解（其中 $k&gt;0$）</p>
-<script type="math/tex; mode=display">
-    y(x)=-\frac{1}{2k}\int_{-\infty}^{\infty} \mathrm{e}^{-k\lvert x-\xi \rvert } f(\xi) \mathrm{d}\xi</script>
+              <p>The online version of this chapter:</p>
+<p><a target="_blank" href="https://neuronaldynamics.epfl.ch/online/Ch7.html" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">Chapter 7 Variability of Spike Trains and Neural Codes</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://neuronaldynamics.epfl.ch/online/Ch7.html</span>&lt;/span&gt;&lt;/span&gt;</a></p>
+<h1 id="Variability-of-Spike-Trains-and-Neural-Codes"><a href="#Variability-of-Spike-Trains-and-Neural-Codes" class="headerlink" title="Variability of Spike Trains and Neural Codes"></a>Variability of Spike Trains and Neural Codes</h1><h2 id="Spiking-train-variability"><a href="#Spiking-train-variability" class="headerlink" title="Spiking train variability"></a>Spiking train variability</h2><h2 id="Mean-Firing-Rate"><a href="#Mean-Firing-Rate" class="headerlink" title="Mean Firing Rate"></a>Mean Firing Rate</h2><h2 id="Interval-distribution-and-coefficient-of-variation"><a href="#Interval-distribution-and-coefficient-of-variation" class="headerlink" title="Interval distribution and coefficient of variation"></a>Interval distribution and coefficient of variation</h2><h2 id="Autocorrelation-function-and-noise-spectrum"><a href="#Autocorrelation-function-and-noise-spectrum" class="headerlink" title="Autocorrelation function and noise spectrum"></a>Autocorrelation function and noise spectrum</h2><h2 id="Renewal-statistics"><a href="#Renewal-statistics" class="headerlink" title="Renewal statistics"></a>Renewal statistics</h2><h2 id="The-Problem-of-Neural-Coding"><a href="#The-Problem-of-Neural-Coding" class="headerlink" title="The Problem of Neural Coding"></a>The Problem of Neural Coding</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
               
             </div>
             <hr/>
@@ -463,15 +342,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
-  
-  
-
   
 
       </span>
@@ -485,7 +357,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%95%B0%E5%AD%A6/">#数学</a>
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/">#神经科学</a>
       
     </div>
   
@@ -497,8 +369,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>常微分方程（11）</div>
-      <div>http://example.com/2022/07/19/常微分方程（11）/</div>
+      <div>Neuronal Dynamics (7)</div>
+      <div>http://example.com/2022/07/24/Neuronal-Dynamics-7/</div>
     </div>
     <div class="license-meta">
       
@@ -510,7 +382,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月19日</div>
+          <div>2022年7月24日</div>
         </div>
       
       
@@ -540,18 +412,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/24/Information-and-Entrophy-3/" title="Information and Entrophy (3)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Information and Entrophy (3)</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/07/11/Neuronal-Dynamics-6/" title="Neuronal Dynamics (6)">
-                        <span class="hidden-mobile">Neuronal Dynamics (6)</span>
+                      <a href="/2022/07/24/Information-and-Entrophy-3/" title="Information and Entrophy (3)">
+                        <span class="hidden-mobile">Information and Entrophy (3)</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

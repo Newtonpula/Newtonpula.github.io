@@ -16,24 +16,24 @@
   <meta name="author" content="Yixiao Feng">
   <meta name="keywords" content="">
   
-    <meta name="description" content="ODE拾遗">
+    <meta name="description" content="Chapter 9~13">
 <meta property="og:type" content="article">
-<meta property="og:title" content="常微分方程（11）">
-<meta property="og:url" content="http://example.com/2022/07/19/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%8811%EF%BC%89/index.html">
+<meta property="og:title" content="Information and Entrophy (3)">
+<meta property="og:url" content="http://example.com/2022/07/24/Information-and-Entrophy-3/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
-<meta property="og:description" content="ODE拾遗">
+<meta property="og:description" content="Chapter 9~13">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
-<meta property="article:published_time" content="2022-07-19T13:27:33.000Z">
-<meta property="article:modified_time" content="2022-07-19T15:29:46.462Z">
+<meta property="og:image" content="http://example.com/img/index/shannon.jpg">
+<meta property="article:published_time" content="2022-07-24T09:17:52.000Z">
+<meta property="article:modified_time" content="2022-07-24T13:08:03.459Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta name="twitter:image" content="http://example.com/img/index/shannon.jpg">
   
   
   
-  <title>常微分方程（11） - Newtonpula的自留地</title>
+  <title>Information and Entrophy (3) - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="常微分方程（11）"></span>
+            <span id="subtitle" data-typed-text="Information and Entrophy (3)"></span>
           
         </div>
 
@@ -256,8 +256,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-19 21:27" pubdate>
-          2022年7月19日 晚上
+        <time datetime="2022-07-24 17:17" pubdate>
+          2022年7月24日 下午
         </time>
       </span>
     
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          173 字
+          8.5k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          2 分钟
+          71 分钟
         
       </span>
     
@@ -319,134 +319,142 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">常微分方程（11）</h1>
+            <h1 style="display: none">Information and Entrophy (3)</h1>
             
             <div class="markdown-body">
               
-              <h1 id="常微分方程拾遗"><a href="#常微分方程拾遗" class="headerlink" title="常微分方程拾遗"></a>常微分方程拾遗</h1><p>我是个没有感情的抄书机器~</p>
-<h2 id="Green-函数相关"><a href="#Green-函数相关" class="headerlink" title="Green 函数相关"></a>Green 函数相关</h2><h3 id="二阶线性齐次常微分方程的跃度"><a href="#二阶线性齐次常微分方程的跃度" class="headerlink" title="二阶线性齐次常微分方程的跃度"></a>二阶线性齐次常微分方程的跃度</h3><p>首先我们知道任何一个二阶线性齐次常微分方程可以整理成如下形式：</p>
+              <h1 id="Principle-of-Maximum-Entropy"><a href="#Principle-of-Maximum-Entropy" class="headerlink" title="Principle of Maximum Entropy"></a>Principle of Maximum Entropy</h1><h2 id="Problem-Setup"><a href="#Problem-Setup" class="headerlink" title="Problem Setup"></a>Problem Setup</h2><p>The probelm domain needs to be setup. We’ll apply the general case to two examples, one a business model, and the other a model of physical system.</p>
+<h3 id="Berger’s-Burgers"><a href="#Berger’s-Burgers" class="headerlink" title="Berger’s Burgers"></a>Berger’s Burgers</h3><p>The menu has been extended to include a gourmet low-fat tofu meal.</p>
+<h3 id="Magnetic-Dipole-Model"><a href="#Magnetic-Dipole-Model" class="headerlink" title="Magnetic Dipole Model"></a>Magnetic Dipole Model</h3><p>Consider a system containing one dipole and a two-side environment</p>
+<h2 id="Probabilities"><a href="#Probabilities" class="headerlink" title="Probabilities"></a>Probabilities</h2><p>We assume that each of the possible states $A_i$ has some probability of occupancy $p(A_i)$ where $i$ is an index running over the possible states.</p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}x}\left[p(x)\frac{\mathrm{d}y(x)}{\mathrm{d}x}\right]+q(x)y(x)=0, \quad a<x<b.</script><p>考虑非奇异情形，即假设 $p(x)$，$p’(x)$ 和 $q(x)$ 都是定义域 $a&lt;x&lt;b$ 上的实连续函数，$p(x)$ 无零点. 因此该方程的两个线性无关解 $y_1(x)$ 和 $y_2(x)$ 都在定义域 $a&lt;x&lt;b$ 上连续. 而对非齐次项为 $\delta$ 函数的二阶线性常微分方程</p>
+    1=\sum_{i}^{} p(A_i) \tag{9.1}</script><p>Probability, and all quantities that are based on probabilities, are subjective, or observer-dependent.</p>
+<h2 id="Entropy"><a href="#Entropy" class="headerlink" title="Entropy"></a>Entropy</h2><script type="math/tex; mode=display">
+    S=\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)</script><p>(9.2)</p>
+<p>Information is measured in bits.</p>
+<h2 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h2><p>We consider only one constraint here. If there is a quantity $G$ for which each of the states has a value $g(A_i)$ then we want to consider only those probability distributions for which the expected value is a known value $\widetilde{G}$</p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}x}\left[p(x)\frac{\mathrm{d}g(x;t)}{\mathrm{d}x}\right]+q(x)g(x;t)=\delta(x-t), \quad a<x<b, a<t<b</script><p>当 $x\neq t$ 时，它的解由 $y_1(x)$ 和 $y_2(x)$ 叠加得到：</p>
+    \widetilde{G}=\sum_{i}^{} p(A_i)g(A_i) \tag{9.4}</script><h2 id="Maximum-Entropy-Single-Constraint"><a href="#Maximum-Entropy-Single-Constraint" class="headerlink" title="Maximum Entropy, Single Constraint"></a>Maximum Entropy, Single Constraint</h2><h3 id="Probability-Formula"><a href="#Probability-Formula" class="headerlink" title="Probability Formula"></a>Probability Formula</h3><p>The probability distribution $p(A_i)$ we want has been derived by others. It is a function of the dual variable $\beta$:</p>
 <script type="math/tex; mode=display">
-    \begin{aligned}
-        g(x;t)&=
-        \begin{cases}
-        c_1(t)y_1(x)+c_2(t)y_2(x) \equiv g_{<}, \quad x<t \\
-        d_1(t)y_1(x)+d_2(t)y_2(x) \equiv g_{>}, \quad x>t
-        \end{cases} \\ 
-        &= g_{<}+(g_{>}-g_{<})\eta(x-t), \\
-    \end{aligned}</script><p>代回原方程，整理得到对于任何检验函数 $f(x)$，</p>
+    p(A_i)=2^{-\alpha}2^{-\beta g(A_i)}</script><p>(9.12)</p>
+<p>which implies </p>
 <script type="math/tex; mode=display">
-    \left[p'(t)(g_{>}(t)-g_{<}(t))+2p(t) \left( \frac{\mathrm{d}g_{>}}{\mathrm{d}x}-\frac{\mathrm{d}g_{<}}{\mathrm{d}x}\right)_{x=t} -1\right]f(t)= p(t)(g_{>}(t)-g_{<}(t))f'(t).</script><p>由 $f(x)$ 的任意性，得 $g(x;t)$ 在 $x=t$ 处连续，而 $\frac{\mathrm{d}g(x;t)}{\mathrm{d}x}$ 在 $x=t$ 处有跃度 $\frac{1}{p(t)}$，即 </p>
+    \log _{2}\left(\frac{1}{p(A_i)}\right)=\alpha+\beta g(A_i)</script><p>(9.13)</p>
+<p>where </p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}g(x;t)}{\mathrm{d}x}\bigg |^{x=t+}_{x=t-}=\frac{1}{p(t)}</script><h3 id="常微分方程初值问题的-Green-函数"><a href="#常微分方程初值问题的-Green-函数" class="headerlink" title="常微分方程初值问题的 Green 函数"></a>常微分方程初值问题的 Green 函数</h3><p>初值问题</p>
+    \alpha=\log _{2}\left(\sum_{i}^{} 2^{-\beta g(A_i)}\right)</script><p>(9.14)</p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}g}{\mathrm{d}t^{2}}=\delta(t-\tau), \quad t>0, \tau>0,</script><script type="math/tex; mode=display">
-    g|_{t=0}=0, \quad \frac{\mathrm{d}g}{\mathrm{d}t}\bigg|_{t=0}=0</script><p>对原方程积分两次得到通解</p>
+    S=\alpha+\beta G \tag{9.15}</script><p>where $S$,$\alpha$, and $G$ are all functions of $\beta$.</p>
+<h3 id="Evaluating-the-Dual-Variable"><a href="#Evaluating-the-Dual-Variable" class="headerlink" title="Evaluating the Dual Variable"></a>Evaluating the Dual Variable</h3><script type="math/tex; mode=display">
+    0=\sum_{i}^{} [g(A_i)-G(\beta)]2^{-\beta g(A_i)}</script><p>(9.21)</p>
+<p>If this equation is multiplied by $2^{\beta G(\beta)}$, the result is </p>
 <script type="math/tex; mode=display">
-    g(t;\tau)=(t-\tau)\eta(t-\tau)+\alpha(\tau)t+\beta(\tau).</script><p>由初值条件定出</p>
+    0=f(\beta)</script><p>where the function $f(\beta)$ is </p>
 <script type="math/tex; mode=display">
-    g(t;\tau)=(t-\tau)\eta(t-\tau).</script><hr>
-<p>那么初值问题 </p>
+    f(\beta)=\sum_{i}^{} [g(A_i)-G(\beta)]2^{-\beta[g(A_i)-G(\beta)]}</script><p>(9.23)</p>
+<p>It is not difficult to show that $f(\beta)$ is a monotonic function of $\beta$ since $G(\beta)$ is a monotonic function of $\beta$.</p>
+<h3 id="Examples"><a href="#Examples" class="headerlink" title="Examples"></a>Examples</h3><p>We only focus on the magnetic dipole example.</p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}}=f(t), \quad t>0,</script><script type="math/tex; mode=display">
-    y(0)=0, \quad y'(0)=0.</script><p>就有解 </p>
-<script type="math/tex; mode=display">
-    y(t)=\int_{0}^{\infty} g(t;\tau)f(\tau) \mathrm{d}\tau=\int_{0}^{t} (t-\tau)f(\tau) \mathrm{d}\tau.</script><hr>
-<p>初值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}g(t;\tau)}{\mathrm{d}t^{2}}+k^{2}g(t;\tau)=\delta(t-\tau), \quad t>0, \tau >0,</script><script type="math/tex; mode=display">
-    g(0;\tau)=0, \quad \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}t}\bigg|_{t=0}=0.</script><p>有解</p>
-<script type="math/tex; mode=display">
-    g(t;\tau)=\frac{1}{k} \sin k(t-\tau)\eta(t-r)+C(r)\sin kt+D(r)\cos kt.</script><hr>
-<p>初值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}y}{\mathrm{d}t^{2}}+k^{2}y(t)=f(t), \quad t>0,</script><script type="math/tex; mode=display">
-    y(0)=0, \quad y'(0)=0</script><p>有解</p>
-<script type="math/tex; mode=display">
-    y(t)=\frac{1}{k}\int_{0}^{t} f(\tau)\sin k(t-\tau) \mathrm{d}\tau.</script><hr>
-<p>一般的初值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}t}\left[ p(t) \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}t}\right]+q(t) g(t;\tau)=\delta(t-\tau), \quad t>0,\tau>0;</script><script type="math/tex; mode=display">
-    g(0;\tau)=0, \quad \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}t}\bigg|_{t=0}=0,</script><p>其中 $p(t)$,$p’(t)$ 和 $q(t)$ 都是 $[0,\infty)$ 上的实连续函数， $p(t)$ 无零点.</p>
-<p>定义 $y_1(t)$ 和 $y_2(t)$ 是相应齐次线性方程的两个线性无关解. Wronsky 行列式</p>
-<script type="math/tex; mode=display">
-    W[y_1(t),y_2(t)]\equiv 
-    \begin{vmatrix}
-    y_1(t) & y_2(t) \\ 
-    y_1'(t) & y_2'(t) \\
-    \end{vmatrix}
-    \neq 0</script><p>原方程的解为</p>
-<script type="math/tex; mode=display">
-    g(t;\tau)=\frac{1}{p(\tau)}\frac{y_1(\tau)y_2(t)-y_2(\tau)y_1(t)}{W[y_1(\tau),y_2(\tau)]}\eta(t-\tau).</script><p>实际上可以去掉 $t,\tau&gt;0$ 的限制，补充条件</p>
-<script type="math/tex; mode=display">
-    p(t)=p(-t), \quad q(t)=q(-t),</script><p>并将初值条件变为 </p>
-<script type="math/tex; mode=display">
-    g(t;\tau)|_{t<\tau}=0, \quad \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}t}\bigg|_{t<\tau}=0.</script><hr>
-<p>进一步，初值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}t}\left[ p(t) \frac{\mathrm{d}y(t)}{\mathrm{d}t}\right]+q(t) y(t)=f(t), \quad t>0,</script><script type="math/tex; mode=display">
-    g(0;\tau)=0, \quad y'(0)=0</script><p>有解</p>
-<script type="math/tex; mode=display">
-    y(t)=\int_{0}^{t} g(t;\tau)f(\tau) \mathrm{d}\tau.</script><hr>
-<p>更一般的，初值问题</p>
-<script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}t}\left[ p(t) \frac{\mathrm{d}y(t)}{\mathrm{d}t}\right]+q(t) y(t)=f(t), \quad t>0,</script><script type="math/tex; mode=display">
-    g(0;\tau)=A, \quad y'(0)=B</script><p>有解（需要用到 $g(t;\tau)=g(-\tau;-t)$）</p>
+    1=p(U)+p(D)</script><p>(9.33)</p>
 <script type="math/tex; mode=display">
     \begin{aligned}
-    y(t)&=\int_{0}^{\infty} g(t;\tau)f(\tau) \mathrm{d}\tau + \left\{ p(r)\left[ y(\tau) \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}\tau}-g(t;\tau)\frac{\mathrm{d}y(\tau)}{\mathrm{d}\tau}\right] \right\}^{\infty}_{\tau=0}         \\
-    &=\int_{0}^{t} g(t;\tau) f(\tau) \mathrm{d}\tau-p(0)\left[ A \frac{\mathrm{d}g(t;\tau)}{\mathrm{d}\tau}-Bg(t;\tau)\right]_{\tau=0}
-    \end{aligned}</script><h3 id="常微分方程边值问题的-Green-函数"><a href="#常微分方程边值问题的-Green-函数" class="headerlink" title="常微分方程边值问题的 Green 函数"></a>常微分方程边值问题的 Green 函数</h3><p>边值问题</p>
+        \widetilde{E} &= e(U)p(U)+e(D)p(D) \\
+        &= m_{d}H[p(U)-p(D)] \\
+    \end{aligned}</script><p>(9.34)</p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}g(x;\xi)}{\mathrm{d}x^{2}}=\delta(x-\xi), \quad a<x,\xi<b,</script><script type="math/tex; mode=display">
-    g(a,\xi)=0, \quad g(b;\xi)=0.</script><p>有解</p>
+    S=p(U)\log _{2}\left(\frac{1}{p(A)}\right)+p(D)\log _{2}\left(\frac{1}{p(D)}\right)</script><p>(9.35)</p>
+<p>The entropy is the largest, for the energy $\widetilde{E}$ and magnetic field $H$, if </p>
 <script type="math/tex; mode=display">
-    g(x;\xi)=(x-\xi)\eta(x-\xi)-\frac{b-\xi}{b-a}(x-a).</script><hr>
-<p>边值问题</p>
+    p(U)=2^{-\alpha}2^{-\beta m_{d}H}</script><p>(9.36)</p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}g(x;\xi)}{\mathrm{d}x^{2}}+k^{2} g(x;\xi)=\delta(x-\xi), \quad a<x,\xi<b,</script><script type="math/tex; mode=display">
-    g(a;\xi)=0, \quad g(b;\xi)=0.</script><p>有解 </p>
+    p(D)=2^{-\alpha}2^{\beta m_{d}H}</script><p>(9.37)</p>
+<p>where</p>
 <script type="math/tex; mode=display">
-    g(x;\xi)=
-    \begin{cases}
-        \displaystyle -\frac{1}{k}\frac{\sin k(b-\xi)}{\sin k(b-a)}\sin k(x-a), \quad a<x<\xi, \\
-        \displaystyle -\frac{1}{k}\frac{\sin k(\xi-a)}{\sin k(b-a)} \sin k(b-x), \quad \xi<x<b.
-    \end{cases}</script><hr>
-<p>一般的边值问题</p>
+    \alpha=\log _{2}(2^{-\beta m_{d}H}+2^{\beta m_{d}H})</script><p>(9.38)</p>
+<p>and an according $f(\beta)$.</p>
+<h1 id="Energy"><a href="#Energy" class="headerlink" title="Energy"></a>Energy</h1><h2 id="Principle-of-Maximum-Entrophy-for-Physical-Systems"><a href="#Principle-of-Maximum-Entrophy-for-Physical-Systems" class="headerlink" title="Principle of Maximum Entrophy for Physical Systems"></a>Principle of Maximum Entrophy for Physical Systems</h2><p>So far we have </p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}x}\left[ p(x) \frac{\mathrm{d}g(x;\xi)}{\mathrm{d}x}\right]+q(x) g(x;\xi)=\delta(x-\xi), \quad a<x,\xi<b.</script><script type="math/tex; mode=display">
-    g(a;\xi)=0, \quad g(b;\xi)=0</script><p>有解 </p>
+    1=\sum_{i}^{} p_i</script><script type="math/tex; mode=display">
+    E=\sum_{i}^{} p_i E_i</script><script type="math/tex; mode=display">
+    S=k_B \sum_{i}^{} p_i \ln \left(\frac{1}{p_i}\right)</script><script type="math/tex; mode=display">
+    p_i=\mathrm{e}^{-\alpha} \mathrm{e}^{-\beta E_i}</script><script type="math/tex; mode=display">
+    \alpha=\ln \left(\sum_{i}^{} \mathrm{e}^{-\beta E_i} \right)=\frac{S}{k_B}-\beta E</script><h3 id="Differential-Forms"><a href="#Differential-Forms" class="headerlink" title="Differential Forms"></a>Differential Forms</h3><p>Suppose $E_i$ does not depend on an external parameter. Take differentiation.</p>
 <script type="math/tex; mode=display">
-    \begin{aligned}
-    g(x;\xi)=&-\frac{1}{p(\xi)}\frac{y_2(b)y_1(\xi)-y_1(b)y_2(\xi)}{y_1(b)y_2(a)-y_1(a)y_2(b)}\frac{y_2(a)y_1(x)-y_1(a)y_2(x)}{W[y_1(\xi),y_2(\xi)]}         \\
-    &+\frac{1}{p(\xi)}\frac{y_1(\xi)y_2(x)-y_2(\xi)y_1(x)}{W[y_1(\xi),y_2(\xi)]}\eta(x-\xi).
-    \end{aligned}</script><p>从该表达式或者构造新的 Green 函数可以得到</p>
+    0=\sum_{i}^{} \mathrm{d}p_i</script><script type="math/tex; mode=display">
+    \mathrm{d}E=\sum_{i}^{} E_i \mathrm{d}p_i</script><script type="math/tex; mode=display">
+    \mathrm{d}S=k_B \beta \mathrm{d}E</script><script type="math/tex; mode=display">
+    \mathrm{d}\alpha=-E \mathrm{d}\beta</script><script type="math/tex; mode=display">
+    \mathrm{d}p_i=-p_i(E_i-E)\mathrm{d}\beta</script><p>from which it is not difficult to show</p>
 <script type="math/tex; mode=display">
-    g(x;\xi)=g(\xi;x).</script><hr>
-<p>边值问题</p>
+    \mathrm{d}E=-\left(\sum_{i}^{} p_i(E_i-E)^{2}\right)\mathrm{d}\beta</script><script type="math/tex; mode=display">
+    \mathrm{d}S=-k_B \beta\left(\sum_{i}^{} p_i(E_i-E)^{2}\right) \mathrm{d}\beta</script><p>Note that the formula relating $\mathrm{d}E$ and $\mathrm{d}\beta$, implies that if $E$ goes up then $\beta$ goes down, and vice versa.</p>
+<h3 id="Differential-Forms-with-External-Parameters"><a href="#Differential-Forms-with-External-Parameters" class="headerlink" title="Differential Forms with External Parameters"></a>Differential Forms with External Parameters</h3><p>Each $E_i$ could be written in the form $E_i(H)$. </p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}}{\mathrm{d}x}\left[ p(x) \frac{\mathrm{d}y(x)}{\mathrm{d}x}\right]+q(x) y(x)=f(x), \quad a<x<b,</script><script type="math/tex; mode=display">
-    y(a)=A, \quad y(b)=B,</script><p>有解 </p>
+    E=\sum_{i}^{} p_i E_i(H) \tag{11.20}</script><p>So we have </p>
 <script type="math/tex; mode=display">
-    \begin{aligned}
-    y(x)&=\int_{a}^{b} g(x;\xi)f(\xi) \mathrm{d}\xi+\left\{p(\xi)\left[ y(\xi)\frac{\mathrm{d}g(x;\xi)}{\mathrm{d}\xi}-g(x;\xi)\frac{\mathrm{d}y(\xi)}{\mathrm{d}\xi}\right]\right\}^{\xi=b}_{\xi=a}         \\
-    &=\int_{a}^{b} g(x;\xi)f(\xi) \mathrm{d}\xi +Bp(b)\frac{\mathrm{d}g(x;\xi)}{\mathrm{d}\xi}\bigg|_{\xi=b}-Ap(a)\frac{\mathrm{d}g(x;\xi)}{\mathrm{d}\xi}\bigg|_{\xi=a}
-    \end{aligned}</script><hr>
-<p>无界区间上的边值问题</p>
+    0=\sum_{i}^{} \mathrm{d}p_i</script><p>(11.21)</p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}g(x;\xi)}{\mathrm{d}x^{2}}-k^{2}g(x;\xi)=\delta(x-\xi), \quad -\infty<x,\xi<\infty,</script><script type="math/tex; mode=display">
-    g(x;\xi)\big|_{x\to \pm \infty} 有界，</script><p>有解（其中 $k&gt;0$）</p>
+    \mathrm{d}E=\sum_{i}^{} E_i(H)\mathrm{d}p_i+\sum_{i}^{} p_i \mathrm{d}E_i(H)</script><p>(11.22)</p>
 <script type="math/tex; mode=display">
-    g(x;\xi)=-\frac{1}{2k}\mathrm{e}^{-k\lvert x-\xi \rvert }</script><hr>
-<p>无界区间上的边值问题</p>
+    \mathrm{d}S=k_B \beta \mathrm{d}E-k_B \beta \sum_{i}^{} p_i \mathrm{d}E_i(H)</script><p>(11.23)</p>
 <script type="math/tex; mode=display">
-    \frac{\mathrm{d}^{2}y(x)}{\mathrm{d}x^{2}}-k^{2}y(x)=f(x), \quad -\infty<x<\infty,</script><script type="math/tex; mode=display">
-    y(x)\big|_{x\to \pm \infty} 有界，</script><p>有解（其中 $k&gt;0$）</p>
+    \mathrm{d}\alpha=-E\mathrm{d}\beta-\beta \sum_{i}^{} p_i \mathrm{d}E_i(H)</script><p>(11.24)</p>
 <script type="math/tex; mode=display">
-    y(x)=-\frac{1}{2k}\int_{-\infty}^{\infty} \mathrm{e}^{-k\lvert x-\xi \rvert } f(\xi) \mathrm{d}\xi</script>
+    \mathrm{d}p_i=-p_i(E(H)-E)\mathrm{d}\beta-p_i \beta \mathrm{d}E_i(H)+p_i \beta \sum_{j}^{} p_j \mathrm{d}E_j(H)</script><p>(11.25)</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}E=-\left[\sum_{i}^{} p_i(E_i(H)-E)^{2}\right] \mathrm{d}\beta+\sum_{i}^{} p_i(1-\beta(E_i(H)-E))\mathrm{d}E_i(H)</script><p>(11.26)</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}S=-k_B \beta\left[\sum_{i}^{} p_i(E_i(H)-E)^{2}\right] \mathrm{d}\beta-k_B \beta^{2}\sum_{i}^{} p_i(E_i(H)-E)\mathrm{d}E_i(H)</script><p>(11.27)</p>
+<h2 id="System-and-Environment"><a href="#System-and-Environment" class="headerlink" title="System and Environment"></a>System and Environment</h2><h3 id="Partition-Model"><a href="#Partition-Model" class="headerlink" title="Partition Model"></a>Partition Model</h3><p>Our model for the way the total combination is partitioned into the system and the environment. We will use index $i$ for the system and the index $j$ for the environment.</p>
+<p>Whether system and environment are isolated or interacting does not affect the states or the physical properties associated with the states, although it may affect the probability of occupancy of the states.</p>
+<h3 id="Interaction-Model"><a href="#Interaction-Model" class="headerlink" title="Interaction Model"></a>Interaction Model</h3><p>Consider two adjacent dipoles that exchange their orientations ——  the one on the left ends up with the orientation that the one on the right started with, and vice versa. There are only a few cases. </p>
+<p>First, if the two dipoles started with the same orientation, nothing would change. On the other hand,if the two dipoles started with different orientations, the effect would be that the pattern of orientationshas changed. This has happened even though the dipoles themselves have not moved. Since the energy associated with the two possible alignments is different, there has been a small change in the location of the energy, even though the total energy is unchanged.</p>
+<p>Second, if both dipoles are in the system, or both are in the environment, then energy may have shifted position within the system or the environment, but has not moved between them.</p>
+<p>Third, if the two dipoles started with different alignment, and they are located one on each side of the boundary between the system and the environment, then energy has flowed from the system to the environment or vice versa. This has happened not because the dipoles have moved, but because the orientations have moved.</p>
+<h3 id="Extensive-and-Intensive-Quantities"><a href="#Extensive-and-Intensive-Quantities" class="headerlink" title="Extensive and Intensive Quantities"></a>Extensive and Intensive Quantities</h3><p>The energies of the system state and of the environment state add up to form the energy of the corresponding total state:</p>
+<script type="math/tex; mode=display">
+    E_{t,i,j}=E_{s,i}+E_{e,j} \tag{11.37}</script><p>The probability of occupancy of total state $k$ is the product of the two probabilities of the two associated states $i$ and $j$:</p>
+<script type="math/tex; mode=display">
+    p_{t,i,j}=p_{s,i}p_{e,j}</script><p>The total energy is </p>
+<script type="math/tex; mode=display">
+    E_t=\sum_{i,j}^{} E_{t,i,j}p_{t,i,j}=\sum_{j}^{} E_{e,j}p_{e,j}+\sum_{i}^{} E_{s,i}p_{s,i}=E_e+E_s</script><p>(11.39)</p>
+<p>This result holds whether the system and environment are isolated or interacting. Similarly,</p>
+<script type="math/tex; mode=display">
+    S_t=\sum_{i,j}^{} p_{t,i,j}\ln \left(\frac{1}{p_{t,i,j}}\right)=\sum_{j}^{} p_{e,j}\ln \left(\frac{1}{p_{e,j}}\right)+\sum_{i}^{} p_{s,i} \ln \left(\frac{1}{p_{s,i}}\right)=S_{e}+S_{s}</script><p>(11.40)</p>
+<p>This kind of quantity with the property that its total value is the sum of the value for the two (or more) parts is known as an <strong>extensive quantity</strong>.</p>
+<p>Not all quantities are extensive. In particular, $\alpha$ and $\beta$ are not. If the system and environment are isolated, then there is no reason why $\beta_s$ and $\beta_e$ would be related. However, if the system and environment are interacting, the distribution of energy between the system and the environment may not be known and therefore the Principle of Maximum Entropy can be applied only to the combination.</p>
+<p>Quantities like $\beta$ that are the same throughout a system when analyzed as a whole are called <strong>intensive</strong>.</p>
+<h3 id="Equilibrium"><a href="#Equilibrium" class="headerlink" title="Equilibrium"></a>Equilibrium</h3><p>After mixing the system and the environment, the total entrophy increases. The energies of the system and the environment have changed, and as a result the values of $\beta_s$ and $\beta_e$ have changed, in opposite directions. Their new values are the same (each is equal to $\beta_t$), and therefore this new value lies between the two old values.</p>
+<h3 id="Energy-Flow-Work-and-Heat"><a href="#Energy-Flow-Work-and-Heat" class="headerlink" title="Energy Flow, Work and Heat"></a>Energy Flow, Work and Heat</h3><p>Energy can be transferred by heat and work at the same time. Work is represented by changes in the energy of the individual states $\mathrm{d}E_i$, and heat by changes in the probabilities $p_i$. </p>
+<script type="math/tex; mode=display">
+    \mathrm{d}E=\sum_{i}^{} E_i(H)\mathrm{d}p_i+\sum_{i}^{} p_i \mathrm{d}E_i(H)</script><p>(11.52)</p>
+<p>where the first term is heat and the second term is work.</p>
+<h3 id="Reversible-Energy-Flow"><a href="#Reversible-Energy-Flow" class="headerlink" title="Reversible Energy Flow"></a>Reversible Energy Flow</h3><script type="math/tex; mode=display">
+    \mathrm{d}S_{s}=k_{B} \beta_{s}\mathrm{d}E_s-k_{B}\beta_s\sum_{i}^{} p_{s,i}\mathrm{d}E_{s,i}(H)=k_{B}\beta_s\left[\mathrm{d}E_{s}-\sum_{i}^{} p_{s,i}\mathrm{d}E_{s,i}(H)\right]=k_{B}\beta_{s}\mathrm{d}q_{s}</script><p>(11.55)</p>
+<p>where $\mathrm{d}q_{s}$ stands for the heat that comes into the system due to the interaction mechanism.</p>
+<p>This formula applies to the system and a similar formula applies to the environment:</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}S_{e}=k_{B}\beta_{e}\mathrm{d}q_{e} \tag{11.56}</script><p>The two heats are the same except for sign</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}q_{s}=-\mathrm{d}q_{e} \tag{11.57}</script><p>and it therefore follows that the total entropy $S_{s}+S_{e}$ is unchanged (i.e., $\mathrm{d}S_{s}=-\mathrm{d}S_{e}$ ) if and only if the two values of $\beta$ for the system and environment are the same:</p>
+<script type="math/tex; mode=display">
+    \beta_s=\beta_e \tag{11.58}</script><p>Reversible changes (with no changes in total entrophy) can involve work and heat and therefore changes in energy and entrophy for the system, but the system and the environment must have the same value of $\beta$. Otherwise, the changes are irreversible. Also, reversible changes result in no change to $\beta$.</p>
+<p>The first-order change formulas given earlier can be written to account for reversible interactions with the environment by simply setting $\mathrm{d}\beta=0$</p>
+<script type="math/tex; mode=display">
+    0=\sum_{i}^{} \mathrm{d}p_i</script><p>(11.59)</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}E=\sum_{i}^{} E_i(H)\mathrm{d}p_i+\sum_{i}^{} p_i \mathrm{d}E_i(H)</script><p>(11.60)</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}S=k_{B}\beta \mathrm{d}E-k_{B}\beta \sum_{i}^{} p_i \mathrm{d}E_i(H)</script><p>(11.61)</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}\alpha=-\beta \sum_{i}^{} p_i \mathrm{d}E_i(H)</script><p>(11.62)</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}p_i=-p_i \beta \mathrm{d}E_i(H)+p_i \beta \sum_{j}^{} p_j \mathrm{d}E_j(H)</script><p>(11.63)</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}E=\sum_{i}^{} p_i(1-\beta(E_i(H)-E))\mathrm{d}E_i(H)</script><p>(11.64)</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}S=-k_{B} \beta^{2}\sum_{i}^{} p_i(E_i(H)-E)\mathrm{d}E_i(H)</script><p>(11.65)</p>
+
               
             </div>
             <hr/>
@@ -463,15 +471,8 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  <a href="/categories/%E4%BF%A1%E6%81%AF%E8%AE%BA/" class="category-chain-item">信息论</a>
   
-  
-    <span>></span>
-    
-  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
-  
-  
-
   
 
       </span>
@@ -497,8 +498,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>常微分方程（11）</div>
-      <div>http://example.com/2022/07/19/常微分方程（11）/</div>
+      <div>Information and Entrophy (3)</div>
+      <div>http://example.com/2022/07/24/Information-and-Entrophy-3/</div>
     </div>
     <div class="license-meta">
       
@@ -510,7 +511,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月19日</div>
+          <div>2022年7月24日</div>
         </div>
       
       
@@ -540,9 +541,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/24/Information-and-Entrophy-3/" title="Information and Entrophy (3)">
+                      <a href="/2022/07/24/Neuronal-Dynamics-7/" title="Neuronal Dynamics (7)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Information and Entrophy (3)</span>
+                        <span class="hidden-mobile">Neuronal Dynamics (7)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -550,8 +551,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/07/11/Neuronal-Dynamics-6/" title="Neuronal Dynamics (6)">
-                        <span class="hidden-mobile">Neuronal Dynamics (6)</span>
+                      <a href="/2022/07/19/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%8811%EF%BC%89/" title="常微分方程（11）">
+                        <span class="hidden-mobile">常微分方程（11）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
