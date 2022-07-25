@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-07-24T13:29:38.000Z">
-<meta property="article:modified_time" content="2022-07-24T14:41:11.851Z">
+<meta property="article:modified_time" content="2022-07-25T12:20:42.538Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          357 字
+          3.3k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          3 分钟
+          28 分钟
         
       </span>
     
@@ -325,7 +325,27 @@
               
               <p>The online version of this chapter:</p>
 <p><a target="_blank" href="https://neuronaldynamics.epfl.ch/online/Ch7.html" style="position: relative; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; box-sizing: border-box; -webkit-flex-direction: row; -ms-flex-direction: row; flex-direction: row; -webkit-align-items: center; -webkit-box-align: center; -ms-flex-align: center; align-items: center; width: 390px; min-height: 84px; border-radius: 8px; max-width: 100%; overflow: hidden; margin: 16px auto; padding: 12px 12px 9px 12px; background-color: #F6F6F6;"><span class="LinkCard-contents"><span style="display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; max-height: 40px; line-height: 1.25; color: #121212;">Chapter 7 Variability of Spike Trains and Neural Codes</span><span style="display: -webkit-box; font-size: 13px; height: 18px; line-height: 18px; color: #999; word-break: break-all; text-overflow: ellipsis; overflow: hidden; -webkit-line-clamp: 1; -webkit-box-orient: vertical;"><span style="display: inline-flex; align-items: center;"><svg class="Zi Zi--InsertLink" fill="currentColor" viewBox="0 0 24 24" width="14" height="14"><path d="M13.414 4.222a4.5 4.5 0 1 1 6.364 6.364l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005a2.5 2.5 0 1 0-3.536-3.536l-3.005 3.005a.5.5 0 0 1-.707 0l-.707-.707a.5.5 0 0 1 0-.707l3.005-3.005zm-6.187 6.187a.5.5 0 0 1 .638-.058l.07.058.706.707a.5.5 0 0 1 .058.638l-.058.07-3.005 3.004a2.5 2.5 0 0 0 3.405 3.658l.13-.122 3.006-3.005a.5.5 0 0 1 .638-.058l.069.058.707.707a.5.5 0 0 1 .058.638l-.058.069-3.005 3.005a4.5 4.5 0 0 1-6.524-6.196l.16-.168 3.005-3.005zm8.132-3.182a.25.25 0 0 1 .353 0l1.061 1.06a.25.25 0 0 1 0 .354l-8.132 8.132a.25.25 0 0 1-.353 0l-1.061-1.06a.25.25 0 0 1 0-.354l8.132-8.132z"></path></svg></span><span>https://neuronaldynamics.epfl.ch/online/Ch7.html</span>&lt;/span&gt;&lt;/span&gt;</a></p>
-<h1 id="Variability-of-Spike-Trains-and-Neural-Codes"><a href="#Variability-of-Spike-Trains-and-Neural-Codes" class="headerlink" title="Variability of Spike Trains and Neural Codes"></a>Variability of Spike Trains and Neural Codes</h1><h2 id="Spiking-train-variability"><a href="#Spiking-train-variability" class="headerlink" title="Spiking train variability"></a>Spiking train variability</h2><h2 id="Mean-Firing-Rate"><a href="#Mean-Firing-Rate" class="headerlink" title="Mean Firing Rate"></a>Mean Firing Rate</h2><h2 id="Interval-distribution-and-coefficient-of-variation"><a href="#Interval-distribution-and-coefficient-of-variation" class="headerlink" title="Interval distribution and coefficient of variation"></a>Interval distribution and coefficient of variation</h2><h2 id="Autocorrelation-function-and-noise-spectrum"><a href="#Autocorrelation-function-and-noise-spectrum" class="headerlink" title="Autocorrelation function and noise spectrum"></a>Autocorrelation function and noise spectrum</h2><h2 id="Renewal-statistics"><a href="#Renewal-statistics" class="headerlink" title="Renewal statistics"></a>Renewal statistics</h2><h2 id="The-Problem-of-Neural-Coding"><a href="#The-Problem-of-Neural-Coding" class="headerlink" title="The Problem of Neural Coding"></a>The Problem of Neural Coding</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
+<h1 id="Variability-of-Spike-Trains-and-Neural-Codes"><a href="#Variability-of-Spike-Trains-and-Neural-Codes" class="headerlink" title="Variability of Spike Trains and Neural Codes"></a>Variability of Spike Trains and Neural Codes</h1><h2 id="Spiking-train-variability"><a href="#Spiking-train-variability" class="headerlink" title="Spiking train variability"></a>Spiking train variability</h2><h3 id="Are-neurons-noisy"><a href="#Are-neurons-noisy" class="headerlink" title="Are neurons noisy?"></a>Are neurons noisy?</h3><p>Termal noise: literally omnipresent. Due to the discrete nature of electric charge carriers, the voltage $u$ across any electrical resistor $R$ fluctuates at finite temperature (Johnson noise). The variance of the fluctuations at rest is $\langle \Delta u^{2} \rangle \propto RkTB$ where $k$ is the Boltzmann constant, $T$ the temperature and $B$ the bandwidth of the system. Fluctuations due to Johnson noise are of minor importance compared to other noise sources in neurons.</p>
+<p>Another source of noise arises from the finite number of ion channels in a patch of neuronal membrane. For a given constant membrane potential $u$, a fraction $P_i(u)$ of ion channel of type $i$ is open on average. The actual number of open channels fluctuates around $N_iP_i(u)$ where $N_i$ is the total number of ion channels of type $i$ in that patch of membrane.</p>
+<h3 id="Noise-from-the-Network"><a href="#Noise-from-the-Network" class="headerlink" title="Noise from the Network"></a>Noise from the Network</h3><p>Extrinsic noise: noise that are due to signal transmission and network effects (extrinsic noise). </p>
+<p>Synaptic transmission failure imposes a substantial limitation to signal transmisson with a neuronal network.</p>
+<p>Networks of excitatory and inhibitory neurons with fixed random connectivity can produce highly irregular spike trains - even in the absence of any source of noise.</p>
+<h2 id="Mean-Firing-Rate"><a href="#Mean-Firing-Rate" class="headerlink" title="Mean Firing Rate"></a>Mean Firing Rate</h2><h3 id="Rate-as-a-Spike-Count-and-Fano-Factor"><a href="#Rate-as-a-Spike-Count-and-Fano-Factor" class="headerlink" title="Rate as a Spike Count and Fano Factor"></a>Rate as a Spike Count and Fano Factor</h3><p>An experimentalist observes in trial $k$ the spikes of a given neuron. The firing rate in trial $k$ is the spike count $n_k^{sp}$ in an interval of duration $T$ divided by $T$.</p>
+<script type="math/tex; mode=display">
+    \nu_k=\frac{n_k^{sp}}{T}. \tag{7.1}</script><p>$n_k^{sp}$ mean by $\langle n^{sp}\rangle$ and deviations from the mean as $\Delta n_{k}^{sp}=n_k^{sp}-\langle n^{sp}\rangle$. Variability of the spike count measure is characterized by the Fano Factor, defined as the variance of the spike count $\langle (\Delta n^{sp})^{2}\rangle$ divided by its mean </p>
+<script type="math/tex; mode=display">
+    F=\frac{\langle (\Delta n^{sp})^{2}\rangle}{\langle n^{sp}\rangle} \tag{7.2}</script><p>In experiments, the mean and variance are estimated by averaging over $K$ trials $\langle n^{sp}\rangle=(1/K) \sum_{k=1}^{K} n_k^{sp}$ and $\langle (\Delta n^{sp})^{2}\rangle=(1/K) \sum_{k=1}^{K} (\Delta n_k^{sp})^{2}$.</p>
+<p>The firing rate defined here as spike count divided by the measurement time $T$ is identical to the inverse of the mean interspike interval.</p>
+<p>Since $1/\langle x\rangle \neq \langle (1/x)\rangle$, if we assign a variable $\tilde{\nu}(t)=1/(t^{(k+1)}-t^{(k)})$ for all times $t^{(k)}&lt;t\leqslant t^{(k+1)}$, the temporal average of $\tilde{\nu}(t)$ over a much longer time $T$ is not the same as the mean rate $\nu$ defined here as spike count divided by $T$.</p>
+<h4 id="Example-Homogeneous-Poisson-Process"><a href="#Example-Homogeneous-Poisson-Process" class="headerlink" title="Example: Homogeneous Poisson Process"></a>Example: Homogeneous Poisson Process</h4><p>Since the exact firing time of a spike does not matter (as we only focus on $\nu$), it is tempting to describe spiking as a Poisson process where spikes occur independently and stochastically with a constant rate $\nu$.</p>
+<p>In a homogeneous Poisson process, the probability to find a spike in a short segment of duration $\Delta t$ is </p>
+<script type="math/tex; mode=display">
+    P_{F}(t;t+\Delta t)=\nu \Delta t. \tag{7.3}</script><p>In other words, spike events are independent of each other and occur with a constant rate (also called stochastic intensity) defined as </p>
+<script type="math/tex; mode=display">
+    \nu= \lim_{\Delta t \to 0} \frac{P_{F}(t;t+\Delta t)}{\Delta t}. \tag{7.4}</script><p>The expected number of spikes to occur in the measuremet interval $T$ is therefore </p>
+<script type="math/tex; mode=display">
+    \langle n^{sp}\rangle=\nu T, \tag{7.5}</script><p>For a Poisson process, the Fano factor is exactly one. </p>
+<h3 id="Rate-as-a-Spike-Density-and-the-Peri-Stimulus-Time-Histogram"><a href="#Rate-as-a-Spike-Density-and-the-Peri-Stimulus-Time-Histogram" class="headerlink" title="Rate as a Spike Density and the Peri-Stimulus-Time Histogram"></a>Rate as a Spike Density and the Peri-Stimulus-Time Histogram</h3><h3 id="Rate-as-a-Population-Activity-Average-over-Several-Neurons"><a href="#Rate-as-a-Population-Activity-Average-over-Several-Neurons" class="headerlink" title="Rate as a Population Activity (Average over Several Neurons)"></a>Rate as a Population Activity (Average over Several Neurons)</h3><h2 id="Interval-distribution-and-coefficient-of-variation"><a href="#Interval-distribution-and-coefficient-of-variation" class="headerlink" title="Interval distribution and coefficient of variation"></a>Interval distribution and coefficient of variation</h2><h2 id="Autocorrelation-function-and-noise-spectrum"><a href="#Autocorrelation-function-and-noise-spectrum" class="headerlink" title="Autocorrelation function and noise spectrum"></a>Autocorrelation function and noise spectrum</h2><h2 id="Renewal-statistics"><a href="#Renewal-statistics" class="headerlink" title="Renewal statistics"></a>Renewal statistics</h2><h2 id="The-Problem-of-Neural-Coding"><a href="#The-Problem-of-Neural-Coding" class="headerlink" title="The Problem of Neural Coding"></a>The Problem of Neural Coding</h2><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2>
               
             </div>
             <hr/>
