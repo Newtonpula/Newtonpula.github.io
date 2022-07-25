@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
 <meta property="article:published_time" content="2022-07-11T07:50:54.000Z">
-<meta property="article:modified_time" content="2022-07-23T13:24:49.791Z">
+<meta property="article:modified_time" content="2022-07-25T09:24:58.457Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="神经科学">
 <meta name="twitter:card" content="summary_large_image">
@@ -597,7 +597,23 @@
 <blockquote>
 <p>这里我完全不理解上面的解法，什么是作用于 compartment $\nu$ 上的电流对于 compartment $\mu$ 的影响？另外我对于 Green 函数法解二阶线性齐次常微分方程也有问题：既然 $f(t)$ 也可以写成 $\int_{0}^{\infty} \delta(s)f(t-s) \mathrm{d}s$（积分上下限无所谓），那么为什么在数学物理方法的书上一定要求出非齐次项为 $\delta(t-s)$ 的关于两个元 $t,s$ 的 Green 函数 $G(t,s)$？</p>
 </blockquote>
-<p>We consider a network made up of a set of neurons described by (6.45) and a simple threshold criterion for generating spikes. We assume that each spike $t_j^{(f)}$ of a presynaptic neuron $j$ evokes, for $t&gt;t_j^{(f)}$, a synaptic current pulse $\alpha(t-t_j^{(f)})$ into the postsynaptic neuron $i$. The actual amplitude of the current of the current pulse depends on the strength $W_{ij}$ of the synapse that connects neuron $j$ to neuron $i$. The total input to compartment $\mu$ of neuron $i$ is thus </p>
+<hr>
+<p>This part is based on Bressloff and Taylor’s paper<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="P. C. Bressloff and J. G. Taylor (1994) Dynamics of compartmental model neurons. Neural Networks 7, pp. 1153–1165.
+">[1]</span></a></sup>.</p>
+<p>(6.45) may be written as a linear matrix equation of the form </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}\mathbf{V}}{\mathrm{d}t}=\mathbf{Q} \mathbf{V}(t)+\mathbf{I}(t)</script><script type="math/tex; mode=display">
+    \mathbf{Q}_{\mu \nu}=-\frac{\delta^{\mu \nu}}{\tau_{\mu}}+\sum_{\nu'}^{} \frac{\delta^{\nu\nu'}}{\tau_{\mu\nu'}}</script><script type="math/tex; mode=display">
+    \mathbf{I}_{\mu}(t)=\frac{1}{C_i^{\mu}}[I_{i}^{\mu}-\delta^{\mu 1}\Omega_i(t)]</script><p>where </p>
+<script type="math/tex; mode=display">
+    \frac{1}{\tau_{\mu}}=\frac{1}{C_i^{\mu}}\left[ \sum_{\nu'}^{} \frac{1}{r_i^{\mu\nu'}}+\frac{1}{R^{\mu}_{T,i}}\right], \quad \frac{1}{\tau_{\mu\nu}}=\frac{1}{C_i^{\mu}r_i^{\mu\nu}}</script><p>(the sum runs over all neighbors of compartment $\mu$) </p>
+<p>The above equation may be solved as (a bit different from (6.46))</p>
+<script type="math/tex; mode=display">
+    V_i^{\mu}(t)=\sum_{\nu}^{} \int_{t_0}^{t} G_i^{\mu\nu}(t-s)I_{\nu}(s) \mathrm{d}s +\sum_{\nu}^{} G_i^{\mu\nu}(t-t_0)V_i^{\nu}(t_0) \quad t\geqslant t_0</script><p>(maybe the second sum stands for initial condition?) with </p>
+<script type="math/tex; mode=display">
+    G_i^{\mu\nu}(t)= [\mathrm{e}^{t \mathbf{Q}}] _{\mu\nu}</script><p>This coincides with the $G_i^{\mu\nu}$ in the textbook except for a constant (maybe $C_i^{\mu}$ or something)</p>
+<hr>
+<p>We consider a network made up of a set of  neurons described by (6.45) and a simple threshold criterion for generating spikes. We assume that each spike $t_j^{(f)}$ of a presynaptic neuron $j$ evokes, for $t&gt;t_j^{(f)}$, a synaptic current pulse $\alpha(t-t_j^{(f)})$ into the postsynaptic neuron $i$. The actual amplitude of the current of the current pulse depends on the strength $W_{ij}$ of the synapse that connects neuron $j$ to neuron $i$. The total input to compartment $\mu$ of neuron $i$ is thus </p>
 <script type="math/tex; mode=display">
     I_i^{\mu}(t)=\sum_{j \in \Gamma_i^{\mu}}^{} W_{ij} \sum_{f}^{} \alpha(t-t_j^{(f)}).</script><p>(6.47)</p>
 <p>Here, $\Gamma_i^{\mu}$ denotes the set of all neurons that have a synapse with compartment $\mu$ of neuron $i$. The firing times of neuron $j$ are denoted by $t_j^{(f)}$.</p>
@@ -624,10 +640,46 @@
     \gamma(s)=q\delta(s),\tag{6.54}</script><p>where $q=C^{1}[\theta-u_r]$. The dendrite receives spike trains from other neurons $j$ and we assume that each spike evokes a current pulse with time course </p>
 <script type="math/tex; mode=display">
     \alpha(s)=\frac{1}{\tau_s}\exp \left(-\frac{s}{\tau_s}\right) \Theta(s).</script><p>(6.55)</p>
-<p>With the Green’s function we can calculate the response kernels $\eta_0(s)=\eta_i^{(1)}$ and $\varepsilon_0(s)=\varepsilon_i^{12}$ as defined in (6.51) and (6.52). We find </p>
+<p>With the Green’s function we can calculate the response kernels $\eta_0(s)=\eta_i^{(1)}$ and $\varepsilon_0(s)=\varepsilon_i^{12}$ as defined in (6.51) and (6.52). </p>
+<hr>
+<p>Calculate $\eta_0(s)$ (omit the subscript $i$):</p>
+<script type="math/tex; mode=display">
+    \begin{bmatrix}
+    \frac{\mathrm{d}V^{1}}{\mathrm{d}t} \\ 
+    \frac{\mathrm{d}V^{2}}{\mathrm{d}t} 
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    -\frac{1}{C^{1}}\left(\frac{1}{\tau^{12}}+\frac{1}{R^{1}}\right) & \frac{1}{C^{1}\tau^{12}} \\ 
+    \frac{1}{aC^{1}\tau^{12}} & -\frac{1}{aC^{1}}\left(\frac{1}{\tau^{12}}+\frac{1}{R^{2}}\right)
+    \end{bmatrix}
+    \begin{bmatrix}
+    V^{1} \\ 
+    V^{2} \\ 
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+    -q[\theta-u_r]\delta(t) \\ 
+    \frac{1}{\tau_s}\exp \left(-\frac{s}{\tau_s}\right) \Theta(s) \\
+    \end{bmatrix}</script><p>which is the form of $\displaystyle \frac{\mathrm{d}\mathbf{V}}{\mathrm{d}t}=\mathbf{Q} \mathbf{V}(t)+\mathbf{I}(t)$.</p>
+<script type="math/tex; mode=display">
+    \mathbf{Q}=
+    \begin{bmatrix}
+    -\frac{a}{(1+a)\tau^{12}}-\frac{1}{\tau_0} & \frac{a}{(1+a)\tau^{12}} \\
+    \frac{1}{(1+a)\tau^{12}} & -\frac{1}{(1+a)\tau^{12}}-\frac{1}{\tau_0} \\ 
+    \end{bmatrix}</script><p>The eigenvalues of $\mathbf{Q}$ are $\displaystyle -\frac{1}{\tau_0}$ and $\displaystyle -\frac{1}{\tau_0}-\frac{1}{\tau^{12}}$. The corresponding eigenvectors are $(1,1)^{\mathsf{T}}$ and $\displaystyle (1, -\frac{1}{a})^{\mathsf{T}}$. </p>
+<script type="math/tex; mode=display">
+    G^{11}(t)=\left[\int_{0}^{t} \mathrm{e}^{(t-s)\mathbf{Q}} \delta(s) \mathrm{d}s\right]_{11}=[\mathrm{e}^{t \mathbf{Q}}]_{11}=\frac{1}{1+a}\exp \left(-\frac{s}{\tau_0}\right)\left[1+a\exp \left(-\frac{s}{\tau_{12}}\right)\right]</script><p>So </p>
+<script type="math/tex; mode=display">
+    \eta_0(s)=-\frac{1}{C^{1}}\int_{0}^{\infty} G^{11}(s')q\delta(s-s') \mathrm{d}s'</script><p>Similarly,</p>
+<script type="math/tex; mode=display">
+    G^{12}(t)=\frac{a}{1+a}\exp \left(-\frac{t}{\tau_0}\right)\left[1-\exp \left(-\frac{t}{\tau^{12}}\right)\right]</script><p>So </p>
+<script type="math/tex; mode=display">
+    \varepsilon_0(s)=\varepsilon^{12}(s)=\frac{1}{C^{2}}\int_{0}^{\infty} G^{12}(s')\frac{1}{\tau_s}\exp \left(-\frac{s-s'}{\tau_s}\right)\Theta(s-s') \mathrm{d}s'</script><hr>
+<p>We find </p>
 <script type="math/tex; mode=display">
     \eta_0(s)=-\frac{\theta-u_r}{(1+a)}\exp \left(-\frac{s}{\tau_0}\right)\left[1+a\exp \left(-\frac{s}{\tau_{12}}\right)\right],</script><script type="math/tex; mode=display">
-    \varepsilon_0(s)=\frac{1}{(1+a)}\exp \left(-\frac{s}{\tau_0}\right)\left[\frac{1-\mathrm{e}^{-\delta_1s} }{\tau_s\delta_1}-\exp \left(-\frac{s}{\tau_{12}}\right)\frac{1-\mathrm{e}^{-\delta_2s} }{\tau_s\delta_2}\right],</script><p>(6.56)</p>
+    \varepsilon_0(s)=\frac{1}{(1+a)C^{1}}\exp \left(-\frac{s}{\tau_0}\right)\left[\frac{1-\mathrm{e}^{-\delta_1s} }{\tau_s\delta_1}-\exp \left(-\frac{s}{\tau_{12}}\right)\frac{1-\mathrm{e}^{-\delta_2s} }{\tau_s\delta_2}\right],</script><p>(6.56)</p>
 <p>with $\delta_1=\tau_s^{-1}-\tau_0^{-1}$ and $\delta_2=\tau_s^{-1}-\tau_0^{-1}-\tau_{12}^{-1}$. </p>
 <div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x176.png" srcset="/img/loading.gif" lazyload alt=""></div><div class="group-image-wrap"><img src="/img/neu_dyn/x177.png" srcset="/img/loading.gif" lazyload alt=""></div></div></div>
 <p>The kernel $\varepsilon_0(s)$ describes the voltage response of the soma to an input at the dendrite. It shows the typical time course of an excitatory or inhibitory postsynaptic potential. The time course of the kernel $\eta_0(s)$ is a double exponential and reflects the dynamics of the reset in a two-compartment model.</p>
@@ -693,7 +745,8 @@
 <li><p><strong>Spike-triggered adaptation currents</strong>. Consider a leaky integrate-and-fire model. A spike at time $t^{(f)}$ generates several adaptation currents $\mathrm{d}w_k/\mathrm{d}t=-\frac{w_k}{\tau_k}+b_k\delta(t-t^{(f)})$ with $k=1,\cdots ,K$.<br>a) Calculate the effect of the adaptation current on the voltage.<br>b) Construct a combination of spike-triggered currents that could generates slow adaptation.<br>c) Construct a combination of spike-triggered currents that could generates bursts.</p>
 </li>
 </ol>
-
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>P. C. Bressloff and J. G. Taylor (1994) Dynamics of compartmental model neurons. Neural Networks 7, pp. 1153–1165.
+<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
               
             </div>
             <hr/>
