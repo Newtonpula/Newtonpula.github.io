@@ -18,14 +18,14 @@
   
     <meta name="description" content="Chapter 9~13">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Information and Entrophy (3)">
-<meta property="og:url" content="http://example.com/2022/07/24/Information-and-Entrophy-3/index.html">
+<meta property="og:title" content="Information and Entropy (3)">
+<meta property="og:url" content="http://example.com/2022/07/24/Information-and-Entropy-3/index.html">
 <meta property="og:site_name" content="Newtonpula的自留地">
 <meta property="og:description" content="Chapter 9~13">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/index/shannon.jpg">
 <meta property="article:published_time" content="2022-07-24T09:17:52.000Z">
-<meta property="article:modified_time" content="2022-07-24T13:08:03.459Z">
+<meta property="article:modified_time" content="2022-07-26T10:13:13.287Z">
 <meta property="article:author" content="Yixiao Feng">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary_large_image">
@@ -33,7 +33,7 @@
   
   
   
-  <title>Information and Entrophy (3) - Newtonpula的自留地</title>
+  <title>Information and Entropy (3) - Newtonpula的自留地</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Information and Entrophy (3)"></span>
+            <span id="subtitle" data-typed-text="Information and Entropy (3)"></span>
           
         </div>
 
@@ -269,7 +269,7 @@
         <i class="iconfont icon-chart"></i>
         
           <!-- compatible with older versions-->
-          8.5k 字
+          14k 字
         
       </span>
     
@@ -281,7 +281,7 @@
         
         
           <!-- compatible with older versions-->
-          71 分钟
+          119 分钟
         
       </span>
     
@@ -319,7 +319,7 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Information and Entrophy (3)</h1>
+            <h1 style="display: none">Information and Entropy (3)</h1>
             
             <div class="markdown-body">
               
@@ -454,6 +454,102 @@
     \mathrm{d}E=\sum_{i}^{} p_i(1-\beta(E_i(H)-E))\mathrm{d}E_i(H)</script><p>(11.64)</p>
 <script type="math/tex; mode=display">
     \mathrm{d}S=-k_{B} \beta^{2}\sum_{i}^{} p_i(E_i(H)-E)\mathrm{d}E_i(H)</script><p>(11.65)</p>
+<h1 id="Temperature"><a href="#Temperature" class="headerlink" title="Temperature"></a>Temperature</h1><p>In this chapter we will interpret $\beta$ further, and will define its reciprocal as the temperature of the material.</p>
+<h2 id="Temperature-Scales"><a href="#Temperature-Scales" class="headerlink" title="Temperature Scales"></a>Temperature Scales</h2><p>Recall in Chapter 11 </p>
+<script type="math/tex; mode=display">
+    \frac{\mathrm{d}E}{\mathrm{d}S}=\frac{1}{k_{B}\beta}</script><p>Define the “absolute temperature” as </p>
+<script type="math/tex; mode=display">
+    T=\frac{1}{k_{B}\beta}</script><h2 id="Heat-Engine"><a href="#Heat-Engine" class="headerlink" title="Heat Engine"></a>Heat Engine</h2><p>The change in energy can be attributed to the effects of work $\mathrm{d}w$ and heat $\mathrm{d}q$</p>
+<script type="math/tex; mode=display">
+    \mathrm{d}w=\left(\frac{E}{H}\right) \mathrm{d}H</script><script type="math/tex; mode=display">
+    \mathrm{d}q=\sum_{i}^{} E_i(H) \mathrm{d}p_i =T \mathrm{d}S</script><h1 id="Quantum-Information"><a href="#Quantum-Information" class="headerlink" title="Quantum Information"></a>Quantum Information</h1><h2 id="Quantum-Information-Storage"><a href="#Quantum-Information-Storage" class="headerlink" title="Quantum Information Storage"></a>Quantum Information Storage</h2><h3 id="Model-1-Tiny-Classical-Bits"><a href="#Model-1-Tiny-Classical-Bits" class="headerlink" title="Model 1: Tiny Classical Bits"></a>Model 1: Tiny Classical Bits</h3><p>Like the magnetic dipole model, this model of the quantum bit behaves essentially like a classical bit except that its size may be very small and it mamy be able to be measured rapidly.</p>
+<h3 id="Model-2-Superposition-of-States-the-Qubit"><a href="#Model-2-Superposition-of-States-the-Qubit" class="headerlink" title="Model 2: Superposition of States (the Qubit)"></a>Model 2: Superposition of States (the Qubit)</h3><script type="math/tex; mode=display">
+    \psi=\alpha \psi_0+\beta \psi_1</script><p>When a measurement is made, the values of $\alpha$ and $\beta$ change so that one of them is $1$ and the other is $0$.</p>
+<h3 id="Model-3-Multiple-Qubits-with-Entanglement"><a href="#Model-3-Multiple-Qubits-with-Entanglement" class="headerlink" title="Model 3: Multiple Qubits with Entanglement"></a>Model 3: Multiple Qubits with Entanglement</h3><script type="math/tex; mode=display">
+    \psi=\alpha_{00} \psi_{00}+\alpha_{01} \psi_{01}+\alpha_{10}\psi_{10}+\alpha_{11} \psi_{11}</script><p>This can be thought as two qubits, one corresponding to each of the two measurements. These qubits are not independent, but rather are <strong>entangled</strong> in some way. A measurement of, for example, the first qubit will return $0$ with probability $\lvert \alpha_{00} \rvert ^{2}+\lvert \alpha_{01} \rvert ^{2}$ and if it does the wave funtion collapses to only those stationary states that are consistent with this measured value </p>
+<script type="math/tex; mode=display">
+    \psi=\frac{\alpha_{00}\psi_{00}+\alpha_{01} \psi_{01}}{\sqrt{\lvert \alpha_{00} \rvert ^{2}+\lvert \alpha_{01} \rvert ^{2}}}</script><h2 id="Bracket-Notation-for-Qubits"><a href="#Bracket-Notation-for-Qubits" class="headerlink" title="Bracket Notation for Qubits"></a>Bracket Notation for Qubits</h2><h3 id="Kets-Bras-Brackets-and-Operators"><a href="#Kets-Bras-Brackets-and-Operators" class="headerlink" title="Kets, Bras, Brackets, and Operators"></a>Kets, Bras, Brackets, and Operators</h3><p>A ket is a column vector composed of complex numbers.</p>
+<script type="math/tex; mode=display">
+    |k\rangle =
+    \begin{pmatrix}
+    k_1 \\ 
+    k_2 \\ 
+    \end{pmatrix}
+    =
+    \vec k</script><p>The two kets $|0\rangle$ and $| 1 \rangle$ are used to represent the two logical states of qubits, and have a standard vector representation </p>
+<script type="math/tex; mode=display">
+    |0 \rangle =\begin{pmatrix}
+    1 \\ 
+    0 \\ 
+    \end{pmatrix}
+    \quad
+    |1 \rangle =
+    \begin{pmatrix}
+    0 \\ 
+    1 \\ 
+    \end{pmatrix}</script><p>The superposition of $|0 \rangle$ and $|1 \rangle$ can be written as </p>
+<script type="math/tex; mode=display">
+    |\psi\rangle =\alpha |0\rangle+\beta|1 \rangle=\begin{pmatrix}
+    \alpha \\ 
+    \beta
+    \end{pmatrix}</script><hr>
+<p>Bras are the Hermitian conjugates of kets. </p>
+<script type="math/tex; mode=display">
+    \langle \psi |=(|\psi\rangle)^{\dag}=(\alpha^{*} \ \beta^{*})</script><p>($^{*}$) is the conventional notation for the conjugate of a complex number.</p>
+<hr>
+<p>The dot product is the product of a bra by a ket. It is called bracket.</p>
+<script type="math/tex; mode=display">
+    \langle q | k \rangle =\sum_{j}^{} q_j^{*}k_j</script><p>We have the very important property of kets.</p>
+<script type="math/tex; mode=display">
+    \langle \psi | \psi \rangle =\lvert \alpha \rvert ^{2}+\lvert \beta \rvert ^{2}=1</script><p>The dot product can be used to compute the probability of a qubit of being in either one of the possible states $|0\rangle$ and $|1\rangle$.</p>
+<script type="math/tex; mode=display">
+    \operatorname{Pr}(|0\rangle)=\lvert \langle 0 | \psi\rangle \rvert ^{2}=\lvert \alpha \rvert ^{2}</script><hr>
+<p>Operators are objects that transform one ket $|k\rangle$ into another ket $| q\rangle$. Operators are represented with hats: $\widehat{O}$. </p>
+<script type="math/tex; mode=display">
+    \widehat{O} | k\rangle =\begin{pmatrix}
+    o_{11} & o_{12} \\ 
+    o_{21} & o_{22} \\
+    \end{pmatrix}
+    \begin{pmatrix}
+    k_1 \\ 
+    k_2 \\ 
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    q_1 \\
+    q_2 \\ 
+    \end{pmatrix}
+    =
+    |q\rangle</script><p>Operators act on bras in a similar manner </p>
+<script type="math/tex; mode=display">
+    \langle k| \hat{O}^{\dag}=\langle q |</script><p>All quantum operators must be unitary!</p>
+<p>If we know the input and output kets, we have a easy way to construct an operator $\widehat{O}$ using the exterior product of a ket by a bra.</p>
+<script type="math/tex; mode=display">
+    \widehat{O} | k\rangle=(|q \rangle \langle k|)|k\rangle</script><h3 id="Tensor-Product-——-Composite-Systems"><a href="#Tensor-Product-——-Composite-Systems" class="headerlink" title="Tensor Product —— Composite Systems"></a>Tensor Product —— Composite Systems</h3><p>If we have two qubits $|\psi\rangle$ and $|\phi \rangle$, the system composed by these two qubits is represented by $|\psi\rangle \otimes |\phi\rangle$.</p>
+<p>The following four representations of the tensor product are made equivalent </p>
+<script type="math/tex; mode=display">
+    |q_1 \rangle \otimes |q_2\rangle \equiv |q_1\rangle | q_2 \rangle \equiv |q_1, q_2 \rangle \equiv |q_1q_2\rangle</script><p>For $n$ qubits, </p>
+<script type="math/tex; mode=display">
+    |q_1 \rangle \otimes |q_2 \rangle \otimes \cdots \otimes |q_n\rangle = \bigotimes_{j=1}^{n}|q_j\rangle</script><p>The dual of a tensor product of kets is the tensor product of the corresponding bras.</p>
+<script type="math/tex; mode=display">
+    (|q_1q_2\rangle)^{\dag}=(|q_1\rangle \otimes |q_2 \rangle )^{\dag}=\langle q_1 | \otimes \langle q_2|=\langle q_1q_2|</script><p>The result of the dot product of two composite systems is the multiplication of the individual dot products taken in order.</p>
+<script type="math/tex; mode=display">
+    \langle q_1q_2 | w_1w_2 \rangle=(\langle q_1 | \otimes \langle q_2|)(|w_1\rangle \otimes |w_2\rangle)=\langle q_1| w_1\rangle \otimes \langle q_2 | w_2 \rangle</script><h2 id="No-Cloning-Theorem"><a href="#No-Cloning-Theorem" class="headerlink" title="No Cloning Theorem"></a>No Cloning Theorem</h2><p>Qubits cannot be cloned.</p>
+<p>To show taht cloning is not possible, let us assume that an operator $\widehat{C}$ takes the information of one qubit $|\phi_1\rangle$ and copies it into another “blank” qubit, the result is a qubit $|\psi_1\rangle$ identical to $|\phi_1\rangle$, and the original $|\phi_1\rangle$ is unmodified. $\widehat{C}$ must be unitary. Thus we define $\widehat{C}$</p>
+<script type="math/tex; mode=display">
+    | Original \rangle \otimes | Blank \rangle \stackrel{\widehat{C}}{\longrightarrow} |Original \rangle \otimes  | clone \rangle</script><p>We are now ready to clone two arbitrary qubits $|\phi_1\rangle$ and<br>$| \phi_2 \rangle $ separately.</p>
+<script type="math/tex; mode=display">
+    \widehat{C} | \phi_1 \rangle | blank \rangle =| \phi_1 \rangle | \psi_1 \rangle</script><script type="math/tex; mode=display">
+    \widehat{C} | \phi_2 \rangle | blank \rangle =| \phi_2 \rangle | \psi_2 \rangle</script><p>where it is understood that $| \phi_1 \rangle =| \psi_1 \rangle $ and $| \phi_2 \rangle =| \psi_2 \rangle$, and we have given them different names to distinguish original from copy.</p>
+<p>Since the cloning machine is unitary, it preserves the dot products, so we can compare the dot product before and after cloning</p>
+<script type="math/tex; mode=display">
+    \langle \phi_2 | \langle blank | | \phi_1 \rangle | blank \rangle = \langle \phi_2 | \langle \psi_2 | | \phi_1 \rangle | \psi_1 \rangle</script><p>therefore </p>
+<script type="math/tex; mode=display">
+    \langle \phi_2 | \phi_1  \rangle \langle blank | blank \rangle =\langle \phi_2 | \phi_1 \rangle \langle \psi_2 | \psi_1 \rangle</script><p>The requirements that kets be normalized imposes that $\langle blank | blank \rangle =1$. the above equation can only be true in two cases:</p>
+<ul>
+<li>$\langle \phi_2 | \phi_1 \rangle =0$, which means that $| \phi_1 \rangle $ and $| \phi_2 \rangle $ are orthogonal. This means that we can clone states chosen at random from a set of orthogonal states. And is equivalent to say that we can clone $| 0 \rangle $ and $| 1 \rangle $, which we already knew since we do that classically all the time.</li>
+<li>$\langle \psi_2 | \psi_2 \rangle =1$, which means that $\psi_2=\psi_1$, that is, that clones obtained in each operation are identical. If the two originals were different, as we had assumed, what this result says is that the clone is independent from the original, which is quite a bizarre property for a clone!</li>
+</ul>
 
               
             </div>
@@ -498,8 +594,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Information and Entrophy (3)</div>
-      <div>http://example.com/2022/07/24/Information-and-Entrophy-3/</div>
+      <div>Information and Entropy (3)</div>
+      <div>http://example.com/2022/07/24/Information-and-Entropy-3/</div>
     </div>
     <div class="license-meta">
       
