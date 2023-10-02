@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/large_scale_model/CCEP.png">
 <meta property="article:published_time" content="2023-09-02T02:23:55.000Z">
-<meta property="article:modified_time" content="2023-10-02T11:29:09.317Z">
+<meta property="article:modified_time" content="2023-10-02T14:47:10.258Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Neuroscience">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.4k words
+          5.7k words
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          29 mins
+          48 mins
         
       </span>
     
@@ -287,11 +287,11 @@ with stochasticity coming from noise.</p>
 about indirect effects of stimulation on the brain. That's reasonable
 since - there is significant difference between SC and EC. - Clinically,
 N2 component of cortico-cortical evoked potentials (CCEPs) is observed
-<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote">&lt;span
+<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote">&lt;span
 class="hint--top hint--rounded" aria-label="Lemaréchal, Jean-Didier et
 al. "A brain atlas of axonal and synaptic delays based on modelling of
 cortico-cortical evoked potentials." Brain.
-(2022)"&gt;[4]</span></a></sup></p>
+(2022)"&gt;[5]</span></a></sup></p>
 <blockquote>
 <p>... In addition, we did not primarily consider indirect
 cortico-subcortico-cortical pathways that would rather be implicated in
@@ -304,17 +304,17 @@ close-loop network control method.</p>
 <h2 id="decos-first-model-shows-poor-propagation-ratio">Deco's first
 model shows poor propagation ratio</h2>
 <p>The model proposed by
-Deco<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote">&lt;span
+Deco<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote">&lt;span
 class="hint--top hint--rounded" aria-label="Gustavo Deco, Adrián
 Ponce-Alvarez et al. "Resting-State Functional Connectivity Emerges from
 structurally and Dynamically Shaped Slow Linear Flunctuations." The
-Journal of Neuroscience. (2013)"&gt;[1]</span></a></sup> used a
+Journal of Neuroscience. (2013)"&gt;[2]</span></a></sup> used a
 dynamical mean field approach to reduce the
-complexity<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote">&lt;span
-class="hint--top hint--rounded" aria-label="Kong-Fatt Wong &amp;
-Xiao-Jing Wang. "A Recurrent Network Mechanism of Time Integration in
-Perceptual Decisions." The Journal of Neuroscience.
-(2006)"&gt;[3]</span></a></sup>. The model is described by the following
+complexity<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote">&lt;span
+class="hint--top hint--rounded" aria-label="Kong-Fatt Wong, Xiao-Jing
+Wang. "A Recurrent Network Mechanism of Time Integration in Perceptual
+Decisions." The Journal of Neuroscience.
+(2006)"&gt;[4]</span></a></sup>. The model is described by the following
 equations:</p>
 <p><span class="math display">\[
     \frac{\mathrm{d}S_{i}(t)}{\mathrm{d}t}  = -\frac{S_{i}}{\tau_{S}}+
@@ -334,10 +334,10 @@ class="math inline">\(S_{i} \in [0,1]\)</span>.</p>
 <p>Parameters in (1) - (3) are strongly correlated with dynamics and
 bifurcation diagram of the model. Heterogeneity across cortices has been
 considered by
-Kong<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote">&lt;span
+Kong<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote">&lt;span
 class="hint--top hint--rounded" aria-label="Xiaolu Kong, Ru Kong et al.
 "Sensory-motor cortices shape functional connectivity dynamics in the
-human brain." nature communications. (2021)"&gt;[5]</span></a></sup>,
+human brain." nature communications. (2021)"&gt;[6]</span></a></sup>,
 who developed a spatially heterogeneous Deco model. Their aim is to
 minimize the difference between empirical and simulated FC as well as
 sharp transitions in FC patterns, which characterized by FCD.</p>
@@ -345,46 +345,108 @@ sharp transitions in FC patterns, which characterized by FCD.</p>
 issue</h3>
 <p>When doing a simulation of (1) - (3), various numerical methods can
 be used. We set <span class="math inline">\(\Delta t = 1 / 2000
-s\)</span>, which is small enough to avoid stability issue. Hence,</p>
-<h2 id="section"></h2>
+s\)</span>, which is small enough to avoid stability issue. Hence, we
+don't worry about using Euler–Maruyama method:</p>
+<p><span class="math display">\[
+    S_i(t+\Delta t) \thickapprox S_i(t) + \left(
+-\frac{S_i(t)}{\tau_{S}}+(1-S_i(t))\gamma H(x_i) \right) \Delta t +
+\sigma \xi \sqrt{\Delta t}, \tag{4}
+\]</span></p>
+<p>where <span class="math inline">\(\xi \sim
+\mathcal{N}(0,1)\)</span>.</p>
+<p>The RHS of (4) can goes negative or larger than 1 regardless of any
+numerical method (Euler–Maruyama, Runge-Kutta, Exponential-Euler, etc).
+That is unreasonable, so we applied a hard sigmoidal function: <span
+class="math display">\[
+    S_i(t+\Delta t) = \min (\max (\text{RHS of (4)}, 0), 1).\tag{5}
+\]</span></p>
+<p>However, whether to apply the hard sigmoidal function has a
+significant impact on dynamics.</p>
+<p>The network is in a bistable state, one with low activity and the
+other with relatively high activity. Bistable state is reported in other
+studies about neural
+network<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote">&lt;span
+class="hint--top hint--rounded" aria-label="Francesca Mastrogiuseppe,
+Srdjan Ostojic. "Linking Connectivity, Dynamics, and Computations in
+Low-Rank Recurrent Neural Networks." Neuron.
+(2018)"&gt;[1]</span></a></sup>. The low activity state in Deco's model
+is not really a stable state from the mathematics view, but a state with
+very small gradients:</p>
+<p>If stochasticity is deleted, <span class="math inline">\(I_0=0,
+\gamma = 0.641, a = 270, b=108, d=0.154\)</span> as in Deco's paper, RHS
+of (3) has the value <span class="math inline">\(6.46 \times
+10^{-6}\)</span> when all <span class="math inline">\(S_i=0\)</span>,
+which is negligible.</p>
+<p>The relatively high activity state is the stable state in the usual
+sense. From the nature of the system (1) - (3), the high activity state
+is unique (?). The real problem is that high activity state does not
+correspond to reality since <span class="math inline">\(S_i\)</span> or
+<span class="math inline">\(H(x_i)\)</span> is too large.</p>
+<div class="note note-info">
+            <p>It is mathematically interesting to investigate why adding a hardsigmoidal function reduces the likelihood that the network will switchbetween two stable states.</p>
+          </div>
+<p>Based on the code from
+Kong<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote">&lt;span
+class="hint--top hint--rounded" aria-label="Xiaolu Kong, Ru Kong et al.
+"Sensory-motor cortices shape functional connectivity dynamics in the
+human brain." nature communications. (2021)"&gt;[6]</span></a></sup>, we
+also trained parameters (<span class="math inline">\(w, \sigma, I_{0},
+G\)</span>) to suit empirical FC and FCD.</p>
+<h2 id="decos-second-model-shows-better-propagation-ratio">Deco's second
+model shows better propagation ratio</h2>
+<p>Deco proposed another
+model<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote">&lt;span
+class="hint--top hint--rounded" aria-label="Gustavo Deco, Adrián
+Ponce-Alvarez et al. "How Local Excitation-Inhibition Ratio Impacts the
+Whole Brain Dynamics." The Journal of Neuroscience.
+(2014)"&gt;[3]</span></a></sup> similar to the first one, but with
+excitatory population and inhibitory population. The model is described
+by the following equations:</p>
 <h2 id="reference">Reference</h2>
 <section class="footnotes">
 <div class="footnote-list">
 <ol>
 <li>
-<span id="fn:1" class="footnote-text"><span>Gustavo Deco, Adrián
-Ponce-Alvarez et al. "Resting-State Functional Connectivity Emerges from
-structurally and Dynamically Shaped Slow Linear Flunctuations." The
-Journal of Neuroscience. (2013)
+<span id="fn:1" class="footnote-text"><span>Francesca Mastrogiuseppe,
+Srdjan Ostojic. "Linking Connectivity, Dynamics, and Computations in
+Low-Rank Recurrent Neural Networks." Neuron. (2018)
 <a href="#fnref:1" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 <li>
 <span id="fn:2" class="footnote-text"><span>Gustavo Deco, Adrián
-Ponce-Alvarez et al. "How Local Excitation-Inhibition Ratio Impacts the
-Whole Brain Dynamics." The Journal of Neuroscience. (2014)
+Ponce-Alvarez et al. "Resting-State Functional Connectivity Emerges from
+structurally and Dynamically Shaped Slow Linear Flunctuations." The
+Journal of Neuroscience. (2013)
 <a href="#fnref:2" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 <li>
-<span id="fn:3" class="footnote-text"><span>Kong-Fatt Wong &amp;
-Xiao-Jing Wang. "A Recurrent Network Mechanism of Time Integration in
-Perceptual Decisions." The Journal of Neuroscience. (2006)
+<span id="fn:3" class="footnote-text"><span>Gustavo Deco, Adrián
+Ponce-Alvarez et al. "How Local Excitation-Inhibition Ratio Impacts the
+Whole Brain Dynamics." The Journal of Neuroscience. (2014)
 <a href="#fnref:3" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 <li>
-<span id="fn:4" class="footnote-text"><span>Lemaréchal, Jean-Didier et
-al. "A brain atlas of axonal and synaptic delays based on modelling of
-cortico-cortical evoked potentials." Brain. (2022)
+<span id="fn:4" class="footnote-text"><span>Kong-Fatt Wong, Xiao-Jing
+Wang. "A Recurrent Network Mechanism of Time Integration in Perceptual
+Decisions." The Journal of Neuroscience. (2006)
 <a href="#fnref:4" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 <li>
-<span id="fn:5" class="footnote-text"><span>Xiaolu Kong, Ru Kong et al.
+<span id="fn:5" class="footnote-text"><span>Lemaréchal, Jean-Didier et
+al. "A brain atlas of axonal and synaptic delays based on modelling of
+cortico-cortical evoked potentials." Brain. (2022)
+<a href="#fnref:5" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:6" class="footnote-text"><span>Xiaolu Kong, Ru Kong et al.
 "Sensory-motor cortices shape functional connectivity dynamics in the
 human brain." nature communications. (2021)
-<a href="#fnref:5" rev="footnote" class="footnote-backref">
+<a href="#fnref:6" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 </ol>
