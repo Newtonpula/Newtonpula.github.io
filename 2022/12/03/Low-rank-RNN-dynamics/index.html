@@ -1,0 +1,1039 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="This blog is extracted from a paper published on NeurIPS 2022. Low-rank RNN dynamics We detail the theoretical link between connectivity and low-dimensional dynamics in low-rank RNNs. Gaussian mix">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Low-rank RNN dynamics">
+<meta property="og:url" content="http://example.com/2022/12/03/Low-rank-RNN-dynamics/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="This blog is extracted from a paper published on NeurIPS 2022. Low-rank RNN dynamics We detail the theoretical link between connectivity and low-dimensional dynamics in low-rank RNNs. Gaussian mix">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-12-03T08:46:34.000Z">
+<meta property="article:modified_time" content="2023-01-19T14:04:19.067Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Low-rank RNN dynamics - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Low-rank RNN dynamics"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-03 16:46" pubdate>
+          December 3, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          110 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Low-rank RNN dynamics</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>This blog is extracted from a paper published on NeurIPS 2022.</p>
+<h1 id="low-rank-rnn-dynamics">Low-rank RNN dynamics</h1>
+<p>We detail the theoretical link between <strong>connectivity</strong>
+and <strong>low-dimensional dynamics</strong> in low-rank RNNs.</p>
+<h2 id="gaussian-mixture-low-rank-networks">Gaussian mixture low-rank
+networks</h2>
+<p>The low-ranke connectivity matrix <span class="math display">\[
+    J_{ij}=\frac{1}{N}\sum_{r=1}^{R} m_i^{(r)}n_j^{(r)}. \tag{1}
+\]</span> where <span
+class="math inline">\(\mathbf{m}^{(r)}=\{m_i^{(r)}\}_{i=1,\cdots
+,N}\)</span> and $<sup>{(r)}={n_i</sup>{(r)}}_{i=1,,N} $ for <span
+class="math inline">\(r=1,\cdots ,R\)</span></p>
+<p>Each neuron can be represented as a point in the loading space of
+dimension <span class="math inline">\(2R+N_{in}\)</span>, and the
+connectivity of the full network can be described as a set of <span
+class="math inline">\(N\)</span> points in this pattern loading
+space.</p>
+<p>In Gaussian mixture model, each neuron is assigned to a population
+<span class="math inline">\(p\)</span> with probability <span
+class="math inline">\(\alpha_p,p=1,\cdots ,P\)</span>, so that <span
+class="math inline">\(J\)</span> is a block matrix. Within population
+<span class="math inline">\(p\)</span>, the joint distribution <span
+class="math inline">\(P^{(p)}(m,n,I)\)</span> is a multivariate Gaussian
+defined by its mean <span
+class="math inline">\(\mathbf{a}^{(p)}\)</span> and its covariance <span
+class="math inline">\(\Sigma^{(p)}\)</span>, a matrix of dimension <span
+class="math inline">\((2R+N_{in})\times (2R+N_{in})\)</span>, whose
+elements are the pairwise <span class="math display">\[
+    \Sigma_{xy}^{(p)}=E[(x^{(p)}-a_x^{(p)})(y^{(p)}-a_y^{(p)})] \tag{2}
+\]</span></p>
+<p>The connectivity and input patterns are <span
+class="math inline">\(N\)</span>-dimensional vectors. We define the
+overlap, or normalized scalar product: <span class="math display">\[
+    O(\mathbf{x},\mathbf{y})=\frac{1}{N}\sum_{i=1}^{N} x_i y_i \tag{3}
+\]</span> The non-zero eigenvalues of the overlap matrix <span
+class="math inline">\(J^{ov}\)</span> defined as <span
+class="math display">\[
+    J^{ov}_{rs}=O(\mathbf{m}^{(s)},\mathbf{n}^{(r)}) \tag{4}   
+\]</span> for <span class="math inline">\(r,s=1,\cdots ,R\)</span> are
+coincide with <span class="math inline">\(J\)</span>.</p>
+<p>In a network with <span class="math inline">\(P\)</span> populations,
+any pattern <span class="math inline">\(\mathbf{x}\)</span> of length
+<span class="math inline">\(N\)</span> can be represented as a set of
+<span class="math inline">\(P\)</span> sub-patterns <span
+class="math inline">\(\mathbf{x}^{(p)}\)</span>, for <span
+class="math inline">\(p=1,\cdots ,P\)</span>, where each sub-pattern has
+length <span class="math inline">\(\alpha_pN\)</span>. The overlap
+between two patterns can be expressed as <span class="math display">\[
+    O(\mathbf{x},\mathbf{y})=\sum_{p=1}^{P} \alpha_p
+O(\mathbf{x}^{(p)},\mathbf{y}^{(p)}). \tag{5}
+\]</span></p>
+<p>In the limit of large networks, the overlap between two sub-patterns
+<span class="math inline">\(\mathbf{x}^{(p)}\)</span> and <span
+class="math inline">\(\mathbf{y}^{(p)}\)</span> is given by the expected
+value over the distribution of the loadings in the population: <span
+class="math display">\[
+    O(\mathbf{x}^{(p)},\mathbf{y}^{(p)})=E[x^{(p)}y^{(p)}]=a_x^{(p)}a_y^{(p)}+\Sigma_{xy}^{(p)}.
+\tag{6}
+\]</span></p>
+<p>In order to define the overlap matrix in terms of the statistics of
+the different Gaussian populations, we define the matrix <span
+class="math display">\[
+    \sigma_{n_r m_s}^{(p)}=\Sigma _{m_s n_r}^{(p)}. \tag{7}
+\]</span></p>
+<p>The matrix <span
+class="math inline">\(\mathbf{\sigma}_{\mathbf{mn}}^{(p)}\)</span> is a
+<span class="math inline">\(R\times R\)</span> whose entries contain the
+covariance between the connectivity patterns <span
+class="math inline">\(\mathbf{m}^{(r)}\)</span> and the <span
+class="math inline">\(\mathbf{n}^{(r)}\)</span> in population <span
+class="math inline">\(p\)</span>. We call this matrix <span
+class="math inline">\(\mathbf{\sigma}_{\mathbf{mn}}^{(p)}\)</span> a
+(reduced) covariance matrix. Using (5) and (6), we can characterize the
+overlap matrix <span class="math inline">\(J^{ov}\)</span> as a function
+of the statistics of the connectivity sub-patterns: <span
+class="math display">\[
+    J^{ov}=\sum_{p=1}^{P}
+\alpha_p(\mathbf{a}_{\mathbf{n}}^{(p)}\mathbf{a}_{\mathbf{m}}^{(p){\mathsf{T}}}+\mathbf{\sigma}_{\mathbf{mn}}^{(p)}),
+\tag{8}
+\]</span> where <span
+class="math inline">\(\mathbf{a}_{\mathbf{n}}^{(p)}\)</span> and <span
+class="math inline">\(\mathbf{a}_{\mathbf{m}}^{(p)}\)</span> are <span
+class="math inline">\(R\)</span> dimensional vectors whose entries
+correspond to the corresponding subset of elements in <span
+class="math inline">\(\mathbf{a}^{(p)}\)</span>.</p>
+<p>Similar to the covariance matrix <span
+class="math inline">\(\mathbf{\sigma}_{\mathbf{mn}}\)</span> that
+measures the correlations between connectivity patterns <span
+class="math inline">\(\mathbf{m}^{(r)}\)</span> and <span
+class="math inline">\(\mathbf{n}^{(r)}\)</span>, we define the
+covariance <span
+class="math inline">\(\mathbf{\sigma}_{\mathbf{nI}}\)</span> between the
+connectivity patterns <span
+class="math inline">\(\mathbf{n}^{(r)}\)</span> and the constant
+external input <span class="math inline">\(\mathbf{I}\)</span>, as a
+vector of length <span class="math inline">\(R\)</span>, where each
+component is defined as <span class="math display">\[
+    \sigma_{n_r I}^{(p)}=\Sigma_{n_r I}^{(p)} \tag{9}
+\]</span> for <span class="math inline">\(r=1,\cdots ,R\)</span>. We
+assume that the input loadings and loadings of the left connectivity
+patterns are uncorrelated within each pattern, <span
+class="math inline">\(\sigma_{m_r I}^{(p)}=0\)</span>.</p>
+<h2 id="low-dimensional-dynamics">Low-dimensional dynamics</h2>
+<p>We consider a network of <span class="math inline">\(N\)</span>
+units, each characterized by an activation <span class="math display">\[
+    \tau \frac{\mathrm{d}x_i}{\mathrm{d}t}=-x_i+\sum_{j=1}^{N} J_{ij}
+\phi(x_j)+\sum_{s=1}^{N_{in}} I_i^{(s)} u_s(t)+\eta_i(t). \tag{10}
+\]</span></p>
+<p>with a connectivity matrix of rank <span class="math inline">\(R\ll
+N\)</span>, written as <span class="math display">\[
+    J_{ij}=\frac{1}{N} \sum_{r=1}^{R} m_i^{(r)}n_j^{(r)}. \tag{11}
+\]</span></p>
+<p>where <span class="math inline">\(\mathbf{m}^{(r)}\)</span> are the
+left singular vectors of the connectivity matrix, and <span
+class="math inline">\(\mathbf{n}^{(r)}\)</span> are right singular
+vectors multiplied by the corresponding singular value (determined up to
+a change in sign).</p>
+<p><span class="math inline">\(m^{(r)}\)</span> vectors are all
+orthogonal to each other, and <span
+class="math inline">\(\mathbf{n}^{(r)}\)</span> vectors as well. We will
+also assume that <span class="math inline">\(\mathbf{I}^{(s)}\)</span>
+vectors are also orthogonal to each other, and to each of the <span
+class="math inline">\(\mathbf{m}^{(r)}\)</span> vectors. (non-trivial
+assumption!)</p>
+<p>Injecting (8) into (7) gives <span class="math display">\[
+    \tau
+\frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}=-\mathbf{x}(t)+\frac{1}{N}\sum_{r=1}^{R}
+\mathbf{m}^{(r)}(\mathbf{n}^{(r)})^{\mathsf{T}}\phi(\mathbf{x}(t))+\sum_{s=1}^{N_{in}}
+\mathbf{I}^{(s)}u_s(t)+\mathbf{\eta}(t), \tag{12}
+\]</span></p>
+<p>where <span class="math inline">\(\phi\)</span> is applied in an
+elementwise manner. First we describe the spontaneous dynamics (<span
+class="math inline">\(\mathbf{\eta}(t)=0\)</span>).</p>
+<p>A direct consequence of (9) is that the vector of neural activations
+<span class="math inline">\(\mathbf{x}(t)\)</span> is constrained to
+evolve in a subspace spanned by the vectors <span
+class="math inline">\(\mathbf{m}^{(r)}\)</span> and <span
+class="math inline">\(\mathbf{I}^{(s)}\)</span>, of dimension <span
+class="math inline">\(R+N_{in}\)</span>. Since these vectors form a
+basis of this subspace, one can decompose <span
+class="math inline">\(\mathbf{x}(t)\)</span> as: <span
+class="math display">\[
+    \mathbf{x}(t)=\sum_{r=1}^{R}
+\kappa_r(t)\mathbf{m}^{(r)}+\sum_{s=1}^{N_{in}} v_s(t)\mathbf{I}^{(s)},
+\tag{13}
+\]</span></p>
+<p>where the <span class="math inline">\(\kappa_r(t)\)</span> are a set
+of recurrently generated latent variables, defined as the projection of
+<span class="math inline">\(\mathbf{x}(t)\)</span> on <span
+class="math inline">\(\mathbf{m}^{(r)}\)</span>: <span
+class="math display">\[
+    \kappa_r(t):= \frac{1}{\left\| \mathbf{m}^{(r)} \right\|_{}
+^{2}}\sum_{j=1}^{N} m_j^{(r)}x_j(t), \tag{14}
+\]</span></p>
+<p>and the <span class="math inline">\(v_s(t)\)</span> are low-pass
+filtered versions of the input signals <span
+class="math inline">\(u_s(t)\)</span>, following: <span
+class="math display">\[
+    \tau \frac{\mathrm{d}v_s}{\mathrm{d}t}=-v_s(t)+u_s(t). \tag{15}
+\]</span></p>
+<p>The dynamics of the internal variables <span
+class="math inline">\(\kappa_r(t)\)</span> can also be described by a
+set of self-consistent differential equations, obtained by projecting
+equation (9) on each <span
+class="math inline">\(\mathbf{m}^{(r)}\)</span>: <span
+class="math display">\[
+    \tau
+\frac{\mathrm{d}\kappa_r}{\mathrm{d}t}=-\kappa_r(t)+\frac{1}{N}\sum_{j=1}^{N}
+n_j^{(r)} \phi(x_j(t)), \tag{16}
+\]</span></p>
+<p>Let <span
+class="math inline">\(\kappa_{r}^{rec}(t)=\frac{1}{N}\sum_{j=1}^{N}
+n_j^{(r)}\phi(x_j(t))\)</span>, which represents the recurrent
+contribution to the input of <span class="math inline">\(r\)</span>-th
+latent variable, can be extended as: <span class="math display">\[
+    \kappa_r^{rec}(t)=\frac{1}{N}\sum_{j=1}^{N} n_j^{(r)}\phi\left(
+\sum_{r&#39;=1}^{R} \kappa_{r&#39;}(t)m_j^{(r&#39;)}+\sum_{s=1}^{N_{in}}
+v_s(t)I_j^{(s)}\right), \tag{17}
+\]</span> which only depends on the set of <span
+class="math inline">\(\kappa_r(t)\)</span> and <span
+class="math inline">\(v_s(t)\)</span> functions, closing the system of
+equations.</p>
+<ol start="13" type="1">
+<li>and (14) show that a rank-<span class="math inline">\(R\)</span> RNN
+is an R-dimensional dynamical system, which can be written as: <span
+class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t}\mathbf{\kappa}(t)=F(\mathbf{\kappa}(t),\mathbf{u}(t))
+\tag{18}   
+\]</span> wich <span class="math inline">\(\mathbf{\kappa}(t)\)</span>
+an <span class="math inline">\(R\)</span>-dimensional state-space
+vector, and <span class="math inline">\(\mathbf{u}(t)\)</span> the <span
+class="math inline">\(N_{in}\)</span>-dimensional vector of input
+signals. <span class="math inline">\(F\)</span> represents a non-linear
+map from <span class="math inline">\(\mathbb{R}^{N_{in}+R}\)</span> to
+<span class="math inline">\(\mathbb{R}^{R}\)</span> that depends
+exclusively on the parameters defining the network connectivity, that is
+the <span class="math inline">\(\{
+I_i^{(s)},m_i^{(s)},n_i^{(r)}\}_{s,r,i}\)</span>. These parameters can
+be chosen in order to approximate any non-linear map <span
+class="math inline">\(F\)</span>.</li>
+</ol>
+<h2 id="dynamics-in-multi-population-networks">Dynamics in
+multi-population networks</h2>
+<p>We focus in the following on networks receiving a constant input, so
+that there is only one collective variable <span
+class="math inline">\(\kappa_{I}\)</span> along the input dimension, the
+value of which is constant. The recurrent connectivity contributes to
+the dynamics of <span class="math inline">\(\kappa_r\)</span> through
+the term <span class="math inline">\(\kappa_r^{rec}\)</span>.</p>
+<p>For low-rank networks in which pattern loadings are generated for
+each neuron from a Gaussian mixture distribution, in the limit of large
+<span class="math inline">\(N\)</span> the dynamics in (16) can be
+expressed in terms of the statistics of pattern loadings over the
+populations, and become <span class="math display">\[
+    \tau \frac{\mathrm{d}\kappa_r}{\mathrm{d}t}=-\kappa_r
++\kappa_r^{rec} \tag{19}      
+\]</span></p>
+<p>Using the probability distribution, the recurrent dynamics in (17)
+can be expressed as <span class="math display">\[
+\begin{aligned}
+    \kappa_r^{rec}&amp;=\sum_{p=1}^{P} \alpha_p \int
+\mathrm{d}\underline{m}\mathrm{d}\underline{n}\mathrm{d}I
+P_{(p)}(\underline{m},\underline{n},I)n_r^{(p)}\phi\left(I^{(p)}\kappa_{I}+\sum_{l=1}^{R}
+m_l^{(p)}\kappa_l\right) \\
+    &amp;=\sum_{p=1}^{P} \alpha_p \int_{}^{} \mathrm{d}I
+\mathrm{d}\underline{m}P_{(p)}(\underline{m},I)a_{n_r}^{(p)}\phi\left(I^{(p)}\kappa_{I}+\sum_{l=1}^{R}
+m_l^{(p)}\kappa_l\right)\\
+    &amp;+\sum_{p=1}^{P} \alpha_p \int \mathrm{d}n_r \mathrm{d}I
+\mathrm{d}\underline{m}P_{(p)}(\underline{m},n_r,I)\left(n_r^{(p)}-a_{n_r}^{(p)}\right)\phi\left(I^{(p)}\kappa_{I}+\sum_{l=1}^{R}
+m_l^{(p)}\kappa_l\right)
+\end{aligned}
+\]</span></p>
+<h3 id="steins-lemma">Stein's Lemma</h3>
+<p>Suppose <span class="math inline">\(X\)</span> is a normally
+distributed random variable with expectation <span
+class="math inline">\(\mu\)</span> and variance <span
+class="math inline">\(\sigma^{2}\)</span>. Further suppose <span
+class="math inline">\(g\)</span> is a function for which the two
+expectations <span class="math inline">\(E(g(X)(X-\mu))\)</span> and
+<span class="math inline">\(E(g&#39;(X))\)</span> both exist. Then <span
+class="math display">\[
+    E(g(X)(X-\mu))=\sigma^{2}E(g&#39;(X)).
+\]</span> In general, suppose <span class="math inline">\(X\)</span> and
+<span class="math inline">\(Y\)</span> are jointly normally distributed.
+Then <span class="math display">\[
+    \operatorname{Cov}(g(X),Y)=\operatorname{Cov}(X,Y)E(g&#39;(X)).
+\]</span></p>
+<p>Proofs are left.</p>
+<p>Suppose <span class="math inline">\(X\)</span> is in an exponential
+family, that is, <span class="math inline">\(X\)</span> has the density
+<span class="math display">\[
+    f_{\eta}(x)=\exp (\eta&#39;T(x)-\Psi(\eta))h(x).
+\]</span> Suppose this density has support <span
+class="math inline">\((a,b)\)</span> where <span
+class="math inline">\(a,b\)</span> could be <span
+class="math inline">\(-\infty,\infty\)</span> and as <span
+class="math inline">\(x \to a\)</span> or <span
+class="math inline">\(b\)</span>, <span class="math inline">\(\exp
+(\eta&#39;T(x))h(x)g(x)\to 0\)</span> where <span
+class="math inline">\(g\)</span> is any differentiable function such
+that <span class="math inline">\(E \lvert g&#39;(X) \rvert
+&lt;\infty\)</span> or <span class="math inline">\(\exp
+(\eta&#39;T(x))h(x)\to 0\)</span> if <span
+class="math inline">\(a,b\)</span> finite. Then <span
+class="math display">\[
+    E((h&#39;(X)/h(X)+\sum_{}^{} \eta_i T_i&#39;(X))g(X))=-Eg&#39;(X).
+\]</span> The derivation is same as the special case, namely,
+integration by parts.</p>
+<p>If we only know <span class="math inline">\(X\)</span> has support
+<span class="math inline">\(\mathbb{R}\)</span>, then it could be the
+case that <span class="math inline">\(E\lvert g(X) \rvert
+&lt;\infty\)</span> and <span class="math inline">\(E\lvert g&#39;(X)
+\rvert &lt;\infty\)</span> but <span class="math inline">\(\lim_{x \to
+\infty}f_{\eta}(x)g(x)\neq 0\)</span>. To see this, simply put <span
+class="math inline">\(g(x)=1\)</span> and <span
+class="math inline">\(f_{\eta}(x)\)</span> with infinitely spikes
+towards infinity but still integrable. One such example could be adapted
+from <span class="math display">\[
+    f(x)=\begin{cases}
+        1 \quad x \in [n,n+2^{-n}) \\
+        0 \quad \text{otherwise}
+    \end{cases}
+\]</span> so that <span class="math inline">\(f\)</span> is smooth.</p>
+<p>Extensions to elliptically-contoured distributions also exist.</p>
+<hr />
+<p>Using Stein's Lemma in the second term, and expressing the argument
+of the transfer function as a single Gaussian variable, we can express
+the dynamics as <span class="math display">\[
+    \begin{aligned}
+        \kappa_r^{rec}&amp;=\sum_{p=1}^{P} \alpha_p a_{n_r}^{(p)} \int
+Dx\ \phi \left( a_{I}^{(p)}\kappa_{I} +\sum_{s=1}^{R}
+a_{m_s}^{(p)}\kappa_s +x
+\sqrt{\sigma_{I^{2}}^{(p)}\kappa_{I}^{2}+\sum_{s&#39;=1}^{R}
+\sigma_{m_{s&#39;}^{2}}^{(p)}\kappa_{s&#39;}^{2}}\right)\\
+        &amp;+\sum_{p=1}^{P} \alpha_{p}\left(
+\sigma_{n_rI}^{(p)}\kappa_{I}+\sum_{s=1}^{R} \sigma_{n_r
+m_s}^{(p)}\kappa_s \right) \int Dx\ \phi&#39;\left(
+\alpha_{I}^{(p)}\kappa_{I}+\sum_{s=1}^{R} a_{m_s}^{(p)}\kappa_s+x
+\sqrt{\sigma_{I^{2}}^{(p)}\kappa_{I}^{2}+\sum_{s&#39;=1}^{R}
+\sigma_{m_{s&#39;}^{2}}^{(p)}\kappa_{s&#39;}^{2}} \right)
+    \end{aligned}
+\]</span> where $Dx=x (2)<sup>{-}</sup>{-} $.</p>
+<p>Using the Gaussian integral notation: <span class="math display">\[
+    \langle f(\mu,\Delta)\rangle=\int_{}^{}
+\frac{1}{\sqrt{2\pi}}\mathrm{e}^{-x^{2}/2} f(\mu+\sqrt{\Delta}x)
+\mathrm{d}x.
+\]</span></p>
+<p>we retrieve:</p>
+<p><span class="math display">\[
+    \kappa_r^{rec}=\sum_{p=1}^{P}
+\alpha_p\left[a_{n_r}^{(p)}\left\langle \phi\left(
+\mu^{(p)},\Delta^{(p)}\right)\right\rangle+\left( \sigma_{n_r
+I}^{(p)}\kappa_{I}+\sum_{s=1}^{R} \sigma_{n_r
+m_s}^{(p)}\kappa_s\right)\left\langle \phi&#39;\left(
+\mu^{(p)},\Delta^{(p)}\right)\right\rangle\right] \tag{20}
+\]</span></p>
+<p>Here <span class="math inline">\(\mu^{(p)}\)</span> and <span
+class="math inline">\(\Delta ^{(p)}\)</span> are the mean and variance
+of input to population <span class="math inline">\(p\)</span>, given by
+<span class="math display">\[
+    \mu^{(p)}=a_{I}^{(p)}\kappa_{I}+\sum_{s=1}^{R} a_{m_s}^{(p)}\kappa_s
+\tag{21}
+\]</span> <span class="math display">\[
+    \Delta^{(p)}=\sigma_{I^{2}}^{(p)}\kappa_{I}^{2}+\sum_{r=1}^{R}
+\sigma_{m_r^{2}}^{(p)}\kappa_r^{2}. \tag{22}
+\]</span></p>
+<p>The factor <span class="math inline">\(\langle \phi&#39;(\mu^{(p)},
+\Delta^{(p)})\rangle\)</span> in (20) corresponds to the average gain of
+neurons in populations <span class="math inline">\(p\)</span> in a given
+state. For each population, this average gain multiplies the covariances
+<span class="math inline">\(\sigma_{m_l n_r}^{(p)}\)</span> and <span
+class="math inline">\(\sigma_{n_r I}^{(p)}\)</span>, and the
+corresponding average over populations defines an effective connectivity
+<span class="math display">\[
+    \tilde{\sigma}_{xy}=\sum_{p=1}^{P} \alpha_p \sigma_{xy}^{(p)}\langle
+\phi&#39;(\mu^{(p)},\Delta^{(p)})\rangle. \tag{23}
+\]</span></p>
+<h2 id="mean-field-approximation">Mean-field approximation</h2>
+<p>Every neuron <span class="math inline">\(i\)</span> can be seen as a
+point as in a <span
+class="math inline">\((N_{in}+2R)\)</span>-dimensional connectivity
+space of coordinates <span class="math inline">\((I,n,m)\)</span>. We
+assume that these points are sampled from a probability distribution
+<span class="math inline">\(P(I,n,m)\)</span> which is a
+mixture-of-Gaussian. <span class="math display">\[
+    P(n,m,I,w):=\sum_{p=1}^{P} \alpha_p \mathcal{N}(\mathbf{\mu}_p,
+\mathbf{\Sigma}_p), \tag{19}
+\]</span></p>
+<p>We add the simplifying assumption that <span
+class="math inline">\(\mathbf{\mu}_p= \mathbf{0}\)</span>. Following a
+mean-field approximation, the dynamics in (13) can be simplified for
+each <span class="math inline">\(r\)</span> to: <span
+class="math display">\[
+    \frac{\mathrm{d}\kappa_r}{\mathrm{d}t}=-\kappa_r(t)+\sum_{r&#39;=1}^{R}
+\tilde{\sigma}_{n^{(r)}m^{(r&#39;)}}\kappa_{r&#39;}(t)+\sum_{s=1}^{N_{in}}
+\tilde{\sigma}_{n^{(r)}I^{(s)}}v_s(t). \tag{20}       
+\]</span></p>
+<p>where for any connectivity parameters <span
+class="math inline">\(a,b\)</span> in <span
+class="math inline">\(\{m^{(r)},n^{(r)},I^{(s)}\}\)</span>, <span
+class="math inline">\(\tilde{\sigma}_{ab}\)</span> represents an
+effective coupling, given by a weighted average over populations of the
+associated covariances: <span class="math display">\[
+    \tilde{\sigma}_{ab}=\sum_{p=1}^{P} \alpha_p \sigma_{ab}^{(p)}\langle
+\Phi&#39;\rangle _p, \tag{21}
+\]</span> where <span class="math inline">\(\sigma_{ab}^{(p)}\)</span>
+represent the covariance between parameters <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span> in the <span
+class="math inline">\(p\)</span>-th component (e.g. <span
+class="math inline">\(\sigma_{n^{(1)}m^{(2)}}^{(p)}=\frac{1}{N}\sum_{i\in
+p}^{} n_i^{(1)}m_i^{(2)}\)</span>), and <span
+class="math inline">\(\langle \Phi&#39;\rangle _p\)</span> represents an
+average gain over neurons of the <span
+class="math inline">\(p\)</span>-th component, defined as the average
+over these neurons of the derivative of the neural transfer function
+<span class="math inline">\(\phi&#39;(x_i)\)</span>. Since these gains
+are distributed normally on each population, this average depends
+non-linearly on the <span class="math inline">\(\kappa_r\)</span> and
+<span class="math inline">\(v_s\)</span> values following equation:
+<span class="math display">\[
+    \langle \Phi&#39;\rangle _p=\langle \Phi&#39;\rangle
+\left(\sqrt{\sum_{r&#39;=1}^{R}
+(\sigma^{(p)}_{m^{(r&#39;)}})^{2}\kappa_{r&#39;}^{2}+\sum_{s=1}^{}
+N_{in}(\sigma_{I^{(s)}}^{(p)})^{2}v_s^{2}}\right), \tag{22}
+\]</span> where <span class="math inline">\(\langle \Phi&#39;\rangle
+(\Delta)\)</span> is the Gaussian integral: <span
+class="math display">\[
+    \langle \Phi&#39;\rangle
+(\Delta)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}
+\mathrm{e}^{-z^{2}/2} \phi&#39;(\Delta z) \mathrm{d}z. \tag{23}
+\]</span></p>
+<p>These equaitons finish to make the system given by (18) a closed
+system of non-linear coupled differential equations where the unknowns
+are the variables <span class="math inline">\(\kappa_r(t)\)</span>.</p>
+<h2 id="intuitive-interpretation-of-the-mean-field-results">Intuitive
+interpretation of the mean-field results</h2>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Low-rank RNN dynamics</div>
+      <div>http://example.com/2022/12/03/Low-rank-RNN-dynamics/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 3, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

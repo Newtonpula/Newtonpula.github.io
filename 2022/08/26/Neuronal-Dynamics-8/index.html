@@ -1,0 +1,1221 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Noisy Input Models - Barrage of Spike Arrivals">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neuronal Dynamics (8)">
+<meta property="og:url" content="http://example.com/2022/08/26/Neuronal-Dynamics-8/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Noisy Input Models - Barrage of Spike Arrivals">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-08-26T12:40:53.000Z">
+<meta property="article:modified_time" content="2022-11-14T14:17:31.667Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="神经科学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
+  
+  
+  
+  <title>Neuronal Dynamics (8) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (8)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-08-26 20:40" pubdate>
+          August 26, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          18k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          147 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Neuronal Dynamics (8)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="noisy-input-models-barrage-of-spike-arrivals">Noisy Input
+Models: Barrage of Spike Arrivals</h1>
+<p>The online version of this chapter:</p>
+<hr />
+<p>Chapter 8 Noisy Input Models: Barrage of Spike Arrivals
+https://neuronaldynamics.epfl.ch/online/Ch8.html</p>
+<hr />
+<h2 id="noise-input">Noise input</h2>
+<p>Modeling the noisiness of the input amounts to splitting the input
+current into two components, a deterministic and a stochastic one <span
+class="math display">\[
+    I(t)=I^{det}(t)+I^{noise}(t), \tag{8.1}
+\]</span></p>
+<p><span class="math inline">\(I^{det}\)</span>: known or at least
+predictable. <span class="math inline">\(I^{noise}\)</span>:
+unpredictable or noisy.</p>
+<p>For example, during an in vitro study with intracellular current
+injection, <span class="math inline">\(I^{det}\)</span> would be the
+current that is set on the switchboard of the current generator, but the
+actual current fluctuates around the preset value because of finite
+temperature.</p>
+<p>A nonlinear integrate-and-fire model with noisy input has the voltage
+equation <span class="math display">\[
+    \tau_m\frac{\mathrm{d}}{\mathrm{d}t}u=f(u)+RI^{det}(t)+RI^{noise}(t).
+\tag{8.2}
+\]</span> If <span class="math inline">\(u\)</span> reaches the
+threshold <span class="math inline">\(\theta_{reset}\)</span>, the
+integration is stopped and the membrane potential reset to <span
+class="math inline">\(u_r\)</span>.</p>
+<h3 id="white-noise">White noise</h3>
+<p>Formulate the noise term <span
+class="math inline">\(RI^{noise}\)</span> in the differential equation
+of the membrane voltage as a 'white noise', <span
+class="math inline">\(RI^{noise}(t)=\xi(t)\)</span>. White noise <span
+class="math inline">\(\xi\)</span> is a stochastic process characterized
+by its expectation value, <span class="math display">\[
+    \langle \xi(t) \rangle =0, \tag{8.3}
+\]</span> and the autocorrelation <span class="math display">\[
+    \langle \xi(t)\xi(t&#39;)\rangle=\sigma^{2} \tau_m \delta(t-t&#39;),
+\tag{8.4}
+\]</span> where <span class="math inline">\(\sigma\)</span> is the
+amplitude of the noise (in units of voltage) and <span
+class="math inline">\(\tau_m\)</span> the time constant of (8.2). (8.4)
+indicates that the process <span class="math inline">\(\xi\)</span> is
+uncorrelated in time: knowledge of the value <span
+class="math inline">\(\xi\)</span> at time <span
+class="math inline">\(t\)</span> does not enable us to predict its value
+at any other time <span class="math inline">\(t&#39;\neq t\)</span>.</p>
+<p>The Fourier transform of the autocorrelation function (8.4) yields
+the power spectrum. The power spectrum of white noise is flat, i.e., the
+noise is equally strong at all frequencies.</p>
+<p>Stochastic differential equation, i.e., an equation for a stochastic
+process, <span class="math display">\[
+    \tau_m
+\frac{\mathrm{d}}{\mathrm{d}t}u(t)=f(u(t))+RI^{det}(t)+\xi(t), \tag{8.5}
+\]</span> also called <strong>Langevin equation</strong>.</p>
+<p>In the mathematical literature, a different style of writing the
+Langevin equation dominates. <span class="math display">\[
+    \mathrm{d}u=f(u)\frac{\mathrm{d}t}{\tau_m}+RI^{det}(t)\frac{\mathrm{d}t}{\tau_m}+\sigma
+\mathrm{d}W_{t}, \tag{8.6}
+\]</span> where <span class="math inline">\(\mathrm{d}W_{t}\)</span> are
+the increments of the <strong>Wiener process</strong> in a short time
+<span class="math inline">\(\mathrm{d}t\)</span>, that is, <span
+class="math inline">\(\mathrm{d}W_{t}\)</span> are random variables
+drawn from a Gaussian distribution with zero mean and variance
+proportional to the step size <span
+class="math inline">\(\mathrm{d}t\)</span> (therefore its standard
+deviation is proportional to <span
+class="math inline">\(\sqrt{\mathrm{d}t}\)</span>). White noise which is
+Gaussian distributed is called Gaussian white noise.</p>
+<h4
+id="example-leaky-integrate-and-fire-model-with-white-noise-input">Example:
+Leaky integrate-and-fire model with white noise input</h4>
+<p>In the case of the leaky integrate-and-fire model (with voltage scale
+chosen such that the resting potential is at zero), the stochastic
+differential equation is <span class="math display">\[
+    \tau_m \frac{\mathrm{d}}{\mathrm{d}t}u(t)=-u(t)+RI^{det}(t)+\xi(t),
+\tag{8.7}
+\]</span> which is called the <strong>Ornstein-Uhlenbeck
+process</strong>.</p>
+<p>The fluctuates of the membrane potential have an autocorrelation with
+characteristic time <span class="math inline">\(\tau_m\)</span>.</p>
+<h3 id="noisy-versus-noiseless-membrane-potential">Noisy versus
+noiseless membrane potential</h3>
+<p>Consider (8.7) for constant <span
+class="math inline">\(\sigma\)</span>. At <span
+class="math inline">\(t=\hat{t}\)</span> the membrane potential starts
+at a value <span class="math inline">\(u=u_r=0\)</span>. The solution
+for <span class="math inline">\(t&gt;\hat{t}\)</span> is <span
+class="math display">\[
+    u(t)=\frac{R}{\tau_m}\int_{0}^{t-\hat{t}} \mathrm{e}^{-s/\tau_m}
+I^{det}(t-s) \mathrm{d}s+\frac{1}{\tau_m}\int_{0}^{t-\hat{t}}
+\mathrm{e}^{-s/\tau_m} \xi(t-s) \mathrm{d}s.     
+\]</span> (8.9)</p>
+<p>Since <span class="math inline">\(\langle \xi(t)\rangle=0\)</span>,
+the expected trajectory of the membrane potential is <span
+class="math display">\[
+    u_0(t)=\langle
+u(t|\hat{t})\rangle=\frac{R}{\tau_m}\int_{0}^{t-\hat{t}}
+\mathrm{e}^{-s/\tau_m} I^{det}(t-s) \mathrm{d}s.
+\]</span> (8.10)</p>
+<p>In particular, for constant input current <span
+class="math inline">\(I^{det}(t)\equiv I_0\)</span> we have <span
+class="math display">\[
+    u_0(t)=u_{\infty}[1-\mathrm{e}^{-(t-\hat{t})/\tau_m}] \tag{8.11}
+\]</span> with <span class="math inline">\(u_{\infty}=RI_0\)</span>.</p>
+<p>The variance <span class="math inline">\(\langle \Delta
+u^{2}\rangle\)</span> can be evaluated as <span class="math display">\[
+    \langle \Delta u^{2}(t)\rangle
+=\frac{1}{\tau_m^{2}}\int_{0}^{t-\hat{t}} \int_{0}^{t-\hat{t}}
+\mathrm{e}^{-s/\tau_m} \mathrm{e}^{-s&#39;/\tau_m} \langle
+\xi(t-s)\xi(t-s&#39;)\rangle \mathrm{d}s&#39; \mathrm{d}s
+\]</span> (8.12)</p>
+<p>We use <span class="math inline">\(\langle
+\xi(t-s)\xi(t-s&#39;)\rangle=\sigma^{2}\tau_m\delta(s-s&#39;)\)</span>
+and perform the integration. The result is <span class="math display">\[
+    \langle \Delta
+u^{2}(t)\rangle=\frac{1}{2}\sigma^{2}\left[1-\mathrm{e}^{-2(t-\hat{t})/\tau_m}
+\right] \tag{8.13}
+\]</span></p>
+<p>If the threshold is high enough so that firing is a rare event, the
+typical distance between the actual trajectory and the mean trajectory
+approaches with time constant <span
+class="math inline">\(\tau_m/2\)</span> a limiting value <span
+class="math display">\[
+    \sqrt{\langle \Delta
+u_{\infty}^{2}\rangle}=\frac{1}{\sqrt{2}}\sigma. \tag{8.14}
+\]</span></p>
+<h3 id="colored-noise">Colored Noise</h3>
+<p>A noise term with a power spectrum which is not flat is called
+colored noise. Colored noise <span
+class="math inline">\(I^{noise}(t)\)</span> can be generated from white
+noise by suitable filtering. For example, low-pass filtering <span
+class="math display">\[
+    \tau_s
+\frac{\mathrm{d}I^{noise}(t)}{\mathrm{d}t}=-I^{noise}(t)+\xi(t),
+\tag{8.15}
+\]</span> where <span class="math inline">\(\xi(t)\)</span> is the white
+noise process.</p>
+<p>Integrate (8.15) so as to arrive at <span class="math display">\[
+    I^{noise}(t)=\int_{0}^{\infty} \kappa(s)\xi(t-s) \mathrm{d}s,
+\tag{8.16}
+\]</span></p>
+<p>where <span class="math inline">\(\kappa(s)\)</span> is an
+exponential low-pass filter with time constant <span
+class="math inline">\(\tau_s\)</span> (Actually <span
+class="math inline">\(\kappa(s)=\exp (-s/\tau_s)/\tau_s\)</span>). The
+autocorrelation function is therefore <span class="math display">\[
+    \langle I^{noise}(t)I^{noise}(t&#39;)\rangle =\int_{0}^{\infty}
+\int_{0}^{\infty} \kappa(s)\kappa(s&#39;)\langle
+\xi(t-s)\xi(t&#39;-s&#39;)\rangle \mathrm{d}s&#39; \mathrm{d}s.
+\]</span> (8.17)</p>
+<p>We exploit the definition of the white noise correlation function in
+(8.4) and find <span class="math display">\[
+    \langle I^{noise}(t)I^{noist}(t&#39;)\rangle=a \exp
+\left(-\frac{\lvert t-t&#39; \rvert }{\tau_s}\right) \tag{8.18}
+\]</span> with a amplitude factor <span
+class="math inline">\(a\)</span>. That means knowledge of the input
+current at time <span class="math inline">\(t\)</span> gives us a hint
+about the input current shortly afterward, as long as <span
+class="math inline">\(\lvert t&#39;-t \rvert \ll \tau_s\)</span>.</p>
+<p>The noise spectrum is flat for frequencies <span
+class="math inline">\(\omega\ll 1/\tau_s\)</span> and falls off for
+<span class="math inline">\(\omega&gt;1/\tau_s\)</span>. Sometimes <span
+class="math inline">\(1/\tau_s\)</span> is called the <strong>cut-off
+frequency</strong>.</p>
+<h2 id="stochastic-spike-arrival">Stochastic spike arrival</h2>
+<p>If we focus on a leaky integrate-and-fire neuron, shift the voltage
+so that the resting potential is at zero and concentrate on a single
+neuron receiving stochastic input from background neurons hence drop the
+input from the network, we arrive at <span class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t}u=-\frac{u}{\tau_m}+\frac{1}{C}I^{ext}(t)+\sum_{k}^{}
+\sum_{t_k^{(f)}}^{} w_k \delta(t-t_k^{(f)})
+\]</span> (8.20)</p>
+<p>The membrane potential is reset to <span
+class="math inline">\(u_r\)</span> whenever is reaches the threshold
+<span class="math inline">\(\theta\)</span>. (8.20) is called
+<strong>Stein's model</strong>.</p>
+<p>In Stein's model, each input spike generates a postsynaptic potential
+<span class="math inline">\(\Delta u(t)=w_k
+\epsilon(t-t^{(f)}_k)\)</span> with <span
+class="math inline">\(\epsilon(s)=\mathrm{e}^{-s/\tau_m}
+\Theta(s)\)</span>. Integration of (8.20) yields <span
+class="math display">\[
+    u(t|\hat{t})=u_r \exp
+(-\frac{t-\hat{t}}{\tau_m})+\frac{1}{C}\int_{0}^{t-\hat{t}} \exp
+(-\frac{s}{\tau_m})I(t-s) \mathrm{d}s+\sum_{k=1}^{N} \sum_{t_k^{(f)}}^{}
+w_k \epsilon(t-t_k^{(f)})
+\]</span> (8.21)</p>
+<p>for <span class="math inline">\(t&gt;\hat{t}\)</span> where <span
+class="math inline">\(\hat{t}\)</span> is the last firing time of the
+neuron.</p>
+<h3
+id="membrane-potential-fluctuations-caused-by-spike-arrivals">Membrane
+potential fluctuations caused by spike arrivals</h3>
+<p>We assume that each input spike evokes a postsynaptic potential <span
+class="math inline">\(w_0 \epsilon(s)\)</span> of the same amplitude and
+shape, independent of <span class="math inline">\(k\)</span>. The input
+statistics is assumed to be Poisson. Thus, the total input spike train
+<span class="math display">\[
+    S(t)=\sum_{k=1}^{N} \sum_{t_k^{(f)}}^{} \delta(t-t_k^{f}),
+\tag{8.22}
+\]</span> that arrives at neuron <span class="math inline">\(i\)</span>
+is a random process with expectation <span class="math display">\[
+    \langle S(t)\rangle =\nu_0 \tag{8.23}
+\]</span> and autocorrelation <span class="math display">\[
+    \langle S(t)S(t&#39;)\rangle=\nu_0^{2}+\nu_0 \delta(t-t&#39;);
+\tag{8.24}
+\]</span></p>
+<p>Suppose that we start theh integration of the passive membrane
+equation at <span class="math inline">\(t=-\infty\)</span> with initial
+condition <span class="math inline">\(u_r=0\)</span>. We rewrite (8.21)
+using the definition of the spike trian in (8.22) <span
+class="math display">\[
+    u(t)=\frac{1}{C}\int_{0}^{\infty} \exp
+\left(-\frac{s}{\tau_m}\right)I(t-s) \mathrm{d}s+w_0 \int_{0}^{\infty}
+\epsilon(s)S(t-s) \mathrm{d}s. \tag{8.25}
+\]</span></p>
+<p>Using (8.23) and (8.24) we find <span class="math display">\[
+    \langle u(t)\rangle=u_0(t)=\frac{1}{C}\int_{0}^{\infty} \exp
+\left(-\frac{s}{\tau_m}\right)I(t-s) \mathrm{d}s+w_0\nu_0
+\int_{0}^{\infty} \epsilon(s) \mathrm{d}s \tag{8.26}
+\]</span> and <span class="math display">\[
+    \langle \Delta u^{2}\rangle=\langle [u(t)-u_0(t)]^{2}\rangle =
+w_0^{2}\nu_0 \int_{0}^{\infty} \epsilon^{2}(s) \mathrm{d}s.
+\]</span></p>
+<p>With stochastic spike arrival at excitatory synapses, mean and
+variance cannot be changed independently. As we will see next, a
+combination of excitation and inhibition allows us to increase the
+variance while keeping the mean of the potential fixed.</p>
+<h3 id="balanced-excitation-and-inhibition">Balanced excitation and
+inhibition</h3>
+<p>Suppose we have excitatory input and inhibitory input of the same
+frequency. The mean of the stochastic background input vanishes since
+<span class="math inline">\(\sum_{k}^{} w_k v_k=0\)</span>. The
+stochastic arrival of background spikes generates fluctuations of the
+voltage with variance <span class="math display">\[
+    \langle \Delta u^{2}\rangle=\frac{1}{2}\tau_m \sum_{k}^{}
+w_k^{2}\nu_k
+\]</span></p>
+<p>Let us now increase all rates by a factor of <span
+class="math inline">\(a&gt;1\)</span> and multiply at the same time the
+synaptic efficacies by a factor <span
+class="math inline">\(1/\sqrt{a}\)</span>. Then both mean and variance
+of the stochastic background input are the same as before, but the size
+<span class="math inline">\(w_k\)</span> of the jumps is decreased.</p>
+<p>In the limite of <span class="math inline">\(a\to \infty\)</span> the
+jump process turns into a diffusion process. The diffusion limit: <span
+class="math display">\[
+    \frac{w}{\sqrt{a}}S^{exc}-\frac{w}{\sqrt{a}}S^{inh} \to \xi(t)
+\tag{8.31}
+\]</span></p>
+<h4 id="example-synaptic-time-constants-and-colored-noise">Example:
+Synaptic time constants and colored noise</h4>
+<p>In contrast to the previous discussion of balanced input, we now
+assume that each spike arrival generated a current pulse <span
+class="math inline">\(\alpha(s)\)</span> of finite duration so that the
+total synaptic input current is <span class="math display">\[
+    RI(t)=w^{exc}\int_{0}^{\infty} \alpha(s)S^{exc}(t-s) \mathrm{d}s -
+w^{inh} \int_{0}^{\infty} \alpha(s)S^{inh}(t-s) \mathrm{d}s
+\]</span> (8.32)</p>
+<p>If the spike arrivel is Poisson with rates <span
+class="math inline">\(a\nu\)</span> and the synaptic weights are <span
+class="math inline">\(w^{exc}=w^{inh}=w/\sqrt{a}\)</span>, then we can
+take the limit <span class="math inline">\(a\to \infty\)</span> with no
+change of mean or variance. The result is colored noised.</p>
+<p>An instructive case is <span
+class="math inline">\(\alpha(s)=(1/\tau_s)\exp
+(-s/\tau_s)\Theta(s)\)</span> with synaptic time constant <span
+class="math inline">\(\tau_s\)</span>. In the limit <span
+class="math inline">\(\tau_s\to 0\)</span> we are back to white
+noise.</p>
+<h2 id="subthreshold-vs.-superthreshold-regime">Subthreshold vs.
+Superthreshold regime</h2>
+<p>An arbitrary time-dependent stimulus <span
+class="math inline">\(I(t)\)</span> is called subthreshold if is
+generates a membrane potential that stays - in the absence of noise -
+below the firing threshold. Stimuli that induce spikes even in a
+noise-free neuron are called superthreshold.</p>
+<p>The distinction between sub- and superthreshold stimuli has important
+consequences for the firing behavior of neurons in the presence of
+noise. Consider a leaky integrate-and-fire neuron with constant input
+<span class="math inline">\(I_0\)</span> for <span
+class="math inline">\(t&gt;0\)</span>. <span class="math display">\[
+    u_0(t)=u_{\infty}[1-\mathrm{e}^{-t/\tau_m}
+]+u_r\mathrm{e}^{-t/\tau_m} . \tag{8.33}
+\]</span> where <span class="math inline">\(u_{\infty}=RI_0\)</span>. If
+<span class="math inline">\(u_{\infty}&gt;\theta\)</span>, the neuron
+fires regularly. The interspike interval is <span
+class="math inline">\(s_0\)</span> derived from <span
+class="math inline">\(u_0(s_0)=\theta\)</span>. Thus <span
+class="math display">\[
+    s_0=\tau \ln \frac{u_{\infty}-u_r}{u_{\infty}-\theta}. \tag{8.34}
+\]</span></p>
+<p>In the superthreshold regime, the spike train in the presence of
+diffusive noise is simply a noisy version of the regular spike train of
+the noise-free neuron.</p>
+<h4
+id="example-interval-distribution-in-the-superthreshold-regime">Example:
+Interval distribution in the superthreshold regime</h4>
+<p>For small noise amplitude <span class="math inline">\(0&lt;\sigma\ll
+u_{\infty}-\theta\)</span>, and superthreshold stimulation, the interval
+distribution is centered at the deterministic interspike interval <span
+class="math inline">\(s_0\)</span>. As long as the mean trajectory is
+far away from the threshold, the distribution of membrane potentials has
+a Gaussian shape. As time goes on, the distribution of membrane
+potentials is pushed across the threshold.</p>
+<p>Suppose the membrane potential crosses the threshold with slope <span
+class="math inline">\(u_0&#39;\)</span>, then the interval distribution
+is approximately given by a Gaussian with mean <span
+class="math inline">\(s_0\)</span> and width <span
+class="math inline">\(\sigma/\sqrt{2}u_0&#39;\)</span>, i.e., <span
+class="math display">\[
+    P_0(t|0)=\frac{1}{\sqrt{\pi}}\frac{u_0&#39;}{\sigma}\exp
+\left[-\frac{(u_0&#39;)^{2}(t-s_0)^{2}}{\sigma^{2}}\right] \tag{8.35}
+\]</span></p>
+<h2 id="diffusion-limit-and-fokker-planck-equation">Diffusion limit and
+Fokker-Planck equation</h2>
+<p>In this section we analyze (8.20) and show how to map it to the
+diffusion model. The evolution of the probability density as a function
+of time is described, in the diffusion limit, by the Fokker-Planck
+equation. We derive here in the context of a single neuron subject to
+noisy input.</p>
+<p>For simplicity we set for the time being <span
+class="math inline">\(I^{ext}=0\)</span> in (8.20). The input spikes at
+synapse <span class="math inline">\(k\)</span> are generated by a
+Poisson process and arrive stochastically with rate <span
+class="math inline">\(\nu_k(t)\)</span>. The probability that no spike
+arrives in a short time interval <span class="math inline">\(\Delta
+t\)</span> is therefore <span class="math display">\[
+    \operatorname{Pr} \{\text{no spike in}\ [t,t+\Delta
+t]\}=1-\sum_{k}^{} \nu_k(t)\Delta t. \tag{8.36}     
+\]</span></p>
+<p>Given a value of <span class="math inline">\(u&#39;\)</span> at time
+<span class="math inline">\(t\)</span>, the probability density of
+finding a membrane potential <span class="math inline">\(u\)</span> at
+time <span class="math inline">\(t+\Delta t\)</span> is given by <span
+class="math display">\[
+    \begin{aligned}
+        P^{trans}(u,t+\Delta t|u&#39;,t)=\left[1-\Delta t \sum_{k}^{}
+\nu_k(t)\right]\delta(u-u&#39; \mathrm{e}^{-\Delta t/\tau_m})\\+\Delta t
+\sum_{k}^{} \nu_k(t)\delta(u-u&#39;\mathrm{e}^{-\Delta t/\tau_m} -w_k).
+\\
+    \end{aligned}
+\]</span> (8.37)</p>
+<p>We will refer to <span class="math inline">\(P^{trans}\)</span> as
+the transition law. The evolution of the membrane potential is a Markov
+Process and can be described by <span class="math display">\[
+    p(u,t+\Delta)=\int_{}^{} P^{trans}(u,t+\Delta t|u&#39;,t)p(u&#39;,t)
+\mathrm{d}u&#39;. \tag{8.38}
+\]</span></p>
+<p>Recall that <span
+class="math inline">\(\delta(au)=a^{-1}\delta(u)\)</span>. The result of
+the integration is <span class="math display">\[
+    \begin{aligned}
+        p(u,t+\Delta t)=\left[ 1-\Delta t \sum_{k}^{}
+\nu_k(t)\right]\mathrm{e}^{\Delta t/\tau_m} p(\mathrm{e}^{\Delta
+t/\tau_m} u,t) \\
+        +\Delta t\sum_{k}^{} \nu_k(t)\mathrm{e}^{\Delta t/\tau_m}
+p(\mathrm{e}^{\Delta t/\tau_m}( u-w_k),t).
+    \end{aligned}
+\]</span> (8.39)</p>
+<p>So we have <span class="math display">\[
+    \frac{\partial p(u,t)}{\partial
+t}==\frac{1}{\tau_m}p(u,t)+\frac{1}{\tau_m}u\frac{\partial }{\partial
+u}p(u,t)+\sum_{k}^{} \nu_k(t)[p(u-w_k,t)-p(u,t)].
+\]</span> (8.40)</p>
+<p>Furthermore, if the jump amplitudes <span
+class="math inline">\(w_k\)</span> are small, we can expand the RHS of
+(8.40) with respect to <span class="math inline">\(u\)</span> about
+<span class="math inline">\(p(u,t)\)</span>: <span
+class="math display">\[
+    \tau_m \frac{\partial }{\partial t}p(u,t)=-\frac{\partial }{\partial
+u}\left[-u+\tau_m \sum_{k}^{}
+\nu_k(t)w_k\right]p(u,t)+\frac{1}{2}\left[\tau_m \sum_{k}^{}
+\nu_k(t)w_k^{2}\right]\frac{\partial ^{2}}{\partial u^{2}}p(u,t),
+\]</span> (8.41)</p>
+<p>where we have neglected terms of order <span
+class="math inline">\(w_k^{3}\)</span> and higher. The expansion in
+<span class="math inline">\(w_k\)</span> is called the Kramers-Moyal
+expansion.</p>
+<p>In (8.41), the first term in rectangular brackets describes the
+systematic drift of the membrane potential due to leakage (<span
+class="math inline">\(\propto -u\)</span>) and mean background input
+(<span class="math inline">\(\propto \sum_{k}^{} \nu_k(t)w_k\)</span>).
+The second term in rectangular brackets corresponds to a 'diffusion
+constant' and accounts for the fluctuations of the membrane
+potential.</p>
+<p>(8.41) is equivalent to the Langevin equation (8.7) with <span
+class="math inline">\(RI(t)=\tau_m\sum_{k}^{} \nu_k(t)w_k\)</span> and
+time-dependent noise amplitude <span class="math display">\[
+    \sigma^{2}(t)=\tau_m\sum_{k}^{} \nu_k(t)w_k^{2}. \tag{8.42}
+\]</span></p>
+<p>For the transition from (8.40) to (8.41) we have suppressed <span
+class="math display">\[
+    \sum_{n=3}^{\infty} \frac{(-1)^{n}}{n!}A_n(t)\frac{\partial
+^{n}}{\partial u^{n}}p(u,t) \tag{8.43}      
+\]</span> with <span class="math inline">\(A_n=\tau_m \sum_{k}^{}
+\nu_k(t)w_k^{n}\)</span>.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x221.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x222.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>Figures above shows a sequence of models where the size of the
+weights <span class="math inline">\(w_k\)</span> decreases so that <span
+class="math inline">\(A_n \to 0\)</span> for <span
+class="math inline">\(n\geqslant 3\)</span> while the mean <span
+class="math inline">\(\sum_{k}^{} \nu_k(t)w_k\)</span> and the second
+moment <span class="math inline">\(\sum_{k}^{} \nu_k(t)w_k^{2}\)</span>
+remain constant. Such a sequence of models does not exist for excitatory
+input alone.</p>
+<h3 id="threshold-and-firing">Threshold and firing</h3>
+<p>We now incorporate a threshold condition into (8.41) and (8.7). In
+the Fokker-Planck equation (8.41), the firing threshold is incorporated
+as a boundary condition <span class="math display">\[
+    p(\theta,t)\equiv 0 \ \text{for all} \ t
+\]</span></p>
+<div class="note note-warning">
+            <p>This boundary condition is only for white noise model. For colorednoise the density at threshold is finite, because the effectivefrequency of 'attempts' to push a neuron which has membrane potential<span class="math inline">\(\theta-\delta&lt;u\leqslant \theta\)</span>above threshold is limited by the <strong>cut-off frequency</strong> ofthe noise.</p>
+          </div>
+<h4 id="example-free-distribution-without-threshold">Example: Free
+distribution without threshold</h4>
+<p>The solution of (8.41) with initial condition <span
+class="math inline">\(p(u,\hat{t})=\delta(u-u_r)\)</span> is a Gaussian
+with mean <span class="math inline">\(u_0(t)\)</span> and variance <span
+class="math inline">\(\langle \Delta u^{2}(t)\rangle\)</span>, i.e.,
+<span class="math display">\[
+    p(u,t)=\frac{1}{\sqrt{2\pi \langle \Delta u^{2}(t)\rangle}}\exp
+\left\{-\frac{[u(t|\hat{t})-u_0(t)]^{2}}{2\langle \Delta
+u^{2}(t)\rangle}\right\}
+\]</span> (8.45)</p>
+<p>In particular, the stationary distribution that is approached in the
+limit of <span class="math inline">\(t\to \infty\)</span> for constant
+input <span class="math inline">\(I_0\)</span> is <span
+class="math display">\[
+    p(u,\infty)=\frac{1}{\sqrt{\pi}}\frac{1}{\sigma} \exp
+\left\{\frac{[u-RI_0]^{2}}{\sigma^{2}}\right\}, \tag{8.46}
+\]</span> which describes a Gaussian distribution with mean <span
+class="math inline">\(u_{\infty}=RI_0\)</span> and variance <span
+class="math inline">\(\sigma/\sqrt{2}\)</span>.</p>
+<h3 id="interval-distribution-for-the-diffusive-noise-model">Interval
+distribution for the diffusive noise model</h3>
+<p>Let us consider a leaky integrate-and-fire neuron that starts at time
+<span class="math inline">\(\hat{t}\)</span> with a membrane potential
+<span class="math inline">\(u_r\)</span> and is driven for <span
+class="math inline">\(t&gt;\hat{t}\)</span> by a known input <span
+class="math inline">\(I(t)\)</span>. We have <span
+class="math display">\[
+    \operatorname{Pr}
+\{u_0&lt;u(t)&lt;u_1|u(\hat{t})=u_r\}=\int_{u_0}^{u_1} p(u,t)
+\mathrm{d}u \tag{8.47}
+\]</span> where <span class="math inline">\(p(u,t)\)</span> is the
+probability density of the membrane potential at time <span
+class="math inline">\(t\)</span>. In the diffusion limit, <span
+class="math inline">\(p(u,t)\)</span> can be found by solution of the
+Fokker-Planck equation (8.41) with initial condition <span
+class="math inline">\(p(u,\hat{t})=\delta(u-u_r)\)</span> and boundary
+condition <span class="math inline">\(p(\theta,t)=0\)</span>.</p>
+<p>Imagine that we run 100 simulation trials. The expected fraction of
+simulations that have not yet reached the threshold and therefore still
+'survive' up to time <span class="math inline">\(t\)</span> is given by
+the survivior function, <span class="math display">\[
+    S_{I}(t|\hat{t})=\int_{-\infty}^{\theta} p(u,t) \mathrm{d}u.
+\tag{8.48}
+\]</span></p>
+<p>In view of (7.24), the input-dependent interval distribution is
+therefore <span class="math display">\[
+    P_{I}(t|\hat{t})=-\frac{\mathrm{d}}{\mathrm{d}t}\int_{-\infty}^{\theta}
+p(u,t) \mathrm{d}u. \tag{8.49}
+\]</span></p>
+<p>In the context of noisy integrate-and-fire neurons <span
+class="math inline">\(P_{I}(t|\hat{t})\)</span> is called the
+distribution of 'first passage times'. no general solution is known for
+the first passage time problem of the Ornstein-Uhlenbeck process.</p>
+<h4 id="example-numerical-evaluation-of-p_ithatt">Example: Numerical
+evaluation of <span class="math inline">\(P_{I}(t|\hat{t})\)</span></h4>
+<p>(8.41) has been solved in the absence of a threshold. The transition
+probability from an arbitrary starting value <span
+class="math inline">\(u&#39;\)</span> at time <span
+class="math inline">\(t&#39;\)</span> to a new value <span
+class="math inline">\(u\)</span> at time <span
+class="math inline">\(t\)</span> is <span class="math display">\[
+    P^{trans}(u,t|u&#39;,t&#39;)=\frac{1}{\sqrt{2\pi\langle \Delta
+u^{2}(t)\rangle}}\exp \left\{-\frac{[u-u_0(t)]^{2}}{2\langle \Delta
+u^{2}(t)\rangle}\right\}
+\]</span> (8.50)</p>
+<p>with <span class="math display">\[
+    u_0(t)=u&#39;\mathrm{e}^{-(t-t&#39;)/\tau_m} +\int_{0}^{t-t&#39;}
+\mathrm{e}^{-s&#39;/\tau_m} I(t-s&#39;) \mathrm{d}s \tag{8.51}
+\]</span></p>
+<p><span class="math display">\[
+    \langle \Delta
+u^{2}(t)\rangle=\frac{\sigma^{2}}{2}[1-\mathrm{e}^{-2(t-s)/\tau_m}].
+\tag{8.52}
+\]</span></p>
+<p>Because of the Markov property, the probability density to cross the
+threshold (not necessarily for the first time) at a time <span
+class="math inline">\(t\)</span>, is equal to the probability to cross
+it for the first time at <span
+class="math inline">\(t&#39;&lt;t\)</span> and to return back to <span
+class="math inline">\(\theta\)</span> at time <span
+class="math inline">\(t\)</span>, that is, <span class="math display">\[
+    P^{trans}(\theta,t|u_r,\hat{t})=\int_{\hat{t}}^{t}
+P_{I}(t&#39;|\hat{t})P^{trans}(\theta,t|\theta,t&#39;) \mathrm{d}t&#39;.
+\tag{8.53}
+\]</span></p>
+<h3 id="mean-interval-and-mean-firing-rate-diffusive-noise">Mean
+interval and mean firing rate (diffusive noise)</h3>
+<p>Here we express the mean firing rate of a leaky integrate-and-fire
+model with diffusive noise as a function of a (constant) input <span
+class="math inline">\(I_0\)</span>.</p>
+<p>For constant input <span class="math inline">\(I_0\)</span> the mean
+interspike interval is <span class="math inline">\(\langle
+s\rangle=\int_{0}^{\infty} sP_{I_0}(s|0) \mathrm{d}s=\int_{0}^{\infty}
+sP_0(s) \mathrm{d}s\)</span>. For the diffusion model (8.7) with
+threshold <span class="math inline">\(\theta\)</span>, reset potential
+<span class="math inline">\(u_r\)</span>, and membrane time constant
+<span class="math inline">\(\tau_m\)</span>, the mean interval is <span
+class="math display">\[
+    \langle s\rangle=\tau_m
+\sqrt{\pi}\int_{\frac{u_r-h_0}{\sigma}}^{\frac{\theta-h_0}{\sigma}} \exp
+(u^{2})[1+\text{erf}(u)] \mathrm{d}u, \tag{8.54}
+\]</span> where <span class="math inline">\(h_0=RI_0\)</span> is the
+input potential caused by the constant current <span
+class="math inline">\(I_0\)</span>. This expression is sometimes called
+the <strong>Siegert-formula</strong>. The inverse of the mean interval
+is the mean firing rate.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/" class="print-no-link">#神经科学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Neuronal Dynamics (8)</div>
+      <div>http://example.com/2022/08/26/Neuronal-Dynamics-8/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>August 26, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/16/Neuronal-Dynamics-10/" title="Neuronal Dynamics (10)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Neuronal Dynamics (10)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/24/Neuronal-Dynamics-7/" title="Neuronal Dynamics (7)">
+                        <span class="hidden-mobile">Neuronal Dynamics (7)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1529 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="In these notes, we present a proof of the circular law and relevant results.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Circular Law (1)">
+<meta property="og:url" content="http://example.com/2023/01/22/The-Circular-Law-1/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="In these notes, we present a proof of the circular law and relevant results.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/lucy.JPG">
+<meta property="article:published_time" content="2023-01-22T03:18:40.000Z">
+<meta property="article:modified_time" content="2023-02-13T10:51:49.771Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lucy.JPG">
+  
+  
+  
+  <title>The Circular Law (1) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="The Circular Law (1)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-22 11:18" pubdate>
+          January 22, 2023 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          27k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          224 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">The Circular Law (1)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="the-circular-law-1">The Circular Law (1)</h1>
+<p>This page gives some basic results and prove the spectral law of an
+Gaussian i.i.d random
+matrix.<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="Charles Bordenave and Djalil Chafaï, The circular law">[1]</span></a></sup></p>
+<p>All random variables are defined on a unique common probability space
+<span class="math inline">\((\Omega,\mathcal{A},\mathbb{P})\)</span>. A
+typical element of <span class="math inline">\(\Omega\)</span> is
+denoted <span class="math inline">\(\omega\)</span>. We write <span
+class="math inline">\(a.s.\)</span>, <span
+class="math inline">\(a.a.\)</span>, and <span
+class="math inline">\(a.e.\)</span> for almost surely, Lebesgue almost
+all, and Lebesgue alomost everwhere respectively.</p>
+<h2 id="two-kinds-of-spectra">Two kinds of spectra</h2>
+<p>Label the eigenvalues of <span class="math inline">\(A \in
+\mathcal{M}_{n}(\mathbb{C})\)</span> as <span
+class="math inline">\(\lambda_1(A),\cdots ,\lambda_{n}(A)\)</span> so
+that $<em>1(A) </em>{n}(A) $. The singular values of <span
+class="math inline">\(A\)</span> are defined by <span
+class="math display">\[
+    s_k(A):=\lambda_{k}(\sqrt{AA^{*}}).
+\]</span></p>
+<p>We have <span class="math display">\[
+    s_1(A)\geqslant \cdots \geqslant s_{n}(A)\geqslant 0.
+\]</span></p>
+<p>The matrices <span
+class="math inline">\(A,A^{\mathsf{T}},A^{*}\)</span> have the same
+singular values. The Hermitian matrix <span class="math display">\[
+    H_{A}:=
+    \begin{pmatrix}
+        0 &amp; A \\
+        A^{*} &amp; 0 \\
+    \end{pmatrix}
+\]</span></p>
+<p>has eigenvalues <span class="math inline">\(s_1(A),-s_1(A),\cdots
+,s_n(A),-s_n(A)\)</span>. Notice the mapping <span
+class="math inline">\(A \mapsto H_{A}\)</span> is linear in <span
+class="math inline">\(A\)</span>, in contrast with the mapping <span
+class="math inline">\(A \mapsto \sqrt{AA^{*}}\)</span>.</p>
+<p>Define the operator norm or spectral norm of <span
+class="math inline">\(A\)</span> as <span class="math display">\[
+    \left\| A \right\|_{2\rightarrow 2}:=\max _{\left\| x
+\right\|_{2}=1}\left\| Ax \right\|_{2}=s_1(A)
+\]</span></p>
+<p>Notice that if <span class="math inline">\(A\)</span> is non-singular
+then <span class="math inline">\(s_i(A ^{-1})=s_{n-i}(A) ^{-1}\)</span>
+for <span class="math inline">\(1\leqslant i\leqslant n\)</span> and
+<span class="math inline">\(s_n(A)=s_1(A ^{-1}) ^{-1}=\left\| A^{-1}
+\right\|_{2\rightarrow 2} ^{-1}\)</span>.</p>
+<div class="note note-info">
+            <p><strong>Courant-Fischer variational formulas</strong> Denoting <spanclass="math inline">\(\mathcal{G}_{n,i}\)</span> the Grassmannian of all<span class="math inline">\(i\)</span>-dimensional subspaces, we have<span class="math display">\[      \begin{aligned}        s_i(A)&amp;=\min _{E\in \mathcal{G}_{n,i-1}} \max _{\left\| x\right\|_{2}=1,x\perp E} \left\| Ax \right\|_{2}\\        &amp;=\max_{E \in \mathcal{G}_{n,n-i}} \min _{\left\| x\right\|_{2}=1,x\perp E}\left\| Ax \right\|_{2} \\        &amp;=\min _{E\in \mathcal{G}_{n,n-i+1}} \max_{\left\| x\right\|_{2}=1,x\in E}\left\| Ax \right\|_{2} \\        &amp;=\max _{E\in \mathcal{G}_{n,i}} \min _{\left\| x\right\|_{2}=1,x \in E} \left\| Ax \right\|_{2}    \end{aligned}\]</span></p>
+          </div>
+<div class="note note-info">
+            <p><strong>Corollary</strong> Let <span class="math inline">\(A \in\mathcal{m,n}\)</span> be given, and let <spanclass="math inline">\(A_r\)</span> denote a submatrix of <spanclass="math inline">\(A\)</span> obtained by deleting a total of <spanclass="math inline">\(r\)</span> rows and/or columns from <spanclass="math inline">\(A\)</span>. Then <span class="math display">\[    s_k(A)\geqslant s_k(A_r)\geqslant s_{k+r}(A), k=1,\cdots,\min\{m,n\} \tag{1.1}\]</span></p><p>where for <span class="math inline">\(X \in\mathcal{M}_{p,q}\)</span> we set <spanclass="math inline">\(s_j(X)\equiv 0\)</span> if <spanclass="math inline">\(j&gt;\min\{p,q\}\)</span>.</p>
+          </div>
+<p><strong>proof</strong> It suffices to consider the case <span
+class="math inline">\(r=1\)</span>, i.e., <span
+class="math inline">\(s_k(A)\geqslant s_{k}(A_1)\geqslant
+s_{k+1}(A)\)</span>. If <span class="math inline">\(A_1\)</span> is
+formed from <span class="math inline">\(A\)</span> by deleting column
+<span class="math inline">\(s\)</span>, denote by <span
+class="math inline">\(e_s\)</span> the standard unit basis vector with a
+<span class="math inline">\(1\)</span> in position <span
+class="math inline">\(s\)</span>. If <span class="math inline">\(x\in
+\mathbb{C}^{n}\)</span>, denote by <span class="math inline">\(\xi \in
+\mathbb{C}^{n-1}\)</span> the vector obtained by deleting entry <span
+class="math inline">\(s\)</span> from <span
+class="math inline">\(x\)</span>. <span class="math display">\[
+    \begin{aligned}
+        s_k(A)&amp;=\min_{E\in \mathcal{G}_{n,k-1}} \max_{x\perp
+E,\left\| x \right\|_{2}=1}\left\| Ax \right\|_{2} \\
+        &amp;\geqslant \min_{E\in \mathcal{G}_{n,k-1}} \max_{x\perp
+E,x\perp e_s,\left\| x \right\|_{2}=1}\left\| Ax \right\|_{2}\\
+        &amp;= \min_{E\in \mathcal{G}_{n-1,k-1}} \max_{\xi\perp
+E,\left\| x \right\|_{2}=1}\left\| A_1\xi \right\|_{2}=s_k(A_1)
+    \end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+    \begin{aligned}
+        s_{k+1}(A)&amp;=\max _{\mathcal{G}_{n,n-k-1}}\min _{\left\| x
+\right\|_{2}=1,x\perp E} \left\| Ax \right\|_{2} \\
+        &amp;\leqslant \max _{\mathcal{G}_{n,n-k-1}}\min _{x\perp
+E,x\perp e_s,\left\| x \right\|_{2}=1} \left\| Ax \right\|_{2} \\
+        &amp;= \max _{\mathcal{G}_{n-1,n-k-1}}\min _{\xi\perp E,\left\|
+\xi \right\|_{2}=1} \left\| A_1\xi \right\|_{2}=s_k(A_1)
+    \end{aligned}
+\]</span></p>
+<p>If a row of <span class="math inline">\(A\)</span> is deleted, apply
+the same argument to <span class="math inline">\(A^{*}\)</span>, which
+has the same singular values as <span
+class="math inline">\(A\)</span>.</p>
+<div class="note note-info">
+            <p><strong>Lemma</strong> Let <span class="math inline">\(C \in\mathcal{M}_{m,n}\)</span>, <span class="math inline">\(V_{k} \in\mathcal{M}_{m,k}\)</span> and <span class="math inline">\(W_{k} \in\mathcal{M}_{n,k}\)</span> be given, where <spanclass="math inline">\(k\leqslant \min\{m,n\}\)</span> and <spanclass="math inline">\(V_k,W_k\)</span> have orthonormal columns. Then -<span class="math inline">\(s_i(V_k^{*}CW_{k})\leqslant s_i(C)\)</span>,<span class="math inline">\(i=1,\cdots,k\)</span> - <spanclass="math inline">\(\lvert \det V_k^{*}CW_{k} \rvert \leqslants_1(C)\cdots s_k(C)\)</span>.</p>
+          </div>
+<p><strong>proof</strong> There are unitary matrices <span
+class="math inline">\(V\in \mathcal{M}_{m}\)</span> and <span
+class="math inline">\(W \in \mathcal{M}_{n}\)</span> such that <span
+class="math inline">\(V=[V_k \ *]\)</span> and <span
+class="math inline">\(W=[W_k \ *]\)</span>. Since <span
+class="math inline">\(V_k^{*}CW_{k}\)</span> is the upper left <span
+class="math inline">\(k\)</span>-by-<span
+class="math inline">\(k\)</span> submatrix of <span
+class="math inline">\(V^{*}CW\)</span>, (1.1) and unitary invariance of
+singular values ensure that <span
+class="math inline">\(s_i(V_k^{*}CW_{k})\leqslant
+s_i(V^{*}CW)=s_i(C),i=1,\cdots ,k\)</span>, and hence <span
+class="math inline">\(\lvert \det V_k^{*}CW_{k} \rvert
+=s_1(V_k^{*}CW_{k})\cdots s_k(V_{k}^{*}CW_{k})\leqslant s_1(C)\cdots
+s_k(C)\)</span>.</p>
+<div class="note note-info">
+            <p><strong>Weyl inequalities</strong> For every <spanclass="math inline">\(A \in \mathcal{M}_{n}(\mathbb{C})\)</span> and<span class="math inline">\(1\leqslant k\leqslant n\)</span>, <spanclass="math display">\[    \prod_{i=1}^{k} \lvert \lambda_{i}(A) \rvert \leqslant\prod_{i=1}^{k} s_i(A). \tag{1.2}\]</span></p>
+          </div>
+<p><strong>proof</strong> By the Schur triangularization theorem, there
+is a unitary <span class="math inline">\(U \in
+\mathcal{M}_{n}(\mathbb{C})\)</span> such that <span
+class="math inline">\(U^{*}AU=\Delta\)</span> is upper triangular and
+<span class="math inline">\(diag \Delta=(\lambda_1,\cdots
+,\lambda_n)\)</span>. Let <span class="math inline">\(U_k \in
+\mathcal{M}_{n,k}\)</span> denote the first <span
+class="math inline">\(k\)</span> columns of <span
+class="math inline">\(U\)</span>. It's easy to know that <span
+class="math inline">\(U_k^{*}AU_{k}=\Delta_{k}\)</span> is the upper
+left <span class="math inline">\(k\)</span>-by-<span
+class="math inline">\(k\)</span> principal submatrix of <span
+class="math inline">\(\Delta\)</span>, and <span
+class="math inline">\(diag \Delta_k=(\lambda_1,\cdots
+,\lambda_n)\)</span>. Apply the lemma with <span
+class="math inline">\(C=A\)</span> and <span
+class="math inline">\(V_k=W_k=U_k\)</span> to conclude that <span
+class="math display">\[
+    \lvert \lambda_1(A)\cdots \lambda_k(A) \rvert =\lvert \det \Delta_k
+\rvert =\lvert \det U_k^{*}AU_{k} \rvert \leqslant s_1(A)\cdots
+s_k(A)      
+\]</span></p>
+<p>It's easy to know that (1.2) holds quality when <span
+class="math inline">\(k=n\)</span>.</p>
+<p>The reversed form $<em>{i=n-k+1}^{n} s_i(A)</em>{i=n-k+1}^{n} _i(A) $
+for every <span class="math inline">\(1\leqslant k\leqslant n\)</span>
+can be deduced easily.</p>
+<div class="note note-info">
+            <p><strong>Theorem</strong> Let <span class="math inline">\(A\in\mathcal{M}_{m,p}\)</span> and <span class="math inline">\(B\in\mathcal{M}_{p,n}\)</span> be given, let <spanclass="math inline">\(q\equiv \min\{n,p,m\}\)</span>. Then <spanclass="math display">\[    \prod_{i=1}^{k} s_i(AB)\leqslant \prod_{i=1}^{k} s_i(A)s_i(B), \k=1,\cdots ,q \tag{1.3}\]</span></p><p>If <span class="math inline">\(n=p=m\)</span>, then equality holds in(1.3) for <span class="math inline">\(k=n\)</span>.</p>
+          </div>
+<p><strong>proof</strong> Let <span class="math inline">\(AB=V\Sigma
+W^{*}\)</span>, and let <span class="math inline">\(V_k \in
+\mathcal{M}_{m,k}\)</span> and <span class="math inline">\(W_k\in
+\mathcal{M}_{n,k}\)</span> denote the first <span
+class="math inline">\(k\)</span> columns of <span
+class="math inline">\(V\)</span> and <span
+class="math inline">\(W\)</span>, respectively. Then <span
+class="math inline">\(V_k^{*}(AB)W_k=diag(s_1(AB),\cdots
+,s_k(AB))\)</span>. Since <span class="math inline">\(p\geqslant
+k\)</span>, use the polar decomposition to write the product <span
+class="math inline">\(BW\in \mathcal{M}_{p,k}\)</span> as <span
+class="math inline">\(BW_{k}=X_{k}Q\)</span>, where <span
+class="math inline">\(X_k\in \mathcal{M}_{p,k}\)</span> has orthonormal
+columns, <span class="math inline">\(Q\in \mathcal{M}_{k}\)</span> is
+positive semidefinite, <span class="math inline">\(\det Q^{2}=\det
+W_k^{*}(B^{*}B)W_k\leqslant s_1(B^{*}B)\cdots
+s_k(B^{*}B)=s_1(B)^{2}\cdots s_k(B)^{2}\)</span> by lemma. Use lemma
+again to compute <span class="math display">\[
+    s_1(AB)\cdots s_k(AB)= \lvert \det V_k^{*}(AB)W_k \rvert = \lvert
+\det V_k^{*}AX_{k} \det Q \rvert \leqslant (s_1(A)\cdots
+s_k(A))(s_1(B)\cdots s_k(B))
+\]</span></p>
+<p>If <span class="math inline">\(n=p=m\)</span>, then <span
+class="math inline">\(s_1(AB)\cdots s_n(AB)=\lvert \det AB \rvert
+=\lvert \det A \rvert \lvert \det B \rvert =s_1(A)\cdots
+s_k(A)s_1(B)\cdots s_k(B)\)</span>.</p>
+<div class="note note-info">
+            <p><strong>(Strong) majorization inequalities</strong> If <spanclass="math inline">\(A\)</span> is nonsingular, then</p><p><span class="math display">\[    \sum_{i=1}^{k} \log \lvert \lambda_i(A) \rvert \leqslant\sum_{i=1}^{k} \log s_i(A), k=1,\cdots ,n,\]</span></p><p>with equality for <span class="math inline">\(k=n\)</span>.</p>
+          </div>
+<p><strong>proof</strong> It's just a corollary of the previous
+theorem.</p>
+<p>Using some classic inequality trick, we can introduce Schur-convex or
+isotone functions and prove weak majorization inequality.</p>
+<div class="note note-warning">
+            <p><strong>Definition</strong> Let <spanclass="math inline">\(x=[x_i],y=[y_i]\in \mathbb{R}^{n}\)</span> begiven vectors, <span class="math inline">\(x_{[1]}\geqslant \cdots\geqslant x_{[n]}\)</span> and <spanclass="math inline">\(y_{[1]}\geqslant \cdots \geqslanty_{[n]}\)</span>. We say that <span class="math inline">\(y\)</span>weakly majorizes <span class="math inline">\(x\)</span> if <spanclass="math display">\[    \sum_{i=1}^{k} x_{[i]}\leqslant \sum_{i=1}^{k} y_{[i]}, \quadk=1,2,\cdots,n \tag{1.4}\]</span></p><p>If (1.4) holds equality when <spanclass="math inline">\(k=n\)</span>, then we say <spanclass="math inline">\(y\)</span> majorizes <spanclass="math inline">\(x\)</span>, denoted as <spanclass="math inline">\(x \prec y\)</span>.</p>
+          </div>
+<div class="note note-info">
+            <p><strong>Schur</strong> Suppose <spanclass="math inline">\(A=(a_{ij})\in \mathbb{C}^{n\times n}\)</span> isHermitian with eigenvalues <spanclass="math inline">\(\{\lambda_i\}_{1\leqslant i\leqslant n}\)</span>,then <span class="math inline">\(\{a_{ii}\}\prec\{\lambda_{i}\}\)</span>.</p>
+          </div>
+<p><strong>proof</strong> <span class="math inline">\(\sum_{i=1}^{r}
+\lambda_{[i]}=\sup _{E\in
+\mathcal{G}_{n,r}}\operatorname{tr}(A|_{E})\geqslant \sum_{i=1}^{r}
+a_{[ii]}\)</span>.</p>
+<div class="note note-info">
+            <p><strong>Horn</strong> Suppose <spanclass="math inline">\(\{d_i\}\prec \{\mu_i\}\)</span>, then there existsa symmetric matrix with primary diagonal entries <spanclass="math inline">\(\{d_i\}\)</span>, eigenvalues <spanclass="math inline">\(\{\mu_i\}\)</span>.</p>
+          </div>
+<p><strong>proof</strong> We construct orthogonal matrix <span
+class="math inline">\(Q\)</span>, such that <span
+class="math inline">\(Q^{\mathsf{T}}diag(\mu_1,\cdots ,\mu_n)Q\)</span>
+has primary diagonal entries <span
+class="math inline">\(\{d_i\}\)</span>. Use induction to prove it, refer
+to https://zhuanlan.zhihu.com/p/76422480.</p>
+<div class="note note-info">
+            <p><strong>Hardy-Littlewood-Polya</strong> Suppose <spanclass="math inline">\(x,y\in \mathbb{R}^{n}\)</span>, then <spanclass="math inline">\(x\prec y\)</span> if and only if there is a doublysubstochastic <span class="math inline">\(A\in\mathcal{M}_{n}(\mathbb{R})\)</span> such that <spanclass="math inline">\(x=Ay\)</span>.</p>
+          </div>
+<p><strong>proof</strong> If <span class="math inline">\(x\prec
+y\)</span>, then the Horn theorem gives an orthogonal matrix <span
+class="math inline">\(Q=(q_{ij})\)</span> such that <span
+class="math inline">\(x_i=\sum_{j=1}^{n} q_{ij}^{2}y_j,\forall
+1\leqslant i\leqslant n\)</span>. <span
+class="math inline">\(A=(q_{ij}^{2})\)</span> satisfies the condition.
+For the rest, refer to https://zhuanlan.zhihu.com/p/76422480 as
+well.</p>
+<div class="note note-info">
+            <p><strong>Theorem</strong> <span class="math inline">\(x\)</span> and<span class="math inline">\(y\)</span> are two given vectors withnonnegative entries. Then <span class="math inline">\(y\)</span> weaklymajorizes <span class="math inline">\(x\)</span> if and only if there isa doubly substochastic <span class="math inline">\(Q\in\mathcal{M}_{n}(\mathbb{R})\)</span> such that <spanclass="math inline">\(x=Qy\)</span>.</p>
+          </div>
+<p><strong>proof</strong> If <span class="math inline">\(Q\in
+\mathcal{M}_{n}(\mathbb{R})\)</span> is doubly substochastic and <span
+class="math inline">\(Qy=x\)</span> with <span
+class="math inline">\(x,y\geqslant 0\)</span>, let <span
+class="math inline">\(S\in \mathcal{M}_{n}(\mathbb{R})\)</span> be
+doubly stochastic and such that <span class="math inline">\(0\leqslant
+Q\leqslant S\)</span>. If <span
+class="math inline">\((Qy)_{i_1}=(Qy)_{[1]},\cdots
+,(Qy)_{i_k}=(Qy)_{[k]}\)</span>, then <span class="math display">\[
+    \sum_{i=1}^{k} (Qy)_{[i]}=\sum_{j=1}^{k} (Qy)_{i_j}\leqslant
+\sum_{j=1}^{k} (Sy)_{i_j}\leqslant \sum_{i=1}^{k} (Sy)_{[i]}\leqslant
+\sum_{i=1}^{k} y_{[i]}
+\]</span></p>
+<p>for <span class="math inline">\(k=1,2,\cdots,n\)</span>. Thus, <span
+class="math inline">\(y\)</span> weakly majorizes <span
+class="math inline">\(Qy=x\)</span>.</p>
+<p>Conversely, suppose <span class="math inline">\(y\)</span> weakly
+majorizes <span class="math inline">\(x\)</span> and <span
+class="math inline">\(x,y\geqslant 0\)</span>. If <span
+class="math inline">\(x=0\)</span>, let <span
+class="math inline">\(Q\equiv 0\)</span>. If <span
+class="math inline">\(x\neq 0\)</span>, let <span
+class="math inline">\(\varepsilon\)</span> denote the smallest positive
+entry of <span class="math inline">\(x\)</span>, set <span
+class="math inline">\(\delta\equiv (y_1-x_1)+\cdots +(y_n-x_n)\geqslant
+0\)</span>, and let <span class="math inline">\(m\)</span> be any
+positive integer such that <span
+class="math inline">\(\varepsilon\geqslant \delta/m\)</span>. Let <span
+class="math display">\[
+    \xi\equiv [x_1,\cdots ,x_n,\delta/m,\cdots
+,\delta/m]^{\mathsf{T}}\in \mathbb{R}^{n+m}
+\]</span></p>
+<p>and let <span class="math display">\[
+    \eta=[y_1,\cdots ,y_n,0,\cdots ,0]^{\mathsf{T}}\in \mathbb{R}^{n+m}
+\]</span></p>
+<p>Then <span class="math display">\[
+    \sum_{i=1}^{k} \xi_{[i]}\leqslant \sum_{i=1}^{k} \eta_{[i]}, \quad
+k=1,2,\cdots,m+n
+\]</span></p>
+<p>with equality for <span class="math inline">\(k=m+n\)</span>. Thus,
+there is strong majorization relationship between <span
+class="math inline">\(\xi\)</span> and <span
+class="math inline">\(\eta\)</span>. By Hardy-Littlewood-Polya theorem,
+there is a doubly stochastic <span class="math inline">\(S\in
+\mathcal{M}_{m+n}(\mathbb{R})\)</span> such that <span
+class="math inline">\(\xi=S\eta\)</span>. If we let <span
+class="math inline">\(Q\)</span> denote the upper left <span
+class="math inline">\(n\)</span>-by-<span
+class="math inline">\(n\)</span> principal submatrix of <span
+class="math inline">\(S\)</span>, <span class="math inline">\(Q\)</span>
+is doubly substochastic and <span
+class="math inline">\(x=Qy\)</span>.</p>
+<div class="note note-info">
+            <p><strong>Lemma</strong> Let <span class="math inline">\(x_1,\cdots,x_n\)</span>, <span class="math inline">\(y_1,\cdots ,y_n\)</span> be<span class="math inline">\(2n\)</span> given real numbers such that<span class="math inline">\(x_1\geqslant x_2\geqslant \cdots \geqslantx_n\)</span>,<span class="math inline">\(y_1\geqslant y_2\geqslant\cdots \geqslant y_n\)</span>, and <span class="math display">\[    \sum_{i=1}^{k} x_i\leqslant \sum_{i=1}^{k} y_i, \quad k=1,2,\cdots,n\tag{1.5}\]</span></p><p>If <span class="math inline">\(f(t)\)</span> is a given real-valuedincreasing convex function on the interval <spanclass="math inline">\([\min\{x_n,y_n\},y_1]\)</span>, then <spanclass="math inline">\(f(x_1)\geqslant \cdots \geqslant f(x_n)\)</span>,<span class="math inline">\(f(y_1)\geqslant \cdots f(y_n)\)</span>, and<span class="math display">\[    \sum_{i=1}^{k} f(x_i)\leqslant \sum_{i=1}^{k} f(y_i), \quadk=1,2,\cdots,n\]</span></p><p>If equality holds for <span class="math inline">\(k=n\)</span> in(1.4) and if <span class="math inline">\(f(\cdot)\)</span> is convex(but not necessarily increasing) on the interval <spanclass="math inline">\([y_n,y_1]\)</span>, then <spanclass="math display">\[    \sum_{i=1}^{n} f(x_i)\leqslant \sum_{i=1}^{n} f(y_i) \tag{1.6}\]</span></p>
+          </div>
+<p><strong>proof</strong> The asserted inequality is trivial for <span
+class="math inline">\(k=1\)</span>. Let <span
+class="math inline">\(k\)</span> be a given integer with <span
+class="math inline">\(2\leqslant k\leqslant n\)</span>. Since <span
+class="math inline">\(x\)</span> is weakly majorized by <span
+class="math inline">\(y\)</span>, there is a doubly stochastic <span
+class="math inline">\(S\in \mathcal{M}_{k}(\mathbb{R})\)</span> such
+that <span class="math inline">\(x\leqslant Sy\)</span>.</p>
+<p>Notice that the entries of <span class="math inline">\(Sy\)</span>
+lie in the interval <span class="math inline">\([y_n,y_1]\)</span> and
+hence are in the domain of <span
+class="math inline">\(f(\cdot)\)</span>. Using the monotonicity and
+convexity of <span class="math inline">\(f(\cdot)\)</span>, we have</p>
+<p><span class="math display">\[
+    \sum_{i=1}^{k} f(x_i)\leqslant \sum_{i=1}^{k} f\left( \sum_{j=1}^{k}
+s_{ij}y_j \right) \leqslant \sum_{i=1}^{k} \sum_{j=1}^{k}
+s_{ij}f(y_j)=\sum_{j=1}^{k} \left( \sum_{i=1}^{k} s_{ij} \right)
+f(y_j)=\sum_{j=1}^{k} f(y_j)
+\]</span></p>
+<p>If equality holds for <span class="math inline">\(k=n\)</span>, there
+is a doubly stochastic <span class="math inline">\(S\in
+\mathcal{M}_{n}(\mathbb{R})\)</span> such that <span
+class="math inline">\(x=Sy\)</span> and hence convexity of <span
+class="math inline">\(f(\cdot)\)</span> gives <span
+class="math display">\[
+    \sum_{i=1}^{n} f(x_i)=\sum_{i=1}^{n} f\left( \sum_{j=1}^{n}
+s_{ij}y_j \right) \leqslant \sum_{i=1}^{n} \sum_{j=1}^{n}
+s_{ij}f(y_j)=\sum_{j=1}^{n} f(y_j)
+\]</span></p>
+<div class="note note-info">
+            <p><strong>Theorem</strong> Let <span class="math inline">\(A\in\mathcal{M}_{n}(\mathbb{C})\)</span>, then <span class="math display">\[    \sum_{i=1}^{k} \lvert \lambda_{i}(A) \rvert^{p}\leqslant\sum_{i=1}^{k} s_i(A)^{p} \ \text{for} \ k=1,\cdots ,n, \forall p&gt;0\]</span></p><p><span class="math display">\[    \lvert \operatorname{tr} \ A \rvert \leqslant \sum_{i=1}^{n} s_i(A)\]</span></p><p>We have a more general version of this theorem, please refer to [HJ,Theorem3.3.13].<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><spanclass="hint--top hint--rounded"aria-label="R. A. Horn and Ch. R. Johnson, Topics in matrix analysis, Cambridge University Press, Cambridge, 1994, Corrected reprint of the 1991 original.">[2]</span></a></sup></p>
+          </div>
+<p>We can deduce from Weyl's inequalities that <span
+class="math display">\[
+    \sum_{i=1}^{n} \lvert \lambda_i(A) \rvert ^{2}\leqslant
+\sum_{i=1}^{n} s_i(A)^{2}=\operatorname{tr}(AA^{*})=\sum_{i,j=1}^{n}
+\lvert A_{i,j} \rvert ^{2}. \tag{1.7}
+\]</span></p>
+<p>Since <span class="math inline">\(s_1(\cdot)=\left\| \cdot
+\right\|_{2\rightarrow 2}\)</span> we have for any <span
+class="math inline">\(A,B\in \mathcal{M}_{n}(\mathbb{C})\)</span> that
+<span class="math display">\[
+    s_1(AB)\leqslant s_1(A)s_1(B), \quad s_1(A+B)\leqslant
+s_1(A)+s_1(B). \tag{1.8}
+\]</span></p>
+<p>We define tha empirical eigenvalues and singular values measures by
+<span class="math display">\[
+    \mu_{A}:=\frac{1}{n}\sum_{k=1}^{n} \delta_{\lambda_k(A)}, \quad
+\nu_{A}:=\frac{1}{n}\sum_{k=1}^{n} \delta_{s_k(A)}.
+\]</span></p>
+<p><span class="math inline">\(\mu_{A}\)</span> ad <span
+class="math inline">\(\nu_{A}\)</span> are supported respectively in
+<span class="math inline">\(\mathbb{C}\)</span> and <span
+class="math inline">\(\mathbb{R}_{+}\)</span>. From (1.2) we get <span
+class="math display">\[
+    \begin{aligned}
+        \int_{}^{} \log \lvert \lambda
+\rvert  \mathrm{d}\mu_{A}(\lambda)&amp;= \frac{1}{n}\sum_{i=1}^{n} \log
+\lvert \lambda_i(A) \rvert \\
+        &amp;=\frac{1}{n}\sum_{i=1}^{n} \log (s_i(A)) \\
+        &amp;=\int_{}^{} \log (s) \mathrm{d}\nu_{A}(s).
+    \end{aligned}
+\]</span></p>
+<p>The map <span class="math inline">\(A\mapsto (s_1(A),\cdots
+s_n(A))\)</span> is 1-Lipschitz: for any <span
+class="math inline">\(A,B\in \mathcal{M}_{n}(\mathbb{C})\)</span>,</p>
+<p><span class="math display">\[
+    \max_{1\leqslant i\leqslant n}\lvert s_i(A)-s_i(B) \rvert \leqslant
+s_1(A-B).
+\]</span></p>
+<p>The Hilbert-Schimidt norm/ Schur norm/ Frobenius norm, is</p>
+<p><span class="math display">\[
+    \left\| A \right\|_{2}^{2}=\operatorname{tr}(AA^{*})=\sum_{i=1}^{n}
+s_i(A)^{2}=n \int_{}^{} s^{2} \mathrm{d}\nu_{A}(s).
+\]</span></p>
+<p>In the sequel, we say that a sequence of (possibly signed) measures
+<span class="math inline">\((\eta_{n})_{n\geqslant 1}\)</span> on <span
+class="math inline">\(\mathbb{C}\)</span> (respectively on <span
+class="math inline">\(\mathbb{R}\)</span>) tends weakly to a (possibly
+signed) measure <span class="math inline">\(\eta\)</span>, and we denote
+<span class="math display">\[
+    \eta_{n} \rightsquigarrow \eta,
+\]</span></p>
+<p>when for all continuous and bounded function <span
+class="math inline">\(f\colon \mathbb{C}\rightarrow \mathbb{R}\)</span>
+(respectively <span class="math inline">\(f\colon \mathbb{R}\rightarrow
+\mathbb{R}\)</span>), <span class="math display">\[
+    \lim_{n \to \infty}\int_{}^{} f \mathrm{d}\eta_n=\int_{}^{} f
+\mathrm{d}\eta.
+\]</span></p>
+<h2 id="spectral-law">Spectral Law</h2>
+<p>Since <span class="math inline">\(\mathbb{C}\equiv
+\mathbb{R}^{2}\)</span>, we now consider the case where <span
+class="math inline">\(X_{11}\sim \mathcal{N}(0,\frac{1}{2}I_2)\)</span>.
+We denote <span class="math inline">\(G\)</span> instead of <span
+class="math inline">\(X\)</span> in order to distinguish the Gaussian
+case from the general case. We say <span
+class="math inline">\(G\)</span> belongs to the <strong>Complex Ginibre
+Ensemble</strong>.</p>
+<p>The Lebesgue density of the <span class="math inline">\(n\times
+n\)</span> random matrix <span class="math inline">\(G=(G_{ij})\)</span>
+in <span class="math inline">\(\mathcal{M}_{n}(\mathbb{C})\equiv
+\mathbb{C}^{n\times n}\)</span> is <span class="math display">\[
+    A\in \mathcal{M}_{n}(\mathbb{C})\mapsto
+\pi^{-n^{2}}\mathrm{e}^{-\sum_{i,j=1}^{n} \lvert A_{ij} \rvert ^{2}} .
+\tag{2.1}
+\]</span></p>
+<p>Notice that it's a Boltzmann distribution with energy <span
+class="math display">\[
+    A\mapsto \sum_{i,j=1}^{n} \lvert A_{ij} \rvert
+^{2}=\operatorname{tr}(AA^{*})=\left\| A \right\|_{2}^{2}=\sum_{i=1}^{n}
+s_i^{2}(A).
+\]</span></p>
+<p>So this law is unitary invariant, in the sense that if <span
+class="math inline">\(U\)</span> and <span
+class="math inline">\(V\)</span> are <span class="math inline">\(n\times
+n\)</span> unitary matrices then <span
+class="math inline">\(UGV\)</span> and <span
+class="math inline">\(G\)</span> are equally distributed.</p>
+<p>We set <span class="math display">\[
+    \Delta_n:=\{(z_1,\cdots ,z_n)\in \mathbb{C}^{n}\colon \lvert z_1
+\rvert \geqslant \cdots \geqslant \lvert z_n \rvert \}.
+\]</span></p>
+<p>Recall the Lebesgue density of the <span
+class="math inline">\(n\times n\)</span> random matrix <span
+class="math inline">\(G=(G_{ij})\)</span> in <span
+class="math inline">\(\mathcal{M}_{n}(\mathbb{C})\equiv
+\mathbb{C}^{n\times n}\)</span> is <span class="math display">\[
+    G\in \mathcal{M}_{n}(\mathbb{C})\mapsto
+\pi^{-n^{2}}\mathrm{e}^{-\sum_{i,j=1}^{n} \lvert G_{ij} \rvert ^{2}} .
+\]</span></p>
+<div class="note note-info">
+            <p><strong>Theorem</strong> <spanclass="math inline">\((\lambda_1(G),\cdots ,\lambda_n(G))\)</span> hasdensity <span class="math inline">\(n!\varphi_{n}\mathbf{1}_{\Delta_n}\)</span> where <span class="math display">\[    \varphi_{n}(z_1,\cdots ,z_n)=\frac{\pi^{-n}}{1!2!\cdots n!}\exp\left( -\sum_{k=1}^{n} \lvert z_k \rvert ^{2} \right) \prod_{1\leqslanti&lt;j\leqslant n}^{} \lvert z_i-z_j \rvert ^{2}.\]</span></p><p>In particular, for every symmetric Borel function <spanclass="math inline">\(F\colon \mathbb{C}^{n}\rightarrow\mathbb{R}\)</span>, <span class="math display">\[    \mathbb{E}[F(\lambda_1(G),\cdots,\lambda_n(G))]=\int_{\mathbb{C}^{n}}^{} F(z_1,\cdots,z_n)\varphi_{n}(z_1,\cdots ,z_n) \mathrm{d}z_1\cdots \mathrm{d}z_n\]</span></p>
+          </div>
+<div class="note note-danger">
+            <p>There are two ways to get <spanclass="math inline">\(\varphi_n\)</span>, using diagonalization or Schurdecompositionrespectively.<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><spanclass="hint--top hint--rounded"aria-label="Madan Lal Mehta, Random matrices, third ed. Pure and Applied Mathematics, vol.142, Acad. Press, 2004.">[3]</span></a></sup>We apply the first one since it is more understandable.</p>
+          </div>
+<p>We may suppose that <span class="math inline">\(G\)</span> has
+distinct eigenvalues since matrices with multiple eigenvalues have
+measure <span class="math inline">\(0\)</span>. Let <span
+class="math inline">\(X\)</span> be the <span
+class="math inline">\(N\times N\)</span> matrix whose columns are the
+eigenvectors of <span class="math inline">\(G\)</span> so that <span
+class="math inline">\(G=XEX^{-1}\)</span>. By differentiation, <span
+class="math display">\[
+    X^{-1}\mathrm{d}GX=\mathrm{d}E+\mathrm{d}BE-E\mathrm{d}B \tag{2.2}
+\]</span></p>
+<p>with <span class="math display">\[
+    \mathrm{d}B=X^{-1}\mathrm{d}X.
+\]</span></p>
+<p><span class="math display">\[
+    (X^{-1}\mathrm{d}GX)_{jj}^{r}=\mathrm{d}z_j^{r}=\mathrm{d}x_j, \quad
+(X^{-1}\mathrm{d}GX)_{jj}^{i}=\mathrm{d}z_j^{i}=\mathrm{d}y_j,
+\]</span></p>
+<p><span class="math display">\[
+    (X^{-1}\mathrm{d}GX)_{jk}^{r}=(x_k-x_j)\mathrm{d}B_{jk}^{r}-(y_k-y_j)\mathrm{d}B_{jk}^{i},
+\quad j\neq k
+\]</span></p>
+<p><span class="math display">\[
+    (X^{-1}\mathrm{d}GX)_{jk}^{i}=(y_k-y_j)\mathrm{d}B_{jk}^{r}+(x_k-x_j)\mathrm{d}B_{jk}^{i},\quad
+j\neq k
+\]</span></p>
+<p>where <span class="math inline">\(x_j,y_j\)</span> are the real and
+imaginary parts of <span class="math inline">\(z_j\)</span>, the
+diagonal elements of <span class="math inline">\(E\)</span>. Denote
+<span
+class="math inline">\(\mathrm{d}\hat{G}=X^{-1}\mathrm{d}GX\)</span>.</p>
+<p>The Jacobian <span class="math display">\[
+    \frac{\partial
+(\mathrm{d}\hat{G}_{jj}^{r},\mathrm{d}\hat{G}_{jj}^{i})}{\partial
+(x_j,y_j)}=1
+\]</span></p>
+<p><span class="math display">\[
+    \frac{\partial (\mathrm{d}G_{jk}^{r},\mathrm{d}G_{jk}^{i})}{\partial
+(\mathrm{d}B_{jk}^{r},\mathrm{d}B_{jk}^{i})}=(x_k-x_j)^{2}+(y_k-y_j)^{2}=\lvert
+z_k-z_j \rvert ^{2}
+\]</span></p>
+<p>The volume element is therefore given by <span
+class="math display">\[
+    \mu(\mathrm{d}G)=\mu(\mathrm{d}\hat{G})=\prod_{j\neq k}^{} \lvert
+z_k-z_j \rvert ^{2}\mathrm{d}B_{jk}^{r}\mathrm{d}B_{jk}^{i}\prod_{i}^{}
+\mathrm{d}x_i\mathrm{d}y_i. \tag{2.3}
+\]</span></p>
+<p>We now evaluate the integral <span class="math display">\[
+    J=\int_{}^{} \exp [-\operatorname{tr}(G^{*}G)]\prod_{j\neq
+k}^{}  \mathrm{d}B_{jk}^{r}\mathrm{d}B_{jk}^{i}. \tag{2.4}
+\]</span></p>
+<h3 id="evaluation-of-2.4">Evaluation of (2.4)</h3>
+<p>Similar to QR decomposition, any complex nonsingular <span
+class="math inline">\(N\times N\)</span> matrix <span
+class="math inline">\(X\)</span> can be expressed in one and only one
+way as <span class="math display">\[
+    X=UYV \tag{2.5}
+\]</span></p>
+<p>where <span class="math inline">\(U\)</span> is a unitary matrix,
+<span class="math inline">\(Y\)</span> is a triangular matrix with all
+diagonal elements equal to unity, <span
+class="math inline">\(y_{ij}=0,i&gt;j\)</span>, <span
+class="math inline">\(y_{ii}=1\)</span>, and <span
+class="math inline">\(V\)</span> is a diagonal matrix with real positive
+diagonal elements.</p>
+<p>Using the fact that <span class="math inline">\(G=XEX^{-1}\)</span>,
+<span class="math inline">\(U^{*}U=I\)</span>, and <span
+class="math inline">\(EV=VE\)</span>, we can write <span
+class="math display">\[
+    \operatorname{tr}(G^{*}G)=\operatorname{tr}[E^{*}Y^{*}YE(Y^{*}Y)^{-1}],
+\tag{2.6}
+\]</span></p>
+<p><span class="math display">\[
+    \mathrm{d}B=X^{-1}\mathrm{d}X=V^{-1}Y^{-1}(U^{-1}\mathrm{d}U)YV+V^{-1}Y^{-1}\mathrm{d}YV+V^{-1}\mathrm{d}V.
+\tag{2.7}
+\]</span></p>
+<p>From (3.1.6) and the structure of <span
+class="math inline">\(Y\)</span> and <span
+class="math inline">\(V\)</span> we see that <span
+class="math display">\[
+    \prod_{j\neq k}^{}
+\mathrm{d}B_{jk}^{r}\mathrm{d}B_{jk}^{i}=\prod_{j&lt;k}^{}
+(Y^{-1}\mathrm{d}Y)_{jk}^{r}(Y^{-1}\mathrm{d}Y)_{jk}^{i}a, \tag{2.8}
+\]</span></p>
+<p>where <span class="math inline">\(a\)</span> depends only on <span
+class="math inline">\(U\)</span> and <span
+class="math inline">\(V\)</span>.</p>
+<p><span class="math display">\[
+    \int_{}^{} \exp [-\operatorname{tr}(E^{*}HEH^{-1})]\prod_{j&lt;k}^{}
+(Y^{-1}\mathrm{d}Y)_{jk}^{r}(Y^{-1}\mathrm{d}Y)_{jk}^{i}, \tag{2.9}
+\]</span></p>
+<p>where <span class="math display">\[
+    H=Y^{*}Y. \tag{2.10}
+\]</span></p>
+<p>The matrix <span class="math inline">\(H\)</span> is Hermitian. Any
+of its upper left diagonal block of size <span
+class="math inline">\(m\)</span> is obtained from the upper left
+diagonal block of <span class="math inline">\(Y\)</span> of the same
+size: <span class="math inline">\(H_n=Y_n^{*}Y_n\)</span>. Therefore,
+for every <span class="math inline">\(n\)</span>, <span
+class="math inline">\(\det H_n=1\)</span>.</p>
+<p>We make a change of variables. First, because <span
+class="math inline">\(\det Y=1\)</span>, <span class="math display">\[
+    \prod_{j&lt;k}^{}
+(Y^{-1}\mathrm{d}Y)_{jk}^{r}(Y^{-1}\mathrm{d}Y)_{jk}^{i}=\prod_{j&lt;k}^{}
+\mathrm{d}Y_{jk}^{r}\mathrm{d}Y_{jk}^{i}. \tag{2.11}
+\]</span></p>
+<p>Next, we take <span class="math inline">\(H_{jk}^{r}\)</span>, <span
+class="math inline">\(H_{jk}^{i}\)</span> for <span
+class="math inline">\(j&lt;k\)</span> as independent variables from
+<span class="math display">\[
+    H_{jk}=Y_{jk}+\sum_{l&gt;j}^{} Y_{jl}^{*}Y_{lk}, \quad j&lt;k,  
+\]</span></p>
+<p>The Jacobian of the transformation from <span
+class="math inline">\(Y\)</span> to <span
+class="math inline">\(H\)</span> is <span
+class="math inline">\(1\)</span>. So <span class="math display">\[
+    J=C \int_{}^{} \exp
+[-\operatorname{tr}(E^{*}HEH^{-1})]\prod_{j&lt;k}^{}
+\mathrm{d}H_{jk}^{r} \mathrm{d}H_{jk}^{i}, \tag{2.12}
+\]</span></p>
+<p>where <span class="math inline">\(C\)</span> is a constant.</p>
+<p>The integration over <span class="math inline">\(H\)</span> is done
+in <span class="math inline">\(N\)</span> steps. At every step we
+integrate over the variables of the last column and thus decrease by one
+the size of the matrix, whose structure remains the same.</p>
+<p>Let <span class="math inline">\(H&#39;=Y_n^{*}Y_n\)</span>, <span
+class="math inline">\(E&#39;=[z_i\delta_{jk}]_{j,k=1,2,\cdots
+,n}\)</span>, be the relevant matrices of order <span
+class="math inline">\(m\)</span> and <span
+class="math inline">\(H\)</span>, <span class="math inline">\(E\)</span>
+be those obtained from <span class="math inline">\(H&#39;\)</span>,
+<span class="math inline">\(E&#39;\)</span> by removing the last row and
+last column. Let the Greek indices run from <span
+class="math inline">\(1\)</span> to <span
+class="math inline">\(n\)</span>, and the Latin indices from <span
+class="math inline">\(1\)</span> to <span
+class="math inline">\(n-1\)</span>. Let <span
+class="math inline">\(\Delta_{\alpha\beta}&#39;\)</span> be the cofactor
+of <span class="math inline">\(H_{\alpha\beta}&#39;\)</span> in <span
+class="math inline">\(H&#39;\)</span> and <span
+class="math inline">\(\Delta_{jk}\)</span>, the cofactor of <span
+class="math inline">\(H_{jk}\)</span> in <span
+class="math inline">\(H\)</span>. Let <span
+class="math inline">\(g_i=H_{in}&#39;\)</span>. Because <span
+class="math inline">\(\det H&#39;=\det H=1\)</span>, we have <span
+class="math display">\[
+    \Delta_{\alpha\beta}&#39;=(H&#39;^{-1})_{\beta\alpha}, \quad
+\Delta_{jk}=(H^{-1})_{kj}. \tag{2.13}
+\]</span></p>
+<p>Expanding <span class="math inline">\(\det H&#39;\)</span>, <span
+class="math inline">\(\Delta_{in}&#39;\)</span>,<span
+class="math inline">\(\Delta_{jk}&#39;\)</span> by the last row and last
+column, we have <span class="math display">\[
+    1=H_{nn}&#39;-\sum_{j,k}^{} g_{j}^{*}g_{k}\Delta_{kj}, \tag{2.14}
+\]</span></p>
+<p><span class="math display">\[
+    \Delta_{in}&#39;=-\sum_{l}^{} \Delta_{il}g_{l}^{*}, \tag{2.15}
+\]</span></p>
+<p><span class="math display">\[
+    \Delta_{ij}&#39;=H_{nn}&#39;\Delta_{ij}-\sum_{l,k}^{}
+g_k^{*}g_l\Delta_{ij}^{lk}, \tag{2.16}
+\]</span></p>
+<p>where <span class="math inline">\(\Delta_{ij}^{lk}\)</span> is the
+cofactor obtained from <span class="math inline">\(H\)</span> by
+removing the <span class="math inline">\(i\)</span>th and <span
+class="math inline">\(l\)</span>th rows and the <span
+class="math inline">\(j\)</span>th and <span
+class="math inline">\(k\)</span>th columns. Sylvester's theorem (also
+known as Desnanot–Jacobi identity) expresses <span
+class="math inline">\(\Delta_{ij}^{lk}\)</span> in terms of <span
+class="math inline">\(\Delta_{rs}\)</span> <span class="math display">\[
+    \Delta_{ij}^{lk}=\Delta_{ij}\Delta_{lk}-\Delta_{ik}\Delta_{lj}.
+\tag{2.17}
+\]</span></p>
+<p>In writing (2.17), we have replaced <span class="math inline">\(\det
+H\)</span> by unity on the LHS. Let <span class="math display">\[
+    \phi_{n}=\operatorname{tr}(E&#39;^{*}H&#39;E&#39;H&#39;^{-1})=\sum_{\alpha,\beta}^{}
+z_{\alpha}^{*}z_{\beta}H_{\alpha\beta}&#39;\Delta_{\alpha\beta}&#39;.
+\tag{2.18}
+\]</span></p>
+<p>Separating the last row and last column and making use of (2.13) to
+(2.17), we get <span class="math display">\[
+    \phi_{n}=\lvert z_n \rvert ^{2}+\phi_{n-1}+\langle g^{*} |
+H^{-1}(E^{*}-z_n^{*}I)H(E-z_nI)H^{-1}|g \rangle , \tag{2.19}
+\]</span></p>
+<p>where <span class="math display">\[
+    \langle g^{*}|B|g \rangle =\sum_{i,j}^{} g_{i}^{*}B_{ij}g_j.
+\tag{2.20}
+\]</span></p>
+<p>Substituting (2.19) for <span class="math inline">\(n=N\)</span> in
+(2.12), we get <span class="math display">\[
+    \begin{aligned}
+        J&amp;=C\mathrm{e}^{-\lvert z_{N} \rvert ^{2}} \int_{}^{}
+\mathrm{e}^{-\phi_{N-1}} \prod_{1\leqslant i&lt;j\leqslant N-1}^{}
+\mathrm{d}H_{ij}^{r}\mathrm{d}H_{ij}^{i} \\
+        &amp;\times \int_{}^{} \exp [-\langle g^{*}|
+H^{-1}(E^{*}-z_{N}^{*}I)H(E-z_{N}I)H^{-1}|g \rangle ]\prod_{1\leqslant
+i\leqslant N-1}^{}  \mathrm{d}g_i^{r}\mathrm{d}g_i^{i}.
+    \end{aligned}
+\]</span></p>
+<div class="note note-info">
+            <p><span class="math inline">\(B\in\mathcal{M}_{N}(\mathbb{C})\)</span>, <spanclass="math inline">\(B\)</span> is Hermitian. Then <spanclass="math display">\[    \int_{}^{} \exp [-\langle g^{*}| B |g \rangle ] \prod_{j=1}^{N}\mathrm{d}g_{j}^{r}\mathrm{d}g_{j}^{i}=\pi^{N}(\det B)^{-1}\]</span></p>
+          </div>
+<p>The last integral is immediate and gives <span
+class="math display">\[
+    \pi^{N-1}\{\det
+[H^{-1}(E^{*}-z_{N}^{*}I)H(E-z_{N}I)H^{-1}]\}^{-1}=\pi^{N-1}\prod_{i=1}^{N-1}
+\lvert z_i-z_{N} \rvert ^{-2}. \tag{2.21}
+\]</span></p>
+<p>The process can be repeated <span class="math inline">\(N\)</span>
+times and we finally get <span class="math display">\[
+    J=C\exp \left( -\sum_{i=1}^{N} \lvert z_i \rvert ^{2} \right)
+\prod_{1\leqslant i&lt;j\leqslant N}\lvert z_i-z_j \rvert ^{-2},
+\tag{2.22}
+\]</span></p>
+<p>where <span class="math inline">\(C\)</span> is a new constant.</p>
+<h3 id="the-joint-probability-density-for-g">The joint probability
+density for <span class="math inline">\(G\)</span></h3>
+<p>We have proved the joint probability density for the eigenvalues of
+<span class="math inline">\(G\)</span> belonging to the Complex Ginibre
+Ensemble is given by <span class="math display">\[
+    P_c(z_1,\cdots ,z_{N})=\mu(\mathrm{d}G)=C\exp \left( -\sum_{i=1}^{N}
+\lvert z_i \rvert ^{2} \right) \prod_{1\leqslant i&lt;j\leqslant
+N}\lvert z_i-z_j \rvert ^{2}, \tag{2.23}
+\]</span></p>
+<p>where <span class="math inline">\(C\)</span> is the normalization
+constant. We now compute <span class="math inline">\(C\)</span>.</p>
+<p>The probability that all the eigenvalues <span
+class="math inline">\(z_i\)</span> will lie outside a circle of radius
+<span class="math inline">\(\alpha\)</span> centered at <span
+class="math inline">\(z=0\)</span> is <span class="math display">\[
+    E_{N_c}(\alpha)=\int_{\lvert z_i \rvert \geqslant \alpha}^{}
+P_c(z_1,\cdots ,z_{N})\prod_{i}^{} \mathrm{d}x_i\mathrm{d}y_i.
+\]</span></p>
+<p>By writing (Here we don't require $z_1 z_2 z_{N} $) <span
+class="math display">\[
+    \begin{aligned}
+        \prod_{i&lt;j}^{} \lvert z_i-z_j \rvert
+^{2}&amp;=\prod_{i&lt;j}^{} (z_i-z_j)(z_i^{*}-z_j^{*}) \\
+        &amp;=\det
+        \begin{bmatrix}
+        1 &amp; \cdots &amp; 1 \\
+        z_1 &amp; \cdots &amp; z_{N} \\
+        \vdots &amp; &amp; \vdots \\
+        z_1^{N-1} &amp; \cdots &amp; z_{N}^{N-1} \\
+        \end{bmatrix}
+        \det
+        \begin{bmatrix}
+        1 &amp; \cdots &amp; 1 \\
+        z_1^{*} &amp; \cdots &amp; z_{N}^{*} \\
+        \vdots &amp; &amp; \vdots \\
+        z_1^{*N-1} &amp; \cdots &amp; z_{N}^{*N-1} \\    
+        \end{bmatrix} \\
+        &amp;=\det
+        \begin{bmatrix}
+        N &amp; \sum_{i}^{} z_i &amp; \cdots &amp; \sum_{i}^{} z_i^{N-1}
+\\
+        \sum_{i}^{} z_i^{*} &amp; \sum_{i}^{} z_i^{*}z_i &amp; \cdots
+&amp; \sum_{i}^{} z_i^{*}z_i^{N-1} \\
+        \vdots &amp; &amp; &amp; \vdots \\
+        \sum_{i}^{} z_i^{*N-1} &amp; \sum_{i}^{} z_i^{*N-1}z_i &amp;
+\cdots &amp; \sum_{i}^{} z_i^{*N-1}z_i^{N-1}
+        \end{bmatrix}
+    \end{aligned}
+\]</span></p>
+<p>The integrand is symmetric in all the <span
+class="math inline">\(z_i\)</span>, we can replace the first row with
+<span class="math inline">\(1,z_1,z_1^{2},\cdots ,z_1^{N-1}\)</span> and
+multiply the result by <span class="math inline">\(N\)</span>; <span
+class="math inline">\(z_1\)</span> can be eliminated from the other rows
+by subtracting a suitable multiple of the first row. The resulting
+determinant is symmetric in the <span class="math inline">\(N-1\)</span>
+variables <span class="math inline">\(z_2,z_3,\cdots ,z_{N}\)</span>;
+therefore we replace the second row with <span
+class="math inline">\(z_2^{*},z_2^{*}z_2,\cdots
+,z_2^{*}z_2^{N-1}\)</span> and multiply the result by <span
+class="math inline">\(N-1\)</span>. The process can be repeated and we
+get <span class="math display">\[
+    \begin{aligned}
+        E_{N_c}(\alpha)&amp;=CN!\int_{\lvert z_i \rvert \geqslant
+\alpha}^{} \left\{ \prod_{i}^{} \mathrm{d}x_i\mathrm{d}y_i\right\}\exp
+\left( -\sum_{i}^{N} \lvert z_i \rvert ^{2} \right) \\
+        &amp;\times\det
+        \begin{bmatrix}
+        1 &amp; z_1 &amp; \cdots &amp; z_1^{N-1} \\
+        z_2^{*} &amp; z_2^{*}z_2 &amp; \cdots &amp; z_2^{*}z_2^{N-1} \\
+        \vdots &amp; &amp; &amp;\vdots \\
+        z_{N}^{*N-1} &amp; z_{N}^{*N-1}z_{N} &amp; \cdots &amp;
+z_{N}^{*N-1}z_{N}^{N-1} \\
+        \end{bmatrix}
+    \end{aligned}
+\]</span></p>
+<p>By changing to polar coordinates and performing the angular
+integrations first we see that <span class="math display">\[
+    \int_{\lvert z \rvert \geqslant \alpha}^{} \mathrm{e}^{-\lvert z
+\rvert ^{2}} z^{*j}z^{k} \mathrm{d}x\mathrm{d}y=\pi \delta_{jk}
+\Gamma(j+1,\alpha^{2}), \tag{2.24}
+\]</span></p>
+<p>so that <span class="math display">\[
+    E_{N_c}(\alpha)=CN!\pi^{N}\prod_{j=1}^{N} \Gamma(j,\alpha^{2}),
+\tag{2.25}
+\]</span></p>
+<p>where <span class="math inline">\(\Gamma(j,\alpha^{2})\)</span> is
+the incomplete gamma function <span class="math display">\[
+    \Gamma(j,\alpha^{2})=\int_{\alpha^{2}}^{\infty} \mathrm{e}^{-x}
+x^{j-1} \mathrm{d}x=\Gamma(j)\mathrm{e}^{-\alpha^{2}} \sum_{l=0}^{j-1}
+\frac{\alpha^{2l}}{l!}. \tag{2.26}
+\]</span></p>
+<p>Since <span class="math inline">\(E_{N_c}(0)=1\)</span>, the constant
+<span class="math inline">\(C\)</span> can be determined from (3.1.23)
+as <span class="math display">\[
+    C^{-1}=\pi^{N}\prod_{j=1}^{N} j!, \tag{2.27}
+\]</span></p>
+<p>and therefore <span class="math display">\[
+    E_{N_c}(\alpha)=\prod_{j=1}^{N} \left( \mathrm{e}^{-\alpha^{2}}
+\sum_{l=0}^{j-1} \frac{\alpha^{2l}}{l!} \right). \tag{2.28}   
+\]</span></p>
+<p>We will use the spectral law with symmetric functions of the form
+<span class="math display">\[
+    F(z_1,\cdots ,z_n)=\sum_{i_1,\cdots i_k\ \text{distinct}}^{}
+f(z_{i_1})\cdots f(z_{i_k}).
+\]</span></p>
+<h2 id="k-points-correlations"><span
+class="math inline">\(k\)</span>-points correlations</h2>
+<p>Let <span class="math inline">\(z\in \mathbb{C}\mapsto
+\gamma(z)=\pi^{-1}\mathrm{e}^{-\lvert z \rvert ^{2}}\)</span> be the
+density of the standard Gaussian <span
+class="math inline">\(\mathcal{N}(0,\frac{1}{2}I_2)\)</span> on <span
+class="math inline">\(\mathbb{C}\)</span>. For every <span
+class="math inline">\(1\leqslant k\leqslant n\)</span>, the <span
+class="math inline">\(k\)</span>-point correlation is <span
+class="math display">\[
+    \varphi_{n,k}(z_1,\cdots ,z_k):=\int_{\mathbb{C}^{n-k}}^{}
+\varphi_{n}(z_1,\cdots ,z_n)
+\mathrm{d}z_{k+1}^{r}\mathrm{d}z_{k+1}^{i}\cdots
+\mathrm{d}z_{n}^{r}\mathrm{d}z_n^{i}.  \tag{2.29}
+\]</span></p>
+<div class="note note-info">
+            <p><strong>Theorem (Dyson, 1970)</strong> Let <spanclass="math inline">\(K(x,y)\)</span> be a function with complex values,such that <span class="math display">\[    \bar{K}(x,y)=K(y,x), \tag{2.30}\]</span></p><p>Assume that <span class="math display">\[    \int K(x,y)K(y,z) \mathrm{d}y=K(x,z), \tag{2.31}\]</span></p><p>Let <span class="math inline">\([K(z_i,z_j)]_{N}\)</span> denote the<span class="math inline">\(N\times N\)</span> matrix with its <spanclass="math inline">\((i,j)\)</span> element equal to <spanclass="math inline">\(K(z_i,z_j)\)</span>. Then <spanclass="math display">\[    \int_{}^{} \det[K(z_i,z_j)]_{N}\mathrm{d}z_{N}^{r}\mathrm{d}z_{N}^{i}=(c-N+1)\det[K(z_i,z_j)]_{N-1},\tag{2.32}\]</span></p><p>where <span class="math display">\[    c=\int_{}^{} K(z,z) \mathrm{d}z^{r}\mathrm{d}z^{i} \tag{2.33}\]</span></p><p>Note that (2.30) and (2.31) mean that the linear operator defined bythe kernel <span class="math inline">\(K(x,y)\)</span> is a projector,and the constant <span class="math inline">\(c\)</span> is its trace(hence a nonnegative integer).</p>
+          </div>
+<p><strong>proof</strong> From the definition of the determinant, <span
+class="math display">\[
+    \det[K(z_i,z_j)]_{N}=\sum_{P}^{} \sigma(P)\prod_{1}^{l}
+(K(\xi,\eta)K(\eta,\zeta)\cdots K(\theta,\xi)), \tag{2.34}
+\]</span></p>
+<p>where the permutation <span class="math inline">\(P\)</span> consists
+of <span class="math inline">\(l\)</span> cycles of the form <span
+class="math inline">\((\xi \rightarrow \eta \rightarrow \zeta
+\rightarrow\cdots \rightarrow \theta\rightarrow \xi)\)</span>. Now the
+index <span class="math inline">\(N\)</span> occurs somewhere. - <span
+class="math inline">\(N\)</span> forms a cycle by itself, and <span
+class="math inline">\(K(z_{N},z_{N})\)</span> gives on integration the
+scalar constant <span class="math inline">\(c\)</span>; the remaining
+factor is by definition <span
+class="math inline">\(\det[K(z_i,z_j)]_{N-1}\)</span>; - <span
+class="math inline">\(N\)</span> occurs in a longer cycle and
+integration on <span class="math inline">\(x_{N}\)</span> reduces the
+length of this cycle by one. This can happen in <span
+class="math inline">\((N-1)\)</span> ways since the index <span
+class="math inline">\(N\)</span> can be inserted between any two indices
+of the cyclic sequence <span class="math inline">\(1,2,\cdots
+,N-1\)</span>. Alos the resulting permutation over <span
+class="math inline">\(N-1\)</span> indices has an opposite sign. The
+remaining expression is by definition <span
+class="math inline">\(\det[K(z_i,z_j)]_{N-1}\)</span>.</p>
+<p>Adding the two contributions we get the result.</p>
+<div class="note note-info">
+            <p><strong>Theorem (<span class="math inline">\(k\)</span>-pointscorrelations)</strong> For every <span class="math inline">\(1\leqslantk\leqslant n\)</span>, <span class="math display">\[    \varphi_{n,k}(z_1,\cdots ,z_k)=\frac{(n-k)!}{n!}\gamma(z_1)\cdots\gamma(z_k)\det [K(z_i,z_j)]_{1\leqslant i,j\leqslant k} \tag{2.35}\]</span></p><p>where <span class="math display">\[    K(z_i,z_j):=\sum_{l=0}^{n-1}\frac{(z_iz_j^{*})^{l}}{l!}=\sum_{l=0}^{n-1} H_l(z_i)H_l(z_j)^{*}\tag{2.36}\]</span></p><p>with <span class="math display">\[    H_{l}(z):=\frac{1}{\sqrt{l!}}z^{l}. \tag{2.37}\]</span></p><p>In particular, by taking <span class="math inline">\(k=n\)</span> weget <span class="math display">\[    \varphi_{n,n}=\varphi_{n}(z_1,\cdots,z_n)=\frac{1}{n!}\gamma(z_1)\cdots\gamma(z_n)\det[K(z_i,z_j)]_{1\leqslant i,j\leqslant n}.       \]</span></p>
+          </div>
+<p><strong>proof</strong></p>
+<p>It's easy to check the <span class="math inline">\(k=n\)</span>
+situation <span class="math display">\[
+    \varphi_{n}(z_1,\cdots ,z_n)=\frac{\pi^{-n}}{n!}\exp \left(
+-\sum_{i=1}^{n} \lvert z_i \rvert ^{2} \right)
+\det[K(z_i,z_j)]_{1\leqslant i,j\leqslant n}.
+\]</span></p>
+<p>By the previous theorem, setting <span
+class="math inline">\(K(x,y)=\sum_{l=0}^{n-1} H_l(x)H_l(y)^{*}\)</span>,
+we get</p>
+<p><span class="math display">\[
+    \int_{}^{} \mathrm{e}^{-\lvert y \rvert ^{2}} K(x,y)K(y,z)
+\mathrm{d}y^{r}\mathrm{d}y^{i}=\pi K(x,z)
+\]</span></p>
+<p>and <span class="math display">\[
+    \int_{}^{} \mathrm{e}^{-\lvert z \rvert ^{2}} K(z,z)
+\mathrm{d}z^{r}\mathrm{d}z^{i}=n\pi
+\]</span></p>
+<p>So we have <span class="math display">\[
+    \begin{aligned}
+        \varphi_{n,n-1}&amp;=\int_{\mathbb{C}}^{}
+\frac{\pi^{-n}}{n!}\exp \left( -\sum_{i=1}^{n} \lvert z_i \rvert ^{2}
+\right) \det[K(z_i,z_j)]_{1\leqslant i,j\leqslant n}
+\mathrm{d}z_n^{r}\mathrm{d}z_n^{i} \\
+        &amp;=\frac{\pi^{-n+1}}{n!}\exp \left( -\sum_{i=1}^{n-1} \lvert
+z_i \rvert ^{2} \right) \det[K(z_i,z_j)]_{1\leqslant i,j\leqslant n-1}
+\\
+    \end{aligned}
+\]</span></p>
+<p>By induction, (2.35) holds.</p>
+<h2 id="reference">Reference</h2>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>Charles Bordenave and Djalil
+Chafaï, The circular law
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2" class="footnote-text"><span>R. A. Horn and Ch. R.
+Johnson, Topics in matrix analysis, Cambridge University Press,
+Cambridge, 1994, Corrected reprint of the 1991 original.
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3" class="footnote-text"><span>Madan Lal Mehta, Random
+matrices, third ed. Pure and Applied Mathematics, vol.142, Acad. Press,
+2004. <a href="#fnref:3" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/" class="category-chain-item">概率论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/%E7%9F%A9%E9%98%B5%E8%AE%BA/" class="category-chain-item">矩阵论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>The Circular Law (1)</div>
+      <div>http://example.com/2023/01/22/The-Circular-Law-1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>January 22, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/28/The-Circular-Law-2/" title="The Circular Law (2)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">The Circular Law (2)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/19/%E5%87%A0%E4%B8%AA%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%9B%B8%E5%85%B3%E7%9A%84%E9%97%AE%E9%A2%98/" title="几个数理统计相关的问题">
+                        <span class="hidden-mobile">几个数理统计相关的问题</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1181 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本章主要利用幂级数解法求Legendre方程和用广义幂级数解法求解Bessel方程，并讨论相关的正交Legendre多项式系和正交Bessel函数系的级数展开问题.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常微分方程（7）">
+<meta property="og:url" content="http://example.com/2022/04/19/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%887%EF%BC%89/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="本章主要利用幂级数解法求Legendre方程和用广义幂级数解法求解Bessel方程，并讨论相关的正交Legendre多项式系和正交Bessel函数系的级数展开问题.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-04-19T14:14:43.000Z">
+<meta property="article:modified_time" content="2022-07-19T13:31:08.691Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+  
+  
+  
+  <title>常微分方程（7） - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常微分方程（7）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-19 22:14" pubdate>
+          April 19, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          87 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常微分方程（7）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="幂级数解法">幂级数解法</h1>
+<h2 id="柯西定理">柯西定理</h2>
+<p>这部分的主要结果是建立初值问题收敛的幂级数解的存在和唯一性定理.
+只讨论一阶的微分方程 <span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y)
+\]</span> 其中 <span class="math inline">\(f(x, y)\)</span>在区域 <span
+class="math inline">\(G \in
+\mathbb{R}^{2}\)</span>上<strong>解析</strong>（能够局部展开成收敛幂级数）</p>
+<p>对于初值问题 <span class="math display">\[
+    (E): \quad \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y),\quad y(x_0)=y_0
+\]</span></p>
+<p>下证明该解 <span class="math inline">\(y=y(x)\)</span>在 <span
+class="math inline">\(x_0\)</span>附近是<strong>解析</strong>的</p>
+<p>我们有<strong>优级数</strong>（或<strong>强级数</strong>），<strong>优函数</strong>（或<strong>强函数</strong>）的概念.</p>
+<p><strong>引理7.1</strong>：设函数 <span class="math inline">\(f(x,
+y)\)</span>在矩形区域 <span class="math display">\[
+    R: \quad \left\vert x-x_0 \right\vert &lt;\alpha,\quad \left\vert
+y-y_0 \right\vert &lt; \beta
+\]</span> 上可以展成 <span class="math inline">\((x-x_0)\)</span>和
+<span
+class="math inline">\((y-y_0)\)</span>的一个收敛的幂级数，则存在常数
+<span class="math inline">\(M&gt;0\)</span>，使得函数 <span
+class="math display">\[
+    F(x, y)=\frac{M}{(1-\displaystyle \frac{x-x_0}{a})(1-\displaystyle
+\frac{y-y_0}{b})} \tag{1}
+\]</span> 在矩形区域 <span class="math display">\[
+    R_0: \quad \left\vert x-x_0 \right\vert &lt;a, \quad \left\vert
+y-y_0 \right\vert &lt;b
+\]</span> 内是 <span class="math inline">\(f(x,
+y)\)</span>的一个优函数，其中 <span class="math inline">\(a&lt;
+\alpha\)</span>和 <span class="math inline">\(b&lt;\beta\)</span>.</p>
+<p><strong>证</strong>：把 <span class="math inline">\(F (x,
+y)\)</span>展开即可找 <span class="math inline">\(M\)</span>.</p>
+<p><strong>引理7.2</strong>：设在 <span
+class="math inline">\(R_0\)</span>上由（1）给定 <span
+class="math inline">\(F(x, y)\)</span>，则初值问题 <span
+class="math display">\[
+    (\hat{E}): \quad \frac{\mathrm{d}y}{\mathrm{d}x}=F(x, y), \quad
+y(x_0)=y_0      
+\]</span> 在区间 <span class="math inline">\(\left\vert x-x_0
+\right\vert &lt;\rho\)</span>内存在一个解析的解 <span
+class="math inline">\(y=\hat{y}(x)\)</span>，其中常数 <span
+class="math inline">\(\rho=a(1-\mathrm{e}^{-b/2aM} )\)</span>，而正数
+<span class="math inline">\(a,b\)</span>和 <span
+class="math inline">\(M\)</span>的意义同上.</p>
+<p><strong>证</strong>：利用分离变量法求解 <span
+class="math inline">\((\hat{E})\)</span>，解出 <span
+class="math inline">\(y=\hat{y}(x)\)</span>，分析 <span
+class="math inline">\(\hat{y}(x)\)</span>中 <span
+class="math inline">\(\displaystyle \ln
+(1-\frac{x-x_0}{a})\)</span>的收敛半径和 <span
+class="math inline">\(\sqrt{1+\cdot}\)</span>的收敛半径；可以得到 <span
+class="math inline">\(\hat{y}(x)\)</span>是 <span
+class="math inline">\((\hat{E})\)</span>的解析解.</p>
+<p><strong>定理7.1</strong>（Cauchy）：如果函数 <span
+class="math inline">\(f(x, y)\)</span>在矩形区域 <span
+class="math inline">\(R\)</span>上可以展开成 <span
+class="math inline">\((x-x_0)\)</span>和 <span
+class="math inline">\((y-y_0)\)</span>的一个收敛的幂级数，则初值问题
+<span class="math inline">\((E)\)</span>在 <span
+class="math inline">\(x_0\)</span>点的领域 <span
+class="math inline">\(\left\vert x-x_0 \right\vert
+&lt;\rho\)</span>内有一个解析解 <span
+class="math inline">\(y=y(x)\)</span>，而且它是唯一的. 此处区域 <span
+class="math inline">\(R\)</span>和常数 <span
+class="math inline">\(\rho\)</span>的意义同上.</p>
+<p><strong>证</strong>：首先展开 <span
+class="math inline">\(f(x,y)\)</span>： <span class="math display">\[
+    f(x, y)=\sum_{i,j=0}^{\infty} a_{ij}(x-x_0)^{i}(y-y_0)^{j} \tag{2}
+\]</span> 作形式解 <span class="math display">\[
+    y=y_0+\sum_{n=1}^{\infty} C_n(x-x_0)^{n} \tag{3}
+\]</span> 可以直接求 <span class="math inline">\(C_n\)</span>，它是诸
+<span class="math inline">\(a_{ij}\)</span>的多项式 <span
+class="math inline">\(P_n\)</span>，<span
+class="math inline">\(P_n\)</span>的系数<strong>全为正</strong>且 <span
+class="math inline">\(P_n\)</span>与 <span class="math inline">\(f(x,
+y)\)</span>无关.
+这就说明了解析解的唯一性，我们还要说明（3）是一致收敛的.</p>
+<p>考虑初值问题 <span class="math display">\[
+    (\hat{E}): \quad \frac{\mathrm{d}y}{\mathrm{d}x}=F(x, y), \quad
+y(x_0)=y_0      
+\]</span> 其中 <span class="math inline">\(F(x, y)\)</span>和 <span
+class="math inline">\(a,b,M\)</span>如之前所定义. 它在 <span
+class="math inline">\(R_0\)</span>内是 <span class="math inline">\(f(x,
+y)\)</span>的优函数. 作 <span
+class="math inline">\((\hat{E})\)</span>的形式解 <span
+class="math display">\[
+    y=\hat{y}(x)=y_0+\sum_{n=1}^{\infty} \hat{C_n}(x-x_0)^{n}
+\]</span> 则有 $C_n $，由优级数判别法，定理证毕.</p>
+<div class="note note-success">
+            <p>非解析的微分方程可能没有形式的幂级数解.如 <spanclass="math display">\[    \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{y-x}{x}, y(0)=0\]</span></p>
+          </div>
+<div class="note note-success">
+            <p>非解析微分方程的形式解可能不收敛.如 <span class="math display">\[    x^{2}\frac{\mathrm{d}y}{\mathrm{d}x}=y-x, \quad y(0)=0\]</span> 它的形式解是 <span class="math display">\[    y=x+x^{2}+2!x^{3}+\cdots +n! x^{n+1}+\cdots\]</span> 但是它对任何 <span class="math inline">\(x \neq0\)</span>不收敛.</p>
+          </div>
+<p>优级数方法可以应用于微分方程组，具体见书本.</p>
+<p>叙述解析微分方程组的Cauchy定理 对于微分方程组的初值问题 <span
+class="math display">\[
+    \frac{\mathrm{d}y^{(k)}}{\mathrm{d}x}=f_k(x,y^{(1)},\cdots
+,y^{(n)}), \quad y^{(k)}(x_0)=y_k
+\]</span> <span class="math inline">\((k=1,2,\cdots ,n)\)</span>. 如果
+<span class="math inline">\(f_k\)</span>在区域 <span
+class="math display">\[
+    \left\vert x-x_0 \right\vert \leqslant \alpha, \quad \left\vert
+y^{(1)}-y_1 \right\vert \leqslant \beta,\quad \cdots ,\quad \left\vert
+y^{(n)}-y_n \right\vert \leqslant \beta      
+\]</span> 上能展开成 <span class="math inline">\(x-x_0\)</span>和诸
+<span
+class="math inline">\(y^{(k)}-y_k\)</span>的收敛的幂级数，则上初值问题在
+<span class="math inline">\(x_0\)</span>点的领域 <span
+class="math inline">\(\left\vert x-x_0 \right\vert
+&lt;\rho\)</span>内有一个解析解组 <span
+class="math inline">\(y^{(k)}=y^{(k)}(x)\)</span>，而且它是唯一的. 这里
+<span class="math display">\[
+    \rho=a(1-\mathrm{e}^{-b/2aM} )
+\]</span> 其中 <span class="math inline">\(M\)</span>类似定义.</p>
+<h2 id="幂级数解法-1">幂级数解法</h2>
+<p>考虑二阶齐次线性微分方程 <span class="math display">\[
+    A(x)y&#39;&#39;+B(x)y&#39;+C(x)y=0 \tag{4}
+\]</span> 其中 <span class="math inline">\(A(x),B(x)\)</span>和 <span
+class="math inline">\(C(x)\)</span>在区间 $x-x_0 &lt;r $
+内解析，不妨它们没有公因子 <span class="math inline">\((x-x_0)\)</span>.
+- <span class="math inline">\(A(x_0) \neq 0\)</span>. 称这样的 <span
+class="math inline">\(x_0\)</span>为（4）的<strong>常点</strong>.
+将方程写成 <span class="math display">\[
+    y&#39;&#39;+p(x)y&#39;+q(x)y=0 \tag{5}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(A(x_0)=0\)</span>，称这样的 <span
+class="math inline">\(x_0\)</span>为（4）的<strong>奇点</strong>.</li>
+</ul>
+<p><strong>定理7.2</strong>：设微分方程（5）系数函数 <span
+class="math inline">\(p(x)\)</span>和 <span
+class="math inline">\(q(x)\)</span>在区间 $x-x_0 &lt;r $可以展成 <span
+class="math inline">\((x-x_0)\)</span>的收敛的幂级数. 则（5）在区间
+<span class="math inline">\(\left\vert x-x_0 \right\vert
+&lt;r\)</span>内有收敛的幂级数解 <span class="math display">\[
+    y=\sum_{n=0}^{\infty} C_n(x-x_0)^{n}
+\]</span> 其中 <span class="math inline">\(C_0=y_0\)</span>和 <span
+class="math inline">\(C_1=y_0&#39;\)</span>.</p>
+<p><strong>证</strong>：由微分方程组的Cauchy定理即可.</p>
+<h2 id="legendre-多项式">Legendre 多项式</h2>
+<p>Legendre方程 <span class="math display">\[
+    (1-x^{2})y&#39;&#39;-2xy&#39;+n(n+1)y=0 \tag{6}
+\]</span> 有幂级数解 <span class="math display">\[
+    y=C_0y_1(x)+C_1y_2(x), \quad (-1&lt;x&lt;1) \tag{7}
+\]</span> 其中 <span class="math inline">\(C_0\)</span>和 <span
+class="math inline">\(C_1\)</span>是任意常数，而 <span
+class="math display">\[
+    y_1(x)=1-\frac{n(n+1)}{2!}x^{2}+\frac{(n-2)n(n+1)(n+3)}{4!}x^{4}-\cdots
+\]</span> <span class="math display">\[
+    y_2(x)=x-\frac{(n-1)(n+2)}{3!}x^{3}+\frac{(n+3)(n-1)(n+2)(n+4)}{5!}x^{5}-\cdots
+\]</span> 显然 <span class="math inline">\(y_1(x)\)</span>和 <span
+class="math inline">\(y_2(x)\)</span>线性无关. 当 <span
+class="math inline">\(n\)</span>是正偶数时, <span
+class="math inline">\(y_1(x)=P_n(x)\)</span>是一个 <span
+class="math inline">\(n\)</span>次多项式， <span
+class="math inline">\(y_2(x)\)</span>是无穷级数；当 <span
+class="math inline">\(n\)</span>是正奇数时， <span
+class="math inline">\(y_2(x)=P_n(x)\)</span>是一个 <span
+class="math inline">\(n\)</span>次多项式. <span
+class="math inline">\(P_n(x)\)</span>相差一个常数因子的情况下可以写成
+<span class="math display">\[
+    P_n(x)=\frac{1}{2^{n}}\sum_{k=0}^{[\frac{n}{2}]}
+\frac{(-1)^{k}(2n-2k)!}{k!(n-k)!(n-2k)!}x^{n-2k} \tag{8}       
+\]</span> 对任意的非负整数 <span
+class="math inline">\(n\)</span>，由（8）表达的 <span
+class="math inline">\(n\)</span>次多项式 <span
+class="math inline">\(P_n(x)\)</span>是相应的Legendre方程的解.
+它们叫作<strong>Legendre多项式</strong>.</p>
+<p>有 <span class="math display">\[
+    P_n(-x)=(-1)^{n}P_n(x)
+\]</span> Legendre多项式系 <span class="math display">\[
+    P_0(x),P_1(x), P_2(x),\cdots  \tag{9}
+\]</span> 有如下性质 <strong>性质1</strong>： <span
+class="math inline">\(P_n(x)\)</span>满足Rodrigues公式 <span
+class="math display">\[
+    P_n(x)=\frac{1}{2^{n}n!}\frac{\mathrm{d}^{n}}{\mathrm{d}x^{n}}(x^{2}-1)^{n}
+\tag{10}
+\]</span> 从而容易得出 <span class="math display">\[
+    P_n(1)=1, \quad P_n(-1)=(-1)^{n} \tag{11}
+\]</span> <strong>证</strong>：用二项式定理即可.</p>
+<p><strong>性质2</strong>：Legendre函数系是正交的，但结果与一般的结论有所不同
+<span class="math display">\[
+    \int_{-1}^{1} P_n(x)P_m(x) \mathrm{d}x =
+    \begin{cases}
+        0,\quad m \neq n \\
+        \sigma_n&gt;0, \quad m=n
+    \end{cases}
+\]</span> 并且有 <span class="math inline">\(\sigma_n=\displaystyle
+\frac{2}{2n+1}\)</span> <strong>证</strong>：当 <span
+class="math inline">\(n \neq
+m\)</span>时，用分部积分法和（11）的结果得到 <span
+class="math inline">\((P_n,P_m)=0\)</span>. 当 <span
+class="math inline">\(n=m\)</span>时进一步计算就有结果成立，这里用到
+<span class="math inline">\(\displaystyle \int_{0}^{\frac{\pi}{2}} \cos
+^{2n+1}\theta \mathrm{d}\theta\)</span> 的结果.</p>
+<p>设 <span class="math inline">\(f(x)\)</span>在区间 <span
+class="math inline">\([-1,1]\)</span>上可积，则可作 <span
+class="math inline">\(f(x)\)</span>关于 <span
+class="math inline">\(P_n(x)\)</span>的<strong>广义Fourier级数</strong>
+<span class="math display">\[
+    f(x) \approx \sum_{n=0}^{\infty} a_nP_n(x) \tag{12}
+\]</span> 其中 <span class="math display">\[
+    a_n=\frac{2n+1}{2} \int_{-1}^{1} f(x)P_n(x) \mathrm{d}x
+\]</span> 这里定义的级数的收敛性与一般Fourier级数中有类似的结果.</p>
+<p>如果函数 <span
+class="math inline">\((1-x^{2})^{-1/4}f(x)\)</span>在区间 <span
+class="math inline">\(-1\leqslant x\leqslant
+1\)</span>上绝对可积，并且下列条件之一成立： -
+<strong>Dirichlet条件</strong>：<span
+class="math inline">\(f(x)\)</span>在 <span
+class="math inline">\(x_0\)</span>附近的一个区间上分段单调，并且在这区间上不连续点的个数至多是一个有限数.
+- <strong>Dini条件</strong>：对于某一常数 <span
+class="math inline">\(h&gt;0\)</span>，积分 <span
+class="math display">\[
+    \int_{0}^{h} \frac{\left\vert f(x_0+t)-f(x_0+0)+f(x_0-t)-f(x_0-0)
+\right\vert }{t} \mathrm{d}t
+\]</span> 存在 - <strong>Holder条件</strong>：<span
+class="math inline">\(f(x)\)</span>在 <span
+class="math inline">\(x_0\)</span>点连续，并且对于充分小的 <span
+class="math inline">\(t&gt;0\)</span>，不等式 <span
+class="math display">\[
+    \left\vert f(x_0 \pm t)-f(x_0) \right\vert \leqslant Lt ^{\alpha}
+\]</span> 成立，其中 <span class="math inline">\(L\)</span>和 <span
+class="math inline">\(\alpha\)</span>都是正的常数，且 <span
+class="math inline">\(\alpha\leqslant 1\)</span>；</p>
+<p>那么（12）定义的级数在 $x=(-1&lt;&lt;1) $收敛到 <span
+class="math display">\[
+    \frac{1}{2}[f(\xi +0)+f(\xi -0)]
+\]</span> 特别，如果 <span class="math inline">\(f(x)\)</span>在 <span
+class="math inline">\(x=\xi\)</span>连续，则该级数在 <span
+class="math inline">\(x=\xi\)</span>处收敛到 <span
+class="math inline">\(f(\xi)\)</span>.</p>
+<h2 id="广义幂级数解法">广义幂级数解法</h2>
+<p>考虑（4）有奇点的情况.</p>
+<p>首先由方程 <span
+class="math inline">\(x^{2}y&#39;&#39;-2y=0\)</span>在 <span
+class="math inline">\(x=0\)</span>附近的性态知方程（4）在奇点附近不会再有幂级数形式的通解且在奇点
+<span class="math inline">\(x_0\)</span>的初值问题可能是无解的.</p>
+<p>求解 $x<sup>{2}y''+xy'+(x</sup>{2}-y)=0
+$知，解为两个线性无关的<strong>广义幂级数</strong>.</p>
+<p><span class="math display">\[
+    \sum_{n=0}^{\infty} C_n(x-x_0)^{n+\rho}\quad(C_0 \neq 0)
+\]</span> 其中常数 <span
+class="math inline">\(\rho\)</span>叫作<strong>指标</strong>.</p>
+<p><strong>正则奇点</strong>：设（4）可改写成如下形式： <span
+class="math display">\[
+    (x-x_0)^{2}P(x)y&#39;&#39;+(x-x_0)Q(x)y&#39;+R(x)y=0 \tag{13}
+\]</span> 其中 <span class="math inline">\(P(x)\)</span>，<span
+class="math inline">\(Q(x)\)</span> 和 <span
+class="math inline">\(R(x)\)</span>是多项式（或它们在 <span
+class="math inline">\(x_0\)</span>点附近可展成 <span
+class="math inline">\((x-x_0)\)</span> 的幂级数）；并且 <span
+class="math inline">\(P(x)\neq 0\)</span> ，而 <span
+class="math inline">\(Q(x_0)\)</span>和 <span
+class="math inline">\(R(x_0)\)</span>不同时等于零，则称 <span
+class="math inline">\(x_0\)</span>为微分方程（4）的<strong>正则奇点</strong>.</p>
+<p><strong>定理7.3</strong>：微分方程（4）在正则奇点 <span
+class="math inline">\(x_0\)</span>的领域内有收敛的广义幂级数解 <span
+class="math display">\[
+    y=\sum_{k=0}^{\infty} C_k(x-x_0)^{k+\rho} \quad (C_0\neq 0) \tag{14}
+\]</span> 其中 <span class="math inline">\(\rho\)</span>和 <span
+class="math inline">\(C_k\)</span>由代入决定.</p>
+<p><strong>证</strong>：在 <span
+class="math inline">\(x_0\)</span>的领域 <span
+class="math inline">\(\left\vert x-x_0 \right\vert &lt;r\)</span> 内将
+<span class="math inline">\(Q(x)\)</span>和 <span
+class="math inline">\(R(x)\)</span>展开为幂级数 <span
+class="math display">\[
+    Q(x)=\sum_{k=0}^{\infty} a_k(x-x_0)^{k} \quad
+R(x)=\sum_{k=0}^{\infty} b_k(x-x_0)^{k}       
+\]</span> 代入，也将（14）的形式解代入，可以整理得到递推公式.</p>
+<p>其中第一式得<strong>指标方程</strong> <span class="math display">\[
+    \rho(\rho-1)+a_0\rho+b_0=0
+\]</span></p>
+<p>当 <span class="math inline">\(\rho_1\)</span>和 <span
+class="math inline">\(\rho_2\)</span>这两个<strong>指标根</strong>为实数时，取
+<span class="math inline">\(\rho_1\geqslant \rho_2\)</span>下的 <span
+class="math inline">\(\rho_1\)</span>，否则任取一根.</p>
+<p>这样就可以由递推公式得到 $C_1,C_2,,C_k,$.</p>
+<p>需要证明（14）在 <span
+class="math inline">\(x_0\)</span>附近收敛（不一定包括 <span
+class="math inline">\(x_0\)</span>点）.</p>
+<p>首先由数项级数的性质知对于取定的 <span
+class="math inline">\(0&lt;r_1&lt;r\)</span>存在 <span
+class="math inline">\(M&gt;0\)</span>（不妨 <span
+class="math inline">\(M\geqslant 1\)</span>）使得 $a_k $， $b_k $， $_1
+a_k+b_k $均不大于 <span class="math inline">\(\displaystyle
+\frac{M}{r_1^{k}}\)</span>.</p>
+<p>由归纳法就可以证明 $C_k ()^{k} $.</p>
+<p>于是（14）在 <span class="math inline">\(\displaystyle
+0&lt;\left\vert x-x_0 \right\vert \leqslant
+\frac{r_2}{M}\)</span>上收敛.</p>
+<div class="note note-success">
+            <p>当 <spanclass="math inline">\(\rho_1\)</span>是复数时，可以从（14）分离出两个实的级数解</p>
+          </div>
+<div class="note note-success">
+            <p>当 <span class="math inline">\(\rho_1\)</span>和 <spanclass="math inline">\(\rho_2\)</span>都是实数且 <spanclass="math inline">\(\rho_1-\rho_2=m \in\mathbb{N}\)</span>时，一般不能从 <spanclass="math inline">\(\rho_2\)</span>出发得到一个与（14）不同的广义幂级数解.但可以利用Liouville公式，从与 <spanclass="math inline">\(\rho_1\)</span>相应的（14）出发，得到另一个与其线性无关的解.</p>
+          </div>
+<p><strong>Bessel方程</strong>： <span class="math display">\[
+    x^{2}y&#39;&#39;+xy&#39;+(x^{2}-n^{2})y=0 \tag{15}
+\]</span> 其中常数 <span class="math inline">\(n\geqslant 0\)</span>
+它的两个指标根为 <span class="math inline">\(\pm n\)</span>，对于 <span
+class="math inline">\(\rho_1=n\)</span>，取一个比较好的 <span
+class="math inline">\(C_0\)</span> <span class="math display">\[
+    C_0=\frac{1}{2^{n}\Gamma(n+1)}
+\]</span> 则 <span class="math display">\[
+    y=J_n(x)=\sum_{k=0}^{\infty}
+\frac{(-1)^{k}}{\Gamma(n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k+n} \tag{16}
+\]</span>
+它的收敛半径是无穷大，它叫<strong>第一类Bessel函数</strong>.</p>
+<p>对于 <span class="math inline">\(\rho_2=-n\)</span> - 若 <span
+class="math inline">\(2n\)</span>不等于任何整数 类似有 <span
+class="math display">\[
+    y=J_{-n}(x)=\sum_{k=0}^{\infty}
+\frac{(-1)^{k}}{\Gamma(-n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k-n} \tag{17}
+\]</span> 它叫做<strong>第二类Bessel函数</strong>. - <span
+class="math inline">\(2n=N\in \mathbb{Z}\)</span> 1）若 <span
+class="math inline">\(2n=2s+1\)</span>，此时令 <span
+class="math inline">\(C_{2s+1}=0\)</span>则得到一个同（17）的解 2）若
+<span class="math inline">\(n \in \mathbb{Z}\)</span> 此时不可能从 <span
+class="math inline">\(\rho_2=-n\)</span>和递推公式求出方程的广义幂级数解.
+为求解，取参数 <span class="math inline">\(\alpha \neq n\)</span>但
+<span class="math inline">\(\alpha \rightarrow n\)</span>，则 <span
+class="math inline">\(J_{\alpha}(x)\)</span>和 <span
+class="math inline">\(J_{-\alpha}(x)\)</span>都有意义，且函数 <span
+class="math display">\[
+    y_{\alpha}(x)=\frac{J_{\alpha}\cos \alpha\pi-J_{-\alpha}(x)}{\sin
+\alpha\pi} \quad (\sin \alpha\pi\neq 0)
+\]</span> 是Bessel方程当 <span
+class="math inline">\(n=\alpha\)</span>时的一个解，且它在 <span
+class="math inline">\(x=0\)</span>的领域内是无界的. 令 <span
+class="math display">\[
+    Y_{n}(x)=\lim_{\alpha \to n}y_{\alpha}(x)
+\]</span> 则 <span
+class="math inline">\(y=Y_{n}(x)\)</span>是Bessel方程的解，且与第一类Bessel函数
+<span
+class="math inline">\(J_{n}(x)\)</span>线性无关，称为<strong>Neumann函数</strong>.</p>
+<p>解释一下其中的一些性质 - 当 <span class="math inline">\(n \in
+\mathbb{Z}\)</span>时，有 <span
+class="math inline">\(J_{-n}(x)=(-1)^{n}J_n(x)\)</span>. 事实上由于
+<span class="math inline">\(\Gamma(-n+k+1)\to \infty\)</span>，故 <span
+class="math display">\[
+    \begin{aligned}
+        J_{-n}(x)&amp;= \sum_{k=n}^{\infty}
+\frac{(-1)^{k}}{\Gamma(-n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k-n} \\
+        &amp;= \sum_{k=0}^{\infty}
+\frac{(-1)^{k+n}}{\Gamma(n+k+1)\Gamma(k+1)}(\frac{x}{2})^{2k+n} \\
+        &amp;= (-1)^{n}J_n(x)
+    \end{aligned}
+\]</span> - 一个中间结论： <span class="math display">\[
+    J_{v}J_{-v}&#39;-J_{-v}J_{v}&#39;=-\frac{2\sin v\pi}{\pi x}
+\]</span> <strong>证</strong>： - 关于 <span
+class="math inline">\(Y_n(x)\)</span>的构造，这部分可以看《特殊函数概论》中关于第二类Bessel函数的相关章节.
+证明极限存在和 <span
+class="math inline">\(Y_n(x)\)</span>确实是方程解，可以参考Watson
+(1944), pp. 58~59.</p>
+<h2 id="bessel-函数">Bessel 函数</h2>
+<p>下面都假设 <span class="math inline">\(n\)</span>为非负整数. 称 <span
+class="math inline">\(J_n(x)\)</span>为 <span
+class="math inline">\(n\)</span><strong>阶Bessel函数</strong>；称 <span
+class="math inline">\(Y_n(x)\)</span>为 <span
+class="math inline">\(n\)</span><strong>阶Neumann函数</strong>.</p>
+<p><strong>性质1</strong>：当 <span class="math inline">\(x \to
+\infty\)</span>时， <span class="math inline">\(J_n(x)\)</span>和 <span
+class="math inline">\(Y_n(x)\)</span>有如下<strong>渐进式</strong>：
+<span class="math display">\[
+    J_n(x)=\frac{A_n}{\sqrt{x}}[\sin (x+\alpha_n)+o(1)] \tag{18}        
+\]</span> 和 <span class="math display">\[
+    Y_n(x)=\frac{B_n}{\sqrt{x}}[\cos (x+\beta_n)+o(1)] \tag{19}
+\]</span></p>
+<p>其中 <span class="math inline">\(o(1)\)</span>表示一个无穷小量，而
+<span class="math inline">\(A_n,B_n,\alpha_n,\beta_n\)</span>都是只与
+<span class="math inline">\(n\)</span>有关的常数，且 <span
+class="math inline">\(A_n&gt;0,B_n&gt;0\)</span>.</p>
+<p><strong>证</strong>：作代换 <span class="math display">\[
+    J_n(x)=\frac{u(x)}{\sqrt{x}} \quad (x&gt;0)
+\]</span> 代入Bessel方程后得到一个二阶线性微分方程的非零解 <span
+class="math display">\[
+    u&#39;&#39;(x)+  \biggl( 1-\frac{n^{2}-\frac{1}{4}}{x^{2}}
+\biggr)u(x)=0
+\]</span> 由解的唯一性知 <span class="math inline">\(u(x)\)</span>和
+<span class="math inline">\(u&#39;(x)\)</span>不同时为零，则 <span
+class="math display">\[
+    r(x)=\sqrt{[u(x)]^{2}+[u&#39;(x)]^{2}}&gt;0
+\]</span> 把 <span class="math inline">\(u(x)\)</span>和 <span
+class="math inline">\(u&#39;(x)\)</span>表达成极坐标的形式 <span
+class="math display">\[
+    \begin{cases}
+        u(x)=r(x)\sin \theta(x) \\
+        u&#39;(x)=r(x)\cos \theta(x)    
+    \end{cases}
+\]</span> 再代回得到关于 <span class="math inline">\(r(x)\)</span>和
+<span class="math inline">\(\theta(x)\)</span>的微分方程.</p>
+<p><span class="math display">\[
+    \begin{cases}
+        r&#39;(x) =\frac{n^{2}-\frac{1}{4}}{x^{2}}r(x)\sin \theta(x)
+\cos \theta(x) \\
+        \theta&#39;(x)=1-\frac{n^{2}-\frac{1}{4}}{x^{2}}\sin
+^{2}\theta(x)
+    \end{cases}
+\]</span></p>
+<p>令 <span
+class="math inline">\(\theta(x)=x+\varphi(x)\)</span>，代回上面的第二个方程，并取从1
+到 <span class="math inline">\(x\)</span>的积分，可以得到极限 <span
+class="math inline">\(\lim_{x \to
+\infty}\varphi(x)=\alpha_n\)</span>存在. 从而得到渐进式 <span
+class="math display">\[
+    \theta(x)=x+\alpha_n+o(1)
+\]</span> 再对上面方程的第一式积分（注意它有通积分），得极限 <span
+class="math display">\[
+    \lim_{x \to \infty}r(x)=A_n&gt;0
+\]</span> 也存在. 故 <span class="math inline">\(r(x)\)</span>得渐进式为
+<span class="math display">\[
+    r(x)=A_n+o(!)
+\]</span> 将上两个渐进式代回极坐标形式知 <span class="math display">\[
+    \begin{cases}
+        u(x)=A_n\sin (x+\alpha_n) +o(1) \\
+        u&#39;(x)=A_n\cos (x+\alpha_n) +o(1)        
+    \end{cases}
+\]</span> 从而有原渐进式成立.
+并且计算可以发现求导与求渐进可以交换次序.</p>
+<p>渐进式的一个意义在于可以帮助我们分析零点的性质. <span
+class="math inline">\(J_n(x)\)</span>和 <span
+class="math inline">\(Y_n(x)\)</span>都有无穷多个零点，而且它们的零点<strong>互相交错</strong>（留作以后证明）.
+可以推得 - <span class="math inline">\(J_0(0)=1\)</span> - <span
+class="math inline">\(J_n(0)=0 \quad n\geqslant 1\)</span> - <span
+class="math inline">\(\lim_{x \to o^{+}}Y_n(x)=-\infty\)</span></p>
+<p>这也说明 <span class="math inline">\(J_n(x)\)</span>和 <span
+class="math inline">\(Y_n(x)\)</span>线性无关.</p>
+<p>设 <span
+class="math inline">\(J_n(x)\)</span>的无穷多个零点依次排列为 <span
+class="math display">\[
+    0&lt;\beta_1&lt;\beta_2&lt;\cdots &lt;\beta_k&lt;\cdots (\to \infty)
+\]</span> 它们与 <span class="math inline">\(n\)</span>有关.</p>
+<p>在区间 <span class="math inline">\([0,1]\)</span>上考虑函数系 <span
+class="math display">\[
+    J_n(\beta_1t),J_n(\beta_2t),\cdots ,J_n(\beta_kt),\cdots \tag{20}
+\]</span> 则有 <strong>性质2</strong>：函数系（20）在区间 <span
+class="math inline">\([0,1]\)</span>上是一个以 <span
+class="math inline">\(t\)</span>为权的<strong>正交系</strong>，即 <span
+class="math display">\[
+    \int_{0}^{1} t J_n(\beta_jt)J_n(\beta_kt) \mathrm{d}t=
+    \begin{cases}
+        0,\quad j\neq k \\
+        \tau_{n,k}&gt;0,\quad j=k
+    \end{cases} \tag{21}
+\]</span> 并且可以算出 <span
+class="math inline">\(\tau_{n,k}=\frac{1}{2}[J_n&#39;(\beta_k)]^{2}\)</span></p>
+<p><strong>证</strong>：令 <span class="math display">\[
+    u=J_n(at), \quad v=J_n(bt)
+\]</span> 代入Bessel方程，然后消去 <span
+class="math inline">\(n^{2}\)</span>得 <span class="math display">\[
+    t^{2}(vu&#39;&#39;-uv&#39;&#39;)+t(vu&#39;-u&#39;v)+t^{2}(a^{2}-b^{2})uv=0
+\]</span> 凑积分，化为 <span class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t}[t(vu&#39;-uv&#39;)]+t(a^{2}-b^{2})uv=0
+\]</span> 积分上式，并注意 <span
+class="math inline">\(u(0),v(0),u&#39;(0),v&#39;(0)\)</span>有界，得到
+<span class="math display">\[
+    (a^{2}-b^{2})\int_{0}^{1} tuv
+\mathrm{d}t=bJ_n(a)J_n&#39;(b)-aJ_n(b)J_n&#39;(a) \tag{22}
+\]</span> 得到（21）的第一部分. 在（22）中取 <span
+class="math inline">\(b=\beta_k\)</span>和 <span
+class="math inline">\(a\neq \beta_k\)</span>，再令 <span
+class="math inline">\(a\to \beta_k\)</span>，运用
+L'Hospital法则就得到（21）的第二部分.</p>
+<p>考虑区间 <span class="math inline">\([0,1]\)</span>上可积的 <span
+class="math inline">\(f(x)\)</span>关于Bessel正交函数系的如下展开 <span
+class="math display">\[
+    f(x) ~ \sum_{k=1}^{\infty} a_kJ_n(\beta_kx) \tag{23}
+\]</span> 其中广义Fourier系数 <span class="math display">\[
+    a_k=\frac{2}{[J_n&#39;(\beta_k)]^{2}}\int_{0}^{1} tf(t)J_n(\beta_kt)
+\mathrm{d}t
+\]</span></p>
+<div class="note note-success">
+            <p>如果 <span class="math inline">\(\sqrt{x}f(x)\)</span>在 <spanclass="math inline">\(0\leqslant x\leqslant1\)</span>上绝对可积，且满足Dirichlet/Dini/Holder条件之一，则右侧的广义Fourier级数在<spanclass="math inline">\(x=x_0\)</span>点收敛到两单侧极限的平均值；则当<span class="math inline">\(f(x)\)</span>在 <spanclass="math inline">\(x=x_0\)</span>处连续时，该级数收敛到 <spanclass="math inline">\(f(x_0)\)</span></p>
+          </div>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常微分方程（7）</div>
+      <div>http://example.com/2022/04/19/常微分方程（7）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 19, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/28/Neuronal-Dynamics-1/" title="Neuronal Dynamics (1)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Neuronal Dynamics (1)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/12/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%886%EF%BC%89/" title="常微分方程（6）">
+                        <span class="hidden-mobile">常微分方程（6）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

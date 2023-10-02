@@ -1,0 +1,1122 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Neuronal Populations">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neuronal Dynamics (12)">
+<meta property="og:url" content="http://example.com/2022/10/05/Neuronal-Dynamics-12/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Neuronal Populations">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-10-05T14:16:55.000Z">
+<meta property="article:modified_time" content="2022-10-23T14:06:41.736Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="神经科学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
+  
+  
+  
+  <title>Neuronal Dynamics (12) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (12)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-05 22:16" pubdate>
+          October 5, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          14k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          120 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Neuronal Dynamics (12)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="neuronal-populations">Neuronal Populations</h1>
+<p>The online version of this chapter:</p>
+<hr />
+<p>Chapter 12 Neuronal Populations
+https://neuronaldynamics.epfl.ch/online/Ch12.html</p>
+<hr />
+<p>The aim of this chapter is to provide the foundation of the notions
+of 'neuronal population' and 'population activity'.</p>
+<h2 id="columnar-organization">Columnar organization</h2>
+<p>We present in this section a short introduction into the structural
+organization and functional characterization of cortex.</p>
+<h3 id="receptive-fields">Receptive fields</h3>
+<p>Simple cells in visual cortex are sensitive to the orientationn of a
+light bar.</p>
+<p>In this and the following chapters, we exploit the fact that
+neighboring neurons in visual cortex have similar receptive fields.</p>
+<h4 id="example-cortical-maps">Example: Cortical Maps</h4>
+<p>Neighboring neurons have similar receptive fields, but the exact
+characteristics of the receptive fields change slightly as one moves
+parallel to the cortical surface.</p>
+<h3 id="how-many-populations">How many populations?</h3>
+<p>Inside a column neurons are organized in different layers. Each layer
+contains one or several types of neurons. From shallow to deep, neurons
+becomes indistinguishable. Besides, the number of populations that a
+theoretician takes into account depends on the level of
+'coarse-graining' that he is ready to accept, as well as on the amount
+of information that is available from experiments.</p>
+<h3 id="distributed-assemblies">Distributed assemblies</h3>
+<p>The mathematical notion of population does not require that neurons
+need to form local groups to qualify as a homogeneous populaton.</p>
+<p>Donald Hebb introduced the notion of neuronal assemblies, i.e.,
+groups of cells which get activated together so as to represent a mental
+concept. An assembly can be a group of neurons which are distributed
+across one or several areas. However, such an assignment of a neuron to
+a population is not fixed, but can depend on the stimulus.</p>
+<h2 id="identical-neurons-a-mathematical-abstraction">Identical Neurons:
+A Mathematical Abstraction</h2>
+<p>In a population of <span class="math inline">\(N\)</span> neurons,
+the population activity is <span class="math display">\[
+    A(t)=\lim_{\Delta t \to 0}\frac{1}{\Delta t}\frac{n_{act}(t;t+\Delta
+t)}{N}=\frac{1}{N}\sum_{j=1}^{N} \sum_{f}^{} \delta(t-t_j^{(f)}),
+\tag{12.1}
+\]</span></p>
+<p>For the sake of notational simplicity, we do not distinguish the
+observed activity from its expectation value and denote in the following
+the expected activity by <span class="math inline">\(A(t)\)</span>.</p>
+<h3 id="homogeneous-networks">Homogeneous networks</h3>
+<p>By homogeneous we mean that - all neurons <span
+class="math inline">\(1\leqslant i\leqslant N\)</span> are identical; -
+all neurons receive the same external input <span
+class="math inline">\(I^{ext}_i(t)=I^{ext}(t)\)</span>; - the
+interaction strength <span class="math inline">\(w_{ij}\)</span> for the
+connection between any pair <span class="math inline">\(j,i\)</span> of
+pre- and postsynaptic neurons is 'statistically uniform'.</p>
+<h4
+id="homogeneous-population-of-integrate-and-fire-neurons">Homogeneous
+population of integrate-and-fire neurons</h4>
+<p>We assume that a neuron is coupled to all others as well as to itself
+with coupling strength <span class="math inline">\(w_{ij}=w_0\)</span>.
+The input current <span class="math inline">\(I_i\)</span> takes care of
+both the external drive and synaptic coupling <span
+class="math display">\[
+    I_i=\sum_{j=1}^{N} \sum_{f}^{} w_{ij}
+\alpha(t-t_j^{(f)})+I^{ext}(t). \tag{12.3}
+\]</span> Here we have assumed that each input spike generates a
+postsynaptic current with some generic time course <span
+class="math inline">\(\alpha(t-t_j^{(f)})\)</span>.</p>
+<p>Using (12.1), we find a total input current, <span
+class="math display">\[
+    I(t)=w_0 N \int_{0}^{\infty} \alpha(s)A(t-s) \mathrm{d}s+I^{ext}(t),
+\tag{12.4}
+\]</span> which is independent of the neuronal index <span
+class="math inline">\(i\)</span>. Thus, the input current at time <span
+class="math inline">\(t\)</span> depends on the past population activity
+and is the same for all neurons.</p>
+<h2 id="connectivity-schemes">Connectivity Schemes</h2>
+<p>In the following we discuss some schemes with a special focus on the
+scaling behavior induced by each choice of coupling scheme. Here,
+scaling behavior refers to a change in the number <span
+class="math inline">\(N\)</span> of neurons that participate in the
+population.</p>
+<h3 id="full-connectivity">Full connectivity</h3>
+<p>All-to-all connectivity, all connections have the same strength. An
+appropriate scaling law is <span class="math display">\[
+    w_{ij}=\frac{J_0}{N}. \tag{12.6}
+\]</span></p>
+<p>A slightly more intricate all-to-all coupling scheme is the
+following: weights <span class="math inline">\(w_{ij}\)</span> are drawn
+from a Gaussian distribution with mean <span
+class="math inline">\(J_0/N\)</span> and standard deviation <span
+class="math inline">\(\sigma/\sqrt{N}\)</span>. The fluctuations of the
+membrane potential are of the order <span
+class="math inline">\(\sigma_0\)</span> even in the limit of large <span
+class="math inline">\(N\)</span>.</p>
+<h3 id="random-coupling-fixed-coupling-probability">Random coupling:
+Fixed coupling probability</h3>
+<p>Experimentally the probability <span class="math inline">\(p\)</span>
+that a neuron inside a cortical column makes a functional connection to
+another neuron in the same column is in the range of 10%, but varies
+across layers.</p>
+<p>The number of presynaptic input links <span
+class="math inline">\(C_j\)</span> to a postsynaptic neuron <span
+class="math inline">\(j\)</span> has a mean value of <span
+class="math inline">\(\langle C_j \rangle=pN\)</span>, but fluctuates
+between one neuron and the next with variance <span
+class="math inline">\(p(1-p)N\)</span>.</p>
+<p>Alternatively, we can take one model neuron <span
+class="math inline">\(j=1,2,3,\cdots N\)</span> after the other and
+choose randomly <span class="math inline">\(C=pN\)</span> presynaptic
+partners for it.</p>
+<p>It is useful to scale the strengh of the connections as <span
+class="math display">\[
+    w_{ij}=\frac{J_0}{C}=\frac{J_0}{pN}, \tag{12.7}
+\]</span></p>
+<h3 id="random-coupling-fixed-number-of-presynaptic-partners">Random
+coupling: Fixed number of presynaptic partners</h3>
+<p>We pick one model neuron <span class="math inline">\(j=1,2,3,\cdots
+N\)</span> after the other and choose randomly its <span
+class="math inline">\(C\)</span> presynaptic partners. Whenever the
+network size <span class="math inline">\(N\)</span> is much bigger than
+<span class="math inline">\(C\)</span>, the inputs to a given neuron can
+be thought of as random samples from the current network activity. No
+scaling of the connections with the population size <span
+class="math inline">\(N\)</span> is necessary.</p>
+<h3 id="balanced-excitation-and-inhibition">Balanced excitation and
+inhibition</h3>
+<p>If the total amount of excitation and inhibition cancel each other,
+so that excitation and inhibition are 'balanced'. The resulting network
+is called a balanced network or a population with balanced excitation
+and inhibition.</p>
+<p>We can scale synaptic weights so as to control specifically the
+amount of fluctuations of the input current around zero. An appropriate
+choice is <span class="math display">\[
+    w_{ij}=\frac{J_0}{\sqrt{C}}=\frac{J_0}{\sqrt{pN}}. \tag{12.8}
+\]</span></p>
+<h3 id="interacting-populations">Interacting Populations</h3>
+<p>We assume that neurons are homogeneous within each pool. The activity
+of neurons in pool <span class="math inline">\(n\)</span> is <span
+class="math display">\[
+    A_n(t)=\frac{1}{N_n}\sum_{j \in \Gamma_n}^{} \sum_{f}^{}
+\delta(t-t_j^{(f)}), \tag{12.9}
+\]</span> where <span class="math inline">\(N_n\)</span> is the number
+of neurons in pool <span class="math inline">\(n\)</span> and <span
+class="math inline">\(\Gamma_n\)</span> denotes the set of neurons that
+belong to pool <span class="math inline">\(n\)</span>. Each neuron <span
+class="math inline">\(i\)</span> in pool <span
+class="math inline">\(n\)</span> receives input from all neuons <span
+class="math inline">\(j\)</span> in pool <span
+class="math inline">\(m\)</span> with strength <span
+class="math inline">\(w_{ij}=J_{nm}/N_m\)</span>. The time course <span
+class="math inline">\(\alpha_{ij}(s)\)</span> caused by a spike of a
+presynaptic neuron <span class="math inline">\(j\)</span> may depend on
+the synapse type. The input current to a neuron <span
+class="math inline">\(i\)</span> in group <span
+class="math inline">\(\Gamma_n\)</span> is generated by the spikes of
+all neurons in the network, <span class="math display">\[
+    I_{i,n}=\sum_{j}^{} \sum_{f}^{}
+w_{ij}\alpha_{ij}(t-t_j^{(f)})=\sum_{m}^{} J_{nm}\int_{0}^{\infty}
+\alpha_{nm}\sum_{j\in \Gamma_m}^{} \sum_{f}^{}
+\frac{\delta(t-t_j^{(f)}-s)}{N_m} \mathrm{d}s,
+\]</span> (12.10)</p>
+<p>where <span class="math inline">\(\alpha_{nm}(t-t_j^{(f)})\)</span>
+denotes thhe time course of a postsynaptic current caused by spike
+firing at time <span class="math inline">\(t_j^{(f)}\)</span> of the
+presynaptic neuron <span class="math inline">\(j\)</span> which is part
+of population <span class="math inline">\(m\)</span>. So <span
+class="math display">\[
+    I_n=\sum_{m}^{} J_{nm}\int_{0}^{\infty} \alpha(s)A_m(t-s)
+\mathrm{d}s. \tag{12.11}      
+\]</span> We have dropped the index <span
+class="math inline">\(i\)</span> since the input current is the same for
+all neurons in pool <span class="math inline">\(n\)</span>.</p>
+<h3 id="distance-dependent-connectivity">Distance dependent
+connectivity</h3>
+<p>For models of distance-dependent connectivity it is necessary to
+assign to each model neuron <span class="math inline">\(i\)</span> a
+location <span class="math inline">\(x(i)\)</span> on the
+two-dimensional cortical sheet.</p>
+<p>Two different algorithmic procedures can be used to assign
+distance-dependent connectivity. The first one assumes full connectivity
+with a strength <span class="math inline">\(w_{ij}\)</span> which falls
+off with distance</p>
+<p><span class="math display">\[
+    w_{ij}=w(\lvert x(i)-x(j) \rvert ), \tag{12.12}
+\]</span></p>
+<p>One may assume finite support so that <span
+class="math inline">\(w\)</span> vanishes for distances <span
+class="math inline">\(\lvert x(i)-x(j) \rvert &gt;d\)</span>.</p>
+<p>The second alternative is to give all connections the same weight,
+but to assume that the probability <span
+class="math inline">\(P\)</span> of forming a connection depends on the
+distance <span class="math display">\[
+    \operatorname{Pr}(w_{ij}=1)=P(\lvert x(i)-x(j) \rvert ), \tag{12.13}
+\]</span></p>
+<h3 id="spatial-continuum-limite">Spatial Continuum Limite</h3>
+<p>For neurons organized in a spatially extended multidimensional
+network, a description by discrete pool does not seem appropriate.
+However, a transition from discrete pools to a continuous population is
+possible.</p>
+<p>We consider a population of neurons that extends along a
+one-dimensional axis and discretize space in segments of size <span
+class="math inline">\(d\)</span>. The number of neurons in the interval
+<span class="math inline">\([nd,(n+1)d]\)</span> is <span
+class="math inline">\(N_n=\rho d\)</span> where <span
+class="math inline">\(\rho\)</span> is the spatial density. Neurons in
+that interval form the group <span
+class="math inline">\(\Gamma_n\)</span>.</p>
+<p>We replace our notation <span class="math display">\[
+    A_m(t) \longrightarrow A(md,t) =A(y,t). \tag{12.14}
+\]</span></p>
+<p>We have <span class="math inline">\(J_{nm}=\rho d w(nd,md)\)</span>.
+Use (12.11) and find <span class="math display">\[
+    I(nd,t)=\rho \sum_{m}^{} d w(nd,md) \int_{0}^{\infty}
+\alpha(s)A(md,t-s) \mathrm{d}s, \tag{12.15}
+\]</span> where <span class="math inline">\(\alpha(s)\)</span> describes
+the time course of the postsynaptic current caused by spike firing in
+one of the presynaptic neurons. For <span class="math inline">\(d \to
+0\)</span>, we arrive at <span class="math display">\[
+    I(x,t)=\rho \int_{}^{} w(x,y)\int_{0}^{\infty} \alpha(s)A(y,t-s)
+\mathrm{d}s \mathrm{d}y, \tag{12.16}
+\]</span></p>
+<p>To rephrase (12.16) in words, the input to neurons at location <span
+class="math inline">\(x\)</span> depends on the spatial distribution of
+the population activity convolved with the spatial coupling filter <span
+class="math inline">\(w(x,y)\)</span> and the temporal filter <span
+class="math inline">\(\alpha(s)\)</span>. The population activity <span
+class="math inline">\(A(y,t-s)\Delta s\)</span> is the number of spikes
+in a short interval <span class="math inline">\(\Delta s\)</span> summed
+across neurons in the neighborhood around <span
+class="math inline">\(y\)</span> normalized by the number of neurons in
+that neighborhood.</p>
+<h2 id="from-microscopic-to-macroscopic">From Microscopic to
+Macroscopic</h2>
+<p>We now make the transition from the properties of single spiking
+neurons to the population activity in a homogeneous group of
+neurons.</p>
+<h3 id="stationary-activity-and-asynchronous-firing">Stationary activity
+and asynchronous firing</h3>
+<p>We define asynchronous firing of a neuronal population as a
+macroscopic firing state with constant activity <span
+class="math inline">\(A(t)=A_0\)</span>. We will see that the only
+relevant single-neuron property is its gain function, i.e. its mean
+firing rate as a function of input.</p>
+<p>If the filter is kept fixed, while the population size is increased,
+the population activity in the stationary state of asynchronous firing
+approaches the constant value <span
+class="math inline">\(A_0\)</span>.</p>
+<h3 id="stationary-activity-as-single-neuron-firing-rate">Stationary
+Activity as Single-Neuron Firing Rate</h3>
+<p>In a finite population, the empirical activity fluctuates and we can
+predict the expectation value <span class="math display">\[
+    \langle A_0\rangle =\nu_i. \tag{12.18}
+\]</span> The mean firing rate is given by the gain function <span
+class="math display">\[
+    \nu_i=g_{\sigma}(I_0), \tag{12.19}
+\]</span> where the subscript <span
+class="math inline">\(\sigma\)</span> is intended to remind the reader
+that the shape of the gain function depends on the level of noise.</p>
+<h3 id="activity-of-a-fully-connected-network">Activity of a fully
+connected network</h3>
+<p>We know <span class="math display">\[
+    \langle A_0\rangle =g_{\sigma}(I). \tag{12.21}
+\]</span> The gain function in the absence of any noise (fluctuation
+amplitude <span class="math inline">\(\sigma=0\)</span>) will be denoted
+by <span class="math inline">\(g_0\)</span>.</p>
+<p>We can impose a normalization <span
+class="math inline">\(\int_{0}^{\infty} \alpha(s) \mathrm{d}s=1\)</span>
+and set <span class="math inline">\(\int_{0}^{\infty} \alpha(s)A(t-s)
+\mathrm{d}s=A_0\)</span>.</p>
+<p>Therefore, the assumption of stationarity activity <span
+class="math inline">\(A_0\)</span> combined with the assumption of
+constant external input <span
+class="math inline">\(I^{ext}(t)=I_0^{ext}\)</span> yields a constant
+total driving current <span class="math display">\[
+    I_0=w_0 NA_0+I_0^{ext}. \tag{12.23}
+\]</span></p>
+<p>Together with (12.21) we arrive at an implicit equation for the
+population activity <span class="math inline">\(A_0\)</span>, <span
+class="math display">\[
+    A_0=g_0(J_0A_0+I_0^{ext}). \tag{12.24}
+\]</span> where <span class="math inline">\(g_0\)</span> is the
+noise-free gain function of single neurons and <span
+class="math inline">\(J_0=w_0N\)</span>.</p>
+<h4
+id="example-leaky-integrate-and-fire-model-with-diffusive-noise">Example:
+Leaky integrate-and-fire model with diffusive noise</h4>
+<p>We consider a large and fully connected network of identical leaky
+integrate-and-fire neurons with homogeneous coupling <span
+class="math inline">\(w_{ij}=J_0/N\)</span> and normalized postsynaptic
+currents <span class="math inline">\(\int_{0}^{\infty} \alpha(s)
+\mathrm{d}s=1\)</span>. In the state of asynchronous firing, the total
+input current driving a typical neuron of the network is then</p>
+<p><span class="math display">\[
+    I_0=I^{ext}+J_0A_0. \tag{12.25}
+\]</span> In addition, each neuron receives individual diffusive noise
+of variance <span class="math inline">\(\sigma^{2}\)</span> that could
+represent spike arrival from other populations. The single-neuron gain
+function in the presence of diffusive noise has been stated in (8.54).
+We use the formula of the gain function to calculate the population
+acitvity <span class="math display">\[
+    A_0=g_{\sigma}(I_0)=\left\{ \tau_m
+\sqrt{\pi}\int_{\frac{u_r-RI_0}{\sigma}}^{\frac{\theta-RI_0}{\sigma}}
+\exp (u^{2})[1+\text{erf}(u)]  \mathrm{d}u\right\}^{-1}, \tag{12.26}
+\]</span></p>
+<p><strong>(Siegert-formula)</strong></p>
+<h3 id="activity-of-a-randomly-connected-network">Activity of a randomly
+connected network</h3>
+<p>In this subsection, we discuss how to mathematically treat the
+additional noise arising from the network.</p>
+<p>If all neurons fire at a rate <span
+class="math inline">\(\nu\)</span> then the mean input current to neuron
+<span class="math inline">\(i\)</span> generated by its <span
+class="math inline">\(C_{pre}\)</span> presynaptic partners is <span
+class="math display">\[
+    \langle I_0\rangle =C_{pre}qw\nu+I_0^{ext}, \tag{12.27}
+\]</span> where <span class="math inline">\(q=\int_{0}^{\infty}
+\alpha(s) \mathrm{d}s\)</span> denotes the integral over the
+postsynaptic current and can be interpreted as the total electric charge
+delivered by a single input spike.</p>
+<p>The input current is not constant but fluctuates with a variance
+<span class="math inline">\(\sigma_{I}^{2}\)</span> given by <span
+class="math display">\[
+    \sigma_{I}^{2}=C_{pre} w^{2} q_2 \nu, \tag{12.28}
+\]</span> where <span class="math inline">\(q_2=\int_{0}^{\infty}
+\alpha^{2}(s) \mathrm{d}s\)</span>.</p>
+<h4 id="brunel-network-excitatory-and-inhibitory-populations">Brunel
+network: excitatory and inhibitory populations</h4>
+<p>We assume that excitatory and inhibitory neurons have the same
+parameters <span class="math inline">\(\theta, \tau_m, R\)</span> and
+<span class="math inline">\(u_r\)</span>. All neurons are driven by a
+common external current <span class="math inline">\(I^{ext}\)</span>.
+Each neuron in the population receives <span
+class="math inline">\(C_{E}\)</span> synapses from excitatory neurons
+with weight <span class="math inline">\(w_{E}&gt;0\)</span> and <span
+class="math inline">\(C_{I}\)</span> synapses from inhibitory neurons
+with weight <span class="math inline">\(w_{I}&lt;0\)</span>.</p>
+<p>If an input spike arrives at the synapses of neuron <span
+class="math inline">\(i\)</span> from a presynaptic neuron <span
+class="math inline">\(j\)</span>, its membrane potential changes by an
+amount <span class="math inline">\(\Delta u_{E}=w_{E}qR/\tau_m\)</span>
+if <span class="math inline">\(j\)</span> is excitatory and <span
+class="math inline">\(\Delta u_{I}=\Delta u_{E} w_{I}/w_{E}\)</span> if
+<span class="math inline">\(j\)</span> is inhibitory. We set <span
+class="math display">\[
+    \gamma=\frac{C_{I}}{C_{E}}, \quad
+g=-\frac{w_{I}}{w_{E}}=-\frac{\Delta u_{I}}{\Delta u_{E}}.
+\tag{12.30}    
+\]</span></p>
+<p>Since excitatory and inhibitory neurons receive the same number of
+input connections in our model, we assume that they fire with a common
+firing rate <span class="math inline">\(\nu\)</span>. The total input
+current generated by the external current and by the lateral couplings
+is <span class="math display">\[
+    I_0=I^{ext}+q\sum_{j}^{} \nu_j w_j=I_0^{ext}+q\nu
+w_{E}C_{E}[1-\gamma g]. \tag{12.31}
+\]</span></p>
+<p>We measure the noise strength by the variance <span
+class="math inline">\(\sigma_{u}^{2}\)</span> of the membrane potential
+(as opposed to the variance <span
+class="math inline">\(\sigma_{I}^{2}\)</span> of the input). From
+Chapter 8, we set <span
+class="math inline">\(\sigma_{u}^{2}=\frac{1}{2}\sigma^{2}\)</span>
+where <span class="math display">\[
+    \sigma^{2}=\sum_{j}^{} \nu_j \tau(\Delta u_j^{2})=\nu(\Delta
+u_{E})^{2} C_{E}[1+\gamma g^{2}]. \tag{12.32}
+\]</span> The stationary firing rate <span
+class="math inline">\(A_0\)</span> of the population with mean input
+<span class="math inline">\(I_0\)</span> and variance <span
+class="math inline">\(\sigma\)</span> is copied from (12.26) and
+repeated here for convenience</p>
+<p><span class="math display">\[
+    A_0=\nu=g_{\sigma}(I_0)=\frac{1}{\tau_m}\left\{\sqrt{\pi}\int_{\frac{u_r-RI_0}{\sigma}}^{\frac{\theta-RI_0}{\sigma}}
+\exp (u^{2})[1+\text{erf}(u)]  \mathrm{d}u\right\}^{-1}, \tag{12.33}
+\]</span></p>
+<p>Numerical solutions of (12.31)-(12.33) have been obtained by Amit and
+Brunel.</p>
+<h4 id="example-inhibition-dominated-network">Example: Inhibition
+dominated network</h4>
+<p>Suppose the mean feedback is dominated by inhibition. The effective
+coupling <span class="math inline">\(J^{eff}=\tau C_{E}\Delta
+u_{E}(1-\gamma g)\)</span>. In this case (12.31) is to be replaced by
+<span class="math display">\[
+    h_0=\tau_m \nu \Delta u_{E}C_{E}[1-\gamma g]+\tau_m \nu_{ext}\Delta
+u_{ext} C_{ext}, \tag{12.34}
+\]</span> with <span class="math inline">\(C_{ext}\)</span> the number
+of connections that a neuron receives from neurons outside the
+population, <span class="math inline">\(\Delta u_{ext}\)</span> their
+typical coupling strength characterized by the amplitude of the voltage
+jump, and <span class="math inline">\(\nu_{ext}\)</span> their spike
+arrival rate. Due to the extra stochasticity in the input, the variance
+<span class="math inline">\(\sigma_u^{2}\)</span> of the membrane
+voltage is larger <span class="math display">\[
+    \sigma_u^{2}=\frac{1}{2}\sigma^{2}=\frac{1}{2}\tau_m \nu(\Delta
+u_{E})^{2}C_{E}[1+\gamma g^{2}]+\frac{1}{2}\tau_m \nu_{ext}(\Delta
+u_{ext})^{2} C_{ext} \tag{12.35}
+\]</span></p>
+<p>(12.33)-(12.35) can be solved numerically.</p>
+<h4 id="example-vogels-abbott-network">Example: Vogels-Abbott
+network</h4>
+<p>Excitatory and inhibitory model neurons have the same parameters and
+are connected with the same probability <span
+class="math inline">\(p\)</span> within and across the two
+sub-populations. The two difference to the Brunel network are - the
+choice of random connectivity in the Vogels-Abbott network does not
+preserve the number of presynaptic partners per neuron so that some
+neurons receive more and others less than <span
+class="math inline">\(pN\)</span> connections - neurons in the
+Vogels-Abbott network communicates with each other by conductance-based
+synapses. A spike fired at time <span
+class="math inline">\(t_j^{(f)}\)</span> causes a change in conductance
+<span class="math display">\[
+    \tau_g \frac{\mathrm{d}g}{\mathrm{d}t}=-g+\tau_g \Delta g
+\sum_{f}^{} \delta(t-t_j^{(f)}). \tag{12.36}
+\]</span> Thus, a synaptic input causes for <span
+class="math inline">\(t&gt;t_j^{(f)}\)</span> a contribution to the
+conductance <span class="math inline">\(g(t)=\Delta g \exp
+[-(t-t_j^{(f)})/\tau_g]\)</span>.</p>
+<p>The dominant effect of conductance based input is a decrease of the
+effective membrane time constant. The mean input current <span
+class="math inline">\(I_0\)</span> and the fluctuations <span
+class="math inline">\(\sigma\)</span> of the membrane voltage also enter
+into the time constant <span
+class="math inline">\(\tau_{eff}\)</span>.</p>
+<p>The Siegert formula holds only for short time constants for the
+conductances (<span class="math inline">\(\tau_{E}\to 0\)</span> and
+<span class="math inline">\(\tau_{I}\to 0\)</span>).</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/" class="print-no-link">#神经科学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Neuronal Dynamics (12)</div>
+      <div>http://example.com/2022/10/05/Neuronal-Dynamics-12/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 5, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/10/24/Neuronal-Dynamics-13/" title="Neuronal Dynamics (13)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Neuronal Dynamics (13)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/04/Neuronal-Dynamics-11/" title="Neuronal Dynamics (11)">
+                        <span class="hidden-mobile">Neuronal Dynamics (11)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1440 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="一个全面的热传递方程的梳理，抄傅里叶分析导论中所有关于热方程的内容.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Through the Heat Equation">
+<meta property="og:url" content="http://example.com/2022/06/24/Through-the-Heat-Equation/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="一个全面的热传递方程的梳理，抄傅里叶分析导论中所有关于热方程的内容.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/heat.jpg">
+<meta property="article:published_time" content="2022-06-24T11:42:56.000Z">
+<meta property="article:modified_time" content="2022-06-30T15:20:19.163Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/heat.jpg">
+  
+  
+  
+  <title>Through the Heat Equation - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Through the Heat Equation"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-24 19:42" pubdate>
+          June 24, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          23k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          194 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Through the Heat Equation</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="the-heat-equation">The Heat Equation</h1>
+<h2 id="derivation-of-the-heat-equation">Derivation of the heat
+equation</h2>
+<p>Consider an infinite metal plate which we model as the plane <span
+class="math inline">\(\mathbb{R}^{2}\)</span>, and suppose we are given
+an initial heat distribution at time <span
+class="math inline">\(t=0\)</span>. Let the temperature at the point
+<span class="math inline">\((x, y)\)</span> at time <span
+class="math inline">\(t\)</span> be denoted by <span
+class="math inline">\(u(x,y,t)\)</span>.</p>
+<p>Consider a small square centered at <span
+class="math inline">\((x_0,y_0)\)</span> with sides parallel to the axis
+and of side length <span class="math inline">\(h\)</span>. The amount of
+heat energy in <span class="math inline">\(S\)</span> at time <span
+class="math inline">\(t\)</span> is given by <span
+class="math display">\[
+    H(t)= \sigma \iint_{S} u(x,y,t) \mathrm{d}x \mathrm{d}y,
+\]</span> where <span class="math inline">\(\sigma&gt;0\)</span> is a
+constant called the specific heat of the material. Therefore, the heat
+flow into <span class="math inline">\(S\)</span> is <span
+class="math display">\[
+    \frac{\partial H}{\partial t}= \sigma \iint_{S} \frac{\partial
+u}{\partial t} \mathrm{d}x\mathrm{d}y,
+\]</span> which is approximately equal to <span class="math display">\[
+    \sigma h^{2} \frac{\partial u}{\partial t}(x_0,y_0,t),
+\]</span> since the area of <span class="math inline">\(S\)</span> is
+<span class="math inline">\(h^{2}\)</span>. Now we apply Newton's law of
+cooling, which states that heat flows from the higher to lower
+temperature at a rate proportional to the difference, that is, the
+gradient.</p>
+<p>The heat flow through the vertical side on the right is therefore
+<span class="math display">\[
+    - \kappa h \frac{\partial u}{\partial x} (x_0+\frac{h}{2},y_0,t),
+\]</span> where <span class="math inline">\(\kappa&gt;0\)</span> is the
+conductivity of the material. A similar argument for the other sides
+shows that the total heat flow through the square <span
+class="math inline">\(S\)</span> is given by <span
+class="math display">\[
+    \kappa h \left[ \frac{\partial u}{\partial
+x}(x_0+\frac{h}{2},y_0,t)- \frac{\partial u}{\partial
+x}(x_0-\frac{h}{2},y_0,t)+\frac{\partial u}{\partial
+y}(x_0,y_0+\frac{h}{2},t)-\frac{\partial u}{\partial
+y}(x_0,y_0-\frac{h}{2},t)\right].
+\]</span> Applying the mean value theorem and letting <span
+class="math inline">\(h\)</span> tend to zero, we find that <span
+class="math display">\[
+    \frac{\sigma}{\kappa} \frac{\partial u}{\partial t}= \frac{\partial
+^{2}u}{\partial x^{2}}+ \frac{\partial ^{2}u}{\partial y^{2}};
+\]</span> this is called the <strong>time-dependent heat
+equation</strong>, often abbreviated to the heat equation.</p>
+<h2 id="steady-state-heat-equation-in-the-disc">Steady-state heat
+equation in the disc</h2>
+<p>After a long period of time, there is no more heat exchange, so that
+the system reaches thermal equilibrium and <span
+class="math inline">\(\displaystyle \frac{\partial u}{\partial
+t}=0\)</span>. In this case, the time-dependent heat equation reduces to
+the <strong>steady-state heat equation</strong> <span
+class="math display">\[
+    \frac{\partial ^{2}u}{\partial x^{2}}+\frac{\partial ^{2}u}{\partial
+y^{2}}=0. \tag{1}
+\]</span> The operator <span class="math inline">\(\displaystyle
+\frac{\partial ^{2}}{\partial x^{2}}+\frac{\partial ^{2}}{\partial
+y^{2}}\)</span> is of such importance in mathematics and physics that it
+is often abbreviated as <span class="math inline">\(\Delta\)</span> and
+given a name: the Laplace operator or <strong>Laplacian</strong>. So the
+steady-state heat equation is written as <span class="math display">\[
+    \Delta u=0,
+\]</span> and solutions to this equation are called <strong>harmonic
+functions</strong>.</p>
+<p>Consider the unit disc in the plane <span class="math display">\[
+    D=\{(x, y) \in \mathbb{R}^{2}\colon x^{2}+y^{2}&lt;1\},
+\]</span> whose boundary is the unit circle <span
+class="math inline">\(C\)</span>. In polar coordinates <span
+class="math inline">\((r,\theta)\)</span>, with <span
+class="math inline">\(0\leqslant r\)</span> and <span
+class="math inline">\(0\leqslant \theta&lt;2\pi\)</span>, we have <span
+class="math display">\[
+    D=\{(r,\theta) \colon 0\leqslant r&lt;1\} \quad\text{and} \quad
+C=\{(r,\theta)\colon r=1\}.
+\]</span> The problem. often called the <strong>Dirichlet
+problem</strong> (for the Laplacian on the unit disc), is to solve the
+steady-state heat equation in the unit disc subject to the boundary
+condition <span class="math inline">\(u=f\)</span> on <span
+class="math inline">\(C\)</span>. This corresponds to fixing a
+predetermined temperature distribution on the circle, waiting a long
+time, and then looking at the temperature distribution inside the
+disc.</p>
+<p>While the method of separation of variables will turn out to be
+useful for equation (1), a difficulty comes from the fact that the
+boundary condition is not easily expressed in terms of rectangular
+coordinates. Since this boundary condition is best described by the
+coordinates <span class="math inline">\((r,\theta)\)</span>, namely
+<span class="math inline">\(u(1,\theta)=f(\theta)\)</span>, we rewrite
+the Laplacian in polar coordinates. An application of the chain rule
+gives: <span class="math display">\[
+    \Delta u= \frac{\partial ^{2}u}{\partial r^{2}}+\frac{1}{r}
+\frac{\partial u}{\partial r}+\frac{1}{r^{2}} \frac{\partial
+^{2}u}{\partial \theta^{2}}.
+\]</span> We now multiply both sides by <span
+class="math inline">\(r^{2}\)</span>, and since <span
+class="math inline">\(\Delta u=0\)</span>, we get <span
+class="math display">\[
+    r^{2}\frac{\partial ^{2}u}{\partial r^{2}}+r\frac{\partial
+u}{\partial r}=-\frac{\partial ^{2}u}{\partial \theta^{2}}.
+\]</span> Separating these variables, and looking for a solution of the
+form <span class="math inline">\(u(r,\theta)=F(r)G(\theta)\)</span>, we
+find <span class="math display">\[
+    \frac{r^{2}F&#39;&#39;(r)+rF&#39;(r)}{F(r)}=-
+\frac{G&#39;&#39;(\theta)}{G(\theta)}.
+\]</span> Since the two sides depend on different variables, they must
+both be constant, say equal to <span
+class="math inline">\(\lambda\)</span>. We therefore get the following
+equations: <span class="math display">\[
+    \begin{cases}
+        G&#39;&#39;(\theta)+\lambda G(\theta)=0, \\
+        r^{2} F&#39;&#39;(r)+rF&#39;(r)-\lambda F(r)=0.
+    \end{cases}
+\]</span> Since <span class="math inline">\(G\)</span> must be periodic
+of period <span class="math inline">\(2\pi\)</span>, this implies that
+<span class="math inline">\(\lambda\geqslant 0\)</span> and (as we have
+seen before) that <span class="math inline">\(\lambda=m^{2}\)</span>
+where <span class="math inline">\(m\)</span> is an integer; hence <span
+class="math display">\[
+    G(\theta)= \tilde{A} \mathrm{e}^{im\theta} +\tilde{B}
+\mathrm{e}^{-im\theta} .
+\]</span> An application of Euler's identity, <span
+class="math inline">\(\mathrm{e}^{ix} =\cos x+ i \sin x\)</span>, allows
+one to rewrite <span class="math inline">\(G\)</span> in terms of
+complex exponentials, <span class="math display">\[
+    G(\theta)= A \mathrm{e}^{im\theta} +B \mathrm{e}^{-im \theta} .
+\]</span></p>
+<p>With <span class="math inline">\(\lambda=m^{2}\)</span> and <span
+class="math inline">\(m\neq 0\)</span>, two simple solution of the
+equation in <span class="math inline">\(F\)</span> are <span
+class="math inline">\(F(r)=r^{m}\)</span> and <span
+class="math inline">\(F(r)=r^{-m}\)</span>. If <span
+class="math inline">\(m=0\)</span>, then <span
+class="math inline">\(F(r)=1\)</span> and <span
+class="math inline">\(F(r)=\log r\)</span> are two solutions. If <span
+class="math inline">\(m&gt;0\)</span>, we note that <span
+class="math inline">\(r^{-m}\)</span> grows unboundedly large as <span
+class="math inline">\(r\)</span> tends to zero, so <span
+class="math inline">\(F(r)G(\theta)\)</span> is unbounded at the
+originl; the same occurs when <span class="math inline">\(m=0\)</span>
+and <span class="math inline">\(F(r)= \log r\)</span>. We reject these
+solutions as countrary to our intuition. Therefore, we are left with the
+following special functions: <span class="math display">\[
+    u_{m}(r,\theta)= r^{\lvert m \rvert }\mathrm{e}^{im\theta} , \quad m
+\in \mathbb{Z}.
+\]</span> We now make the important observation that (1) is linear, and
+so as in the case of the vibrating string, we may superpose the above
+special solutions to obtain the presumed general solution: <span
+class="math display">\[
+    u(r,\theta)= \sum_{m=-\infty}^{\infty} a_m r^{\lvert m \rvert
+}\mathrm{e}^{im \theta} .
+\]</span> If this expression gave all the solutions to the steady-state
+heat equation, then for a reasonable <span
+class="math inline">\(f\)</span> we should have <span
+class="math display">\[
+    u(1,\theta)= \sum_{m=-\infty}^{\infty} a_m \mathrm{e}^{im \theta} =
+f(\theta).
+\]</span> We therefore ask again in this context: given any reasonable
+function <span class="math inline">\(f\)</span> on <span
+class="math inline">\([0,2\pi]\)</span> with <span
+class="math inline">\(f(0)= f(2\pi)\)</span>, can we find coefficients
+<span class="math inline">\(a_m\)</span> so that <span
+class="math display">\[
+    f(\theta)= \sum_{m=-\infty}^{\infty} a_m \mathrm{e}^{im \theta}
+\]</span></p>
+<blockquote>
+<p>solution to Euler equation: <span class="math display">\[
+r^{2}F&#39;&#39;(r)+rF&#39;(r)-n^{2}F(r)=0,
+\]</span> which are twice differentiable when <span
+class="math inline">\(r&gt;0\)</span>, are given by linear combinations
+of <span class="math inline">\(r^{n}\)</span> ad <span
+class="math inline">\(r^{-n}\)</span> when <span
+class="math inline">\(n\neq 0\)</span>, and <span
+class="math inline">\(1\)</span> and <span class="math inline">\(\log
+r\)</span> when <span class="math inline">\(n=0\)</span>. Write <span
+class="math inline">\(F(r)=g(r)r^{n}\)</span>, then <span
+class="math inline">\(rg&#39;(r)+2ng(r)=c\)</span> where <span
+class="math inline">\(c\)</span> is a constant.</p>
+</blockquote>
+<p><strong>Dirichlet problem in the rectangle</strong> <span
+class="math inline">\(R=\{(x, y)\colon 0\leqslant x\leqslant
+\pi,0\leqslant y\leqslant 1\}\)</span> and <span class="math display">\[
+    u(x,0)=f_0(x) \quad u(x,1)=f_1(x) \quad u(0,y)=u(\pi,y)=0,
+\]</span> If <span class="math inline">\(f_0\)</span> and <span
+class="math inline">\(f_1\)</span> have Fourier expansions <span
+class="math display">\[
+    f_0(x)=\sum_{k=1}^{\infty} A_k \sin kx \quad f_1(x)=
+\sum_{k=1}^{\infty} B_k \sin kx,
+\]</span> then <span class="math display">\[
+    u(x, y)= \sum_{k=1}^{\infty} \left( \frac{\sinh k(1-y)}{\sinh k}A_k+
+\frac{\sinh ky}{\sinh k}B_k\right) \sin kx
+\]</span></p>
+<h2 id="the-poisson-kernel-and-dirichlets-problem-in-the-unit-disc">The
+Poisson kernel and Dirichlet's problem in the unit disc</h2>
+<p>To adapt Abel summability to the context of Fourier series, we define
+the Abel means of the function $f() _{n=-}^{} a_n ^{in } $ by <span
+class="math display">\[
+    A_r(f)(\theta)= \sum_{n=-\infty}^{\infty} r^{\lvert n \rvert }a_n
+\mathrm{e}^{in \theta} .
+\]</span> It is natural to write <span
+class="math inline">\(c_0=a_0\)</span>, and <span
+class="math inline">\(c_n= a_n \mathrm{e}^{in \theta}
++a_{-n}\mathrm{e}^{-in \theta}\)</span> for <span
+class="math inline">\(n&gt;0\)</span>.</p>
+<p>Since <span class="math inline">\(f\)</span> is integrable, $a_n $ is
+uniformly bounded in <span class="math inline">\(n\)</span>, so that
+<span class="math inline">\(A_r(f)\)</span> converges absolutely and
+uniformly for each <span class="math inline">\(0\leqslant
+r&lt;1\)</span>. <span class="math display">\[
+    A_r(f)(\theta)=(f * P_r)(\theta),
+\]</span> where <span class="math inline">\(P_{r}(\theta)\)</span> is
+the <strong>Poisson kernel</strong> given by <span
+class="math display">\[
+    P_{r}(\theta)= \sum_{n=-\infty}^{\infty} r^{\lvert n \rvert
+}\mathrm{e}^{in \theta}
+\]</span> Actually, if <span class="math inline">\(0\leqslant
+r&lt;1\)</span>, then <span class="math display">\[
+    P_{r}(\theta)= \frac{1-r^{2}}{1-2r \cos \theta+r^{2}}.
+\]</span> The Poisson kernel is a good kernel, as <span
+class="math inline">\(r\)</span> tends to <span
+class="math inline">\(1\)</span> from below.</p>
+<p><strong>Theorem</strong> The Fourier series of an integrable function
+on the circle is Abel summable to <span class="math inline">\(f\)</span>
+at every point of continuity. Moreover, if <span
+class="math inline">\(f\)</span> is continuous on the circle, then the
+Fourier series of <span class="math inline">\(f\)</span> is uniformly
+Abel summable to <span class="math inline">\(f\)</span>.</p>
+<p>We now return to Dirichlet problem in the unit disc with boundary
+condition <span class="math inline">\(u=f\)</span> on the circle. We
+expected that a solution was given by <span class="math display">\[
+    u(r,\theta)= \sum_{m=-\infty}^{\infty} a_mr^{\lvert m \rvert
+}\mathrm{e}^{im \theta} ,
+\]</span> where <span class="math inline">\(a_m\)</span> was the <span
+class="math inline">\(m^{th}\)</span> Fourier coefficient of <span
+class="math inline">\(f\)</span>. In other words, we were led to take
+<span class="math display">\[
+    u(r,\theta)= A_{r}(f)(\theta)= \frac{1}{2\pi} \int_{-\pi}^{\pi}
+f(\varphi)P_{r}(\theta-\varphi) \mathrm{d}\varphi.
+\]</span></p>
+<p><strong>Theorem</strong> Let <span class="math inline">\(f\)</span>
+be an integrable function defined on the unit circle. Then the function
+<span class="math inline">\(u\)</span> defined in the unit disc by the
+Poisson integral <span class="math display">\[
+    u(r,\theta)=(f*P_{r})(\theta)
+\]</span> has the following properties: - u has two continuous
+derivatives in the unit disc and satisfies <span
+class="math inline">\(\Delta u=0\)</span>. - If <span
+class="math inline">\(\theta\)</span> is any point of continuity of
+<span class="math inline">\(f\)</span>, then <span
+class="math display">\[
+    \lim_{r \to 1}u(r,\theta)=f(\theta).
+\]</span> If <span class="math inline">\(f\)</span> is continuous
+everywhere, then this limit is uniform. - If <span
+class="math inline">\(f\)</span> is continuous, then <span
+class="math inline">\(u(r,\theta)\)</span> is the unique solution to the
+steady-state heat equation in the disc which satisfies the above two
+conditions.</p>
+<p>We only prove the last property. Suppose <span
+class="math inline">\(v\)</span> solves the steady-state heat equation
+in the disc and converges to <span class="math inline">\(f\)</span>
+uniformly as <span class="math inline">\(r\)</span> tends to <span
+class="math inline">\(1\)</span> from below. For each fixed <span
+class="math inline">\(r\)</span> with <span
+class="math inline">\(0&lt;r&lt;1\)</span>, the function <span
+class="math inline">\(v(r,\theta)\)</span> has a Fourier series <span
+class="math display">\[
+    \sum_{n=-\infty}^{\infty} a_n(r)\mathrm{e}^{in \theta}
+\quad\text{where}\quad a_n(r)=\frac{1}{2\pi} \int_{-\pi}^{\pi}
+v(r,\theta)\mathrm{e}^{-in \theta}  \mathrm{d}\theta.     
+\]</span> Taking into account that <span
+class="math inline">\(v(r,\theta)\)</span> solves the equation <span
+class="math display">\[
+    \frac{\partial ^{2}v}{\partial r^{2}}+\frac{1}{r}\frac{\partial
+v}{\partial r}+\frac{1}{r^{2}}\frac{\partial ^{2}v}{\partial
+\theta^{2}}=0, \tag{7}
+\]</span> we find that <span class="math display">\[
+    a&#39;&#39;_n(r)+\frac{1}{r}a_n&#39;(r)-
+\frac{n^{2}}{r^{2}}a_n(r)=0. \tag{8}
+\]</span> Indeed, we may first multiply (7) by $^{-in } $ and integrate
+in <span class="math inline">\(\theta\)</span>. Then, since <span
+class="math inline">\(v\)</span> is periodic, two integrations by parts
+give <span class="math display">\[
+    \frac{1}{2\pi} \int_{-\pi}^{\pi}  \frac{\partial ^{2}v}{\partial
+\theta^{2}}(r,\theta)\mathrm{e}^{-in \theta}  \mathrm{d}\theta = -n^{2}
+a_n(r).
+\]</span> Finally, we may interchange the order of differentiation and
+integration, which is permissible since <span
+class="math inline">\(v\)</span> has two continuous derivatives; this
+yields (8).</p>
+<p>Therefore, we must have <span class="math inline">\(a_n(r)= A_n
+r^{n}+B_n r^{-n}\)</span> for some constants <span
+class="math inline">\(A_n\)</span> and <span
+class="math inline">\(B_n\)</span>, when <span class="math inline">\(n
+\neq 0\)</span>. To evaluate the constants, we first observe that each
+term <span class="math inline">\(a_n(r)\)</span> is bounded because
+<span class="math inline">\(v\)</span> is bounded, therefore <span
+class="math inline">\(B_n=0\)</span>. Tho find <span
+class="math inline">\(A_n\)</span> we let <span class="math inline">\(r
+\to 1\)</span>. Since <span class="math inline">\(v\)</span> converges
+uniformly to <span class="math inline">\(f\)</span> we find that <span
+class="math display">\[
+    A_n= \frac{1}{2\pi} \int_{-\pi}^{\pi} f(\theta)\mathrm{e}^{-in
+\theta}  \mathrm{d}\theta.
+\]</span> By a similar argument, this formula also holds when <span
+class="math inline">\(n=0\)</span>. Our conclusion is that for each
+<span class="math inline">\(0&lt;r&lt;1\)</span>, the Fourier series of
+<span class="math inline">\(v\)</span> is given by the series of <span
+class="math inline">\(u(r,\theta)\)</span>, so by the uniqueness of
+Fourier series for continuous functions, we must have <span
+class="math inline">\(u=v\)</span>.</p>
+<p><strong>Remark.</strong> By part (iii) of the theorem, we may
+conclude that if <span class="math inline">\(u\)</span> solves <span
+class="math inline">\(\Delta u=0\)</span> in the disc, and converges to
+<span class="math inline">\(0\)</span> uniformly as <span
+class="math inline">\(r \to 1\)</span>, then <span
+class="math inline">\(u\)</span> must be identically <span
+class="math inline">\(0\)</span>. However, if uniform convergence is
+replaced by pointwise convergence, this conclusion may fail.</p>
+<p>Actually, If <span class="math inline">\(P_{r}(\theta)\)</span>
+denotes the Poisson kernel, then the function <span
+class="math display">\[
+    u(r,\theta)= \frac{\partial P_r}{\partial \theta}=\frac{2(r^{2}-1)r
+\sin \theta}{(1-2r\cos \theta+r^{2})^{2}}
+\]</span> defined for <span class="math inline">\(0\leqslant
+r&lt;1\)</span> and <span class="math inline">\(\theta \in
+\mathbb{R}\)</span>, satisfies: - <span class="math inline">\(\Delta
+u=0\)</span> in the disc. - <span class="math inline">\(\lim_{r \to
+1}u(r,\theta)=0\)</span> for each <span
+class="math inline">\(\theta\)</span>.</p>
+<p>However, <span class="math inline">\(u\)</span> is not identically
+zero.</p>
+<hr />
+<p>Solve Laplace's equation <span class="math inline">\(\Delta
+u=0\)</span> in the semi infinite strip <span class="math display">\[
+    S=\{(x, y)\colon 0&lt;x&lt;1,0&lt;y\},
+\]</span> subject to the following boundary conditions <span
+class="math display">\[
+    \begin{cases}
+        u(0,y)=0 \quad y\geqslant 0, \\
+        u(1,y)=0 \quad y\geqslant 0,
+        u(x,0)=f(x) \quad 0\leqslant x\leqslant 1   
+    \end{cases}
+\]</span> where <span class="math inline">\(f\)</span> is a given
+function, with of course <span
+class="math inline">\(f(0)=f(1)=0\)</span>. Write <span
+class="math display">\[
+    f(x)= \sum_{n=1}^{\infty} a_n \sin (n \pi x)
+\]</span> and expand the general solution in terms of the special
+soluions given by <span class="math display">\[
+    u_n(x,y)= \mathrm{e}^{-n\pi y} \sin (n\pi x).
+\]</span> Express <span class="math inline">\(u\)</span> as an integral
+involving <span class="math inline">\(f\)</span>, analogous to the
+Poisson integral formula.</p>
+<p>Answer:</p>
+<p>By considering the odd extension of <span
+class="math inline">\(f\)</span> and following the derivation of
+Poisson's kernel with $^{-y} $ and $^{i t} $ replacing <span
+class="math inline">\(r\)</span> and $^{it} $, respectively, we obtain
+<span class="math display">\[
+    u(x,y)= \frac{1}{2} \int_{-1}^{1} f(t)Q_y(x-t) \mathrm{d}t
+\]</span> where <span class="math display">\[
+    Q_y(t)= \frac{1-\mathrm{e}^{-2\pi y} }{1-2\mathrm{e}^{-\pi y} \cos
+\pi t+ \mathrm{e}^{-2\pi y} }.
+\]</span> or, using the fact that <span class="math inline">\(f\)</span>
+is odd, we have the alternate form <span class="math display">\[
+    u(x,y)=\frac{1}{2} \int_{0}^{1} f(t)Q(x,t) \mathrm{d}t
+\]</span> where <span class="math display">\[
+    Q(x,t)=\frac{1-\mathrm{e}^{-2\pi y} }{1-2\mathrm{e}^{-\pi y} \cos
+\pi (x-t)+ \mathrm{e}^{-2\pi y} }-\frac{1-\mathrm{e}^{-2\pi y}
+}{1-2\mathrm{e}^{-\pi y} \cos \pi (x+t)+ \mathrm{e}^{-2\pi y} }.
+\]</span></p>
+<hr />
+<p>Consider the Dirichlet problem in the annulus defined by <span
+class="math inline">\(\{(r,\theta)\colon \rho&lt;r&lt;1\}\)</span>,
+where <span class="math inline">\(0&lt;\rho&lt;1\)</span> is the inner
+radius. The problem is to solve <span class="math display">\[
+    \frac{\partial ^{2}u}{\partial r^{2}}+\frac{1}{r}\frac{\partial
+u}{\partial r}+\frac{1}{r^{2}} \frac{\partial ^{2}u}{\partial
+\theta^{2}}=0
+\]</span> subject to the boundary conditions <span
+class="math display">\[
+    \begin{cases}
+        u(1,\theta)=f(\theta), \\
+        u(\rho,\theta)=g(\theta),
+    \end{cases}
+\]</span> where <span class="math inline">\(f\)</span> and <span
+class="math inline">\(g\)</span> are given continuous functions.</p>
+<p>Arguing as we have previously for the Dirichlet problem in the disc,
+we can hope to write <span class="math display">\[
+    u(r,\theta)= \sum_{}^{} c_n(r) \mathrm{e}^{in \theta}
+\]</span> with <span
+class="math inline">\(c_n(r)=A_nr^{n}+B_nr^{-n},n\neq 0\)</span>. Set
+<span class="math display">\[
+    f(\theta) \sim \sum_{}^{} a_n \mathrm{e}^{in \theta}  \quad
+\text{and}\quad g(\theta) \sim \sum_{}^{} b_n \mathrm{e}^{in \theta}
+.       
+\]</span> We want <span class="math inline">\(c_n(1)=a_n\)</span> and
+<span class="math inline">\(c_n(\rho)=b_n\)</span>. This leads to the
+solution <span class="math display">\[
+    u(r,\theta)= \sum_{n\neq 0}^{} \left(
+\frac{1}{\rho^{n}-\rho^{-n}}\right)[((\rho/r)^{n}-(r/\rho)^{n})a_n+(r^{n}-r^{-n})b_n]
+\mathrm{e}^{in \theta}+a_0+(b_0-a_0) \frac{\log r}{\log \rho}.  
+\]</span></p>
+<p>Show that as a result we have <span class="math display">\[
+    u(r,\theta)-(P_{r}*f)(\theta)\to 0 \quad \text{as}\ r\to 1\
+\text{uniformly in}\ \theta
+\]</span> and <span class="math display">\[
+    u(r,\theta)-(P_{\rho/r}*g)(\theta)\to 0 \quad \text{as}\ r\to \rho\
+\text{uniformly in}\ \theta
+\]</span></p>
+<h2 id="the-heat-equation-on-the-circle">The heat equation on the
+circle</h2>
+<p>As a final illustration, we return to the original problem of heat
+diffusion considered by Fourier.</p>
+<p>Suppose we are given an initial temperature distribution at <span
+class="math inline">\(t=0\)</span> on a ring and that we are asked to
+describe the temperature at points on the ring at times <span
+class="math inline">\(t&gt;0\)</span>.</p>
+<p>The ring is modeled by the unit circle. A point on this circle is
+described by its angle <span class="math inline">\(\theta=2\pi
+x\)</span>, where the variable <span class="math inline">\(x\)</span>
+lies between <span class="math inline">\(0\)</span> and <span
+class="math inline">\(1\)</span>. If <span
+class="math inline">\(u(x,t)\)</span> denotes the temperature at time
+<span class="math inline">\(t\)</span> of a point described by the angle
+<span class="math inline">\(\theta\)</span>, then consideration similar
+to the ones given in Chapter 1 show that <span
+class="math inline">\(u\)</span> satisfies the differential equation
+<span class="math display">\[
+    \frac{\partial u}{\partial t}= c\frac{\partial ^{2}u}{\partial
+x^{2}}.  \tag{9}
+\]</span></p>
+<p>The constant <span class="math inline">\(c\)</span> is a positive
+physical constant which depends on the material of which thhe ring is
+made. After rescaling the time variable, we may assume that <span
+class="math inline">\(c=1\)</span>. If <span
+class="math inline">\(f\)</span> is our initial data, we impose the
+condition <span class="math display">\[
+    u(x,0)=f(x).
+\]</span> To solve the problem, we separate variables and look for
+special solutions of the form <span class="math display">\[
+    u(x,t)=A(x)B(t).
+\]</span> Then inserting this expression for <span
+class="math inline">\(u\)</span> into the heat equation we get <span
+class="math display">\[
+    \frac{B&#39;(t)}{B(t)}= \frac{A&#39;&#39;(x)}{A(x)}.
+\]</span> Both sides are therefore constant, say equal to <span
+class="math inline">\(\lambda\)</span>. Since <span
+class="math inline">\(A\)</span> must be periodic of period <span
+class="math inline">\(1\)</span>, we see that the only possibility is
+<span class="math inline">\(\lambda=-4\pi^{2}n^{2}\)</span>, where <span
+class="math inline">\(n \in \mathbb{Z}\)</span>. Then <span
+class="math inline">\(A\)</span> is a linear combination of the
+exponentials $^{2inx} $ and $^{-2inx} $, and <span
+class="math inline">\(B(t)\)</span> is a multiple of
+$<sup>{-4</sup>{2}n^{2}t} $. By superposing these solutions, we are led
+to <span class="math display">\[
+    u(x,t)=\sum_{n=-\infty}^{\infty} a_n \mathrm{e}^{-4\pi^{2}n^{2}t}
+\mathrm{e}^{2\pi inx}, \tag{10}
+\]</span> where, setting <span class="math inline">\(t=0\)</span>, we
+see that <span class="math inline">\(\{a_n\}\)</span> are the Fourier
+coefficients of <span class="math inline">\(f\)</span>.</p>
+<p>Note that when <span class="math inline">\(f\)</span> is Riemann
+integrable, the coefficients <span class="math inline">\(a_n\)</span>
+are bounded, and since the factor <span
+class="math inline">\(\mathrm{e}^{-4\pi^{2}n^{2}t}\)</span> tends to
+zero extremely fast, the series defining <span
+class="math inline">\(u\)</span> converges. In fact, in this case, <span
+class="math inline">\(u\)</span> is twice differentiable and solves
+equation (9).</p>
+<p>For a better understanding of the properties of our solution (10), we
+write it as <span class="math display">\[
+    u(x,t)=(f*H_t)(x),
+\]</span> where <span class="math inline">\(H_t\)</span> is the
+<strong>heat kernel for the circle</strong>, given by <span
+class="math display">\[
+    H_{t}(x)=\sum_{n=-\infty}^{\infty} \mathrm{e}^{-4\pi^{2}n^{2}t}
+\mathrm{e}^{2\pi inx} , \tag{11}
+\]</span> and where the convolution for functions with period <span
+class="math inline">\(1\)</span> is defined by <span
+class="math display">\[
+    (f*g)(x)= \int_{0}^{1} f(x-y)g(y) \mathrm{d}y.
+\]</span></p>
+<p>The natural question with regard to the boundary condition is the
+following: do we have $u(x,t) f(x) $ as <span
+class="math inline">\(t\)</span> tends to <span
+class="math inline">\(0\)</span>, and in what sense? A simple
+application of the Parsevel identity shows that this limit holds in the
+mean square sense, namely <span class="math display">\[
+    \int_{0}^{1} \lvert u(x,t)-f(x) \rvert ^{2} \mathrm{d}x \to 0 \quad
+\text{as}\ t\to 0.
+\]</span></p>
+<p>An analogy between the heat kernel and the Poisson kernel:</p>
+<p><span class="math display">\[
+    u(\theta,\tau)= \sum_{}^{} a_n \mathrm{e}^{-n^{2}\tau}
+\mathrm{e}^{in \theta} =(f* h_{\tau})(\theta)
+\]</span> of the equation <span class="math display">\[
+    \frac{\partial u}{\partial \tau}=\frac{\partial ^{2}u}{\partial
+\theta^{2}} \quad \text{with}\ 0\leqslant \theta\leqslant 2\pi \
+\text{and} \ \tau&gt;0,
+\]</span> with boundary condition $u(,0)= f() <em>{}^{} a_n ^{in } $.
+Here <span class="math inline">\(h_{\tau}(\theta)=
+\sum_{n=-\infty}^{\infty} \mathrm{e}^{-n^{2}\tau} \mathrm{e}^{in
+\theta}\)</span>. This version of the heat kernel on <span
+class="math inline">\([0,2\pi]\)</span> is the analogue of the Poisson
+kernel, which can be written as $P</em>{r}()=_{n=-}^{} e^{-n }^{in } $
+with $r= ^{-} $(and so <span class="math inline">\(0&lt;r&lt;1\)</span>
+corresponds to <span class="math inline">\(\tau&gt;0\)</span>).</p>
+<p>Unlike in the case of the Poisson kernel, there is no elementary
+formula for the heat kernel. Nevertheless, it turns out that it is a
+good kernel. The proof is not obvious and requires the use of the
+celebrated Poisson summation formula. As a corollary, we will also find
+that <span class="math inline">\(H_t\)</span> is everywhere positive, a
+fact that is also not obvious from its defining expression (11). We can,
+however, give the following heuristic argument for the positivity of
+<span class="math inline">\(H_t\)</span>. Suppose that we begin with an
+initial temperature distribution <span class="math inline">\(f\)</span>
+which is everywhere <span class="math inline">\(\leqslant 0\)</span>.
+Then it is physically reasonable to expect <span
+class="math inline">\(u(x,t)\leqslant 0\)</span> for all <span
+class="math inline">\(t\)</span> since heat travels from hot to cold.
+Now <span class="math display">\[
+    u(x,t)= \int_{0}^{1} f(x-y)H_t(y) \mathrm{d}y.
+\]</span> If <span class="math inline">\(H_{t}\)</span> is negative for
+some <span class="math inline">\(x_0\)</span>, then we may choose <span
+class="math inline">\(f\leqslant 0\)</span> supported near <span
+class="math inline">\(0\)</span>, and this would imply <span
+class="math inline">\(u(x_0,t)&gt;0\)</span>, which is a
+contradiction.</p>
+<h2 id="the-time-dependent-heat-equation-on-the-real-line">The
+time-dependent heat equation on the real line</h2>
+<p>Here we study the analogous problem on the real line.</p>
+<p>Consider an infinite rod, which we model by the real line, and
+suppose that we are given an initial temperature distribution <span
+class="math inline">\(f(x)\)</span> on the rod at time <span
+class="math inline">\(t=0\)</span>. We wish now to determine the
+temperature <span class="math inline">\(u(x,t)\)</span> at a point <span
+class="math inline">\(x\)</span> at time <span
+class="math inline">\(t&gt;0\)</span>. Considerations similar to the
+ones given in Chapter 1 show that when <span
+class="math inline">\(u\)</span> is appropriately normalized, it solves
+the following PDE: <span class="math display">\[
+    \frac{\partial u}{\partial t}= \frac{\partial ^{2}u}{\partial
+x^{2}}, \tag{12}
+\]</span> called the <strong>heat equation</strong>. The initial
+condition we impose is <span
+class="math inline">\(u(x,0)=f(x)\)</span>.</p>
+<p>Just as in the case of the circle, the solution is given in terms of
+a convolution. Indeed, define the <strong>heat kernel</strong> of the
+line by <span class="math display">\[
+    \mathcal{H}_{t}(x)= K_{\delta}(x), \quad \text{with} \ \delta=4\pi
+t,
+\]</span> so that <span class="math display">\[
+    \mathcal{H}_{t}(x)=\frac{1}{(4\pi t)^{1/2}} \mathrm{e}^{-x^{2}/4t}
+\quad \text{and} \quad \hat{\mathcal{H}}_{t}(\xi)= \mathrm{e}^{-4\pi^{2}
+t \xi ^{2}} .
+\]</span></p>
+<p>Taking the Fourier transform of equation (12) in the <span
+class="math inline">\(x\)</span> variable leads to <span
+class="math display">\[
+    \frac{\partial \hat{u}}{\partial t}(\xi, t)= -4\pi^{2} \xi^{2}
+\hat{u}(\xi,t).
+\]</span> Fixing <span class="math inline">\(\xi\)</span>, this is an
+ODE in the variable <span class="math inline">\(t\)</span>, so there
+exists a constant <span class="math inline">\(A(\xi)\)</span> so that
+<span class="math display">\[
+    \hat{u}(\xi,t)= A(\xi) \mathrm{e}^{-4\pi^{2}\xi^{2}t} .
+\]</span> We may also take the Fourier transform of the initial
+condition and obtain <span class="math inline">\(\hat{u}(\xi,0)=
+\hat{f}(\xi)\)</span>, hence <span
+class="math inline">\(A(\xi)=\hat{f}(\xi)\)</span>. This leads to the
+following theorem.</p>
+<p><strong>Theorem 2.1</strong> Given <span class="math inline">\(f\in
+\mathcal{S}(\mathbb{R})\)</span>, let <span class="math display">\[
+    u(x,t)=(f*\mathcal{H}_{t})(x) \quad t&gt;0
+\]</span> where <span class="math inline">\(\mathcal{H}_{t}\)</span> is
+the heat kernel. Then: 1. The function <span
+class="math inline">\(u\)</span> is <span
+class="math inline">\(C^{2}\)</span> when <span class="math inline">\(x
+\in \mathbb{R}\)</span> and <span class="math inline">\(t&gt;0\)</span>,
+and <span class="math inline">\(u\)</span> solves the heat equation. 2.
+<span class="math inline">\(u(x,t) \to f(x)\)</span> uniformly in <span
+class="math inline">\(x\)</span> as <span class="math inline">\(t \to
+0\)</span>. Hence if we set <span
+class="math inline">\(u(x,0)=f(x)\)</span>, then <span
+class="math inline">\(u\)</span> is continuous on the closure of the
+upper half-plane <span
+class="math inline">\(\overline{\mathbb{R}_{+}^{2}}=\{(x,t)\colon x\in
+\mathbb{R}, t\geqslant 0\}\)</span>. 3. <span
+class="math inline">\(\int_{-\infty}^{\infty} \lvert u(x,t)-f(x) \rvert
+^{2} \mathrm{d}x \to 0\)</span> as <span class="math inline">\(t \to
+0\)</span>.</p>
+<p><strong>proof</strong> Because <span class="math inline">\(u= f*
+\mathcal{H}_{t}\)</span>, taking the Fourier transform in the <span
+class="math inline">\(x-variable\)</span> gives <span
+class="math inline">\(\hat{u}=\hat{f} \hat{\mathcal{H}}_{t}\)</span>,
+and so $(,t)=() <sup>{-4</sup>{2}^{2}t} $. The Fourier inversion formula
+gives <span class="math display">\[
+    u(x,t)= \int_{-\infty}^{\infty} \hat{f}(\xi)\mathrm{e}^{-4\pi^{2}t
+\xi^{2}} \mathrm{e}^{2\pi i \xi x}  \mathrm{d}\xi .
+\]</span> By differentiating under the integral sign, one verifies 1. In
+fact, one observes that <span class="math inline">\(u\)</span> is
+indefinitely differentiable. Note that 2 is an immediate consequence of
+Corollary 1.7. Finally, by Plancherel's formula, we have <span
+class="math display">\[
+    \begin{aligned}
+        \int_{-\infty}^{\infty} \lvert u(x,t)-f(x) \rvert ^{2}
+\mathrm{d}x &amp;= \int_{-\infty}^{\infty} \lvert
+\hat{u}(\xi,t)-\hat{f}(\xi) \rvert ^{2} \mathrm{d}\xi \\
+        &amp;= \int_{-\infty}^{\infty} \lvert \hat{f}(\xi) \rvert ^{2}
+\lvert \mathrm{e}^{-4\pi^{2}t \xi^{2}} -1 \rvert ^{2} \mathrm{d}\xi.
+    \end{aligned}
+\]</span></p>
+<p>To see that this last integral goes to <span
+class="math inline">\(0\)</span> as <span class="math inline">\(t \to
+0\)</span>, we argue as follows: since <span
+class="math inline">\(\lvert \mathrm{e}^{-4\pi^{2}t \xi ^{2}} -1 \rvert
+\leqslant 2\)</span> and <span class="math inline">\(f\in
+\mathcal{S}(\mathbb{R})\)</span>, we can find <span
+class="math inline">\(N\)</span> so that <span class="math display">\[
+    \int_{\lvert \xi \rvert \geqslant N}^{} \lvert \hat{f}(\xi) \rvert
+^{2}\lvert \mathrm{e}^{-4\pi^{2}t \xi^{2}} -1 \rvert  \mathrm{d}\xi
+&lt;\varepsilon,
+\]</span> and for all small <span class="math inline">\(t\)</span> we
+have <span class="math inline">\(\sup_{\lvert \xi \rvert \leqslant
+N}\lvert \hat{f}(\xi) \rvert ^{2}\lvert \mathrm{e}^{-4\pi^{2}t \xi^{2}}
+-1 \rvert ^{2}&lt;\varepsilon/2N\)</span> since <span
+class="math inline">\(\hat{f}\)</span> is bounded. Thus <span
+class="math display">\[
+    \int_{\lvert \xi \rvert \leqslant N}^{} \lvert \hat{f}(\xi) \rvert
+^{2}\lvert \mathrm{e}^{-4\pi^{2}t \xi^{2}} -1 \rvert ^{2} \mathrm{d}\xi
+&lt; \varepsilon \quad \text{for all small}\ t.     
+\]</span> This completes the proof of the theorem.</p>
+<h2 id="the-steady-state-heat-equation-in-the-upper-half-plane">The
+steady-state heat equation in the upper half-plane</h2>
+<p>The equation we are now concerned with is <span
+class="math display">\[
+    \Delta u= \frac{\partial ^{2}u}{\partial x^{2}}+\frac{\partial
+^{2}u}{\partial y^{2}}=0  \tag{13}
+\]</span> in the upper half-plane <span
+class="math inline">\(\mathbb{R}_{+}^{2}=\{(x, y)\colon x\in
+\mathbb{R},y&gt;0\}\)</span>. The boundary condition we require is <span
+class="math inline">\(u(x,0)=f(x)\)</span>. The kernel that solves this
+problem is called the <strong>Poisson kernel</strong> for the upper
+half-plane, and is given by <span class="math display">\[
+    \mathcal{P}_{y}(x)=\frac{1}{\pi}\frac{y}{x^{2}+y^{2}}
+\quad\text{where} \ x\in \mathbb{R}\ \text{and} y&gt;0.
+\]</span> This is the analogue of the Poisson kernel for the disc.</p>
+<p>Note that for each fixed <span class="math inline">\(y\)</span> the
+kernel <span class="math inline">\(\mathcal{P}_{y}\)</span> is only of
+moderate decrease as a function of <span
+class="math inline">\(x\)</span>, so we will use the theory of the
+Fourier transform appropriate for these types of functions.</p>
+<p>We proceed as in the case of the time-dependent heat equation, by
+taking the Fourier transform of equation (13) in the <span
+class="math inline">\(x\)</span> variable, thereby obtaining <span
+class="math display">\[
+    -4\pi^{2}\xi^{2}\hat{u}(\xi,y)+\frac{\partial ^{2}\hat{u}}{\partial
+y^{2}}(\xi,y)=0     
+\]</span> with the boundary condition <span
+class="math inline">\(\hat{u}(\xi,0)=\hat{f}(\xi)\)</span>. The general
+solution of this ODE in <span class="math inline">\(y\)</span> (with
+<span class="math inline">\(\xi\)</span> fixed) takes the form <span
+class="math display">\[
+    \hat{u}(\xi,y)= A(\xi) \mathrm{e}^{-2\pi \lvert \xi \rvert y}
++B(\xi) \mathrm{e}^{2\pi\lvert \xi \rvert y} .
+\]</span> If we disregard the second term because of its rapid
+exponential increase we find, after setting <span
+class="math inline">\(y=0\)</span>, that <span class="math display">\[
+    \hat{u}(\xi,y)=\hat{f}(\xi) \mathrm{e}^{-2\pi \lvert \xi \rvert y} .
+\]</span> Therefore <span class="math inline">\(u\)</span> is given in
+terms of the convolution of <span class="math inline">\(f\)</span> with
+a kernel whose Fourier transform is $^{-2y} $. This is precisely the
+Poisson kernel given above, as we prove next.</p>
+<p><strong>Lemma 2.4</strong> The following two identities hold: <span
+class="math display">\[
+    \int_{-\infty}^{\infty} \mathrm{e}^{-2\pi\lvert \xi \rvert y}
+\mathrm{e}^{2\pi i \xi x}  \mathrm{d}\xi = \mathcal{P}_y(x),
+\]</span> <span class="math display">\[
+    \int_{-\infty}^{\infty} \mathcal{P}_y(x)\mathrm{e}^{-2\pi ix \xi}
+\mathrm{d}x= \mathrm{e}^{-2\pi\lvert \xi \rvert y} .
+\]</span></p>
+<p><strong>Lemma 2.5</strong> The Poisson kernel is a good kernel on
+<span class="math inline">\(\mathbb{R}\)</span> as <span
+class="math inline">\(y \to 0\)</span>.</p>
+<p>The following theorem establishes the existence of a solution to our
+problem.</p>
+<p><strong>Theorem 2.6</strong> Given <span class="math inline">\(f \in
+\mathcal{S}(\mathbb{R})\)</span>,let <span class="math inline">\(u(x,
+y)=(f*\mathcal{P}_{y})(x)\)</span>. Then: 1. <span
+class="math inline">\(u (x, y)\)</span> is <span
+class="math inline">\(C^{2}\)</span> in <span
+class="math inline">\(\mathbb{R}^{2}_{+}\)</span> and <span
+class="math inline">\(\Delta u=0\)</span>. 2. <span
+class="math inline">\(u(x, y) \to f(x)\)</span> uniformly as <span
+class="math inline">\(y \to 0\)</span>. 3. <span
+class="math inline">\(\int_{-\infty}^{\infty} \lvert u(x, y)-f(x) \rvert
+^{2} \mathrm{d}x \to 0\)</span> as <span class="math inline">\(y \to
+0\)</span>. 4. If <span class="math inline">\(u(x,0)=f(x)\)</span>, then
+<span class="math inline">\(u\)</span> is continuous on the closure
+<span class="math inline">\(\overline{\mathbb{R}^{2}_{+}}\)</span> of
+the upper half-plane, and vanishes at infinity in the sense that <span
+class="math display">\[
+    u(x, y) \to 0 \quad \text{as} \ \lvert x \rvert +y \to \infty.
+\]</span></p>
+<h2 id="heat-kernel">Heat kernel</h2>
+<p>Another application related to the Poisson summation formula and the
+theta function is the time-dependent heat equation on the circle. A
+solution to the equation <span class="math display">\[
+    \frac{\partial u}{\partial t}=\frac{\partial ^{2}u}{\partial x^{2}}
+\]</span> subject to <span class="math inline">\(u(x,0)=f(x)\)</span>,
+where <span class="math inline">\(f\)</span> is periodic of period <span
+class="math inline">\(1\)</span>, was given in the previous chapter by
+<span class="math display">\[
+    u(x,t)=(f*H_t)(x)
+\]</span> where <span class="math inline">\(H_t(x)\)</span> is the heat
+kernel on the circle, that is, <span class="math display">\[
+    H_t(x)= \sum_{n=-\infty}^{\infty} \mathrm{e}^{-4\pi^{2}n^{2}t}
+\mathrm{e}^{2\pi inx} .
+\]</span> Note in particular that with our definition of the generalized
+theta function in the previous section, we have <span
+class="math inline">\(\Theta(x|4\pi it)=H_t(x)\)</span>. Also, recall
+that the heat equation on <span
+class="math inline">\(\mathbb{R}\)</span> gave rise to the heat kernel.
+<span class="math display">\[
+    \mathcal{H}_{t}(x)=\frac{1}{(4\pi t)^{1/2}}\mathrm{e}^{-x^{2}/4t}
+\]</span> where <span
+class="math inline">\(\hat{\mathcal{H}}_{t}(\xi)=\mathrm{e}^{-4\pi^{2}\xi^{2}t}\)</span>.
+The fundamental relation between these two objects is an immediate
+consequence of the Poisson summation formula:</p>
+<p><strong>Theorem 3.3</strong> The heat kernel on the circle is the
+periodization of the heat kernel on the real line: <span
+class="math display">\[
+    H_t(x)= \sum_{n=-\infty}^{\infty} \mathcal{H}_{t}(x+n).
+\]</span> Although the proof that <span
+class="math inline">\(\mathcal{H}_t\)</span> is a good kernel on <span
+class="math inline">\(\mathbb{R}\)</span> was fairly straightforward, we
+left open the harder problem that <span
+class="math inline">\(H_t\)</span> is a good kernel on the circle. The
+above results allow us to resolve this matter.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Through the Heat Equation</div>
+      <div>http://example.com/2022/06/24/Through-the-Heat-Equation/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 24, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/28/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%8810%EF%BC%89/" title="常微分方程（10）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程（10）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/23/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%889%EF%BC%89/" title="常微分方程（9）">
+                        <span class="hidden-mobile">常微分方程（9）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1345 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Continuity Equation and the Fokker-Planck Approach">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neuronal Dynamics (13)">
+<meta property="og:url" content="http://example.com/2022/10/24/Neuronal-Dynamics-13/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Continuity Equation and the Fokker-Planck Approach">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-10-24T14:00:37.000Z">
+<meta property="article:modified_time" content="2022-12-11T12:59:57.472Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="神经科学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
+  
+  
+  
+  <title>Neuronal Dynamics (13) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (13)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-24 22:00" pubdate>
+          October 24, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          21k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          173 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Neuronal Dynamics (13)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="continuity-equation-and-the-fokker-planck-approach">Continuity
+Equation and the Fokker-Planck Approach</h1>
+<p>The online version of this chapter:</p>
+<hr />
+<p>Chapter 13 Continuity Equation and the Fokker-Planck Approach
+https://neuronaldynamics.epfl.ch/online/Ch13.html</p>
+<hr />
+<p>In this chapter we present a formulation of population activity
+equations that can account for the temporal aspects of population
+dynamics.</p>
+<h2 id="continuity-equation">Continuity equation</h2>
+<p>In this chapter and the next, the population activity is the expected
+population activity <span class="math inline">\(A(t)\equiv \langle
+A(t)\rangle\)</span>.</p>
+<h3 id="distribution-of-membrane-potentials">Distribution of membrane
+potentials</h3>
+<p>The aim of this section is to describe the evolution of the density
+<span class="math inline">\(p(u,t)\)</span> as a function of time. <span
+class="math display">\[
+    \lim_{N \to \infty}\left\{\frac{\text{neurons with }
+u_0&lt;u_i(t)\leqslant u_0+\Delta u}{N}\right\}=\int_{u_0}^{u_0+\Delta
+u} p(u,t) \mathrm{d}u, \tag{13.2}
+\]</span> <span class="math display">\[
+    \int_{-\infty}^{\theta_{reset}} p(u,t) \mathrm{d}u=1. \tag{13.3}
+\]</span></p>
+<h3 id="flux-and-continuity-equation">Flux and continuity equation</h3>
+<p>Consider the portion of neurons with a membrane potential between
+<span class="math inline">\(u_0\)</span> and <span
+class="math inline">\(u_1\)</span>. The <strong>flux</strong> <span
+class="math inline">\(J(u,t)\)</span> is the net fraction of
+trajectories per unit time that crosses the value <span
+class="math inline">\(u\)</span>. A positive flux <span
+class="math inline">\(J(u,t)&gt;0\)</span> is defined as a flux toward
+increasing values of <span class="math inline">\(u\)</span>.</p>
+<p>We have the conservation law <span class="math display">\[
+    \frac{\partial }{\partial t}\int_{u_0}^{u_1} p(u&#39;,t)
+\mathrm{d}u&#39;=J(u_0,t)-J(u_1,t). \tag{13.5}
+\]</span> The continuity equation, <span class="math display">\[
+    \frac{\partial }{\partial t}p(u,t)=-\frac{\partial }{\partial
+u}J(u,t) \quad u \neq u_r, u\neq \theta_{reset}, \tag{13.6}
+\]</span></p>
+<p>Since neurons that have fired start a new trajectory at <span
+class="math inline">\(u_r\)</span>, we have a 'source of new
+trajectories' at <span class="math inline">\(u=u_r\)</span>, i.e., new
+trajectories appear in the interval <span
+class="math inline">\([u_r-\varepsilon, u_r+\varepsilon]\)</span> that
+have not entered the interval through one of the borders. Adding a term
+<span class="math inline">\(A(t)\delta(u-u_r)\)</span> on the RHS of
+(13.6) accounts for this source of trajectories. <span
+class="math display">\[
+    \frac{\partial }{\partial t}p(u,t)=-\frac{\partial }{\partial
+u}J(u,t)+A(t)\delta(u-u_r)-A(t)\delta(u-\theta_{reset}) \tag{13.7}
+\]</span> The density <span class="math inline">\(p(u,t)\)</span>
+vanishes for all values <span
+class="math inline">\(u&gt;\theta_{reset}\)</span>.</p>
+<p>The population activity <span class="math inline">\(A(t)\)</span> is
+the fraction of neurons that fire, <span class="math display">\[
+    A(t)=J(\theta_{reset},t). \tag{13.8}
+\]</span></p>
+<h2 id="stochastic-spike-arrival">Stochastic spike arrival</h2>
+<p>We consider the flux <span class="math inline">\(J(u,t)\)</span> in a
+homogeneous population of integrate-and-fire neurons with voltage
+equation (13.1). An input spike at a synapse of type <span
+class="math inline">\(k\)</span> causes a jump of the membrane potential
+by an amount <span class="math inline">\(w_k\)</span>. The effective
+spike arrival rate (summed over all synapses of the same type <span
+class="math inline">\(k\)</span>) is denoted as <span
+class="math inline">\(\nu_k\)</span>.</p>
+<p>A finite input current <span
+class="math inline">\(I^{ext}(t)\)</span> generates a smooth drift of
+the membrane potential trajectories. The flux <span
+class="math inline">\(J(u,t)\)</span> can be generated through a 'jump'
+or a 'drift' of trajectories. <span class="math display">\[
+    J(u_0,t)=J_{drift}(u_0,t)+J_{jump}(u_0,t), \tag{13.9}
+\]</span></p>
+<h3
+id="jumps-of-membrane-potential-due-to-stochastic-spike-arrival">Jumps
+of membrane potential due to stochastic spike arrival</h3>
+<p><span class="math display">\[
+    J_{jump}(u_0,t)=\sum_{k}^{} \nu_k(t) \int_{u_0-w_k}^{u_0} p(u,t)
+\mathrm{d}u. \tag{13.10}
+\]</span></p>
+<h3 id="drift-of-membrane-potential">Drift of membrane potential</h3>
+<p><span class="math display">\[
+    J_{drift}(u_0,t)=\frac{\mathrm{d}u}{\mathrm{d}t}\bigg
+|_{u_0}p(u_0,t)=\frac{1}{\tau_m}[f(u_0)+RI^{ext}(t)]p(u_0,t),
+\tag{13.11}
+\]</span></p>
+<p>Synaptic <span class="math inline">\(\delta\)</span>-curent pulses
+cause a jump of the membrane potential and therefore contribute only to
+<span class="math inline">\(J_{jump}\)</span></p>
+<div class="note note-info">
+            <p>(13.7) 和 (13.11) 好像都表明 <spanclass="math inline">\(p(u,t)\)</span> 关于 <spanclass="math inline">\(t\)</span> 都是可导的，从而必须是连续的，但是按<span class="math inline">\(A(t)\)</span> 的比例出现spike时，postneuron的电位分布密度应该是会突变的？但是 <spanclass="math inline">\(p(u,t)\)</span> 关于 <spanclass="math inline">\(t\)</span> 不能突变也与 (13.11) 中 <spanclass="math inline">\(J_{drift}\)</span> 是平滑的相洽。</p>
+          </div>
+<h3 id="population-activity">Population activity</h3>
+<p>A positive flux through the threshold <span
+class="math inline">\(\theta_{reset}\)</span> yields the population
+activity <span class="math inline">\(A(t)\)</span>. The total flux at
+the threshold is <span class="math display">\[
+    A(t)=\frac{1}{\tau_m}[f(\theta_{reset}+RI^{ext}(t)]p(\theta_{reset},t)+\sum_{k}^{}
+\nu_k \int_{\theta_{reset}-w_k}^{\theta_{reset}} p(u,t) \mathrm{d}u.
+\tag{13.13}
+\]</span> Since the probability density vanishes for <span
+class="math inline">\(u&gt;\theta_{reset}\)</span>, the sum over the
+synapses <span class="math inline">\(k\)</span> can be restricted to all
+excitatory synapses.</p>
+<p><span class="math display">\[
+\begin{aligned}
+    \frac{\partial }{\partial
+t}p(u,t)&amp;=-\frac{1}{\tau_m}\frac{\partial }{\partial
+u}{[f(u)+RI^{ext}(t)]p(u,t)}\\
+    &amp;+\sum_{k}^{} \nu_k(t)[p(u-w_k,t)-p(u,t)] \\
+    &amp;+A(t)\delta(u-u_r)-A(t)\delta(u-\theta_{reset}).
+\end{aligned}
+\]</span> (13.14)</p>
+<p>we have <span class="math inline">\(p(u,t)=0\)</span> for <span
+class="math inline">\(u&gt;\theta_{reset}\)</span>.</p>
+<h2 id="fokker-planck-equation">Fokker-Planck equation</h2>
+<p>We expand the RHS of (13.14) into a Taylor series up to second order
+in <span class="math inline">\(w_k\)</span>. <span
+class="math display">\[
+    \begin{aligned}
+        \tau_m \frac{\partial }{\partial t}p(u,t)=&amp;-\frac{\partial
+}{\partial u} \left\{ \left[ f(u)+RI^{ext}(t)+\tau_m\sum_{k}^{}
+\nu_k(t)w_k\right]p(u,t) \right\} \\
+        &amp;+\frac{1}{2}\left[ \tau_m \sum_{k}^{}
+\nu_k(t)w_k^{2}\right] \frac{\partial ^{2}}{\partial u^{2}}p(u,t) \\
+        &amp;+ \tau_m A(t)\delta(u-u_r)-\tau_m
+A(t)\delta(u-\theta_{reset})+o(w_k^{3})
+    \end{aligned}
+\]</span> (13.16)</p>
+<p>The term with the second derivative describes a 'diffusion' in terms
+of the membrane potential.</p>
+<p>We define the total 'drive' in voltage units as <span
+class="math display">\[
+    \mu(t)=RI^{ext}(t)+\tau_m \sum_{k}^{} \nu_k(t)w_k \tag{13.17}
+\]</span> and the amount of diffusive noise (again in voltage units) as
+<span class="math display">\[
+    \sigma^{2}(t)=\tau_m \sum_{k}^{} \nu_k(t)w_k^{2}. \tag{13.18}
+\]</span></p>
+<p>The firing threshold acts as an absorbing boundary so that the
+density at threshold vanishes <span class="math display">\[
+    p(\theta_{reset},t)=0. \tag{13.19}
+\]</span></p>
+<p>We expand (13.13) in <span class="math inline">\(w_k\)</span> about
+<span class="math inline">\(u=\theta_{reset}\)</span> and obtain <span
+class="math display">\[
+    A(t)=-\frac{\sigma^{2}(t)}{2\tau_m}\frac{\partial p(u,t)}{\partial
+u} \bigg |_{u=\theta_{reset}}, \tag{13.20}
+\]</span></p>
+<h4 id="example-flux-in-the-diffusion-limit">Example: Flux in the
+diffusion limit</h4>
+<p>Compare (13.7) with (13.16), we can identify the flux caused by
+stochastic spike arrival and external current in the diffusion limit
+<span class="math display">\[
+    J^{diff}(u,t)=\frac{f(u)+\mu(t)}{\tau_m}p(u,t)-\frac{1}{2}\frac{\sigma^{2}(t)}{\tau_m}\frac{\partial
+}{\partial u}p(u,t). \tag{13.21}
+\]</span></p>
+<p>Stochastic spike arrival contributes to the mean drive <span
+class="math inline">\(\mu(t)=RI^{ext}(t)+\tau_m\sum_{k}^{}
+\nu_k(t)w_k\)</span> as well as to the diffusive noise <span
+class="math inline">\(\sigma^{2}(t)=\tau_m \sum_{k}^{}
+\nu_k(t)w_k^{2}\)</span>.</p>
+<h3
+id="stationary-solution-for-leaky-integrate-and-fire-neurons">Stationary
+solution for leaky integrate-and-fire neurons</h3>
+<p>We now derive the stationary solution <span
+class="math inline">\(p(u,t)\equiv p(u)\)</span> of (13.16) for a
+population of leaky integrate-and-fire neurons (<span
+class="math inline">\(f(u)=-u\)</span>, the voltage scale is shifted so
+that theh equilibrium potential is at zero). The reset threshold is the
+same as the rheobase firing threshold and will be denoted by <span
+class="math inline">\(\theta=\theta_{reset}=\theta_{rh}\)</span>.</p>
+<p>We assume that the total input <span
+class="math inline">\(h_0=RI^{ext}+\tau_m \sum_{k}^{} \nu_k w_k\)</span>
+is constant. For <span class="math inline">\(u&lt;\theta\)</span>, <span
+class="math display">\[
+    0=-\frac{\partial }{\partial u}J(u)+A_0 \delta(u-u_r), \tag{13.22}
+\]</span> where <span class="math inline">\(A_0\)</span> is the
+population activity (or mean firing rate) in the stationary state and
+<span class="math display">\[
+    J(u)=\frac{-u+h_0}{\tau_m}p(u)-\frac{1}{2}\frac{\sigma^{2}}{\tau_m}\frac{\partial
+}{\partial u}p(u) \tag{13.23}
+\]</span></p>
+<p>is the total flux. The meaning of (13.22) is that the flux is
+constant except at <span class="math inline">\(u=u_r\)</span> where it
+jumps by an amount <span class="math inline">\(A_0\)</span>.</p>
+<p>The boundary condition <span
+class="math inline">\(p(\theta,t)=0\)</span> implies a second
+discontinuity of the flux at <span
+class="math inline">\(u=\theta\)</span>.</p>
+<p>For any constant <span class="math inline">\(c_1\)</span>, <span
+class="math display">\[
+    p(u)=\frac{c_1}{\sigma}\exp \left[
+-\frac{(u-h_0)^{2}}{\sigma^{2}}\right]
+\]</span> for <span class="math inline">\(u\leqslant u_r\)</span> is a
+solution of (13.22) with <span
+class="math inline">\(J(u)=0\)</span>.</p>
+<p>The solution to (13.22) with <span
+class="math inline">\(p(\theta)=0\)</span> is a modified Gaussian, <span
+class="math display">\[
+    p(u)=\frac{c_2}{\sigma^{2}}\exp
+\left[-\frac{(u-h_0)^{2}}{\sigma^{2}}\right] \cdot \int_{u}^{\theta}
+\exp \left[\frac{(x-h_0)^{2}}{\sigma^{2}} \right] \mathrm{d}x
+\tag{13.25}
+\]</span> for <span class="math inline">\(u_r&lt;u\leqslant
+\theta\)</span> with some constant <span
+class="math inline">\(c_2\)</span>. The constant <span
+class="math inline">\(c_2\)</span> is proportional to the flux, <span
+class="math display">\[
+    c_2=2\tau_m J(u) \tag{13.26}        
+\]</span> for <span class="math inline">\(u_r&lt;u\leqslant
+\theta\)</span>.</p>
+<p>The solution defined by (13.24) and (13.25) must be continuous at
+<span class="math inline">\(u=u_r\)</span>. Hence <span
+class="math display">\[
+    c_1=\frac{c_2}{\sigma}\int_{u_r}^{\theta} \exp
+\left[\frac{(x-h_0)^{2}}{\sigma^{2}}\right] \mathrm{d}x. \tag{13.27}
+\]</span></p>
+<p>The constant <span class="math inline">\(c_2\)</span> is determined
+by (13.3). <span class="math display">\[
+    \frac{1}{c_2}=\int_{u_r}^{\theta} \int_{-\infty}^{x} f(x,u)
+\mathrm{d}u \mathrm{d}x, \tag{13.28}
+\]</span> with <span class="math display">\[
+    f(x,u)=\frac{1}{\sigma^{2}}\exp
+\left[-\frac{(u-h_0)^{2}}{\sigma^{2}}\right]\exp
+\left[\frac{(x-h_0)^{2}}{\sigma^{2}}\right]. \tag{13.29}
+\]</span> <span class="math display">\[
+    A_0^{-1}=\tau_m \sqrt{\pi}
+\int_{\frac{u_r-h_0}{\sigma}}^{\frac{\theta-h_0}{\sigma}} \exp
+(x^{2})[1+\text{erf}(x)] \mathrm{d}x, \tag{13.30}
+\]</span></p>
+<h2 id="networks-of-leaky-integrate-and-fire-neurons">Networks of leaky
+integrate-and-fire neurons</h2>
+<h3 id="multiple-populations">Multiple populations</h3>
+<p><span class="math display">\[
+    \begin{aligned}
+        \tau_n \frac{\partial }{\partial t}p_n(u,t)=&amp;-\frac{\partial
+}{\partial u} \left\{ \left[ -u+R_nI_n^{ext}(t)+\tau_n\sum_{k}^{}
+C_{nk}A_k(t)w_{nk}\right]p_n(u,t) \right\} \\
+        &amp;+\frac{1}{2}\left[ \tau_n \sum_{k}^{}
+C_{nk}A_k(t)w_{nk}^{2}\right] \frac{\partial ^{2}}{\partial
+u^{2}}p_n(u,t) \\
+        &amp;+ \tau_n A_n(t)\delta(u-u_r^{n})-\tau_n
+A_n(t)\delta(u-\theta_{n})
+    \end{aligned}
+\]</span> (13.31)</p>
+<p><span class="math display">\[
+    A_n(t)=-\frac{1}{2}\left[ \sum_{k}^{} C_{nk}A_k(t)w_{nk}^{2}\right]
+\left( \frac{\partial p_n(u,t)}{\partial u}\right)_{u=\theta_n}.
+\tag{13.32}
+\]</span></p>
+<p>Thus populations interact with each other via the variable <span
+class="math inline">\(A_k(t)\)</span>.</p>
+<h3 id="synchrony-oscillations-and-irregularity">Synchrony,
+oscillations, and irregularity</h3>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x334.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x335.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<ul>
+<li>Asynchronous irregular (AI):</li>
+<li>Synchronous regular (SR):</li>
+<li>Synchronous irregular (SI):</li>
+</ul>
+<h2 id="networks-of-nonlinear-integrate-and-fire-neurons">Networks of
+Nonlinear Integrate-and-Fire Neurons</h2>
+<p>Now we determine, for arbitrary nonlinear integrate-and-fire models
+driven by a diffusive input with constant mean <span
+class="math inline">\(\mu=RI_0\)</span> and noise <span
+class="math inline">\(\sigma^{2}\)</span>, the distribution of membrane
+potentials <span class="math inline">\(p_0(u)\)</span> as well as the
+linear response of the population activity <span class="math display">\[
+    A(t)=A_0+A_1(t)=A_0+\int_{0}^{\infty} G(s)I_1(t-s) \mathrm{d}s,
+\tag{13.37}
+\]</span> to a drive <span
+class="math inline">\(\mu(t)=R[I_0+I_1(t)]\)</span>.</p>
+<h3 id="steady-state-population-activity">Steady state population
+activity</h3>
+<p>We start with the continuity equation (13.7) <span
+class="math display">\[
+    \frac{\partial }{\partial t}p(u,t)=-\frac{\partial }{\partial
+u}J(u,t)+A(t)\delta(u-u_r)-A(t)\delta(u-\theta_{reset}). \tag{13.38}
+\]</span> In the stationary state, <span class="math display">\[
+    \frac{\partial }{\partial
+u}J(u,t)=A(t)\delta(u-u_r)-A(t)\delta(u-\theta_{reset}). \tag{13.39}
+\]</span></p>
+<p>The flux takes a constant value except at <span
+class="math inline">\(\theta_{reset}\)</span> and <span
+class="math inline">\(u_r\)</span>. For <span
+class="math inline">\(u_r&lt;u&lt;\theta_{reset}\)</span> the constant
+value <span class="math inline">\(J(u,t)=c&gt;0\)</span>.</p>
+<p>In the diffusion limit the flux according to (13.21) is <span
+class="math display">\[
+    J(u,t)=\frac{1}{\tau_m}
+\left[f(u)+\mu(t)-\frac{1}{2}\sigma^{2}(t)\frac{\partial }{\partial
+u}\right]p(u,t). \tag{13.40}    
+\]</span></p>
+<p>In the stationary state, <span
+class="math inline">\(p(u,t)=p_0(u)\)</span> and <span
+class="math inline">\(J(u,t)=c\)</span> for <span
+class="math inline">\(u_r&lt;u&lt;\theta_{reset}\)</span>. Hence <span
+class="math display">\[
+    \frac{\mathrm{d}p_0(u)}{\mathrm{d}u}=\frac{2\tau_m}{\sigma^{2}}\left[
+\frac{f(u)+\mu}{\tau_m}p_0(u)-c\right]. \tag{13.41}   
+\]</span></p>
+<p>With initial condition <span
+class="math inline">\(p_0(\theta_{reset})=0\)</span> and <span
+class="math inline">\(\mathrm{d} p_0/\mathrm{d}u
+|_{\theta_{reset}}=-2c\tau_m/\sigma^{2}\)</span>, one can integrate
+(13.41) from <span class="math inline">\(u=\theta_{reset}\)</span>. When
+the integration passes <span class="math inline">\(u=u_r\)</span> the
+constant switches from <span class="math inline">\(c\)</span> to <span
+class="math inline">\(0\)</span>. The integration is stopped at a lower
+bound <span class="math inline">\(u_{low}\)</span> when <span
+class="math inline">\(p_0\)</span> has approached <span
+class="math inline">\(0\)</span>.</p>
+<h3 id="response-to-modulated-input">Response to modulated input</h3>
+<p>Recall the exponential integrate-and-fire model <span
+class="math display">\[
+    \tau \frac{\mathrm{d}}{\mathrm{d}t}u=-(u-u_{r})+\Delta_{T}\exp
+\left(\frac{u-\theta_{rh}}{\Delta_{T}}\right)+\mu, \tag{13.42}
+\]</span></p>
+<p>We now add a small periodic perturbation to the input <span
+class="math display">\[
+    I(t)=I_0+\varepsilon \cos (\omega t), \tag{13.43}
+\]</span> where <span class="math inline">\(\omega=2\pi/T\)</span>. We
+expect the periodic drive to lead to a small periodic change in the
+population activity <span class="math display">\[
+    A(t)=A_0+A_1(\omega)\cos (\omega t+\phi_{A}(\omega)). \tag{13.44}
+\]</span></p>
+<p>We are to calculate <span class="math inline">\(\hat{G}\)</span> that
+characterize the linear response or 'gain' at frequency <span
+class="math inline">\(\omega\)</span> <span class="math display">\[
+    \hat{G}(\omega)=\frac{A_1(\omega)}{\varepsilon}\mathrm{e}^{i
+\phi_{A}(\omega)} . \tag{13.45}
+\]</span></p>
+<p>The small periodic drive at frequency <span
+class="math inline">\(\omega\)</span> leads to a small periodic change
+in <span class="math inline">\(p(u,t)\)</span> <span
+class="math display">\[
+    p(u,t)=p_0(u)+p_1(u)\cos (\omega t +\phi_{p}(u)) \tag{13.48}
+\]</span> We assume that <span
+class="math inline">\(\varepsilon\)</span> is small so that <span
+class="math inline">\(p_1(u)\ll p_0(u)\)</span> for most values of <span
+class="math inline">\(u\)</span>. We say that the change is at most of
+'order <span class="math inline">\(\varepsilon\)</span>'.</p>
+<p><span class="math inline">\(J(u,t)\)</span> will also exhibit a small
+perturbation of order <span class="math inline">\(\varepsilon\)</span>.
+For (13.42) with <span class="math inline">\(u_{r}=0\)</span> the flux
+is <span class="math display">\[
+    J(u,t)=\left[ \frac{-u+RI(t)}{\tau_m}+\frac{\Delta_{T}}{\tau_m}\exp
+\left(\frac{u-\theta_{rh}}{\Delta_{T}}\right)-\frac{\sigma^{2}(t)}{2\tau_m}\frac{\partial
+}{\partial u}\right]p(u,t)=Q(u,t)p(u,t),
+\]</span> (13.49)</p>
+<p>The stationary state under the assumption of constant input <span
+class="math inline">\(I(t)=I_0\)</span> has a flux <span
+class="math inline">\(J_0(u)=Q_0(u)p_0(u)\)</span>. In the presence of
+the periodic perturbation, the flux is <span class="math display">\[
+    J(u,t)=J_0(u)+J_1(u)\cos (\omega t+\phi_{J}(u)) \tag{13.50}
+\]</span></p>
+<p>with <span class="math display">\[
+    J_1(u)\cos (\omega t+\phi_{J}(u))=Q_0(u)p_1(u)\cos (\omega
+t+\phi_{p}(u))+Q_1(u,t)p_0(u)+O(\varepsilon^{2}),
+\]</span> (13.51)</p>
+<p>where <span class="math inline">\(Q_1(u,t)=\varepsilon R\cos (\omega
+t)/\tau_m\)</span> is the change of the operator <span
+class="math inline">\(Q\)</span> to order <span
+class="math inline">\(\varepsilon\)</span>.</p>
+<p>Note that the flux through the threshold <span
+class="math inline">\(\theta_{reset}\)</span> gives the periodic
+modulation of the population activity.</p>
+<p>We insert <span class="math inline">\(A,p,J\)</span> into (13.38),
+include the phase into the definition of <span
+class="math inline">\(A_1,p_1(u),J_1(u)\)</span>, e.g. <span
+class="math inline">\(\hat{A}_1=A_1 \exp (i\phi_{A})\)</span>; the hat
+indicates the complex number. If we take the Fourier transform over
+time, (13.38) becomes <span class="math display">\[
+    -\frac{\partial }{\partial u}\hat{J_1}(u)=i \omega
+\hat{p_1}(u)+\hat{A_1}[\delta(u-\theta_{reset})-\delta(u-u_r)].
+\tag{13.52}
+\]</span></p>
+<ul>
+<li>We have quite arbitrarily normalized the membrane potential density
+to an integral of unity.</li>
+<li>The flux <span class="math inline">\(J_1\)</span> in (13.51) can be
+quite naturally separated into two components. The first contribution to
+the flux is proportional to the perturbation <span
+class="math inline">\(p_1\)</span> of the membrane potential density.
+The second component is caused by the direct action of the external
+current <span class="math inline">\(Q_1(u,t)=\varepsilon R\cos (\omega
+t)/\tau_m\)</span>.</li>
+<li>The explicit expression for <span class="math inline">\(Q_0\)</span>
+and <span class="math inline">\(Q_1\)</span> can be inserted into
+(13.51) <span class="math display">\[
+  \frac{\partial }{\partial u} \hat{p_1}(u)=\frac{2}{\sigma^{2}}\left[
+-u+RI_0+\Delta_{T}\exp
+\left(\frac{u-\theta_{rh}}{\Delta_{T}}\right)\right]\hat{p_1}(u)+\frac{2R
+\varepsilon}{\sigma^{2}}p_0(u)-\frac{2\tau}{\sigma^{2}}\hat{J_1}(u).  
+\]</span> (13.53)</li>
+</ul>
+<p>We therefore have two first-order differential equations (13.52) and
+(13.53) which are coupled to each other.</p>
+<p>(13.52) and (13.53) are two first-order differential equations which
+are coupled to each other. We drop the hats on <span
+class="math inline">\(J_1\)</span>, <span
+class="math inline">\(p_1\)</span>, <span
+class="math inline">\(A_1\)</span> to lighten the notation. <span
+class="math inline">\(\varepsilon\)</span> and <span
+class="math inline">\(A_1\)</span> are parameters.</p>
+<ul>
+<li>We find the 'free' component by integrating (13.53) with <span
+class="math inline">\(\varepsilon=0\)</span> in parallel with (13.52)
+with <span class="math inline">\(A_1=1\)</span>. The integration starts
+at the initial condition <span
+class="math inline">\(p_1(\theta_{reset})=0\)</span> and <span
+class="math inline">\(J_1^{free}(\theta_{reset})=A_1=1\)</span> and
+continues toward decreasing voltage values. Integration stops ar a lower
+bound <span class="math inline">\(u_{low}\)</span> which we place at an
+arbitrary large negative value.</li>
+<li>We find the 'driven' component by integrating (13.53) with <span
+class="math inline">\(\varepsilon&gt;0\)</span> in parallel with (13.52)
+with parameter <span class="math inline">\(A_1=0\)</span> starting at
+the initial condition <span
+class="math inline">\(p_1(\theta_{reset})=0\)</span> and <span
+class="math inline">\(J_1^{\varepsilon}(\theta_{reset})=A_1=0\)</span>
+and continue toward decreasing voltage values. Integration stops ar a
+lower bound <span class="math inline">\(u_{low}\)</span></li>
+</ul>
+<p>Then we combinate them <span class="math display">\[
+    J_1(u)=a_1 J_1^{free}(u)+a_2 J_1^{\varepsilon}(u)
+\]</span> and <span class="math display">\[
+    p_1(u)=a_1 p_1^{free}(u)+a_2 p_1^{\varepsilon}(u)
+\]</span> We require a boundary condition <span class="math display">\[
+    0=J(u_{low})=a_1J_1^{free}(u_{low})+a_2 J_1^{\varepsilon}(u_{low}).
+\tag{13.54}
+\]</span></p>
+<p>Recall that <span class="math inline">\(J_1^{\varepsilon}\)</span> is
+proportional to the drive <span
+class="math inline">\(\varepsilon\)</span>. <strong>The factor <span
+class="math inline">\(a_1\)</span> is the population
+response.</strong></p>
+<p>The gain factor is <span class="math display">\[
+    \hat{G}(\omega)=\frac{A_1}{\varepsilon}=\frac{a_1}{\varepsilon}=-\frac{a_2}{\varepsilon}\frac{J_1^{\varepsilon}(u_{low})}{J_1^{free}(u_{low})}.
+\tag{13.55}
+\]</span> which has an amplitude $() $ and a phase <span
+class="math inline">\(\phi_{G}\)</span>.</p>
+<h2 id="neuronal-adaptation-and-synaptic-conductance">Neuronal
+adaptation and synaptic conductance</h2>
+<h3 id="adaptation-currents">Adaptation currents</h3>
+<p>Suppose that the stochastic spike arrival can be modeled by a mean
+<span class="math inline">\(\mu(t)=R\langle I(t)\rangle\)</span> plus a
+white-noise term <span class="math inline">\(\xi\)</span>. <span
+class="math display">\[
+    \tau_m \frac{\mathrm{d}u}{\mathrm{d}t}=-(u-u_{rest})+\Delta_{T}\exp
+\left(\frac{u-\theta_{rh}}{\Delta _{T}}\right)-Rw+\mu(t)+\xi(t)
+\tag{13.59}
+\]</span> <span class="math display">\[
+    \tau_w \frac{\mathrm{d}w}{\mathrm{d}t}=a(u-u_{rest})-w+b\tau_w
+\sum_{t^{(f)}}^{} \delta(t-t^{(f)}). \tag{13.60}     
+\]</span></p>
+<p>Suppose furthermore that the time constant <span
+class="math inline">\(\tau_w\)</span> of the adaptation variable <span
+class="math inline">\(w\)</span> is larger than <span
+class="math inline">\(\tau_m\)</span> and <span
+class="math inline">\(b\ll 1\)</span> so the fluctuations of the
+adaptation variable <span class="math inline">\(w\)</span> around $w $
+are small. Therefore for the solution of the membrane potential density
+equations <span class="math inline">\(p_0(u)\)</span> the adaptation
+variable can be approximated by a constant $w_0=w $.</p>
+<h3 id="embedding-in-a-network">Embedding in a network</h3>
+<p>The mean input <span class="math inline">\(\mu(t)\)</span> to neuron
+<span class="math inline">\(i\)</span> arriving at time <span
+class="math inline">\(t\)</span> from population <span
+class="math inline">\(k\)</span> is proportional to its activity <span
+class="math inline">\(A_k(t)\)</span>. The contribution of population
+<span class="math inline">\(k\)</span> to the variance <span
+class="math inline">\(\sigma^{2}\)</span> of <span
+class="math inline">\(\mu(t)\)</span> is also proportional to <span
+class="math inline">\(A_k(t)\)</span>; cd. Eq.(13.31).</p>
+<p>We can analyze the stationary states and their stability in a network
+of adaptive model neurons as</p>
+<hr />
+<p>13.6 Neuronal adaptation and synaptic conductance
+https://neuronaldynamics.epfl.ch/online/Ch13.S6.html#Ch13.E61</p>
+<hr />
+<h3 id="conductance-input-vs.-current-input">Conductance input vs.
+current input</h3>
+<p>Synaptic input is more accurately described as a change in
+conductance <span class="math inline">\(g(t-t_j^{(f)})\)</span>, rather
+than as current injection. A time dependent synaptic conductance leads
+to a total synaptic current into neuron <span
+class="math inline">\(i\)</span><br />
+<span class="math display">\[
+    I_i(t)=\sum_{j}^{} \sum_{f}^{}
+w_{ij}g_{ij}(t-t_j^{(f)})(u_i(t)-E_{syn}), \tag{13.63}   
+\]</span></p>
+<p>We will now show that, in the state of stationary asynchronous
+activity, conductance-based input can be approximated by an effective
+current input. The main effect of conductance-based input is that the
+membrane time constant of the stochastically driven neuron is shorter
+than the 'raw' passive membrane time constant.</p>
+<p>We consider <span class="math inline">\(N_{E}\)</span> excitatory and
+<span class="math inline">\(N_{I}\)</span> inhibitory LIF neurons in the
+subthreshold regime <span class="math display">\[
+    C
+\frac{\mathrm{d}u}{\mathrm{d}t}=-g_{L}(u-E_{L})-g_{E}(t)(u-E_{E})-g_{I}(t)(u-E_{I}),
+\tag{13.64}
+\]</span> where <span class="math inline">\(C\)</span> is the membrane
+capacity, <span class="math inline">\(g_{L}\)</span> the leak
+conductance and <span class="math inline">\(E_{L}\)</span>, <span
+class="math inline">\(E_{E}\)</span>,<span
+class="math inline">\(E_{I}\)</span> are the reversal potentials for
+leak, excitation, and inhibition, respectively. Input spikes at
+excitatory synapse lead to an increased conductance <span
+class="math display">\[
+    g_{E}(t)=\Delta g_{E}\sum_{j}^{} \sum_{f}^{} \exp
+[-(t-t_j^{(f)})/\tau_{E}] \mathscr{H}(t-t_j^{(f)}). \tag{13.65}   
+\]</span></p>
+<p>The sum over <span class="math inline">\(j\)</span> runs over all
+excitatory synapses. We assume that excitatory and inhibitory input
+spikes arrive with a total rate <span
+class="math inline">\(\nu_{E}\)</span> and <span
+class="math inline">\(\nu_{I}\)</span>.</p>
+<p>Using the methods from Chapter 8, we can calculate the mean
+excitatory conductance <span class="math display">\[
+    g_{E,0}=\Delta g_{E}\nu_{E}\tau_{E}, \tag{13.66}
+\]</span> where <span class="math inline">\(\nu_{E}\)</span> is the
+total spike arrival rate at excitatory synapses.</p>
+<p>The variance of the conductance is <span class="math display">\[
+    \sigma_{E}^{2}=\frac{1}{2}(\Delta g_{E})^{2}\nu_{E} \tau_{E}.
+\tag{13.67}
+\]</span></p>
+<p>Write the conductance as the mean plus a fluctuating component <span
+class="math display">\[
+    g_{E,f}(t)=g_{E}(t)-g_{E,0}.
+\]</span> This turns (13.64) into <span class="math display">\[
+    C\frac{\mathrm{d}u}{\mathrm{d}t}=-g_0(u-\mu)-g_{E,f}(t)(u-E_{E})-g_{I,f}(t)(u-E_{I}),
+\tag{13.68}   
+\]</span> with a total conductance <span
+class="math inline">\(g_0=g_{L}+g_{E,0}+g_{I,0}\)</span> and an
+input-dependent equilibrium potential <span class="math display">\[
+    \mu=\frac{g_{L}E_{L}+g_{E,0}E_{E}+g_{I,0}E_{I}}{g_0}. \tag{13.69}
+\]</span></p>
+<p>In (13.64) the dynamics is characterized by a raw membrane time
+constant <span class="math inline">\(C/g_{L}\)</span> whereas (13.68) is
+controlled by an effective membrane time constant <span
+class="math display">\[
+    \tau_{eff}=\frac{C}{g_0}= \frac{C}{g_{L}+g_{E,0}+g_{I,0}},
+\tag{13.70}  
+\]</span></p>
+<p>and a mean depolarization <span class="math inline">\(\mu\)</span>
+which acts as an effective equilibrium potential.</p>
+<p>Then, we compare the momentary voltage <span
+class="math inline">\(u(t)\)</span> with the effective equilibrium
+potential <span class="math inline">\(\mu\)</span>. The fluctuating part
+of the conductance in (13.68) can be written as <span
+class="math display">\[
+    g_{E,f}(t)(u-E_{E})=g_{E,f}(t)(\mu-E_{E})+g_{E,f}(t)(u-\mu),
+\tag{13.71}
+\]</span></p>
+<p>The second term on the RHS of (13.71) is small compared to the first
+term and needs to be dropped to arrive at a consistent diffusion
+approximation. The first term on the RHS of (13.71) can be interpreted
+as the summed effects of postsynaptic current pulses.</p>
+<h3 id="colored-noise">Colored Noise</h3>
+<p>Some synapse types, such as the NMDA component of excitatory
+synapses, are rather slow. A spike that has arrived at an NMDA synapse
+at time <span class="math inline">\(t_0\)</span> generates a
+fluctuation, which cause the input to exhibit temporal correlations.</p>
+<p>We have two approaches to colored noise in the membrane potential
+density equations.</p>
+<p>The first approach is to approximate colored noise by white noise and
+replace the temporal smoothing by a broad distribution of delays.
+Problem set: current-based. The mean input to a neuron <span
+class="math inline">\(i\)</span> in population <span
+class="math inline">\(n\)</span> arising from other populations <span
+class="math inline">\(k\)</span> is <span class="math display">\[
+    I_i(t)=\sum_{k}^{} C_{nk}w_{nk}\int_{0}^{\infty}
+\alpha_{nk}(s)A(t-s) \mathrm{d}s, \tag{13.72}      
+\]</span></p>
+<p>Suppose <span class="math inline">\(C_{nk}\)</span> is a large
+number, but the population <span class="math inline">\(k\)</span> itself
+is larger so that the connectivity <span
+class="math inline">\(C_{nk}/N_k \ll 1\)</span>. We now replace <span
+class="math inline">\(\alpha(s)\)</span> by <span
+class="math inline">\(q \delta(s-\Delta)\)</span> such that <span
+class="math inline">\(q=\int_{0}^{\infty} \alpha(s)
+\mathrm{d}s\)</span>. For each of the <span
+class="math inline">\(C_{nk}\)</span> connections we randomly draw the
+transmission delay <span class="math inline">\(\Delta\)</span> from a
+distribution <span
+class="math inline">\(p(\Delta)=\alpha(\Delta)/q\)</span>. Because of
+the low connectivity, we may assume that the firing of different neurons
+is uncorrelated. The broad distribution of delays stabilizes the
+stationary state of asynchronous firing.</p>
+<p>The second approach consists in an explicit model of the synaptic
+current variables. We focus on a single population coupled to itself and
+suppose that the synaptic current pulses are exponential <span
+class="math inline">\(\alpha(s)=(q/\tau_q)\exp (-s/\tau_q)\)</span>. The
+driving current of a neuron <span class="math inline">\(i\)</span> in a
+population <span class="math inline">\(n\)</span> is then <span
+class="math display">\[
+    \frac{\mathrm{d}I_i}{\mathrm{d}t}=-\frac{I_i}{\tau_q}+C_{nn}w_{nn}\frac{q}{\tau_q}A_n(t)
+\tag{13.73}
+\]</span> which we can verify by taking the temporal derivative of
+(13.72). <span class="math inline">\(A(t)\)</span> has a mean <span
+class="math inline">\(\mu(t)\)</span> (which is the same for all
+neurons) and a fluctuating part <span
+class="math inline">\(\xi_{i}(t)\)</span> with white-noise
+characteristics: <span class="math display">\[
+    \frac{\mathrm{d}I_i}{\mathrm{d}t}=-\frac{I_i}{\tau_q}+\mu(t)+\xi_{i}(t).
+\tag{13.74}
+\]</span> (13.74) needs to be combined with the differential equation
+for the voltage <span class="math display">\[
+    \tau_m \frac{\mathrm{d}u_i}{\mathrm{d}t}=f(u_i)+RI_{i}(t),
+\tag{13.75}
+\]</span> We now have two coupled differential equations, the momentary
+state of a population of <span class="math inline">\(N\)</span> neurons
+is described by a two-dimensional density <span
+class="math inline">\(p(u,I)\)</span>.</p>
+<p>We recall that, in the case of white noise, the membrane potential
+density at threshold vanishes. The main insight for the mathematical
+treatment of the membrane potential density equations in two dimensions
+is that the density at threshold <span
+class="math inline">\(p(\theta_{reset},I(t))\)</span> is finite,
+whenever the momentary slope of the voltage <span
+class="math inline">\(\mathrm{d}u/\mathrm{d}t \propto
+RI(t)+f(\theta_{reset})\)</span> is positive.</p>
+<h2 id="summary">Summary</h2>
+<p>The momentary state of a population of one-dimensional
+integrate-and-and fire neurons can be characterized by the membrane
+potential density <span class="math inline">\(p(u,t)\)</span>. The
+continuity equation describes the evolution of <span
+class="math inline">\(p(u,t)\)</span> over time. In the special case
+that neurons in the population receive many inputs that each cause a
+small change of the membrane potential, the continuity equation has the
+form of a Fokker-Planck equation. Several populations of
+integrate-and-fire neurons interact via the population activity <span
+class="math inline">\(A(t)\)</span> which is identified with the flux
+across the threshold.</p>
+<p>The stationary state of the Fokker-Planck equation and the stability
+of the stationary solution can be calculated by a mix of analytical and
+numerical methods, be it for a population of independent or
+interconnected neurons. The mathematical and numerical methods developed
+for membrane potential density equations apply to leaky as well as to
+arbitrary nonlinear one-dimensional integrate-and-fire model. A slow
+adaptation variable such as in the adaptive exponential
+integrate-and-fire model can be treated as quasi-stationary in the
+proximity of the stationary solution. Conductance input can be
+approximated by an equivalent current-based model.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/" class="print-no-link">#神经科学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Neuronal Dynamics (13)</div>
+      <div>http://example.com/2022/10/24/Neuronal-Dynamics-13/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 24, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/11/30/%E6%B0%B8%E4%B9%85%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%83%EF%BC%89/" title="永久记录（七）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">永久记录（七）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/05/Neuronal-Dynamics-12/" title="Neuronal Dynamics (12)">
+                        <span class="hidden-mobile">Neuronal Dynamics (12)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

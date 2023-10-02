@@ -1,0 +1,1186 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Dimensionality Reduction and Phase Plane Analysis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neuronal Dynamics (4)">
+<meta property="og:url" content="http://example.com/2022/07/04/Neuronal-Dynamics-4/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Dimensionality Reduction and Phase Plane Analysis">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-07-04T12:23:30.000Z">
+<meta property="article:modified_time" content="2023-07-01T03:37:22.600Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="神经科学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
+  
+  
+  
+  <title>Neuronal Dynamics (4) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (4)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-04 20:23" pubdate>
+          July 4, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          113 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Neuronal Dynamics (4)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1
+id="dimensionality-reduction-and-phase-plane-analysis">Dimensionality
+Reduction and Phase Plane Analysis</h1>
+<p>The online version of this chapter:</p>
+<hr />
+<p>Chapter 4 Dimensionality Reduction and Phase Plane Analysis
+https://neuronaldynamics.epfl.ch/online/Ch4.html</p>
+<hr />
+<h2 id="threshold-effects">Threshold effects</h2>
+<p>In this section we use current pulses ans steps in order to explore
+the threshold behavior of the Hodgkin-Huxley model.</p>
+<h3 id="pulse-input">Pulse Input</h3>
+<p>The threshold depends on the stimulation protocol.</p>
+<h3 id="step-current-input">Step Current Input</h3>
+<p>We study the response of the Hodgkin-Huxley model to a step current
+of the form <span class="math display">\[
+    I(t)=I_1+\Delta I \mathscr{H}(t)
+\]</span> where <span class="math inline">\(\mathscr{H}\)</span> denotes
+the Heaviside step function.</p>
+<p><img src="/img/neu_dyn/x87.png" srcset="/img/loading.gif" lazyload /></p>
+<p>When probing with step currents, there is neither a unique current
+threshold for spike initiation nor for repetitive firing. The trigger
+mechanism for action potentials depends not only on <span
+class="math inline">\(I_2\)</span> but also on the size of the current
+step <span class="math inline">\(\Delta I\)</span>.</p>
+<p>Biologically, the dependence upon the step size arises from the
+different time constants of activation and inactivation of the ion
+channels. We'll see it below.</p>
+<h2 id="reduction-to-two-dimensions">Reduction to two dimensions</h2>
+<h3 id="general-approach">General approach</h3>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x26.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x27.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>Note that the time scale of <span class="math inline">\(m\)</span> is
+much faster than <span class="math inline">\(n\)</span> and <span
+class="math inline">\(h\)</span>. Moreover, <span
+class="math inline">\(m\)</span> is fast compared to the membrane time
+constant <span class="math inline">\(\tau=C/g_{L}\)</span> of a passive
+membrane, which characterizes the evolution of the voltage <span
+class="math inline">\(u\)</span> when all channels are closed. So we may
+treat <span class="math inline">\(m\)</span> as an instantaneous
+variable, therefore it can be replaced by its steady-state value, <span
+class="math inline">\(m(t) \to m_0[u(t)]\)</span>. (<strong>quasi steady
+state approximation</strong>)</p>
+<p>Note that the time constants <span
+class="math inline">\(\tau_n(u)\)</span> and <span
+class="math inline">\(\tau_{h}(u)\)</span> have similar dynamics over
+the voltage <span class="math inline">\(u\)</span>. Moreover, the graphs
+of <span class="math inline">\(n_0(u)\)</span> and <span
+class="math inline">\(1-h_0(u)\)</span> are also similar.</p>
+<p>We use a linear approximation <span
+class="math inline">\((b-h)\thickapprox an\)</span> with some constants
+<span class="math inline">\(a,b\)</span> and set <span
+class="math inline">\(w=b-h=an\)</span>. With <span
+class="math inline">\(h=b-w\)</span>, <span
+class="math inline">\(n=w/a\)</span>, and <span
+class="math inline">\(m=m_0(u)\)</span>, equations (2.4)-(2.5) become
+<span class="math display">\[
+    C\frac{\mathrm{d}u}{\mathrm{d}t}=-g_{Na}[m_0(u)]^{3}(b-w)(u-E_{Na})-g_{K}(\frac{w}{a})^{4}(u-E_{K})-g_{L}(u-E_{L})+I,
+\tag{4.3}
+\]</span> or <span class="math display">\[
+    \frac{\mathrm{d}u}{\mathrm{d}t}=\frac{1}{\tau}[F(u,w)+RI], \tag{4.4}
+\]</span> with <span class="math inline">\(R=g_{L}^{-1}\)</span>, <span
+class="math inline">\(\tau=RC\)</span> and some function <span
+class="math inline">\(F\)</span>. We also have <span
+class="math display">\[
+    \frac{\mathrm{d}w}{\mathrm{d}t}=\frac{1}{\tau_{w}}G(u,w), \tag{4.5}
+\]</span></p>
+<h4 id="example-morris-lecar-model">Example: Morris-Lecar model</h4>
+<p>The Morris-Lecar equations read <span class="math display">\[
+    C\frac{\mathrm{d}u}{\mathrm{d}t}=-g_1 \hat{m}_0(u)(u-V_1)-g_2
+\hat{w}(u-V_2)-g_{L}(u-V_{L})+I, \tag{4.6}
+\]</span> <span class="math display">\[
+    \frac{\mathrm{d}\hat{w}}{\mathrm{d}t}=-\frac{1}{\tau(u)}[\hat{w}-w_0(u)].
+\tag{4.7}
+\]</span></p>
+<p>(4.6) doesn't have the factor <span
+class="math inline">\((b-w)\)</span> which closes the channel for high
+voltage. Another difference is that neither <span
+class="math inline">\(\hat{m}_0\)</span> nor <span
+class="math inline">\(\hat{w}\)</span> have exponents. In the following
+we consider (4.6) and (4.7) as a model in its own right and drop the
+hats over <span class="math inline">\(m_0\)</span> and <span
+class="math inline">\(w\)</span>.</p>
+<p>It's reasonable to approximate the voltage dependence by <span
+class="math display">\[
+    m_0(u)=\frac{1}{2}\left[ 1+ \tanh \left(
+\frac{u-u_1}{u_2}\right)\right] \tag{4.8}
+\]</span> <span class="math display">\[
+    w_0(u)=\frac{1}{2}\left[ 1+ \tanh \left(
+\frac{u-u_3}{u_4}\right)\right] \tag{4.9}
+\]</span> with parameters <span class="math inline">\(u_1,\cdots
+,u_4\)</span>, and to approximate the time constant by <span
+class="math display">\[
+    \tau(u)=\frac{\tau_{w}}{\cosh(\frac{u-u_3}{2u_4})} \tag{4.10}
+\]</span> with a further parameter <span
+class="math inline">\(\tau_{w}\)</span>.</p>
+<p><strong>Example: FitzHugh-Nagumo model</strong></p>
+<p>FitzHugh and Nagumo obtained sharp pulse-like oscillations
+reminiscent of trains of action potentials by defining the function
+<span class="math inline">\(F(u,w)\)</span> and <span
+class="math inline">\(G(u,w)\)</span> as<br />
+<span class="math display">\[
+    \begin{cases}
+        F(u,w)=u-\frac{1}{3}u^{3}-w, \\
+        G(u,w)=b_0+b_1u-w,
+    \end{cases}
+    \tag{4.11}
+\]</span></p>
+<p>where <span class="math inline">\(u\)</span> is the membrane voltage
+and <span class="math inline">\(w\)</span> is a recovery variable.</p>
+<h3 id="mathematical-steps">Mathematical steps</h3>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x92.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x93.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>The overall aim of the approach is to replace the variables <span
+class="math inline">\(n\)</span> and <span
+class="math inline">\(h\)</span> in the Hodgkin-Huxley model by a single
+effective variable <span class="math inline">\(w\)</span>. During an
+action potential, the variables <span
+class="math inline">\(n(t)\)</span> and <span
+class="math inline">\(h(t)\)</span> stay close to a straight line.</p>
+<p>A minimal condition for the projection is that the approximation is
+perfect while the neuron is at rest. First, we introduces new variables
+<span class="math display">\[
+    x=n-n_0(u_{rest}) \tag{4.12}
+\]</span> <span class="math display">\[
+    y=h-h_0(u_{rest}). \tag{4.13}
+\]</span> At rest, we have <span
+class="math inline">\(x=y=0\)</span>.</p>
+<p>Second, the points <span
+class="math inline">\((n_0(u),h_0(u))\)</span> as a function of <span
+class="math inline">\(u\)</span> define a curve. The slope of the curve
+at <span class="math inline">\(u=u_{rest}\)</span> yields the rotation
+angle <span class="math inline">\(\alpha\)</span> via <span
+class="math display">\[
+    \tan \alpha=\frac{ \frac{\mathrm{d}h_0}{\mathrm{d}u}\big
+|_{u_{rest}}}{ \frac{\mathrm{d}n_0}{\mathrm{d}u}\big |_{u_{rest}}}
+\]</span> Rotate the coordinates <span class="math display">\[
+    \begin{pmatrix}
+    z_1 \\
+    z_2 \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    \cos \alpha &amp; \sin \alpha \\
+    -\sin \alpha &amp; \cos \alpha \\
+    \end{pmatrix}
+    \begin{pmatrix}
+    x \\
+    y \\
+    \end{pmatrix}.
+\]</span></p>
+<p><img src="/img/neu_dyn/x94.png" srcset="/img/loading.gif" lazyload /></p>
+<p>The inverse transform <span class="math display">\[
+    \begin{pmatrix}
+    x \\
+    y \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    \cos \alpha &amp; -\sin \alpha \\
+    \sin \alpha &amp; \cos \alpha \\
+    \end{pmatrix}
+    \begin{pmatrix}
+    z_1 \\
+    z_2 \\
+    \end{pmatrix}.
+\]</span></p>
+<p>Project <span class="math inline">\((n,h)\)</span> to the line
+expanded by <span class="math inline">\(z_1\)</span>, namely, <span
+class="math inline">\(z_2=0\)</span>. <span class="math display">\[
+    n&#39;=n_0(u_{rest})+z_1\cos \alpha, \tag{4.17}
+\]</span> <span class="math display">\[
+    h&#39;=h_0(u_{rest})+z_1\sin \alpha. \tag{4.18}
+\]</span></p>
+<p>From (4.15) we find <span class="math display">\[
+    \frac{\mathrm{d}z_1}{\mathrm{d}t}=\cos \alpha
+\frac{\mathrm{d}n}{\mathrm{d}t}+\sin \alpha
+\frac{\mathrm{d}h}{\mathrm{d}t}. \tag{4.19}
+\]</span> Since <span class="math display">\[
+    \frac{\mathrm{d}n}{\mathrm{d}t}=-\frac{1}{\tau_n(u)}[n-n_0(u)]
+\]</span> and an similar equation for <span
+class="math inline">\(h\)</span>, we have <span class="math display">\[
+    \frac{\mathrm{d}z_1}{\mathrm{d}t}=-\cos \alpha \frac{z_1 \cos
+\alpha+n_0(u_{rest})-n_0(u)}{\tau_{n}(u)}- \sin \alpha \frac{z_1 \sin
+\alpha+h_0(u_{rest})-h_0(u)}{\tau_{h}(u)}. \tag{4.20}
+\]</span> which is of the form <span
+class="math inline">\(\mathrm{d}z_1/\mathrm{d}t=G(u,z_1)\)</span>, as
+desired.</p>
+<p>It is convenient to rescale <span class="math inline">\(z_1\)</span>
+and define <span class="math display">\[
+    w=- n_0(u_{rest})\tan \alpha-z_1 \sin \alpha. \tag{4.21}
+\]</span> If we introduce <span class="math inline">\(a=-\tan
+\alpha\)</span> and <span class="math inline">\(b=a
+n_0(u_{rest})+h_0(u_{rest})\)</span>, we find from (4.17) <span
+class="math inline">\(n&#39;=w/a\)</span> and from (4.18) <span
+class="math inline">\(h&#39;=b-w\)</span>. We also have <span
+class="math inline">\(\mathrm{d}w/\mathrm{d}t=G(u,w)\)</span>. Actually,
+<span class="math display">\[
+    \frac{\mathrm{d}w}{\mathrm{d}t}=-\frac{1}{\tau(u)}[w-w_0(u)].
+\tag{4.22}    
+\]</span> with <span class="math display">\[
+    w_0(u)=-\sin \alpha[n_0(u)\cos \alpha+h_0(u)\sin \alpha-b\sin
+\alpha] \tag{4.23}
+\]</span> In practice, <span class="math inline">\(w_0(u)\)</span> and
+<span class="math inline">\(\tau(u)\)</span> can be fitted by (4.9) and
+(4.10), respectively.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x95.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x96.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<h2 id="phase-plane-analysis">Phase plane analysis</h2>
+<p>We know <span class="math display">\[
+    \begin{pmatrix}
+    \Delta u \\
+    \Delta w \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    \dot{u} \\
+    \dot{v} \\
+    \end{pmatrix}
+    \Delta t. \tag{4.24}        
+\]</span></p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x97.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img src="/img/neu_dyn/x98.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x99.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x100.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>Case A is stable, Case C and D are unstable. Stability in case B
+cannot be decided with the information available from the picture alone.
+C and D are saddle points.</p>
+<h3 id="nullclines">Nullclines</h3>
+<p>The set of points with <span class="math inline">\(\dot{u}=0\)</span>
+is called the <span class="math inline">\(u-\)</span>nullcline.</p>
+<h3 id="stability-of-fixed-points">Stability of Fixed Points</h3>
+<p>The local stability of a fixed point <span
+class="math inline">\((u_{FP},w_{FP})\)</span> is determined by
+linearization of the dynamics at the intersection. With <span
+class="math inline">\(\mathbf{x}=(u-u_{FP},w-w_{FP})^{\mathsf{T}}\)</span>,
+we have after the linearization <span class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t}\mathbf{x}=
+    \begin{pmatrix}
+    F_u &amp; F_w \\
+    G_u &amp; G_w \\
+    \end{pmatrix}
+    \mathbf{x}\tag{4.25}
+\]</span></p>
+<p>Stability of the fixed point <span
+class="math inline">\(\mathbf{x}=0\)</span> in (4.25) requires that the
+real part of both eigenvalues be negative. The necessary and sufficient
+condition for stability is therefore <span class="math display">\[
+    F_u+G_w&lt;0 \quad \text{and} \quad F_u G_w-F_w G_u&gt;0.
+\]</span> If <span class="math inline">\(F_u G_w-F_w G_u&lt;0\)</span>,
+the fixed point is then called a saddle point.</p>
+<h4 id="example-linear-model">Example: Linear model</h4>
+<p><span class="math display">\[
+    \dot{u}=au-w \\
+    \dot{w}=\varepsilon(bu-w), \tag{4.27}
+\]</span> with positive constants <span
+class="math inline">\(b,\varepsilon&gt;0\)</span>. The <span
+class="math inline">\(u-\)</span>nullcline is <span
+class="math inline">\(w=au\)</span>, the <span
+class="math inline">\(w-\)</span>nullcline is <span
+class="math inline">\(w=bu\)</span>. For the moment we assume <span
+class="math inline">\(a&lt;0\)</span>.</p>
+<p>For the sake of completeness we also study the linear system <span
+class="math display">\[
+    \dot{u}=-au+w \\
+    \dot{w}=\varepsilon(bu-w), 0&lt;a&lt;b, \tag{4.28}
+\]</span> with positive constants <span
+class="math inline">\(a,b\)</span>, and <span
+class="math inline">\(\varepsilon\)</span>.</p>
+<p>Recall the theorem of Poincare-Bendixson.</p>
+<p>In dimensionless variables the FitzHugh-Nagumo model is <span
+class="math display">\[
+    \frac{\mathrm{d}u}{\mathrm{d}t}=u-\frac{1}{3}u^{3}-w+I \tag{4.29}
+\]</span> <span class="math display">\[
+    \frac{\mathrm{d}w}{\mathrm{d}t}=\varepsilon(b_0+b_1u-w). \tag{4.30}
+\]</span> Time is measured in units of <span
+class="math inline">\(\tau\)</span> and <span
+class="math inline">\(\varepsilon=\tau/\tau_w\)</span> is the ratio of
+the two time scales.</p>
+<h2 id="type-i-and-type-ii-neuron-models">Type I and Type II neuron
+models</h2>
+<p>The onset of repetitive firing under constant current injection is
+characterized by a minimal current <span
+class="math inline">\(I_{\theta}\)</span>, also called the rheobase
+current. Mathematically speaking, the point <span
+class="math inline">\(I_{\theta}\)</span> where the transition in the
+number or stability of fixed points occurs is called a bifurcation point
+and <span class="math inline">\(I\)</span> is the bifurcation
+parameter.</p>
+<h3 id="type-i-models-and-saddle-node-onto-limit-cycle-bifurcation">Type
+I Models and Saddle-Node-onto-Limit-Cycle Bifurcation</h3>
+<p>Neuron models with a continuous gain function. Mathematically, a
+saddle-node-onto-limit-cycle bifurcation generically gives rise to a
+type I behavior.</p>
+<p><img src="/img/neu_dyn/x108.png" srcset="/img/loading.gif" lazyload /></p>
+<h4 id="example-morris-lecar-model-1">Example: Morris-Lecar model</h4>
+<p>Depending on the choice of parameters, the Morris-Lecar model is of
+either type I or type II.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x109.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x110.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x111.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x112.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<h4 id="example-hodgkin-huxley-model-reduced-to-two-dimensions">Example:
+Hodgkin-Huxley Model Reduced to Two Dimensions</h4>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x113.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x114.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x115.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x116.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>(4.14)</p>
+<h3 id="type-ii-models-and-saddle-node-off-limit-cycle-bifurcation">Type
+II Models and Saddle-Node-off-Limit-Cycle Bifurcation</h3>
+<p>There is no reason why a limit cycle should appear directly at the
+bifurcation point - it can also exist before the bifurcation point is
+reached. In this case, the limit cycle does not pass through the ruins
+of the fixed point and therefore has finite frequency. This gives rise
+to a type II neuron model. (Saddle-Node-off-Limit-Cycle)</p>
+<h4
+id="example-hodgkin-huxley-model-reduced-to-two-dimensions-1">Example:
+Hodgkin-Huxley Model Reduced to Two Dimensions</h4>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x117.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x118.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x119.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x120.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>(4.15)</p>
+<p>(4.15) shows the same neuron model as (4.14) except for one single
+change in parameter: the time scale <span
+class="math inline">\(\tau_{w}\)</span> in (4.5) for the <span
+class="math inline">\(w-\)</span>dynamics is slightly faster.</p>
+<h4 id="example-saddle-node-without-limit-cycle">Example: Saddle-node
+without limit cycle</h4>
+<p>Not all saddle-node bifurcations lead to a limit cycle. If the slope
+of the <span class="math inline">\(w-\)</span>nullcline of the
+FitzHugh-Nagumo model defined in (4.29) and (4.30) is smaller than one,
+it is possible to have three fixed points, one of them unstable and the
+other two stable. The system is therefore bistable. If <span
+class="math inline">\(I&gt;0\)</span> is big enough so that the left
+stable fixed point and the saddle merge and disappear. Since the right
+fixed point remains stable, no oscillation occurs.</p>
+<h3 id="type-ii-models-and-hopf-bifurcation">Type II Models and Hopf
+Bifurcation</h3>
+<p>From the solution of the stability problem in (4.25) we know that the
+eigenvalues <span class="math inline">\(\lambda_{+/-}\)</span> form a
+complax conjugate pair with a real part <span
+class="math inline">\(\gamma\)</span> and a imaginary part <span
+class="math inline">\(+/-\omega\)</span> (Fig. 4.16). The fixed point is
+stable if <span class="math inline">\(\gamma&lt;0\)</span>. At the
+transition point, the real part vanishes and the eigenvalues are <span
+class="math display">\[
+    \lambda_{\pm}=\pm i \sqrt{F_u G_w-G_u F_w}. \tag{4.31}
+\]</span> These eigenvalues correspond to an oscillatory solution with a
+frequency given by <span class="math inline">\(\omega=\sqrt{F_u G_w-G_u
+F_w}\)</span>.</p>
+<p><img src="/img/neu_dyn/x121.png" srcset="/img/loading.gif" lazyload /> (4.16)</p>
+<p>Whenever we have a Hopf bifurcation, be it subcritical or
+supercritical, the limit cycle starts with finite frequency.</p>
+<p>In a supercritical Hopf bifurcation, the amplitude of the oscillation
+grows with the stimulation <span class="math inline">\(I\)</span>. Such
+periodic oscillations of small amplitude should be intepreted as
+spontaneous subthreshold oscillations.</p>
+<p>Only models with a subcritical Hopf-bifurcation give rise to
+large-amplitude oscillations close to the bifurcation point.</p>
+<h4 id="example-fitzhugh-nagumo-model">Example: FitzHugh-Nagumo
+model</h4>
+<p>In Fig. 4.10, if the slope of the <span
+class="math inline">\(w-\)</span>nullcline is larger than one, there is
+only one fixed point, whatever <span class="math inline">\(I\)</span>.
+With increasing current <span class="math inline">\(I\)</span>, the
+fixed point moves to the right. Eventually it loses stability via a Hopf
+bifurcation.</p>
+<h2 id="threshold-and-excitability">Threshold and excitability</h2>
+<p>The Hodgkin-Huxley model does not have a clear-cut firing
+threshold.</p>
+<p>For stimulation with a short current pulse of variable amplitude,
+models with saddle-node bifurcation (on or off a limit cycle) indeed
+have a threshold whereas models where firing arises via a Hopf
+bifurcation have not. However, even models with Hopf bifurcation can
+show threshold-like behavior for current pulse if the dynamics of <span
+class="math inline">\(w\)</span> are consideraby slower than that of
+<span class="math inline">\(u\)</span>.</p>
+<h3 id="type-i-models">Type I models</h3>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x124.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x125.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>The stable manifold of an saddle point. All trajectories with initial
+condition to the right of the stable manifold must make a detour around
+the unstable fixed point before they can reach the stable fixed point.
+Trajectories with initial conditions to the left of the stable manifold
+return immediately toward the stable fixed point.</p>
+<p>The stable manifold acts as a threshold for spike initiation, if the
+neuron model is probed with a isolated current pulse.</p>
+<h4 id="example-canonical-type-i-model">Example: Canonical type I
+model</h4>
+<p>Consider the one-dimensional model <span class="math display">\[
+    \frac{\mathrm{d}\phi}{\mathrm{d}t}=q(1-\cos \phi)+I(1+\cos \phi)
+\tag{4.32}
+\]</span> where <span class="math inline">\(q&gt;0\)</span> is a
+parameter and <span class="math inline">\(I\)</span> with <span
+class="math inline">\(0&lt;\lvert I \rvert &lt;q\)</span> the applied
+current. The variable <span class="math inline">\(\phi\)</span> is the
+phase along the limit cycle trajectory. Formally, a spike is said to
+occur whenever <span class="math inline">\(\phi=\pi\)</span>.</p>
+<p>For <span class="math inline">\(I&lt;0\)</span>, the phase equation
+<span class="math inline">\(\mathrm{d}\phi/\mathrm{d}t\)</span> has two
+fixed points. The resting state is at the stable fixed point <span
+class="math inline">\(\phi=\phi_r\)</span>. The unstable fixed point at
+<span class="math inline">\(\phi=\theta\)</span> acts as a
+threshold.</p>
+<p>For all currents <span class="math inline">\(I&gt;0\)</span>, we have
+<span class="math inline">\(\mathrm{d}\phi/\mathrm{d}t&gt;0\)</span>, so
+that the system is circling along the limit cycle. For <span
+class="math inline">\(I \to 0\)</span>, the velocity along the
+trajectory around <span class="math inline">\(\phi=0\)</span> tends to
+zero. Therefore the frequency of the oscillation <span
+class="math inline">\(\nu=1/T(I)\)</span> decreases to zero.</p>
+<h3 id="hopf-bifurcations">Hopf Bifurcations</h3>
+<p>There is a continuum of trajectories.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x127.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x128.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>Nevertheless, if the time scale of the <span
+class="math inline">\(u\)</span> dynamics is much faster than that of
+the <span class="math inline">\(w-\)</span>dynamics, then there is a
+critical regime where the sensitivity to the amplitude of the input
+current pulse can be extremely high.</p>
+<p>In models with Hopf bifurcation, the peak of the response is always
+reached with roughly the same delay, independently of the size of the
+input pulse. It is the amplitude of the response that increases rapidly
+but continuously.</p>
+<h2
+id="separation-of-time-scales-and-reduction-to-one-dimension">Separation
+of time scales and reduction to one dimension</h2>
+<p>We measure time in units of <span class="math inline">\(\tau\)</span>
+and take <span class="math inline">\(R=1\)</span> in (4.4) and (4.5).
+Then <span class="math display">\[
+    \frac{\mathrm{d}u}{\mathrm{d}t}=F(u,w)+I \tag{4.33}
+\]</span> <span class="math display">\[
+    \frac{\mathrm{d}w}{\mathrm{d}t}=\varepsilon G(u,w) \tag{4.34}
+\]</span> where <span
+class="math inline">\(\varepsilon=\tau/\tau_w\)</span>. If <span
+class="math inline">\(\tau_w\gg \tau\)</span>, then <span
+class="math inline">\(\varepsilon\ll 1\)</span>. In this situation the
+time scale the governs the evolution of <span
+class="math inline">\(u\)</span> is much faster than that of <span
+class="math inline">\(w\)</span>. In the mathematical literature the
+limit of <span class="math inline">\(\varepsilon \to 0\)</span> is
+called 'singular perturbation'. Oscillatory behavior for small <span
+class="math inline">\(\varepsilon\)</span> is called a 'relaxation
+oscillation'. Trajectories slowly follow the <span
+class="math inline">\(u-\)</span>nullcline, except at the knees of the
+nullcline where they jump to a different branch.</p>
+<p><img src="/img/neu_dyn/x129.png" srcset="/img/loading.gif" lazyload /></p>
+<p>In the above figure the middle branch of the <span
+class="math inline">\(u-\)</span>nullcline (where <span
+class="math inline">\(\dot{u}&gt;0\)</span>) acts as a threshold for
+spike initiation.</p>
+<p>We can exploit the separation of times scales for a further reduction
+of the two-dimensional system of equations to a single variable. An
+input current <span class="math inline">\(I(t)\)</span> acts on the
+voltage dynamics, but has no direct influence on the variable <span
+class="math inline">\(w\)</span>. Moreover, in the limit of <span
+class="math inline">\(\varepsilon\ll 1\)</span>, the influence of the
+voltage <span class="math inline">\(u\)</span> on the <span
+class="math inline">\(w-\)</span>variable via (4.34) is negligible.
+Hence, we can set <span class="math inline">\(w=w_{rest}\)</span> and
+summarize the voltage dynamics of spike initiation by a single equation
+<span class="math display">\[
+    \frac{\mathrm{d}u}{\mathrm{d}t}=F(u,w_{rest})+I. \tag{4.35}
+\]</span></p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x130.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x131.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<h4 id="example-piecewise-linear-nullclines">Example: Piecewise linear
+nullclines</h4>
+<p><img src="/img/neu_dyn/x132.png" srcset="/img/loading.gif" lazyload /></p>
+<p><span class="math display">\[
+    \frac{\mathrm{d}u}{\mathrm{d}t}=f(u)-w+I \tag{4.36}
+\]</span> <span class="math display">\[
+    \frac{\mathrm{d}w}{\mathrm{d}t}=\varepsilon(bu-w) \tag{4.37}
+\]</span></p>
+<p>with <span class="math inline">\(f(u)=au\)</span> for <span
+class="math inline">\(u&lt;0.5\)</span>, <span
+class="math inline">\(f(u)=a(1-u)\)</span> for <span
+class="math inline">\(0.5&lt; u&lt; 1.5\)</span> and <span
+class="math inline">\(f(u)=c_0+c_1u\)</span> for <span
+class="math inline">\(u&gt;1.5\)</span> where <span
+class="math inline">\(a\)</span>,<span
+class="math inline">\(c_1&lt;0\)</span> are parameters and <span
+class="math inline">\(c_0=-0.5a-1.5c_1\)</span>. Furthermore, <span
+class="math inline">\(b&gt;0\)</span> and <span
+class="math inline">\(0&lt;\varepsilon\ll 1\)</span>.</p>
+<p>The rest state is at <span class="math inline">\(u=w=0\)</span>.
+<span class="math inline">\(u=1\)</span> acts as a threshold. Let us now
+suppose that neuron receives a weak and constant background current
+during our threshold-search experiments. A constant current shifts the
+<span class="math inline">\(u-\)</span>nullcline vertically upward.
+Hence the point where <span class="math inline">\(\dot{u}=0\)</span>
+shifts leftward and therefore the voltage threshold for pulse
+stimulation sits now at a lower value.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/" class="print-no-link">#神经科学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Neuronal Dynamics (4)</div>
+      <div>http://example.com/2022/07/04/Neuronal-Dynamics-4/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 4, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/08/Information-and-Entropy-2/" title="Information and Entropy (2)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Information and Entropy (2)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/01/Information-and-Entropy-1/" title="Information and Entropy (1)">
+                        <span class="hidden-mobile">Information and Entropy (1)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

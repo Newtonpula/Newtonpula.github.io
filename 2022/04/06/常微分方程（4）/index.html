@@ -1,0 +1,983 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本节主要与奇解有关">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常微分方程（4）">
+<meta property="og:url" content="http://example.com/2022/04/06/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%884%EF%BC%89/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="本节主要与奇解有关">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-04-06T12:42:30.000Z">
+<meta property="article:modified_time" content="2022-07-19T13:31:03.066Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+  
+  
+  
+  <title>常微分方程（4） - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常微分方程（4）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-06 20:42" pubdate>
+          April 6, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          46 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常微分方程（4）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="奇解">奇解</h1>
+<h2 id="一阶隐式微分方程">一阶隐式微分方程</h2>
+<p>本节讨论一阶隐式方程 <span class="math display">\[
+    F(x, y,\frac{\mathrm{d}y}{\mathrm{d}x})=0 \tag{1}
+\]</span> 的几个特殊解法，隐式指的是 <span
+class="math inline">\(\frac{\mathrm{d}y}{\mathrm{d}x}\)</span>没有预先表示为
+<span class="math inline">\((x, y)\)</span>的显函数.</p>
+<h3 id="微分法">微分法</h3>
+<p>设从微分方程（1）中可显式解出未知函数 <span class="math display">\[
+    y=f(x, p) \tag{2}       
+\]</span> 其中 <span
+class="math inline">\(p=\frac{\mathrm{d}y}{\mathrm{d}x}\)</span>. 设函数
+<span class="math inline">\(f(x,p)\)</span>对 <span
+class="math inline">\((x,p)\)</span>是连续可微的. 则由方程（2）对 <span
+class="math inline">\(x\)</span>进行微分，得 <span
+class="math display">\[
+    p=f&#39;_x(x,p)+f&#39;_p(x,p)\frac{\mathrm{d}p}{\mathrm{d}x}
+\]</span> 或 <span class="math display">\[
+    [f&#39;_(x,p)-p]\mathrm{d}x+f&#39;_p(x,p)\mathrm{d}p=0 \tag{3}
+\]</span> 这是一个关于变量 <span class="math inline">\(x\)</span>和
+<span class="math inline">\(p\)</span>的一阶显式微分方程.</p>
+<p>求得（3）的通解 <span
+class="math inline">\(p=u(x,C)\)</span>，得到（2）的通解 <span
+class="math display">\[
+    y=f(x,u(x,C))
+\]</span> 其中 <span
+class="math inline">\(C\)</span>是一个任意常数；另外若（3）有特解 <span
+class="math inline">\(p=w(x)\)</span>则方程（2）有相应的特解 <span
+class="math display">\[
+    y=f(x,w(x))
+\]</span> 另一方面，若（3）的通解可写成 <span
+class="math inline">\(x=v(p,C)\)</span>的形式，则（2）的通解可写成 <span
+class="math display">\[
+    \begin{cases}
+        x=v(p,C) \\
+        y=f(v(p,C),p)
+    \end{cases}
+\]</span> 这里 <span
+class="math inline">\(p\)</span>视作一个参变量；同样如果（3）有特解
+<span class="math inline">\(x=z(p)\)</span>，则（2）有相应的特解 <span
+class="math display">\[
+    \begin{cases}
+        x=z(p) \\
+        y=f(z(p),)     
+    \end{cases}
+\]</span></p>
+<h3 id="参数法">参数法</h3>
+<p>设微分方程不明显包含自变量，即 <span class="math display">\[
+    F(y,p)=0 \quad \biggl(p=\frac{\mathrm{d}y}{\mathrm{d}x}\biggr)
+\tag{4}
+\]</span> 作为变元 <span class="math inline">\(y\)</span>和 <span
+class="math inline">\(p\)</span>之间的联系，方程（4）在 <span
+class="math inline">\((y,p)\)</span>平面上一般表示若干条曲线. 设 <span
+class="math display">\[
+    y=g(t),\quad p=h(t) \tag{5}
+\]</span> 是其中一条. 称（5）为（4）的一个<strong>参数表示</strong>.
+一般来说 <span class="math inline">\(g(t)\)</span>，<span
+class="math inline">\(g&#39;(t)\)</span>和 <span
+class="math inline">\(h(t)\)</span>都是参数 <span
+class="math inline">\(t\)</span>的连续函数，并且 <span
+class="math inline">\(h(t) \neq 0\)</span>.
+根据上述微分方程的参数表示，我们有 <span class="math display">\[
+    \mathrm{d}x=\frac{1}{p}\mathrm{d}y=\frac{g&#39;(t)}{h(t)}\mathrm{d}t
+\]</span> 再利用积分，可得 <span class="math display">\[
+    x=\int_{}^{} \frac{g&#39;(t)}{h(t)} \mathrm{d}t+C
+\]</span> 因此，微分方程（4）有通解 <span class="math display">\[
+    x=\int_{}^{} \frac{g&#39;(t)}{h(t)} \mathrm{d}t+C, \quad y=g(t)
+\tag{6}
+\]</span></p>
+<p>一般而言，一阶隐式微分方程 <span class="math display">\[
+    F(x, y,p)=0 \quad \biggl( p=\frac{\mathrm{d}y}{\mathrm{d}x} \biggr)
+\tag{7}
+\]</span> 在 <span class="math inline">\((x, y, p)\)</span>空间表示曲面.
+设它的参数表达式为 <span class="math display">\[
+    x=f(u,v), \quad y=g(u,v), \quad p=h(u,v)
+\]</span> 这里 <span class="math inline">\(u\)</span>和 <span
+class="math inline">\(v\)</span> 是两个参数. 则 <span
+class="math inline">\(\mathrm{d}y=p\mathrm{d}x\)</span>可写成如下形式
+<span class="math display">\[
+    M(u,v)\mathrm{d}u+N(u,v)\mathrm{d}v=0 \tag{8}
+\]</span> 其中 <span class="math display">\[
+    \begin{cases}
+        M(u,v)=g&#39;_u(u,v)-h(u,v)f&#39;_u(u,v) \\
+        N(u,v)=g&#39;_v(u,v)-h(u,v)f&#39;_v(u,v)
+    \end{cases}
+\]</span> 若能求得一阶显式微分方程（8）的通解 <span
+class="math display">\[
+    v=Q(u,C) \tag{9}
+\]</span> 则微分方程（7）有通解 <span class="math display">\[
+    x=f(u,Q(u,C)), \quad y=g(u,Q(u,C))
+\]</span> 其中 <span class="math inline">\(u\)</span>是参变量，而 <span
+class="math inline">\(C\)</span>是一个积分常数；若其有特解 <span
+class="math inline">\(v=S(u)\)</span>，则 <span class="math display">\[
+    x=f(u,S(u)),\quad y=g(u,S(u))
+\]</span> 是微分方程（7）的特解.</p>
+<h2 id="奇解-1">奇解</h2>
+<p>【定义】设一阶微分方程 <span class="math display">\[
+    F(x, y, \frac{\mathrm{d}y}{\mathrm{d}x})=0 \tag{10}
+\]</span> 有一特解 <span class="math display">\[
+    \Gamma: y=\varphi(x) \quad(x\in J)
+\]</span> 如果对每一点 <span class="math inline">\(Q\in
+\Gamma\)</span>，在 <span
+class="math inline">\(Q\)</span>任何领域内方程（10）有一个不同于 <span
+class="math inline">\(\Gamma\)</span>的解在 <span
+class="math inline">\(Q\)</span>点与 <span
+class="math inline">\(\Gamma\)</span>相切，则称 <span
+class="math inline">\(\Gamma\)</span>是微分方程（10）的<strong>奇解</strong>.</p>
+<p><strong>定理4.1（奇解存在的必要条件）</strong>：设函数 <span
+class="math inline">\(F(x, y,p)\)</span>对 <span
+class="math inline">\((x, y, p)\in G\)</span>是连续的，而且对 <span
+class="math inline">\(y\)</span>和 <span
+class="math inline">\(p\)</span>有连续的偏导数 <span
+class="math inline">\(F&#39;_y\)</span>和 <span
+class="math inline">\(F&#39;_p\)</span>，若函数 <span
+class="math inline">\(y=\varphi(x),(x\in
+J)\)</span>是微分方程（10）的一个奇解，并且 <span
+class="math display">\[
+    (x,\varphi(x)\varphi&#39;(x))\in G \quad(x\in J)
+\]</span> 则奇解 <span
+class="math inline">\(y=\varphi(x)\)</span>满足一个称之为<strong>p-判别式</strong>的联立方程
+<span class="math display">\[
+    F(x, y, p)=0, \quad F&#39;_p(x, y, p)=0
+\quad(p=\frac{\mathrm{d}y}{\mathrm{d}x}) \tag{11}
+\]</span> 设从（11）中消去 <span
+class="math inline">\(p\)</span>得到方程 <span class="math display">\[
+    \Delta(x, y)=0 \tag{12}
+\]</span> 则称由此所决定的曲线为方程（10）的<strong>P-判别曲线</strong>.
+因此，微分方程（10）的奇解是一条p-判别曲线.</p>
+<p><strong>证</strong>：用反证法，假设 <span
+class="math inline">\(\exists x_0\in J\)</span>，使得 <span
+class="math display">\[
+    F&#39;_p(x_0, y_0, p_0) \neq 0  
+\]</span> 利用隐函数定理，<span class="math inline">\(F\)</span>关于
+<span class="math inline">\(p\)</span>的偏导数不为零保证在 <span
+class="math inline">\((x_0,y_0)\)</span>附近唯一确定函数 <span
+class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y)
+\]</span> 推得 <span class="math inline">\(f(x, y)\)</span>在 <span
+class="math inline">\((x_0, y_0)\)</span>附近关于 <span
+class="math inline">\(y\)</span>有连续的偏导数，再用Picard定理知在 <span
+class="math inline">\((x_0,y_0)\)</span>附近有唯一解，从而与奇解的假设矛盾.</p>
+<p>注意，由p-判别式确定的函数 <span
+class="math inline">\(y=\psi(x)\)</span>不一定是相应微分方程的解；即使是解，也不一定是奇解.</p>
+<p>上面的定理要求出通解才能验证奇解与否，下面的定理在某种条件下克服了这一困难.</p>
+<p><strong>定理4.2</strong>：设函数 <span class="math inline">\(F(x, y,
+p)\)</span>对 <span class="math inline">\((x, y,p)\in
+G\)</span>是二阶连续可微的. 又设由微分方程（10）的p-判别式 <span
+class="math display">\[
+    F(x, y, p)=0, \quad F&#39;_p(x, y, p)=0
+\]</span> 消去<span class="math inline">\(p\)</span>后得到的函数 <span
+class="math inline">\(y=\psi(x)(x\in
+J)\)</span>是微分方程（10）的解（注意上面定理的注）.而且设条件 <span
+class="math display">\[
+    F&#39;_y(x,\psi(x),\psi&#39;(x)) \neq 0,\quad
+F&#39;&#39;_{pp}(x,\psi(x),\psi&#39;(x)) \neq 0 \tag{13}
+\]</span> 以及 <span class="math display">\[
+    F&#39;_p(x,\psi(x),\psi&#39;(x))=0 \tag{14}
+\]</span> 对 <span class="math inline">\(x\in J\)</span>成立. 则 <span
+class="math inline">\(y=\psi(x)\)</span>是微分方程（10）的奇解.</p>
+<p><strong>证</strong>：放到了文章最后.</p>
+<p>我们说明该定理中（13）（14）都是不可去的.</p>
+<p>考虑方程 <span class="math display">\[
+    \biggl( \frac{\mathrm{d}y}{\mathrm{d}x} \biggr)^{2}-y^{2}=0
+\]</span> 得到 <span class="math inline">\(y=0\)</span>，此时有 <span
+class="math inline">\(F&#39;_y(x,0,0)=0\)</span>，而原方程的通解为 <span
+class="math inline">\(y=x\exp {\pm x}\)</span>.</p>
+<p>考虑方程 <span class="math display">\[
+    \sin (y \frac{\mathrm{d}y}{\mathrm{d}x})=y
+\]</span> 得到 <span class="math inline">\(y=0\)</span>，此时有 <span
+class="math inline">\(F&#39;&#39;_{pp}(x,0,0)=0\)</span>，<span
+class="math inline">\(y=0\)</span>不是原方程的奇解.</p>
+<p>考虑方程 <span class="math display">\[
+    y=2x+y&#39;-\frac{1}{3}(y&#39;)^3
+\]</span> 此时 <span
+class="math inline">\(F&#39;_p(x,\psi(x),\psi&#39;(x))=0\)</span></p>
+<p>另一个类似于2.2中的结果：设连续函数 <span
+class="math inline">\(E(y)\)</span>满足条件： <span
+class="math display">\[
+    \begin{cases}
+        E(y)=0, \quad y=0\\
+        E(y)\neq 0, \quad 0&lt;y\leqslant 1
+    \end{cases}
+\]</span> 则 <span class="math inline">\(y=0\)</span>是微分方程 <span
+class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=E(y)    
+\]</span> 的奇解当且仅当瑕积分 <span class="math display">\[
+    \int_{0}^{1} \frac{\mathrm{d}y}{E(y)}       
+\]</span> 收敛. <strong>证</strong>：<span
+class="math inline">\(\Rightarrow\)</span>：若 <span
+class="math inline">\(y=0\)</span>为奇解，则存在局部解使得 <span
+class="math inline">\(y\neq 0\)</span>，故有 <span
+class="math inline">\(\frac{\mathrm{d}y}{E}=\mathrm{d}x \Rightarrow
+\int_{0}^{1} \frac{\mathrm{d}y}{E}\)</span>收敛.</p>
+<p><span class="math inline">\(\Leftarrow\)</span>：$ _{0}^{1}
+$收敛，可令 <span class="math inline">\(x(y)=x_0+\int_{0}^{y}
+\frac{\mathrm{d}y}{E}\)</span>是异于 <span
+class="math inline">\(y=0\)</span>的解，由于 <span
+class="math inline">\(y&#39;(0)=0\)</span>，得到 <span
+class="math inline">\(y=0\)</span>是奇解.</p>
+<h2 id="包络">包络</h2>
+<p>这一节想利用有关曲线族的包络的概念来阐明奇解与通解之间的联系，以及讨论寻求奇解的方法.</p>
+<p>设单参数 <span class="math inline">\(C\)</span>的曲线族 <span
+class="math display">\[
+    K(C): \qquad V(x,y,C)=0 \tag{15}
+\]</span> 其中函数 <span class="math inline">\(V(x, y, C)\)</span>对
+<span class="math inline">\((x, y, C)\in D\)</span>是连续可微的.</p>
+<p>【定义】设在平面上有一条连续可微的曲线 <span
+class="math inline">\(\Gamma\)</span>. 如果对于任一点 <span
+class="math inline">\(q\in \Gamma\)</span>，在曲线族（15）中都有一条曲线
+<span class="math inline">\(K(C^*)\)</span>通过 <span
+class="math inline">\(q\)</span>点且在该点与 <span
+class="math inline">\(\Gamma\)</span>相切，而且 <span
+class="math inline">\(K(C^*)\)</span>在 <span
+class="math inline">\(q\)</span>点的某一领域内不同于 <span
+class="math inline">\(\Gamma\)</span>. 则称曲线 <span
+class="math inline">\(\Gamma\)</span>为曲线族（15）的一支<strong>包络</strong>.</p>
+<p>注：这个定义与微分几何中的定义稍有不同.</p>
+<p><strong>定理4.3</strong>：设微分方程 <span class="math display">\[
+    F(x, y, \frac{\mathrm{d}y}{\mathrm{d}x})=0 \tag{16}
+\]</span> 有通积分为 <span class="math display">\[
+    U(x, y, C)=0 \tag{17}
+\]</span> 又设（积分）曲线族（17）有包络为 <span class="math display">\[
+    \Gamma: \qquad y=\varphi(x) \quad (x\in J)
+\]</span> 则包络 <span
+class="math inline">\(y=\varphi(x)\)</span>是微分方程（16）的奇解.</p>
+<p><strong>证</strong>：任取 <span
+class="math inline">\(\Gamma\)</span>上一点，由包络的性质即可.</p>
+<div class="note note-success">
+            <p>由奇解的定义可知，奇解是通解的包络.因此，由上定理可知，求微分方程的奇解归结到求它的通积分的包络.通积分的包络就是原方程的奇解.</p>
+          </div>
+<p><strong>定理4.4</strong>：设 <span
+class="math inline">\(\Gamma\)</span>是曲线族（15）的一支包络.
+则它满足如下的<strong>C-判别式</strong>： <span class="math display">\[
+    V(x, y, C)=0, \quad V&#39;_C(x, y, C)=0 \tag{18}
+\]</span> 或（消去 <span
+class="math inline">\(C\)</span>，所得到的关系式） <span
+class="math display">\[
+    \Omega(x, y)=0 \tag{19}
+\]</span></p>
+<p><strong>证</strong>：设包络的参数方程为 <span class="math display">\[
+    \begin{cases}
+        x=f(C) \\
+        y=g(C)
+    \end{cases}
+\]</span> 根据切向量共线得出一个式子，然后对 <span
+class="math inline">\(V(x, y,C)=0\)</span>对 <span
+class="math inline">\(C\)</span>求导即可.</p>
+<p>满足C-判别式的曲线未必是相应曲线族的包络，如 <span
+class="math display">\[
+    (y-1)^{2}\biggl(\frac{\mathrm{d}y}{\mathrm{d}x}\biggr)^{2}=\frac{4}{9}y  
+\]</span> 解它的通积分和C-判别式得 <span
+class="math inline">\(y=0\)</span>或 <span
+class="math inline">\(y=3\)</span>，然而只有前一个是曲线的包络.</p>
+<p>下面的定理给出了包络的一个充分条件.
+<strong>定理4.5</strong>：设由曲线族（15）的C-判别式 <span
+class="math display">\[
+    V(x, y,C)=0 \quad V&#39;_C(x, y, C)=0   
+\]</span> 确定一支连续可微且不含于族（15）的曲线 <span
+class="math display">\[
+    \Lambda: \quad x=\varphi(C), \quad y=\psi(C) \quad (C\in J)
+\]</span> 而且它满足<strong>非蜕化性条件</strong>（即切向量不退化）
+<span class="math display">\[
+    (\varphi&#39;(C),\psi&#39;(C))\neq (0,0), \quad
+(V&#39;_x,V&#39;_y)\neq (0,0)
+\]</span> 其中 <span
+class="math inline">\(V&#39;_x=V&#39;_x(\varphi(C),\psi(C),C)\)</span>与
+<span
+class="math inline">\(V&#39;_y=V&#39;_y(\varphi(C),\psi(C),C)\)</span>.
+则 <span class="math inline">\(\Lambda\)</span>是曲线族（15）的一支包络.
+<strong>证</strong>：在 <span
+class="math inline">\(\Lambda\)</span>上任取一点，在这一点附近用隐函数定理找到一条曲线族中的曲线，然后证明它在这一点与
+<span class="math inline">\(\Lambda\)</span>相切，即其切向量共线.</p>
+<div class="note note-success">
+            <p>该定理基本上只适用于能求出通积分的情形，使用时通常配合4.3，这是因为若能判定C-曲线不是积分曲线，则它不是解，从而不是奇解，从而不是包络.</p>
+          </div>
+<h2 id="奇解的存在定理">奇解的存在定理</h2>
+<p>这是定理4.2的证明，可以参考教材117-120页 或者如下链接： ---</p>
+<p>常微分方程学习笔记（4） https://zhuanlan.zhihu.com/p/97414951</p>
+<hr />
+<p>下一章就进入高阶微分方程了.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常微分方程（4）</div>
+      <div>http://example.com/2022/04/06/常微分方程（4）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 6, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%885%EF%BC%89/" title="常微分方程（5）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程（5）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/05/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%883%EF%BC%89/" title="常微分方程（3）">
+                        <span class="hidden-mobile">常微分方程（3）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

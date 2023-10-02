@@ -1,0 +1,974 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本节介绍解的存在和唯一性定理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常微分方程（3）">
+<meta property="og:url" content="http://example.com/2022/04/05/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%883%EF%BC%89/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="本节介绍解的存在和唯一性定理">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-04-05T01:01:17.000Z">
+<meta property="article:modified_time" content="2022-07-19T13:31:10.375Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+  
+  
+  
+  <title>常微分方程（3） - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常微分方程（3）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-05 09:01" pubdate>
+          April 5, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          50 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常微分方程（3）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="存在和唯一性定理">存在和唯一性定理</h1>
+<h2 id="picard-存在和唯一性定理">Picard 存在和唯一性定理</h2>
+<p><strong>定理3.1</strong> 设初值问题 <span class="math display">\[
+    (E):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y),\quad y(x_0)=y_0
+\tag{1}
+\]</span> 其中 <span class="math inline">\(f(x, y)\)</span>在矩形区域
+<span class="math display">\[
+    R: \qquad \left\vert x-x_0 \right\vert \leqslant a,\quad \left\vert
+y-y_0 \right\vert \leqslant b       
+\]</span> 内连续，而且对 <span class="math inline">\(y\)</span>
+满足Lipschitz条件，则 <span class="math inline">\((E)\)</span>在区间
+<span
+class="math inline">\(I=[x_0-h,x_0+h]\)</span>上有且仅有一个解，其中常数
+<span class="math display">\[
+    h= \min\biggl\{a,\frac{b}{M}\biggr\},\quad M&gt;\max_{(x, y)\in R}
+\left\vert f(x, y) \right\vert     
+\]</span></p>
+<p><strong>证</strong>：将微分方程(1)化为积分方程，构造Picard序列 <span
+class="math display">\[
+    y_{n+1}(x)=y_0+\int_{x_0}^{x} f(x,y_n(x)) \mathrm{d}x  
+\]</span> 用上确界判则证明 $y_{n+1}(x)-y_n(x) $在 <span
+class="math inline">\(I\)</span>上一致收敛.
+注意用Lipschitz条件作指数型估计.
+证明唯一性也运用Lipschitz条件迭代得到.</p>
+<p>有了Picard定理，对于一般微分方程 <span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y) \tag{2}
+\]</span> 只要能判别函数 <span class="math inline">\(f(x,
+y)\)</span>在某个区域 <span class="math inline">\(D\)</span>
+内连续并且对 <span
+class="math inline">\(y\)</span>有连续偏导数或满足Lipschitz条件，我们就可以断言区域
+<span class="math inline">\(D\)</span>内经过每一点有并且只有一个解.</p>
+<p><strong>Osgood 条件</strong>：设函数 <span class="math inline">\(f(x,
+y)\)</span>在区域 <span
+class="math inline">\(G\)</span>内连续，而且满足不等式 <span
+class="math display">\[
+    \left\vert f(x, y_1)-f(x, y-2)\right\vert\leqslant F(\left\vert
+y_1-y_2 \right\vert)  
+\]</span> 其中 <span class="math inline">\(F(r)&gt;0\)</span>是 <span
+class="math inline">\(r&gt;0\)</span>的连续函数，而且瑕积分 <span
+class="math display">\[
+    \int_{0}^{r_1} \frac{1}{F(r)} \mathrm{d}r=\infty
+\]</span> <span class="math inline">\(r_1&gt;0\)</span>为常数. 则称
+<span class="math inline">\(f(x, y)\)</span>在 <span
+class="math inline">\(G\)</span>内对 <span
+class="math inline">\(y\)</span>满足<strong>Osgood</strong>条件. 取
+<span
+class="math inline">\(F(r)=Lr\)</span>知，Lipschitz条件是Osgood条件的特例.</p>
+<p><strong>定理3.2</strong>：设 <span class="math inline">\(f(x,
+y)\)</span>在区域 <span class="math inline">\(G\)</span>内对 <span
+class="math inline">\(y\)</span>满足Osgood条件，则微分方程(2)在 <span
+class="math inline">\(G\)</span>内经过每一点的解都是唯一的.</p>
+<p><strong>证</strong>：反证法.</p>
+<p><strong>Muller
+的反例</strong>：不满足Lipschitz条件时，定理3.1中构造的Picard序列不一定是收敛的.</p>
+<p>设初值问题 <span class="math display">\[
+    (E_0):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=F(x, y),\quad y(0)=0
+\]</span> 其中函数 <span class="math display">\[
+    F(x, y)=
+    \begin{cases}
+        0, \qquad x=0,-\infty&lt;y&lt;\infty; \\
+        2x,\qquad 0&lt;x\leqslant 1, -\infty&lt;y&lt;0; \\
+        2x-\displaystyle{\frac{4y}{x}},\qquad 0&lt;x\leqslant 1,
+0\leqslant y&lt;x^{2}; \\
+        -2x,\qquad 0&lt;x\leqslant 1,x^{2}\leqslant y&lt;\infty \\
+    \end{cases}
+\]</span> 容易验证，函数 <span class="math inline">\(F(x,
+y)\)</span>在条形区域 <span class="math display">\[
+    S:\qquad 0\leqslant x\leqslant 1,\quad -\infty&lt;y&lt;\infty
+\]</span> 内是连续的，可是对 <span
+class="math inline">\(y\)</span>不满足Lipschitz条件.</p>
+<p>对于上述初值问题 <span
+class="math inline">\((E_0)\)</span>，我们有Picard序列 <span
+class="math display">\[
+    y_{n+1}(x)=y_0+\int_{0}^{x} f(x,y_n(x)) \mathrm{d}x \quad(y_0(x)=0)
+\]</span> <span class="math inline">\((0\leqslant x\leqslant
+1;n=0,1,2,\cdots )\)</span>. 而且容易推出 <span class="math display">\[
+    y_n(x)=(-1)^{n+1}x^2 \quad (0\leqslant x\leqslant 1)
+\]</span> <span class="math inline">\((n=1,2,\cdots )\)</span>.
+由此可见，初值问题 <span
+class="math inline">\((E_0)\)</span>的Picard序列是不收敛的. 然而 <span
+class="math inline">\(y=\frac{1}{3}x^2(0\leqslant x\leqslant
+1)\)</span>是 <span class="math inline">\((E_{0})\)</span>的唯一解.</p>
+<h2 id="peano-存在定理">Peano 存在定理</h2>
+<p>说明：这个定理说明了，在Picard定理中如果只假定 <span
+class="math inline">\(f(x, y)\)</span>在 <span
+class="math inline">\(R\)</span>内的连续性，那么利用Euler折线仍可证明初值问题
+<span class="math inline">\((E)\)</span>的解在区间 <span
+class="math inline">\(\left\vert x-x_0 \right\vert \leqslant
+h\)</span>上是存在的（但不一定是唯一的）.</p>
+<h3 id="euler-折线">Euler 折线</h3>
+<p>定义比较繁琐，大概就是将区间划分，从中心点开始向左右，各作一条折线，在每个分点沿线素方向构造一条小折线段.</p>
+<p>令Euler折线 <span class="math inline">\(\gamma_n\)</span>的表达式为
+<span class="math display">\[
+    y=\varphi_n(x) \quad (\left\vert x-x_0 \right\vert &lt;h) \tag{3}
+\]</span></p>
+<p>Euler折线的计算公式： <span class="math display">\[
+    \varphi_n(x)=y_0+\sum_{k=0}^{s-1} f(x_k, y_k)(x_{k+1}-x_k)+f(x_s,
+y_s)(x-x_s), \quad x_s&lt;x\leqslant x_{0}+h
+\]</span> 和 <span class="math display">\[
+    \varphi_n(x)=y_0+\sum_{k=0}^{-s+1} f(x_k,
+y_k)(x_{k-1}-x_k)+f(x_{-s}, y{-s})(x-x_{-s}), \quad x_0-h\leqslant
+x&lt;x_0
+\]</span> 下面证明Euler折线在区间 <span class="math inline">\(\left\vert
+x-x_0 \right\vert \leqslant
+h\)</span>上收敛（或至少有一个收敛的子序列）.</p>
+<h3 id="ascoli-引理">Ascoli 引理</h3>
+<p>设函数列 <span class="math display">\[
+    f_1(x),f_2(x),\cdots,f_n(x)
+\]</span> 在有限闭区间 <span
+class="math inline">\(I\)</span>上是一致有界和等度连续的，则可以选取它的一个子序列
+<span class="math display">\[
+    f_{n_1}(x),f_{n_2}(x),\cdots,f_{n_k}(x)
+\]</span> 使它在区间 <span
+class="math inline">\(I\)</span>上是一致收敛的.</p>
+<h3 id="peano-存在定理-1">Peano 存在定理</h3>
+<p><strong>引理3.1</strong> Euler序列(3)在区间 <span
+class="math inline">\(\left\vert x-x_0 \right\vert \leqslant
+h\)</span>上至少有一个一致收敛的子序列.</p>
+<p><strong>证</strong>：由Ascoli 引理显然.</p>
+<p><strong>引理3.2</strong> Euler折线 <span
+class="math inline">\(y=\varphi_n(x)\)</span>在区间 <span
+class="math inline">\(\left\vert x-x_0 \right\vert \leqslant
+h\)</span>上满足关系式 <span class="math display">\[
+    \varphi_n(x)=y_0+\int_{x_0}^{x} f(x,\varphi_n(x))
+\mathrm{d}x+\delta_n(x)
+\]</span> 其中函数 <span
+class="math inline">\(\delta_n(x)\)</span>趋于零，即 <span
+class="math display">\[
+    \lim_{n \to \infty}\delta_n(x)=0 \quad(\left\vert x-x_0 \right\vert
+\leqslant h)
+\]</span> <strong>证</strong>：omitted.</p>
+<p><strong>定理3.3（Peano 存在定理）</strong>：设函数 <span
+class="math inline">\(f(x, y)\)</span>在矩形区域 <span
+class="math inline">\(R\)</span>内连续，则初值问题 <span
+class="math display">\[
+    (E):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y),\quad y(x_0)=y_0
+\tag{4}
+\]</span> 在区间 <span class="math inline">\(\left\vert x-x_0
+\right\vert \leqslant h\)</span>上至少有一个解 <span
+class="math inline">\(y=y(x)\)</span>，这里矩形区域 <span
+class="math inline">\(R\)</span>和正数 <span
+class="math inline">\(h\)</span>的定义同定理3.1.</p>
+<p><strong>证</strong>：用引理3.1取一个一致收敛的子函数列，再用引理3.2取
+<span class="math inline">\(k \to \infty\)</span>即可.</p>
+<p><strong>反例</strong>：若不要求 <span class="math inline">\(f(x,
+y)\)</span>的连续性，那么上面的初值问题 <span
+class="math inline">\((E)\)</span>可能是无解的. 例如，设函数 <span
+class="math display">\[
+    f^*(x, y)=
+    \begin{cases}
+        1,\qquad 1\leqslant \left\vert x+y \right\vert &lt;\infty \\
+        (-1)^{n}, \qquad \frac{1}{n+1}\leqslant \left\vert x+y
+\right\vert \leqslant \frac{1}{n} \quad (n=1,2,\cdots ) \\
+        0, \qquad \left\vert x+y \right\vert =0
+    \end{cases}
+\]</span> 则用反证法易证初值问题 <span class="math display">\[
+    (E^*): \qquad \frac{\mathrm{d}y}{\mathrm{d}x}=f^*(x, y), \quad
+y(0)=0
+\]</span> 没有（连续的）解.</p>
+<h2 id="解的延伸">解的延伸</h2>
+<p>本节的目的是把初值问题解的存在性从局部扩大到整体.</p>
+<p>设微分方程 <span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y) \tag{5}
+\]</span> 其中函数 <span class="math inline">\(f(x, y)\)</span>在区域
+<span class="math inline">\(G\)</span>内连续.</p>
+<p><strong>定理3.4</strong>：设 <span
+class="math inline">\(P_0\)</span>为区域 <span
+class="math inline">\(G\)</span>内任一点，并设 <span
+class="math inline">\(\Gamma\)</span>为微分方程(5)经过 <span
+class="math inline">\(P_0\)</span>点的任一条积分曲线. 则积分曲线 <span
+class="math inline">\(\Gamma\)</span>将在区域 <span
+class="math inline">\(G\)</span>内延伸到边界（换句话说，对于任何有界闭区域
+<span class="math inline">\(G(P_0 \in G_1 \subset G)\)</span>，积分曲线
+<span class="math inline">\(\Gamma\)</span>将延伸到 <span
+class="math inline">\(G_1\)</span>之外）.</p>
+<p><strong>推论</strong>：设函数 <span class="math inline">\(f(x,
+y)\)</span>在区域 <span class="math inline">\(G\)</span>内连续，而且对
+<span
+class="math inline">\(y\)</span>满足局部Lipschitz条件，则微分方程(5)经过
+<span class="math inline">\(G\)</span>内任一点 <span
+class="math inline">\(P_0\)</span>存在唯一的积分曲线 <span
+class="math inline">\(\Gamma\)</span>，并且 <span
+class="math inline">\(\Gamma\)</span>在 <span
+class="math inline">\(G\)</span>内延伸到边界.</p>
+<p>这两个结论说明了最大存在区间的形式：开区间. 比如微分方程 <span
+class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=x^{2}+y^{2}
+\]</span> 任一解的存在区间是有界的.</p>
+<div class="note note-info">
+            <p>这个推论十分重要.一般遇到的大量微分方程都满足推论的条件.</p>
+          </div>
+<p>在特定的条件下，对解的存在区间可以作出先验断言.
+<strong>定理3.5</strong>：设微分方程 <span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y) \tag{6}
+\]</span> 其中函数 <span class="math inline">\(f(x,
+y)\)</span>在条形区域 <span class="math display">\[
+    S: \qquad \alpha&lt;x&lt;\beta,\quad -\infty&lt;y&lt;\infty
+\]</span> 内连续，而且满足不等式 <span class="math display">\[
+    \left\vert f(x, y) \right\vert \leqslant A(x)\left\vert y
+\right\vert +B(x)
+\]</span> 其中 <span class="math inline">\(A(x)\geqslant 0\)</span>和
+<span class="math inline">\(B(x)\geqslant 0\)</span>在区间 <span
+class="math inline">\(\alpha&lt;x&lt;\beta\)</span>上是连续的.
+则微分方程(6)的每一个解都以区间 <span
+class="math inline">\(\alpha&lt;x&lt;\beta\)</span>为最大存在区间.</p>
+<h2 id="比较定理及其应用">比较定理及其应用</h2>
+<p>在上节看到，仅应用延伸定理无法对微分方程的解的存在区间作出估计.
+下面几个定理是对此的讨论
+<strong>定理3.6（第一比较定理）</strong>：设函数 <span
+class="math inline">\(f(x, y)\)</span>与 <span
+class="math inline">\(F(x, y)\)</span>都在平面区域 <span
+class="math inline">\(G\)</span>内连续且满足不等式 <span
+class="math display">\[
+    f(x, y)&lt;F(x, y),\quad (x, y) \in G
+\]</span> 又设函数 <span class="math inline">\(y=\varphi(x)\)</span>与
+<span class="math inline">\(y=\Phi(x)\)</span>在区间 <span
+class="math inline">\(a&lt;x&lt;b\)</span>上分别是初值问题 <span
+class="math display">\[
+    (E_1):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y),\quad
+y(x_0)=y_0
+\]</span> 与 <span class="math display">\[
+    (E_2):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=F(x, y),\quad
+y(x_0)=y_0
+\]</span> 的解，其中 <span class="math inline">\((x_0,y_0)\in
+G\)</span>. 则我们有 <span class="math display">\[
+    \begin{cases}
+        \varphi(x)&lt;\Phi(x),\qquad x_0&lt;x&lt;b \\
+        \varphi(x)&gt;\Phi(x),\qquad a&lt;x&lt;x_0
+    \end{cases}
+\]</span></p>
+<p><strong>证</strong>：omitted</p>
+<p>对一般的初值问题(E)，有两个解 <span
+class="math inline">\(y=Z(x)\)</span>和 <span
+class="math inline">\(y=W(x)\)</span>，使得(E)的任何解 <span
+class="math inline">\(y=y(x)\)</span>都满足不等式： <span
+class="math display">\[
+    W(x)\leqslant y(x)\leqslant Z(x),\quad(\left\vert x-x_0 \right\vert
+\leqslant h)
+\]</span> 则称 <span class="math inline">\(y=W(x)\)</span>和 <span
+class="math inline">\(y=Z(x)\)</span>分别为初值问题(E)的<strong>最小解</strong>和<strong>最大解</strong>.</p>
+<p><strong>定理3.7</strong>：存在正数 <span
+class="math inline">\(\sigma&lt;h\)</span>，使得在区间 <span
+class="math inline">\(\left\vert x-x_0 \right\vert \leqslant
+\sigma\)</span>上，上述初值问题(E)有最小解和最大解.</p>
+<p>注意，由于初值问题(E)的所有解在 <span
+class="math inline">\((x_0,y_0)\)</span>点均相切，所以(E)的左行最大（小）解和右行最大（小）解就可拼接为整个区间上的最大（小）解.</p>
+<p>(E)的解是唯一的，当且仅当它的最小解和最大解是恒同的.</p>
+<p><strong>定理3.8（第二比较定理）</strong>：设函数 <span
+class="math inline">\(f(x, y)\)</span>与 <span
+class="math inline">\(F(x, y)\)</span>都在平面区域 <span
+class="math inline">\(G\)</span>内连续且满足 <span
+class="math display">\[
+    f(x, y)\leqslant F(x, y),\quad (x, y) \in G
+\]</span> 又设函数 <span class="math inline">\(y=\varphi(x)\)</span>与
+<span class="math inline">\(y=\Phi(x)\)</span>在区间 <span
+class="math inline">\(a&lt;x&lt;b\)</span>上分别是初值问题 <span
+class="math display">\[
+    (E_1):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y),\quad
+y(x_0)=y_0
+\]</span> 与 <span class="math display">\[
+    (E_2):\qquad \frac{\mathrm{d}y}{\mathrm{d}x}=F(x, y),\quad
+y(x_0)=y_0
+\]</span> 的解，并且 <span class="math inline">\(y=\varphi(x)\)</span>是
+<span
+class="math inline">\((E_1)\)</span>的右行最小解和左行最大解（或者：<span
+class="math inline">\(y=\Phi(x)\)</span>是 <span
+class="math inline">\((E_2)\)</span>的右行最大解和左行最小解），则有如下比较关系：
+<span class="math display">\[
+    \varphi(x)\leqslant \Phi(x),\qquad x_0\leqslant x&lt;b; \\
+    \varphi(x)\geqslant \Phi(x),\qquad a&lt;x\leqslant x_0
+\]</span> <strong>证</strong>：此定理容易从定理3.6和定理3.7推出.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常微分方程（3）</div>
+      <div>http://example.com/2022/04/05/常微分方程（3）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 5, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/06/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%884%EF%BC%89/" title="常微分方程（4）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程（4）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%882%EF%BC%89/" title="常微分方程（2）">
+                        <span class="hidden-mobile">常微分方程（2）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

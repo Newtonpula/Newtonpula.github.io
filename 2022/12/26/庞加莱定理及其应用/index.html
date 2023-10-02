@@ -1,0 +1,1156 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="聊胜于无的数分三大作业">
+<meta property="og:type" content="article">
+<meta property="og:title" content="庞加莱定理及其应用">
+<meta property="og:url" content="http://example.com/2022/12/26/%E5%BA%9E%E5%8A%A0%E8%8E%B1%E5%AE%9A%E7%90%86%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="聊胜于无的数分三大作业">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/poincare.png">
+<meta property="article:published_time" content="2022-12-26T10:51:12.000Z">
+<meta property="article:modified_time" content="2023-01-19T13:54:26.709Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/poincare.png">
+  
+  
+  
+  <title>庞加莱定理及其应用 - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="庞加莱定理及其应用"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-26 18:51" pubdate>
+          December 26, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          104 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">庞加莱定理及其应用</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="庞加莱定理及其应用">庞加莱定理及其应用</h1>
+<p>本文是数分三的期末小论文，时间很赶，我对这篇小论文很不满意.
+数分三期末有道大题看错了算了一堆不对的东西，最后发现了也没来得及算完，简直依托答辩.
+这篇文章缝的东西来源也不多，De Rham
+上同调群纯粹凑字数，不过以后应该是碰不到了，或许也有可能碰到.
+下学期必修课要冲冲分了，想去听的黎曼几何和随机矩阵也要好好听.</p>
+<h2 id="导言">导言</h2>
+<p>在微分形式的理论中，外微分算子 <span
+class="math inline">\(\mathrm{d}\)</span> 起到相当重要的作用.
+我们定义过闭微分形式和恰当微分形式的概念. 本文中记号 <span
+class="math inline">\(\Omega^{p}(M)\)</span> 表示光滑流形 <span
+class="math inline">\(M\)</span> 上的所有光滑实值 <span
+class="math inline">\(p\)</span> 次微分形式的空间，而 <span
+class="math inline">\(\Omega(M)\)</span></p>
+<p><strong>定义1.1</strong> 微分形式 <span class="math inline">\(\omega
+\in \Omega^{p}(M)\)</span> 称为闭微分形式（下简称闭形式），如果 <span
+class="math inline">\(\mathrm{d}\omega=0\)</span>.</p>
+<p><strong>定义1.2</strong> 微分形式 <span class="math inline">\(\omega
+\in \Omega^{p}(M)(p&gt;0)\)</span>
+称为恰当微分形式（下简称恰当形式），如果满足 <span
+class="math inline">\(\omega=\mathrm{d}\alpha\)</span> 的微分形式 <span
+class="math inline">\(\alpha \in \Omega^{p-1}(M)\)</span> 存在.</p>
+<p>流形 <span class="math inline">\(M\)</span> 的所有闭 <span
+class="math inline">\(p\)</span> 形式的集合记为 <span
+class="math inline">\(Z^{p}(M)\)</span>，而 <span
+class="math inline">\(M\)</span> 上的所有恰当 <span
+class="math inline">\(p\)</span> 形式的集合记为 <span
+class="math inline">\(B^{p}(M)\)</span>.</p>
+<p>课上在定义外微分算子 <span class="math inline">\(\mathrm{d}\)</span>
+时，自动有 <span class="math inline">\(\mathrm{d}^{2}=0\)</span>，所以
+$B<sup>{p}(M)Z</sup>{p}(M) $. 一般而言这个包含关系是严格的.</p>
+<p>这就引出一个问题，当微分形式 <span
+class="math inline">\(\omega\)</span> 满足必要条件 <span
+class="math inline">\(\mathrm{d}\omega=0\)</span> 时，方程 <span
+class="math inline">\(\mathrm{d}\alpha=\omega\)</span> 是否可解. 这与
+<span class="math inline">\(M\)</span>
+的拓扑结构有关，本文将介绍最简单版本的庞加莱定理及其应用.</p>
+<h2 id="庞加莱定理">庞加莱定理</h2>
+<p>先给出一个定义</p>
+<p><strong>定义2.1</strong> 流形 <span class="math inline">\(M\)</span>
+称为可收缩（于点 <span class="math inline">\(x_0\in
+M\)</span>）的或单点同伦的，如果存在光滑映射 <span
+class="math inline">\(h\colon M\times I\rightarrow M\)</span>，其中
+<span class="math inline">\(I=[0,1]\)</span>，使 <span
+class="math inline">\(h(x,1)=x\)</span>，<span
+class="math inline">\(h(x,0)=x_0\)</span>.</p>
+<p><strong>定理2.2（庞加莱定理）.</strong> 可收缩于点的流形 <span
+class="math inline">\(M\)</span> 上的任何闭 <span
+class="math inline">\(p+1\)</span> 形式 <span
+class="math inline">\((p\geqslant 0)\)</span> 都是恰当的.</p>
+<p>考虑“柱体” <span class="math inline">\(M\times I\)</span>，即 <span
+class="math inline">\(M\)</span> 与单位区间 <span
+class="math inline">\(I\)</span> 的直积，以及两个映射 <span
+class="math inline">\(j_{i}\colon M\rightarrow M\times I\)</span>，<span
+class="math inline">\(j_{i}(x)=(x,i),i=0,1\)</span>，它们使 <span
+class="math inline">\(M\)</span> 分别等同于柱体 <span
+class="math inline">\(M\times I\)</span> 的两个底面.
+于是有相应的拉回映射 <span class="math inline">\(j_{i}^{*}\colon
+\Omega^{p}(M\times I)\rightarrow \Omega^{p}(M)\)</span>，其结果是把
+<span class="math inline">\(\Omega^{p}(M\times I)\)</span>
+中的微分形式中的变量 <span class="math inline">\(t\)</span> 改为 <span
+class="math inline">\(i\)</span> 的值. 注意此时若自变量中含 <span
+class="math inline">\(\mathrm{d}t\)</span> 项，则拉回的结果当然是 <span
+class="math inline">\(0\)</span>.</p>
+<h3 id="证明一">证明一</h3>
+<p>构造一个线性算子 <span class="math inline">\(K\colon
+\Omega^{p+1}(M\times I)\rightarrow
+\Omega^{p}(M)\)</span>，它在作用于单项式的时候由以下方式确定： <span
+class="math display">\[
+    K(a(x,t)\mathrm{d}x^{i_1}\wedge \cdots \wedge
+\mathrm{d}x^{i_{p+1}}):=0,
+\]</span></p>
+<p><span class="math display">\[
+    K(a(x,t)\mathrm{d}t \wedge \mathrm{d}x^{i_1}\wedge \cdots
+\wedge\mathrm{d}x^{i_p}):=\left( \int_{0}^{1} a(x,t) \mathrm{d}r \right)
+\mathrm{d}x^{i_1}\wedge \cdots \wedge \mathrm{d}x^{i_p}.
+\]</span></p>
+<p>关于算子 <span class="math inline">\(K\)</span>
+的我们所需要的基本性质是，对于任何一个微分形式 <span
+class="math inline">\(\omega \in \Omega^{p+1}(M\times
+I)\)</span>，以下关系式成立： <span class="math display">\[
+    K(\mathrm{d}\omega)+\mathrm{d}(K\omega)=j_1^{*}\omega-j_0^{*}\omega.
+\tag{1}
+\]</span></p>
+<p>因为算子 <span class="math inline">\(K,d,j_1^{*},j_0^{*}\)</span>
+都是线性的，故只要对单项式验证这个关系式. 如果 <span
+class="math inline">\(\omega=a(x,t)\mathrm{d}x^{i_1}\wedge\cdots \wedge
+\mathrm{d}x^{i_{p+1}}\)</span>，则 <span
+class="math inline">\(K\omega=0\)</span>，<span
+class="math inline">\(\mathrm{d}(K\omega)=0\)</span>， <span
+class="math display">\[
+    \mathrm{d}\omega=\frac{\partial a}{\partial
+t}\mathrm{d}t\wedge\mathrm{d}x^{i_1}\wedge\cdots
+\wedge\mathrm{d}x^{i_{p+1}}+\text{不含 $\mathrm{d}t$ 的项},
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+    K(\mathrm{d}\omega)&amp;=\left( \int_{0}^{1} \frac{\partial
+a}{\partial t} \mathrm{d}t \right) \mathrm{d}x^{i_1} \wedge\cdots \wedge
+\mathrm{d}x^{i_{p+1}} \\
+    &amp;=(a(x,1)-a(x,0))\mathrm{d}x^{i_1}\wedge\cdots
+\wedge\mathrm{d}x^{i_{p+1}}=j_1^{*}(\omega)-j_0^{*}(\omega),
+\end{aligned}
+\]</span></p>
+<p>所以关系式（1）成立.</p>
+<p>如果 <span class="math inline">\(\omega=a(x,t)\mathrm{d}t\wedge
+\mathrm{d}x^{i_1}\wedge\cdots \wedge \mathrm{d}x^{i_p}\)</span>，则
+<span class="math inline">\(j_1^{*}\omega=j_0^{*}\omega=0\)</span>. 于是
+<span class="math display">\[
+\begin{aligned}
+    K(\mathrm{d}\omega)&amp;=K\left(-\sum_{i_0}^{} \frac{\partial
+a}{\partial
+x^{i_0}}\mathrm{d}t\wedge\mathrm{d}x^{i_0}\wedge\mathrm{d}x^{i_1}\wedge\cdots
+\wedge \mathrm{d}x^{i_p} \right)\\
+    &amp;=-\sum_{i_0}^{} \left( \int_{0}^{1} \frac{\partial a}{\partial
+x^{i_0}}\mathrm{d}x \right) \mathrm{d}x^{i_0}\wedge
+\mathrm{d}x^{i_1}\wedge\cdots \wedge \mathrm{d}x^{i_p},
+\end{aligned}
+\]</span></p>
+<p><span class="math display">\[
+\begin{aligned}
+    \mathrm{d}(K\omega)&amp;=\mathrm{d}\left( \left( \int_{0}^{1} a(x,t)
+\mathrm{d}t \right) \mathrm{d}x^{i_1}\wedge \cdots \wedge
+\mathrm{d}x^{i_p} \right) \\
+    &amp;=\sum_{i_0}^{} \frac{\partial }{\partial x^{i_0}}\left(
+\int_{0}^{1} a(x,t) \mathrm{d}t \right) \mathrm{d}x^{i_0}\wedge
+\mathrm{d}x^{i_1}\wedge\cdots \wedge \mathrm{d}x^{i_p}\\
+    &amp;=\sum_{i_0}^{} \left( \int_{0}^{1} \frac{\partial a}{\partial
+x^{i_0}} \mathrm{d}t \right)
+\mathrm{d}x^{i_0}\wedge\mathrm{d}x^{i_1}\wedge\cdots \wedge
+\mathrm{d}x^{i_p}
+\end{aligned}
+\]</span></p>
+<p>因此在这种情况下（1）也成立.</p>
+<p>现在，设 <span class="math inline">\(M\)</span> 是可收缩于点 <span
+class="math inline">\(x_0 \in M\)</span> 的流形，<span
+class="math inline">\(h\colon M\times I\rightarrow M\)</span>
+是定义3中的映射，<span class="math inline">\(\omega\)</span> 是 <span
+class="math inline">\(M\)</span> 上的 <span
+class="math inline">\(p+1\)</span> 形式. 显然 <span
+class="math inline">\(h \circ j_1\colon M\rightarrow M\)</span>
+是恒等映射，<span class="math inline">\(h\circ j_0\colon M\rightarrow
+x_0\)</span> 是 <span class="math inline">\(M\)</span> 到点 <span
+class="math inline">\(x_0\)</span> 的映射，所以 <span
+class="math inline">\((j_1^{*}\circ h^{*})\omega=\omega\)</span>，<span
+class="math inline">\((j_0^{*}\circ h^{*})\omega=0\)</span>.
+因此，这时从（1）推出 <span class="math display">\[
+    K(\mathrm{d}(h^{*}\omega))+\mathrm{d}(K(h^{*}\omega))=\omega.
+\tag{2}   
+\]</span> 又因为 <span class="math inline">\(\omega\)</span> 是 <span
+class="math inline">\(M\)</span> 上的闭形式，而且 <span
+class="math inline">\(\mathrm{d}(h^{*}\omega)=h^{*}(\mathrm{d}\omega)=0\)</span>，所以从（2）得到
+<span class="math display">\[
+    \mathrm{d}(K(h^{*}\omega))=\omega.
+\]</span></p>
+<p>因此，闭形式 <span class="math inline">\(\omega\)</span> 是微分形式
+<span class="math inline">\(\alpha=K(h^{*}\omega)\in
+\Omega^{p}(M)\)</span> 的外微分，即 <span
+class="math inline">\(\omega\)</span> 是 <span
+class="math inline">\(M\)</span> 上的恰当形式</p>
+<h3 id="证明二">证明二</h3>
+<p>引入向量场 <span class="math inline">\(X\)</span> 与微分形式 <span
+class="math inline">\(\omega\)</span> 的内积.</p>
+<p><strong>定义4.</strong> 设 <span class="math inline">\(X\)</span>
+是光滑流形 <span class="math inline">\(M\)</span> 上的向量场，<span
+class="math inline">\(\omega\)</span> 是 <span
+class="math inline">\(M\)</span> 上的 <span
+class="math inline">\(k\)</span> 次微分形式. 由关系式 <span
+class="math inline">\((i_{X}\omega)(X_1,\cdots
+,X_{k-1}):=\omega(X,X_1,\cdots ,X_{k-1})\)</span>（其中 <span
+class="math inline">\(X_1,\cdots ,X_{k-1}\)</span> 是 <span
+class="math inline">\(M\)</span> 上的向量场）确定的 <span
+class="math inline">\(k-1\)</span> 形式 <span
+class="math inline">\(i_{X}\omega\)</span> 称为场 <span
+class="math inline">\(X\)</span> 与微分形式 <span
+class="math inline">\(\omega\)</span> 的内积. 对于 <span
+class="math inline">\(0\)</span> 形式，即对于 <span
+class="math inline">\(M\)</span> 上的函数，取 <span
+class="math inline">\(i_{X}f=0\)</span>.</p>
+<p>先证明一个引理，</p>
+<p><strong>引理1.</strong> 设 <span class="math inline">\(t\mapsto h_t
+\in C^{\infty}(M,N)\)</span> 是光滑地依赖于参数 $t I $ 的一族从流形
+<span class="math inline">\(M\)</span> 到流形 <span
+class="math inline">\(N\)</span> 的映射. 则对于任何微分形式 <span
+class="math inline">\(\omega \in \Omega(N)\)</span>，以下同伦公式成立：
+<span class="math display">\[
+    \frac{\partial }{\partial
+t}(h_t^{*}\omega)(x)=\mathrm{d}h_t^{*}(i_{X}\omega)(x)+h_t^{*}(i_{X}
+\mathrm{d}\omega)(x), \tag{3}
+\]</span></p>
+<p>其中 <span class="math inline">\(x \in M\)</span>；<span
+class="math inline">\(X\)</span> 是 <span
+class="math inline">\(N\)</span> 上的向量场，并且 <span
+class="math inline">\(X(x,t)\in TN_{h_t(x)}\)</span>，而对于道路 <span
+class="math inline">\(t&#39;\mapsto h_{t&#39;}(x)\)</span>，<span
+class="math inline">\(X(x,t)\)</span> 是在 <span
+class="math inline">\(t&#39;=t\)</span> 时的速度向量.</p>
+<p><strong>证明：</strong> 首先如果在图 $^{n}U M $ 的局部坐标 <span
+class="math inline">\(x^{1},\cdots ,x^{n}\)</span> 下，微分形式 <span
+class="math inline">\(\omega|_{U}\)</span> 的表达式为 <span
+class="math display">\[
+    \sum_{1\leqslant i_1&lt;\cdots &lt;i_{k}\leqslant n}^{} a_{i_1\cdots
+i_k}(x)\mathrm{d}x^{i_1}\wedge\cdots \wedge
+\mathrm{d}x^{i_k}=\frac{1}{k!}a_{i_1\cdots
+i_k}\mathrm{d}x^{i_1}\wedge\cdots \wedge \mathrm{d}x^{i_k},
+\]</span></p>
+<p>而 <span class="math inline">\(X=X^{i}\frac{\partial }{\partial
+x^{i}}\)</span>，则</p>
+<p><span class="math display">\[
+\begin{aligned}
+    (i_{X}\omega)\left(\frac{\partial }{\partial x^{\alpha_2}},\cdots
+,\frac{\partial }{\partial x^{\alpha_{k}}}\right)&amp;=\omega \left(
+X^{i}\frac{\partial }{\partial x^{i}},\frac{\partial }{\partial
+x^{\alpha_2}},\cdots ,\frac{\partial }{\partial x^{\alpha_k}}
+\right)  \\
+    &amp;=X^{i}\omega \left( \frac{\partial }{\partial
+x^{i}},\frac{\partial }{\partial x^{\alpha_2}},\cdots ,\frac{\partial
+}{\partial x^{\alpha_k}} \right) \\
+    &amp;=\frac{1}{k!}X^{i}a_{i_1\cdots
+i_k}\mathrm{d}x^{i_1}\wedge\cdots \wedge \mathrm{d}x^{i_k}\left(
+\frac{\partial }{\partial x^{i}},\frac{\partial }{\partial
+x^{\alpha_2}},\cdots ,\frac{\partial }{\partial x^{\alpha_k}} \right) \\
+    &amp;=\frac{1}{(k-1)!}X^{i}a_{ii_2\cdots i_k}\delta_{\alpha_2\cdots
+\alpha_k}^{i_2\cdots i_k},
+\end{aligned}
+\]</span></p>
+<p>故 <span class="math display">\[
+    i_{X}\omega=\frac{1}{(k-1)!}X^{i}a_{ii_2\cdots
+i_k}\mathrm{d}x^{i_2}\wedge \cdots \wedge \mathrm{d}x^{i_k}.
+\]</span></p>
+<p>下面只对单项式 <span class="math inline">\(\omega\)</span> 证明（3）.
+如果 <span class="math inline">\(\omega\)</span> 是 <span
+class="math inline">\(N\)</span> 上的函数 <span
+class="math inline">\(\omega=f\)</span>，由定义知 <span
+class="math inline">\(i_{X}f=0\)</span>，故有 <span
+class="math display">\[
+    \frac{\partial }{\partial t}(h_t^{*}\omega)=\frac{\partial
+}{\partial t}(h_t^{*}f)=\frac{\partial f}{\partial y^{j}}\frac{\partial
+h_t^{j}}{\partial t}=X^{j}\frac{\partial f}{\partial
+y^{j}}=h_t^{*}(i_{X}\frac{\partial f}{\partial
+y^{j}}\mathrm{d}y^{j})=h_t^*(i_{X}\mathrm{d}\omega) \tag{4}
+\]</span></p>
+<p>即对 <span class="math inline">\(\omega=f\)</span>
+的情况，（3）成立.</p>
+<p>下面设 <span
+class="math inline">\(\omega=a(y)\mathrm{d}y^{j_1}\wedge\cdots \wedge
+\mathrm{d}y^{j_k}\)</span>，<span
+class="math inline">\(X(x,t)=X^{j}(x,t)\frac{\partial }{\partial
+y^{j}}=\frac{\partial h_t^{j}}{\partial y^{j}}\frac{\partial }{\partial
+y^{j}}\)</span>. 可得 <span class="math display">\[
+    i_{X}\omega=\sum_{p=1}^{k} (-1)^{p-1}X^{j_p}a(y)
+\mathrm{d}y^{j_1}\wedge\cdots \wedge
+\widehat{\mathrm{d}y^{j_p}}\wedge\cdots \wedge\mathrm{d}y^{j_k}
+\]</span></p>
+<p>一方面， <span class="math display">\[
+    \begin{aligned}
+        \frac{\partial }{\partial t}(h_t^{*}\omega)&amp;=\frac{\partial
+}{\partial t}\left( a\circ h_t \frac{\partial y^{j_1}}{\partial
+x^{i_1}}\cdots \frac{\partial y^{j_k}}{\partial
+x^{i_k}}\mathrm{d}x^{i_1}\wedge\cdots \wedge\mathrm{d}x^{i_k}
+\right)  \\
+        &amp;=\frac{\partial a}{\partial y^{j_0}} \frac{\partial
+h_t^{j_0}}{\partial t}\frac{\partial y^{j_1}}{\partial x^{i_1}}\cdots
+\frac{\partial y^{j_k}}{\partial x^{i_k}}\mathrm{d}x^{i_1}\wedge\cdots
+\wedge \mathrm{d}x^{i_k}
+        \end{aligned}
+\]</span> (5)</p>
+<p>另一方面，由于 <span
+class="math inline">\(\mathrm{d}h_t^{*}(i_{X}\omega)=h_t^{*}(\mathrm{d}i_{X}\omega)\)</span>，故右边
+<span
+class="math inline">\(=h_t^{*}(\mathrm{d}i_{X}\omega+i_{X}\mathrm{d}\omega)\)</span>，又
+<span class="math display">\[
+    \begin{aligned}
+    i_{X}\mathrm{d}\omega&amp;=i_{X}\left( \frac{\partial a}{\partial
+y^{j_0}}\mathrm{d}y^{j_0}\wedge\mathrm{d}y^{j_1}\wedge\cdots \wedge
+\mathrm{d}y^{j_k} \right)  \\
+    &amp;=\sum_{p=0}^{k} (-1)^{p}X^{j_p}\frac{\partial a}{\partial
+y^{j_0}}\mathrm{d}y^{i_0}\wedge\cdots \wedge
+\widehat{\mathrm{d}y^{j_p}}\wedge\cdots \wedge \mathrm{d}y^{j_k}\\
+    &amp;=\sum_{p=0}^{k} (-1)^{p}\frac{\partial h_t^{j_p}}{\partial
+y^{j_p}}\frac{\partial a}{\partial y^{j_0}}\mathrm{d}y^{i_0}\wedge\cdots
+\wedge \widehat{\mathrm{d}y^{j_p}}\wedge\cdots \wedge \mathrm{d}y^{j_k}
+    \end{aligned}
+\]</span> (6)</p>
+<p><span class="math display">\[
+    \begin{aligned}
+        \mathrm{d}i_{X}\omega&amp;=\mathrm{d}\left( \sum_{p=1}^{k}
+(-1)^{p-1} X^{j_p}a(y)\mathrm{d}y^{j_1}\wedge \cdots \wedge
+\widehat{\mathrm{d}y^{j_p}}\wedge\cdots \wedge\mathrm{d}y^{j_k}
+\right)  \\
+        &amp;=\mathrm{d}\left( \sum_{p=1}^{k} (-1)^{p-1}\frac{\partial
+h_t^{j_p}}{\partial t}a(y)\mathrm{d}y^{j_1}\wedge \cdots \wedge
+\widehat{\mathrm{d}y^{j_p}}\wedge\cdots \wedge\mathrm{d}y^{j_k} \right)
+\\
+        &amp;=\sum_{p=1}^{k} (-1)^{p-1}\frac{\partial
+h_t^{j_p}}{\partial t}\frac{\partial a}{\partial
+y^{j_0}}\mathrm{d}y^{j_0}\wedge\mathrm{d}y^{j_1}\wedge \cdots \wedge
+\widehat{\mathrm{d}y^{j_p}}\wedge\cdots \wedge\mathrm{d}y^{j_k}
+    \end{aligned}
+\]</span> (7)</p>
+<p>从而有 <span class="math display">\[
+    \begin{aligned}
+        h_t^{*}(\mathrm{d}i_{X}\omega+i_{X}\mathrm{d}\omega)&amp;=h_t^{*}
+\left( \frac{\partial h_t^{j_0}}{\partial t}\frac{\partial a}{\partial
+y^{j_0}}\mathrm{d}y^{j_1}\wedge\cdots \wedge \mathrm{d}y^{j_k}\right) \\
+        &amp;=\frac{\partial a}{\partial y^{j_0}} \frac{\partial
+h_t^{j_0}}{\partial t}\frac{\partial y^{j_1}}{\partial x^{i_1}}\cdots
+\frac{\partial y^{j_k}}{\partial x^{i_k}}\mathrm{d}x^{i_1}\wedge\cdots
+\wedge \mathrm{d}x^{i_k}
+    \end{aligned}
+\]</span> (8)</p>
+<p>对比（5）和（8）知（3）成立. 由各算子的线性性知对一般的 <span
+class="math inline">\(\omega\)</span>，（3）都成立.</p>
+<p>回到庞加莱定理，在引理中取 <span class="math inline">\(M=N\)</span>.
+设 <span class="math inline">\(M\)</span> 上有一闭形式 <span
+class="math inline">\(\omega\)</span>，则 <span class="math display">\[
+    \frac{\partial }{\partial
+t}(h_t^{*}\omega)(x)=\mathrm{d}h_t^{*}(i_{X}\omega)(x). \tag{9}
+\]</span></p>
+<p>因为 <span class="math inline">\(M\)</span> 可缩于点 <span
+class="math inline">\(x_0\)</span>，由定义知存在对参数 <span
+class="math inline">\(t \in [0,1]\)</span> 光滑依赖的 <span
+class="math inline">\(M\)</span> 到 <span
+class="math inline">\(M\)</span> 的映射，且对任意 <span
+class="math inline">\(x \in M\)</span>， <span
+class="math inline">\(h_1(x)=x\)</span>，<span
+class="math inline">\(h_0(x)=x_0\)</span>. 故在（9）中对 <span
+class="math inline">\(t\)</span> 从<span
+class="math inline">\(0\)</span>到<span
+class="math inline">\(1\)</span>积分，得 <span class="math display">\[
+    \omega=h_1^{*}(\omega)-h_0^{*}(\omega)=\int_{0}^{1} \frac{\partial
+}{\partial t}(h_t^{*}\omega) \mathrm{d}t=\int_{0}^{1}
+\mathrm{d}h_t^{*}(i_{X}\omega) \mathrm{d}t=\mathrm{d} \int_{0}^{1}
+h_t^{*}(i_{X}\omega) \mathrm{d}t. \tag{10}
+\]</span></p>
+<p>即 <span class="math inline">\(\omega\)</span> 是 <span
+class="math inline">\(M\)</span> 上的恰当形式.</p>
+<p>由于光滑流形局部同胚于欧氏空间，而欧氏空间是可缩的，所以流形上的任何闭微分形式在局部都是恰当的.
+但是，并非总是能够把这些局部原像粘合为整个流形上的一个微分形式，这与流形的拓扑结构有关.
+参考文献中提供了 <span class="math inline">\(\mathbb{R}^{2}\backslash
+0\)</span> 上的微分形式 <span class="math inline">\(\omega=\displaystyle
+\frac{-y\mathrm{d}x+x\mathrm{d}y}{x^{2}+y^{2}}\)</span>
+这样一个例子.</p>
+<h2 id="de-rham-上同调群">De Rham 上同调群</h2>
+<p><strong>定义5.</strong> 商空间 <span class="math display">\[
+    H^{p}(M):=Z^{p}(M)/ B^{p}(M) \tag{11}
+\]</span></p>
+<p>称为流形 <span class="math inline">\(M\)</span> 的（实系数） <span
+class="math inline">\(p\)</span> 维上同调群（关于加法）.</p>
+<p>该定义由De Rham提出，不难验证良定义性. 因此，如果两个闭形式 <span
+class="math inline">\(\omega_1,\omega_2 \in Z^{p}(M)\)</span> 满足 <span
+class="math inline">\(\omega_1-\omega_2 \in
+B^{p}(M)\)</span>，则这两个闭形式属于同一个上同调类，即它们是上同调的.
+用记号 <span class="math inline">\([\omega]\)</span> 表示微分形式 <span
+class="math inline">\(\omega \in Z^{p}(M)\)</span> 所属的上同调类. 因为
+<span class="math inline">\(Z^{p}(M)\)</span> 是算子 <span
+class="math inline">\(\mathrm{d}^{p}\colon \Omega^{p}(M)\rightarrow
+\Omega^{p+1}(M)\)</span> 的核，而 <span
+class="math inline">\(B^{p}(M)\)</span> 是算子 <span
+class="math inline">\(\mathrm{d}^{p-1}\colon \Omega^{p-1}(M)\rightarrow
+\Omega^{p}(M)\)</span> 的像，所以可以把（11）改写为 <span
+class="math display">\[
+    H^{p}(M)=\text{Ker}\ \mathrm{d}^{p}/\text{Im}\ \mathrm{d}^{p-1}.
+\]</span></p>
+<p>设 <span class="math inline">\(M\)</span> 是一个光滑流形，<span
+class="math inline">\(H^{p}(M)\)</span> 是 <span
+class="math inline">\(M\)</span> 的 <span
+class="math inline">\(p\)</span> 维上同调群.</p>
+<p><strong>证明：</strong> 1是定义3.1的直接结果. 2是庞加莱定理的推论.
+3是由于如果连通流形上的函数 <span class="math inline">\(f\colon
+M\rightarrow \mathbb{R}\)</span> 满足 <span
+class="math inline">\(\mathrm{d}f=0\)</span>，则 <span
+class="math inline">\(f\)</span> 为常数.</p>
+<p>通过庞加莱定理的证明二，可以发现：如果把光滑映射 <span
+class="math inline">\(h\colon M\times I\rightarrow M\)</span>
+看作一族依赖于参数 <span class="math inline">\(t \in I\)</span> 的映射
+<span class="math inline">\(h_t\colon M\rightarrow M\)</span>，则对于
+<span class="math inline">\(M\)</span> 上的任何一个闭形式 <span
+class="math inline">\(\omega\)</span>，有 <span class="math display">\[
+    h_{t}^{*}(\omega)=\mathrm{d}\int_{0}^{t} h_t^{*}(i_{X}\omega)
+\mathrm{d}t
+\]</span> 这说明所有微分形式 <span class="math inline">\(h_t^{*}\omega(t
+\in I)\)</span> 都属于同一个上同调类.
+通过引理，我们可以证明一个关于同伦与上同调群的初步结论.</p>
+<p>如果 <span class="math inline">\(K\)</span>
+是可收缩于一个点的流形，则对于任何一个流形 <span
+class="math inline">\(M\)</span> 和任何一个整数 <span
+class="math inline">\(p\)</span>，等式 <span
+class="math inline">\(H^{p}(K\times M)=H^{p}(M)\)</span> 成立.</p>
+<p><strong>证明：</strong> 由 <span class="math inline">\(K\)</span>
+可缩于一点知，对于任何一个流形 <span
+class="math inline">\(M\)</span>，存在一族光滑地依赖于参数 <span
+class="math inline">\(t \in I=[0,1]\)</span> 的从 <span
+class="math inline">\(M\times K\)</span> 到自身的映射，满足任意 <span
+class="math inline">\(x \in M,p \in K\)</span>， <span
+class="math display">\[
+    h_1(x,p)=(x,p),\ h_0(x,p)=(x,p_0)
+\]</span></p>
+<p>所以对于 <span class="math inline">\(M\times K\)</span>
+上的任何一个闭形式 <span class="math inline">\(\omega\)</span>， <span
+class="math inline">\(h_1^{*}\omega\)</span> 和 <span
+class="math inline">\(h_0^{*}\omega\)</span> 属于同一个上同调类，故
+<span class="math inline">\(H^{p}(K\times M)=H^{p}(M\times
+{p_0})\)</span>. 显然 <span
+class="math inline">\(H^{p}(M\times{p_0})=H^{p}(M)\)</span>，从而有
+<span class="math inline">\(H^{p}(K\times M)=H^{p}(M)\)</span> 成立.</p>
+<p>事实上，<span class="math inline">\(M\times K\)</span> 和 <span
+class="math inline">\(M\)</span> 是同伦的. 更一般的，De Rham
+上同调群是一个同伦不变量，但证明涉及上链复形等高级内容，超出了本文范围.
+限于篇幅所限，不介绍同伦的概念和上同调群同伦不变量的性质.</p>
+<p>有一个性质是可以在此证明的：De Rham 上同调群是一个拓扑不变量，即De
+Rham 上同调群关于微分同胚在同构意义下不变. 因此，Re Rham
+上同调群能够刻画一部分的流形拓扑性质，由于同伦的拓扑空间不一定同胚，Re
+Rham 上同调群不能完全刻画流形的拓扑性质.</p>
+<p>如果 <span class="math inline">\(\varphi\colon M\rightarrow
+N\)</span> 是一个微分同胚，那么 <span class="math display">\[
+    \varphi^{*}\colon H^{p}(N)\rightarrow H^{p}(M)
+\]</span> 是一个线性同构.</p>
+<p><strong>定义6.</strong>定义 <span class="math inline">\([\omega]\in
+H^{k}(M)\)</span> 和 <span class="math inline">\([\eta]\in
+H^{l}(M)\)</span> 之间的杯积 <span class="math display">\[
+    [\omega]\cup [\eta]:=[\omega \wedge \eta] \in H^{k+l}(M).    
+\]</span></p>
+<p>我们需要验证良定义性. 设 <span class="math inline">\(\omega \in
+Z^{k}(M)\)</span>，<span class="math inline">\(\eta \in
+Z^{l}(M)\)</span>，那么 <span class="math display">\[
+    \mathrm{d}(\omega\wedge \eta)=\mathrm{d}\omega\wedge
+\eta+(-1)^{k}\omega \wedge \mathrm{d}\eta=0,
+\]</span> 即 <span class="math inline">\(\omega\wedge \eta \in
+Z^{k+l}(M)\)</span>. 另外，对于任意 <span class="math inline">\(\xi_1
+\in \Omega^{k-1}(M)\)</span> 和 <span class="math inline">\(\xi_2 \in
+\Omega^{l-1}(M)\)</span>， <span class="math display">\[
+    (\omega+\mathrm{d}\xi_1)\wedge (\eta+\mathrm{d}\xi_2)=\omega\wedge
+\eta +\mathrm{d}[(-1)^{k}\omega\wedge\xi_2+(-1)^{k-1}\xi_1 \wedge
+\eta+(-1)^{k-1}\xi_1\wedge\xi_2].
+\]</span> 即该定义是良定的.</p>
+<p>类似地假设 <span class="math inline">\(\varphi \colon M\rightarrow
+N\)</span> 光滑. 那么由 <span
+class="math inline">\(\mathrm{d}\varphi^{*}=\varphi^{*}\mathrm{d}\)</span>
+得 <span class="math display">\[
+    \varphi^{*}(Z^{k}(N))\subset Z^{k}(M), \quad
+\varphi^{*}(B^{k}(N))\subset B^{k}(M).
+\]</span> 从而 <span class="math inline">\(\varphi^{*}\colon
+\Omega^{k}(N)\rightarrow \Omega^{k}(M)\)</span>
+诱导出上同调群上的拉回映射 <span class="math inline">\(\varphi^{*}\colon
+H^{k}(N)\rightarrow H^{k}(M)\)</span>： <span class="math display">\[
+    \varphi^{*}([\omega]):=[\varphi^{*}\omega].
+\]</span> 显然 <span class="math inline">\(\varphi^{*}\)</span>
+是一个群同态. 容易验证有 - <span class="math inline">\((\psi\circ
+\varphi)^{*}=\varphi^{*}\circ \psi^{*}\)</span>. - <span
+class="math inline">\(\text{Id}^{*}=\text{Id}\)</span>.</p>
+<p>取 <span
+class="math inline">\(\psi=\varphi^{-1}\)</span>，就知道命题3.4成立.</p>
+<h2 id="结语">结语</h2>
+<p>本文给出了庞加莱定理的两个证明，后一种尤其具有启发意义，因为其与同伦有着密切关系，给出的引理还可以推出Cartan
+同伦公式.
+庞加莱引理的本质是局部的，大范围的结果是本文未介绍的德拉姆定理.
+本文还介绍了De Rham
+上同调群，这是代数拓扑中极为重要和基础的概念，与之相关的同调群可以配合着导出
+Stokes 公式，从中可以一窥数学的对称与美妙.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8B%93%E6%89%91%E5%AD%A6/" class="category-chain-item">拓扑学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>庞加莱定理及其应用</div>
+      <div>http://example.com/2022/12/26/庞加莱定理及其应用/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 26, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/19/%E5%87%A0%E4%B8%AA%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1%E7%9B%B8%E5%85%B3%E7%9A%84%E9%97%AE%E9%A2%98/" title="几个数理统计相关的问题">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">几个数理统计相关的问题</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/12/%E6%B5%85%E8%B0%88Hartman-Grobman%E5%AE%9A%E7%90%86/" title="浅谈Hartman-Grobman定理">
+                        <span class="hidden-mobile">浅谈Hartman-Grobman定理</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

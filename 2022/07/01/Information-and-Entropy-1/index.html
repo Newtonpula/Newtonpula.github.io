@@ -1,0 +1,1015 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Chapter 1~5">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Information and Entropy (1)">
+<meta property="og:url" content="http://example.com/2022/07/01/Information-and-Entropy-1/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Chapter 1~5">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/shannon.jpg">
+<meta property="article:published_time" content="2022-07-01T11:42:26.000Z">
+<meta property="article:modified_time" content="2022-07-07T12:09:32.344Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/shannon.jpg">
+  
+  
+  
+  <title>Information and Entropy (1) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Information and Entropy (1)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-01 19:42" pubdate>
+          July 1, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          69 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Information and Entropy (1)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="bits">Bits</h1>
+<h2 id="the-boolean-bit">The Boolean Bit</h2>
+<h2 id="the-circuit-bit">The Circuit Bit</h2>
+<h2 id="the-control-bit">The Control Bit</h2>
+<h2 id="the-physical-bit">The Physical Bit</h2>
+<h2 id="the-quantum-bit">The Quantum Bit</h2>
+<p>There are three features of quantum mechanics, reversibility,
+superposition, and entanglement, that make qubits or collections of
+qubits different from Boolean bits.</p>
+<h2 id="the-classical-bit">The Classical Bit</h2>
+<h1 id="codes">Codes</h1>
+<h2 id="symbol-space-size">Symbol Space Size</h2>
+<h2 id="use-of-spare-capacity">Use of Spare Capacity</h2>
+<p>There are many strategies to deal with unused code patterns. Here are
+some: - Ignore - Map to other values - Reserve for future expansion -
+Use for control codes - Use for common abbreviations</p>
+<h3 id="binary-coded-decimal-bcd">Binary Coded Decimal (BCD)</h3>
+<h3 id="genetic-code">Genetic Code</h3>
+<h3 id="telephone-area-codes">Telephone Area Codes</h3>
+<h3 id="ip-addresses">IP Addresses</h3>
+<h3 id="ascii">ASCII</h3>
+<h2 id="extension-of-codes">Extension of Codes</h2>
+<h2 id="fixed-length-and-variable-length-codes">Fixed-Length and
+Variable-Length Codes</h2>
+<h3 id="morse-code">Morse Code</h3>
+<h2 id="detail-ascii">Detail: ASCII</h2>
+<h2 id="detail-integer-codes">Detail: Integer Codes</h2>
+<h3 id="binary-code">Binary Code</h3>
+<h3 id="binary-gray-code">Binary Gray Code</h3>
+<h3 id="s-complement">2's Complement</h3>
+<h3 id="signmagnitude">Sign/Magnitude</h3>
+<h3 id="s-complement-1">1's Complement</h3>
+<h2 id="detail-the-genetic-code">Detail: The Genetic Code</h2>
+<h2 id="detail-ip-addresses">Detail: IP Addresses</h2>
+<h2 id="detail-morse-code">Detail: Morse Code</h2>
+<h3 id="problem-2-universality">Problem 2: Universality</h3>
+<p>A Boolean function <span class="math inline">\(F(A,B)\)</span> is
+said to be universal if any arbitrary boolean if any arbitrary boolean
+function can be constructed by using nested <span
+class="math inline">\(F(A,B)\)</span> functions.</p>
+<ul>
+<li><p><span class="math inline">\(OR\)</span> and <span
+class="math inline">\(AND\)</span> are not universal functions since
+<span class="math inline">\(OR\)</span> (<span
+class="math inline">\(AND\)</span>) is monotonic
+increasing(decreasing)</p></li>
+<li><p><span class="math inline">\(XOR\)</span> is not universal. We
+define a nested function <span class="math inline">\(XOR\)</span>s to be
+an expression <span class="math inline">\(f\)</span> drawn from the set
+<span
+class="math inline">\(EXPR=\{0,1,A,B,XOR(f_{\alpha},f_{\beta})\}\)</span>,
+where <span class="math inline">\(f_{\alpha}\)</span> and <span
+class="math inline">\(f_{\beta}\)</span> are also drawn from the set
+<span class="math inline">\(EXPR\)</span>, but only a finite number of
+times. Consider the property <span class="math inline">\(E\)</span>: a
+function <span class="math inline">\(f_{\gamma}\)</span> has property
+<span class="math inline">\(E\)</span> if and only if <span
+class="math inline">\(0,2\)</span>, or <span
+class="math inline">\(4\)</span> of these values is <span
+class="math inline">\(1\)</span>. If function <span
+class="math inline">\(f\)</span> is equal to <span
+class="math inline">\(AND(A,B)\)</span>, then it does not have property
+<span class="math inline">\(E\)</span>. <span
+class="math inline">\(f\)</span> cannot be equal to <span
+class="math inline">\(A,B,0\)</span> or <span
+class="math inline">\(1\)</span>, and so it must be of the form <span
+class="math inline">\(XOR(f_{\alpha},f_{\beta})\)</span>. Noting that
+<span class="math inline">\(XOR\)</span> produces a <span
+class="math inline">\(1\)</span> only upon input of a <span
+class="math inline">\(1\)</span> and a <span
+class="math inline">\(0\)</span>, i.e., an 'unpaired' <span
+class="math inline">\(1\)</span>. We obtain that exactly one of <span
+class="math inline">\(f_{\alpha}\)</span> and <span
+class="math inline">\(f_{\beta}\)</span> has odd output, namely not
+satisfying property <span class="math inline">\(E\)</span>. (assume
+<span class="math inline">\(f_{\alpha}\)</span> has odd output) So <span
+class="math inline">\(f_{\alpha}\)</span> is another <span
+class="math inline">\(XOR\)</span> function. Eventually you run out of
+functions and thus <span class="math inline">\(f\)</span> cannot be
+equal to <span class="math inline">\(AND(A,B)\)</span>.</p></li>
+<li><p><span class="math inline">\(NAND\)</span> is a universal
+function. Actually: <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">b_15</span>=N <br><span class="hljs-attr">b_14</span>=NAND(A,B)<br><span class="hljs-attr">b_13</span>=NAND(b_14,A)<br><span class="hljs-attr">b_12</span>=NAND(A,<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_11</span>=NAND(b_12,B)<br><span class="hljs-attr">b_10</span>=NAND(B,<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_9</span>=NAND(NAND(A,B),NAND(b_12,b_10))<br><span class="hljs-attr">b_8</span>=NAND(NAND(b_10,b_12),<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_7</span>=NAND(b_8,<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_6</span>=NAND(b_9,<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_5</span>=NAND(b_10,<span class="hljs-number">1</span>)<br><span class="hljs-attr">b_4</span>=NAND(b_11,<span class="hljs-number">1</span>) <br><span class="hljs-attr">b_3</span>=NAND(b_12,<span class="hljs-number">1</span>) <br><span class="hljs-attr">b_2</span>=NAND(b_14,<span class="hljs-number">1</span>) <br><span class="hljs-attr">b_1</span>=NAND(b_13,<span class="hljs-number">1</span>) <br><span class="hljs-attr">b_0</span>=Z <br></code></pre></td></tr></table></figure></p></li>
+</ul>
+<h1 id="compression">Compression</h1>
+<p>two types of compression: - Lossless or reversible compression -
+Lossy or irreversible compression</p>
+<h2 id="variable-length-encoding">Variable-Length Encoding</h2>
+<p>We put off the discussion of this technique until Chapter 5.</p>
+<h2 id="run-length-encoding">Run Length Encoding</h2>
+<p>Ex: "a B B B B B a a a B B a a a a" could be encoded as "a 1 B 5 a 3
+B 2 a 4".</p>
+<h2 id="static-dictionary">Static Dictionary</h2>
+<h2 id="semi-adaptive-dictionary">Semi-adaptive Dictionary</h2>
+<h2 id="dynamic-dictionary">Dynamic Dictionary</h2>
+<p><strong>LZW compression technique</strong></p>
+<h3 id="the-lzw-patent">The LZW Patent</h3>
+<h2 id="irreversible-techniques">Irreversible Techniques</h2>
+<h2 id="detail-lzw-compression">Detail: LZW Compression</h2>
+<hr />
+<p>LZW编码的学习与实现
+https://blog.csdn.net/krossford/article/details/49157531?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-3&amp;utm_source=qq&amp;utm_medium=social&amp;utm_oi=808074114588893184</p>
+<hr />
+<p>LZW算法可以实现动态字典，可以做到实时编码、传输、解码（而不是将输入全部分析一遍后利用字符出现频率什么的来编码压缩）。一般来说传输会比输入延迟一个字符，这也意味着输入相比传输要提前看一个字符从而确定动态字典的编写。通常是输入
+<span class="math inline">\(\Rightarrow\)</span> （输入方）添加入字典
+<span class="math inline">\(\Rightarrow\)</span> 传输 <span
+class="math inline">\(\Rightarrow\)</span> （输出方）添加入字典 <span
+class="math inline">\(\Rightarrow\)</span>
+输出。在ASCII码的语境下，输入使用8位字符（0-255），而传输使用9位字符（0-511）</p>
+<p>关于LZW算法还有一个特殊点：当输入的字符串第一次出现连续三个相同字符时（比如说rrr），将会出现传输某个（输出方）字典中没有的编码的编码。当输入第二个r之后，才会传输第一个r；输入第三个r后并不会传输（因为rr在输入方字典中出现过）；输入第三个r后的字符（比如说i）后传输rr的编码，当然此时这个编码不存在于输出方的字典中，输出方需要对该情况作特殊处理。书上给出的我看不懂
+&gt; Normally, on receipt of a transmitted codeword, the decoder can
+look up its string in the dictionary and then output it and use its
+first character to complete the partially formed last dictionary entry,
+and then start the next dictionary entry. Thus only one dictionary
+lookup is needed. However, the algorithm presented above uses two
+lookups, one for the first character, and a later one for the entire
+string. Why not use just one lookup for greater efficiency? &gt;
+&gt;There is a special case illustrated by the transmission of code 271
+in this example, where the string corresponding to the received code is
+not complete. The first character can be found but then before the
+entire string is retrieved, the entry must be completed. This happens
+when a character or a string appears for the first time three times in a
+row, and is therefore rare. The algorithm above works correctly, at a
+cost of an extra lookup that is seldom needed and may slow the algorithm
+down.</p>
+<h2 id="detail-2-d-discrete-cosine-transformation">Detail: 2-D Discrete
+Cosine Transformation</h2>
+<h3 id="discrete-linear-transformation">Discrete Linear
+Transformation</h3>
+<h3 id="discrete-cosine-transformation">Discrete Cosine
+Transformation</h3>
+<p>这部分看Timothy
+Sauer的数值分析p409-p449，但注意这本书的DFT插值好像有非常大的问题.</p>
+<h1 id="errors">Errors</h1>
+<h2 id="extension-of-system-model">Extension of System Model</h2>
+<p>Extend the model for information handling to include "channel
+coding." The channel encoder adds bits to the message so that in case it
+gets corrupted in some way, the channel encoder will know that and
+possibly even be able to repair the damage.</p>
+<h2 id="how-do-errors-happen">How do Errors Happen?</h2>
+<p>In the usual case, we will usually assume that different bits get
+corrupted independently, but in some cases errors in adjacent bits are
+not independent of each other, but instead have a common underlying
+cause (i.e., the errors may happen in bursts).</p>
+<h2 id="detection-vs.-correction">Detection vs. Correction</h2>
+<p>detect the error and then let the person or system that uses the
+output know that an error has occurred.</p>
+<p>Have the channel decoder attempt to repair the message by correcting
+the error.</p>
+<p>In both cases, extra bits are added to the messages to make them
+longer, so the message contains redundancy. The channel, by allowing
+errors to occur, actually introduces information. The decoder is
+irreversible in that it discards some information but keep the original
+information if well designed.</p>
+<h2 id="hamming-distance">Hamming Distance</h2>
+<p>The number of bits that are different between the two.</p>
+<h2 id="single-bits">Single Bits</h2>
+<h2 id="multiple-bits">Multiple Bits</h2>
+<h3 id="parity">Parity</h3>
+<p>Detect: Chang the 8-bit string into 9 bits. The added bit would be 1
+if the number of bits equal to 1 is odd, and 0 otherwise. It is most
+often used when the likelihood of an error is very small, and there is
+no reason to suppose that errors of adjacent bits occur together, and
+the receiver is able to request a retransmission of the data.</p>
+<h3 id="rectangular-codes">Rectangular Codes</h3>
+<p>Rectangular codes can provide single error correction and double
+error detection simultaneously. Refer to p48.</p>
+<h3 id="hamming-code">Hamming Code</h3>
+<hr />
+<p>汉明码（Hamming Code）原理及实现
+https://www.cnblogs.com/Philip-Tell-Truth/p/6669854.html</p>
+<hr />
+<h2 id="block-codes">Block Codes</h2>
+<p>If the number of data bits in the block is <span
+class="math inline">\(k\)</span>, the the number of parity bits is <span
+class="math inline">\(n-k\)</span>, and it is customary to call such a
+code an <span class="math inline">\((n,k)\)</span> block code. Thus the
+Hamming Code just described is <span
+class="math inline">\((7,4)\)</span>.</p>
+<p>It is also customary to include in the parentheses the minimum
+Hamming distance <span class="math inline">\(d\)</span> between any two
+valid codewords, or original data items, in the form <span
+class="math inline">\((n,k,d)\)</span>. We have following block
+types</p>
+<table>
+<thead>
+<tr class="header">
+<th>Parity bits</th>
+<th>Block size</th>
+<th>Payload</th>
+<th>Code rate</th>
+<th>Block code type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>0.33</td>
+<td>(3,1,3)</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>7</td>
+<td>4</td>
+<td>0.57</td>
+<td>(7,4,3)</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>15</td>
+<td>11</td>
+<td>0.73</td>
+<td>(15,11,3)</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>31</td>
+<td>26</td>
+<td>0.84</td>
+<td>(31,26,3)</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>63</td>
+<td>57</td>
+<td>0.90</td>
+<td>(63,57,3)</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>127</td>
+<td>120</td>
+<td>0.94</td>
+<td>(127,120,3)</td>
+</tr>
+<tr class="odd">
+<td>8</td>
+<td>255</td>
+<td>247</td>
+<td>0.97</td>
+<td>(255,247,3)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="advanced-codes">Advanced Codes</h2>
+<p>Bose-Chaudhuri-Hocquenhem (BCH) codes.</p>
+<p>Irving S. Reed and Gustave Solomon of MIT Lincoln Laboratory. The
+<span class="math inline">\((256,224,5)\)</span> and <span
+class="math inline">\((224,192,5)\)</span> Reed-Solomon codes are used
+in CD players.</p>
+<h2 id="detail-check-digits">Detail: Check Digits</h2>
+<h3 id="credit-cards">Credit Cards</h3>
+<h3 id="isbn">ISBN</h3>
+<h3 id="issn">ISSN</h3>
+<h1 id="probability">Probability</h1>
+<h2 id="events">Events</h2>
+<p><strong>Outcome</strong> is the symbol selected, whether or not it is
+known to us. <strong>Event</strong> is a subset of the possible outcomes
+of an experiment.</p>
+<p>When a selection is made, then, there are several events. One is the
+outcome itself. This is called a <strong>fundamental event</strong>.</p>
+<p>The special event in which any symbol at all is selected is called
+<strong>universal event</strong>. The special "event" in which no symbol
+is seleted is called the <strong>null event</strong>. The null event
+cannot happen because an outcome is only defined after a selection is
+made.</p>
+<p>A set of events which do not overlap is said to be <strong>mutually
+exclusive</strong>. A set of events, one of which is sure to happen, is
+known as <strong>exhaustive</strong>. A set of events that are both
+mutually exclusive and exhaustive is known as a
+<strong>partition</strong>. The partition that consists of all the
+fundamental events will be called the <strong>fundamental
+partition</strong>.</p>
+<p>A partition consisting of a small number of events, some of which may
+correspond to many symbols, is known as a <strong>coarse-grained
+partition</strong> whereas a partition with many events is a
+<strong>fine-grained partition</strong>.</p>
+<h2 id="known-outcomes">Known Outcomes</h2>
+<h2 id="unknown-outcomes">Unknown Outcomes</h2>
+<h2 id="joint-events-and-conditional-probabilities">Joint Events and
+Conditional Probabilities</h2>
+<p><span class="math display">\[
+    p(A,B)=p(B)p(A|B)=p(A)p(B|A) \tag{5.5}
+\]</span></p>
+<p>This formula is known as Bayes' Theorem.</p>
+<h2 id="averages">Averages</h2>
+<h2 id="information">Information</h2>
+<p><span class="math display">\[
+    I=\sum_{i}^{} p(A_i)\log _{2}\left( \frac{1}{p(A_i)}\right)
+\tag{5.14}
+\]</span></p>
+<p>This quantity is called the <strong>entropy of a source</strong>.</p>
+<h2 id="properties-of-information">Properties of Information</h2>
+<p>If there are two events in the partition with probabilities <span
+class="math inline">\(p\)</span> and <span
+class="math inline">\((1-p)\)</span>, the information per symbol is
+<span class="math display">\[
+    I=p\log _{2}(\frac{1}{p})+(1-p)\log _{2}(\frac{1}{1-p}) \tag{5.16}
+\]</span> which attains its largest (1 bit) for <span
+class="math inline">\(p=0.5\)</span>.</p>
+<p>For partitions with more than two possible events the information per
+symbol can be higher. If there are <span
+class="math inline">\(n\)</span> possible events the information per
+symbol lies between <span class="math inline">\(0\)</span> and <span
+class="math inline">\(\log _{2}(n)\)</span> bits, the maximum value
+being achieved when all probabilities are equal.</p>
+<h2 id="efficient-source-coding">Efficient Source Coding</h2>
+<p>If a source has <span class="math inline">\(n\)</span> possible
+symbols then a fixed-length code for it would require <span
+class="math inline">\(\log _{2}(n)\)</span> bits per symbol.</p>
+<p>There is a general procedure for constructing codes of this sort
+which are very efficient (in fact, they require an average of less tha
+<span class="math inline">\(I+1\)</span> bits per symbol, even if <span
+class="math inline">\(I\)</span> is considerably below <span
+class="math inline">\(\log _{2}(n)\)</span>). We'll introduce Huffman
+codes below.</p>
+<h2 id="detail-efficient-source-code">Detail: Efficient Source Code</h2>
+<p>Huffman code: p66-p68</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%BF%A1%E6%81%AF%E8%AE%BA/" class="category-chain-item">信息论</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Information and Entropy (1)</div>
+      <div>http://example.com/2022/07/01/Information-and-Entropy-1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 1, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/04/Neuronal-Dynamics-4/" title="Neuronal Dynamics (4)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Neuronal Dynamics (4)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/28/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%8810%EF%BC%89/" title="常微分方程（10）">
+                        <span class="hidden-mobile">常微分方程（10）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

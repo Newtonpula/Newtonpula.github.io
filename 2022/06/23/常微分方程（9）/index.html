@@ -1,0 +1,1102 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本章讨论某些二阶微分方程的边值问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常微分方程（9）">
+<meta property="og:url" content="http://example.com/2022/06/23/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%889%EF%BC%89/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="本章讨论某些二阶微分方程的边值问题">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-06-23T04:58:46.000Z">
+<meta property="article:modified_time" content="2022-07-19T13:29:35.804Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+  
+  
+  
+  <title>常微分方程（9） - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常微分方程（9）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-23 12:58" pubdate>
+          June 23, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          72 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常微分方程（9）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="边值问题">边值问题</h1>
+<h2 id="sturm-比较定理">Sturm 比较定理</h2>
+<p>考虑二阶线性微分方程 <span class="math display">\[
+    y&#39;&#39;+p(x)y&#39;+q(x)y=0 \tag{9.1}
+\]</span> 其中 <span class="math inline">\(p(x)\)</span> 和 <span
+class="math inline">\(q(x)\)</span> 在区间 <span
+class="math inline">\(J\)</span> 上是连续的.</p>
+<p><strong>引理9.1</strong>：（9.1）的任何非零解在区间 <span
+class="math inline">\(J\)</span> 内的零点都是孤立的.</p>
+<p>由解的唯一性易知.</p>
+<p><strong>定理9.1</strong>：设 <span
+class="math inline">\(y=\varphi_1(x)\)</span> 和 <span
+class="math inline">\(y=\varphi_2(x)\)</span> 是（9.1）的两个非零解，则
+- 它们线性无关，当且仅当它们有相同的零点； -
+它们线性无关，当且仅当它们的零点互相交错.</p>
+<p><strong>证</strong>；利用 Wronsky 行列式和 Liouville
+公式，考虑相邻零点处的导数值即可.</p>
+<p><strong>定理9.2（Sturm 比较定理）</strong>：两个齐次线性微分方程
+<span class="math display">\[
+    y&#39;&#39;+P(x)y&#39;+Q(x)y=0 \tag{9.6}
+\]</span> 和 <span class="math display">\[
+    y&#39;&#39;+p(x)y&#39;+R(x)y=0 \tag{9.7}
+\]</span> 这里系数函数 <span class="math inline">\(p(x),Q(x)\)</span> 和
+<span class="math inline">\(R(x)\)</span> 在区间 <span
+class="math inline">\(J\)</span> 上是连续的，而且假设不等式 <span
+class="math display">\[
+    R(x)\geqslant Q(x) \quad (x \in J) \tag{9.8}
+\]</span> 成立. 又设 <span class="math inline">\(y=\varphi(x)\)</span>
+是方程（9.6）的一个非零解，而且 <span class="math inline">\(x_1\)</span>
+和 <span class="math inline">\(x_2\)</span> 是它的两个相邻的零点.
+则（9.7）的任何非零解 <span class="math inline">\(y=\psi(x)\)</span> 在
+<span class="math inline">\(x_1\)</span> 和 <span
+class="math inline">\(x_2\)</span> 之间至少有一个零点 <span
+class="math inline">\(x_0\)</span>（<span class="math inline">\(x_0 \in
+[x_1,x_2]\)</span>）.</p>
+<p>如果（9.8）变为 <span class="math display">\[
+    R(x)&gt;Q(x) \tag{9.8*}
+\]</span> 那么可以加强为 <span class="math inline">\(x_0 \in
+(x_1,x_2)\)</span></p>
+<p><strong>证</strong>：关键是构造出函数 <span
+class="math inline">\(v(x)=\psi(x)\varphi&#39;(x)-\varphi(x)\psi&#39;(x)\)</span>
+并讨论 <span class="math inline">\(v&#39;(x)+p(x)v(x)\)</span> 在 <span
+class="math inline">\([x_1,x_2]\)</span> 上恒正或恒负.</p>
+<p><strong>推论</strong>：方程（9.1）的任何两个线性无关的解的零点是相互交错的.
+（令 <span class="math inline">\(R(x)=Q(x)\)</span>）</p>
+<p>设 <span class="math inline">\(y=\varphi(x)\)</span>
+是（9.1）的一个非零解. 若 <span
+class="math inline">\(y=\varphi(x)\)</span> 在区间 <span
+class="math inline">\(J\)</span> 上最多只有一个零点，则称它在 <span
+class="math inline">\(J\)</span>
+上是<strong>非振动的</strong>；否则，称它在 <span
+class="math inline">\(J\)</span> 上是<strong>振动的</strong>. 如果 <span
+class="math inline">\(y=\varphi(x)\)</span> 在区间 <span
+class="math inline">\(J\)</span> 上有无限个零点，则称它在 <span
+class="math inline">\(J\)</span> 上是<strong>无限振动的</strong>.</p>
+<p><strong>判别法1</strong>：设（9.1）中的系数函数 <span
+class="math display">\[
+    q(x)\leqslant 0 \quad(x \in J)
+\]</span> 则它的一切非零解都是非振动的. （与 <span
+class="math inline">\(y&#39;&#39;+p(x)y&#39;=0\)</span> 的非零解 <span
+class="math inline">\(y=\psi(x) \equiv 1\)</span> 比较即可）</p>
+<p><strong>判别法2</strong>：设微分方程 <span class="math display">\[
+    y&#39;&#39;+Q(x)y=0 \tag{9.13}
+\]</span> 其中 <span class="math inline">\(Q(x)\)</span> 在区间 <span
+class="math inline">\(a\leqslant x&lt;\infty\)</span>
+上是连续的，而且满足不等式 <span class="math display">\[
+    Q(x)\geqslant m&gt;0 \quad(m 是常数)
+\]</span> 则（9.13）的任何非零解 <span
+class="math inline">\(y=\varphi(x)\)</span> 在区间 <span
+class="math inline">\([a,\infty)\)</span>
+上是无限振动的；而且它的任何两个相邻零点的间距不大于 <span
+class="math inline">\(\displaystyle \frac{\pi}{\sqrt{m}}\)</span>.</p>
+<p>由方程 <span class="math display">\[
+    y&#39;&#39;+\frac{1}{4x^{2}}y=0 \quad(1\leqslant x&lt;\infty)
+\]</span> 的非零解 <span class="math display">\[
+    y=\sqrt{x}(C_1+C_2 \ln x)
+\]</span> 知判别法2不能减弱为 <span
+class="math inline">\(Q(x)&gt;0\quad(a\leqslant
+x&lt;\infty)\)</span></p>
+<p>与判别法相对偶的有：如果 <span class="math inline">\(Q(x)\)</span>
+满足不等式 <span class="math display">\[
+    Q(x)\leqslant M \quad(a\leqslant x&lt;\infty)
+\]</span> 其中常数 <span class="math inline">\(M&gt;0\)</span>.
+则它的任何非零解 <span class="math inline">\(y=\varphi(x)\)</span>
+的相邻零点的间距不小于常数 <span class="math inline">\(\displaystyle
+\frac{\pi}{\sqrt{M}}\)</span></p>
+<p>证明时与 <span class="math inline">\(y&#39;&#39;+My=0\)</span>
+的非零解 <span class="math inline">\(y=\sin [\sqrt{M}(x-c)]\)</span> 且
+<span class="math inline">\(c\)</span> 可以任意跑比较.</p>
+<h2 id="s-l-边值问题的特征值">S-L 边值问题的特征值</h2>
+<p>考虑比较一般的二阶齐次线性微分方程 <span class="math display">\[
+    [p(x)y&#39;]&#39;+[q(x)+\lambda r(x)]y=0 \tag{9.16}
+\]</span></p>
+<p>其中 <span class="math inline">\(\lambda\)</span>
+是一个参数，系数函数 <span class="math inline">\(p(x),q(x)\)</span> 和
+<span class="math inline">\(r(x)\)</span> 在区间 <span
+class="math inline">\(a\leqslant x\leqslant b\)</span> 上是连续的，<span
+class="math inline">\(p(x)\)</span> 是可微的，而且 <span
+class="math inline">\(p(x)&gt;0\)</span> 和 <span
+class="math inline">\(r(x)&gt;0\)</span>. 另外，设边值条件 <span
+class="math display">\[
+    Ky(a)+Ly&#39;(a)=0,\quad My(b)+Ny&#39;(b)=0, \tag{9.17}
+\]</span> 其中常数 <span class="math inline">\(K,L,M,N\)</span> 满足条件
+<span class="math display">\[
+    K^{2}+L^{2}&gt;0, \quad M^{2}+N^{2}&gt;0.
+\]</span></p>
+<p>上述形式的边值问题通常称为 <strong>Sturm-Liouville 问题</strong>. 设
+<span class="math inline">\(\lambda= \lambda_0\)</span>
+时边值问题有非零解 <span class="math inline">\(y=\varphi_0(x)\)</span>.
+则称 <span class="math inline">\(\lambda_0\)</span>
+为该问题的<strong>特征值</strong>，<span
+class="math inline">\(y=\varphi_0(x)\)</span>
+为相应的<strong>特征函数</strong>，注意那么对于任何常数 <span
+class="math inline">\(C \neq 0\)</span>，<span class="math inline">\(y=C
+\varphi_0(x)\)</span> 仍是相应的特征函数.</p>
+<p>作 Prüfer
+变换<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="邓宗琦. 常微分方程边值问题和Sturm比较理论引论. 湖北：华中师范大学出版社，1987">[1]</span></a></sup>
+<span class="math display">\[
+    y(x)=\rho(x) \sin \theta(x), \quad p(x)y&#39;(x)=\rho(x) \cos
+\theta(x)
+\]</span> （9.16）变为 <span class="math display">\[
+    \theta&#39;(x)= \frac{\cos ^{2}\theta(x)}{p(x)}+[q(x)+\lambda r(x)]
+\sin ^{2}\theta(x),
+\]</span> <span class="math display">\[
+    \rho&#39;(x)= \rho(x)[\frac{1}{p(x)}-q(x)- \lambda r(x)] \cos
+\theta(x) \sin \theta(x);
+\]</span></p>
+<p>又（9.16）即 <span class="math display">\[
+    y&#39;&#39;(x)=-\frac{\rho(x)}{p(x)}[q(x)+\lambda r(x)] \sin
+\theta(x)- \frac{\rho(x)p&#39;(x)}{p^{2}(x)} \cos \theta(x)
+\]</span></p>
+<p>而边界条件变为 <span class="math display">\[
+    y(a) \cos \theta_a-p(a)y&#39;(a) \sin \theta_a=0, \quad y(b) \cos
+\theta_b- p(b)y&#39;(b) \sin \theta_b=0.
+\]</span></p>
+<p>将（9.16）化成如下形式： <span class="math display">\[
+    y&#39;&#39;+(\lambda+q(x))y=0, \tag{9.20}       
+\]</span> 其中 <span class="math inline">\(q(x)\)</span> 在区间 <span
+class="math inline">\([0,1]\)</span> 上连续，而且把边值条件（9.17）化成
+<span class="math display">\[
+    y(0)\cos \alpha - y&#39;(0) \sin \alpha=0, \quad y(1)\cos \beta-
+y&#39;(1) \sin \beta=0, \tag{9.21}
+\]</span> 这里规定常数 <span class="math inline">\(0\leqslant
+\alpha&lt;\pi, 0&lt;\beta\leqslant \pi\)</span>.</p>
+<blockquote>
+<p>搞不定了，到时候问老师.</p>
+</blockquote>
+<p>希望存在（9.20）的形如 <span
+class="math inline">\(y=\varphi(x,\lambda)\)</span> 的解，满足初值条件
+<span class="math display">\[
+    \varphi(0,\lambda)= \sin \alpha, \quad \varphi&#39;(0,\lambda)=\cos
+\alpha. \tag{9.22}
+\]</span> 想让它也满足（9.21）的第二式. 令 <span class="math display">\[
+    \varphi(x,\lambda)= \rho(x,\lambda)\sin \theta(x,\lambda), \quad
+\varphi&#39;(x,\lambda)=\rho(x,\lambda) \cos \theta(x,\lambda),
+\]</span> 其中 <span class="math display">\[
+    \begin{cases}
+        \rho(x,\lambda)=
+\sqrt{[\varphi(x,\lambda)]^{2}+[\varphi&#39;(x,\lambda)]^{2}}\quad
+(&gt;0), \\
+        \theta(x,\lambda)= \arctan
+\frac{\varphi(x,\lambda)}{\varphi&#39;(x,\lambda)} \quad (0\leqslant
+x\leqslant 1).          
+    \end{cases}
+\]</span> 由（9.21）的第一式，有 <span class="math display">\[
+    \theta(0,\lambda)= \arctan \frac{\sin \alpha}{\cos
+\alpha}=\alpha+j\pi, \tag{9.23}
+\]</span> 这里 <span class="math inline">\(j\)</span> 是某个整数.
+满足第二式，只要使 <span
+class="math inline">\(\theta=\theta(x,\lambda)\)</span> 满足条件 <span
+class="math display">\[
+    \theta(1,\lambda)= \beta+ k\pi, \tag{9.24}
+\]</span></p>
+<p><span class="math inline">\(\theta(x)\)</span> 显然满足 <span
+class="math display">\[
+    \theta&#39;=\cos ^{2}\theta+[\lambda+q(x)]\sin ^{2}\theta \tag{9.25}
+\]</span></p>
+<p>且在（9.23）中取 <span class="math inline">\(j=0\)</span>，即 <span
+class="math inline">\(\theta(0,\lambda)=\alpha\)</span>.</p>
+<p><strong>引理 9.2</strong>：令 <span
+class="math inline">\(\omega(\lambda)=\theta(1,\lambda)\)</span>. 则函数
+<span class="math inline">\(\omega(\lambda)\)</span> 在区间 <span
+class="math inline">\(-\infty&lt;\lambda&lt;\infty\)</span>
+上是连续的，而且是严格上升的.</p>
+<p><strong>证</strong>：（9.25）得到 <span
+class="math inline">\(\lambda\)</span> 的变分方程为 <span
+class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}x} \frac{\partial \theta}{\partial
+\lambda}= [\lambda+q(x)-1] \sin 2\theta \frac{\partial \theta}{\partial
+\lambda} + \sin ^{2} \theta, \tag{9.27}
+\]</span></p>
+<p>又由 <span class="math inline">\(\theta(0,\lambda)=\alpha\)</span> 知
+<span class="math display">\[
+    \frac{\partial \theta}{\partial \lambda}(0,\lambda)=0. \tag{9.28}
+\]</span> 而方程（9.27）关于 <span class="math inline">\(\displaystyle
+\frac{\partial \theta}{\partial \lambda}\)</span> 是一阶线性的.
+因此，再利用初值条件（9.28），得到 <span class="math display">\[
+    \frac{\partial \theta}{\partial \lambda}(x,\lambda)= \int_{0}^{x}
+\mathrm{e}^{\int_{t}^{x} E(s,\lambda) \mathrm{d}s} \sin
+^{2}\theta(t,\lambda) \mathrm{d}t
+\]</span> 其中 <span class="math display">\[
+    E(s,\lambda)= [\lambda+q(s)-1] \sin 2\theta(s,\lambda).
+\]</span></p>
+<p>易知 <span class="math inline">\(\sin ^{2} \theta(x,\lambda)\)</span>
+不恒为零（<span class="math inline">\(0\leqslant x\leqslant
+1\)</span>）. 因此上式可见 <span class="math display">\[
+    \omega&#39;(\lambda)=\frac{\partial \theta}{\partial
+\lambda}(1,\lambda)&gt;0,
+\]</span> 引理证毕.</p>
+<p><strong>引理 9.3</strong>：当 <span
+class="math inline">\(-\infty&lt;\lambda&lt;\infty\)</span> 时，<span
+class="math inline">\(\omega(\lambda)&gt;0\)</span>，并且 <span
+class="math display">\[
+    \lim_{\lambda \to -\infty} \omega(\lambda)=0.
+\]</span> <strong>证</strong>：先利用（9.25）证明 <span
+class="math inline">\(\theta(x,\lambda)&gt;0, 0&lt;x\leqslant
+1\)</span>. 那么就有 <span
+class="math inline">\(\omega(\lambda)=\theta(1,\lambda)&gt;0,-\infty&lt;\lambda&lt;\infty\)</span>.</p>
+<p>考虑到 <span class="math inline">\(0\leqslant
+\alpha&lt;\pi\)</span>，在 <span
+class="math inline">\((x,\theta)\)</span> 平面上取两点 <span
+class="math inline">\(A(0,\pi-\varepsilon)\)</span> 和 <span
+class="math inline">\(B(1,\varepsilon)\)</span>. 如果积分曲线 <span
+class="math inline">\(\theta=\theta(x,\lambda)\)</span> 与直线第一次交于
+<span class="math inline">\(x= \bar{x}_1\)</span>，则斜率 <span
+class="math inline">\(\theta&#39;(\bar{x}_1,\lambda)\geqslant 直线 AB
+的斜率 K=2 \varepsilon-\pi\)</span>. 又注意到由（9.25） <span
+class="math display">\[
+    \theta&#39;(\bar{x}_1,\lambda)=\cos ^{2}\theta
++[\lambda+q(\bar{x}_1)]\sin ^{2}\theta
+\]</span> 考虑到要让 <span class="math inline">\(\lambda \to
+-\infty\)</span>，想让 <span
+class="math inline">\(\theta&#39;(\bar{x}_1,\lambda)&lt;2
+\varepsilon-\pi\)</span> 从而导出矛盾. 而 <span
+class="math inline">\(\sin \theta \geqslant \varepsilon\)</span>，故只要
+<span class="math display">\[
+    1+[\lambda+M]\sin ^{2}\varepsilon&lt;2 \varepsilon-\pi
+\]</span> 其中 <span class="math inline">\(M= \max\{q(x)\colon
+0\leqslant x\leqslant 1\}\)</span>，就有积分曲线不可能与 <span
+class="math inline">\(AB\)</span> 相交，解出 <span
+class="math inline">\(\lambda\)</span> 的取值. 这说明当 <span
+class="math inline">\(\lambda \to -\infty\)</span> 时，<span
+class="math inline">\(\omega(\lambda)\to 0\)</span>.</p>
+<p>也可以参考</p>
+<hr />
+<p>(万年老坑)常微分方程学习笔记(10)
+https://zhuanlan.zhihu.com/p/151401565</p>
+<hr />
+<p><strong>引理 9.4</strong>：当 <span class="math inline">\(\lambda \to
+\infty\)</span> 时， <span class="math inline">\(\omega(\lambda)\to
+\infty\)</span>.</p>
+<p><strong>证</strong>：关键是注意到 <span class="math display">\[
+    \int_{0}^{1} \frac{\theta&#39;}{\cos ^{2}\theta+[\lambda+q(x)]\sin
+^{2}\theta}
+\mathrm{d}x=\int_{\alpha}^{\omega(\lambda)}  \frac{\mathrm{d}\theta}{\cos
+^{2}\theta+[\lambda+q(x)]\sin ^{2}\theta}=1
+\]</span> 如果 <span class="math inline">\(\omega(\lambda)\)</span>
+有界，令 <span class="math inline">\(\lambda \to
+\infty\)</span>，可以预想中间式子积分其实应该很小，分 <span
+class="math inline">\(\sin \theta\)</span>
+的零点附近（注意只有有限个零点）和剩下的部分分别计算积分，导出矛盾.</p>
+<p><strong>定理 9.3</strong>：S-L
+边值问题有无限多个（简单的）特征值，而且可排列如下： <span
+class="math display">\[
+    \lambda_0&lt;\lambda_1&lt;\cdots &lt;\lambda_k&lt;\cdots
+\]</span> 其中 <span class="math display">\[
+    \lim_{k \to \infty} \lambda_{k} = \infty.
+\]</span></p>
+<blockquote>
+<p>习题 9-2 第二题为什么不与定理矛盾？</p>
+</blockquote>
+<h2 id="特征函数系的正交性">特征函数系的正交性</h2>
+<p>S-L 边值问题 <span class="math display">\[
+    y&#39;&#39;+[\lambda+ q(x)]y=0, \tag{9.33}
+\]</span> 和 <span class="math display">\[
+    \begin{cases}
+        y(0)\cos \alpha- y&#39;(0) \sin \alpha=0, \\
+        y(1)\cos \beta- y&#39;(1) \sin \beta=0, \tag{9.34}
+    \end{cases}
+\]</span> 其中 <span class="math inline">\(\lambda\)</span>
+是参数，而函数 <span class="math inline">\(q(x)\)</span> 在区间 <span
+class="math inline">\(0\leqslant x\leqslant 1\)</span> 是连续；又设常数
+<span class="math inline">\(\alpha\)</span> 和 <span
+class="math inline">\(\beta\)</span> 满足不等式 <span
+class="math display">\[
+    0\leqslant \alpha&lt;\pi, \quad 0&lt;\beta\leqslant \pi.
+\]</span></p>
+<p>考虑对于每个特征值 <span class="math inline">\(\lambda_n\)</span>
+的特征函数 <span class="math inline">\(\varphi(x,\lambda_n)\)</span>. 当
+<span class="math inline">\(C \neq 0\)</span> 时， <span
+class="math inline">\(C\varphi(x,\lambda_n)\)</span> 也是特征函数.</p>
+<p><strong>引理 9.4</strong>：对应于每个特征值，S-L
+边值问题有且只有一个线性无关的特征函数.</p>
+<p>考虑两个解在 <span class="math inline">\(x=0\)</span> 处的 Wronsky
+行列式，直接得到它们线性相关.</p>
+<p>下面令 <span class="math display">\[
+    \varphi_n(x)= \varphi(x, \lambda_n) \quad (n=0,1,2,\cdots ).
+\tag{9.35}
+\]</span></p>
+<p><strong>引理 9.5</strong> 特征函数系（9.35）在区间 <span
+class="math inline">\(0\leqslant x\leqslant 1\)</span>
+上组成一个正交系，即 <span class="math display">\[
+    \int_{0}^{1} \varphi_n(x)\varphi_k(x) \mathrm{d}x=
+    \begin{cases}
+        0, \quad n\neq k; \\
+        \delta_k&gt;0, \quad n\neq k.
+    \end{cases}
+\]</span></p>
+<p><strong>证</strong>：关键是得到 <span class="math display">\[
+    (\lambda_n-\lambda_k) \varphi_n(x) \varphi_k(x)=
+\frac{\mathrm{d}}{\mathrm{d}x}[\varphi_n(x)\varphi&#39;_k(x)-\varphi&#39;_n(x)\varphi_k(x)],
+\]</span> 然后积分并利用边值条件.</p>
+<p><strong>定理 9.6</strong>：<span
+class="math inline">\(\varphi_n(x)\)</span> 在 <span
+class="math inline">\([0,1]\)</span> 上有 <span
+class="math inline">\(n\)</span> 个零点.</p>
+<p>注意到 <span class="math inline">\(\varphi_n(x)\)</span> 对应的 <span
+class="math inline">\(\theta(t,\lambda_n)\)</span> 不可能取到某个 <span
+class="math inline">\(k \pi\)</span>
+至少两次，否则在相邻零点处导数值异号，但在 <span
+class="math inline">\(\theta=0\)</span> 处导数值应该为 <span
+class="math inline">\(1\)</span>，故这是不可能的.</p>
+<p><strong>定理 9.7</strong>：如果 <span
+class="math inline">\(f(x)\)</span> 在区间 <span
+class="math inline">\(0\leqslant x\leqslant 1\)</span> 上是 Riemann
+可积的，而且满足 <span class="math display">\[
+    \int_{0}^{1} f(x)\varphi_n(x) \mathrm{d}x=0 \quad(n=0,1,2,\cdots ),
+\]</span> 那么 <span class="math inline">\(f(x)\)</span>
+在连续点处恒等于零.</p>
+<p>证明分几步（下面都是一般形式的 S-L 边值问题）</p>
+<p>可以参考</p>
+<hr />
+<p>常微分方程边值问题和Sturm比较理论引论
+https://cadal.edu.cn/cardpage/bookCardPage?ssno=06504331&amp;source=card</p>
+<hr />
+<p>的P126-P131.</p>
+<p>定理 9.7 说明特征函数系（9.35）在Riemann可积的函数空间 <span
+class="math inline">\(\mathcal{R}\{[0,1];\mathbb{R}^{1}\}\)</span>
+中是一个完全的正交系. 在区间 <span class="math inline">\([0,1]\)</span>
+上可以考虑可积函数 <span class="math inline">\(f(x)\)</span>
+关于特征函数系（9.35）的（广义）Fourier展开 <span
+class="math display">\[
+    f(x) \sim \sum_{n=0}^{\infty} a_n \varphi_n(x), \tag{9.36}
+\]</span> 其中 <span class="math display">\[
+    a_n=\frac{1}{\delta_n} \int_{0}^{1} f(x)\varphi_n(x) \mathrm{d}x
+\quad(n=0,1,2,\cdots ),
+\]</span> 而正数 <span class="math display">\[
+    \delta_n= \int_{0}^{1} \varphi_n^{2}(x) \mathrm{d}x.
+\]</span> 可以进一步证明下述结论.</p>
+<p><strong>定理 9.8</strong>：设函数 <span
+class="math inline">\(f(x)\)</span> 在区间 <span
+class="math inline">\([0,1]\)</span> 上满足 Dirichlet
+条件，则它的广义Fourier 级数（9.36）收敛到它自己.</p>
+<p>一些更细致的讨论见</p>
+<hr />
+<p>常微分方程边值问题和Sturm比较理论引论
+https://cadal.edu.cn/cardpage/bookCardPage?ssno=06504331&amp;source=card</p>
+<hr />
+<p>的P132-P143.</p>
+<h3 id="非齐次方程的-s-l-边值问题">非齐次方程的 S-L 边值问题</h3>
+<p><span class="math display">\[
+    \begin{cases}
+        y&#39;&#39;+[\lambda+q(x)]y= f(x), \\
+        y(0)\cos \alpha- y&#39;(0) \sin \alpha=0, \quad y(1)\cos
+\beta-y&#39;(1)\sin \beta=0.
+    \end{cases}
+\]</span></p>
+<p>当 <span class="math inline">\(\lambda\)</span> 不是相应齐次方程的
+S-L 边值问题的特征值时，它有且只有一个解；而当 <span
+class="math inline">\(\lambda\)</span> 等于某个特征值 <span
+class="math inline">\(\lambda_m\)</span> 时， 它有解的充要条件为 <span
+class="math display">\[
+    \int_{0}^{1} f(x)\varphi_m(x) \mathrm{d}x=0,
+\]</span> 其中 <span class="math inline">\(\varphi_m(x)\)</span>
+为相应于特征值 <span class="math inline">\(\lambda_m\)</span>
+的特征函数.</p>
+<p><strong>证</strong>：当 <span class="math inline">\(\lambda\)</span>
+不是特征值时，</p>
+<p><span class="math display">\[
+    \int_{0}^{1} f\varphi_m = \int_{0}^{1} y&#39;&#39;\varphi_m
++[\lambda_m +q]y\varphi_m= \int_{0}^{1}
+y&#39;&#39;\varphi_m-\varphi_m&#39;&#39;y= (y&#39;\varphi_m-y
+\varphi_m&#39;)\bigg |_{0}^1=0
+\]</span></p>
+<h2 id="参考">参考</h2>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>邓宗琦.
+常微分方程边值问题和Sturm比较理论引论. 湖北：华中师范大学出版社，1987
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常微分方程（9）</div>
+      <div>http://example.com/2022/06/23/常微分方程（9）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 23, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/24/Through-the-Heat-Equation/" title="Through the Heat Equation">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Through the Heat Equation</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/20/About-Bezier-Curve/" title="About Bezier Curve">
+                        <span class="hidden-mobile">About Bezier Curve</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

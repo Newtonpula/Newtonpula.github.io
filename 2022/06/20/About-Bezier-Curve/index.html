@@ -1,0 +1,973 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大一下第二学期数值分析Project2中我的部分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="About Bezier Curve">
+<meta property="og:url" content="http://example.com/2022/06/20/About-Bezier-Curve/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="大一下第二学期数值分析Project2中我的部分">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/bezier_curve.jpg">
+<meta property="article:published_time" content="2022-06-20T13:58:06.000Z">
+<meta property="article:modified_time" content="2022-06-20T14:44:15.479Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/bezier_curve.jpg">
+  
+  
+  
+  <title>About Bezier Curve - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="About Bezier Curve"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-20 21:58" pubdate>
+          June 20, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          59 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">About Bezier Curve</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>Bezier 曲线是本学期学过相当好用的东西.
+本学期的Project2中涉及到Bezier曲线的部分大有可为.
+搜索资料的过程中我找到了一个非常好的相关博客：</p>
+<hr />
+<p>Fitting cubic Bézier curves | Raph Levien’s blog
+https://raphlinus.github.io/curves/2021/03/11/bezier-fitting.html</p>
+<hr />
+<p>Project2中，问题的核心是：当曲线两端点处斜率确定，如何取控制点使得Bezier曲线与原曲线最接近.
+下面读者将主要看到：千方百计凑字数造成的语义冗余、对上述博客的拙劣翻译、LaTeX文档转Markdown后丢失的图片标题（不想搞啦）、不明觉厉其实很naive的公式推导、由于公式过长导致显示出大问题（以后可能会想办法解决这个问题）、第一第三问丢失导致的没见过Project2的读者完全一头雾水的情况。</p>
+<p>由于.png的透明格式，请在日间模式下阅读以获得最佳的阅读体验。</p>
+<p>用三次样条插值得到的导数值控制贝塞尔曲线两个端点的斜率，用贝塞尔曲线画出图一曲线。结果如图四，其中参数
+<span
+class="math inline">\(h\)</span>的意义下面解释。图四中用不同的颜色画出了Curve1，Curve2和Curve3，并将插值的端点标出。</p>
+<figure>
+<img src="/img/bezier_curve/fig4.jpg" srcset="/img/loading.gif" lazyload alt="fig4" />
+<figcaption aria-hidden="true">fig4</figcaption>
+</figure>
+<p>考虑到图一只给出了曲线的端点和端点处切线的斜率，我们引入参数 <span
+class="math inline">\(h_1\)</span>和<span
+class="math inline">\(h_2\)</span>。在 <span
+class="math inline">\(P_1=(x_i,y_i)\)</span>和<span
+class="math inline">\(P_2=(x_{i+1},y_{i+1})\)</span>之间绘制Bezier曲线时，<span
+class="math inline">\(h_1\)</span>定义为第一个控制点 <span
+class="math inline">\(Q_1=(x_3,y_3)\)</span>到<span
+class="math inline">\(P_1\)</span>的距离，<span
+class="math inline">\(h_2\)</span>定义为第二个控制点 <span
+class="math inline">\(Q_2=(x_4,y_4)\)</span>到<span
+class="math inline">\(P_2\)</span>的距离。设曲线在<span
+class="math inline">\(P_1\)</span>处斜率为 <span
+class="math inline">\(p\)</span>，在 <span
+class="math inline">\(P_2\)</span>处斜率为 <span
+class="math inline">\(q\)</span>。则有 <span class="math display">\[
+    \begin{aligned}
+        x_3 &amp; =x_1+\frac{h_1}{\sqrt{1+p^{2}}}, &amp; y_3 &amp;
+=y_1+\frac{ph_1}{\sqrt{1+p^{2}}}, \\
+        x_4 &amp; =x_2-\frac{h_2}{\sqrt{1+q^{2}}}, &amp; y_4 &amp;
+=y_2-\frac{qh_2}{\sqrt{1+q^{2}}}  \\
+    \end{aligned}
+\]</span> 由Bezier曲线的计算公式 <span class="math display">\[
+    \begin{aligned}
+        b_x &amp;
+=\frac{3h_1}{\sqrt{1+p^{2}}},                                         &amp;
+b_y &amp;
+=\frac{3ph_1}{\sqrt{1+p^{2}}},                                         \\
+        c_x &amp;
+=3(x_2-x_1)-\frac{6h_1}{\sqrt{1+p^{2}}}-\frac{3h_2}{\sqrt{1+q^{2}}},  &amp;
+c_y &amp;
+=3(y_2-y_1)-\frac{6ph_1}{\sqrt{1+p^{2}}}-\frac{3qh_2}{\sqrt{1+q^{2}}}  \\
+        d_x &amp;
+=-2(x_2-x_1)+\frac{3h_1}{\sqrt{1+p^{2}}}+\frac{3h_2}{\sqrt{1+q^{2}}},
+&amp; d_y &amp;
+=-2(y_2-y_1)+\frac{3ph_1}{\sqrt{1+p^{2}}}+\frac{3qh_2}{\sqrt{1+q^{2}}}
+\\
+    \end{aligned}
+\]</span> 从而Bezier曲线 <span class="math display">\[
+    \begin{aligned}
+        x(t) &amp; =x_1+b_xt+c_xt^{2}+d_xt^{3} \\
+        y(t) &amp; =y_1+b_yt+c_yt^{2}+d_yt^{3} \\
+    \end{aligned}
+\]</span> 记该曲线为 <span class="math inline">\(p_f\)</span>。</p>
+<h2 id="h_1h_2与bezier曲线的关系"><span
+class="math inline">\(h_1,h_2\)</span>与Bezier曲线的关系</h2>
+<p>图五给出了当 <span class="math inline">\(h_1=h_2=h\)</span>变动时
+<span class="math inline">\(p_f\)</span>的变化。注意当 <span
+class="math inline">\(h \to 0\)</span>时 <span class="math display">\[
+    \frac{y(t)-y_1}{x(t)-x_1}=\frac{p+[\frac{\sqrt{1+p^{2}}(y_2-y_1)}{h}-2p-\frac{\sqrt{1+p^{2}}q}{\sqrt{1+q^{2}}}]t+[-\frac{2\sqrt{1+p^{2}}(y_2-y_1)}{3h}+p+\frac{\sqrt{1+p^{2}}q}{\sqrt{1+q^{2}}}]t^{2}}{1+[\frac{\sqrt{1+p^{2}}(x_2-x_1)}{h}-2-\frac{\sqrt{1+p^{2}}}{\sqrt{1+q^{2}}}]t+[-\frac{2\sqrt{1+p^{2}}(x_2-x_1)}{3h}+1+\frac{\sqrt{1+p^{2}}}{\sqrt{1+q^{2}}}]t^{2}}\to
+p
+\]</span> 即当 <span class="math inline">\(h\to 0\)</span>时 <span
+class="math inline">\(p_f\)</span>趋向于线性，而端点处仍然满足切线的斜率条件。</p>
+<p>而当 <span class="math inline">\(h\)</span>较大时，相应的 <span
+class="math inline">\(p_f\)</span>会出现尖点，当 <span
+class="math inline">\(h\)</span>继续增大时，相应的 <span
+class="math inline">\(p_f\)</span>会出现自交点。事实上，1989年，Lasser提出了一种曲线曲线算法，通过使用de
+Casteljau算法对曲线的控制多边形进行细分来计算贝塞尔曲线的自交点。该方法需要在算法开始之前通过控制多边形的旋转角度之和来检查曲线与自交的可能性，即：当Bezier曲线的控制多边形外角和不大于
+<span
+class="math inline">\(\pi\)</span>时，Bezier曲线一定没有自交点。在图四的情况中，只有当线段<span
+class="math inline">\(P_1Q_1\)</span>和线段<span
+class="math inline">\(P_2Q_2\)</span>相交时， <span
+class="math inline">\(p_f\)</span>才可能有自交点。</p>
+<p>图五展示了使用不同方法绘制Curve2的图像，可以看到，关于h取值过小时过于接近线性的问题可以通过增加插值点避免。</p>
+<figure>
+<img src="/img/bezier_curve/fig5.jpg" srcset="/img/loading.gif" lazyload alt="fig5" />
+<figcaption aria-hidden="true">fig5</figcaption>
+</figure>
+<h2 id="h_1h_2的最佳取法"><span
+class="math inline">\(h_1,h_2\)</span>的最佳取法</h2>
+<p>我们认为三次样条插值得到的曲线为标准曲线 <span
+class="math inline">\(s\)</span>，讨论 <span
+class="math inline">\(h_1\)</span>和 <span
+class="math inline">\(h_2\)</span>取何值时 <span
+class="math inline">\(p_f\)</span>与 <span
+class="math inline">\(s\)</span>最为“接近”。其中“接近”的不同含义分类讨论。</p>
+<h3 id="g2几何hermite插值alvin-penner的三种方法">G2几何Hermite插值/Alvin
+Penner的三种方法</h3>
+<p>一个自然的想法是 <span class="math inline">\(p_f\)</span>与 <span
+class="math inline">\(s\)</span>在端点处的二阶导数值相等。<span
+class="math inline">\(p_f\)</span>使用的是曲线的参数方程，由相关数学知识得
+<span class="math display">\[
+    \frac{\mathrm{d}^{2}y}{\mathrm{d}x^{2}}=\frac{y&#39;&#39;(t)x&#39;(t)-x&#39;&#39;(t)y&#39;(t)}{(x&#39;(t))^{3}}
+\]</span> 计算得到三次样条插值 <span class="math display">\[
+    s(x)=y_1+p(x-x_1)+\biggl[\frac{3(y_2-y_1)}{(x_2-x_1)^{2}}-\frac{2p+q}{x_2-x_1}\biggr](x-x_1)^{2}+\biggl[\frac{p+q}{(x_2-x_1)^{2}}-\frac{2(y_2-y_1)}{(x_2-x_1)^{3}}\biggr](x-x_1)^{3}
+\]</span> 那么相应端点二阶导数值相等得方程即为 <span
+class="math display">\[
+    \begin{aligned}
+        s&#39;&#39;(x_1) &amp;
+=\frac{y&#39;&#39;(0)x&#39;(0)-x&#39;&#39;(0)y&#39;(0)}{(x&#39;(0))^{3}}
+\\
+        s&#39;&#39;(x_2) &amp;
+=\frac{y&#39;&#39;(1)x&#39;(1)-x&#39;&#39;(1)y&#39;(1)}{(x&#39;(1))^{3}}
+\\
+    \end{aligned}
+\]</span> 化简得到 <span class="math display">\[
+    \begin{aligned}
+        \frac{(1+p^{2})(h_2(p-q)+\sqrt{1+q^{2}}(p(x_1-x_2)-y_1+y_2))}{3h_1^{2}\sqrt{1+q^{2}}}
+&amp; = \frac{(2p+q)(x_1-x_2)-3(y_1-y_2)}{(x_1-x_2)^{2}}  \\
+        \frac{(1+q^{2})(h_1(p-q)-\sqrt{1+p^{2}}(q(x_1-x_2)-y_1+y_2))}{3h_2^{2}\sqrt{1+p^{2}}}
+&amp; = \frac{-(p+2q)(x_1-x_2)+3(y_1-y_2)}{(x_1-x_2)^{2}} \\
+    \end{aligned}
+\]</span> 经过消元可以得到关于 <span
+class="math inline">\(h_1\)</span>和 <span
+class="math inline">\(h_2\)</span>的一元四次方程，求该方程在一般情况下的解析解不具有实际意义。而特别的，当
+<span
+class="math inline">\(p=q\)</span>，即两端点处切线斜率相等时，我们有
+<span class="math display">\[
+    h_1=h_2=\frac{\sqrt{1+p^{2}}}{3}(x_2-x_1)
+\]</span></p>
+<p>对于 <span class="math inline">\(p \neq q\)</span>的情况，<span
+class="math inline">\(h_1\)</span>和 <span
+class="math inline">\(h_2\)</span>可能根本没有解。即使有解，最小的正实数解也很可能较大，从而出现Bezier曲线自交的情况。例如
+<span
+class="math inline">\((x_1,x_2,y_1,y_2,p,q)=(17,20,4.5,7.0,3,-0.198)\)</span>时，<span
+class="math inline">\(h_1\)</span>的最小正实数解为 <span
+class="math inline">\(3.162\)</span>，<span
+class="math inline">\(h_2\)</span>的最小正实数解为 <span
+class="math inline">\(1.019\)</span>，此时曲线会出现明显的自交点。</p>
+<p>查询相关资料后我们发现这是Carl de Boor et
+al在1987年的论文中分析的情况。由数据的不同，<span
+class="math inline">\(h_1,h_2\)</span>可以有 <span
+class="math inline">\(0,1,2,3\)</span>个正实数解。这篇论文还证明了 <span
+class="math inline">\(\text{dist}(s,p_f)=O(\lvert P_1P_2
+\rvert^{6})\)</span>。由于范数的等价性，我们可以任选 <span
+class="math inline">\(\text{dist}(s,p_f)\)</span>的定义。在本文的例子中
+$P_1P_2 $远大于 <span
+class="math inline">\(1\)</span>，故该估计不具有实际意义。</p>
+<p>最近的一个结果是Alvin
+Penner于2019年发表的。他在文章中提出了三种方法。这些方法的优缺点总结可以见Rahp
+Levien's Blog。</p>
+<h3
+id="利用有向面积和图像矩进行曲线拟合">利用有向面积和图像矩进行曲线拟合</h3>
+<p>该方法来源于Raph Levien's Blog。</p>
+<p>首先改述这个问题，作数学上的简化。我们可以排除平移，均匀缩放和旋转，只需考虑从
+<span class="math inline">\((0,0)\)</span>到 <span
+class="math inline">\((1,0)\)</span>的曲线，给定 <span
+class="math inline">\(\theta_0\)</span>和 <span
+class="math inline">\(\theta_1\)</span>。两条控制臂的长度设为 <span
+class="math inline">\(\delta_0\)</span>和 <span
+class="math inline">\(\delta_1\)</span>。我们仍记原曲线为 <span
+class="math inline">\(s\)</span>，记Bezier曲线为 <span
+class="math inline">\(p_f\)</span></p>
+<figure>
+<img src="/img/bezier_curve/cubic.png" srcset="/img/loading.gif" lazyload alt="cubic" />
+<figcaption aria-hidden="true">cubic</figcaption>
+</figure>
+<p>那么两个控制点的坐标为 <span class="math inline">\((\delta_0\cos
+\theta_0,\delta_0\sin \theta_0)\)</span>和 <span
+class="math inline">\((1-\delta_1\cos \theta_1,\delta_1\sin
+\theta_1)\)</span>。</p>
+<p>三次样条插值（注意 <span class="math inline">\(q=-\tan
+\theta_1\)</span>）： <span class="math display">\[
+    s(x)=\tan \theta_0 x-(2\tan \theta_0-\tan \theta_1)x^{2}+(\tan
+\theta_0-\tan \theta_1)x^{3}
+\]</span></p>
+<p>Bezier曲线： <span class="math display">\[
+    \begin{aligned}
+        x(t) &amp; =3\delta_0 \cos \theta_0 t+3(1-2\delta_0 \cos
+\theta_0+\delta_1\cos \theta_1)t^{2}+(-2+3\delta_0 \cos
+\theta_0-3\delta_1 \cos \theta_1)t^{3} \\
+        y(t) &amp; =3\delta_0\sin \theta_0t-3(2\delta_0\sin
+\theta_0+\delta\sin \theta_1)t^2+3(\delta_0\sin \theta_0+\delta_1\sin
+\theta_1)t_3                  \\
+    \end{aligned}
+\]</span></p>
+<p>第一个做法是使得 <span class="math inline">\(p_f\)</span>和 <span
+class="math inline">\(x\)</span>轴围成的有向面积与 <span
+class="math inline">\(s\)</span>和 <span
+class="math inline">\(x\)</span>轴围成的有向面积相同，这是自然的。如图七所示，当围成面积不同时，拟合程度应当不会很高。</p>
+<figure>
+<img src="/img/bezier_curve/area.png" srcset="/img/loading.gif" lazyload alt="area" />
+<figcaption aria-hidden="true">area</figcaption>
+</figure>
+<p>由Green公式，有 <span class="math display">\[
+    \text{area}=\frac{3}{20}(2\delta_0\sin \theta_0+2\delta_1\sin
+\theta_1-\delta_0\delta_1\sin (\theta_0+\theta_1))
+\]</span></p>
+<p>对于现在的情况，</p>
+<p><span class="math display">\[
+    \frac{1}{12}(\tan \theta_0+ \tan
+\theta_1)=\frac{3}{20}(2\delta_0\sin \theta_0+2\delta_1\sin
+\theta_1-\delta_0\delta_1\sin (\theta_0+\theta_1))
+\]</span></p>
+<p>从该式可以从给定的 <span
+class="math inline">\(\delta_0\)</span>中解出唯一的 <span
+class="math inline">\(\delta_1\)</span>：</p>
+<p><span class="math display">\[
+    \delta_1=\frac{\frac{5}{9}(\tan \theta_0+\tan \theta_1)-2\delta_0
+\sin \theta_0}{2\sin \theta_1-\delta_0 \sin (\theta_0+\theta_1)}
+\]</span></p>
+<p>第二个做法是利用图像矩（image
+moment）。在图六化简的情形中，图像矩即为x-矩。图八展示了图像矩对于曲线的影响。所有红色曲线都具有相同的有向面积。</p>
+<figure>
+<img src="/img/bezier_curve/xmoment.png" srcset="/img/loading.gif" lazyload alt="xmoment" />
+<figcaption aria-hidden="true">xmoment</figcaption>
+</figure>
+<p>由Green公式也可以化简计算 <span class="math display">\[
+    \begin{aligned}
+        \text{moment}_x &amp; = \int_{0}^{1} x p_f(x)
+\mathrm{d}=\int_{0}^{1} x(t)y(t)x&#39;(t)
+\mathrm{d}t                                                                         \\
+                        &amp; = \frac{1}{280}(34\delta_0\sin
+\theta_0+50\delta_1\sin \theta_1+15\delta_0^{2}\sin \theta_0\cos
+\theta_0-15\delta_1^{2}\sin \theta_1\cos \theta_1 \\
+                        &amp; -\delta_0\delta_1(33\sin \theta_0\cos
+\theta_1+9\cos \theta_0\sin \theta_1)-9\delta_0^{2}\delta_1\sin
+(\theta_0+\theta_1)\cos \theta_0            \\
+                        &amp; +9\delta_0\delta_1^{2}\sin
+(\theta_0+\theta_1)\cos \theta_1)
+    \end{aligned}
+\]</span> 同样得到方程 <span class="math display">\[
+\begin{equation}
+    \begin{aligned}
+        \frac{\tan \theta_0}{30}+\frac{\tan \theta_1}{20} &amp; =
+        \frac{1}{280}(34\delta_0\sin \theta_0+50\delta_1\sin
+\theta_1+15\delta_0^{2}\sin \theta_0\cos \theta_0-15\delta_1^{2}\sin
+\theta_1\cos \theta_1                                            \\
+                                                          &amp;
+-\delta_0\delta_1(33\sin \theta_0\cos \theta_1+9\cos \theta_0\sin
+\theta_1)-9\delta_0^{2}\delta_1\sin (\theta_0+\theta_1)\cos \theta_0 \\
+                                                          &amp;
++9\delta_0\delta_1^{2}\sin (\theta_0+\theta_1)\cos \theta_1)
+    \end{aligned}
+\end{equation}
+\]</span> 将（1）与（3）联立可以得到 <span
+class="math inline">\(\delta_0\)</span>和 <span
+class="math inline">\(\delta_1\)</span>的解。消元后得到的是两个一元四次方程，它们不一定有正实数解。在Raph
+Levien's Blog中提到了还需要考虑 <span
+class="math inline">\(\text{moment}_x\)</span>的极值点（将 <span
+class="math inline">\(\delta_1\)</span>用 <span
+class="math inline">\(\delta_0\)</span>消去）。</p>
+<h3 id="将一般情况转化为简单情形">将一般情况转化为简单情形</h3>
+<p>第二问的最后，我们求出 <span class="math inline">\(h_1,h_2\)</span>与
+<span class="math inline">\(\delta_0,\delta_1\)</span>的关系。记 <span
+class="math inline">\(\displaystyle
+k=\frac{y_2-y_1}{x_2-x_1}\)</span></p>
+<p>作坐标变换 <span class="math display">\[
+    x&#39;=\frac{x-x_1}{x_2-x_1}, \quad
+y&#39;=\frac{y-y_1}{x_2-x_1}-\frac{y_2-y_1}{(x_2-x_1)^{2}}(x-x_1)
+\]</span> 该变换将 <span class="math inline">\((x_1,y_1)\)</span>和
+<span class="math inline">\((x_2,y_2)\)</span>映到 <span
+class="math inline">\((0,0)\)</span>和 <span
+class="math inline">\((1,0)\)</span>，且保持比例与相切关系，我们有 <span
+class="math display">\[
+    \tan \theta_0=p-k, \quad \tan \theta_1=-q+k
+\]</span> 该变换的逆变换是 <span class="math display">\[
+    x=x_1+(x_2-x_1)x&#39;, \quad y=y_1+(y_2-y_1)x&#39;+(x_2-x_1)y&#39;
+\]</span> 那么就有 <span class="math display">\[
+    \begin{aligned}
+        h_1 &amp; =\delta_0(x_2-x_1) \\
+        h_2 &amp; =\delta_1(x_2-x_1) \\
+    \end{aligned}
+\]</span></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" class="category-chain-item">数值分析</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>About Bezier Curve</div>
+      <div>http://example.com/2022/06/20/About-Bezier-Curve/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 20, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/23/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%889%EF%BC%89/" title="常微分方程（9）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程（9）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter19/" title="Chapter19">
+                        <span class="hidden-mobile">Chapter19</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

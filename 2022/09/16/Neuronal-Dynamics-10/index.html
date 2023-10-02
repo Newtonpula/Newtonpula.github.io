@@ -1,0 +1,1280 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Estimating Parameters of Probabilistic Neuron Models">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neuronal Dynamics (10)">
+<meta property="og:url" content="http://example.com/2022/09/16/Neuronal-Dynamics-10/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Estimating Parameters of Probabilistic Neuron Models">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-09-16T13:03:43.000Z">
+<meta property="article:modified_time" content="2022-10-04T10:51:12.115Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="神经科学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
+  
+  
+  
+  <title>Neuronal Dynamics (10) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (10)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-16 21:03" pubdate>
+          September 16, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          19k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          163 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Neuronal Dynamics (10)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="estimating-parameters-of-probabilistic-neuron-models">Estimating
+Parameters of Probabilistic Neuron Models</h1>
+<p>The online version of this chapter:</p>
+<hr />
+<p>Chapter 10 Estimating Parameters of Probabilistic Neuron Models
+https://neuronaldynamics.epfl.ch/online/Ch10.html</p>
+<hr />
+<h2 id="parameter-optimization-in-linear-and-nonlinear-models">Parameter
+optimization in linear and nonlinear models</h2>
+<h3 id="linear-models">Linear Models</h3>
+<p>Suppose the maximal amplitude of the input current has been chosen
+small enough for the neuron to stay in the subthreshold regime. <span
+class="math display">\[
+    u(t)=\int_{0}^{\infty} \kappa(s)I(t-s) \mathrm{d}s+u_{rest}
+\tag{10.1}
+\]</span> vector <span class="math display">\[
+    \mathbf{k}=(\kappa(\mathrm{d}t),\kappa(2 \mathrm{d}t),\cdots
+,\kappa(K \mathrm{d}t)). \tag{10.2}        
+\]</span> which describes the time course <span
+class="math inline">\(\kappa\)</span> in discrete time. The input
+current <span class="math inline">\(I\)</span> during the last <span
+class="math inline">\(k\)</span> time steps is given by <span
+class="math display">\[
+    \mathbf{x}_{t}=(I_{t-1},\cdots ,I_{t-K})\mathrm{d}t \tag{10.3}
+\]</span></p>
+<p>The discrete-time version of (10.1) is <span class="math display">\[
+    u_t=\sum_{l=1}^{K} k_lI_{t-l}\mathrm{d}t+u_{rest}=\mathbf{k}\cdot
+\mathbf{x}_t+u_{rest}. \tag{10.4}
+\]</span></p>
+<p>Prediction <span class="math inline">\(u_t\)</span> of the model
+equation (10.4) with the experimental measurement <span
+class="math inline">\(u_t^{exp}\)</span>. The components of the vector
+<span class="math inline">\(\mathbf{k}\)</span> will be chosen such that
+<span class="math display">\[
+    E(\mathbf{k})=\sum_{t=K+1}^{T} [u_t^{exp}-u_t]^{2} \tag{10.5}
+\]</span> is minimal.</p>
+<h4 id="example-analytical-solution">Example: Analytical solution</h4>
+<p>Let</p>
+<p><span class="math display">\[
+    X=
+    \begin{pmatrix}
+    I_{K} &amp; I_{K-1} &amp; \cdots &amp; I_1 \\
+    I_{K+1} &amp; I_{K} &amp; \cdots &amp; I_2 \\
+    \vdots &amp; \vdots &amp; &amp; \vdots \\
+    I_{T} &amp; I_{T-1} &amp; \cdots &amp; I_{T-K+1} \\
+    \end{pmatrix} \mathrm{d}t
+\]</span></p>
+<p><span class="math inline">\(\mathbf{u}^{exp}=(u_{K+1}^{exp},\cdots
+,u_{T}^{exp})^{\mathsf{T}}\)</span>,<span
+class="math inline">\(\mathbf{u}_{rest}\)</span> is a vector with all
+components equal to <span class="math inline">\(u_{rest}\)</span>.</p>
+<p>(10.4) can be written as <span class="math display">\[
+    \mathbf{u}=X \mathbf{k}^{\mathsf{T}}+\mathbf{u}_{rest}
+\tag{10.6}       
+\]</span> (10.5) indicates <span class="math display">\[
+    \nabla _{\mathbf{k}} E=0
+\]</span></p>
+<p>Since <span class="math display">\[
+    E(\mathbf{k})=[u^{exp}-X
+\mathbf{k}-\mathbf{u}_{rest}]^{\mathsf{T}}\cdot [u^{exp}-X
+\mathbf{k}-\mathbf{u}_{rest}] \tag{10.7}
+\]</span></p>
+<p>The solution is the parameter vector <span class="math display">\[
+    \hat{\mathbf{k}}_{LS}=(X^{\mathsf{T}}X)^{-1}X^{\mathsf{T}}(\mathbf{u}^{exp}-\mathbf{u}_{rest})
+\tag{10.8}
+\]</span></p>
+<p>assuming the matrix <span
+class="math inline">\(X^{\mathsf{T}}X\)</span> is invertible. (If this
+matrix is non-invertible, then a unique minimum does not exist.)</p>
+<h3 id="generalized-linear-models">Generalized Linear Models</h3>
+<p>Deterministic formulation of the SRM, <span class="math display">\[
+    u(t)=\int_{0}^{\infty} \eta(s)S(t-s) \mathrm{d}s+\int_{0}^{\infty}
+\kappa(s)I(t-s) \mathrm{d}s+u_{rest}. \tag{10.9}
+\]</span></p>
+<p>Suppose that the spike history filter <span
+class="math inline">\(\eta\)</span> extends over a maximum of <span
+class="math inline">\(J\)</span> time steps. Then we can introduce a new
+parameter vector. <span class="math display">\[
+    \mathbf{k}=(\kappa(\mathrm{d}t),\kappa(2 \mathrm{d}t),\cdots
+,\kappa(K \mathrm{d}t),\eta(\mathrm{d}t),\eta(2 \mathrm{d}t),\cdots
+,\eta(J \mathrm{d}t),u_{rest})\tag{10.10}
+\]</span></p>
+<p>The spike train in the last <span class="math inline">\(J\)</span>
+time steps is represented by the spike count sequence <span
+class="math inline">\(n_{t-1},n_{t-2},\cdots ,n_{t-J}\)</span>, where
+<span class="math inline">\(n_t \in \{0,1\}\)</span>, and included into
+the 'input' vector <span class="math display">\[
+    \mathbf{x}_t=(I_{t-1}\mathrm{d}t,I_{t-2}\mathrm{d}t,\cdots
+,I_{t-K}\mathrm{d}t,n_{t-1},n_{t-2},\cdots ,n_{t-J},1). \tag{10.11}
+\]</span> So the discrete-time version <span class="math display">\[
+    u_t=\sum_{j=1}^{J} k_{K+j}n_{t-j}+\sum_{k=1}^{K}
+k_{k}I_{t-k}\mathrm{d}t+u_{rest}=\mathbf{k}\cdot \mathbf{x}_t
+\tag{10.12}
+\]</span></p>
+<p>We have the firing intensity <span class="math display">\[
+    \rho(t)=f(u(t)-\theta)=f(\mathbf{k}\cdot \mathbf{x}_t-\theta),
+\tag{10.13}
+\]</span></p>
+<h2 id="statistical-formulation-of-encoding-models">Statistical
+Formulation of Encoding Models</h2>
+<p>A neural 'encoding model' is a model that assigns a conditional
+probability, <span class="math inline">\(p(D|\mathbf{x})\)</span>, to
+any possible neural response <span class="math inline">\(D\)</span>
+given a stimulus <span class="math inline">\(\mathbf{x}\)</span>. We
+hypothesize some encoding model, <span class="math display">\[
+    p(D|\mathbf{x},\theta). \tag{10.16}
+\]</span> Here <span class="math inline">\(\theta\)</span> is a
+short-hand notation for the set of all model parameters. In the example
+of the previous section, the model parameters are <span
+class="math inline">\(\theta=\{\mathbf{k}\}\)</span></p>
+<h3 id="parameter-estimation">Parameter estimation</h3>
+<p>Find a good estimate for <span class="math inline">\(\theta\)</span>
+for a chosen model class: - Introduce a model that makes sense
+biophysically, and incorporates our prior knowledge in a tractable
+manner. - Write down the likelihood of the observed data given the model
+parameters, along with a prior distribution that encodes our prior
+beliefs about the model parameters. - Compute the posterior distribution
+of the model parameters given the observed data, using Bayes'rule, <span
+class="math display">\[
+    p(\theta|D)\propto p(D|\theta)p(\theta);\tag{10.18}
+\]</span></p>
+<p>The maximum likelihood (ML): <span class="math display">\[
+    ML:\hat{k}_{ML}=\mathop{\arg\max}_\mathbf{k}\{p(D|X,\mathbf{k})\}
+\]</span></p>
+<p>maximum a posteriori (MAP): <span class="math display">\[
+    MAP:\hat{k}_{MAP}=\mathop{\arg\max}_\mathbf{k}\{p(D|X,\mathbf{k})p(\mathbf{k})\}
+\]</span></p>
+<p>where the maximization runs over all possible parameter choices.</p>
+<p>Assume that spike counts per bin follows <span
+class="math display">\[
+    n_t \sim Poiss[\rho(t)\mathrm{d}t]
+\]</span></p>
+<p>With the rate parameter of the Poisson distribution given by GLM or
+SRM model <span class="math inline">\(\rho(t)=f(\mathbf{k}\cdot
+\mathbf{x}_t)\)</span>, we have <span class="math display">\[
+    p(D|X,\mathbf{k})=\prod_{t}^{} \left\{ \frac{[f(\mathbf{k}\cdot
+\mathbf{x}_t) \mathrm{d}t]^{n_t}}{(n_t)!}\exp [-f(\mathbf{x}_t\cdot
+\mathbf{k})\mathrm{d}t]\right\}
+\]</span></p>
+<p>For a given observed spike train, the spike count numbers <span
+class="math inline">\(n_t\)</span> are fixed, so we treat them as
+constants. We reshuffle the terms and consider the logarithm, <span
+class="math display">\[
+    \log p(D|X,\mathbf{k})=c_0+\sum_{t} \{ n_t \log f(\mathbf{k}\cdot
+\mathbf{x}_t)-f(\mathbf{x}_t\cdot \mathbf{k})\mathrm{d}t\} \tag{10.23}
+\]</span></p>
+<p>If we assume that - <span class="math inline">\(f(u)\)</span> is a
+convex (upward-curving) function of its scalar argument <span
+class="math inline">\(u\)</span> - <span class="math inline">\(\log
+f(u)\)</span> is concave (downward-curving) in <span
+class="math inline">\(u\)</span>, <span class="math display">\[
+    \mathbf{x}_t=(1,I_{t-1}\mathrm{d}t,I_{t-2}\mathrm{d}t,\cdots
+,I_{t-K}\mathrm{d}t,n_{t-1},n_{t-2},\cdots ,n_{t-J}). \tag{10.24}
+\]</span></p>
+<p>the parameter vector <span class="math display">\[
+    \mathbf{k}=(b,\kappa(\mathrm{d}t),\kappa(2\mathrm{d}t),\cdots
+,\kappa(K\mathrm{d}t),\eta(\mathrm{d}t),\eta(2\mathrm{d}t),\cdots
+,\eta(J\mathrm{d}t)); \tag{10.25}
+\]</span></p>
+<p>here <span class="math inline">\(b=u_{rest}-\theta\)</span> is a
+constant offset term which we want to optimize.</p>
+<p>then (10.23) is guaranteed to be a concave function of <span
+class="math inline">\(\mathbf{k}\)</span>.</p>
+<p>Note that, <span class="math inline">\(\rho(t)\)</span> depends on
+the past spike trains, therefore <span
+class="math inline">\(D=\{n_t\}\)</span> is no longer a Poisson
+process.</p>
+<p>Finally, we expand the definition of <span
+class="math inline">\(X\)</span> to include observations of other spike
+trains. Spike counts are conditionally Poisson distributed given <span
+class="math inline">\(\rho_i(t)\)</span>. <span
+class="math inline">\(n_{i,t}\sim Poiss(\rho_i(t)\mathrm{d}t)\)</span>
+with a firing rate <span class="math display">\[
+    \rho_i(t)=f\left(\mathbf{k}_i\cdot \mathbf{x}_t+\sum_{i&#39;\neq
+i}^{}\sum_{j}^{}  \varepsilon_{i&#39;,j}n_{i&#39;,t-j}\right)
+\]</span></p>
+<p>these terms are summed over all past spike activity <span
+class="math inline">\(n_{i&#39;,i-j}\)</span> in the population of
+cells.</p>
+<p><span class="math inline">\(\rho_i(t)\)</span>: the instantaneous
+firing rate of the <span class="math inline">\(i\)</span>-th cell at
+time <span class="math inline">\(t\)</span> <span
+class="math inline">\(\mathbf{k}_i\)</span>: the cell's linear receptive
+field including spike-history effects. <span
+class="math inline">\(\varepsilon_{i&#39;,j}\)</span>: the net effect of
+a spike of neuron <span class="math inline">\(i&#39;\)</span> onto the
+membrane potential of neuron <span class="math inline">\(i\)</span>. If
+we record from all neurons in the population, <span
+class="math inline">\(\varepsilon_{i&#39;,j}\)</span> can be interpreted
+as the excitatory or inhibitory postsynaptic potential caused by a spike
+of neuron <span class="math inline">\(i&#39;\)</span> a time <span
+class="math inline">\(j \mathrm{d}t\)</span> earlier.</p>
+<h4 id="example-linear-regression-and-voltage-estimation">Example:
+Linear regression and voltage estimation</h4>
+<p>We want to show that the standard procedure of least-square
+minimization can be linked to statitical parameter estimation under the
+assumption of Gaussian noise.</p>
+<p>Set <span class="math inline">\(\mathbf{x}_t=(I_{t-1},\cdots
+,I_{t-K})\mathrm{d}t\)</span> and <span
+class="math inline">\(\mathbf{k}=(\kappa(\mathrm{d}t),\cdots
+,\kappa(K\mathrm{d}t))\)</span>.</p>
+<p>If we assume that the discrete-time voltage measurements have a
+Gaussian distribution around the mean predicted by (10.4), then we need
+to maximize the likelihood. <span class="math display">\[
+    \log p(D|X,\mathbf{k})=c_1-c_2 \sum_{t}^{} (u_t-(\mathbf{k}\cdot
+\mathbf{x}_t))^{2}, \tag{10.28}
+\]</span> where <span class="math display">\[
+    X=\begin{pmatrix}
+    \mathbf{x}_1/\mathrm{d}t \\
+    \vdots \\
+    \mathbf{x}_T/\mathrm{d}t
+    \end{pmatrix}
+\]</span></p>
+<p><span class="math inline">\(c_1,c_2\)</span> are constants that do
+not depend on the parameter <span
+class="math inline">\(\mathbf{k}\)</span>. Maximization yields <span
+class="math inline">\(\mathbf{k}_{opt}=(X^{\mathsf{T}}X)^{-1}(\sum_{t}^{}
+u_t \mathbf{x}_t/\mathrm{d}t)\)</span> which determines the time course
+of the filter <span class="math inline">\(\kappa(s)\)</span>. The result
+is identical to (10.8): <span class="math display">\[
+    \hat{\mathbf{k}}_{opt}=\hat{\mathbf{k}}_{LS}
+\]</span></p>
+<h3 id="regularization-maximum-penalized-likelihood">Regularization:
+maximum penalized likelihood</h3>
+<p>We want to maximize the posterior <span class="math display">\[
+    p(\mathbf{k}|X,D)\propto p(D|X,\mathbf{k})p(\mathbf{k}) \tag{10.30}
+\]</span> here <span class="math inline">\(p(\mathbf{k})\)</span>
+encodes our a priori beliefs about the true underlying <span
+class="math inline">\(\mathbf{k}\)</span>.</p>
+<p><span class="math display">\[
+    \log p(k|X,\mathbf{D})=c+\log p(\mathbf{k})+\sum_{t}^{} (n_t \log
+f(\mathbf{x}_t\cdot \mathbf{k})-f(\mathbf{x}_t\cdot
+\mathbf{k})\mathrm{d}t). \tag{10.32}
+\]</span></p>
+<h4 id="example-linear-regression-and-gaussian-prior">Example: Linear
+regression and Gaussian prior</h4>
+<p>Consider a zero-mean Gaussian <span class="math display">\[
+    \log p(\mathbf{k})=c-\mathbf{k}^{\mathsf{T}}A \mathbf{k}/2.
+\]</span> where <span class="math inline">\(A\)</span> is a positive
+definite matrix (the inverse covariance matrix). Combining with (10.28),
+maximizing the corresponding posterior leads directly to the regularized
+least-square estimator <span class="math display">\[
+    \hat{\mathbf{k}}_{RLS}=(X^{\mathsf{T}}X+A)^{-1}\left(\sum_{t}^{} u_t
+\mathbf{x}_t/\mathrm{d}t\right)
+\]</span></p>
+<h2 id="evaluating-goodness-of-fit">Evaluating Goodness-of-fit</h2>
+<p>In the following we assume that the goodness of fit quantities are
+computed using 'cross-validation': parameters are estimated using the
+training set, and then the goodness of fit quantification is performed
+on the test set.</p>
+<h3 id="comparing-spiking-membrane-potential-recordings">Comparing
+Spiking Membrane Potential Recordings</h3>
+<div class="note note-info">
+            <p>这里提到，如果使用最小平方误差来优化模型，那么实际上隐含了剩余误差呈正态分布的假设。考虑到只有当所有电压轨迹都未达到threshold时，电压分布才是正态的（这里忽略了分布概率趋近于0的那一部分）。</p>
+          </div>
+<p>下面是[1]中的一段话，也可以部分解释最小二乘法与高斯分布的误差之间的密切关系：</p>
+<hr />
+<p>The use of the least squares method for extracting information from
+imperfect observations assumes a specific a priori probability
+distribution for the errors, viz. the Gauss distribution. The same
+assumption, however, cannot be true for all variable that might be used
+to measure the observed quantity (but at most for one variable, and all
+those that are linearly connected with it). The method of least squares
+applied in the frequency scale does not lead to the same result as when
+applied to the same observations plotted according to wavelengths. The
+'best value' for the brightness of a star depends on whether one applies
+the method of least squares to the magnitude or to its intensity in
+energy measure. The redeeming feature is, as long as the errors are
+small, that any reasonable transformation is practically linear in the
+relevant range. But there is no logical foundation for applying it to
+widely scattered data.</p>
+<hr />
+<p>The goodness-of-fit in terms of subthreshold membrane potential away
+from spikes is considered separately from the goodness-of-fit in terms
+of the spike times only.</p>
+<p>We compute the squared error between the recorded membrane potential
+<span class="math inline">\(u_t^{exp}\)</span> and model membrane
+potential <span class="math inline">\(u_t^{mod}\)</span> with forced
+spikes at the times of the observed ones. All voltage traces start at
+the same point and repeated <span class="math inline">\(N_{rep}\)</span>
+times. For subthreshold membrane potential, we can average the squared
+error over all recorded times <span class="math inline">\(t\)</span>
+that are not too close to an action potential: <span
+class="math display">\[
+    RMSE_{nm}=\sqrt{\frac{1}{T_{\Omega_1}N_{rep}}\sum_{i=1}^{N_{rep}}
+\int_{\Omega_1}^{} (u_i^{exp}(t)-u_i^{mod}(t))^{2} \mathrm{d}t}
+\tag{10.37}
+\]</span> where <span class="math inline">\(\Omega_1\)</span> refers to
+the ensemble of time bins at least 5 ms before or after any spikes and
+<span class="math inline">\(T_{\Omega_1}\)</span> is the total time in
+<span class="math inline">\(\Omega_1\)</span>. <span
+class="math inline">\(RMSE_{nm}\)</span> has index <span
+class="math inline">\(n\)</span> for 'neuron' and index <span
+class="math inline">\(m\)</span> for 'model'.</p>
+<p>For spike times, we find times which are sufficiently away from a
+spike in any repetition and compute the average squared error <span
+class="math display">\[
+    RMSE_{nn}=\sqrt{\frac{2}{T_{\Omega_2}N_{rep}(N_{rep}-1)}\sum_{i=1}^{N_{rep}}
+\sum_{j=1}^{i-1} \int_{\Omega_2}^{} (u_j^{exp}j(t)-u_i^{exp}(t))^{2}
+\mathrm{d}t} \tag{10.38}
+\]</span> where <span class="math inline">\(\Omega_2\)</span> refers to
+the ensemble of time bins far from the spike times in any repetition and
+<span class="math inline">\(T_{\Omega_2}\)</span> is the total time in
+<span class="math inline">\(\Omega_2\)</span>. Typically, 20 ms before
+and 200 ms after the spike is considered sufficiently far (spike
+afterpotentials can extend for longer, so its a rather bad
+approximation). Because the earlier spiking history will affect the
+membrane potential, the <span class="math inline">\(RMSE_{nn}\)</span>
+calculated in (10.38) is an overestimate.</p>
+<p>We compute the model error with the intrinsic error by taking the
+ratio <span class="math display">\[
+    RMSER=\frac{RMSE_{nn}}{RMSE_{nm}} \tag{10.39}
+\]</span></p>
+<p>The root-mean-squared-error ratio (RMSER) reaches one if the model
+precision is matched with intrinsic error. When smaller than one, the
+RMSER indicates that the model could be improved. Values larger than one
+are possible because <span class="math inline">\(RMSE_{nn}\)</span> is
+an overestimate of the true intrinsic error.</p>
+<h3 id="spike-train-likelihood">Spike Train Likelihood</h3>
+<p><span class="math display">\[
+    L^{n}(S|\theta)=\prod_{t^{(i)}\in S}^{} \rho(t^{(i)}|S,\theta)\exp
+\left[ -\int_{0}^{T} \rho(s|S,\theta) \mathrm{d}s\right] \tag{10.40}
+\]</span> where we used <span
+class="math inline">\(\rho(t^{(i)}|S,\theta)\)</span> to emphasize that
+the firing intensity of a spike at <span
+class="math inline">\(t^{(i)}\)</span> depends on both the stimulus and
+spike history as well as the model parameter <span
+class="math inline">\(\theta\)</span>.</p>
+<p>We compare <span class="math inline">\(L^{n}\)</span> with the
+likelihood of a homogeneous Poisson model with a constant firing
+intensity <span class="math inline">\(\rho_0=n/T\)</span>. The
+difference in log-likelihood between the Poisson model and the neuron
+model is finally divided by the total number <span
+class="math inline">\(n\)</span> of observed spikes in order to obtain a
+quantity with units of 'bits per spike': <span class="math display">\[
+    \frac{1}{n}\log
+_{2}\frac{L^{n}(S|\theta)}{\rho_0^{n}\mathrm{e}^{-\rho T} } \tag{10.41}
+\]</span></p>
+<p>This quantity can be interpreted as an instantaneous mutual
+information between the spike count in a single time bin and the
+stimulus given the parameters.</p>
+<h3 id="time-rescaling-theorem">Time-rescaling Theorem</h3>
+<p>For a spike train with spikes at <span
+class="math inline">\(t^{(1)}&lt;t^{(2)}&lt;\cdots &lt;t^{(n)}\)</span>
+and with firing intensity <span
+class="math inline">\(\rho(t|S,\theta)\)</span>, the time-rescaling
+transformation <span class="math inline">\(t \to \Lambda(t)\)</span> is
+defined as <span class="math display">\[
+    \Lambda(t)=\int_{0}^{t} \rho(x|S,\theta) \mathrm{d}x. \tag{10.42}
+\]</span></p>
+<p>Somewhat suprisingly, <span
+class="math inline">\(\Lambda(t^{(k)})\)</span> (evaluated at the
+measured firing times) is a Poisson process with unit rate. A correlate
+of this time-rescaling theorem is that the time intervals <span
+class="math display">\[
+    \Lambda(t^{(k)})-\Lambda(t^{(k-1)}) \tag{10.43}
+\]</span> are independent random variables with an exponential
+distribution. Re-scaling again the time axis with the transformation
+<span class="math display">\[
+    z_k=1-\exp [-(\Lambda(t^{(k)})-\Lambda(t^{(k-1)}))] \tag{10.44}
+\]</span> forms independent uniform random variables on the interval
+zero to one.</p>
+<p>To verify that the <span class="math inline">\(z_k\)</span>'s are
+independent, we can look at the serial correlation of the interspike
+intervals or use a scatter plot <span
+class="math inline">\(z_{k+1}\)</span> against <span
+class="math inline">\(z_k\)</span>. Testing whether the <span
+class="math inline">\(z_k\)</span>'s are uniformly distributed can be
+done with a <strong>Kolmogorov-Smirnov</strong> (K-S) test. In our case,
+the reference function is the uniform distribution, so that its
+cumulative is simply <span class="math inline">\(z\)</span>. Thus, <span
+class="math display">\[
+    D=\text{sup}_{z}\lvert P(z)-z \rvert . \tag{10.45}
+\]</span></p>
+<p>The time-rescaling theorem along with the K-S test provide a useful
+goodness-of-fit measure for spike train data with confidence intervals
+that does not require multiple repetitions.</p>
+<h3 id="spike-train-metric">Spike Train Metric</h3>
+<p>Evaluating the goodness-of-fit in terms of log-likelihood or the
+time-rescaling theorem requires that we know that the conditional firing
+intensity <span class="math inline">\(\rho(t|S,\theta)\)</span>
+accurately.</p>
+<p>Another approach for comparing spike trains involves defining a
+metric between spike trains.</p>
+<p>Let us consider spike trains as vectors in an abstract vector space,
+with these vectors denoted with boldface: <span
+class="math inline">\(\bold{S}\)</span>. For now, consider the general
+form <span class="math display">\[
+    (\bold{S}_{i}, \bold{S}_{j})=\int_{0}^{T} \int_{-\infty}^{\infty}
+\int_{-\infty}^{\infty} K_{\Delta}(s,s&#39;)S_i(t-s)S_j(t-s&#39;)
+\mathrm{d}s \mathrm{d}s&#39; \mathrm{d}t, \tag{10.46}
+\]</span> where <span class="math inline">\(K_{\Delta}\)</span> is a
+two-dimensional coincidence kernel with a scaling parameter <span
+class="math inline">\(\Delta\)</span>, and <span
+class="math inline">\(T\)</span> is the maximum length of the spike
+trains. <span class="math inline">\(K_{\Delta}\)</span> is required to
+be a non-negative function with a global maximum at <span
+class="math inline">\(s=s&#39;=0\)</span>. Moreover, <span
+class="math inline">\(K_{\Delta}(s,s&#39;)\)</span> should fall off
+rapidly so that <span
+class="math inline">\(K_{\Delta}(s,s&#39;)\thickapprox 0\)</span> for
+all <span class="math inline">\(s,s&#39;&gt;\Delta\)</span>. Examples of
+kernels include <span
+class="math inline">\(K_{\Delta}(s,s&#39;)=k_1(s)k_2(s&#39;)=\frac{1}{\Delta^{2}}\exp
+[-(s+s&#39;)/\Delta]\Theta(s)\Theta(s&#39;)\)</span>. The scaling
+parameter <span class="math inline">\(\Delta\)</span> must be small,
+much smaller than the length <span class="math inline">\(T\)</span> of
+the spike train.</p>
+<p>With <span
+class="math inline">\(K_{\Delta}(s,s&#39;)=\delta(s)\delta(s&#39;)\)</span>,
+we observe that <span class="math inline">\((\bold{S}_{i},
+\bold{S}_{i})=\int_{0}^{T} S_i^{2}(t) \mathrm{d}t=n_i\)</span> where
+<span class="math inline">\(n_i\)</span> is the number of spikes in
+<span class="math inline">\(\bold{S}_i\)</span>.</p>
+<p>Define distance <span class="math inline">\(D_{ij}\)</span>, between
+two spike-trains <span class="math display">\[
+    D_{ij}=\left\| \bold{S}_i-\bold{S}_j \right\|_{} \tag{10.47}
+\]</span> Consider <span
+class="math inline">\(K_{\Delta}(s,s&#39;)=\delta(s)\delta(s&#39;)\)</span>,
+then <span class="math inline">\(D_{ij}\)</span> is the total number of
+spikes in both <span class="math inline">\(\bold{S}_i\)</span> and <span
+class="math inline">\(\bold{S}_j\)</span> reduced by 2 for each spike in
+<span class="math inline">\(\bold{S}_i\)</span> that coincided with one
+in <span class="math inline">\(\mathbf{S}_j\)</span>. For the following,
+it is useful to think of a distance between spike trains as a number of
+non-coincident spikes.</p>
+<p><span class="math display">\[
+    \cos \theta_{ij}=\frac{(\mathbf{S}_i,\mathbf{S}_j)}{\left\|
+\mathbf{S}_i \right\|_{}\left\| \mathbf{S}_j \right\|_{}}. \tag{10.48}
+\]</span></p>
+<h3 id="comparing-sets-of-spike-trains">Comparing Sets of Spike
+Trains</h3>
+<p>Let the two sets of spike trains be denoted by <span
+class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span>, containing <span
+class="math inline">\(N_{X}\)</span> and <span
+class="math inline">\(N_{Y}\)</span> spike trains, respectively. Define
+<span class="math display">\[
+    \hat{L}_{X}=\frac{1}{N_X}\sum_{i=1}^{N_{X}} \left\|
+\mathbf{S}_i^{(x)} \right\|_{}^{2}. \tag{10.49}     
+\]</span> where we have used '^' to denote that the quantity is an
+experimental estimate. <span class="math inline">\(\hat{L}_{X}\)</span>
+is related to the averaged spike count. <span
+class="math inline">\(L_{X}\)</span> is exactly the averaged spike count
+if the inner product satisfies i)<span class="math inline">\(\int_{}^{}
+\int_{}^{} K_{\Delta}(s,s&#39;) \mathrm{d}s \mathrm{d}s&#39;=1\)</span>
+and ii) <span class="math inline">\(K_{\Delta}(s,s&#39;)=0\)</span>
+whenever $s-s' $ is greater than the minimum interspike interval of any
+of the spike trains considered.</p>
+<p>The vector of averaged spike trains <span class="math display">\[
+    \hat{\nu}_{X}=\frac{1}{N_X}\sum_{i=1}^{N_{X}} \mathbf{S}_i^{(x)}.
+\tag{10.50}       
+\]</span> is another occurrence of the spike density. It defines the
+instantaneous firing rate of the spiking process, <span
+class="math inline">\(\nu(t)=\langle \hat{\nu}\rangle\)</span>.</p>
+<p>The variability is defined as the variance <span
+class="math display">\[
+    \hat{V}_{X}=\frac{1}{N_{X}}\sum_{i=1}^{N_{X}} \left\|
+\mathbf{S}_i^{(x)}-\hat{\nu}_{X} \right\|_{}^{2}. \tag{10.51}
+\]</span></p>
+<p>Variability relates to reliability. While variability is a positive
+quantity that cannot exceed <span class="math inline">\(L_X\)</span>,
+reliabiliy is usually defined between zero and one where one means
+perfectly reliable spike timing: <span
+class="math inline">\(\hat{R}_{X}=1-\hat{V}_{X}/\hat{L}_{X}\)</span>.</p>
+<p>Finally, we come to a measure of match between the set of spike
+trains <span class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span>. To reproduce the detailed time
+structure of the PSTH, we define <span class="math display">\[
+    \hat{M}=\frac{2(\hat{\nu}_{X},\hat{\nu}_{Y})}{\hat{R}_{X}\hat{L}_{X}+\hat{R}_{Y}\hat{L}_{Y}}.
+\tag{10.52}
+\]</span></p>
+<p>We have <span class="math inline">\(M\)</span> (for match) equal to
+one if <span class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span> have the same instantaneous firing
+rate. The smaller <span class="math inline">\(M\)</span> the greater the
+mismatch between the spiking processes. The quantity <span
+class="math inline">\(R_{X}L_{X}\)</span> can be interpreted as a number
+of reliable spikes. Since <span
+class="math inline">\((\hat{\nu}_{X},\hat{\nu}_{Y})\)</span> is
+interpreted as a number of coincident spikes between <span
+class="math inline">\(X\)</span> and <span
+class="math inline">\(Y\)</span>, we can still regard <span
+class="math inline">\(M\)</span> as a factor counting the fraction of
+coincident spikes.</p>
+<p>If the kernel <span
+class="math inline">\(K_{\Delta}(s,s&#39;)\)</span> is chosen to be
+<span class="math inline">\(k_g(s)k_g(s&#39;)\)</span> and <span
+class="math inline">\(k_g\)</span> is a Gaussian distribution of width
+<span class="math inline">\(\Delta\)</span>, then <span
+class="math inline">\(M\)</span> relates to a mean square error between
+PSTHs that were filtered with <span class="math inline">\(k_g\)</span>.
+Therefore, the kernel used in the definition of the inner product
+(10.46) can be related to the smoothing filter of the PSTH.</p>
+<h2 id="closed-loop-stimulus-design">Closed-loop stimulus design</h2>
+<p>Here we describe how to take advantage of the properties of the GLM
+to optimize our experiments: the objective is to select, in an online,
+closed-loop manner, the stimuli that will most efficiently characterize
+the neuron's response properties.</p>
+<p>A property of GLMs: not all stimuli will provide the same amount of
+information about the unknown coefficients <span
+class="math inline">\(\mathbf{k}\)</span>. We need a well-defined
+objective function that will rank any given stimuli according to its
+potential informativeness.</p>
+<p>When the goal is estimating the unknown parameters of a model, given
+<span class="math inline">\(D=\{ \mathbf{x}(s),n_s\}_{s&lt;t}\)</span>,
+the observed data up to the current trial. The posterior uncertainty in
+<span class="math inline">\(\theta\)</span> can be quantified using the
+information-theoretic notion of 'entropy'.</p>
+<h2 id="summary">Summary</h2>
+<p>For a suitable chosen model class, the likelihood of the data being
+generated by the model is a concave function of the model parameters,
+i.e., there are no local maxima.</p>
+<p>Once neuron models are phrased in the language of statistics, the
+problems of coding and stimulus design can be formulated in a single
+unified framework.</p>
+<h3 id="comparing-psths-and-spike-train-similarity-measures">Comparing
+PSTHs and spike train similarity measures</h3>
+<p>Experimentally the PSTH is constructed from a set of <span
+class="math inline">\(N_{rep}\)</span> spike trains, <span
+class="math inline">\(S_i(t)\)</span>, measured from repeated
+presentations of the same stimulus. The ensemble average of the recorded
+spike trains: <span class="math display">\[
+    \frac{1}{N_{rep}}\sum_{i=1}^{N_{rep}} S_i(t)
+\]</span> is typically convolved with a Gaussian function <span
+class="math display">\[
+    h_g(x)=(2\pi \sigma^{2})^{-1/2}\exp (-x^{2}/2\sigma^{2})
+\]</span> with <span class="math inline">\(\sigma\)</span> around 5 ms,
+such that <span class="math inline">\(A_1(t)=(h_g *
+\frac{1}{N_{rep}}\sum_{}^{} S_i)\)</span> is a smoothed PSTH.</p>
+<p>With the kernel <span
+class="math inline">\(K(t,t&#39;)=h_g(t)h_g(t&#39;)\)</span>, We have
+<span class="math display">\[
+    \int_{0}^{T} (A_1(t)-A_2(t))^{2} \mathrm{d}t=\left\|
+\frac{1}{N_{rep}}\sum_{i=1}^{N_{rep}} (S_1(t)-S_2(t)) \right\|_{}^{2}
+\]</span></p>
+<p>The correlation coefficient between the two smoothed PSTHs can be
+written as a angular separation between the sets of spike trains with
+kernel <span
+class="math inline">\(K(t,t&#39;)=h_g(t)h_g(t&#39;)\)</span>.</p>
+<h3 id="victor-and-purpura-metric">Victor and Purpura metric</h3>
+<p>Consider the minimum cost <span class="math inline">\(C\)</span>
+required to transform a spike train <span
+class="math inline">\(S_i\)</span> into another spike train <span
+class="math inline">\(S_j\)</span> if the only transformations available
+are - Removing a spike has a cost of one - Adding a spike has a cost of
+one - Shifting a spike by a distance <span
+class="math inline">\(d\)</span> has a cost <span
+class="math inline">\(qd\)</span> where <span
+class="math inline">\(q\)</span> is a parameter defining temporal
+precision.</p>
+<p>The <span class="math inline">\(C\)</span> defines a metric that
+measures the dissimilarity between spike train <span
+class="math inline">\(S_i\)</span> and spike train <span
+class="math inline">\(S_j\)</span>.</p>
+<p>For <span class="math inline">\(q=0\)</span> units of cost per
+seconds, <span class="math inline">\(C\)</span> becomes the difference
+in number of spikes in spike trains <span
+class="math inline">\(S_i\)</span> and <span
+class="math inline">\(S_j\)</span>.</p>
+<p>For <span class="math inline">\(q&gt;0\)</span>, <span
+class="math inline">\(C\)</span> can be written as a distance <span
+class="math inline">\(D_{ij}^{2}\)</span> with kernel <span
+class="math inline">\(K(t,t&#39;)=h_t(t)\delta(t&#39;)\)</span> and
+triangular function <span class="math display">\[
+    h_t(t)=(1-\lvert t \rvert q/2)\Theta(1-\lvert t \rvert q/2)
+\]</span> as follows <span class="math display">\[
+    C(S_i,S_j)=D_{ij}^{2}=\int_{0}^{T} \int_{-\frac{2}{q}}^{\frac{2}{q}}
+(1-\lvert s \rvert \frac{q}{2})[S_i(t-s)-S_j(t-s)][S_i(t)-S_j(t)]
+\mathrm{d}s \mathrm{d}t
+\]</span></p>
+<h2 id="references">References</h2>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>N.G.van Kampen (2007)
+Stochastic Processes in Physics and Chemistry.
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/" class="print-no-link">#神经科学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Neuronal Dynamics (10)</div>
+      <div>http://example.com/2022/09/16/Neuronal-Dynamics-10/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 16, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/18/%E6%B0%B8%E4%B9%85%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%94%EF%BC%89/" title="永久记录 （五）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">永久记录 （五）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/26/Neuronal-Dynamics-8/" title="Neuronal Dynamics (8)">
+                        <span class="hidden-mobile">Neuronal Dynamics (8)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

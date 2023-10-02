@@ -1,0 +1,960 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本节介绍一些简单的常微分方程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常微分方程（2）">
+<meta property="og:url" content="http://example.com/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%882%EF%BC%89/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="本节介绍一些简单的常微分方程">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-04-01T14:51:13.000Z">
+<meta property="article:modified_time" content="2022-09-21T02:29:45.098Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+  
+  
+  
+  <title>常微分方程（2） - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常微分方程（2）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-01 22:51" pubdate>
+          April 1, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.6k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          47 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常微分方程（2）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="初等积分法">初等积分法</h1>
+<h2 id="恰当方程">恰当方程</h2>
+<p>考虑对称形式的一阶微分方程 <span class="math display">\[
+P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y=0
+\]</span> 如果存在一个可微函数<span
+class="math inline">\(\Phi(x,y)\)</span>使得它的全微分为 <span
+class="math display">\[
+\mathrm{d}\Phi(x,y)=P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y
+\]</span>
+则称该方程为<strong>恰当方程</strong>或<strong>全微分方程</strong>. 此时
+<span class="math display">\[
+\Phi(x,y)=C
+\]</span> 是该方程的一个通解. 这一点的验证需要用到隐函数定理.</p>
+<p><strong>定理2.1</strong> 设函数<span
+class="math inline">\(P(x,y)\)</span>和<span
+class="math inline">\(Q(x,y)\)</span>在区域 <span
+class="math display">\[
+R:\quad \alpha&lt;a&lt;\beta,\quad \gamma&lt;y&lt;\delta
+\]</span> 上连续，且有连续的一阶偏导数<span
+class="math inline">\(\frac{\partial P}{\partial y}\)</span>与<span
+class="math inline">\(\frac{\partial Q}{\partial x}\)</span>，
+则上微分方程是恰当方程的充要条件为恒等式 <span class="math display">\[
+\frac{\partial P}{\partial y}(x,y)=\frac{\partial Q}{\partial x}(x,y)
+\]</span> 在<span class="math inline">\(R\)</span>内成立.
+此时可以给出方程的通积分： <span class="math display">\[
+\int_{x_0}^xP(x,y)\mathrm{d}x+\int_{y_0}^yQ(x_0,y)\mathrm{d}y=C
+\]</span> 或者 <span class="math display">\[
+\int_{x_0}^xP(x,y_0)\mathrm{d}x+\int_{y_0}^yQ(x,y)\mathrm{d}y=C
+\]</span> 其中<span class="math inline">\((x_0,y_0)\)</span>是<span
+class="math inline">\(R\)</span>中任意取定的一点.</p>
+<h2 id="变量分离的方程">变量分离的方程</h2>
+<p>如果微分方程 <span class="math display">\[
+    P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y=0
+\]</span> 中的函数<span class="math inline">\(P(x,y)\)</span>和<span
+class="math inline">\(Q(x,y)\)</span>均可分别表示为<span
+class="math inline">\(x\)</span>的函数与<span
+class="math inline">\(y\)</span>的函数的乘积，则称上方程为<strong>变量分离的方程</strong>.
+令 <span class="math display">\[
+    P(x,y)=X(x)Y_1(y),\quad Q(x,y)=X_1(x)Y(y)
+\]</span> 以因子<span
+class="math inline">\(X_1(x)Y_1(y)\)</span>去除上式两端，再积分，得到通积分
+<span class="math display">\[
+\int_{}^{}\frac{X(x)}{X_1(x)}\mathrm{d}x+\int_{}^{}\frac{Y(y)}{Y_1(y)}\mathrm{d}y=C
+\]</span> 但注意要补上如下形式的特解（如果它们不在上述通积分之内的话）：
+<span class="math display">\[
+x=a_i,\quad (i=1,2,\cdots),\text{其中$a_i$是$X_1(x)=0$的根}
+\]</span> 和 <span class="math display">\[
+y=b_j,\quad (i=1,2,\cdots),\text{其中$b_j$是$Y_1(y)=0$的根}
+\]</span></p>
+<p>习题中有一个有趣的结果： 设微分方程 <span class="math display">\[
+\frac{\mathrm{d}y}{\mathrm{d}x}=f(y)
+\]</span> 其中<span class="math inline">\(f(y)\)</span>在<span
+class="math inline">\(y=a\)</span>的某领域（例如区间<span
+class="math inline">\(\lvert y-a\rvert \leqslant
+\varepsilon\)</span>）内连续，而且<span
+class="math inline">\(f(y)=0\)</span>当且仅当<span
+class="math inline">\(y=a\)</span>. 则在直线<span
+class="math inline">\(y=a\)</span>上的每一点，上方程的解是局部唯一的当且仅当瑕积分
+<span class="math display">\[
+\biggl\lvert \int_{a}^{a\pm \varepsilon}
+\frac{\mathrm{d}y}{f(y)}\biggr\rvert=\infty \text{（发散）}
+\]</span></p>
+<p>proof 设<span class="math inline">\(y(x_0)=a\)</span>.
+首先，常值函数<span
+class="math inline">\(y(x)=a\)</span>显然是方程的解.</p>
+<p><span class="math inline">\(\Leftarrow\)</span>：假设方程还有解<span
+class="math inline">\(y=g(x)\neq a\)</span>，则<span
+class="math inline">\(\exists x_1\)</span>，<span
+class="math inline">\(h=g(x_1)-a\neq 0\)</span>，则有 <span
+class="math display">\[
+    \biggl\lvert \int_{a}^{a+h}\frac{1}{f(y)}
+\mathrm{d}y\biggr\rvert=\biggl\lvert
+\int_{x_0}^{x_1}\mathrm{d}x\biggr\rvert          
+\]</span> 右侧积分有限，与瑕积分发散矛盾.</p>
+<p><span class="math inline">\(\Rightarrow\)</span>：假设方程只有唯一解
+<span class="math inline">\(y(x)=a\)</span>，若右侧瑕积分收敛，令 <span
+class="math inline">\(g(x)=\int_{a}^{x}\frac{1}{f(y)}
+\mathrm{d}y\)</span> 则由 <span class="math display">\[
+    g&#39;(y)=\frac{1}{f(y)} ,y\neq a    
+\]</span> 可知有隐函数 <span class="math inline">\(y=h(g)\neq
+a\)</span>，从而有 <span class="math display">\[
+    \frac{\mathrm{d}h(g)}{\mathrm{d}g}
+=\frac{\mathrm{d}y}{\mathrm{d}g(y)} =f(y)=f(h(g))
+\]</span> 即 <span class="math inline">\(y=h(g)\)</span> 也是解，但由
+<span class="math inline">\(h(g)\neq a\)</span> 知与解唯一矛盾！</p>
+<h2 id="一阶线性方程">一阶线性方程</h2>
+<p><strong>一阶线性方程</strong>即 <span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x} +p(x)y=q(x) \qquad (1)
+\]</span> 其中函数<span class="math inline">\(p(x)\)</span>和<span
+class="math inline">\(q(x)\)</span>在区间 <span
+class="math inline">\(I=(a,b)\)</span>上连续，当<span
+class="math inline">\(q(x)\equiv 0\)</span>时，方程成为 <span
+class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x} +p(x)y=0 \qquad (2)
+\]</span> 当<span
+class="math inline">\(q(x)\)</span>不恒等于零时，称(1)为<strong>非齐次</strong>线性方程；而(2)为相应的<strong>齐次</strong>线性方程.</p>
+<p>(2)的通解形如 <span class="math display">\[
+    y=C\mathrm{e}^{-\int_{}^{}p(x)\mathrm{d}x}
+\]</span> 其中<span class="math inline">\(C\)</span>是任意常数</p>
+<p>(1)的通解形如 <span class="math display">\[
+    y=
+\mathrm{e}^{-\int_{}^{}p(x)\mathrm{d}x}\biggl(C+\int_{}^{}q(x)\mathrm{e}^{\int_{}^{}p(x)\mathrm{d}x}\mathrm{d}x
+    \biggr)
+\]</span> 其中<span
+class="math inline">\(C\)</span>是一个任意常数，取原函数时取同一个.
+上方法称为<strong>积分因子法</strong>. 这里的积分因子 <span
+class="math display">\[
+    \mu(x)=\mathrm{e}^{\int_{}^{}p(x)\mathrm{d}x}
+\]</span> 注意积分因子的奇点作特殊讨论. 对于给定的初值<span
+class="math inline">\(y(x_0)=y_0\)</span>，解为 <span
+class="math display">\[
+    y=
+y_0\mathrm{e}^{-\int_{x_0}^{x}p(x)\mathrm{d}x}+\int_{x_0}^{x}q(s)\mathrm{e}^{-\int_{s}^{x}p(t)\mathrm{d}t}\mathrm{d}s
+\]</span> 其中<span class="math inline">\(p(x)\)</span>和<span
+class="math inline">\(q(x)\)</span>在区间<span
+class="math inline">\(I\)</span>上连续.</p>
+<h2 id="初等变换法">初等变换法</h2>
+<h3 id="齐次方程"><strong>齐次方程</strong>：</h3>
+<p>如果微分方程 <span class="math display">\[
+    P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y=0         
+\]</span> 中的函数<span class="math inline">\(P(x)\)</span>和<span
+class="math inline">\(Q(x)\)</span>都是<span
+class="math inline">\(x\)</span>和<span
+class="math inline">\(y\)</span>的同次（例如<span
+class="math inline">\(m\)</span>次）齐次函数，即： <span
+class="math display">\[
+    P(tx,ty)=t^mP(x,y),\quad Q(tx,ty)=t^mQ(x,y),
+\]</span>
+则称上方程为<strong>齐次方程</strong>（注意这与上节定义的齐次线性方程不是一回事）.
+做替换 <span class="math display">\[
+    y=ux
+\]</span> 得到 <span class="math display">\[
+    x^m[P(1,u)+uQ(1,u)]\mathrm{d}x+x^{m+1}Q(1,u)\mathrm{d}u=0     
+\]</span> 这是一个变量分离的方程. 齐次方程的另一个等价定义是 <span
+class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=\Phi(\frac{y}{x} )  
+\]</span> 注意：做代换时要排除<span
+class="math inline">\(x=0\)</span>的情况，因<span
+class="math inline">\(x=0\)</span>时代换不可逆.</p>
+<h3 id="伯努利bernoulli方程">伯努利(Bernoulli)方程</h3>
+<p>形如 <span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}+p(x)y=q(x)y^n  
+\]</span> 的方程称为伯努利方程，其中<span
+class="math inline">\(n\)</span>为常数，而且<span
+class="math inline">\(n\neq 0\)</span>和<span
+class="math inline">\(1\)</span>. 以<span
+class="math inline">\((1-n)y^{-n}\)</span> 乘方程两边，然后令 <span
+class="math inline">\(z=y^{1-n}\)</span>， 有 <span
+class="math display">\[
+    \frac{\mathrm{d}z}{\mathrm{d}x} +(1-n)p(x)z=(1-n)q(x)
+\]</span> 这是关于未知函数<span
+class="math inline">\(z\)</span>的一阶线性方程.</p>
+<h3 id="里卡蒂riccati方程">里卡蒂(Riccati)方程</h3>
+<p>加入一阶微分方程 <span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x} =f(x,y)
+\]</span> 的右端函数<span
+class="math inline">\(f(x,y)\)</span>是一个关于<span
+class="math inline">\(y\)</span>的二次多项式，则称此方程为二次方程；它可写成如下形式：
+<span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x} =p(x)y^2+q(x)y+r(x)
+\]</span> 其中<span class="math inline">\(p(x)\)</span>不恒为零.</p>
+<p><strong>定理</strong> 设已知里卡蒂方程的一个特解<span
+class="math inline">\(y=\phi_1(x)\)</span>，则可用积分法求得它的通解.</p>
+<p>证：做代换<span
+class="math inline">\(y=u+\phi_1(x)\)</span>可将里卡蒂方程化为伯努利方程.</p>
+<p><strong>定理</strong> 设里卡蒂方程 <span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x} +ay^2=bx^m
+\]</span> 其中<span class="math inline">\(a\neq 0\)</span>，<span
+class="math inline">\(b,m\)</span>都是常数. 又设<span
+class="math inline">\(x\neq 0\)</span>和<span class="math inline">\(y
+\neq 0\)</span>. 则当且仅当 <span class="math display">\[
+    m=0,-2,\frac{-4k}{2k+1} ,\frac{-4k}{2k-1}\quad(k=1,2,\cdots)  
+\]</span> 时，上方程可通过适当的变换化为变量分离的方程.</p>
+<h2 id="积分因子法">积分因子法</h2>
+<p>想法是对一般的方程 <span class="math display">\[
+    P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y=0 \tag{1}    
+\]</span> 设法找一个可微的非零函数<span class="math inline">\(\mu =\mu
+(x,y)\)</span>，使得用它乘上方程后，所得方程 <span
+class="math display">\[
+    \mu (x,y)P(x,y)\mathrm{d}x+\mu(x,y)Q(x,y)\mathrm{d}y=0 \tag{2}
+\]</span> 成为恰当方程，亦即 <span class="math display">\[
+    \frac{\partial (\mu P)}{\partial y} = \frac{\partial (\mu
+Q)}{\partial x} \tag{3}
+\]</span> 这时，函数<span
+class="math inline">\(\mu=\mu(x,y)\)</span>叫作上方程的一个<strong>积分因子</strong>.
+(3)也可以写成 <span class="math display">\[
+    P\frac{\partial \mu}{\partial y} -Q\frac{\partial \mu}{\partial x}
+=\biggl(\frac{\partial Q}{\partial x} -\frac{\partial P}{\partial y}
+\biggr)\mu
+\]</span> <strong>定理</strong> 微分方程(1)有一个只依赖于<span
+class="math inline">\(x\)</span>的积分因子的充要条件是 <span
+class="math display">\[
+    \frac{1}{Q(x,y)} \biggl(\frac{\partial P(x,y)}{\partial y}
+-\frac{\partial Q(x,y)}{\partial x} \biggr) \tag{4}
+\]</span> 只依赖于<span class="math inline">\(x\)</span>，而与<span
+class="math inline">\(y\)</span>无关. 此时记(4)为<span
+class="math inline">\(G(x)\)</span>，则此时 <span
+class="math display">\[
+    \mu(x)=\mathrm{e}^{\int G(x)\mathrm{d}x}
+\]</span> 是(1)的一个积分因子.</p>
+<p>类似的，微分方程(1)有一个只依赖于<span
+class="math inline">\(y\)</span>的积分因子的充要条件是 <span
+class="math display">\[
+    \frac{1}{P(x,y)} \biggl(\frac{\partial Q(x,y)}{\partial x}
+-\frac{\partial P(x,y)}{\partial y} \biggr) =H(y)
+\]</span> 此时 <span class="math display">\[
+    \mu(y)=\mathrm{e}^{\int H(y)\mathrm{d}y}
+\]</span> 是(1)的一个积分因子.</p>
+<p>还可以<strong>分组求积分因子</strong>. 理由是下述定理：</p>
+<p><strong>定理</strong> 若<span class="math inline">\(\mu =\mu
+(x,y)\)</span>是方程(1)的一个积分因子，使得 <span
+class="math display">\[
+    \mu P(x,y)\mathrm{d}x+\mu Q(x,y)\mathrm{d}y=\mathrm{d} \Phi (x,y)
+\]</span> 则<span
+class="math inline">\(\mu(x,y)g(\Phi(x,y))\)</span>也是(1)的一个积分因子，其中<span
+class="math inline">\(g(\cdot)\)</span>是任一可微的（非零）函数.</p>
+<p>证：验证恰当方程的条件即可. 事实上有 <span class="math display">\[
+    \mu g(\Phi) P\mathrm{d}x+\mu g(\Phi)Q\mathrm{d}y=\mathrm{d}(\int
+g)(\Phi)
+\]</span></p>
+<p>最后，若<span
+class="math inline">\(P(x,y)\mathrm{d}x+Q(x,y)\mathrm{d}y=0\)</span>是齐次方程，则函数
+<span class="math display">\[
+    \mu(x,y)=\frac{1}{xP(x,y)+yQ(x,y)}  
+\]</span> 是一个积分因子. 这是齐次函数的Euler定理的直接应用.</p>
+<h2 id="应用举例">应用举例</h2>
+<p>假设在 <span class="math inline">\((x, y)\)</span>平面上由方程 <span
+class="math display">\[
+    \Phi(x,y,C)=0 \tag{5}   
+\]</span> 给出一个以 <span
+class="math inline">\(C\)</span>为参数的曲线族. 称另一族曲线 <span
+class="math display">\[
+    \Psi(x,y,K) \tag{6}
+\]</span> 其中 <span
+class="math inline">\(K\)</span>为参数，使得族(6)中的任一条曲线与族(5)中的每一条曲线相交成定角
+<span class="math inline">\(\alpha\)</span> (<span
+class="math inline">\(-\frac{\pi}{2}&lt;\alpha&lt;\frac{\pi}{2}\)</span>,以逆时针方向为正).
+称这样的曲线族(6)为已知曲线族(5)的<strong>等角轨线族</strong>. 特别，当
+<span
+class="math inline">\(\alpha=\frac{\pi}{2}\)</span>时，称曲线族(6)为(5)的<strong>正交轨线族</strong>.</p>
+<p>(5)满足的微分方程 <span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=H(x, y)
+\]</span> 其中 <span class="math display">\[
+    H(x, y)=-\frac{\Phi&#39;_x (x, y,C(x, y))}{\Phi&#39;_y (x,y,C(x,
+y))}
+\]</span> 这里 <span class="math inline">\(C=C(x, y)\)</span>是由 <span
+class="math inline">\(\Phi(x,y,C)\)</span>决定的函数.</p>
+<p>当 <span class="math inline">\(\alpha\neq
+\frac{\pi}{2}\)</span>时，有 <span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=\frac{H(x, y)+\tan\alpha}{1-H(x,
+y)\tan \alpha}
+\]</span> 而当 <span
+class="math inline">\(\alpha=\frac{\pi}{2}\)</span>时，就有 <span
+class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=-\frac{1}{H(x, y)}
+\]</span> 这些 <span class="math inline">\(H(x,
+y)\)</span>都是相同的.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常微分方程（2）</div>
+      <div>http://example.com/2022/04/01/常微分方程（2）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 1, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/05/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%883%EF%BC%89/" title="常微分方程（3）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程（3）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%881%EF%BC%89/" title="常微分方程（1）">
+                        <span class="hidden-mobile">常微分方程（1）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

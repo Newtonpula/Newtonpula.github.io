@@ -1,0 +1,1235 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本章介绍微分方程解的定性理论和分支理论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常微分方程（8）">
+<meta property="og:url" content="http://example.com/2022/05/01/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%888%EF%BC%89/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="本章介绍微分方程解的定性理论和分支理论">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-05-01T12:39:18.000Z">
+<meta property="article:modified_time" content="2022-10-09T10:49:34.845Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+  
+  
+  
+  <title>常微分方程（8） - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常微分方程（8）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-01 20:39" pubdate>
+          May 1, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          12k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          101 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常微分方程（8）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="定性理论与分支理论初步">定性理论与分支理论初步</h1>
+<p>The following videos are helpful to understand this chapter. Thanks
+to <span class="citation" data-cites="inversioner">@inversioner</span>
+at Zhihu.</p>
+<hr />
+<p>【维度】数学漫步第一季（熟肉）[2008]
+https://www.bilibili.com/video/av13923799?from=search&amp;seid=12319283859508785318</p>
+<hr />
+<hr />
+<p>维度：数学漫步2-混沌
+https://www.bilibili.com/video/av4194600?from=search&amp;seid=12319283859508785318</p>
+<hr />
+<h2 id="动力系统相空间与轨线">动力系统，相空间与轨线</h2>
+<p>Recall <strong>autonomous</strong> differential equations:
+differential equations whose independent variables are not explicitly
+included in the equation.</p>
+<p>Considering a moving particle in a n-dimensional space. We know its
+speed at <span class="math inline">\(\mathbf{x}\)</span> is <span
+class="math inline">\(\mathbf{v}(\mathbf{x})=(v_1(\mathbf{x}),\cdots
+,v_n(\mathbf{x}))\)</span>. The equation of motion is <span
+class="math display">\[
+    \frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}=\mathbf{v}(\mathbf{x})
+\tag{1}
+\]</span> If <span class="math inline">\(\mathbf{v}(\mathbf{x})\)</span>
+satisfies the condition of existence and uniqueness theorem, then for
+all initial condition <span class="math display">\[
+    \mathbf{x}(t_0)=\mathbf{x}_0
+\]</span> (1) has unique solution satisfying (2) <span
+class="math display">\[
+    \mathbf{x}=\mathbf{\phi}(t,t_0,\mathbf{x}_0) \tag{3}
+\]</span></p>
+<p>We call the space for <span class="math inline">\(\mathbf{x}\)</span>
+(namely <span class="math inline">\(\mathbb{R}^{n}\)</span> )
+<strong>phase space</strong>, the space for <span
+class="math inline">\((t,\mathbf{x})\)</span> (namely <span
+class="math inline">\(\mathbb{R}^{1} \times \mathbb{R}^{n}\)</span> )
+<strong>augmented phase space</strong>.</p>
+<ol type="1">
+<li>defines a <strong>vector field</strong> in the phase space. <span
+class="math display">\[
+\mathbf{v}(\mathbf{x})=(v_1(\mathbf{x}),\cdots ,v_n(\mathbf{x})) \tag{4}
+\]</span></li>
+</ol>
+<p>The solution (3) gives a <strong>trajectory</strong> in the phase
+space.</p>
+<div class="note note-info">
+            <p>Trajectory is the projection of integral curve on the phasespace.</p>
+          </div>
+<p>If <span class="math inline">\(\mathbf{x}_0\)</span> is a zero point
+of (4), namely <span class="math inline">\(v(\mathbf{x}_0)=0\)</span>,
+then (1) has a constant solution <span
+class="math inline">\(\mathbf{x}=\mathbf{x}_0\)</span>. We call <span
+class="math inline">\(\mathbf{x}_0\)</span> is a <strong>balance
+point</strong> to (1). The balance points to (1) is called
+<strong>singularities</strong>.</p>
+<p>If (3) is an unsteady periodic motion, namely <span
+class="math inline">\(\exists T&gt;0\)</span>, s.t. <span
+class="math display">\[
+    \mathbf{\varphi}(t+T,t_0,\mathbf{x}_0)\equiv
+\mathbf{\varphi}(t,t_0,\mathbf{x}_0)
+\]</span> Then its trajectory in the phase space is a closed curve,
+denoted as <strong>close orbit</strong>.</p>
+<p>Any autonomous differential equation has the form of (1). This
+introduces the concept of <strong>dynamic system</strong>.</p>
+<p><strong>Basic properties of dynamic system</strong>: - translation
+invariance of integral curves: for all constant <span
+class="math inline">\(C\)</span>, <span
+class="math inline">\(\mathbf{x}=\mathbf{\varphi}(t+C)\)</span> is a
+solution to (1). - uniqueness of trajectories passing through each point
+in phase space. We can only consider the solution corresponding to the
+initial time <span class="math inline">\(t_0=0\)</span>. Define <span
+class="math display">\[
+    \mathbf{\varphi}(t,\mathbf{x}_0)=\mathbf{\varphi}(t,0,\mathbf{x}_0)
+\]</span> - properties of group: <span
+class="math inline">\(\mathbf{\varphi}(t,\mathbf{x}_0)\)</span>
+satisfies <span class="math display">\[
+    \mathbf{\varphi}(t_2,\mathbf{\varphi}(t_1,\mathbf{x}_0))=\mathbf{\varphi}(t_2+t_1,\mathbf{x}_0)
+\tag{5}
+\]</span></p>
+<h2 id="解的稳定性">解的稳定性</h2>
+<p>翻不动了，上中文.</p>
+<p>对于一般方程 <span class="math display">\[
+    \frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}= \mathbf{f}(t,\mathbf{x})
+\tag{6}
+\]</span> 其中函数 <span
+class="math inline">\(\mathbf{f}(t,\mathbf{x})\)</span> 对 <span
+class="math inline">\(\mathbf{x} \in G \subset \mathbb{R}^{n}\)</span>
+和 <span class="math inline">\(t \in (-\infty,\infty)\)</span>
+连续，并对 <span class="math inline">\(\mathbf{x}\)</span> 满足
+Lipschitz 条件. 又设上方程有一个解 <span
+class="math inline">\(\mathbf{x}= \mathbf{\varphi}(t)\)</span> 在 <span
+class="math inline">\(t_0\leqslant t&lt; \infty\)</span> 有定义.
+如果对任意给定的 <span
+class="math inline">\(\varepsilon&gt;0\)</span>，都存在 <span
+class="math inline">\(\delta=
+\delta(\varepsilon)&gt;0\)</span>，使得只要 <span
+class="math display">\[
+    \lvert \mathbf{x}_0- \mathbf{\varphi}(t_0) \rvert &lt; \delta
+\]</span> 就有以 <span
+class="math inline">\(\mathbf{x}(t_0)=\mathbf{x}_0\)</span> 为初值的解
+<span class="math inline">\(\mathbf{x}(t,t_0,\mathbf{x}_0)\)</span>
+就也在 <span class="math inline">\(t\geqslant t_0\)</span>
+有定义，并且满足 <span class="math display">\[
+    \lvert \mathbf{x}(t,t_0,\mathbf{x}_0)-\mathbf{\varphi}(t) \rvert
+&lt;\varepsilon, \forall t\geqslant t_0
+\]</span> 则称方程的解 <span
+class="math inline">\(\mathbf{x}=\mathbf{\varphi}(t)\)</span>
+是（在Lyapunov意义下）<strong>稳定的</strong>. 假设 <span
+class="math inline">\(\mathbf{x}= \mathbf{\varphi}(t)\)</span>
+是稳定的，而且存在 <span
+class="math inline">\(\delta_1(0&lt;\delta_1\leqslant
+\delta)\)</span>，使得只要 <span class="math display">\[
+    \lvert \mathbf{x}_0-\mathbf{\varphi}(t_0) \rvert &lt;\delta_1
+\]</span> 就有 <span class="math display">\[
+    \lim_{t \to
+\infty}(\mathbf{x}(t,t_0,\mathbf{x}_0)-\mathbf{\varphi}(t))=0
+\]</span> 则称解 <span class="math inline">\(\mathbf{x}=
+\mathbf{\varphi}(t)\)</span>
+是（在Lyapunov意义下）<strong>渐近稳定的</strong>. 如果解 <span
+class="math inline">\(\mathbf{x}=\mathbf{\varphi}(t)\)</span>
+不是稳定的，则称它是<strong>不稳定的</strong>.</p>
+<p>还有<strong>渐近稳定域</strong>（<strong>吸引域</strong>）的概念.
+如果吸引域是全空间，则称解 <span
+class="math inline">\(\mathbf{x}=\mathbf{\varphi}(t)\)</span>
+是<strong>全局渐近稳定的</strong>.</p>
+<p>通过作代换 <span class="math inline">\(\mathbf{y}= \mathbf{x}-
+\mathbf{\varphi}(t)\)</span>，可以得到一个常解 <span
+class="math inline">\(\mathbf{f}(t,\mathbf{0})=\mathbf{0}\)</span>，以下讨论的都是零解的情况.</p>
+<h3 id="线性近似">线性近似</h3>
+<p>把（6）右端的函数 <span
+class="math inline">\(\mathbf{f}(t,\mathbf{x})\)</span>（注意 <span
+class="math inline">\(\mathbf{f}(t,\mathbf{0})=
+\mathbf{0}\)</span>）展开成 <span
+class="math inline">\(\mathbf{x}\)</span> 的线性部分和非线性部分之和
+<span class="math display">\[
+    \frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}= A(t) \mathbf{x}+
+N(t,\mathbf{x}) \tag{7}
+\]</span> 其中 <span class="math inline">\(A(t)\)</span> 是一个 <span
+class="math inline">\(n\)</span> 阶的矩阵函数，对 <span
+class="math inline">\(t\geqslant t_0\)</span> 连续；而函数 <span
+class="math inline">\(N(t,\mathbf{x})\)</span> 对 <span
+class="math inline">\(t\)</span> 和 <span
+class="math inline">\(\mathbf{x}\)</span> 在区域 <span
+class="math display">\[
+    G: \quad t\geqslant t_0, \lvert x \rvert \leqslant M
+\]</span> 上连续，对 <span class="math inline">\(\mathbf{x}\)</span>
+满足 Lipschitz 条件，且满足 <span
+class="math inline">\(N(t,\mathbf{0})=\mathbf{0}(t\geqslant
+t_0)\)</span> 和 <span class="math display">\[
+    \lim_{\lvert \mathbf{x} \rvert  \to 0} \frac{\lvert N(t,\mathbf{x})
+\rvert }{\lvert \mathbf{x} \rvert }=0 \quad(对 t\geqslant t_0 一致成立)
+\]</span></p>
+<p><strong>定理8.1</strong>：考虑线性方程 <span class="math display">\[
+    \frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}= A(t) \mathbf{x} \tag{8}
+\]</span> 假设其中的 <span class="math inline">\(A(t)\)</span>
+是常矩阵，则 - 零解是渐近稳定的 <span
+class="math inline">\(\Leftrightarrow\)</span> 矩阵 <span
+class="math inline">\(\mathbf{A}\)</span> 的全部特征根都有负的实部； -
+零解是稳定的 <span class="math inline">\(\Leftrightarrow\)</span> 矩阵
+<span class="math inline">\(\mathbf{A}\)</span>
+的全部特征根的实部是非正的，且实部为零的特征根所对应的 Jordan
+块都是一阶的； - 零解是不稳定的 <span
+class="math inline">\(\Leftrightarrow\)</span> 矩阵 <span
+class="math inline">\(\mathbf{A}\)</span>
+的特征根中至少有一个实部为正；或者至少有一个实部为零，且它对应的 Jordan
+块是高于一阶的.</p>
+<p><strong>定理8.2</strong>：设方程（7）中的 <span
+class="math inline">\(\mathbf{A}(t)=\mathbf{A}\)</span> 为常矩阵，而且
+<span class="math inline">\(\mathbf{A}\)</span>
+的全部特征根都具有负的实部，则（7）的零解是渐近稳定的.</p>
+<p><strong>定理8.3</strong>：设方程（7）中的 <span
+class="math inline">\(\mathbf{A}(t)=\mathbf{A}\)</span> 为常矩阵，且
+<span class="math inline">\(\mathbf{A}\)</span>
+的特征根中至少有一个具有正的实部，则（7）的零解是不稳定的</p>
+<p>下面这个推广的Gronwall不等式我不会证，来源是知乎用户@inversioner
+的常微分方程学习笔记（9），我也查不到这样形式的推广.
+该推广与Gronwall不等式的最大区别在于函数具有类似迭代的形式，以下再给出一个足够证明上面定理的推广Gronwall不等式.</p>
+<p><strong>引理（推广的Gronwall不等式）</strong>：设非负连续函数 <span
+class="math inline">\(u_{n}(t),v(t)\)</span> 满足不等式</p>
+<p><span class="math display">\[
+    u_0(t)\leqslant c_0,u_n(t)\leqslant c_n+ \int_{t_0}^{t}
+v(s)u_{n-1}(s) \mathrm{d}s     
+\]</span></p>
+<p>其中 <span class="math inline">\(c_n\)</span> 为常数，则有估计式</p>
+<p><span class="math display">\[
+    u_{n}(t)\leqslant \frac{c_0&#39;+\cdots +c_n&#39;}{n+1} \mathrm{e}^{
+\int_{t_0}^{t} v(s) \mathrm{d}s }
+\]</span></p>
+<p>其中 <span class="math inline">\(c_k&#39;:= \sup_{n\geqslant
+k}\{c_n\}\)</span>.</p>
+<p>可以证明的版本</p>
+<p><strong>引理</strong>：非负连续函数 <span
+class="math inline">\(u_n(t),v(t)\)</span> 满足不等式 <span
+class="math display">\[
+    u_n(t)\leqslant u_0(t)+ \int_{t_0}^{t} v(s)u_{n-1}(s) \mathrm{d}s
+\]</span></p>
+<p>则有估计式 <span class="math display">\[
+    u_n(t)\leqslant u_0(t) \mathrm{e}^{\int_{t_0}^{t} v(s) \mathrm{d}s}
+\]</span></p>
+<p><strong>证</strong>：直接依次代入，然后用 $^{x} $
+的Taylor展开即可.</p>
+<p>回到上面两个定理</p>
+<p><strong>证</strong>：首先原方程（7）等价于积分方程 <span
+class="math display">\[
+    \mathbf{x}(t)= \mathrm{e}^{(t-t_0)\mathbf{A}} \mathbf{x}_0+
+\mathrm{e}^{t \mathbf{A}} \int_{t_0}^{t} \mathrm{e}^{-s \mathbf{A}}
+\mathbf{N}(s,\mathbf{x}(s)) \mathrm{d}s
+\]</span> 构造函数序列 <span
+class="math inline">\(\mathbf{x}_n(t)\)</span> 满足 <span
+class="math inline">\(\mathbf{x}_0(t)=\mathrm{e}^{(t-t_0)\mathbf{A}}
+\mathbf{x}_0\)</span>，且 <span class="math display">\[
+    \mathbf{x}_n(t)= \mathrm{e}^{(t-t_0)\mathbf{A}} \mathbf{x}_0+
+\mathrm{e}^{t \mathbf{A}} \int_{t_0}^{t} \mathrm{e}^{-s \mathbf{A}}
+\mathbf{N}(s, \mathbf{x}_{n-1}(s)) \mathrm{d}s
+\]</span></p>
+<p>如果 <span class="math inline">\(\mathbf{A}\)</span>
+的全部特征根都具有负的实部，那么 <span class="math inline">\(\lim_{t \to
+\infty}\mathrm{e}^{t \mathbf{A}} = 0\)</span>. 注意到 <span
+class="math inline">\(\mathbf{N}(s,\mathbf{x})\)</span>
+满足一致Lipschitz条件，可设 <span class="math display">\[
+    \lvert \mathbf{N}(s,\mathbf{x})- \mathbf{N}(s,\mathbf{y})
+\rvert\leqslant L \lvert \mathbf{x}- \mathbf{y} \rvert
+\]</span> 并且有 <span
+class="math inline">\(\mathbf{N}(s,\mathbf{0})=\mathbf{0}\)</span>. 故
+<span class="math display">\[
+    \lvert \mathbf{x}_n(t) \rvert\leqslant
+\mathrm{e}^{(t-t_0)\mathbf{A}} \mathbf{x}_0+ \int_{t_0}^{t}
+L\mathrm{e}^{(t-s) \mathbf{A}} \lvert \mathbf{x}_{n-1}(s) \rvert
+\mathrm{d}s
+\]</span></p>
+<p>（这里 <span class="math inline">\(\leqslant\)</span>
+的意思是每个坐标都 <span
+class="math inline">\(\leqslant\)</span>）那么</p>
+<p><span class="math display">\[
+    \lvert \mathbf{x}_n(t)- \mathbf{x}_{n-1}(t) \rvert \leqslant
+\int_{t_0}^{t} L\mathrm{e}^{(t-s) \mathbf{A}} \lvert
+\mathbf{x}_{n-1}(t)-\mathbf{x}_{n-2}(t) \rvert  \mathrm{d}s
+\]</span></p>
+<p>依次递推可得 <span class="math display">\[
+    \lvert \mathbf{x}_{n}(t)-\mathbf{x}_{n-1}(t) \rvert \leqslant
+\frac{(L(t-t_0))^{n}\mathrm{e}^{(t-t_0)\mathbf{A}}\mathbf{x}_0 }{n!}
+\]</span></p>
+<p>这就说明如果 $_0 $ 足够小，那么 <span
+class="math inline">\(\mathbf{x}_n(t)\)</span> 在 <span
+class="math inline">\(t\geqslant t_0\)</span> 上一致收敛，设极限为 <span
+class="math inline">\(\mathbf{x}(t)\)</span>，那么有 <span
+class="math display">\[
+    \lvert \mathbf{x}(t) \rvert \leqslant \mathrm{e}^{L(t-t_0)}
+\mathrm{e}^{(t-t_0)\mathbf{A}} \mathbf{x}_0
+\]</span></p>
+<div class="note note-info">
+            <p>这里的证明是很微妙的. 先取 $_0 $ 足够小，那么可以证明 $_1(t) $也足够小，进而可以先验地得到 $_n(t) $ 都足够小，然后再有每一步的 <spanclass="math inline">\(L\)</span>都足够小，可以认为这里用到了Gronwall不等式，并且有一种归纳的思想在.</p>
+          </div>
+<p>证明零解的渐近稳定性，故考虑 $_0 $ 充分小，此时因为 <span
+class="math inline">\(L=o(\mathbf{x}_0)\)</span>，故对于 $_0 $ 足够小，
+<span class="math display">\[
+    \lim_{t \to \infty}\mathrm{e}^{L(t-t_0)}
+\mathrm{e}^{(t-t_0)\mathbf{A}} \mathbf{x}_0= \mathbf{0}
+\]</span></p>
+<div class="note note-info">
+            <p>这个证明很大的缺陷是只有 $_0 $ 足够小时构造的序列才一致收敛.希望之后能找到更好的证法</p>
+          </div>
+<p>定理8.3的证明只要构造一个 <span
+class="math inline">\(\mathbf{x}_0\)</span>
+任意小，但是对应的解不稳定即可.</p>
+<p>还有一个相关的结论：</p>
+<p><strong>结论</strong>：线性方程零解的渐近稳定性等价于它的全局渐近稳定性.</p>
+<h3 id="lyapunov-第二方法">Lyapunov 第二方法</h3>
+<p>只考虑自治系统 <span class="math display">\[
+    \frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}=\mathbf{f}(\mathbf{x})
+\tag{9}
+\]</span></p>
+<p>其中 <span class="math inline">\(\mathbf{x} \in
+\mathbb{R}^{n}\)</span>，而函数 <span
+class="math inline">\(\mathbf{f}(\mathbf{x})=(f_1(\mathbf{x}),\cdots
+,f_{n}(\mathbf{x}))\)</span> 满足初值问题解的存在和唯一性条件.</p>
+<p>假设存在标量函数 <span
+class="math inline">\(V(\mathbf{x})\)</span>，它在区域 <span
+class="math inline">\(\lvert \mathbf{x} \rvert \leqslant M\)</span>
+上有定义，并且有连续的偏导数. 有如下几组条件：</p>
+<p><strong>条件 I</strong> <span class="math display">\[
+    V(\mathbf{0})=0; V(\mathbf{x})&gt;0, 当 \mathbf{x} \neq \mathbf{0}
+\]</span> 称 <span class="math inline">\(V\)</span>
+为<strong>定正函数</strong>（丁真函数？）</p>
+<p><strong>条件 II</strong> <span class="math display">\[
+    \frac{\mathrm{d}V}{\mathrm{d}t}\bigg |_{(9)}=\frac{\partial
+V}{\partial x_1} f_1+\cdots +\frac{\partial V}{\partial x_n}f_n&lt;0,当
+\mathbf{x} \neq \mathbf{0}
+\]</span> 即 <span
+class="math inline">\(\frac{\mathrm{d}V}{\mathrm{d}t}|_{(9)}\)</span>
+为<strong>定负函数</strong></p>
+<p><strong>条件 II</strong>* <span class="math display">\[
+    \frac{\mathrm{d}V}{\mathrm{d}t} \bigg|_{(9)}\leqslant 0
+\]</span> 称 <span
+class="math inline">\(\frac{\mathrm{d}V}{\mathrm{d}t}|_{(9)}\)</span>
+为<strong>常负函数</strong></p>
+<p><strong>条件 III</strong> <span class="math display">\[
+    \frac{\mathrm{d}V}{\mathrm{d}t} \bigg|_{(9)}&gt; 0,当 \mathbf{x}\neq
+\mathbf{0}
+\]</span> 即 <span
+class="math inline">\(\frac{\mathrm{d}V}{\mathrm{d}t}|_{(9)}\)</span>
+为定正</p>
+<p><strong>定理8.4</strong> Lyapunov 稳定性判据： -
+若I和II成立，则方程（9）的零解是渐近稳定的； -
+若I和II*成立，则方程（9）的零解是稳定的； -
+若I和III成立，则方程（9）的零解是不稳定的.</p>
+<div class="note note-info">
+            <p>当条件I到III的不等号全部反置时，定理8.4仍然成立.</p>
+          </div>
+<div class="note note-info">
+            <p>当条件I和III成立时，方程（9）的零解负向渐近稳定，因此它用于判断零解的不稳定性十分苛刻；一般的不稳定性判据可以提较弱条件.</p>
+          </div>
+<p><strong>证</strong>：</p>
+<hr />
+<p>如何用李雅普诺夫第二法分析非线性系统在每个平衡点处的稳定性？
+https://www.zhihu.com/question/38156489</p>
+<hr />
+<p>李雅普诺夫函数的构造是个玄学问题. 给几个例子</p>
+<p>（1）常系数线性微分方程组 <span
+class="math inline">\(\frac{\mathrm{d}\mathbf{x}}{\mathrm{d}t}=
+\mathbf{A} \mathbf{x}\)</span></p>
+<p>令 <span class="math inline">\(V(\mathbf{x})= \mathbf{x}
+^{\mathsf{T}} \mathbf{B} \mathbf{x}\)</span>，<span
+class="math inline">\(\mathbf{B}\)</span> 是待定实对称矩阵，则其全导数为
+<span class="math inline">\(2\mathbf{x} ^{\mathsf{T}}\mathbf{BAx}=
+\mathbf{x}^{\mathsf{T}}(\mathbf{A}^{\mathsf{T}}\mathbf{B}+\mathbf{B}\mathbf{A})\mathbf{x}\)</span>.
+这时候问题变成找一个正定矩阵 <span
+class="math inline">\(\mathbf{B}\)</span> 使得矩阵 <span
+class="math inline">\(\mathbf{A}^{\mathsf{T}}\mathbf{B}+\mathbf{BA}\)</span>
+为负定/半负定/正定. 可以预先找一个负定/半负定/正定矩阵 <span
+class="math inline">\(\mathbf{C}\)</span>，问题变成矩阵方程 <span
+class="math inline">\(\mathbf{A}^{\mathsf{T}}\mathbf{B}+
+\mathbf{BA}=\mathbf{C}\)</span></p>
+<p>（2） <span class="math inline">\(\frac{\mathrm{d}x}{\mathrm{d}t}=
+y-x f(x, y), \frac{\mathrm{d}y}{\mathrm{d}t}= -x-y f(x, y)\)</span>.
+（<span class="math inline">\(f\)</span> 在原点附近可微）</p>
+<p>令 <span class="math inline">\(V (x, y)= x^{2}+y^{2}\)</span>，此时
+<span class="math display">\[
+    \frac{1}{2}
+\frac{\mathrm{d}(x^{2}+y^{2})}{\mathrm{d}t}=-(x^{2}+y^{2}) f(x, y)
+\]</span> 这就说明方程的稳定性与 <span class="math inline">\(f(x,
+y)\)</span> 的性质有关.</p>
+<p>（3） <span class="math inline">\(x&#39;&#39;+g(x)=0\)</span>，其中
+<span class="math inline">\(xg(x)&gt;0, \forall x \neq 0\)</span></p>
+<p>方程可以化为 <span
+class="math inline">\(\frac{\mathrm{d}x}{\mathrm{d}t}=y,
+\frac{\mathrm{d}y}{\mathrm{d}t}=-g(x)\)</span>.
+将Lyapunov函数看成一种能量，系统的能量为 <span
+class="math inline">\(E=\frac{1}{2}y^{2}+\int_{0}^{x} g(s)
+\mathrm{d}s\)</span>. 显然 <span class="math inline">\(E\)</span>
+是正定的，<span class="math inline">\(E\)</span>
+的全导数是常负的，故零解是稳定但不渐近稳定的.</p>
+<hr />
+<p>构造李亚普诺夫函数的规则化方法
+https://zhuanlan.zhihu.com/p/410896233</p>
+<hr />
+<hr />
+<p>如何构建李雅普诺夫方程（或者说有什么构建方程的技巧吗）？
+https://www.zhihu.com/question/38006572</p>
+<hr />
+<h2
+id="平面上的动力系统奇点与极限环">平面上的动力系统，奇点与极限环</h2>
+<p>考虑平面上的动力系统 <span class="math display">\[
+    \frac{\mathrm{d}x}{\mathrm{d}t}=X(x,y), \quad
+\frac{\mathrm{d}y}{\mathrm{d}t}= Y(x,y) \tag{10}
+\]</span></p>
+<p>其中 <span class="math inline">\(X (x, y)\)</span> 和 <span
+class="math inline">\(Y (x, y)\)</span> 在 <span
+class="math inline">\((x, y)\)</span>
+平面上连续，且保证初值问题的解唯一.</p>
+<p>消去 <span class="math inline">\(t\)</span> 得到 <span
+class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}= \frac{Y(x,y)}{X(x,y)} \tag{11}
+\]</span></p>
+<h3 id="初等奇点">初等奇点</h3>
+<p>以 <span class="math inline">\((0,0)\)</span> 为奇点的线性系统 <span
+class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t} \begin{pmatrix}
+    x \\
+    y \\
+    \end{pmatrix}
+    =
+    \mathbf{A}
+    \begin{pmatrix}
+    x \\
+    y \\
+    \end{pmatrix} \tag{12}
+\]</span> 其中 <span class="math inline">\(\mathbf{A}\)</span>
+为常矩阵.</p>
+<ul>
+<li><span class="math inline">\(\mathbf{A}\)</span> 非退化，称 <span
+class="math inline">\((0,0)\)</span> 为<strong>初等奇点</strong>.</li>
+<li><span class="math inline">\(\mathbf{A}\)</span> 退化，称 <span
+class="math inline">\((0,0)\)</span> 为<strong>高阶奇点</strong>.</li>
+</ul>
+<p>初等奇点都是孤立奇点，线性高阶奇点都是非孤立的.
+高阶奇点常可视为两个或多个初等奇点的复合</p>
+<p>不妨 <span class="math inline">\(\mathbf{A}\)</span>
+已是Jordan标准型. 具体的定性结构看书吧，太多了.</p>
+<p><strong>定理8.5</strong>（初等奇点类型的判定）对于系统（12），记
+<span class="math display">\[
+    p=-\text{tr}(\mathbf{A})=-(a+d) 和 q= \det(\mathbf{A})=ad-bc
+\]</span> 则有 - 当 <span class="math inline">\(q&lt;0\)</span>
+时，<span class="math inline">\((0,0)\)</span> 为鞍点； - 当 <span
+class="math inline">\(q&gt;0\)</span> 且 <span
+class="math inline">\(p^{2}&gt;4q\)</span> 时， <span
+class="math inline">\((0,0)\)</span> 为两向结点； - 当 <span
+class="math inline">\(q&gt;0\)</span> 且 <span
+class="math inline">\(p^{2}=4q\)</span> 时， <span
+class="math inline">\((0,0)\)</span> 为单向结点或星形结点； - 当 <span
+class="math inline">\(q&gt;0\)</span> 且 <span
+class="math inline">\(0&lt;p^{2}&lt;4q\)</span> 时， <span
+class="math inline">\((0,0)\)</span> 为焦点； - 当 <span
+class="math inline">\(q&gt;0\)</span> 且 <span
+class="math inline">\(p=0\)</span> 时，<span
+class="math inline">\((0,0)\)</span> 为中心点；</p>
+<p>此外，在第2到第4种情形中，当 <span
+class="math inline">\(p&gt;0\)</span> 时奇点 <span
+class="math inline">\((0,0)\)</span> 是稳定的，而当 <span
+class="math inline">\(p&lt;0\)</span> 时是不稳定的.</p>
+<p>书上还介绍了当矩阵 <span class="math inline">\(\mathbf{A}\)</span>
+不是 jordan 标准型时判断定性结构的方法，参见第二版p266.</p>
+<p>对于非线性系统（10）. 假设 <span class="math inline">\((0,0)\)</span>
+是孤立奇点，将右端分解成线性部分与高次项之和 <span
+class="math display">\[
+    \begin{cases}
+        \frac{\mathrm{d}x}{\mathrm{d}t}= ax+by+\varphi(x,y) \\
+        \frac{\mathrm{d}y}{\mathrm{d}t}= cx+dy+ \psi (x, y) \\
+    \end{cases} \tag{13}
+\]</span></p>
+<p>提出三组条件（其中 <span
+class="math inline">\(r=\sqrt{x^{2}+y^{2}}\)</span>：
+<strong>条件A</strong> <span class="math inline">\(\varphi (x, y), \psi
+(x, y)=o(r), r\to 0\)</span>. <strong>条件A</strong>* <span
+class="math inline">\(\varphi (x, y),\psi (x, y)=
+o(r^{1+\varepsilon}),r\to 0\)</span>，其中 <span
+class="math inline">\(\varepsilon\)</span> 是一个任意小的正数.
+<strong>条件B</strong> <span class="math inline">\(\varphi (x,
+y)\)</span> 和 <span class="math inline">\(\psi (x, y)\)</span>
+在原点的一个小领域内对 <span class="math inline">\(x\)</span> 和 <span
+class="math inline">\(y\)</span> 连续可微</p>
+<p><strong>定理8.6</strong> 太长了，看第二版书p268</p>
+<p>总的就是说当系统满足一些条件时，系统（10）和（12）有相同的<strong>定性结构</strong>.</p>
+<p>比保持定性结构更弱的要求：保持拓扑结构. 概念太多，不抄了，开摆！</p>
+<p><strong>定理8.7</strong>
+如果系统（13）的线性部分矩阵的特征根实部都不为零（此时称 <span
+class="math inline">\((0,0)\)</span>
+为它的<strong>双曲奇点</strong>），则它在奇点 <span
+class="math inline">\((0,0)\)</span>
+附近是（局部）结构稳定的，并轨道拓扑等价于它的线性化系统.</p>
+<div class="note note-info">
+            <p>定理8.7推广到 <span class="math inline">\(\mathbb{R}^{n}\)</span>中称为Hartman-Grobman定理</p>
+          </div>
+<h3 id="极限环">极限环</h3>
+<p>动力系统（10）在闭轨 <span class="math inline">\(\Gamma\)</span>
+的某个（环形）领域内不再有别的闭轨，即 <span
+class="math inline">\(\Gamma\)</span>
+为孤立闭轨，则称它为（10）的<strong>极限环</strong>. 极限环 <span
+class="math inline">\(\Gamma\)</span>
+有一个外侧和内侧领域，使得在这个领域内出发的所有轨线当 <span
+class="math inline">\(t \to +\infty\)</span> 或 <span
+class="math inline">\(-\infty\)</span> 时都盘旋趋向 <span
+class="math inline">\(\Gamma\)</span>. 如果 <span
+class="math inline">\(\Gamma\)</span> 内外两侧轨线都在 <span
+class="math inline">\(t \to +\infty\)</span> （或 <span
+class="math inline">\(-\infty\)</span> ）时盘旋趋于 <span
+class="math inline">\(\Gamma\)</span>，则称 <span
+class="math inline">\(\Gamma\)</span>
+为<strong>稳定</strong>（或<strong>不稳定</strong>）<strong>极限环</strong>；若一侧是当
+<span class="math inline">\(t \to +\infty\)</span> 时盘旋趋于 <span
+class="math inline">\(\Gamma\)</span>，另一侧是 <span
+class="math inline">\(-\infty\)</span>，则称 <span
+class="math inline">\(\Gamma\)</span>
+为<strong>半稳定极限环</strong>.</p>
+<p>这种闭轨 <span class="math inline">\(\Gamma\)</span>
+的稳定性称为<strong>轨道稳定性</strong>.</p>
+<p><strong>Poincaré-Bendixson 环域定理</strong>：设区域 <span
+class="math inline">\(D\)</span> 是由两条简单闭曲线 <span
+class="math inline">\(L_1\)</span> 和 <span
+class="math inline">\(L_2\)</span> 所围成的环域，并且在 <span
+class="math inline">\(\bar{D}=L_1 \cup D \cup L_2\)</span>
+上动力系统（10）无奇点；从 <span class="math inline">\(L_1\)</span> 和
+<span class="math inline">\(L_2\)</span>
+上出发的轨线都不能离开（或都不能进入） <span
+class="math inline">\(\bar{D}\)</span>. 设 <span
+class="math inline">\(L_1\)</span> 和 <span
+class="math inline">\(L_2\)</span> 均不是闭轨线，则系统（10）在 <span
+class="math inline">\(D\)</span> 内至少存在一条闭轨线 <span
+class="math inline">\(\Gamma\)</span>，即 <span
+class="math inline">\(\Gamma\)</span> 在 <span
+class="math inline">\(D\)</span> 内不能收缩到一点.</p>
+<p>把动力系统（10）看成一平面流体的运动方程，上述环域定理表明：如果流体从环域
+<span class="math inline">\(D\)</span> 的边界流入 <span
+class="math inline">\(D\)</span>，而在 <span
+class="math inline">\(D\)</span> 内又没有渊和源，那么流体在 <span
+class="math inline">\(D\)</span> 内有环流存在. <span
+class="math inline">\(\Gamma\)</span>
+不一定是孤立的闭轨；但如果是解析向量场，那环域中的闭轨都是孤立的，因而它们都是极限环.</p>
+<p><strong>Liénard 方程</strong> <span class="math display">\[
+    x&#39;&#39;+f(x)x&#39;+g(x)=0 \tag{14}
+\]</span></p>
+<p>其中 <span class="math inline">\(f(x)\)</span> 和 <span
+class="math inline">\(g(x)\)</span> 连续，且 <span
+class="math inline">\(xg(x)&gt;0\)</span>，当 <span
+class="math inline">\(x \neq 0\)</span>. 它等价于 <span
+class="math display">\[
+    \frac{\mathrm{d}x}{\mathrm{d}t}= y-F(x), \quad
+\frac{\mathrm{d}y}{\mathrm{d}t}= -g(x) \tag{15}
+\]</span></p>
+<p>其中 <span class="math inline">\(F(x)= \int_{0}^{x} f(x)
+\mathrm{d}x\)</span>. 当 <span class="math inline">\(g(x)=-x\)</span>
+时，可以画出（15）在相平面上的向量场 <span
+class="math inline">\((y-F(x),-x)\)</span> 在任一点 <span
+class="math inline">\(P(x,y)\)</span> 处的方向.</p>
+<h3 id="liénard-作图法">Liénard 作图法</h3>
+<h3 id="poincaré-映射与后继函数法">Poincaré 映射与后继函数法</h3>
+<p><strong>定理8.9</strong>：系统（10）的单重极限环 <span
+class="math inline">\(\Gamma\)</span> 是结构稳定的，亦即：存在 <span
+class="math inline">\(\varepsilon&gt;0\)</span> 和 <span
+class="math inline">\(\Gamma\)</span> 的环形领域 <span
+class="math inline">\(\mathcal{U}\)</span>，使得（10）的任何 <span
+class="math inline">\(\varepsilon-\)</span> 邻近系统在 <span
+class="math inline">\(\mathcal{U}\)</span> 内仍有唯一闭轨，而且它与
+<span class="math inline">\(\Gamma\)</span> 有相同的稳定性.</p>
+<h2 id="结构稳定与分支现象">结构稳定与分支现象</h2>
+<h3 id="一个大范围的结构稳定性定理">一个大范围的结构稳定性定理</h3>
+<h3 id="高阶奇点的分支">高阶奇点的分支</h3>
+<h3 id="hopf-分支">Hopf 分支</h3>
+<h3 id="poincaré-分支">Poincaré 分支</h3>
+<h3 id="多重闭轨的分支">多重闭轨的分支</h3>
+<h3 id="同宿轨线的分支">同宿轨线的分支</h3>
+<h3 id="奇异向量场的普适开折">奇异向量场的普适开折</h3>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常微分方程（8）</div>
+      <div>http://example.com/2022/05/01/常微分方程（8）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 1, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/06/%E6%B0%B8%E4%B9%85%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/" title="永久记录（一）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">永久记录（一）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/01/Neuronal-Dynamics-2/" title="Neuronal Dynamics (2)">
+                        <span class="hidden-mobile">Neuronal Dynamics (2)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

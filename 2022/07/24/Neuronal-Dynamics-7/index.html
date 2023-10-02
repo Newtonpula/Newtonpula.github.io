@@ -1,0 +1,1388 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Variability of Spike Trains and Neural Codes">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neuronal Dynamics (7)">
+<meta property="og:url" content="http://example.com/2022/07/24/Neuronal-Dynamics-7/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Variability of Spike Trains and Neural Codes">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-07-24T13:29:38.000Z">
+<meta property="article:modified_time" content="2022-09-25T02:12:15.369Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="神经科学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
+  
+  
+  
+  <title>Neuronal Dynamics (7) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (7)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-24 21:29" pubdate>
+          July 24, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          22k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          183 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Neuronal Dynamics (7)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="variability-of-spike-trains-and-neural-codes">Variability of
+Spike Trains and Neural Codes</h1>
+<p>The online version of this chapter:</p>
+<hr />
+<p>Chapter 7 Variability of Spike Trains and Neural Codes
+https://neuronaldynamics.epfl.ch/online/Ch7.html</p>
+<hr />
+<h2 id="spiking-train-variability">Spiking train variability</h2>
+<h3 id="are-neurons-noisy">Are neurons noisy?</h3>
+<p>Termal noise: literally omnipresent. Due to the discrete nature of
+electric charge carriers, the voltage <span
+class="math inline">\(u\)</span> across any electrical resistor <span
+class="math inline">\(R\)</span> fluctuates at finite temperature
+(Johnson noise). The variance of the fluctuations at rest is <span
+class="math inline">\(\langle \Delta u^{2} \rangle \propto RkTB\)</span>
+where <span class="math inline">\(k\)</span> is the Boltzmann constant,
+<span class="math inline">\(T\)</span> the temperature and <span
+class="math inline">\(B\)</span> the bandwidth of the system.
+Fluctuations due to Johnson noise are of minor importance compared to
+other noise sources in neurons.</p>
+<p>Another source of noise arises from the finite number of ion channels
+in a patch of neuronal membrane. For a given constant membrane potential
+<span class="math inline">\(u\)</span>, a fraction <span
+class="math inline">\(P_i(u)\)</span> of ion channel of type <span
+class="math inline">\(i\)</span> is open on average. The actual number
+of open channels fluctuates around <span
+class="math inline">\(N_iP_i(u)\)</span> where <span
+class="math inline">\(N_i\)</span> is the total number of ion channels
+of type <span class="math inline">\(i\)</span> in that patch of
+membrane.</p>
+<h3 id="noise-from-the-network">Noise from the Network</h3>
+<p>Extrinsic noise: noise that are due to signal transmission and
+network effects (extrinsic noise).</p>
+<p>Synaptic transmission failure imposes a substantial limitation to
+signal transmisson with a neuronal network.</p>
+<p>Networks of excitatory and inhibitory neurons with fixed random
+connectivity can produce highly irregular spike trains - even in the
+absence of any source of noise.</p>
+<h2 id="mean-firing-rate">Mean Firing Rate</h2>
+<h3 id="rate-as-a-spike-count-and-fano-factor">Rate as a Spike Count and
+Fano Factor</h3>
+<p>An experimentalist observes in trial <span
+class="math inline">\(k\)</span> the spikes of a given neuron. The
+firing rate in trial <span class="math inline">\(k\)</span> is the spike
+count <span class="math inline">\(n_k^{sp}\)</span> in an interval of
+duration <span class="math inline">\(T\)</span> divided by <span
+class="math inline">\(T\)</span>. <span class="math display">\[
+    \nu_k=\frac{n_k^{sp}}{T}. \tag{7.1}
+\]</span></p>
+<p><span class="math inline">\(n_k^{sp}\)</span> mean by <span
+class="math inline">\(\langle n^{sp}\rangle\)</span> and deviations from
+the mean as <span class="math inline">\(\Delta
+n_{k}^{sp}=n_k^{sp}-\langle n^{sp}\rangle\)</span>. Variability of the
+spike count measure is characterized by the <strong>Fano
+Factor</strong>, defined as the variance of the spike count <span
+class="math inline">\(\langle (\Delta n^{sp})^{2}\rangle\)</span>
+divided by its mean <span class="math display">\[
+    F=\frac{\langle (\Delta n^{sp})^{2}\rangle}{\langle n^{sp}\rangle}
+\tag{7.2}
+\]</span></p>
+<p>（Fano因子定义为方差除以均值） In experiments, the mean and variance
+are estimated by averaging over <span class="math inline">\(K\)</span>
+trials <span class="math inline">\(\langle n^{sp}\rangle=(1/K)
+\sum_{k=1}^{K} n_k^{sp}\)</span> and <span class="math inline">\(\langle
+(\Delta n^{sp})^{2}\rangle=(1/K) \sum_{k=1}^{K} (\Delta
+n_k^{sp})^{2}\)</span>.</p>
+<p>The firing rate defined here as spike count divided by the
+measurement time <span class="math inline">\(T\)</span> is identical to
+the inverse of the mean interspike interval. Since <span
+class="math inline">\(1/\langle x\rangle \neq \langle
+(1/x)\rangle\)</span>, if we assign a variable <span
+class="math inline">\(\tilde{\nu}(t)=1/(t^{(k+1)}-t^{(k)})\)</span> for
+all times <span class="math inline">\(t^{(k)}&lt;t\leqslant
+t^{(k+1)}\)</span>, the temporal average of <span
+class="math inline">\(\tilde{\nu}(t)\)</span> over a much longer time
+<span class="math inline">\(T\)</span> is not the same as the mean rate
+<span class="math inline">\(\nu\)</span> defined here as spike count
+divided by <span class="math inline">\(T\)</span>.</p>
+<p>Shortback: Too slow for animal!!!</p>
+<h4 id="example-homogeneous-poisson-process">Example: Homogeneous
+Poisson Process</h4>
+<p>Since the exact firing time of a spike does not matter (as we only
+focus on <span class="math inline">\(\nu\)</span>), it is tempting to
+describe spiking as a Poisson process where spikes occur independently
+and stochastically with a constant rate <span
+class="math inline">\(\nu\)</span>.</p>
+<p>In a homogeneous Poisson process, the probability to find a spike in
+a short segment of duration <span class="math inline">\(\Delta
+t\)</span> is <span class="math display">\[
+    P_{F}(t;t+\Delta t)=\nu \Delta t. \tag{7.3}
+\]</span></p>
+<p>In other words, spike events are independent of each other and occur
+with a constant rate (also called stochastic intensity) defined as <span
+class="math display">\[
+    \nu= \lim_{\Delta t \to 0} \frac{P_{F}(t;t+\Delta t)}{\Delta t}.
+\tag{7.4}
+\]</span></p>
+<p>The expected number of spikes to occur in the measuremet interval
+<span class="math inline">\(T\)</span> is therefore <span
+class="math display">\[
+    \langle n^{sp}\rangle=\nu T, \tag{7.5}
+\]</span></p>
+<p>For a Poisson process, the Fano factor is exactly one.</p>
+<h3
+id="rate-as-a-spike-density-and-the-peri-stimulus-time-histogram">Rate
+as a Spike Density and the Peri-Stimulus-Time Histogram</h3>
+<p>Stimulate the neuron with some input sequence, repeated the same
+sequence several times and the neuronal response is reported in a
+<strong>Peri-Stimulus-Time Histogram (PSTH)</strong> with bin width
+<span class="math inline">\(\Delta t\)</span>. <span
+class="math inline">\(t\)</span> is the start of the stimulation and
+<span class="math inline">\(\Delta t\)</span> defines the time bin for
+generating the histogram.</p>
+<p>The number of occurrences of spikes <span
+class="math inline">\(n_{K}(t;t+\Delta t)\)</span> summed over all
+repetitions. The spike density <span class="math display">\[
+    \rho(t)=\frac{1}{\Delta t}\frac{n_{K}(t;t+\Delta t)}{K}. \tag{7.6}
+\]</span></p>
+<p>Sometimes the result is smoothed to get a continuous rate variable,
+usually reported in units of Hz. We call the PSTH the time-dependent
+firing rate.</p>
+<p>We have defined the spike train <span class="math display">\[
+    S(t)=\sum_{f}^{} \delta(t-t^{(f)}) \tag{7.7}
+\]</span></p>
+<p>If each stimulation can be considered as an independent sample from
+the identical stochastic process, we can define an <strong>instantaneous
+firing rate</strong> as an expectation over trials <span
+class="math display">\[
+    \nu(t)=\langle S(t)\rangle = \frac{1}{K \Delta t}\sum_{k=1}^{K}
+\int_{t}^{t+\Delta t} S_k(t&#39;) \mathrm{d}t&#39; \tag{7.8-7.9}
+\]</span></p>
+<p>The PSTH (the right-hand side of (7.9)) provides therefore an
+empirical estimate of the instantaneous firing rate (the left-hand
+side).</p>
+<p>Shortback: Not possible for animal!!!</p>
+<h4 id="example-inhomogeneous-poisson-process">Example: Inhomogeneous
+Poisson process</h4>
+<p>An inhomogeneous Poisson process can be used to describe the spike
+density measured in a PSTH. In an inhomogeneous Poisson process, spike
+events are independent of each other and occur with an instantaneous
+firing rate <span class="math display">\[
+    \nu(t)=\lim_{\Delta t \to 0} \frac{P_{F}(t;t+\Delta t)}{\Delta t}.
+\tag{7.10}
+\]</span></p>
+<p>Therefore, the probability to find a spike in a short segment of
+duration <span class="math inline">\(\Delta t\)</span> is <span
+class="math inline">\(P_{F}(t;t+\Delta t)=\nu(t)\Delta(t)\)</span>. More
+generally, the expected number of spikes in an interval of finite
+duration <span class="math inline">\(T\)</span> is <span
+class="math inline">\(\langle n^{sp}\rangle=\int_{0}^{T} \nu(t)
+\mathrm{d}t\)</span> and the Fano factor is one, as was the case for the
+homogeneous Poisson process.</p>
+<p>If a bunch of neurons fire at <span
+class="math inline">\(\hat{t}\)</span>, then the probability to
+'survive' without firing for <span class="math inline">\(t\)</span>
+(denoted as <span class="math inline">\(S\)</span>) satisfies <span
+class="math display">\[
+    \frac{\mathrm{d}S}{\mathrm{d}t}=-\nu (t)
+\]</span></p>
+<p>so <span class="math display">\[
+    S(t|\hat{t})=\exp \biggl(-\int_{\hat{t}}^{t} \nu(t&#39;)
+\mathrm{d}t&#39;\biggr)
+\]</span></p>
+<p>The probability for a neuron that fires at <span
+class="math inline">\(t\)</span> (the first spike after the spike at
+<span class="math inline">\(\hat{t}\)</span>) is <span
+class="math display">\[
+    P(t|\hat{t})=\nu(t)S(t|\hat{t})
+\]</span></p>
+<h3 id="rate-as-a-population-activity-average-over-several-neurons">Rate
+as a Population Activity (Average over Several Neurons)</h3>
+<p>Suppose we have a population of neurons with identical properties.
+The spikes of the neurons in a population <span
+class="math inline">\(m\)</span> are sent off to another population
+<span class="math inline">\(n\)</span>. The relevant quantity, from the
+point of view of the receiving neuron, is the proportion of active
+neurons in the presynaptic population <span
+class="math inline">\(m\)</span>. Formally, we define the
+<strong>population activity</strong> <span class="math display">\[
+    A(t)=\frac{1}{\Delta t}\frac{n_{act}(t;t+\Delta
+t)}{N}=\frac{1}{\Delta t}\frac{\int_{t}^{t+\delta t} \sum_{j}^{}
+\sum_{f}^{} \delta(t-t_j^{(f)}) \mathrm{d}t}{N}
+\]</span> (7.11)</p>
+<p>where <span class="math inline">\(N\)</span> is the size of the
+population, <span class="math inline">\(n_{act}(t;t+\Delta t)\)</span>
+is the number of spikes (summed over all neurons in the population) that
+occur between <span class="math inline">\(t\)</span> and <span
+class="math inline">\(t+\Delta t\)</span> where <span
+class="math inline">\(\Delta t\)</span> is a small time interval.</p>
+<h2 id="interval-distribution-and-coefficient-of-variation">Interval
+distribution and coefficient of variation</h2>
+<p>Define the estimation of interspike interval (ISI) distributions and
+interpreted it as a conditional probability density: <span
+class="math display">\[
+    P_0(s)=P(t^{(f)}+s|t^{(f)}) \tag{7.12}
+\]</span> where <span class="math inline">\(\int_{t}^{t+\Delta t}
+P(t&#39;|t^{(f)}) \mathrm{d}t&#39;\)</span> is the probability that the
+next spike occurs in the interval <span
+class="math inline">\([t,t+\Delta t]\)</span> given that the last spike
+occured at time <span class="math inline">\(t^{(f)}\)</span>.</p>
+<p>In ordet to extract the mean firing rate from a stationary interval
+distribution <span class="math inline">\(P_0(s)\)</span>, we start with
+the definition of the mean interval, <span class="math display">\[
+    \langle s \rangle=\int_{0}^{s} sP_0(s) \mathrm{d}s. \tag{7.13}
+\]</span></p>
+<p>The mean firing rate is the inverse of the mean interval <span
+class="math display">\[
+    \nu=\frac{1}{\langle s\rangle}=\left[ \int_{0}^{\infty} sP_0(s)
+\mathrm{d}s \right] ^{-1}
+\]</span></p>
+<h3 id="coefficient-of-variation-c_v">Coefficient of variation <span
+class="math inline">\(C_{V}\)</span></h3>
+<p>Interspike interval distributions <span
+class="math inline">\(P_0(s)\)</span> derived from a spike train under
+stationary conditions can be broad or sharply peaked. To quantify the
+width of the interval distribution, neuroscientists often evaluate the
+<strong>coefficient of variation</strong>, short <span
+class="math inline">\(C_{V}\)</span>, defined as the ratio of the
+standard deviation and the mean. Therefore the square of the <span
+class="math inline">\(C_{V}\)</span> is <span class="math display">\[
+    C_{V}^{2}=\frac{\langle \Delta s ^{2}\rangle}{\langle s \rangle
+^{2}}
+\]</span> where <span class="math inline">\(\langle
+s\rangle=\int_{0}^{\infty} sP_0(s) \mathrm{d}s\)</span> and <span
+class="math inline">\(\langle \Delta s^{2}\rangle=\int_{0}^{\infty}
+s^{2}P_0(s) \mathrm{d}s-\langle s \rangle ^{2}\)</span>.</p>
+<p>A Poisson process produces distributions with <span
+class="math inline">\(C_{V}=1\)</span>. A value of <span
+class="math inline">\(C_{V}&gt;1\)</span>, implies that a given spike
+train is less regular that a Poisson process with the same firing rate.
+If <span class="math inline">\(C_{V}&lt;1\)</span>, then the spike is
+more regular.</p>
+<p>Most deterministic integrate-and-fire neurons fire periodically when
+driven by a constant stimulus and therefore have <span
+class="math inline">\(C_{V}=0\)</span>. Intrinsically bursting neurons
+can have <span class="math inline">\(C_{V}&gt;1\)</span>.</p>
+<h4 id="example-poisson-process-with-absolute-refractoriness">Example:
+Poisson process with absolute refractoriness</h4>
+<p>We study a Poisson neuron with absolute refractory period <span
+class="math inline">\(\Delta^{abs}\)</span>. For times since last spike
+larger than $ ^{abs}$, the neuron is supposed to fire stochastically
+with rate <span class="math inline">\(r\)</span>. The interval
+distribution of a Poisson process with absolute refractoriness is given
+by <span class="math display">\[
+    P_0(s)=
+    \begin{cases}
+        0, \quad s&lt;\Delta^{abs} \\
+        r\exp [-r(s-\Delta_{abs})], \quad s&gt;\Delta^{abs}    
+    \end{cases}
+\]</span> (7.16)</p>
+<p>(Notice that <span class="math inline">\(\int_{0}^{\infty} P_0(s)
+\mathrm{d}s=1\)</span>)</p>
+<p>and has a mean <span class="math inline">\(\langle s \rangle
+=\Delta^{abs}+1/r\)</span> and variance <span
+class="math inline">\(\langle \Delta s^{2}\rangle=1/r^{2}\)</span>. The
+coefficient of variation is therefore <span class="math display">\[
+    C_{V}=1-\frac{\Delta^{abs}}{\langle s \rangle}
+\]</span> (7.17)</p>
+<h2 id="autocorrelation-function-and-noise-spectrum">Autocorrelation
+function and noise spectrum</h2>
+<p>Consider a spike train <span class="math inline">\(S_i(t)=\sum_{f}^{}
+\delta(t-t_i^{(f)})\)</span> of length <span
+class="math inline">\(T\)</span>. We suppose that <span
+class="math inline">\(T\)</span> is sufficiently long so that we can
+formally consider the limit <span class="math inline">\(T \to
+\infty\)</span>. The autocorrelation function <span
+class="math inline">\(C_{ii}(s)\)</span> of the spike train is a measure
+for the probability to find two spikes at a time interval <span
+class="math inline">\(s\)</span>, i.e. <span class="math display">\[
+    C_{ii}(s)=\langle S_i(t)S_i(t+s)\rangle _{t}, \tag{7.18}
+\]</span> where <span class="math display">\[
+    \langle f(t)\rangle _{t}=\lim_{T \to \infty} \frac{1}{T}
+\int_{-T/2}^{T/2} f(t) \mathrm{d}t. \tag{7.19}
+\]</span></p>
+<p>By symmetry, <span
+class="math inline">\(C_{ii}(-s)=C_{ii}(s)\)</span>.</p>
+<p>Define the <strong>power spectrum</strong> (or <strong>power spectral
+density</strong>) of a spike train <span class="math display">\[
+    \mathscr{P}(\omega)=\lim_{T \to \infty}\mathscr{P}_{T}(\omega),
+\]</span> where <span class="math inline">\(\mathscr{P}_{T}\)</span> is
+the power of a segment of length <span class="math inline">\(T\)</span>
+of the spike train, <span class="math display">\[
+    \mathscr{P}_{T}(\omega)=\frac{1}{T}\biggl\lvert \int_{-T/2}^{T/2}
+S_i(t)\mathrm{e}^{-i\omega t} \mathrm{d}t \biggr\rvert^{2} \tag{7.20}
+\]</span> The power spectrum <span
+class="math inline">\(\mathscr{P}(\omega)\)</span> of a spike train is
+equal to the Fourier transform <span
+class="math inline">\(\hat{C}_{ii}(\omega)\)</span> of its
+autocorrelation function (Wiener-Khinchin Theorem): <span
+class="math display">\[
+    \begin{aligned}
+        \hat{C}_{ii}(\omega) &amp;= \int_{-\infty}^{\infty} \langle
+S_i(t)S_i(t+s)\rangle \mathrm{e}^{-i\omega s}  \mathrm{d}s \\
+        &amp;= \lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2}
+S_i(t)\int_{-\infty}^{\infty} S_i(t+s)\mathrm{e}^{-i\omega
+s}  \mathrm{d}s \mathrm{d}t \\
+        &amp;=\lim_{T \to \infty} \frac{1}{T} \int_{-T/2}^{T/2}  S_i(t)
+\mathrm{e}^{i\omega t}\mathrm{d}t \int_{-\infty}^{\infty} S_i(s&#39;)
+\mathrm{e}^{-i\omega s&#39;} \mathrm{d}s&#39; \\
+        &amp;= \lim_{T \to \infty}\frac{1}{T}\biggl\lvert
+\int_{-T/2}^{T/2} S_i(t)\mathrm{e}^{-i\omega t} \mathrm{d}t
+\biggr\rvert^{2}.
+    \end{aligned}
+\]</span> (7.21)</p>
+<p>The power spectral density of a spike train during spontaneous
+activity is called the noise spectrum of the neuron.</p>
+<hr />
+<p>Spectral density - Wikipedia
+https://en.wikipedia.org/wiki/Spectral_density</p>
+<hr />
+<h2 id="renewal-statistics">Renewal statistics</h2>
+<p>（相关内容可以看Ross的随机过程的1.6节）</p>
+<p>Poisson processes cannot be used to describe realistic interspike
+interval distributions. Spikes are generated in a renewal process, with
+a stochastic intensity. <span class="math display">\[
+    \rho(t|\hat{t})=\rho_0(t-\hat{t}) \tag{7.22}
+\]</span> where <span class="math inline">\(\hat{t}\)</span> is the time
+since the last spike. The central assumption of renewal theory is that
+the state does not depend on earlier events. Renewal theory allows to
+calculate the interval distribution <span class="math display">\[
+    P_0(s)=P(t^{(f)}+s|t^{(f)}) \tag{7.23}  
+\]</span></p>
+<h3 id="survivor-function-and-hazard">Survivor function and hazard</h3>
+<p>Since <span class="math inline">\(\int_{\hat{t}}^{t}
+P(t&#39;|\hat{t}) \mathrm{d}t&#39;\)</span> is the probability for a
+second action potential between <span
+class="math inline">\(\hat{t}\)</span> and <span
+class="math inline">\(t\)</span>. Thus <span class="math display">\[
+    S(t|\hat{t})=1-\int_{\hat{t}}^{t} P(t&#39;|\hat{t}) \mathrm{d}t&#39;
+\]</span> is the probability that the neuron stays quiescent between
+<span class="math inline">\(\hat{t}\)</span> and <span
+class="math inline">\(t\)</span>. <span
+class="math inline">\(S(t|\hat{t})\)</span> is called the
+<strong>survivor function</strong>. It has an initial value <span
+class="math inline">\(S(\hat{t}|\hat{t})=1\)</span>. The rate of decay
+of <span class="math inline">\(S(t|\hat{t})\)</span> is defined by <span
+class="math display">\[
+    \rho(t|\hat{t})=-\frac{\frac{\mathrm{d}}{\mathrm{d}t}S(t|\hat{t})}{S(t|\hat{t})}=\frac{P(t|\hat{t})}{1-\int_{\hat{t}}^{t}
+P(t&#39;|\hat{t}) \mathrm{d}t&#39;}.
+\]</span> (7.25)</p>
+<p><span class="math inline">\(\rho(t|\hat{t})\)</span> is called the
+'age-dependent death rate' or 'hazard' in renewal theory.</p>
+<p>Integrating <span class="math inline">\(\mathrm{d}S/\mathrm{d}t=-\rho
+S\)</span> yields the survivor function <span class="math display">\[
+    S(t|\hat{t})=\exp \left[ -\int_{\hat{t}}^{t} \rho(t&#39;|\hat{t})
+\mathrm{d}t&#39; \right] \tag{7.26}
+\]</span></p>
+<p>The interval distribution is given by <span class="math display">\[
+    P(t|\hat{t})=-\frac{\mathrm{d}}{\mathrm{d}t}S(t|\hat{t})=\rho(t|\hat{t})S(t|\hat{t}),
+\tag{7.27}
+\]</span></p>
+<p>(In order to emit its next spike at <span
+class="math inline">\(t\)</span>, the neuron has to survive the interval
+<span class="math inline">\((\hat{t},t)\)</span> without firing and then
+fire at <span class="math inline">\(t\)</span>.)</p>
+<p><span class="math display">\[
+    P(t|\hat{t})=\rho(t|\hat{t}) \exp \left[-\int_{\hat{t}}^{t}
+\rho(t&#39;|\hat{t}) \mathrm{d}t&#39; \right]. \tag{7.28}
+\]</span></p>
+<p>We focus on stationary renewal systems: <span class="math display">\[
+    P(t|\hat{t})=P_0(t-\hat{t}) \tag{7.29}
+\]</span> <span class="math display">\[
+    S(t|\hat{t})=S_0(t-\hat{t}) \tag{7.30}
+\]</span> <span class="math display">\[
+    \rho(t|\hat{t})=\rho_0(t-\hat{t}) \tag{7.31}
+\]</span></p>
+<h3 id="renewal-theory-and-experiments">Renewal theory and
+experiments</h3>
+<p>Under experimental conditions where neuronal adaptation is strong,
+intervals are not independent. A common measure of memory effects in a
+time series of events with variable intervals <span
+class="math inline">\(s_j\)</span> is the <strong>serial correlation
+coefficients</strong> <span class="math display">\[
+    c_k=\frac{\langle s_{j+k}s_j\rangle _j-\langle s_j\rangle
+_j^{2}}{\langle s_j^{2}\rangle- \langle s_j\rangle^{2}}
+\]</span></p>
+<p>Spike-frequency adaptation causes a negative correlation between
+subsequent intervals <span
+class="math inline">\((c_1&lt;0)\)</span>.</p>
+<h3
+id="autocorrelation-and-noise-spectrum-of-a-renewal-process">Autocorrelation
+and noise spectrum of a renewal process</h3>
+<p>Let <span class="math inline">\(\nu_i=\langle S_i \rangle\)</span>
+denote the mean firing rate (expected number of spikes per unit time) of
+the spike train. For large intervals <span
+class="math inline">\(s\)</span>, firing at time <span
+class="math inline">\(t+s\)</span> is independent from whether or not
+there was a spike at time <span class="math inline">\(t\)</span>.
+Therefore, the expectation to find a spike at <span
+class="math inline">\(t\)</span> and another spike at <span
+class="math inline">\(t+s\)</span> approaches for <span
+class="math inline">\(s \to \infty\)</span> a limiting value <span
+class="math inline">\(\lim_{s \to \infty}\langle
+S_i(t)S_i(t+s)\rangle=\lim_{s \to \infty}C_{ii}(s)=\nu_i^{2}\)</span>.
+Substract this baseline value and we get a 'normalized' autocorrelation,
+<span class="math display">\[
+    C_{ii}^{0}(s)=C_{ii}(s)-\nu_i^{2}, \tag{7.37}
+\]</span> with <span class="math inline">\(\lim_{s \to
+\infty}C_{ii}^{0}(s)=0\)</span>. The Fourier transform of (7.37) yields
+<span class="math display">\[
+    \hat{C}_{ii}(\omega)=\hat{C}_{ii}^{0}(\omega)+2\pi \nu_i^{2}
+\delta(\omega). \tag{7.38}
+\]</span> Thus <span class="math inline">\(\hat{C}_{ii}(\omega)\)</span>
+diverges at <span class="math inline">\(\omega=0\)</span>. the
+divergence is removed by switching to the normalized
+autocorrelation.</p>
+<p>Let us suppose that we have found a first spike at <span
+class="math inline">\(t\)</span>. The correlation function for positive
+<span class="math inline">\(s\)</span> will be denoted by <span
+class="math inline">\(\nu_i C_{+}(s)\)</span> or <span
+class="math display">\[
+    C_{+}(s)=\frac{1}{\nu_i} C_{ii}(s) \Theta(s) \tag{7.39}
+\]</span></p>
+<p>The factor <span class="math inline">\(\nu_i\)</span> in (7.39) takes
+care of the fact that we expect a first spike at <span
+class="math inline">\(t\)</span> with rate <span
+class="math inline">\(\nu_i\)</span>. <span
+class="math inline">\(C_{+}(s)\)</span> gives the conditional
+probability density that, given a spike at <span
+class="math inline">\(t\)</span>, we will find another spike at <span
+class="math inline">\(t+s&gt;t\)</span>. The spike at <span
+class="math inline">\(t+s\)</span> can be the first spike after <span
+class="math inline">\(t\)</span>, or the second one, or the <span
+class="math inline">\(n\)</span>th one, thus for <span
+class="math inline">\(s&gt;0\)</span> <span class="math display">\[
+    C_{+}(s)=P_0(s)+\int_{0}^{\infty} P_0(s&#39;)P_0(s-s&#39;)
+\mathrm{d}s&#39;+\int_{0}^{\infty} \int_{0}^{\infty}
+P_0(s&#39;)P_0(s&#39;&#39;)P_0(s-s&#39;-s&#39;&#39;) \mathrm{d}s&#39;
+\mathrm{d}s&#39;&#39;+\cdots
+\]</span> (7.40) or <span class="math display">\[
+    C_{+}(s)=P_0(s)+\int_{0}^{\infty} P_0(s&#39;)C_{+}(s-s&#39;)
+\mathrm{d}s&#39; \tag{7.41}
+\]</span></p>
+<p>Due to the symmetry of <span class="math inline">\(C_{ii}\)</span>,
+we have <span class="math inline">\(C_{ii}(s)=\nu C_{+}(-s)\)</span> for
+<span class="math inline">\(s&lt;0\)</span>. So</p>
+<p><span class="math display">\[
+    C_{ii}(s)=\nu_i[\delta(s)+C_{+}(s)+C_{+}(-s)]. \tag{7.42}
+\]</span> (the autocorrelation has a <span
+class="math inline">\(\delta\)</span> peak reflecting the trivial
+autocorrelation of each spike with itself.</p>
+<p>Take the Fourier transform of (7.41) and find <span
+class="math display">\[
+    \hat{C}_{+}(\omega)=\frac{\hat{P}_0(\omega)}{1-\hat{P}_0(\omega)}.
+\tag{7.43}
+\]</span> Together with the Fourier transform of (7.42), we obtain <span
+class="math display">\[
+    \hat{C}_{ii}(\omega)=\nu_i \Re
+\left\{\frac{1+\hat{P}_0(\omega)}{1-\hat{P}_0(\omega)}\right\} +2\pi
+\nu_i^{2}\delta(\omega) \tag{7.45}
+\]</span></p>
+<h4 id="example-stationary-poisson-process">Example: Stationary Poisson
+process</h4>
+<p>For a Poisson process, <span class="math display">\[
+    C_{+}(s)=\nu \mathrm{e}^{-\nu s} [1+\nu s+\frac{1}{2}(\nu
+s)^{2}+\cdots ]=\nu \tag{7.46}
+\]</span></p>
+<p>So the autocorrelation of a Poisson process is <span
+class="math display">\[
+    C_{ii}(s)=\nu \delta(s)+\nu^{2} \tag{7.47}
+\]</span></p>
+<p>The Fourier transform of (7.47) yields a flat spectrum with a <span
+class="math inline">\(\delta\)</span> peak at zero: <span
+class="math display">\[
+    \hat{C}_{ii}(\omega)=\nu+2\pi\nu^{2}\delta(\omega). \tag{7.48}
+\]</span></p>
+<h4 id="example-poisson-process-with-absolute-refractoriness-1">Example:
+Poisson process with absolute refractoriness</h4>
+<p>For a Poisson proccess with absolute refractoriness defined in
+(7.16). The neuron fires with rate <span
+class="math inline">\(r\)</span>. For <span class="math inline">\(\omega
+\neq 0\)</span>, (7.45) yields the noise spectrum <span
+class="math display">\[
+    \hat{C}_{ii}(\omega)=\nu\left\{ 1+2
+\frac{\nu^{2}}{\omega^{2}}[1-\cos (\omega \Delta^{abs})]+2
+\frac{\nu}{\omega}\sin (\omega \Delta^{abs})\right\}^{-1},
+\]</span> (7.49)</p>
+<p>For <span class="math inline">\(\omega \to 0\)</span>, the noise
+spectrum is decreased by a factor <span class="math inline">\([1+2(\nu
+\Delta^{abs})+(\nu \Delta^{abs})^{2}]^{-1}\)</span>. Explanation: the
+mean interval of a Poisson neuron with absolute refractoriness is <span
+class="math inline">\(\langle s\rangle=\Delta^{abs}+r^{-1}\)</span>.
+Hence the mean firing rate is <span class="math display">\[
+    \nu=\frac{r}{1+\Delta^{abs}r}. \tag{7.50}
+\]</span></p>
+<p>For finite <span class="math inline">\(\Delta^{abs}\)</span> the
+firing is more regular than that of a Poisson process with the same mean
+rate <span class="math inline">\(\nu\)</span>, and hence the spectrum
+for <span class="math inline">\(\omega \to 0\)</span> is less noisy.</p>
+<p>This means that Poisson neurons with absolute refractoriness can
+transmit slow signals more reliably than a simple Poisson process.</p>
+<h3 id="input-dependent-renewal-theory">Input dependent renewal
+theory</h3>
+<h2 id="the-problem-of-neural-coding">The Problem of Neural Coding</h2>
+<h3 id="limits-of-rate-codes">Limits of rate codes</h3>
+<p><strong>Limitations of the spike count code</strong>. Averaging over
+a large number of spikes takes a long time. In a changing environment, a
+postsynaptic neuron does not have the time to perform a temporal average
+over many (noisy) spikes.</p>
+<p><strong>Limitations of the PSTH</strong>. It needs several trials to
+build up. Nevertheless, the PSTH measure of the instantaneous firing
+rate can make sense if there are large populations of similar neurons
+that receive the same stimulus.</p>
+<p><strong>Limitations of rate as a population average</strong>. (7.11)
+requires a homogeneous population of neurons with identical connections
+which is hardly realistic. Real populations will always have a certain
+degree of heterogeneity both in their internal parameters and in their
+connectivity pattern.</p>
+<p>For inhomogeneous populations, the definition (7.11) may be replaced
+by a weighted average over the population. Suppose that we are studying
+a population of neurons which respond to a stimulus <span
+class="math inline">\(\mathbf{x}\)</span>. We may think of <span
+class="math inline">\(\mathbf{x}\)</span> as the location of the
+stimulus in input space. Neuron <span class="math inline">\(i\)</span>
+respond best to stimulus <span
+class="math inline">\(\mathbf{x}_i\)</span>. We may say that the spikes
+of a neuron <span class="math inline">\(i\)</span> 'represent' an input
+vector <span class="math inline">\(\mathbf{x}_i\)</span>.</p>
+<p>In a large population, many neurons will be active simultaneously
+when a new stimulus <span class="math inline">\(\mathbf{x}\)</span> is
+represented. The location of this stimulus can then be estimated from
+the weighted population average <span class="math display">\[
+    \mathbf{x}^{est}(t)=\frac{\int_{t}^{t+\Delta t} \sum_{j}^{}
+\sum_{f}^{} \mathbf{x}_j\delta(t-t_j^{(f)})
+\mathrm{d}t}{\int_{t}^{t+\Delta t} \sum_{j} \sum_{f}^{}
+\delta(t-t_j^{(f)}) \mathrm{d}t}
+\]</span> (7.52)</p>
+<h3 id="candidate-temporal-codes">Candidate temporal codes</h3>
+<h4 id="time-to-first-spike-latency-code">Time-to-first-spike: Latency
+code</h4>
+<p>Take saccading as an example. After each saccade, the photo receptors
+in the retina receive a new visual input. Information about the onset of
+a saccades should easily be available in the brain and could serve as an
+internal reference signal.</p>
+<p>Experimental evidences indicate that a coding scheme based on the
+latency of the first spike transmit a large amount of information.</p>
+<h4 id="phase">Phase</h4>
+<p>We can apply a code by 'time ot first spike' also in the situation
+where the reference signal is not a single event, but a periodic signal.
+Oscillations of some global variable (for example the population
+activity) are common in the hippocampus, the olfactory system, and other
+areas of the brain. These oscillations could serve as an internal
+reference signal.</p>
+<h4 id="correlations-and-synchrony">Correlations and Synchrony</h4>
+<p>We can also use spikes from other neurons as the reference signal for
+a spike code. Neurons which represent the same object in a complex scene
+consisting of several objects could be 'labeled' by the fact that they
+fire synchronously.</p>
+<p>Not only synchrony but any precise spatio-temporal pulse pattern
+could be a meaningful event.</p>
+<h4 id="stimulus-reconstruction-and-reverse-correlation">Stimulus
+Reconstruction and Reverse Correlation</h4>
+<p><strong>Reverse correlation</strong>: Every time a spike occurs, we
+note the time course of the stimulus in a time window of about 100
+milliseconds immediately before the spike. Averaging the results over
+several spikes yields the typical time course of the stimulus just
+before a spike.</p>
+<h4 id="rate-versus-temporal-codes">Rate versus temporal codes</h4>
+<p>The stimulus reconstruction with kernels can also be considered as a
+rate code based on spike counts. To see this, consider a spike count
+measure with a running time window <span
+class="math inline">\(K(.)\)</span>. We can estimate the rate <span
+class="math inline">\(\nu\)</span> at time <span
+class="math inline">\(t\)</span> by <span class="math display">\[
+    \nu(t)=\frac{\int_{-\infty}^{\infty} K(\tau)S(t-\tau)
+\mathrm{d}\tau}{\int_{-\infty}^{\infty} K(\tau) \mathrm{d}\tau}
+\tag{7.54}
+\]</span> where <span class="math inline">\(S(t)=\sum_{f=1}^{n}
+\delta(t-t^{(f)})\)</span> is the spike train. For a rectangular time
+window <span class="math inline">\(K(\tau)=1\)</span> for <span
+class="math inline">\(-T/2&lt;\tau&lt;T/2\)</span> and zero otherwise,
+reduces exactly to (7.1). Perform the integration over the <span
+class="math inline">\(\delta\)</span> function and we yield <span
+class="math display">\[
+    \nu(t)=c \sum_{f=1}^{n} K(t-t^{(f)}) \tag{7.55}
+\]</span> where <span class="math inline">\(c=[\int_{}^{} K(s)
+\mathrm{d}s]^{-1}\)</span> is a constant.</p>
+<h4 id="example-towards-a-definition-of-rate-codes">Example: Towards a
+definition of rate codes</h4>
+<p>We have seen in (7.55) that stimulus reconstruction with a linear
+kernel can be seen as a special instance of a rate code. This suggests a
+formal definition of a rate code via the reconstruction procedure: if
+all information contained in a spike train can be recovered by the
+linear reconstruction procedure of (7.53), the the neuron is using a
+rate code.</p>
+<h2 id="exercises">Exercises</h2>
+<ol type="1">
+<li><strong>Poisson process in continuous time</strong>. We consider a
+Poisson neuron model. In every small time interval <span
+class="math inline">\(\Delta t\)</span>, the probability that the neuron
+fires is given by <span class="math inline">\(\nu \Delta
+t\)</span>.</li>
+</ol>
+<ol type="a">
+<li>The probability that the neuron does not fire during a time of
+arbitrarily large length <span class="math inline">\(t\)</span>
+(survivor function <span class="math inline">\(S_0(t)\)</span>) is <span
+class="math display">\[
+S_0(t)=\mathrm{e}^{-\nu t}.
+\]</span></li>
+<li>Suppose that the neuron has fired at time <span
+class="math inline">\(t=0\)</span>, then the distribution of intervals
+<span class="math inline">\(P(t)\)</span>, i.e., the probability density
+that the neuron fires its next spike at a time <span
+class="math inline">\(t\)</span>, is <span class="math display">\[
+P_0(s)=\nu \mathrm{e}^{-\nu t}.
+\]</span></li>
+</ol>
+<ol start="2" type="1">
+<li><strong>Autocorrelation of a Poisson process</strong>. Find the
+autocorrelation function <span class="math inline">\(C_0(s)=\langle
+S_i(t)S_i(t+s)\rangle _{t}\)</span> of the homogeneous Poisson process
+in continuous time.</li>
+<li><strong>Repeatability and random coincidences</strong>. What
+percentage of spikes coincide between two trials of a Poisson neuron
+with arbitrary rate <span class="math inline">\(\nu_0\)</span> under the
+assumption that trials are sufficiently long?</li>
+<li><strong>Spike count and Fano Factor</strong>. A homogeneous Poisson
+process has a probability to fire in a very small interval <span
+class="math inline">\(\Delta t\)</span> equal to <span
+class="math inline">\(\nu \Delta t\)</span>.</li>
+</ol>
+<ol type="a">
+<li>The probability to observe exactly <span
+class="math inline">\(k\)</span> spikes in the time interval <span
+class="math inline">\(T\)</span> is <span
+class="math inline">\(P_{k}(T)=[1/k!](\nu T)^{k}\exp (-\nu
+T)\)</span>.</li>
+<li>For the inhomogeneous Poisson process the mean spike count in an
+interval of duration <span class="math inline">\(T\)</span> is <span
+class="math inline">\(\langle k \rangle=\int_{0}^{T} \nu(t)
+\mathrm{d}t\)</span>.</li>
+<li>Calculate the variance of the spike count and the Fano factor for
+the inhomogeneous Poisson process.</li>
+</ol>
+<ol start="5" type="1">
+<li><strong>From interval distribution to hazard</strong>. During
+stimulation with a stationary stimulus, interspike intervals in a long
+spike train are found to be independent and given by the distribution
+<span class="math display">\[
+P(t|t&#39;)=\frac{(t-t&#39;)}{\tau^{2}}\exp
+\left(-\frac{t-t&#39;}{\tau}\right)
+\]</span> for <span class="math inline">\(t&gt;t&#39;\)</span>.</li>
+</ol>
+<ol type="a">
+<li>Calculate the survivor function <span
+class="math inline">\(S(t|t&#39;)\)</span>, the hazard function <span
+class="math inline">\(\rho(t|t&#39;)\)</span>. <span
+class="math display">\[
+S(t|t&#39;)=\left(\frac{t-t&#39;}{\tau}+1\right)\exp\left(-\frac{t-t&#39;}{\tau}\right)
+\]</span> <span class="math display">\[
+\rho(t|t&#39;)=\frac{t-t&#39;}{\tau(t-t&#39;)+\tau^{2}}
+\]</span></li>
+<li>A spike train starts at time <span class="math inline">\(0\)</span>
+and we observed a first spike at time <span
+class="math inline">\(t_1\)</span>. Calculate the probability density
+<span class="math inline">\(P(t_{n}|t_1)\)</span> that the <span
+class="math inline">\(n\)</span>th spike occurs around <span
+class="math inline">\(t_n\)</span>. (self-convolution for <span
+class="math inline">\(n-2\)</span> times)</li>
+</ol>
+<ol start="6" type="1">
+<li><strong>Gamma-distribution</strong> Stationary interval
+distributions can often be fitted by a Gamma distrubution (for <span
+class="math inline">\(s&gt;0\)</span>) <span class="math display">\[
+P(s)=\frac{1}{\Gamma(k)}\frac{s^{k-1}}{\tau^{k}}\mathrm{e}^{-s/\tau}
+\]</span></li>
+</ol>
+<ol type="a">
+<li>Assume that intervals are independent and calculate the power
+spectrum.</li>
+<li>Calculate the coefficient of variation <span
+class="math inline">\(C_{V}\)</span> <span class="math display">\[
+C_{V}=\frac{1}{k}
+\]</span></li>
+</ol>
+<ol start="7" type="1">
+<li><strong>Poisson with dead time as a renewal process</strong>.
+Consider a process where spikes are generated with rate <span
+class="math inline">\(\rho_0\)</span>, but after each spike there is a
+dead time of duration <span class="math inline">\(\Delta^{abs}\)</span>.
+More precisely, we have a renewal process <span class="math display">\[
+\rho(t|\hat{t})=\rho_0 \quad \text{for}\ t&gt;\hat{t}+\Delta^{abs}
+\]</span> and zero otherwise. Calculate the interval distribution and
+the Fano factor. <span class="math display">\[
+P(t|\hat{t})=
+\begin{cases}
+     0, \hat{t}&lt;t&lt;\hat{t}+\Delta^{abs} \\
+     \exp (-t-\hat{t}-\Delta^{abs}), t&gt;\hat{t}+\Delta^{abs}
+\end{cases}
+\]</span></li>
+</ol>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/" class="print-no-link">#神经科学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Neuronal Dynamics (7)</div>
+      <div>http://example.com/2022/07/24/Neuronal-Dynamics-7/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 24, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/26/Neuronal-Dynamics-8/" title="Neuronal Dynamics (8)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Neuronal Dynamics (8)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/24/Information-and-Entropy-3/" title="Information and Entropy (3)">
+                        <span class="hidden-mobile">Information and Entropy (3)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

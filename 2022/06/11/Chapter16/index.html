@@ -1,0 +1,927 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="光的干涉与衍射">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter16">
+<meta property="og:url" content="http://example.com/2022/06/11/Chapter16/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="光的干涉与衍射">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/physics.jpg">
+<meta property="article:published_time" content="2022-06-11T13:37:06.000Z">
+<meta property="article:modified_time" content="2022-06-13T13:12:57.273Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="物理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/physics.jpg">
+  
+  
+  
+  <title>Chapter16 - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Chapter16"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-11 21:37" pubdate>
+          June 11, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          32 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Chapter16</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="光的干涉与衍射">光的干涉与衍射</h1>
+<p>匀速运动的电子不辐射电磁波，加速运动的电子辐射电磁波</p>
+<h2 id="双缝干涉">双缝干涉</h2>
+<p><strong>Q</strong>：双缝 <span
+class="math inline">\(d\)</span>，平行单色相干光 <span
+class="math inline">\((\lambda,)\)</span></p>
+<ol type="1">
+<li>合振幅：<span class="math inline">\(\displaystyle E(\theta)=2\cos
+\frac{\Delta \varphi}{2}E_{p}\)</span>，其中 <span
+class="math inline">\(\displaystyle \Delta \varphi=\frac{2\pi
+d}{\lambda}\sin \theta\)</span></li>
+</ol>
+<p><span class="math inline">\(n\)</span>缝干涉：<span
+class="math inline">\(\displaystyle E(\theta)=E_p \frac{\sin (\frac{n
+\Delta \varphi}{2})}{\sin (\frac{\Delta \varphi}{2})}\)</span></p>
+<blockquote>
+<p>在一般的参数下，光程差 <span class="math inline">\(\Delta=d \sin
+\theta\)</span></p>
+</blockquote>
+<ol start="2" type="1">
+<li>光强分布 首先光强 <span class="math display">\[
+I(\theta)=4I_0\cos ^{2}\frac{\Delta \varphi}{2}=4I \cos
+^{2}(\frac{\pi}{\lambda}d\sin \theta)
+\]</span> <span class="math inline">\(\displaystyle
+I_0=\frac{1}{2}\sqrt{\frac{\varepsilon}{\mu}}E_p^{2}\)</span></li>
+</ol>
+<p>明条纹：<span class="math inline">\(\displaystyle d\sin \theta= \pm n
+\lambda\)</span>，暗条纹：<span class="math inline">\(\displaystyle
+d\sin \theta=\pm (2n-1)\frac{\lambda}{2}\)</span></p>
+<p>条纹间距 <span class="math display">\[
+    \Delta x= \frac{L}{d} \lambda
+\]</span></p>
+<ol start="3" type="1">
+<li><strong>衬度</strong> <span class="math display">\[
+V=\frac{I_{\max}-I_{\min}}{I_{\max}+I_{\min}}
+\]</span> 两个振幅一样时，衬度最大，为 <span
+class="math inline">\(1\)</span>，若分振幅为 <span
+class="math inline">\(E_1,E_2\)</span>，则衬度为 <span
+class="math display">\[
+V= \frac{2\sqrt{I_1I_2}}{I_1+I_2}
+\]</span></li>
+</ol>
+<p><strong>Q</strong>：斜入射双缝，干涉条纹要移动</p>
+<p><strong>Q</strong>：杨氏双缝干涉实验中，要加单缝.</p>
+<blockquote>
+<p>判断明暗条纹时注意半波反射</p>
+</blockquote>
+<p>在双缝干涉实验中，当单缝变宽时，干涉条纹衬度变小. 当单缝宽度达到
+<span class="math inline">\(D\lambda/d\)</span> （<span
+class="math inline">\(D\)</span> 为单缝与双缝间距离，<span
+class="math inline">\(d\)</span> 为双缝间距）时，干涉条纹完全消失.</p>
+<h2 id="光的相干性">光的相干性</h2>
+<p>相干条件：频率相同、振动方向相同、相位差恒定</p>
+<p>相干光的实现： -
+对普通光源：相干光必须是来自同一光波列，光源不同点发出的光是非相干的，同一点不同时间发出的光是非相干的，不同光源的光是非相干的
+- 激光光源：不同光源的光可以是相干的</p>
+<h2 id="薄膜干涉">薄膜干涉</h2>
+<p>光程差 <span class="math display">\[
+    L= \sum_{i}^{} n_i s_i
+\]</span></p>
+<p>计算时注意半波损失！</p>
+<h3 id="等倾干涉">等倾干涉</h3>
+<p>连续改变厚度时环心不断冒出环纹，中心处明暗交替；膜的厚度 <span
+class="math inline">\(e\)</span> 减小时，条纹内缩，中心处明暗交替.
+条纹内疏外密.</p>
+<p><strong>高反射膜</strong></p>
+<p><span class="math display">\[
+    d= \frac{\lambda}{4n}
+\]</span></p>
+<p><strong>增透膜</strong></p>
+<p>在玻璃板上喷镀透明介质膜 <span
+class="math inline">\(n&lt;n_0\)</span>
+在两个面上均有半波损失，膜的厚度为 <span class="math display">\[
+    d= \frac{\lambda}{4n}
+\]</span> 时是增透膜</p>
+<h3 id="等厚干涉">等厚干涉</h3>
+<p><strong>劈尖干涉</strong></p>
+<p><span class="math display">\[
+    2ne+ \frac{\lambda}{2} = k \lambda
+\]</span> 时为明纹 <span class="math display">\[
+    2ne+ \frac{\lambda}{2} = (2k+1) \frac{\lambda}{2}
+\]</span> 时为暗纹 <span class="math display">\[
+    \Delta e= \frac{\lambda}{2n}
+\]</span> 从而条纹间距 <span class="math display">\[
+    \Delta x \thickapprox \frac{\lambda}{2n \theta}
+\]</span></p>
+<p><strong>牛顿环</strong></p>
+<p><span class="math display">\[
+    r \thickapprox \sqrt{2eR}
+\]</span></p>
+<p>明环 <span class="math display">\[
+    r=\sqrt{\frac{(2k-1)R\lambda}{2n}}
+\]</span> 暗环 <span class="math display">\[
+    r= \sqrt{\frac{kR\lambda}{n}}
+\]</span> 环间距 <span class="math display">\[
+    r_{k+m}^{2}- r_{k}^{2}= mR\lambda
+\]</span></p>
+<p>条纹间距内疏外密，半径越大干涉级次越大；中央是暗纹（半波损失） ###
+迈克尔逊干涉仪</p>
+<p>光拍现象</p>
+<h2 id="单缝衍射">单缝衍射</h2>
+<p><span class="math display">\[
+    E(\theta)=E_0 \frac{\sin \beta}{\beta},\quad \beta=\frac{\pi a \sin
+\theta}{\lambda}
+\]</span> 其中 <span
+class="math inline">\(E_0\)</span>为中央亮纹处的振幅</p>
+<h3 id="条纹分析">条纹分析</h3>
+<p>中央是明条纹，暗条纹条件 <span class="math display">\[
+    a \sin  \theta = \pm k \lambda, \quad k=1,2,3,\cdots
+\]</span></p>
+<p>明条纹条件 <span class="math display">\[
+    a\sin \theta= \pm (2m+1) \frac{\lambda}{2}, \quad m=1,2,\cdots
+\]</span></p>
+<p>明纹宽度，0级明纹角宽度 <span class="math display">\[
+    \Delta \theta_0 = 2 \theta_1 \thickapprox  2 \frac{\lambda}{a}
+\]</span></p>
+<p>第 <span class="math inline">\(k\)</span>
+级明纹角宽度（也是暗纹角宽度） <span class="math display">\[
+    \Delta \theta_k = \frac{\lambda}{a}
+\]</span></p>
+<h2 id="双缝衍射">双缝衍射</h2>
+<p>首先单缝衍射中，上下移动单缝，光屏上各条纹不变.</p>
+<p><strong>Q：</strong> 双缝衍射 <span class="math inline">\((\lambda,
+a, d, E_0)\)</span>， <span class="math inline">\(E(\theta)=\)</span>？
+考虑到两个单缝之间有光程差 <span class="math inline">\(\delta=d \sin
+\theta\)</span>，可以认为相位差 <span
+class="math inline">\(\displaystyle \varphi= \frac{2\pi d \sin
+\theta}{\lambda}\)</span>，认为是两个有相位差的光合成. 因为 <span
+class="math inline">\(\displaystyle E_p=E_0 \frac{\sin
+\beta}{\beta}\)</span>，故两个振动的叠加 <span class="math display">\[
+    E=E_p \frac{\sin \varphi}{\sin (\frac{\varphi}{2})}=E_0 \frac{\sin
+\beta}{\beta}\frac{\sin (\varphi)}{\sin (\frac{\varphi}{2})}
+\]</span></p>
+<p>那么 <span class="math inline">\(N\)</span>缝衍射合振幅 <span
+class="math display">\[  
+    E=E_0 \frac{\sin \beta}{\beta} \frac{\sin (\frac{N\varphi}{2})}{\sin
+(\frac{\varphi}{2})}
+\]</span></p>
+<p>注意 <span class="math inline">\(\displaystyle \beta=\frac{\pi a \sin
+\theta}{\lambda}, \varphi= \frac{2\pi d \sin
+\theta}{\lambda}\)</span></p>
+<p><strong>光栅：</strong>
+大量等宽等间距的平行狭缝（或反射面）构成的光学元件.</p>
+<h2 id="光栅衍射">光栅衍射</h2>
+<p><strong>多缝干涉主极大：</strong> <span class="math display">\[
+    d\sin \theta = k\lambda, \quad k=0, \pm 1,\cdots
+\]</span></p>
+<p>此时所有缝的光振动同相，每个缝的振幅为 <span
+class="math inline">\(E_0\)</span> <span class="math display">\[
+    E=NE_0 \\
+    I=N^{2} I_0
+\]</span></p>
+<p><strong>多缝干涉暗纹：</strong></p>
+<p><span class="math display">\[
+    d \sin \theta = \pm k \frac{\lambda}{N},\quad k=1,2,\cdots
+N-1,N+1,\cdots
+\]</span></p>
+<p><strong>多缝干涉次级大：</strong> 相邻主极大间有 <span
+class="math inline">\(N-1\)</span>个暗纹，一定有 <span
+class="math inline">\(N-2\)</span>条明纹——次级大</p>
+<blockquote>
+<p>次级大的光强仅为主极大的4%</p>
+</blockquote>
+<p><strong>Q:</strong> <span
+class="math inline">\(k,k+1\)</span>级主极大角间距？ <span
+class="math inline">\((N,d,\lambda)\)</span></p>
+<p><span class="math display">\[
+    \theta_{k+1}-\theta_k=\frac{\lambda}{d}
+\]</span></p>
+<p>第 <span class="math inline">\(k\)</span>级主极大本身的角间距 <span
+class="math display">\[
+    \Delta \theta_k=\frac{2\lambda}{N d}
+\]</span></p>
+<p>第 <span class="math inline">\(k\)</span>级次级大本身的角宽度 <span
+class="math display">\[
+    \Delta \theta_k&#39;=\frac{\lambda}{Nd}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(N\)</span>对条纹的影响： <span
+class="math inline">\(N\)</span>增大，主极大条纹位置不变，次级大增多，主极大条纹变细变锐.</li>
+<li><span class="math inline">\(d\)</span>对条纹的影响：<span
+class="math inline">\(d\)</span>变大，主极大间距变小，条纹变密，中央包线内亮纹数目增大.</li>
+<li><span class="math inline">\(a\)</span>对条纹的影响：<span
+class="math inline">\(a\)</span>减小，单缝衍射中央包线宽度变宽，中央包线内亮纹数目增加.</li>
+</ul>
+<p><strong>缺级现象：</strong> 主极大条件： <span
+class="math inline">\(d \sin \theta =k\lambda, (k=0,\pm 1,\pm 2,\cdots
+)\)</span> 衍射暗条纹：<span class="math inline">\(a \sin \theta
+=m\lambda,(m=\pm 1,\pm 2,\cdots)\)</span>
+在某些情况下，主极大条纹与衍射暗条纹重合，主极大条纹没了，这种现象称之为<strong>缺级现象</strong>.</p>
+<p>条件： <span class="math display">\[
+    \begin{cases}
+        \sin \theta =\frac{k\lambda}{d} \\
+        \sin \theta=\frac{m\lambda}{a}
+    \end{cases}
+\]</span> 得到 <span class="math display">\[
+    k=m\frac{d}{a} , (m=\pm 1, \pm 2,\cdots )    
+\]</span> 注意 <span class="math inline">\(k,m\)</span>为整数</p>
+<p><strong>光栅的色分辨本领：</strong> <span class="math display">\[
+    R=\frac{\lambda}{\Delta \lambda}
+\]</span></p>
+<p><strong>Q:</strong> 怎样定义能分辨两条谱线？ 瑞利判据： 得到 <span
+class="math display">\[
+    R=\frac{\lambda}{\Delta \lambda}=kN
+\]</span></p>
+<p>（用 <span class="math inline">\(k\)</span> 级主极大的分辨本领）</p>
+<h2 id="夫琅和费圆孔衍射现象">夫琅和费圆孔衍射现象</h2>
+<p><strong>Airy disk（艾里斑）</strong> 84%</p>
+<p>艾里斑的半角宽：</p>
+<p><span class="math display">\[
+    d \sin \theta_1 \thickapprox 1.22 \lambda
+\]</span></p>
+<p>透镜的分辨本领</p>
+<p>如果透镜恰好能分辨两个物点，两个物点对透镜中心张角为 <span
+class="math display">\[
+    \theta_1=  \frac{1.22\lambda}{d}
+\]</span></p>
+<p>定义最小分辨角的倒数为透镜的分辨本领. <span class="math display">\[
+    R=\frac{d}{1.22\lambda}
+\]</span> <span class="math inline">\(d\)</span> 为透光孔径.</p>
+<h2 id="x射线的衍射">X射线的衍射</h2>
+<p>布拉格公式 <span class="math display">\[
+    2d\sin \theta=k \lambda
+\]</span></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/" class="category-chain-item">物理学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/%E6%99%AE%E7%89%A9/" class="category-chain-item">普物</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%89%A9%E7%90%86/" class="print-no-link">#物理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Chapter16</div>
+      <div>http://example.com/2022/06/11/Chapter16/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 11, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter17/" title="Chapter17">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Chapter17</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter15/" title="Chapter15">
+                        <span class="hidden-mobile">Chapter15</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

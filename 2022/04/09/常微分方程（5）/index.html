@@ -1,0 +1,1089 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="本章关于高阶微分方程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常微分方程（5）">
+<meta property="og:url" content="http://example.com/2022/04/09/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%885%EF%BC%89/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="本章关于高阶微分方程">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-04-09T09:48:54.000Z">
+<meta property="article:modified_time" content="2022-07-19T13:31:04.306Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+  
+  
+  
+  <title>常微分方程（5） - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常微分方程（5）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-09 17:48" pubdate>
+          April 9, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          89 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常微分方程（5）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="高阶微分方程">高阶微分方程</h1>
+<p>首先各未知函数微商的最高阶数之和叫作该微分方程的<strong>阶</strong>，它可以部分反应求解的难度.
+因此降阶是非常重要的一步.</p>
+<h2 id="几个例子">几个例子</h2>
+<p>不明显包含自变量的方程叫作<strong>自治</strong>（或<strong>驻定</strong>）的，对它们可以进行降阶.
+例如，考虑n阶的自治微分方程 <span class="math display">\[
+    F\biggl(y,\frac{\mathrm{d}y}{\mathrm{d}x},\cdots
+,\frac{\mathrm{d}^ny}{\mathrm{d}x^n}\biggr)=0 \tag{1}
+\]</span> 令 <span
+class="math inline">\(z=\frac{\mathrm{d}y}{\mathrm{d}x}\)</span>，则有关系式
+<span class="math display">\[
+    \begin{cases}
+        \displaystyle
+        \frac{\mathrm{d}^2y}{\mathrm{d}x^2}=\frac{\mathrm{d}z}{\mathrm{d}x}=\frac{\mathrm{d}z}{\mathrm{d}y}\frac{\mathrm{d}y}{\mathrm{d}x}=z\frac{\mathrm{d}z}{\mathrm{d}y}
+\\
+        \displaystyle
+        \frac{\mathrm{d}^3y}{\mathrm{d}x^3}=\frac{\mathrm{d}}{\mathrm{d}x}\biggl(z\frac{\mathrm{d}z}{\mathrm{d}y}\biggr)=z^2\frac{\mathrm{d}^2z}{\mathrm{d}y^2}+z
+        \biggl(\frac{\mathrm{d}z}{\mathrm{d}y}\biggr) \\
+        \cdots \\
+        \displaystyle
+        \frac{\mathrm{d}^ny}{\mathrm{d}x^n}=\varphi\biggl(z,\frac{\mathrm{d}z}{\mathrm{d}y},\cdots
+,\frac{\mathrm{d}^{n-1}z}{\mathrm{d}y^{n-1}}\biggr)
+    \end{cases}
+\]</span> 然后，把它们代入（1），就得到一个 <span
+class="math inline">\(n-1\)</span>阶的微分方程 <span
+class="math display">\[
+    F_1\biggl(y,z,\frac{\mathrm{d}z}{\mathrm{d}y},\cdots
+,\frac{\mathrm{d}^{n-1}z}{\mathrm{d}y^{n-1}}\biggr)=0
+\]</span> 其中 <span class="math inline">\(z\)</span>是未知函数，而
+<span class="math inline">\(y\)</span>是自变量.</p>
+<p>与之相关有<strong>轨线</strong>、<strong>相平面</strong>、<strong>相图</strong>的概念.
+【例1】<strong>单摆方程</strong>：直接给出要解的微分方程 <span
+class="math display">\[
+    \frac{\mathrm{d}^2x}{\mathrm{d}t^2}+a^{2}\sin x=0
+\]</span> 其中常数 <span
+class="math inline">\(a=\sqrt{g/l}&gt;0\)</span>.</p>
+<p>两边乘 <span class="math inline">\(\displaystyle
+\frac{\mathrm{d}x}{\mathrm{d}t}\)</span>，再积分得 <span
+class="math display">\[
+    \frac{1}{2} \biggl(\frac{\mathrm{d}x}{\mathrm{d}t}
+\biggr)^{2}-a^{2}\cos x=-\frac{1}{2}C_1  
+\]</span>
+把这种由高阶微分方程积分一次得到的关系式称为<strong>首次积分</strong>
+继续解该方程得到通积分，包含椭圆函数，可以利用 <span
+class="math inline">\(\sin x \thickapprox
+x\)</span>，接下去变成物理中的推导，略.</p>
+<p>【例2】<strong>悬链线方程</strong>：在数学分析中，已经用变分法求得了悬链线的方程（摆线），这里可以从微分方程的角度再看一下（其实也是类似的）.
+直接给出要解的微分方程 <span class="math display">\[
+    y&#39;&#39;=a \sqrt{1+(y&#39;)^{2}} \tag{2}
+\]</span> 其中 <span class="math inline">\(a=\gamma/H_0\)</span>是常数.
+且满足<strong>边值条件</strong> <span class="math display">\[
+    y(x_1)=y_1, \quad y(x_2)=y_2 \tag{3}
+\]</span> 这是一个<strong>边值问题</strong>. 令 <span
+class="math inline">\(z=y&#39;\)</span>可以降为一阶微分方程 <span
+class="math display">\[
+    z&#39;=a \sqrt{1+z^{2}}
+\]</span> 而且它是变量分离的. 容易求出它的通解 <span
+class="math display">\[
+    z= \sinh a(x+C_1)
+\]</span> 其中 <span class="math inline">\(C_1\)</span>是一个任意常数.
+由此再积分得到通解<br />
+<span class="math display">\[
+    y=\frac{1}{a} \cosh a(x+C_1) +C_2 \tag{4}
+\]</span> 其中 <span
+class="math inline">\(C_2\)</span>是第二个任意常数.</p>
+<p>利用边值条件（2）和（3）可唯一确定 <span
+class="math inline">\(C_1\)</span>和 <span
+class="math inline">\(C_2\)</span>. 最终答案是一个双曲余弦函数.
+问题此时还没有完全解决.
+还需要利用悬链线的长度解曲线积分，利用边值条件的高度差求解常数.</p>
+<p>【例3】<strong>二体问题</strong>：由Newton's
+Law得到一个6阶的微分方程组，可以推出运动的轨道永远在一个平面上，不妨设为平面
+<span class="math inline">\(z=0\)</span>. 此时降为一个4阶方程.
+以下求解过程略.</p>
+<h2 id="n维线性空间中的微分方程">n维线性空间中的微分方程</h2>
+<p>设 <span class="math inline">\(n\)</span>阶微分方程 <span
+class="math display">\[
+    \frac{\mathrm{d}^ny}{\mathrm{d}x^n}=F
+\biggl(x,y,\frac{\mathrm{d}y}{\mathrm{d}x},\cdots
+,\frac{\mathrm{d}^{n-1}y}{\mathrm{d}x^{n-1}} \biggr) \tag{5}
+\]</span> 这里 <span class="math inline">\(x\)</span>是自变量，而 <span
+class="math inline">\(y\)</span>是未知函数 令 <span
+class="math display">\[
+    y_1=y,y_2=\frac{\mathrm{d}y}{\mathrm{d}x},\cdots
+,y_n=\frac{\mathrm{d}^{n-1}y}{\mathrm{d}x^{n-1}}       
+\]</span> 则微分方程（5）等价于下列 <span
+class="math inline">\(n\)</span>阶标准微分方程组 <span
+class="math display">\[
+    \begin{cases}
+        \displaystyle \frac{\mathrm{d}y_1}{\mathrm{d}x}=y_2 \\
+        \cdots \\
+        \displaystyle \frac{\mathrm{d}y_{n-1}}{\mathrm{d}x}=y_n \\
+        \displaystyle
+\frac{\mathrm{d}y_n}{\mathrm{d}x}=F(x,y_1,y_2,\cdots ,y_n)  
+    \end{cases}
+\]</span> 对于未知数个数等于微分方程阶数的方程，可以通过换元写成标准形式
+<span class="math display">\[
+    \begin{cases}
+        \displaystyle
+\frac{\mathrm{d}y_1}{\mathrm{d}x}=f_1(x,y_1,y_2,\cdots,y_n), \\
+        \displaystyle
+\frac{\mathrm{d}y_2}{\mathrm{d}x}=f_2(x,y_1,y_2,\cdots,y_n), \\
+        \cdots  \\
+        \displaystyle
+\frac{\mathrm{d}y_n}{\mathrm{d}x}=f_n(x,y_1,y_2,\cdots,y_n),
+    \end{cases} \tag{6}
+\]</span> 其中 <span
+class="math inline">\(f_1,f_2,\cdots,f_n\)</span>是变元 <span
+class="math inline">\((x,y_1,y_2,\cdots,y_n)\)</span>在某个区域 <span
+class="math inline">\(D\)</span>内的连续函数.</p>
+<p>可以令 <span class="math inline">\(n\)</span>维的行向量 <span
+class="math display">\[
+    y=(y_1,y_2,\cdots,y_n) \in  \mathbb{R}^{n}      
+\]</span> 令 <span class="math display">\[
+    f_i(x,\mathbf{y})=f_i(x,y_1,y_2,\cdots,y_n)     
+\]</span> <span class="math inline">\(i=1,2,\cdots ,n\)</span>和 <span
+class="math display">\[
+    \mathbf{f}(x, \mathbf{y})=(f_1(x,\mathbf{y}),\cdots
+,f_n(x,\mathbf{y})) \in \mathbb{R}^{n}          
+\]</span> 而且规定 <span class="math display">\[
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}= \biggl(
+\frac{\mathrm{d}y_1}{\mathrm{d}x},\frac{\mathrm{d}y_2}{\mathrm{d}x},\cdots,\frac{\mathrm{d}y_n}{\mathrm{d}x}
+\biggr)
+\]</span> 则微分方程组（6）的向量形式为 <span class="math display">\[
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,
+\mathbf{y})  \tag{7}
+\]</span> 其中 <span class="math inline">\(\mathbf{f}(x,
+\mathbf{y})\)</span>是关于变元 <span class="math inline">\((x,
+\mathbf{y})\in D\)</span>的一个 <span
+class="math inline">\(n\)</span>维向量值函数. 一般还应给出初值条件 <span
+class="math display">\[
+    \mathbf{y}(x_0)=\mathbf{y}_0
+\]</span> 其中的初值点 <span class="math inline">\((x_0,
+\mathbf{y}_0)\in D \subset \mathbb{R}^{n+1}\)</span>.</p>
+<div class="note note-success">
+            <p>在 <spanclass="math inline">\(\mathbb{R}^{n}\)</span>中引入模后可以用完全一致的方法证明Picard定理和Peano定理</p>
+          </div>
+<p>如果在方程（6）中函数 <span
+class="math inline">\(f_1,f_2,\cdots,f_n\)</span>都是对于 <span
+class="math inline">\(y_1,y_2,\cdots,y_n\)</span>的线性函数，即 <span
+class="math display">\[
+    f_k(x,y_1,y_2,\cdots,y_n)=\sum_{i=1}^{n} a_{ik}(x)y_i+e_k(x)
+\]</span> <span class="math inline">\((k=1,2,\cdots
+,n)\)</span>，则称微分方程（6）或（7）是<strong>线性</strong>的；否则称为<strong>非线性</strong>的.</p>
+<p>线性微分方程组 <span class="math display">\[
+    \frac{\mathrm{d}y_k}{\mathrm{d}x}=\sum_{i=1}^{n} a_{ik}(x)y_i+e_k(x)
+\]</span> <span class="math inline">\((k=1,2,\cdots
+,n)\)</span>的向量形式可以写成 <span class="math display">\[
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{y}\mathbf{A}(x)+\mathbf{e}(x)
+\]</span> 其中向量 <span
+class="math inline">\(\mathbf{y}=(y_1,y_2,\cdots,y_n)\)</span>和 <span
+class="math inline">\(\mathbf{e}(x)=e_1(x),e_2(x),\cdots,e_n(x)\)</span>，而矩阵
+<span class="math inline">\(\mathbf{A}(x)=(a_{ik}(x))_{n \times
+n}\)</span>. 若采用列向量的写法，则 <span class="math display">\[
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{A}(x)\mathbf{y}+\mathbf{e}(x)
+\tag{8}
+\]</span> 这种形式比较常见.</p>
+<p>设 <span class="math inline">\(\mathbf{A}(x)\)</span>和 <span
+class="math inline">\(\mathbf{e}(x)\)</span>在区间 <span
+class="math inline">\(a&lt;x&lt;b\)</span>上连续，则线性微分方程（8）满足任何初值条件
+<span class="math display">\[
+    \mathbf{y}(x_0)=y_0 \quad (a&lt;x_0&lt;b), \mathbf{y}_0 \in
+\mathbb{R}^{n}
+\]</span> 的解 <span
+class="math inline">\(\mathbf{y}=\mathbf{y}(x)\)</span>在整个区间 <span
+class="math inline">\(a&lt;x&lt;b\)</span>上存在且唯一.</p>
+<h2 id="解对初值和参数的连续依赖性">解对初值和参数的连续依赖性</h2>
+<p>不失一般性，只讨论初值问题 <span class="math display">\[
+    (E_{\lambda}): \quad
+\frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y},\mathbf{\lambda}),\quad
+\mathbf{y}(0)=\mathbf{0}
+\]</span> 的解 <span
+class="math inline">\(\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})\)</span>对参量
+<span class="math inline">\(\mathbf{\lambda}\)</span>的依赖性，其中
+<span class="math inline">\(\mathbf{\lambda}\)</span>是 <span
+class="math inline">\(m\)</span>维的参数向量.</p>
+<p><strong>定理5.1</strong>：设 <span
+class="math inline">\(n\)</span>维向量值函数 <span
+class="math inline">\(\mathbf{f}(x,\mathbf{y},\mathbf{\lambda})\)</span>在区域
+<span class="math display">\[
+    G: \quad \left\vert x \right\vert \leqslant a, \quad \left\vert
+\mathbf{y} \right\vert \leqslant b, \quad \left\vert
+\mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert \leqslant c    
+\]</span> 上是连续的，而且对 <span
+class="math inline">\(\mathbf{y}\)</span>满足Lipschitz条件 <span
+class="math display">\[
+    \left\vert
+\mathbf{f}(x,\mathbf{y}_1,\mathbf{\lambda})-\mathbf{f}(x,\mathbf{y}_2,\mathbf{\lambda})
+\right\vert \leqslant L\left\vert \mathbf{y}_1-\mathbf{y}_2
+\right\vert  
+\]</span> 其中常数 <span class="math inline">\(L\geqslant 0\)</span>.
+令正数 <span class="math inline">\(M\)</span>为 $(x,,) $在区域 <span
+class="math inline">\(G\)</span>的一个上界，而且令 <span
+class="math display">\[
+    h= \min \biggl(a,\frac{b}{M} \biggr)
+\]</span> 则初值问题 <span
+class="math inline">\((E_\lambda)\)</span>的解 <span
+class="math inline">\(\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})\)</span>在区域
+<span class="math display">\[
+    D: \quad \left\vert x \right\vert \leqslant h, \quad \left\vert
+\mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert \leqslant c
+\]</span> 上是连续的.</p>
+<p><strong>证</strong>：先证明初值问题 <span
+class="math inline">\((E_\lambda)\)</span>的Picard序列 <span
+class="math inline">\(\{\mathbf{\varphi}_k(x,\mathbf{\lambda})\}\)</span>对参数
+<span
+class="math inline">\(\mathbf{\lambda}\)</span>的连续性（和可微性）；再证明
+<span
+class="math inline">\(\mathbf{\varphi}_k(x,\mathbf{\lambda})\)</span>是一致收敛的，而且它的极限函数
+<span
+class="math inline">\(\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})\)</span>
+是 <span class="math inline">\((E_\lambda)\)</span>的解.</p>
+<p><strong>推论</strong>：设 <span
+class="math inline">\(n\)</span>维向量值函数 <span
+class="math inline">\(f(x,\mathbf{y})\)</span>在区域 <span
+class="math display">\[
+    R: \quad \left\vert x-x_0 \right\vert \leqslant a, \quad \left\vert
+y-y_0 \right\vert \leqslant b
+\]</span> 上连续，而且对 <span
+class="math inline">\(\mathbf{y}\)</span>满足Lipschitz条件.
+则微分方程初值问题 <span class="math display">\[
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y}),\quad
+\mathbf{y}(x_0)=\eta \tag{9}
+\]</span> 的解 <span
+class="math inline">\(\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\eta})\)</span>在区域
+<span class="math display">\[
+    Q: \quad \left\vert x-x_0 \right\vert \leqslant \frac{h}{2}, \quad
+\left\vert \mathbf{\eta}-\mathbf{y_0} \right\vert \leqslant \frac{b}{2}
+\]</span> 上是连续的，其中 <span class="math display">\[
+    h=\min \biggl(a,\frac{b}{M} \biggr)
+\]</span> 而正数 <span class="math inline">\(M\)</span>为 $f(x,) $在区域
+<span class="math inline">\(R\)</span>上的一个上界.</p>
+<p>解的存在性可由局部延伸到大范围.
+解对初值（或参数）的连续性（和可微性）也有类似的如下结论.</p>
+<p><strong>定理5.2</strong>：设 <span
+class="math inline">\(n\)</span>维向量值函数 <span
+class="math inline">\(\mathbf{f}(x,\mathbf{y})\)</span>在 <span
+class="math inline">\((x,\mathbf{y})\)</span>空间内的某个开区域上是连续的，而且对
+<span class="math inline">\(\mathbf{y}\)</span>满足局部 Lipschitz条件.
+假设 <span class="math inline">\(\mathbf{y}=
+\mathbf{\xi}(x)\)</span>是微分方程 <span class="math display">\[
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y})\tag{10}
+\]</span> 的一个解，令它的存在区间为 <span
+class="math inline">\(J\)</span>. 现在，在区间 <span
+class="math inline">\(J\)</span>内任取一个有界闭区间 <span
+class="math inline">\(a\leqslant x\leqslant b\)</span>. 则存在常数 <span
+class="math inline">\(\delta&gt;0\)</span>，使得对任何初值 <span
+class="math inline">\((x_0,\mathbf{y}_0)\)</span>， <span
+class="math display">\[
+    a\leqslant x_0\leqslant b, \quad \left\vert
+\mathbf{y}_0-\mathbf{\xi}(x_0) \right\vert \leqslant \delta
+\]</span> Cauchy问题 <span class="math display">\[
+    (E): \quad
+\frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y}),\quad
+\mathbf{y}(x_0)=y_0
+\]</span> 的解 <span
+class="math inline">\(\mathbf{y}=\mathbf{\varphi}(x;x_0,\mathbf{y}_0)\)</span>也至少在区间
+<span class="math inline">\(a\leqslant x\leqslant
+b\)</span>上存在，并且它在闭区域 <span class="math display">\[
+    D_\delta: \quad a\leqslant x\leqslant b, a\leqslant x_0 \leqslant b,
+\left\vert \mathbf{y}_0-\mathbf{\xi}(x_0) \right\vert \leqslant \delta
+\]</span> 上是连续的.</p>
+<p><strong>证</strong>：用有限覆盖定理将局部Lipschitz条件化为整体Lipschitz条件，然后构造Picard序列证明.</p>
+<p>最后提一下习题中的一个问题：如果 <span
+class="math inline">\(\mathbf{f}(x,\mathbf{y})\)</span>在区域 <span
+class="math inline">\(R\)</span>连续，且微分方程 <span
+class="math inline">\(\displaystyle
+\frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}\mathbf{f}(x,\mathbf{y})\)</span>经过区域
+<span
+class="math inline">\(R\)</span>任意一点的解都存在且唯一，则这些解关于初值连续依赖.</p>
+<p>设经过 <span class="math inline">\((x_0,\mathbf{y}_0)\)</span>的解是
+<span
+class="math inline">\(\mathbf{y}=\mathbf{\phi}(x;x_0,\mathbf{y}_0)=\mathbf{\psi}_{x_0,\mathbf{y}_0}(x)\)</span>.
+首先 <span class="math inline">\(\mathbf{\psi}\)</span>当然是关于 <span
+class="math inline">\(x\)</span>连续的（因为可微），且 <span
+class="math inline">\(\mathbf{\psi}_{x_0,\mathbf{y}_0}(x_0)=\mathbf{y}_0\)</span>.
+假设 <span class="math inline">\(\mathbf{\varphi}\)</span>关于 <span
+class="math inline">\((x_0, \mathbf{y}_0)\)</span>不连续，间断点是 <span
+class="math inline">\((x_0^*,\mathbf{y}_0^*\)</span>. 任取 <span
+class="math inline">\(\varepsilon&gt;0\)</span>，由唯一性和连续性知不连续的表达式在
+<span
+class="math inline">\(d((\widetilde{x}_0,\mathbf{\widetilde{y}}_0),(x_0^*,\mathbf{y}_0^*))\)</span>足够小时不可能成立.</p>
+<h2 id="解对初值和参数的连续可微性">解对初值和参数的连续可微性</h2>
+<p>不失一般性，只考虑微分方程 <span class="math display">\[
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y},\mathbf{\lambda})
+\tag{11}
+\]</span> 满足初值条件 <span class="math display">\[
+    \mathbf{y}(0)=\mathbf{0}
+\]</span> 的解 <span
+class="math inline">\(\mathbf{y}=\varphi(x,\mathbf{\lambda})\)</span>对参数
+<span class="math inline">\(\mathbf{\lambda}\)</span>的连续可微性.</p>
+<p><strong>定理5.3</strong>：设 <span
+class="math inline">\(\mathbf{f}(x.\mathbf{y}.\mathbf{\lambda})\)</span>在区域
+<span class="math display">\[
+    G: \quad \left\vert x \right\vert \leqslant a, \quad \left\vert
+\mathbf{y} \right\vert \leqslant b, \quad \left\vert
+\mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert\leqslant c
+\]</span> 上连续，且对 <span class="math inline">\(\mathbf{y}\)</span>和
+<span class="math inline">\(\lambda\)</span>有连续偏微商.
+则微分方程（11）满足初值条件 <span
+class="math inline">\(\mathbf{y}(0)=\mathbf{0}\)</span>的解 <span
+class="math inline">\(\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})\)</span>在区域
+<span class="math display">\[
+    D: \quad \left\vert x \right\vert \leqslant h, \quad \left\vert
+\mathbf{\lambda}-\mathbf{\lambda}_0 \right\vert \leqslant c
+\]</span> 上是连续可微的，其中正数 <span
+class="math inline">\(h\)</span>的定义同定理5.1.</p>
+<p><strong>证</strong>：首先化成积分方程 <span class="math display">\[
+    \mathbf{y}=\int_{0}^{x} \mathbf{f}(x,\mathbf{y},\mathbf{\lambda})
+\mathrm{d}x
+\]</span> 构造它的Picard序列，由定理5.1知Picard序列 <span
+class="math inline">\(\mathbf{\varphi}_k(x,\mathbf{\lambda})\)</span>在区域
+<span class="math inline">\(D\)</span>上一致收敛到方程（11）的唯一解
+<span
+class="math inline">\(\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})\)</span>.
+其次，为了证明 <span
+class="math inline">\(\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\lambda})\)</span>对
+<span class="math inline">\(\mathbf{\lambda}\)</span>有连续的偏微商
+<span class="math inline">\(\frac{\partial \mathbf{\varphi}}{\partial
+\mathbf{\lambda}}(x,\mathbf{\lambda})\)</span>，证明序列 <span
+class="math inline">\(\frac{\partial \mathbf{\varphi}_k}{\partial
+\mathbf{\lambda}}(x,\mathbf{\lambda})\)</span>对 <span
+class="math inline">\((x,\mathbf{\lambda}) \in D\)</span>一致收敛.
+归纳证明辅助不等式 <span class="math display">\[
+    \left\vert \frac{\partial \mathbf{\varphi}}{\partial
+\mathbf{\lambda}} \right\vert \leqslant \exp (\alpha h)
+\]</span> 其中 <span class="math inline">\(\alpha\)</span>是区域 <span
+class="math inline">\(G\)</span>上 <span
+class="math inline">\(\displaystyle \frac{\partial \mathbf{f}}{\partial
+\mathbf{y}}(x,\mathbf{y},\mathbf{\lambda})\)</span>和 <span
+class="math inline">\(\displaystyle \frac{\partial \mathbf{f}}{\partial
+\mathbf{\lambda}}(x,\mathbf{y},\mathbf{\lambda})\)</span>的共同上界.</p>
+<p>再次，利用Cauchy收敛准则证明 <span class="math display">\[
+    v_{k,s}=\left\vert \frac{\partial \mathbf{\varphi}_{k+s}}{\partial
+\mathbf{\lambda}}-\frac{\partial \mathbf{\varphi}_k}{\partial
+\mathbf{\lambda}} \right\vert
+\]</span> 一致趋于0.</p>
+<p>最后，由 <span class="math display">\[
+    \frac{\partial \mathbf{\varphi}}{\partial
+x}(x,\mathbf{\lambda})=\mathbf{f}(x,\mathbf{\varphi}(x,\mathbf{\lambda}),\mathbf{\lambda})
+\]</span> 知 <span class="math inline">\(\displaystyle \frac{\partial
+\mathbf{\varphi}}{\partial x}(x,\mathbf{\lambda})\)</span>对 <span
+class="math inline">\((x,\mathbf{\lambda}) \in D\)</span>也是连续的.</p>
+<p><strong>推论</strong>：设 <span
+class="math inline">\(n\)</span>维向量值函数 <span
+class="math inline">\(\mathbf{f}(x,\mathbf{y})\)</span>在区域 <span
+class="math display">\[
+    R: \quad \left\vert x-x_0 \right\vert \leqslant a, \quad \left\vert
+y-y_0 \right\vert \leqslant b
+\]</span> 上连续，而且对 <span
+class="math inline">\(\mathbf{y}\)</span>有连续的偏微商 <span
+class="math inline">\(\mathbf{f}&#39;_{\mathbf{y}}(x,\mathbf{y})\)</span>.
+则初值问题 <span class="math display">\[
+    \frac{\mathrm{d}\mathbf{y}}{\mathrm{d}x}=\mathbf{f}(x,\mathbf{y}),
+\quad \mathbf{y}(x_0)=\mathbf{\eta}
+\]</span> 的解 <span
+class="math inline">\(\mathbf{y}=\mathbf{\varphi}(x,\mathbf{\eta})\)</span>在区域
+<span class="math display">\[
+    D: \quad \left\vert x-x_0 \right\vert \leqslant \frac{h}{2}, \quad
+\left\vert \mathbf{\eta}-\mathbf{y}_0 \right\vert \leqslant
+\frac{b}{2}      
+\]</span> 上是连续可微的.</p>
+<p>【附注】假设 <span class="math inline">\(y\)</span>和 <span
+class="math inline">\(\lambda\)</span>都是一维的，并且定理5.3及其推论的条件成立，则初值问题
+<span class="math display">\[
+    \frac{\mathrm{d}y}{\mathrm{d}x}=f(x, y, \lambda), \quad y(x_0)=y_0
+\tag{12}
+\]</span> 的解 <span
+class="math inline">\(y=\varphi(x;x_0,y_0,\lambda)\)</span>对初值 <span
+class="math inline">\(x_0\)</span>，<span
+class="math inline">\(y_0\)</span>及参数 <span
+class="math inline">\(\lambda\)</span>的偏导数 <span
+class="math inline">\(\displaystyle \frac{\partial \varphi}{\partial
+x_0}\)</span>， <span class="math inline">\(\displaystyle \frac{\partial
+\varphi}{\partial y_0}\)</span>和 <span
+class="math inline">\(\displaystyle \frac{\partial \varphi}{\partial
+\lambda}\)</span>分别在它们有定义的区域内连续可微.</p>
+<p>在与之等价的积分方程 <span class="math display">\[
+    \varphi(x;x_0,y_0,\lambda)=y_0+\int_{x_0}^{x}
+f(x,\varphi(x;x_0,y_0,\lambda),\lambda) \mathrm{d}x \tag{13}
+\]</span> 两端分别对 <span class="math inline">\(x_0\)</span>，<span
+class="math inline">\(y_0\)</span>和 <span
+class="math inline">\(\lambda\)</span>求偏导数可以得到三个一阶线性微分方程，把它们叫（12）关于初值
+<span class="math inline">\(x_0\)</span>，<span
+class="math inline">\(y_0\)</span>和参数 <span
+class="math inline">\(\lambda\)</span>的<strong>变分方程</strong>（回忆变分法的两个经典例子）</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常微分方程（5）</div>
+      <div>http://example.com/2022/04/09/常微分方程（5）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 9, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/04/12/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%886%EF%BC%89/" title="常微分方程（6）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程（6）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/06/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%884%EF%BC%89/" title="常微分方程（4）">
+                        <span class="hidden-mobile">常微分方程（4）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

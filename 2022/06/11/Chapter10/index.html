@@ -1,0 +1,929 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="静电场">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter10">
+<meta property="og:url" content="http://example.com/2022/06/11/Chapter10/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="静电场">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/physics.jpg">
+<meta property="article:published_time" content="2022-06-11T13:36:06.000Z">
+<meta property="article:modified_time" content="2022-06-11T13:40:21.258Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="物理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/physics.jpg">
+  
+  
+  
+  <title>Chapter10 - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Chapter10"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-11 21:36" pubdate>
+          June 11, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          40 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Chapter10</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="chapter-10-静电场">Chapter 10 静电场</h1>
+<h2 id="库仑定律">库仑定律</h2>
+<p><strong>Coulomb's Law</strong> <span class="math display">\[
+    \mathbf{F}=\frac{q_1q_2}{4\pi \varepsilon_0 r^{2}}\mathbf{e_r}
+\]</span></p>
+<p>其中真空介电常数 <span class="math display">\[
+    \varepsilon_0=\frac{1}{4\pi k}=8.854\times 10^{-12}
+\]</span></p>
+<p><strong>Charge Conservation</strong> The total electric charge in an
+isolated system never changes</p>
+<h2 id="电场">电场</h2>
+<p>运动电荷不满足作用力等于反作用力，说明存在第三者——场</p>
+<p>电场强度 <span class="math display">\[
+    \mathbf{E}=\frac{\mathbf{F}}{q_0}=\frac{q}{4\pi \varepsilon_0
+r^{2}}\mathbf{e_r}
+\]</span> <span
+class="math inline">\(q_0\)</span>为试验电荷，电量和线度充分小 &gt;
+电场可以叠加</p>
+<p><strong>电偶极子（Electric Dipole）</strong>
+等量异号、间距小的两个点电荷，方向从负电荷指向正电荷</p>
+<p><strong>电偶极矩（Electric Dipole Moment）</strong> <span
+class="math display">\[
+    \mathbf{p}=q \mathbf{l}
+\]</span></p>
+<h3 id="电场计算">电场计算</h3>
+<p>电偶极子中垂线上场强为 <span class="math display">\[
+    \mathbf{E_B}=-\frac{\mathbf{p}}{4\pi \varepsilon_0 r^{3}}
+\]</span></p>
+<p>电偶极子延长线上任一点 <span class="math inline">\(A\)</span>的场强
+<span class="math display">\[
+    \mathbf{E_A}=\frac{2\mathbf{p}}{4\pi \varepsilon_0 r^{3}}
+\]</span> 其中 <span class="math inline">\(r\)</span>为 <span
+class="math inline">\(A\)</span>到电偶极子中点的有向距离</p>
+<p><strong>Q</strong> 计算电偶极子产生的场强 <span
+class="math inline">\((\mathbf{p},\mathbf{r},\theta)\)</span> 一般情况有
+<span class="math display">\[
+    \mathbf{E}=\frac{1}{4\pi \varepsilon_0
+r^{3}}\left[\frac{3(\mathbf{p}\cdot
+\mathbf{r})\mathbf{r}}{r^{2}}-\mathbf{p}\right]
+\]</span></p>
+<p><strong>Q</strong> 计算无限长带电直线距离 <span
+class="math inline">\(d\)</span>处场强 <span class="math display">\[
+    E=\frac{\lambda}{2\pi \varepsilon_0 d}
+\]</span></p>
+<p><strong>Q</strong> 半无限长端面 <span class="math display">\[
+    E_x=E_y=\frac{\lambda}{4\pi \varepsilon_0d}
+\]</span></p>
+<p><strong>Q</strong> 计算均匀带电细圆环轴线上的电场 <span
+class="math inline">\((q,r,z)\)</span> <span class="math display">\[
+    E_z=\frac{qz}{4\pi \varepsilon_0 (r^{2}+z^{2})^{\frac{3}{2}}}
+\]</span></p>
+<p><strong>Q</strong> 计算薄圆盘的电场 <span class="math display">\[
+    \mathrm{d}E=\frac{\mathrm{d}q}{4\pi \varepsilon_0}
+\frac{z}{(r^{2}+z^{2})^{\frac{3}{2}}}
+\]</span> 从而 <span class="math display">\[
+    E=\frac{\sigma}{2
+\varepsilon_0}\left(1-\frac{z}{\sqrt{R^{2}+z^{2}}}\right)
+\]</span> 注意 - <span class="math inline">\(\displaystyle z\to \infty
+\colon E=0\)</span> - <span class="math inline">\(\displaystyle z \gg R
+\colon E=\frac{Q}{4\pi \varepsilon_0 z^{2}}\)</span> - <span
+class="math inline">\(\displaystyle z \to 0 \colon E=\frac{\sigma}{2
+\varepsilon_0}\)</span></p>
+<h3 id="电场力和力矩">电场力和力矩</h3>
+<p><span class="math display">\[
+    \mathbf{F}=q_0 \mathbf{E}
+\]</span></p>
+<p><strong>Q</strong> 求电偶极子受的合力 <span class="math display">\[
+    \mathbf{F}=0
+\]</span></p>
+<p><strong>Q</strong> 求电偶极子在均匀外电场中受到的电场力偶矩 <span
+class="math inline">\((p,E,\theta)\)</span> <span
+class="math display">\[
+    \mathbf{M}=\mathbf{p} \times \mathbf{E}
+\]</span></p>
+<p><strong>Q</strong> 非匀强场中电偶极子的受力 <span
+class="math inline">\((\mathbf{p}=p \mathbf{k},
+\mathbf{E}(\mathbf{r}))\)</span> <span class="math display">\[
+    \mathbf{F}=p \frac{\partial \mathbf{E}}{\partial z}
+\]</span></p>
+<p><strong>Q</strong> 求电偶极子在电场中受力. <span
+class="math inline">\(\mathbf{p}=(p_x,p_y,p_z),
+\mathbf{E}(\mathbf{r})\)</span> <span class="math display">\[
+    \mathbf{F}=\mathbf{p} \cdot \nabla \mathbf{E}
+\]</span></p>
+<blockquote>
+<p>上两个式子是令人迷惑的，会有9组不同的坐标出现</p>
+</blockquote>
+<h2 id="高斯定理">高斯定理</h2>
+<h3 id="电场线">电场线</h3>
+<p><span class="math display">\[
+    \mathrm{d}N=E\mathrm{d}S \cos \theta
+\]</span> 其中 <span class="math inline">\(\theta\)</span>是 <span
+class="math inline">\(S\)</span>的法向量 <span
+class="math inline">\(\mathbf{n}\)</span>与 <span
+class="math inline">\(E\)</span>的夹角</p>
+<h3 id="电通量flux">电通量（flux）</h3>
+<p><span class="math display">\[
+    \mathrm{d}\Phi=\mathbf{E}\cdot
+\mathrm{d}\mathbf{S}=E\mathrm{d}S_{\perp }
+\]</span> 其中 <span
+class="math inline">\(\mathrm{d}\mathbf{S}=\mathrm{d}S
+\mathbf{e_n}\)</span> 从定义看出，电通量可以有正负</p>
+<p>通过任意曲面的电通量 <span class="math display">\[
+    \Phi=\iint_{S} \mathbf{E}\cdot \mathrm{d}\mathbf{S}
+\]</span> 当曲面为闭合面时，取外法向</p>
+<h3 id="高斯定理-1">高斯定理</h3>
+<p><strong>立体角</strong></p>
+<p><span class="math display">\[
+    \mathrm{d}\Omega =\frac{\mathbf{e_r}\cdot
+\mathrm{d}\mathbf{S}}{r^{2}}=\sin \theta\mathrm{d}\theta
+\mathrm{d}\varphi
+\]</span></p>
+<p>以观测点为球心，构造一个单位球面；任意物体投影到该单位球面上的投影面积，即为该物体相对于该观测点的立体角。
+&gt; 立体角可以小于零（有向面积）</p>
+<p><strong>Q</strong> 计算任意闭合曲面对面内一点 o 所张的立体角（<span
+class="math inline">\(4\pi\)</span>）</p>
+<p><strong>Q</strong> 部分曲面 <span class="math inline">\(\Delta
+\Omega\)</span>，<span class="math inline">\(q\)</span>，电通量？ <span
+class="math display">\[
+    \Delta \Phi=\frac{q \Delta \Omega}{4\pi \varepsilon_0}
+\]</span> <strong>Q</strong> 任意闭合曲面，曲面外一点 o，则积分 <span
+class="math display">\[
+    \oiint_{S} \frac{\mathbf{e_r}\cdot \mathrm{d}\mathbf{S}}{r^{2}}=0
+\]</span> 从而任意闭合面，不包围 <span
+class="math inline">\(q\)</span>，电通量为0.
+<strong>点电荷在闭合面外对电通量无贡献，但对闭合面上的电场强度有贡献</strong></p>
+<p>电场线数目 <span class="math display">\[
+    N=\frac{q}{\varepsilon_0}
+\]</span></p>
+<p>高斯定理 <span class="math display">\[
+    \oiint_{S} \mathbf{E}\cdot
+\mathrm{d}\mathbf{S}=\frac{1}{\varepsilon_0}\sum_{i}^{} q_i
+\]</span> <span class="math inline">\(S\)</span>称为Gauss面</p>
+<p>连续情况 <span class="math display">\[
+    \oiint_{S}\mathbf{E}\cdot
+\mathrm{d}\mathbf{S}=\frac{1}{\varepsilon_0}\iiint_{V} \rho \mathrm{d}V
+\]</span></p>
+<h3 id="高斯定理应用">高斯定理应用</h3>
+<p>均匀带电球的电场分布 <span class="math display">\[
+    \begin{cases}
+        \displaystyle \mathbf{E}=\frac{\rho}{3 \varepsilon_0}\mathbf{r},
+r &lt; R \\
+        \displaystyle \mathbf{E}=\frac{q}{4\pi
+\varepsilon_0r^{3}}\mathbf{r}, r\geqslant R \\
+    \end{cases}
+\]</span></p>
+<h3 id="高斯定理的微分形式">高斯定理的微分形式</h3>
+<p>将高斯定理应用在 <span class="math inline">\(\Delta V\)</span>
+小体积元上 <span class="math display">\[
+    \frac{\rho \mathrm{d}V}{\varepsilon_0}=\oiint \mathbf{E}\cdot
+\mathrm{d}\mathbf{S}=(\nabla \cdot \mathbf{E})\mathrm{d}V
+\]</span> 最后一步用到数学中的高斯定理 故有 <span
+class="math display">\[
+    \nabla \cdot \mathbf{E}=\frac{\rho}{\varepsilon_0}
+\]</span> 即<strong>E的散度等于电荷密度除以 <span
+class="math inline">\(\varepsilon_0\)</span></strong></p>
+<h2 id="电势">电势</h2>
+<h3 id="环路定理">环路定理</h3>
+<p>静电场力为保守力，电场强度沿任意闭合路径的环流为零 <span
+class="math display">\[
+    \oint_{l}\mathbf{E} \cdot \mathrm{d}\mathbf{l}=0
+\]</span></p>
+<h3 id="电势-1">电势</h3>
+<p><span class="math display">\[
+    V_1-V_2= \int_{1}^{2} \mathbf{E}\cdot  \mathrm{d}\mathbf{l}
+\]</span> <span class="math display">\[
+    -\mathrm{d}V=\mathbf{E}\cdot \mathrm{d}\mathbf{l}
+\]</span></p>
+<p>点电荷的电势 <span class="math display">\[
+    V_{P}=\frac{q}{4\pi \varepsilon_0 r}
+\]</span></p>
+<p><strong>Q</strong> 均匀带电球体的电势分布 omitted</p>
+<p><strong>Q</strong> 均匀带电球面的电势分布
+注意球内电场强度为零，故电势不变</p>
+<p><strong>Q</strong> 电偶极子的电势分布 <span
+class="math inline">\((p,r,\theta)\)</span> <span
+class="math display">\[
+    V=\frac{q}{4\pi \varepsilon_0 r_{+}} -\frac{q}{4\pi \varepsilon_0
+r_{-}}=\frac{q(r_{-}-r_{+})}{4\pi \varepsilon_0 r_{+} r_{-}}=\frac{p\cos
+\theta}{4\pi \varepsilon_0 r^{2}}=\frac{\mathbf{p}\cdot \mathbf{r}}{4\pi
+\varepsilon_0 r^{3}}        
+\]</span></p>
+<p><strong>电偶极层&amp;电偶极层强度</strong> <span
+class="math display">\[
+    \mathbf{\tau}=\mathbf{l}\sigma_{e}=\frac{\Delta p}{\Delta S}
+\]</span></p>
+<p>任意形状电偶极层在A点的电势 <span class="math display">\[
+    V_{A}=\frac{l\sigma_{e}}{4\pi \varepsilon_0}\Omega, (z&gt;0) \\
+    V_{A}=-\frac{l\sigma_{e}}{4\pi \varepsilon_0}\Omega, (z&lt;0) \\
+\]</span> 电偶极层两侧电势差为 <span class="math inline">\(\displaystyle
+\frac{\tau}{\varepsilon_0}\)</span></p>
+<p><strong>Q</strong> 细带电半圆环 <span
+class="math inline">\((R,x)\)</span> 且 <span
+class="math inline">\(\lambda(\theta)=\lambda_0 \sin \theta\)</span>
+求直径上任一点的电势 <span class="math display">\[
+    U(x)=\int_{0}^{\pi} \frac{R\lambda_0 \sin \theta
+\mathrm{d}\theta}{4\pi \varepsilon_0(R^{2}+x^{2}-2Rx \cos
+\theta)^{\frac{1}{2}}}=\frac{\lambda_0}{2\pi \varepsilon_0}
+\]</span> 即直径上各点的电势相同 &gt;
+通过计算可以发现直径上各点电场方向垂直于直径</p>
+<p>类似有均匀带电半球面在底面电势相等</p>
+<h3 id="电势梯度">电势梯度</h3>
+<ul>
+<li>等势面与电场线处处正交</li>
+<li>电荷移动的始点与终点在同一等势面上，电场力不做功</li>
+</ul>
+<p><strong>电势梯度</strong> <span class="math display">\[
+    \nabla V=\frac{\mathrm{d}V}{\mathrm{d}n}\mathbf{e_n}
+\]</span> 大小等于沿着等势面法线方向的空间变化率，指向电势增加的方向</p>
+<p>有 <span class="math display">\[
+    \mathbf{E}=-\nabla V=-(\frac{\partial V}{\partial
+x}\mathbf{i}+\frac{\partial V}{\partial y}\mathbf{j}+\frac{\partial
+V}{\partial z}\mathbf{k})
+\]</span> 即电场强度和电势梯度的大小相等，方向相反</p>
+<h3 id="电势能">电势能</h3>
+<p><span class="math display">\[
+    W=qV
+\]</span> <span class="math display">\[
+    W_1-W_2=\int_{1}^{2} q_0 \mathbf{E} \cdot \mathrm{d}\mathbf{l}
+\]</span></p>
+<p><strong>Q</strong> 电偶极子 <span
+class="math inline">\(\mathbf{p}\)</span> 在外电场 <span
+class="math inline">\(\mathbf{E}\)</span> 中的电势能 <span
+class="math display">\[
+    W_{\text{dipole}}=-\mathbf{p}\cdot \mathbf{E}   
+\]</span></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/" class="category-chain-item">物理学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/%E6%99%AE%E7%89%A9/" class="category-chain-item">普物</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%89%A9%E7%90%86/" class="print-no-link">#物理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Chapter10</div>
+      <div>http://example.com/2022/06/11/Chapter10/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 11, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter11/" title="Chapter11">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Chapter11</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/21/%E6%B0%B8%E4%B9%85%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%8C%EF%BC%89/" title="永久记录（二）">
+                        <span class="hidden-mobile">永久记录（二）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

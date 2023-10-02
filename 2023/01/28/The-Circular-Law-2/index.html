@@ -1,0 +1,982 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="In these notes, we present a proof of the circular law and relevant results.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Circular Law (2)">
+<meta property="og:url" content="http://example.com/2023/01/28/The-Circular-Law-2/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="In these notes, we present a proof of the circular law and relevant results.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/lucy.JPG">
+<meta property="article:published_time" content="2023-01-28T12:50:12.000Z">
+<meta property="article:modified_time" content="2023-02-13T13:49:26.174Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lucy.JPG">
+  
+  
+  
+  <title>The Circular Law (2) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="The Circular Law (2)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-28 20:50" pubdate>
+          January 28, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8.9k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          75 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">The Circular Law (2)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="the-circular-law-2">The Circular Law (2)</h1>
+<h2 id="gaussian-case">Gaussian Case</h2>
+<p>Let <span class="math inline">\(X:=(X_{ij})_{1\leqslant i,j\leqslant
+n}\)</span> be an i.i.d. random matrix on <span
+class="math inline">\(\mathbb{C}\)</span> with variance <span
+class="math inline">\(1\)</span>. We consider <span
+class="math inline">\(X\)</span> as a random variable in <span
+class="math inline">\(\mathcal{M}_{n}(\mathbb{C})\)</span>. Sometimes we
+denote <span class="math inline">\(G\)</span> instead of <span
+class="math inline">\(X\)</span> in order to distinguish the Gaussian
+case from the general
+case.<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="Charles Bordenave and Djalil Chafaï, The circular law">[1]</span></a></sup></p>
+<h3 id="mean-circular-law">Mean Circular Law</h3>
+<p>Recall that <span
+class="math inline">\(\mu_{G}=\frac{1}{n}\sum_{k=1}^{n}
+\delta_{\lambda_k(G)}\)</span>. The first result relies on the fact that
+<span class="math inline">\(\mathbb{E}\mu_{G}\)</span> has density <span
+class="math inline">\(\varphi_{n,1}\)</span>.</p>
+<div class="note note-info">
+            <p><strong>Theorem</strong> <spanclass="math inline">\(\mathbb{E}\mu_{n^{-1/2}G}\rightsquigarrow\mathcal{C}_{1}\)</span> as <span class="math inline">\(n\to\infty\)</span>, where <spanclass="math inline">\(\mathcal{C}_{1}\)</span> is the uniform law on theunit disc of <span class="math inline">\(\mathbb{C}\)</span> withdensity <span class="math inline">\(z\mapsto \pi^{-1}\mathbf{1}_{\{z\in\mathbb{C}\colon \lvert z \rvert \leqslant 1\}}\)</span>.</p>
+          </div>
+<p><strong>proof</strong> From (2.35) with <span
+class="math inline">\(k=1\)</span>, we get that the density of <span
+class="math inline">\(\mathbb{E}\mu_{G}\)</span> is <span
+class="math display">\[
+    \varphi_{n,1}\colon \mapsto \gamma(z)\left( \frac{1}{n}\sum_{l=0}
+^{n-1} \lvert H_l(z) \rvert ^{2}
+\right)=\frac{1}{n\pi}\mathrm{e}^{-\lvert z \rvert ^{2}}
+\sum_{l=0}^{n-1} \frac{\lvert z \rvert ^{2l}}{l!}.     \tag{3.1}  
+\]</span></p>
+<p>For <span class="math inline">\(r^{2}&lt;n\)</span>, <span
+class="math display">\[
+    \mathrm{e}^{r^{2}} -\sum_{l=0}^{n-1}
+\frac{r^{2l}}{l!}=\sum_{l=n}^{\infty}\frac{r^{2l}}{l!}\leqslant
+\frac{r^{2n}}{n!}\sum_{l=0}^{\infty}
+\frac{r^{2l}}{(n+1)^{l}}=\frac{r^{2n}}{n!}\frac{n+1}{n+1-r^{2}}   \tag{3.2}
+\]</span></p>
+<p>while for <span class="math inline">\(r^{2}&gt;n\)</span>, <span
+class="math display">\[
+    \sum_{l=0}^{n-1} \frac{r^{2l}}{l!}\leqslant
+\frac{r^{2(n-1)}}{(n-1)!}\sum_{l=0}^{n-1} \left( \frac{n-1}{r^{2}}
+\right) ^{l}\leqslant \frac{r^{2(n-1)}}{(n-1)!}\frac{r^{2}}{r^{2}-n+1}.
+\tag{3.3}
+\]</span></p>
+<p>By taking <span class="math inline">\(r^{2}=\lvert \sqrt{n}z \rvert
+^{2}\)</span> we obtain that for every compact <span
+class="math inline">\(C\subset \mathbb{C}\)</span> <span
+class="math display">\[
+    \lim_{n \to \infty}\sup _{z\in \mathbb{C}} \lvert
+n\varphi_{n,1}(\sqrt{n}z)-\pi^{-1} \mathbf{1}_{[0,1]}(\lvert z \rvert )
+\rvert =0. \tag{3.4}
+\]</span></p>
+<p>The <span class="math inline">\(n\)</span> in front of <span
+class="math inline">\(\varphi_{n,1}\)</span> is due to the fact that we
+are on <span class="math inline">\(\mathbb{C}\)</span>: <span
+class="math inline">\(\mathrm{d}\sqrt{n}x\mathrm{d}\sqrt{n}y=n\mathrm{d}x\mathrm{d}y\)</span>.</p>
+<h3 id="strong-circular-law">Strong Circular Law</h3>
+<div class="note note-info">
+            <p><strong>Theorem (Silverstein, 1984)</strong> a.s. <spanclass="math inline">\(\mu_{n^{-1/2}G}\rightsquigarrow\mathcal{C}_{1}\)</span> as <span class="math inline">\(n\to\infty\)</span>, where <spanclass="math inline">\(\mathcal{C}_{1}\)</span> is the uniform law on theunit disc of <span class="math inline">\(\mathbb{C}\)</span> withdensity <span class="math inline">\(z\mapsto \pi^{-1}\mathbf{1}_{\{z\in\mathbb{C}\colon \lvert z \rvert \leqslant 1\}}\)</span></p>
+          </div>
+<p><strong>proof</strong> Let us pick a compactly supported continuous
+bounded function <span class="math inline">\(f\)</span> and set <span
+class="math display">\[
+    S_n:=\int_{\mathbb{C}}^{} f \mathrm{d}\mu_{n^{-1/2}G}, \quad
+S_{\infty}:=\pi^{-1}\int_{\lvert z \rvert \leqslant 1}^{} f(z)
+\mathrm{d}x\mathrm{d}y. \tag{3.5}
+\]</span></p>
+<p>Suppose for now that we have <span class="math display">\[
+    \mathbb{E}[(S_n-\mathbb{E}S_n)^{4}]=O(n^{-2}). \tag{3.6}
+\]</span></p>
+<p>By monotone convergence (or by the Fubini-Tonelli theorem), <span
+class="math display">\[
+    \mathbb{E}\sum_{n=1}^{\infty}
+(S_n-\mathbb{E}S_n)^{4}=\sum_{n=1}^{\infty}
+\mathbb{E}[(S_n-\mathbb{E}S_n)^{4}]&lt;\infty \tag{3.7}
+\]</span></p>
+<p>and consequently <span class="math inline">\(\sum_{n=1}^{\infty}
+(S_n-\mathbb{E}S_n)^{4}&lt;\infty\)</span> a.s. which implies <span
+class="math inline">\(\lim_{n \to \infty}S_n-\mathbb{E}S_n=0\)</span>
+a.s. Since <span class="math inline">\(\lim_{n \to
+\infty}\mathbb{E}S_n=S_{\infty}\)</span> by the mean circular law, we
+get that a.s. <span class="math display">\[
+    \lim_{n \to \infty}S_n=S_{\infty}.
+\]</span></p>
+<p>To establish (3.6), we set <span class="math display">\[
+    S_n-\mathbb{E}S_n=\frac{1}{n}\sum_{i=1}^{n} Z_i
+\]</span></p>
+<p>with <span class="math display">\[
+    Z_i:=f(\lambda_i(n^{-1/2}G))-\mathbb{E}f(\lambda_i(n^{-1/2}G))
+\tag{3.8}
+\]</span></p>
+<p>Now <span class="math display">\[
+    \begin{aligned}
+        \mathbb{E}[(S_n-\mathbb{E}S_{n})^{4}]&amp;=
+\frac{1}{n^{4}}\sum_{i_1}^{} \mathbb{E}[Z_{i_1}^{4}] \\
+        &amp;+\frac{4}{n^{4}}\sum_{i_1,i_2}^{}
+\mathbb{E}[Z_{i_1}Z_{i_2}^{3}] \\
+        &amp;+\frac{3}{n^{4}}\sum_{i_1,i_2}^{}
+\mathbb{E}[Z_{i_1}^{2}Z_{i_2}^{2}]\\
+        &amp;+\frac{6}{n^{4}}\sum_{i_1,i_2,i_3}^{}
+\mathbb{E}[Z_{i_1}Z_{i_2}Z_{i_3}^{2}] \\
+        &amp;+\frac{1}{n^{4}}\sum_{i_1,i_2,i_3,i_4}^{}
+\mathbb{E}[Z_{i_1}Z_{i_2}Z_{i_3}Z_{i_4}].
+    \end{aligned}
+\]</span></p>
+<p>The first three terms of the RHS are <span
+class="math inline">\(O(n^{-2})\)</span> since <span
+class="math inline">\(\max_{1\leqslant i\leqslant n}\lvert Z_i \rvert
+\leqslant 2\left\| f \right\|_{\infty}\)</span>.</p>
+<p>Note that the <span class="math inline">\(k\)</span>-correlation of
+spectral density for <span class="math inline">\(n^{-1/2}G\)</span> is
+<span class="math display">\[
+    \tilde{\varphi}_{n,k}(z_1,\cdots
+,z_k)=\frac{(n-k)!}{n!}n^{k}\pi^{-k}\exp \left( -\sum_{i=1}^{k} n\lvert
+z_i \rvert^{2}  \right) \det \left[\sum_{l=0}^{n-1} n^{l}\frac{(z_i
+\bar{z_j})^{l}}{l!}\right]_{1\leqslant i,j\leqslant k}.  \tag{3.9}
+\]</span></p>
+<p>For the fourth term, rewrite <span class="math display">\[
+    \tilde{\varphi}_{n,3}(z_1,z_2,z_3)=\frac{(n-3)!}{n!}n^{3}\prod_{i=1}^{3}
+\tilde{\varphi}_{n,1}(z_i)-\left(\frac{(n-3)!}{n!}n^{3}\prod_{i=1}^{3}
+\tilde{\varphi}_{n,1}(z_i)- \tilde{\varphi}_{n,3}(z_1,z_2,z_3) \right)
+\]</span></p>
+<p>The function in the parenthesis is a density and has mass <span
+class="math inline">\(\displaystyle
+\frac{(n-3)!}{n!}n^{3}-1=\frac{3n-2}{(n-1)(n-2)}=O(n^{-1})\)</span>. And
+<span class="math inline">\(Z_1,Z_2,Z_3\)</span> are independent with
+respect to <span class="math inline">\(\prod_{i=1}^{3}
+\tilde{\varphi}_{n,1}(z_i)\)</span>. Hence the contribution of the
+fourth term is <span class="math inline">\(O(n^{-2})\)</span>.</p>
+<p>For the bound of the last term, note that <span
+class="math display">\[
+    \begin{aligned}
+        &amp;\exp \left( -\sum_{i=1}^{k} n\lvert z_i \rvert ^{2} \right)
+\det\left[ \sum_{l=0}^{n-1} \frac{n^{l}(z_i \bar{z_j})^{l}}{l!}\right]
+\\
+        &amp;=\det\left[ \exp (-\frac{n}{2}(\lvert z_i \rvert^{2}+\lvert
+z_j \rvert ^{2}))\sum_{l=0}^{n-1}
+\frac{n^{l}(z_i\bar{z_j})^{l}}{l!}\right] \\
+        &amp;=\det\left[\exp (n(-\frac{1}{2}\lvert z_i \rvert
+^{2}-\frac{1}{2}\lvert z_j \rvert ^{2}))\left( \exp (nz_i\bar{z_j})-
+\frac{n^{n}(z_i\bar{z_j})^{n}}{2\pi i}\int_{\xi=n\mathrm{e}^{i\theta}
+}^{} \frac{\mathrm{e}^{\xi}
+\mathrm{d}\xi}{(\xi-nz_i\bar{z_j})\xi^{n}}\right) \right].
+    \end{aligned}
+\]</span> (3.10)</p>
+<p>Hence, if $S {z &lt;&lt;1} $, then <span class="math display">\[
+    \begin{aligned}
+        &amp;\operatorname{Pr}(z_1 \in S,\cdots ,z_k\in S)\\
+        &amp;= \frac{(n-k)!}{n!}n^{k}\pi^{-k}\int_{S^{k}}^{} \det \exp
+n\left( -\frac{1}{2}\lvert z_i \rvert ^{2}-\frac{1}{2}\lvert z_j \rvert
+^{2}+z_i\bar{z_j} \right) \mathrm{d}z_1 \cdots
+\mathrm{d}z_k+O(\alpha^{n}). \\
+    \end{aligned}
+\]</span> (3.11)</p>
+<p>The diagonal term in the determinant expansion gives <span
+class="math display">\[
+    \frac{(n-k)!}{n!}n^{k}\pi^{-k}\mu^{k}(S),
+\]</span></p>
+<p>and this is the leading term. Let <span class="math display">\[
+    B=
+    \begin{cases}
+        0, \quad k=1 \\
+        -\frac{(n-k)!}{n!}n^{k}\pi^{-k}\tbinom{k}{2}\mu^{k-2}(S)\int_{S^{2}}^{}
+\exp \left( -\lvert z_1-z_2 \rvert ^{2}n
+\right)  \mathrm{d}z_1\mathrm{d}z_2, \quad k\geqslant 2.
+    \end{cases}
+\]</span></p>
+<p>For <span class="math inline">\(k\geqslant 2\)</span>, <span
+class="math inline">\(B\)</span> is the contribution to (3.11) from all
+terms in the determinant containing all but two of the diagonal
+elements. The contributions from all other terms are <span
+class="math inline">\(O(n^{-2})\)</span>. (3.11) can be written as <span
+class="math display">\[
+    \frac{(n-k)!}{n!}n^{k}\left( \frac{\mu(S)}{\pi} \right)
+^{k}+B+O(n^{-2}).
+\]</span></p>
+<p>Using this it is not hard to see the last term is also an <span
+class="math inline">\(O(n^{-2})\)</span>.</p>
+<p>% note danger % I don't understand! % endnote %</p>
+<p><strong>Theorem (Layers)</strong> We have the following equality in
+distribution: <span class="math display">\[
+    (\lvert \lambda_1(G)\rvert,\cdots ,\lvert \lambda_n(G)   \rvert
+)=(Z_{(1)},\cdots ,Z_{(n)})
+\]</span></p>
+<p>where <span class="math inline">\(Z_{(1)},\cdots ,Z_{(n)}\)</span> is
+the non-increasing reordering of a sequence <span
+class="math inline">\(Z_1,\cdots ,Z_n\)</span> of independent random
+variabes with <span class="math inline">\(Z_k^{2}\sim
+\Gamma(k,1)\)</span> for every <span class="math inline">\(1\leqslant
+k\leqslant n\)</span>. Here <span
+class="math inline">\(\Gamma(a,\lambda)\)</span> stands for the law on
+<span class="math inline">\(\mathbb{R}_{+}\)</span> with Lebesgue
+density <span class="math inline">\(x\mapsto
+\lambda^{a}\Gamma(a)^{-1}x^{a-1}e^{-\lambda x}\)</span>.</p>
+<p><strong>proof</strong> According to (2.24) and (3.9), for every <span
+class="math inline">\(r&gt;0\)</span>, <span class="math display">\[
+    \begin{aligned}
+        &amp;\operatorname{Pr}(\lvert \lambda_1(G) \rvert \leqslant
+\sqrt{n}r) \\
+        &amp;= \int_{\lvert z_1 \rvert \leqslant \sqrt{n}r}^{} \cdots
+\int_{\lvert z_n \rvert \leqslant \sqrt{n}r}^{} \frac{1}{n!\pi^{n}}\exp
+\left( -\sum_{i=1}^{n} \lvert z_i \rvert^{2}  \right) \det
+\left[\sum_{l=0}^{n-1} \frac{(z_i \bar{z_j})^{l}}{l!}\right]_{1\leqslant
+i,j\leqslant n}
+\mathrm{d}z_n^{r}\mathrm{d}z_n^{i}\cdots  \mathrm{d}z_1^{r}\mathrm{d}z_1^{i}\\
+        &amp;=\frac{1}{\pi^{n}}\det \left[ \int_{\lvert z \rvert
+\leqslant \sqrt{n}r}^{} \mathrm{e}^{-\lvert z \rvert ^{2}}
+z^{j}\bar{z}^{j} \mathrm{d}z^{r}\mathrm{d}z^{i} \right]=\prod_{j=1}^{n}
+\int_{0}^{nr^{2}} \mathrm{e}^{-t} t^{j} \mathrm{d}t=\prod_{j=1}^{n}
+\operatorname{Pr}\left( \frac{E_1+\cdots +E_j}{n}\leqslant r^{2} \right)
+    \end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(E_1,\cdots ,E_k\)</span> are i.i.d.
+exponential random variables of unit mean.</p>
+<p>The law of large numbers suggests that <span
+class="math inline">\(r=1\)</span> is a critical value. The central
+limit theorem suggests that <span class="math inline">\(\lvert
+\lambda_1(G) \rvert\)</span> behaves when <span
+class="math inline">\(n\gg 1\)</span> as the maximum of i.i.d.
+Gaussians, for which the fluctuations follow the Gumbel law.</p>
+<h2 id="universal-case">Universal Case</h2>
+<div class="note note-info">
+            <p><strong>Marchenko-Pastur quarter circular law</strong> a.s. <spanclass="math inline">\(\nu_{n^{-1/2}X}\rightsquigarrow\mathcal{Q}_{2}\)</span> as <span class="math inline">\(n\to\infty\)</span>, where <spanclass="math inline">\(\mathcal{Q}_{2}\)</span> is the quarter circularlaw on $[0,2]_{+} $ with density <span class="math display">\[    x\mapsto \frac{\sqrt{4-x^{2}}}{\pi}\mathbf{1}_{[0,2]}(x).\]</span></p>
+          </div>
+<p>The <span class="math inline">\(n^{-1/2}\)</span> normalization is
+easily understood from the law of large numbers:</p>
+<p><span class="math display">\[
+    \int_{}^{} s^{2}
+\mathrm{d}\nu_{n^{-1/2}X}(s)=\frac{1}{n^{2}}\sum_{i=1}^{n}
+s_i(X)^{2}=\frac{1}{n^{2}}\operatorname{tr}
+(XX^{*})=\frac{1}{n^{2}}\sum_{i,j=1}^{n} \lvert X_{i,j} \rvert
+^{2}\rightarrow \mathbb{E}(\lvert X_{1,1} \rvert )^{2}. \tag{2.1}
+\]</span></p>
+<div class="note note-info">
+            <p><strong>Girko circular law</strong> a.s. <spanclass="math inline">\(\mu_{n^{-1/2}X}\rightsquigarrow\mathcal{C}_{1}\)</span> as <span class="math inline">\(n\to\infty\)</span>, where <spanclass="math inline">\(\mathcal{C}_{1}\)</span> is the circular law whichis the uniform law on the unit disc of <spanclass="math inline">\(\mathbb{C}\)</span> with density <spanclass="math display">\[    z\mapsto \frac{1}{\pi}\mathbf{1}_{\{z\in \mathbb{C}\colon \lvert z\rvert \leqslant 1\}}.\]</span></p>
+          </div>
+<p>The a.s. tightness of <span
+class="math inline">\(\mu_{n^{-1/2}X}\)</span> is easily understood
+since Weyl's inequality give <span class="math display">\[
+    \int_{}^{} \lvert \lambda^{2}
+\rvert  \mathrm{d}\mu_{n^{-1/2}X}(\lambda)=\frac{1}{n^{2}}\sum_{i=1}^{n}
+\lvert \lambda_i(X) \rvert ^{2}\leqslant \frac{1}{n^{2}}\sum_{i=1}^{n}
+s_i(X)^{2}=\int_{}^{} s^{2} \mathrm{d}\nu_{n^{-1/2}X}(s)
+\]</span></p>
+<h2 id="reference">Reference</h2>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>Charles Bordenave and Djalil
+Chafaï, The circular law
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2" class="footnote-text"><span>R. A. Horn and Ch. R.
+Johnson, Topics in matrix analysis, Cambridge University Press,
+Cambridge, 1994, Corrected reprint of the 1991 original.
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3" class="footnote-text"><span>Madan Lal Mehta, Random
+matrices, third ed. Pure and Applied Mathematics, vol.142, Acad. Press,
+2004. <a href="#fnref:3" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:4" class="footnote-text"><span>Rider, B. A limit theorem at
+the edge of a non-Hermitian random matrix ensemble. Random matrix
+theory. J. Phys. A 36 (2003), no. 12, 3401–3409.
+<a href="#fnref:4" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/" class="category-chain-item">概率论</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E6%A6%82%E7%8E%87%E8%AE%BA/%E7%9F%A9%E9%98%B5%E8%AE%BA/" class="category-chain-item">矩阵论</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>The Circular Law (2)</div>
+      <div>http://example.com/2023/01/28/The-Circular-Law-2/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>January 28, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/02/Fisher-Information/" title="Fisher Information, AIC &amp; BIC">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Fisher Information, AIC &amp; BIC</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/22/The-Circular-Law-1/" title="The Circular Law (1)">
+                        <span class="hidden-mobile">The Circular Law (1)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

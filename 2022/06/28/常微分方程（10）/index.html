@@ -1,0 +1,881 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="首次积分">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常微分方程（10）">
+<meta property="og:url" content="http://example.com/2022/06/28/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%8810%EF%BC%89/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="首次积分">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-06-28T10:52:28.000Z">
+<meta property="article:modified_time" content="2022-07-19T13:31:05.982Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+  
+  
+  
+  <title>常微分方程（10） - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="常微分方程（10）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-28 18:52" pubdate>
+          June 28, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.1k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          35 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">常微分方程（10）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="首次积分">首次积分</h1>
+<h2 id="首次积分的定义">首次积分的定义</h2>
+<p>考虑一般的 <span class="math inline">\(n\)</span> 阶微分方程 <span
+class="math display">\[
+    \frac{\mathrm{d}y_i}{\mathrm{d}x}=f_i(x,y_1,\cdots
+,y_n)\quad(i=1,\cdots,n),\tag{10.14}
+\]</span> 其中右端函数 <span class="math inline">\(f_1,\cdots
+,f_n\)</span> 在某个区域 <span class="math inline">\(D \subset
+\mathbb{R}^{n+1}\)</span> 内对 <span class="math inline">\((x,y_1,\cdots
+,y_n)\)</span> 是连续的，而且对 <span class="math inline">\(y_1,\cdots
+,y_n\)</span> 是连续可微的.</p>
+<p>设函数 <span class="math inline">\(V=V(x,y_1,\cdots ,y_n)\)</span> 在
+<span class="math inline">\(D\)</span> 的某一子区域 <span
+class="math inline">\(G\)</span> 内连续，而且对 <span
+class="math inline">\(x,y_1,\cdots ,y_n\)</span> 是连续可微的. 又设
+<span class="math inline">\(V(x,y_1,\cdots ,y_n)\)</span>
+不是常数，但沿着微分方程（10.14）在区域 <span
+class="math inline">\(G\)</span> 内的任一积分曲线 <span
+class="math display">\[
+    \Gamma\colon \quad y_1=y_1(x),\cdots ,y_n=y_n(x) \quad (x \in J)
+\]</span> 函数 <span class="math inline">\(V\)</span> 取常值；亦即 <span
+class="math display">\[
+    V(x,y_1(x),\cdots ,y_n(x))=常数 \quad (x \in J)
+\]</span> 或当 <span class="math inline">\((x,y_1,\cdots ,y_n) \in
+\Gamma\)</span> 时，有 <span class="math display">\[
+    V(x,y_1,\cdots ,y_n)=常数，
+\]</span> 这里的常数随积分曲线 <span
+class="math inline">\(\Gamma\)</span> 而定. 则称 <span
+class="math display">\[
+    V(x,y_1,\cdots ,y_n)=C \tag{10.15}
+\]</span> 为（10.14）在区域 <span class="math inline">\(G\)</span>
+的<strong>首次积分</strong>，其中 <span class="math inline">\(C\)</span>
+是一个任意常数.</p>
+<p>首次积分的定义可以自然地移植到高阶微分方程.</p>
+<h2 id="首次积分的性质">首次积分的性质</h2>
+<p><strong>定理 10.1</strong> 设函数 <span
+class="math inline">\(\Phi(x,y_1,\cdots ,y_n)\)</span> 在区域 <span
+class="math inline">\(G_1\)</span> 内是连续可微的，而且它不是常数. 则
+<span class="math display">\[
+    \Phi(x,y_1,\cdots ,y_n)=C \tag{10.18}
+\]</span> 是微分方程（10.14）在区域 <span
+class="math inline">\(G_1\)</span> 内的首次积分的充要条件为： <span
+class="math display">\[
+    \frac{\partial \Phi}{\partial x}+\frac{\partial \Phi}{\partial
+y_1}f_1+\cdots +\frac{\partial \Phi}{\partial y_n}f_n=0
+\tag{10.19}      
+\]</span> 是关于变量 <span class="math inline">\((x,y_1,\cdots ,y_n)\in
+G_1\)</span> 的一个恒等式.</p>
+<p><strong>定理 10.2</strong>
+若已知（10.14）的一个首次积分（10.18），则可把微分方程（10.17）降低一阶.</p>
+<p><strong>证</strong>：注意到首次积分 <span
+class="math inline">\(\Phi\)</span> 的偏导数不能都恒等于0，设 <span
+class="math inline">\(\displaystyle \frac{\partial \Phi}{\partial
+y_n}\neq 0\)</span>. 可以利用隐函数定理由首次积分（10.18）解出 <span
+class="math display">\[
+    y_n=g(x,y_1,\cdots ,y_{n-1},C), \tag{10.23}
+\]</span> 把它代入（10.14）的前 <span class="math inline">\(n-1\)</span>
+个式子，消去 <span class="math inline">\(y_n\)</span>. 证明得到的 <span
+class="math inline">\(n-1\)</span> 阶的微分方程的解加上 <span
+class="math inline">\(y_n=g(x,u_1(x),\cdots ,u_{n-1}(x),C)\)</span>
+就是（10.14）的解，只需证明满足（10.14）的最后一个等式，结合首次积分的充要条件，就得到所需结论.</p>
+<p>设（10.14）有 <span class="math inline">\(n\)</span> 个首次积分 <span
+class="math display">\[
+    \Phi_i(x,y_1,\cdots ,y_n)=C_i \tag{10.28}
+\]</span> <span class="math inline">\((i=1,\cdots ,n)\)</span>.
+如果在某区域 <span class="math inline">\(G_1\)</span> 内它们的 Jacobi
+行列式 <span class="math display">\[
+    \frac{D(\Phi_1,\cdots ,\Phi_n)}{D(y_1,\cdots ,y_n)}\neq 0,
+\tag{10.29}
+\]</span> 则称它们在区域 <span class="math inline">\(G_1\)</span>
+内为<strong>互相独立</strong>的.</p>
+<p><strong>定理 10.3</strong> 设已知（10.14）在区域 <span
+class="math inline">\(G_1\)</span> 内的 <span
+class="math inline">\(n\)</span> 个互相独立的首次积分（10.28）.
+则可由它们得到（10.14）在区域 <span class="math inline">\(G_1\)</span>
+内的通解 <span class="math display">\[
+    y_1=\varphi_1(x,C_1,\cdots ,C_n),\cdots ,y_n=\varphi_n(x,C_1,\cdots
+,C_n), \tag{10.30}
+\]</span> 其中 <span class="math inline">\(C_1,\cdots ,C_n\)</span> 为
+<span class="math inline">\(n\)</span>
+个任意常数（在允许的范围内）；而且上述通解表示了（10.14）在 <span
+class="math inline">\(G_1\)</span> 内的所有解.</p>
+<p><strong>证</strong>：（10.29）成立，可以用隐函数定理从（10.28）解出
+<span class="math inline">\(y_1,\cdots ,y_n\)</span>.
+令其表达式为（10.30）. 将其代入（10.28），然后对 <span
+class="math inline">\(x\)</span>
+求导，并且利用首次积分的充要条件，就得到 <span class="math display">\[
+    \varphi_1&#39;=f_1,\cdots ,\varphi_n&#39;=f_n,
+\]</span> 这说明（10.30）确实是（10.14）的解.</p>
+<p>对（10.28）关于 <span class="math inline">\(C_j\)</span>
+求导，可以得到 <span class="math display">\[
+    \frac{D(\varphi_1,\cdots ,\varphi_n)}{D(C_1,\cdots ,C_n)}=\left[
+\frac{D(\Phi_1,\cdots ,\Phi_n)}{D(y_1,\cdots ,y_n)}\right]^{-1} \neq
+0,        
+\]</span> 这说明 <span class="math inline">\(C_1,\cdots ,C_n\)</span>
+是互相独立的.</p>
+<p>任取（10.14）在区域 <span class="math inline">\(G_1\)</span>
+内的解，考虑其在一点的初值，然后用解的唯一性定理推出解是（10.30）.
+证毕.</p>
+<p>反之若已知（10.14）的通解，则由它可得到 <span
+class="math inline">\(n\)</span> 个互相独立的首次积分.</p>
+<p>类似于秩定理，如果已知（10.14）的 <span
+class="math inline">\(k(1\leqslant k\leqslant n)\)</span>
+个互相独立的首次积分 <span class="math display">\[
+    V_i(x,y_1,\cdots ,y_n)=C_i \quad(i=1,\cdots ,k). \tag{10.35}
+\]</span> 即矩阵 <span class="math inline">\(\displaystyle \left(
+\frac{\partial V_i}{\partial y_j}\right)_{k \times n}\)</span> 的秩等于
+<span class="math inline">\(k\)</span>. 则利用这 <span
+class="math inline">\(k\)</span>
+个互相独立的首次积分（10.35）可以把（10.14）降低 <span
+class="math inline">\(k\)</span> 阶.</p>
+<p>如果给定首次积分（10.35），又设 <span
+class="math inline">\(H(z_1,\cdots ,z_k)\)</span>
+是连续可微的函数，而且它不是常数，则 <span class="math display">\[
+    H(V_1(x,y_1,\cdots ,y_n),\cdots ,V_k(x,y_1,\cdots ,y_n))=C
+\]</span> 是（10.14）的一个首次积分. （但是好像并不能保证它与诸 <span
+class="math inline">\(V_i\)</span> 互相独立）</p>
+<h2 id="首次积分的存在性">首次积分的存在性</h2>
+<p><strong>定理 10.4</strong> 设 <span
+class="math inline">\(P_0=(x_0,y_1^{0},\cdots ,y_n^{0})\in G\)</span>.
+则存在 <span class="math inline">\(P_0\)</span> 点的一个领域 <span
+class="math inline">\(G_0 \subset
+G\)</span>，使得微分方程（10.14）在区域 <span
+class="math inline">\(G_0\)</span> 内有 <span
+class="math inline">\(n\)</span> 个互相独立的首次积分.</p>
+<p><strong>证</strong>：取 <span class="math inline">\(P_0\)</span>
+点附近的初值条件. 然后利用隐函数定理得到 <span
+class="math inline">\(n\)</span> 个互相独立的首次积分.</p>
+<p><strong>定理 10.5</strong> 微分方程（10.14）最多只有 <span
+class="math inline">\(n\)</span> 个独立的首次积分.</p>
+<p><strong>定理 10.6</strong> 设（10.28）是微分方程（10.14）在区域 <span
+class="math inline">\(G_0\)</span> 内的 <span
+class="math inline">\(n\)</span> 个独立的首次积分. 则在区域 <span
+class="math inline">\(G_0\)</span> 内微分方程（10.14）的任何首次积分
+<span class="math display">\[
+    V(x,y_1,\cdots ,y_n)=C
+\]</span> 可以用（10.28）来表达，亦即 <span class="math display">\[
+    V(x,y_1,\cdots ,y_n)=h[\Phi_1(x,y_1,\cdots ,y_n),\cdots
+,\Phi_n(x,y_1,\cdots ,y_n)], \tag{10.41}
+\]</span> 其中 <span class="math inline">\(h\)</span>
+是某个连续可微的函数.</p>
+<p><strong>证</strong>：注意到 <span class="math display">\[
+    J:=\frac{\partial (\Phi_1,\cdots ,\Phi_n)}{\partial (y_1,\cdots
+,y_n)}\neq 0,    
+\]</span> 再次由隐函数定理得到， <span class="math display">\[
+    y_i=y_i(x,\Phi_1,\cdots ,\Phi_n),i=1,\cdots ,n,
+\]</span> 设 <span class="math inline">\(V\)</span>
+是任意一个首次积分，定义函数 <span class="math inline">\(H\)</span>
+<span class="math display">\[
+    H(x,\Phi_1,\cdots ,\Phi_n) :=V(x,y_1,\cdots ,y_n).
+\]</span> 下证 <span class="math inline">\(H\)</span> 与 <span
+class="math inline">\(x\)</span> 无关. 计算 <span
+class="math display">\[
+    \frac{\partial H}{\partial x}=\frac{\partial V}{\partial
+x}+\sum_{i=1}^{n} \frac{\partial V}{\partial y_i}\frac{\partial
+y_i}{\partial x}.
+\]</span> 然后由隐函数定理 <span class="math display">\[
+    \frac{\partial y_i}{\partial x}=-\frac{1}{J} \frac{\partial
+(\Phi_1,\cdots ,\Phi_i,\cdots ,\Phi_n)}{\partial (y_1,\cdots ,x,\cdots
+,y_n)}.
+\]</span></p>
+<p>根据行列式展开的规律可以得到 <span class="math display">\[
+    \frac{\partial H}{\partial x}=\frac{\partial V}{\partial
+x}-\frac{1}{J}\sum_{i=1}^{n} \frac{\partial V}{\partial y_i}
+\frac{\partial (\Phi_1,\cdots ,\Phi_i,\cdots ,\Phi_n)}{\partial
+(y_1,\cdots ,x,\cdots ,y_n)}=\frac{1}{J}\frac{\partial (V,\Phi_1,\cdots
+,\Phi_n)}{\partial (x,y_1,\cdots ,y_n)}
+\]</span> 利用首次积分的充要条件 <span class="math display">\[
+    \frac{\partial V}{\partial x}+\sum_{i=1}^{n} \frac{\partial
+V}{\partial y_i}f_i=0,
+\]</span> 可以发现上面的行列式为零（对 <span
+class="math inline">\(V\)</span> 和诸 <span
+class="math inline">\(\Phi\)</span> 都用充要条件，并看成一个有非零解
+<span class="math inline">\((1,f_1,\cdots ,f_n)\)</span>
+的线性方程组），所以 <span class="math inline">\(\displaystyle
+\frac{\partial H}{\partial x}=0\)</span>，得证.</p>
+<p>也就是 <span class="math inline">\(V=H(\Phi_1,\cdots
+,\Phi_n)\)</span>.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>常微分方程（10）</div>
+      <div>http://example.com/2022/06/28/常微分方程（10）/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 28, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/01/Information-and-Entropy-1/" title="Information and Entropy (1)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Information and Entropy (1)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/24/Through-the-Heat-Equation/" title="Through the Heat Equation">
+                        <span class="hidden-mobile">Through the Heat Equation</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

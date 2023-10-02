@@ -1,0 +1,1941 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="大一下记的数值分析笔记，乱得一比">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数值分析笔记">
+<meta property="og:url" content="http://example.com/2022/05/17/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="大一下记的数值分析笔记，乱得一比">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/numerical.jpg">
+<meta property="article:published_time" content="2022-05-17T02:35:06.000Z">
+<meta property="article:modified_time" content="2022-06-16T09:10:21.785Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/numerical.jpg">
+  
+  
+  
+  <title>数值分析笔记 - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="数值分析笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-05-17 10:35" pubdate>
+          May 17, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          23k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          192 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">数值分析笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="求解方程">求解方程</h1>
+<h2 id="二分法">二分法</h2>
+<p>时间复杂度：<span class="math inline">\(O(\log n)\)</span>
+n步二分法操作后，得到 <span class="math display">\[ \lvert x_c-r \rvert
+&lt; \frac{b-a}{2^{n+1}}\]</span> 如果误差小于<span
+class="math inline">\(0.5 \times
+10^{-p}\)</span>，精确到小数点后p位。</p>
+<p><strong>定义1.5</strong> 令<span
+class="math inline">\(e_i\)</span>表示迭代过程中第i步时的误差，如果
+<span class="math display">\[ \lim_{i \to
+\infty}\frac{e_{i+1}}{e_i}=S&lt;1\]</span>
+该方法被称为满足<strong>线性收敛</strong>，收敛速度为<span
+class="math inline">\(S\)</span>。</p>
+<p><strong>定理1.6</strong> 假设函数<span
+class="math inline">\(g\)</span>是连续可微函数，<span
+class="math inline">\(g(r)=r\)</span>,<span
+class="math inline">\(S=\lvert g&#39;(r)
+\rvert&lt;1\)</span>，则不动点迭代对于一个足够接近<span
+class="math inline">\(r\)</span>的初始估计，以速度<span
+class="math inline">\(S\)</span>线性收敛到不动点<span
+class="math inline">\(r\)</span>。</p>
+<p>根据定理1.6，近似误差之间的关系 <span class="math display">\[ e_{i+1}
+\approx Se_i\]</span> 在收敛过程中得到保持。</p>
+<p><strong>定义1.7</strong> 如果迭代方法对于一个足够接近<span
+class="math inline">\(r\)</span>的初值能收敛到<span
+class="math inline">\(r\)</span>，该迭代方法被称为<strong>局部收敛</strong>到<span
+class="math inline">\(r\)</span>。</p>
+<p>定理1.6的结论是当<span class="math inline">\(\lvert g&#39;(r)
+\rvert&lt;1\)</span>时不动点迭代局部收敛。</p>
+<blockquote>
+<p>如果误差小于 <span class="math inline">\(0.5 \times
+10^{-p}\)</span>，解精确到小数点后 <span
+class="math inline">\(p\)</span>位.</p>
+</blockquote>
+<h2 id="牛顿法">牛顿法</h2>
+<p>用 <span class="math inline">\(x_i\)</span>
+点上切线解作为迭代的下一步 <span class="math inline">\(x_{i+1}\)</span>
+<span class="math display">\[
+    x_{i+1}=x_i- \frac{f(x_i)}{f&#39;(x_i)}
+\]</span></p>
+<h3 id="二次收敛性">二次收敛性</h3>
+<p><strong>定义</strong> 令 <span class="math inline">\(e_i\)</span>
+表示第 <span class="math inline">\(i\)</span> 步的误差，若满足条件 <span
+class="math display">\[
+    M= \lim_{i \to \infty} \frac{e_{i+1}}{e_i^{2}} &lt; \infty
+\]</span> 则称迭代<strong>二次收敛</strong></p>
+<p><strong>定理</strong> 令 <span class="math inline">\(f\)</span>
+为二阶连续可导函数，满足 <span class="math inline">\(f(r)=0\)</span> 和
+<span class="math inline">\(f&#39;(r)\neq 0\)</span>，则
+Newton方法局部二次收敛，误差满足 <span class="math display">\[
+    \lim_{i \to \infty}=
+\frac{e_{i+1}}{e_i^{2}}=M=\frac{f&#39;&#39;(r)}{2f&#39;(r)}
+\]</span></p>
+<h3 id="重根问题和改进的newton方法">重根问题和改进的Newton方法</h3>
+<p>Newton方法不能二次收敛到重根，如 <span class="math display">\[
+    f(x)=x^{m}
+\]</span></p>
+<p><strong>定理</strong> <span class="math inline">\(f \in
+C^{m+1}[a,b]\)</span>，<span class="math inline">\(f\)</span> 在 <span
+class="math inline">\(r\)</span> 点有 <span
+class="math inline">\(m\)</span> 阶多重根，则Newton方法局部线性收敛到
+<span class="math inline">\(r\)</span>，常数 <span
+class="math inline">\(S=(m-1)/m\)</span></p>
+<p><strong>定理</strong> 若已知 <span
+class="math inline">\(m&gt;1\)</span> 重根，则改进的Newton方法 <span
+class="math display">\[
+    x_{i+1}=x_i-\frac{mf(x_i)}{f&#39;(x_i)}         
+\]</span> 二次收敛到 <span class="math inline">\(r\)</span>. 设 <span
+class="math inline">\(f(x)=(x-r)^{m}g(x)\)</span>，则 <span
+class="math display">\[
+    \lim_{i \to \infty}
+\frac{e_{i+1}}{e_{i}^{2}}=\frac{g&#39;(r)}{mg(r)}
+\]</span></p>
+<p>或者可以通过计算 <span class="math inline">\(\displaystyle
+\mu(x)=\frac{f(x)}{f&#39;(x)}\)</span> 的根（注意它没有重根）来得到
+<span class="math inline">\(f(x)\)</span> 的根.</p>
+<h3 id="割线法">割线法</h3>
+<p>思想是用差商代替Newton法中的导数. 取 <span
+class="math inline">\(x_0\)</span>为初始估计 <span
+class="math display">\[
+    x_{i+1}=x_i-\frac{f(x_i)(x_i-x_{i-1})}{f(x_i)-f(x_{i-1})}
+\]</span></p>
+<p>它满足<strong>超线性收敛</strong> <span class="math display">\[
+    e_{i+1} \thickapprox \lvert \frac{f&#39;&#39;(r)}{2f&#39;(r)} \rvert
+^{\alpha-1}e_i^{\alpha}
+\]</span> 其中 <span
+class="math inline">\(\alpha=(1+\sqrt{5})/2\)</span></p>
+<p>一般当 <span class="math inline">\(1&lt;\alpha&lt;2\)</span>
+时都称为超线性收敛.</p>
+<p>事实上对于割线法的收敛阶有（当 <span
+class="math inline">\(f&#39;(r),f&#39;&#39;(r)\neq 0\)</span>） <span
+class="math display">\[
+    e_{i+1}= \lvert f&#39;&#39;(r)/2f&#39;(r) \rvert e_i e_{i-1}
+\]</span> 成立. 这可以推出上面的 <span
+class="math inline">\(\alpha\)</span>.</p>
+<h1 id="插值">插值</h1>
+<h3 id="数据和插值函数">数据和插值函数</h3>
+<p>对 <span class="math inline">\(n\)</span>
+个不同点，存在唯一一个不高于 <span class="math inline">\(n-1\)</span>
+次的插值多项式</p>
+<p>方便的做法是利用Newton差商. <span class="math inline">\(f[x_1\cdots
+x_n]\)</span> 表示（唯一）多项式的 <span
+class="math inline">\(x^{n-1}\)</span> 项的系数，有递归式 <span
+class="math display">\[
+    略
+\]</span> 或者 <span class="math display">\[
+    f[x_1\cdots x_k]= \sum_{j=1}^{k} \frac{f(x_j)}{(x_j-1)\cdots
+(x_j-x_{j-1})(x_j-x_{j+1})\cdots (x_j-x_k)}
+\]</span> 从而 <span class="math display">\[
+    f[x_1\cdots x_n]=f[\sigma(x_1)\cdots \sigma(x_n)]
+\]</span> 如果 <span class="math inline">\(f(x)\)</span> 在区间内有
+<span class="math inline">\(n-1\)</span> 阶导数，则在区间内存在一点
+<span class="math inline">\(c\)</span>使得 <span class="math display">\[
+    f[x_1\cdots x_n]=\frac{f^{(n-1)}(c)}{(n-1)!}
+\]</span></p>
+<p>Newton插值多项式 <span class="math display">\[
+    P(x)=f[x_1]+f[x_1 x_2](x-x_1)+\cdots +f[x_1\cdots x_n](x-x_1)\cdots
+(x-x_{n-1})
+\]</span></p>
+<h3 id="插值误差">插值误差</h3>
+<p><span class="math display">\[
+    f(x)-P_{n-1}(x)=f[x_1\cdots x_nx](x-x_1)\cdots (x-x_n)=
+\frac{f^{(n)}(c)}{n!}(x-x_1)\cdots (x-x_n)
+\]</span></p>
+<h3 id="龙格现象">龙格现象</h3>
+<p>略，大一上写过文章.</p>
+<h3 id="hermite插值">Hermite插值</h3>
+<p><span class="math inline">\(f(x) \in C^{1}[a,b]\)</span>，<span
+class="math inline">\(a\leqslant x_0&lt;x_1&lt;\cdots &lt;x_n\leqslant
+b\)</span>. 则 <span class="math display">\[
+    H_{2n+1}(x)= \sum_{i=0}^{n} f(x_i)A_i(x)+ \sum_{i=0}^{n}
+f&#39;(x_i)B_i(x)
+\]</span> <span class="math display">\[
+    A_i(x)=[1-2(x-x_i)l_i&#39;(x_i)]l_i^{2}(x)
+\]</span> <span class="math display">\[
+    B_i(x)=(x-x_i)l_i^{2}(x)
+\]</span> 其中 <span class="math inline">\(l_i\)</span>
+是Lagrange插值基.</p>
+<h3 id="chebyshev插值">Chebyshev插值</h3>
+<p>希望找到最佳的一致逼近</p>
+<p>取 <span class="math display">\[
+    x_i= \cos \frac{(2i-1)\pi}{2n}, i=1,\cdots,n
+\]</span> 则此时 <span class="math display">\[
+    \max_{-1\leqslant x\leqslant 1} \lvert (x-x_1)\cdots (x-x_n) \rvert
+= \frac{1}{2^{n-1}} T_n(x)\leqslant \frac{1}{2^{n-1}}
+\]</span> 取到最小值</p>
+<p><strong>Chebyshev多项式</strong> 满足 <span
+class="math inline">\(T_n(x)=\cos (n \arccos x)\)</span>，且有递推关系
+<span class="math display">\[
+    T_0(x)=1, \quad T_1(x)=x
+\]</span> <span class="math display">\[
+    T_{n+1}(x)=2x T_n(x)- T_{n-1}(x)
+\]</span> - <span class="math inline">\(T_n(x)\)</span> 为 <span
+class="math inline">\(n\)</span> 次多项式. - 最高次项系数为 <span
+class="math inline">\(2^{n-1}\)</span>. <span
+class="math inline">\(T_n(1)=1, T_n(-1)=(-1)^{n}\)</span>. -
+最大绝对值为 <span class="math inline">\(1\)</span>. - <span
+class="math inline">\(T_n(x)=\cos (n \arccos x)\)</span> 的极值点为
+<span class="math display">\[
+    x_i= \cos \frac{i\pi}{n}, i=0,\cdots ,n        
+\]</span></p>
+<p>令 <span class="math inline">\(\displaystyle
+y=\frac{b-a}{2}x+\frac{b+a}{2}, x\in [-1,1]\)</span>，则 <span
+class="math display">\[
+    \lvert (y-y_1)\cdots (y-y_n) \rvert =(\frac{b-a}{2})^{n}\lvert
+(x-x_1)\cdots (x-x_n) \rvert \leqslant (\frac{b-a}{2})^{n}
+\frac{1}{2^{n-1}}
+\]</span></p>
+<h3 id="三次样条插值">三次样条插值</h3>
+<p><span class="math inline">\(n\)</span> 个点 <span
+class="math inline">\((x_i,y_i)\)</span> 一共 <span
+class="math inline">\(3n-5\)</span> 个方程，<span
+class="math inline">\(3n-3\)</span> 个未知数. 需要补充两个条件.
+具体计算见p152-153.</p>
+<ul>
+<li>自然三次样条：<span
+class="math inline">\(S_1&#39;&#39;(x_1)=S_{n-1}&#39;&#39;(x_n)=0\)</span>.</li>
+<li>曲率调整样条：<span
+class="math inline">\(S_1&#39;&#39;(x_1)=2c_1=v_1,
+S_{n-1}&#39;&#39;(x_n)=2c_n=v_n\)</span>.</li>
+<li>钳制边界条件：<span class="math inline">\(S_1&#39;(x_1)=v_1,
+S_{n-1}&#39;(x_n)=v_n\)</span>.</li>
+<li>抛物线端点的三次样条：<span
+class="math inline">\(d_1=0=d_{n-1}\)</span>.</li>
+<li>非纽结三次样条：<span
+class="math inline">\(S_1=S_2,S_{n-2}=S_{n-1}\)</span></li>
+</ul>
+<p><strong>误差</strong>：设 <span class="math inline">\(f(x) \in
+C^{4}[a,b]\)</span>，对于曲率调整样条或钳制样条 <span
+class="math inline">\(S(x)\)</span>，令 <span
+class="math inline">\(\delta = \max_{i} \delta_i\)</span>，有估计式
+<span class="math display">\[
+    \max_{a\leqslant x\leqslant b} \lvert f(x)- S(x) \rvert \leqslant
+\frac{5}{384} \max_{a\leqslant x\leqslant b} \lvert f^{(4)}(x) \rvert
+\delta^{4}
+\]</span></p>
+<h3 id="bezier曲线">Bezier曲线</h3>
+<h1 id="最小二乘">最小二乘</h1>
+<h3 id="离散">离散</h3>
+<p>给定函数 <span class="math inline">\(f\)</span>，求 <span
+class="math inline">\(P_n(x)\)</span> 使误差 <span
+class="math display">\[
+    E=\frac{1}{m} \sum_{i=1}^{m} (y_i-P_{n-1}(x_i))^{2}
+\]</span> 最小 设 <span class="math display">\[
+    A=
+    \begin{bmatrix}
+    1 &amp; x_1 &amp; \cdots &amp; x_1^{n-1} \\
+    \vdots &amp; &amp; &amp; \vdots \\
+    1 &amp; x_{m} &amp; \cdots &amp; x_m^{n-1} \\
+    \end{bmatrix}
+\]</span> 则法线方程（<span class="math inline">\(a=(a_0,a_1,\cdots
+,a_{n-1})^{\mathsf{T}},y=(y_1,\cdots ,y_m)^{\mathsf{T}}\)</span>） <span
+class="math display">\[
+    A^{\mathsf{T}}A a= A^{\mathsf{T}}y
+\]</span></p>
+<p>给定 <span class="math inline">\((t_1,y_1),\cdots
+,(t_n,y_n)\)</span>，则平方误差最小逼近的直线 <span
+class="math inline">\(y=a_0+a_1t\)</span>满足 <span
+class="math display">\[
+    \begin{bmatrix}
+    \sum_{i=1}^{m} 1 &amp; \sum_{i=1}^{m} t_i \\
+    \sum_{i=1}^{m} t_i &amp; \sum_{i=1}^{m} t_i^{2} \\
+    \end{bmatrix}
+    \begin{bmatrix}
+    a_0 \\
+    a_1
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    \sum_{i=1}^{m} y_i \\
+    \sum_{i=1}^{m} t_i y_i \\
+    \end{bmatrix}
+\]</span></p>
+<p>有时 <span class="math inline">\(A^{\mathsf{T}}A\)</span>
+的条件数过高，可以考虑QR分解. 设 <span
+class="math inline">\(A=QR\)</span>， <span class="math display">\[
+    \left\| QRx-b \right\|_{2}= \left\| Rx-Q^{\mathsf{T}}b \right\|_{2}
+\]</span> 考虑到 <span class="math display">\[
+    R=\begin{bmatrix}
+    R_1 \\
+    0 \\
+    \end{bmatrix}
+\]</span> 再令 <span class="math display">\[
+    Q^{\mathsf{T}}b=\begin{bmatrix}
+    b_1 \\
+    b_2 \\
+    \end{bmatrix}
+\]</span></p>
+<p>而 <span class="math inline">\(R_1\)</span>
+是上三角方阵，所以法线方程即为 <span class="math display">\[
+    R_1 x=b_1
+\]</span></p>
+<p><strong>数据线性化</strong> <span class="math display">\[
+    y=c_1 \mathrm{e}^{c_2t} \Rightarrow \ln y= \ln c_1+ c_2t
+\]</span></p>
+<h3 id="连续">连续</h3>
+<p>在一般的Euclid空间中，给定函数 <span
+class="math inline">\(f\)</span>，求 <span
+class="math inline">\(P_n(x)\)</span> 使误差 <span
+class="math display">\[
+    E= \int_{a}^{b} [f(x)-P_n(x)]^{2} \mathrm{d}x
+\]</span> 最小，称 <span class="math inline">\(P_n(x)\)</span>
+为该函数的<strong>最小二乘逼近多项式</strong>，假设 <span
+class="math inline">\(P_n(x)=a_nx^{n}+\cdots
++a_1x+a_0\)</span>，那么法线方程 <span class="math display">\[
+    \frac{\partial E}{\partial a_j}=0   
+\]</span> 即为 <span class="math display">\[
+    \sum_{k=0}^{n} a_k \int_{a}^{b} x^{k+j} \mathrm{d}x= \int_{a}^{b}
+f(x) x^{j} \mathrm{d}x
+\]</span> 如果我们令 <span
+class="math inline">\(\varphi_k=x^{k}\)</span>
+为基函数，并赋予Euclid空间的典范内积则法线方程变为 <span
+class="math display">\[
+    \begin{bmatrix}
+    (\varphi_0,\varphi_0) &amp; \cdots &amp; (\varphi_0,\varphi_n) \\
+    \vdots &amp; &amp; \vdots \\
+    (\varphi_n,\varphi_0) &amp; \cdots &amp; (\varphi_n,\varphi_n) \\
+    \end{bmatrix}
+    \begin{bmatrix}
+    a_0 \\
+    \vdots \\
+    a_n \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    (f,\varphi_0) \\
+    \vdots \\
+    (f,\varphi_n) \\
+    \end{bmatrix}
+\]</span> 比如如果我们用 <span class="math inline">\(\varphi_k\)</span>
+求 <span class="math inline">\(f(x)=\sin \pi x\)</span>
+的最小二乘逼近多项式，那么得到的系数矩阵是Hilbert矩阵，条件数很大，求解困难.
+通常需要采用<strong>正交基</strong>.</p>
+<h3 id="权函数和正交基">权函数和正交基</h3>
+<p><strong>权函数</strong> <span class="math inline">\(w(x)\)</span>
+满足 <span class="math inline">\(\forall x \in I=[a,b],(w(x)\geqslant
+0)\)</span>，且对于 <span class="math inline">\(I\)</span>
+上的任意子区间不恒为零. 从而可以定义内积 <span class="math display">\[
+    (f,g)_{w}= \int_{a}^{b} w(x)f(x)g(x) \mathrm{d}x
+\]</span> 如果 <span class="math inline">\(\{\varphi_0,\cdots
+,\varphi_n\}\)</span> 满足 <span class="math display">\[
+    \int_{a}^{b} w(x)\varphi_j(x)\varphi_k(x) \mathrm{d}x=
+    \begin{cases}
+        0,\quad j\neq k \\
+        \alpha_k&gt;0,\quad j=k
+    \end{cases}
+\]</span> 那么它们就是一组正交基，如果 <span
+class="math inline">\(\alpha_k=1\)</span>，则标准正交.</p>
+<h3 id="最小二乘问题">最小二乘问题</h3>
+<p>给定函数 <span class="math inline">\(f\)</span>，<span
+class="math inline">\(w(x)\)</span> 为权函数，求 <span
+class="math inline">\(P_n(x)=\sum_{k=0}^{n} a_k\varphi_k(x)\)</span>
+使误差 <span class="math display">\[
+    E(a_0,\cdots ,a_n)=\int_{a}^{b} w(x)[f(x)-P_n(x)]^{2} \mathrm{d}x
+\]</span> 极小，称 <span class="math inline">\(P_n(x)\)</span>为该函数以
+<span class="math inline">\(w(x)\)</span>
+为权函数的<strong>最小二乘函数逼近</strong>.</p>
+<p>如果 <span class="math inline">\(\{\varphi_0,\cdots
+,\varphi_n\}\)</span> 为一组正交函数系，则 <span class="math display">\[
+    a_k=\frac{(\varphi_k,f)_{w}}{(\varphi_k,\varphi_k)_{w}}
+\]</span></p>
+<h3 id="gram-schmidt-正交化过程">Gram-Schmidt 正交化过程</h3>
+<p>是想把 <span class="math inline">\(\{1,x,\cdots ,x^{n}\}\rightarrow
+\{\varphi_0,\cdots ,\varphi _n\}\)</span> 成为正交基.</p>
+<p>设 <span class="math inline">\(w(x)\)</span>为 <span
+class="math inline">\([a,b]\)</span>上的权函数. 令 <span
+class="math inline">\(\varphi_0(x)=1\)</span>，<span
+class="math inline">\(\varphi_1(x)=x-B_1\)</span>，其中 <span
+class="math display">\[
+    B_1=\frac{(x\varphi_0,\varphi_0)_{w}}{(\varphi_0,\varphi_0)_{w}}
+\]</span> 对于权函数 <span class="math inline">\(w(x)\equiv
+1\)</span>的情况 <span class="math display">\[
+    B_1=\frac{\int_{-1}^{1} x \mathrm{d}x}{\int_{-1}^{1} 1
+\mathrm{d}x}=0
+\]</span></p>
+<p>当 <span class="math inline">\(k\geqslant 2\)</span>时，有 <span
+class="math display">\[
+    \varphi_k(x)=(x-B_k)\varphi_{k-1}-C_k\varphi_{k-2}
+\]</span> 其中 <span class="math display">\[
+    B_k=\frac{(x\varphi_{k-1},\varphi_{k-1})_{w}}{(\varphi_{k-1},\varphi_{k-1})_{w}},
+\qquad
+C_k=\frac{(x\varphi_{k-2},\varphi_{k-1})_{w}}{(\varphi_{k-2},\varphi_{k-2})_{w}}
+\]</span> 则所得到的集合 <span class="math inline">\(\{\varphi_0,\cdots
+,\varphi_n\}\)</span> 是正交的.
+按这种办法求出来的多项是首一的，可能与一般定义的Legendre多项式或Chebyshev多项式不同.（标准定义的Legendre多项式要求
+<span class="math inline">\(P_n(1)=1\)</span>）</p>
+<p>首一性还可以得到以下性质 <span class="math display">\[
+    (x\varphi_{k-2},\varphi_{k-1})_{w}=(\varphi_{k-1},\varphi_{k-1})_{w}
+\]</span></p>
+<h2 id="qr分解">QR分解</h2>
+<p><strong>完全QR分解</strong> 对于 <span class="math inline">\(A\in
+\mathbb{F}^{m \times n}, m &gt; n\)</span>, <span
+class="math inline">\(A=QR\)</span>. 其中 <span class="math inline">\(Q
+\in O(m)\)</span> <span class="math display">\[
+    R=
+    \begin{bmatrix}
+        \tilde{R} \\
+        0 \\
+    \end{bmatrix}
+\]</span></p>
+<p>计算的复杂度为 <span class="math inline">\(O(n^{3})\)</span></p>
+<h3 id="gram-schimidt-正交">Gram-Schimidt 正交</h3>
+<p>朴素的和改进的版本p194</p>
+<p>过程需要大约 <span class="math inline">\(m^{3}\)</span> 次乘法和
+<span class="math inline">\(m^{3}\)</span> 次加法：</p>
+<p>计算 <span class="math inline">\(r_{ij}=q_{i}
+^{\mathsf{T}}A_j\)</span> 时需要进行 <span
+class="math inline">\(m\)</span>次乘法和 <span
+class="math inline">\(m-1\)</span>次加法，计算 <span
+class="math inline">\(y-y-r_{ij}q_i\)</span>时进行 <span
+class="math inline">\(m\)</span>次乘法和 <span
+class="math inline">\(m\)</span>次加减法；舍去计算 <span
+class="math inline">\(r_{jj}\)</span>和 <span
+class="math inline">\(q_j\)</span>的次数. 则加减法次数和乘除法次数都约为
+<span class="math display">\[
+    \sum_{j=1}^{n} (j-1)\cdot 2m=m^{3}-m
+\]</span> 即需要大约 <span class="math inline">\(m^{3}\)</span>次乘法和
+<span class="math inline">\(m^{3}\)</span>次加法.</p>
+<h3 id="householder-反射">Householder 反射</h3>
+<p>令 <span class="math inline">\(w \in \mathbb{R}^{n}\)</span>，满足
+<span class="math inline">\(w^{\mathsf{T}}w=1\)</span>，则 <span
+class="math display">\[
+    H=I-2ww^{\mathsf{T}}
+\]</span> 为一个 Householder 反射，它<strong>对称正交</strong></p>
+<p>设 <span class="math inline">\(\left\| x \right\|_{2}= \left\| y
+\right\|_{2}\)</span>，取 <span class="math inline">\(\displaystyle
+w=\frac{x-y}{\left\| x-y \right\|_{2}}\)</span>，则 <span
+class="math inline">\(H=I-2ww^{\mathsf{T}}\)</span> 满足 <span
+class="math inline">\(Hx=y\)</span></p>
+<p>其实每步选模长的正负号时应该与原位置的正负号相反，书上忽略了这一点.</p>
+<p><strong>Householder变换做QR分解的复杂度</strong></p>
+<p>只考虑向量与向量相乘，矩阵与向量相乘，矩阵与矩阵相乘的计算 对 <span
+class="math inline">\(m \times n\)</span> 的矩阵 <span
+class="math inline">\(A\)</span> 进行QR分解， - 若只需要R，则大约需要
+<span class="math display">\[
+    n^{2}(m-\frac{n}{3})
+\]</span> 次乘法和加减法.</p>
+<ul>
+<li>若还需要Q，则大约需要 <span class="math display">\[
+  m^{2}n-mn^{2}+\frac{n^{3}}{3}
+\]</span> 次乘法和加减法.</li>
+</ul>
+<hr />
+<p>QR decompositon - Wikipedia
+https://en.wikipedia.org/wiki/QR_decomposition</p>
+<hr />
+<h1 id="数值微分和积分">数值微分和积分</h1>
+<h2 id="数值微分">数值微分</h2>
+<h3 id="有限差分公式">有限差分公式</h3>
+<p><strong>二点前向差分公式</strong> <span class="math display">\[
+    f&#39;(x) =\frac{f(x+h)-f(x)}{h} - \frac{h}{2} f&#39;&#39;(c)
+\]</span> 其中 <span class="math inline">\(c\)</span> 在 <span
+class="math inline">\(x\)</span> 和 <span
+class="math inline">\(x+h\)</span> 之间</p>
+<p>如果误差是 <span class="math inline">\(O(h^{n})\)</span>，称公式为
+<span class="math inline">\(n\)</span> 阶近似</p>
+<p><strong>三点中心差分公式（二阶中心差分公式）</strong> <span
+class="math display">\[
+    f&#39;(x)= \frac{f(x+h)-f(x-h)}{2h}-
+\frac{h^{2}}{6}f&#39;&#39;&#39;(c)
+\]</span> 其中 <span class="math inline">\(x-h&lt;c&lt;x+h\)</span></p>
+<p><strong>五点中心差分公式</strong> <span class="math display">\[
+    f&#39;(x)\thickapprox  \frac{f(x-2h)-8f(x-h)+8f(x+h)-f(x+2h)}{12h}
+\]</span> 误差 <span class="math inline">\(O(h^{4})\)</span></p>
+<p><strong>二阶导数的三点中心差分公式</strong> <span
+class="math display">\[
+    f&#39;&#39;(x)= \frac{f(x+h)-2f(x)+f(x-h)}{h^{2}}-\frac{h^{2}}{12}
+f^{(4)}(c)
+\]</span> 其中 <span class="math inline">\(x-h&lt;c&lt;x+h\)</span></p>
+<h3 id="舍入误差">舍入误差</h3>
+<p>以三点中心差分公式为例，加上机器误差，总误差的绝对值上界是 <span
+class="math display">\[
+    \frac{h^{2}}{6} f&#39;&#39;&#39;(c)+ \frac{\varepsilon_{mach}}{h}
+\]</span></p>
+<h3 id="外推">外推</h3>
+<p>如果有 <span class="math display">\[
+    Q=F_n(h) + Kh^{n} +O(h^{n+1})
+\]</span> 那么用 <span class="math inline">\(\frac{h}{2}\)</span> 代替
+<span class="math inline">\(h\)</span>，重新解出得 <span
+class="math display">\[
+    Q\thickapprox \frac{2^{n}F(h/2)-F(h)}{2^{n}-1}
+\]</span> <span class="math inline">\(F_{n+1}(h)\)</span> 至少是 <span
+class="math inline">\(n+1\)</span> 阶近似 <span
+class="math inline">\(Q\)</span> 的公式</p>
+<p>一个例子是用二阶中心差分公式进行外推，得到的其实是四阶公式.
+且误差项仅和 <span class="math inline">\(h\)</span> 的偶数阶有关.</p>
+<h2 id="数值积分">数值积分</h2>
+<p>基本上都是用插值公式和误差导出积分的公式和误差.</p>
+<h3 id="梯形法则">梯形法则</h3>
+<p><span class="math display">\[
+    \int_{x_0}^{x_1} P(x) \mathrm{d}x= \frac{h}{2}(f(x_0)+f(x_1))
+\]</span> <span class="math display">\[
+    \int_{x_0}^{x_1} E(x) \mathrm{d}x= -\frac{h^{3}}{12}f&#39;&#39;(c)
+\]</span></p>
+<h3 id="simpson法则">Simpson法则</h3>
+<p><span class="math display">\[
+    \int_{x_0}^{x_2} f(x)
+\mathrm{d}x=\frac{h}{3}(y_0+4y_1+y_2)-\frac{h^{5}}{90}f^{(4)}(c)
+\]</span> 其中 <span
+class="math inline">\(h=x_2-x_1=x_1-x_0\)</span>，<span
+class="math inline">\(c\)</span>在 <span
+class="math inline">\(x_0\)</span>和 <span
+class="math inline">\(x_2\)</span>之间.</p>
+<p><strong>误差的证明</strong></p>
+<p>首先误差 <span class="math display">\[
+    E_s= \int_{x_0}^{x_2}
+\frac{(x-x_0)(x-x_1)(x-x_2)}{3!}f&#39;&#39;&#39;(c(x)) \mathrm{d}x
+\]</span> 因为会变号，所以不能使用积分中值定理，尝试改写 <span
+class="math inline">\(f&#39;&#39;&#39;(c(x))\)</span> 得到</p>
+<p><span class="math display">\[
+    f&#39;&#39;&#39;(c(x))=f&#39;&#39;&#39;(c(x_1))+(x-x_1)f^{(4)}(c(\bar{x}))c&#39;(\bar{x})
+\]</span> 代入 <span class="math inline">\(E_s\)</span> 后 <span
+class="math inline">\(f&#39;&#39;&#39;(c(x_1))\)</span>
+对应项积分为零，这可以解释为什么误差是跟 <span
+class="math inline">\(f^{(4)}(x)\)</span> 有关.</p>
+<p>另一方面，用Newton插值，可以认为再在 <span
+class="math inline">\(x_1\)</span> 点插值 <span class="math display">\[
+    P_3(x)=P_2(x)+D(x-x_0)(x-x_1)(x-x_2)
+\]</span> 那么 <span class="math display">\[
+    \int_{x_0}^{x_2} P_2(x)  \mathrm{d}x=\int_{x_0}^{x_2} P_3(x)
+\mathrm{d}x
+\]</span> 而由插值误差即知 <span class="math display">\[
+    E_s=\int_{x_0}^{x_2} \frac{(x-x_0)(x-x_1)^{2}(x-x_2)}{4!}f^{(4)}(c)
+\mathrm{d}x
+\]</span></p>
+<p>这下可以使用积分中值定理了，计算得到 <span class="math display">\[
+    E_s=-\frac{h^{5}}{90} f^{(4)}(c)
+\]</span></p>
+<p>从该表达式知Simpson法则的代数精度为3.</p>
+<h3
+id="阶newton-cotes公式simpson38公式">3阶Newton-Cotes公式（Simpson3/8公式）</h3>
+<p><span class="math display">\[
+    \int_{x_0}^{x_3} f(x) \mathrm{d}x \thickapprox
+\frac{3h}{8}(f_0+3f_1+3f_2+f_3)
+\]</span> 其误差也为 <span
+class="math inline">\(O(h^{5})\)</span>，而因计算更复杂而通常不使用.</p>
+<h3 id="复合梯形法则">复合梯形法则</h3>
+<p>对于 <span class="math inline">\(\displaystyle x_j=x_0+jh, x_0=a,
+x_n=b, h=(b-a)/n\)</span>，如果 <span
+class="math inline">\(f&#39;&#39;\)</span> 在区间 <span
+class="math inline">\([a,b]\)</span> 连续，有 <span
+class="math display">\[
+    \int_{a}^{b} f(x) \mathrm{d}x=\frac{h}{2}(f_0+2f_1+\cdots
++2f_{n-1}+f_n)-\frac{(b-a)h^{2}}{12}f&#39;&#39;(c)
+\]</span></p>
+<p>数值精度是2阶，代数精度是1阶.</p>
+<h3 id="复合simpson公式">复合Simpson公式</h3>
+<p>如果 <span class="math inline">\(f^{(4)}\)</span> 在 <span
+class="math inline">\([a,b]\)</span> 上连续，有 <span
+class="math display">\[
+    \int_{a}^{b} f(x) \mathrm{d}x=\frac{h}{3}(y_0+y_{2m}+4\sum_{i=1}^{m}
+y_{2i-1}+2\sum_{i=1}^{m-1} y_{2i})-\frac{(b-a)h^{4}}{180}f^{(4)}(c)
+\]</span></p>
+<p>注意使用 <span class="math inline">\(m\)</span> 次Simpson公式需要
+<span class="math inline">\(2m\)</span> 等分. <span
+class="math inline">\(h=(b-a)/2m\)</span></p>
+<h3 id="舍入误差对复合积分公式的影响">舍入误差对复合积分公式的影响</h3>
+<p><span class="math display">\[
+    \int_{a}^{b} f(x) \mathrm{d}x\thickapprox
+\frac{h}{2}(f_0+2f_1+\cdots +2f_{n-1}+f_n)+\varepsilon_R
+\]</span> 有 <span class="math display">\[
+    \varepsilon_R \thickapprox (b-a)\varepsilon_h
+\]</span></p>
+<h3 id="中点法则">中点法则</h3>
+<p>当 <span class="math inline">\(f \in C^{2}[a,b]\)</span> 时， <span
+class="math display">\[
+    \int_{x_0}^{x_1} f(x)
+\mathrm{d}x=hf(w)+\frac{h^{3}}{24}f&#39;&#39;(c)
+\]</span> 其中 <span class="math inline">\(h=x_1-x_0\)</span>，<span
+class="math inline">\(w\)</span> 是中点 <span
+class="math inline">\(x_0+h/2\)</span>，<span
+class="math inline">\(x_0\leqslant c\leqslant x_1\)</span></p>
+<p>Taylor展开至二阶即可得到误差.
+与梯形法则相比，中点法则的误差只有一半.</p>
+<h3 id="复合中点法则">复合中点法则</h3>
+<p><span class="math display">\[
+    \int_{a}^{b} f(x) \mathrm{d}x= h\sum_{i=1}^{m}
+f(w_i)+\frac{(b-a)h^{2}}{24}f&#39;&#39;(c)
+\]</span> 其中 <span class="math inline">\(h=(b-a)/m\)</span>，<span
+class="math inline">\(w\)</span> 是 <span
+class="math inline">\([a,b]\)</span> 中 <span
+class="math inline">\(m\)</span> 个相等子区间的中点</p>
+<h3 id="另一个开newton-cotes法则">另一个开Newton-Cotes法则</h3>
+<p><span class="math display">\[
+    \int_{x_0}^{x_4} f(x)
+\mathrm{d}x=\frac{4h}{3}[2f(x_1)-f(x_2)+2f(x_3)]+\frac{14h^{5}}{45}f^{(4)}(c)
+\]</span></p>
+<h2 id="romberg积分">Romberg积分</h2>
+<p>一个表格 <span class="math display">\[
+    \begin{aligned}
+    &amp;R_{11} \\
+    &amp;R_{21} \quad R_{22} \\
+    &amp;R_{31} \quad R_{32} \quad R_{33} \\
+    &amp;\vdots
+    \end{aligned}
+\]</span> 定义 <span class="math display">\[
+    h_j=\frac{1}{2^{j-1}}(b-a)
+\]</span></p>
+<p>其中 <span class="math display">\[
+    R_{j1}=\frac{1}{2}R_{j-1,1}+h_j\sum_{i=1}^{2^{j-2}} f(a+(2i-1)h_j)
+\]</span></p>
+<p><span class="math display">\[
+    R_{jk}=\frac{4^{k-1}R_{j,k-1}-R_{j-1,k-1}}{4^{k-1}-1}
+\]</span></p>
+<p>这里 <span class="math inline">\(R_{jj}\)</span>是 <span
+class="math inline">\(2j\)</span>阶的近似.</p>
+<p>Romberg积分第二列最后一项和复合Simpson法则的结果一致.
+事实上，Romberg积分的第一列定义为连续的复合梯形法则，第二列是复合Simpson项，即复合梯形法则的外推是复合Simpson法则.</p>
+<p>Romberg积分的常用停止条件是计算新的一行直到相邻的对角线元素 <span
+class="math inline">\(R_{jj}\)</span>差异小于当前的容差.</p>
+<h2 id="自适应积分">自适应积分</h2>
+<p>为什么要自适应： - 高阶导数不易计算 - 有些区域变化缓慢</p>
+<h2 id="高斯积分">高斯积分</h2>
+<p>高斯积分具有 <span
+class="math inline">\(2n+1\)</span>阶的代数精度（使用 <span
+class="math inline">\(n+1\)</span>个点），该精度是Newton-Cotes公式的两倍.</p>
+<p>三点Gauss积分 <span class="math display">\[
+    x_1=-\sqrt{\frac{3}{5}} \quad x_2=0 \quad x_3=\sqrt{\frac{3}{5}} \\
+    c_1=\frac{5}{9} \quad c_2=\frac{8}{9} \quad c_3=\frac{5}{9}
+\]</span></p>
+<p>关于正交多项式系，有这样的定理：</p>
+<p>如果 <span
+class="math inline">\(\{p_0,p_1,p_2,\cdots,p_n\}\)</span>在 <span
+class="math inline">\([a,b]\)</span>区间上是多项式的正交集，并且如果deg
+<span class="math inline">\(p_i=i\)</span> ，则 <span
+class="math inline">\(p_i\)</span>在区间 <span
+class="math inline">\((a,b)\)</span>上有 <span
+class="math inline">\(i\)</span>个不同的根</p>
+<p>证明可以参考</p>
+<hr />
+<p>多项式以及相关内容 https://zhuanlan.zhihu.com/p/270620896</p>
+<table style="width:6%;">
+
+<tbody>
+<tr class="odd">
+<td>### 正交多项式</td>
+</tr>
+<tr class="even">
+<td>Legendre多项式：在 <span
+class="math inline">\([-1,1]\)</span>上以权函数 <span
+class="math inline">\(w(x)=1\)</span>的正交多项式. 它们满足递推关系
+<span class="math display">\[
+(n+1)P_{n+1}(x)=(2n+1)x P_n(x)-nP_{n-1}(x)
+\]</span> 或者 <span class="math display">\[
+p_i(x)=\frac{1}{2^{i}i!}
+\frac{\mathrm{d}^{i}}{\mathrm{d}x^{i}}[(x^{2}-1)^{i}]
+\]</span> 其中 <span class="math inline">\(P_0(x)=1\)</span>，<span
+class="math inline">\(P_1(x)=x\)</span></td>
+</tr>
+<tr class="odd">
+<td>这里Legendre多项式非首一，而是满足 <span
+class="math inline">\(P_n(1)=1\)</span>.</td>
+</tr>
+<tr class="even">
+<td>正交性： <span class="math display">\[
+(P_n,P_m)=\int_{-1}^{1} P_n(x)P_m(x) \mathrm{d}x=
+\begin{cases}
+0, \quad m \neq n \\
+\frac{2}{2n+1}, m = n
+\end{cases}
+\]</span></td>
+</tr>
+<tr class="odd">
+<td>奇偶性：<span class="math inline">\(P_{2k}(x)\)</span>
+只含有偶次幂， <span class="math inline">\(P_{2k+1}\)</span>
+只含有奇次幂</td>
+</tr>
+<tr class="even">
+<td>若令 <span class="math inline">\(\tilde{P}_n(x)=
+\frac{2^{n}(n!)^{2}}{(2n)!}P_n(x)\)</span>，则称 <span
+class="math inline">\(\tilde{P}_n(x)\)</span>
+为首一的Legendre多项式.</td>
+</tr>
+<tr class="odd">
+<td>更多关于正交多项式还可以参考</td>
+</tr>
+</tbody>
+</table>
+<p>逆问题解析 https://zhuanlan.zhihu.com/p/352724194</p>
+<hr />
+<p>还有一类正交多项式Laguerre多项式，其对应的权函数 $w(x)=^{-x} $</p>
+<p>接下去我们要证明插值节点恰为Legendre多项式的根，这跟首项系数无关.</p>
+<h3 id="高斯积分-1">高斯积分</h3>
+<p>我们想用 <span class="math inline">\(n\)</span>
+阶插值多项式尽可能拟合高阶多项式的积分.</p>
+<p><span class="math display">\[
+    \int_{-1}^{1} x^{k} \mathrm{d}x=\sum_{i=1}^{n} c_i x_i^{k}
+\]</span> 一共有 <span
+class="math inline">\(x_i,c_i,i=1,2,\cdots,n\)</span> 这 <span
+class="math inline">\(2n\)</span> 个未知数，因此我们希望 <span
+class="math inline">\(k=0,1,\cdots ,2n-1\)</span>，即 Gauss
+积分的代数精度为 <span class="math inline">\(2n-1\)</span>. 事实上有</p>
+<p><span class="math display">\[
+    \int_{-1}^{1} 1 \cdot f(x) \mathrm{d}x \thickapprox \sum_{i=1}^{n}
+c_if(x_i)
+\]</span> 其中 <span class="math display">\[
+    c_i=\int_{-1}^{1} 1 \cdot L_i(x) \mathrm{d}x, \quad i=1,\cdots ,n
+\]</span> <span class="math inline">\(L_i\)</span>是Lagrange插值基.
+<span class="math inline">\(x_i\)</span>是Legendre多项式的根.
+写出1是为了强调权函数.</p>
+<p><strong>定理</strong>：Gauss积分方法，在 <span
+class="math inline">\([-1,1]\)</span>上使用 <span
+class="math inline">\(n\)</span>阶Legendre多项式，具有 <span
+class="math inline">\(2n-1\)</span>阶代数精度.</p>
+<blockquote>
+<p>并不需要解那个很复杂的非线性方程组，只要说明Gauss积分方法能够具有
+<span
+class="math inline">\(2n-1\)</span>阶代数精度，就可由唯一性得知它就是最好的插值法.
+然而事实上Lengdre多项式的根确实是那个很复杂的非线性方程组的根，这一点很难直接证明.</p>
+</blockquote>
+<p>在一般区间 <span
+class="math inline">\([a,b]\)</span>上近似积分，作变换 <span
+class="math inline">\(t=(2x-a-b)/(b-a)\)</span>，容易检验 <span
+class="math display">\[
+    \int_{a}^{b} f(x) \mathrm{d}x=\int_{-1}^{1}
+f(\frac{(b-a)t+b+a}{2})\frac{b-a}{2} \mathrm{d}t        
+\]</span></p>
+<p><strong>Gauss积分的误差</strong>： <span class="math display">\[
+    R=\int_{-1}^{1} f(x) \mathrm{d}x-\sum_{i=1}^{n}
+c_if(x_i)=\frac{f^{(2n)}(\xi)}{(2n)!}\int_{-1}^{1} q(x) \mathrm{d}x
+\]</span> 其中 <span class="math inline">\(q(x)=[(x-x_1)\cdots
+(x-x_n)]^{2}\)</span></p>
+<p>可以考虑 <span
+class="math inline">\(x_1,x_2,\cdots,x_n\)</span>的Hermite插值.</p>
+<h3 id="gauss-chebyshev-积分">Gauss-Chebyshev 积分</h3>
+<p>权函数 <span class="math inline">\(\displaystyle
+w(x)=\frac{1}{\sqrt{1-x^{2}}}\)</span>，实际上是换了一个Hilbert空间.</p>
+<p>此时希望 <span class="math display">\[
+    \int_{-1}^{1} f(x) \mathrm{d}x= \int_{-1}^{1} w(x)g(x) \mathrm{d}x
+\thickapprox  \sum_{i=1}^{n} c_i g(x_i)
+\]</span> 其中 <span class="math inline">\(g(x)=
+\sqrt{1-x^{2}}f(x)\)</span>. 这时我们得到的正交多项式为Chebyshev多项式
+<span class="math inline">\(p_i(x)\)</span>，满足 <span
+class="math display">\[
+    \int_{-1}^{1} \frac{1}{\sqrt{1-x^{2}}}p_m(x)p_n(x) \mathrm{d}x=0,
+m\neq n
+\]</span> 诸零点为 <span class="math inline">\(\displaystyle x_i=\cos
+\frac{2i-1}{2n}\pi,i=1,2,\cdots ,n\)</span>，而 <span
+class="math inline">\(\displaystyle c_i=\int_{-1}^{1}
+\frac{L_i(x)}{\sqrt{1-x^{2}}} \mathrm{d}x= \frac{\pi}{n}\)</span></p>
+<h3 id="反常积分的计算">反常积分的计算</h3>
+<p>尝试利用数值方法计算 <span class="math display">\[
+    \int_{a}^{b} \frac{g(x)}{(x-a)^{p}} \mathrm{d}x
+\]</span> 其中 <span class="math inline">\(0&lt;p&lt;1\)</span></p>
+<p>该积分有一个奇点 <span class="math inline">\(x=a\)</span>. -
+梯形和Simpson方法发散 - 开Newton-Cotes公式精度很低</p>
+<p>最简单的想法 <span class="math display">\[
+    \int_{a}^{b} \frac{g(x)-g(a)}{(x-a)^{p}} \mathrm{d}x+ \int_{a}^{b}
+\frac{g(a)}{(x-a)^{p}} \mathrm{d}x
+\]</span> 这样第一项的被积函数是连续函数. 可以使用之前说到的积分方法.
+当然我们可以做得更加精细：Simpson 将 <span
+class="math inline">\(g(x)\)</span> Taylor 展开至4阶，这样 <span
+class="math inline">\(\displaystyle
+G(x)=\frac{g(x)-Q_4(x)}{(x-a)^{p}}\in C^{4}[a,b]\)</span>
+就可以利用之前说过的公式计算. （ <span
+class="math inline">\(Q_4(x)\)</span> 为 <span
+class="math inline">\(g(x)\)</span> 在 <span
+class="math inline">\(x=a\)</span> 处Taylor展开的前5项. 而 <span
+class="math display">\[
+    \int_{a}^{b} \frac{Q_4(x)}{(x-a)^{p}} \mathrm{d}x= \sum_{k=0}^{4}
+\frac{g^{(k)}(a)}{k!}\frac{(b-a)^{k+1-p}}{k+1-p}
+\]</span> 令 <span class="math display">\[
+    G(x)= \frac{g(x)-Q_4(x)}{(x-a)^{p}}
+\]</span> 则相应误差 <span class="math display">\[
+    E=-\frac{h^{4}}{180}(b-a) G^{(4)}(\xi)
+\]</span></p>
+<h3 id="高维积分的计算">高维积分的计算</h3>
+<p>这会牵扯到许多极限换序和收敛性的问题.</p>
+<h1 id="特征值与奇异值">特征值与奇异值</h1>
+<p><strong>Gerschgorin 圆盘定理</strong> 略</p>
+<h2 id="幂迭代法">幂迭代法</h2>
+<p>幂迭代法线性收敛</p>
+<p><strong>Rayleigh商</strong> 如果有近似特征向量 <span
+class="math inline">\(x\)</span> 那么对于特征值的最优近似是 <span
+class="math display">\[
+    \lambda= \frac{x ^{\mathsf{T}}Ax}{x ^{\mathsf{T}}x}
+\]</span></p>
+<p><strong>定理</strong>：设 <span class="math inline">\(A\)</span>
+是特征值为 $_1 &gt; _2 _m $ 的 <span class="math inline">\(m \times
+m\)</span> 矩阵. <span class="math inline">\(A\)</span>
+有完全特征向量系. 则对于几乎所有的初始向量，幂迭代线性收敛到和 <span
+class="math inline">\(\lambda_1\)</span> 相关的特征向量，收敛常数为
+$S=_2/_1 $.</p>
+<p>先取逆再进行幂迭代可以得到绝对值最小的特征值（注意特征向量不变）.
+为了避免对矩阵 <span class="math inline">\(A\)</span>
+的逆矩阵的显式求解，将 <span class="math inline">\(x_{k+1}= A ^{-1}
+x_k\)</span> 等价为 <span class="math inline">\(Ax_{k+1}=x_k\)</span>
+并使用Gauss消去法求解.</p>
+<h3 id="逆向幂迭代">逆向幂迭代</h3>
+<p>p469</p>
+<h3 id="rayleigh商迭代rqi">Rayleigh商迭代（RQI）</h3>
+<p>可利用Rayleigh商估计最大特征值，Rayleigh商迭代对称矩阵三次收敛，一般则二次收敛.</p>
+<h3 id="qr算法">QR算法</h3>
+<ul>
+<li>利用Householder变换 <span class="math inline">\(B=HAH\)</span>
+作相似约化：对称阵约化为三对角，非对称阵约化为上Hessenberg矩阵</li>
+<li>利用QR分解构造迭代序列. 分解 <span
+class="math inline">\(A_j=Q_jR_j\)</span>，计算 <span
+class="math inline">\(A_{j+1}=R_{j}Q_{j}\)</span></li>
+</ul>
+<p>约化到上Hessenberg矩阵大约 <span class="math inline">\(\displaystyle
+\frac{5}{3} n^{3}\)</span> 次乘法. 对于 <span
+class="math inline">\(n\)</span> 阶矩阵 <span
+class="math inline">\(A\)</span>需要作 <span
+class="math inline">\(n-2\)</span> 次Householder变换将 <span
+class="math inline">\(A\)</span> 变为上Hessenberg形式.</p>
+<h2 id="svd">SVD</h2>
+<p><span class="math inline">\(A\)</span> 为 <span
+class="math inline">\(m \times n\)</span> 矩阵，<span
+class="math inline">\(\{u_1,\cdots ,u_m\}\)</span> 和 <span
+class="math inline">\(\{v_1,\cdots ,v_n\}\)</span>
+是单位正交集合，若存在 <span class="math inline">\(s_1\geqslant
+s_2\geqslant \cdots \geqslant s_n\geqslant 0\)</span>，满足 <span
+class="math display">\[
+    Av_1=s_1u_1 \\
+    \vdots \\
+    A v_n= s_n u_n
+\]</span> 称 <span class="math inline">\(v_i\)</span> 为 <span
+class="math inline">\(A\)</span> 的右奇异向量， <span
+class="math inline">\(u_i\)</span> 为 <span
+class="math inline">\(A\)</span> 的左奇异向量， <span
+class="math inline">\(s_i\)</span> 为 <span
+class="math inline">\(A\)</span> 的奇异值.</p>
+<p>对称矩阵的SVD简化为 <span class="math inline">\(A= U ^{\mathsf{T}}
+SV\)</span>，其中 <span class="math inline">\(U\)</span> 的每一列与
+<span class="math inline">\(V\)</span> 的对应列相同或相反.</p>
+<h3 id="低秩逼近">低秩逼近</h3>
+<p><span class="math inline">\(A\)</span> 的最优最小二乘逼近为保留前面
+<span class="math inline">\(p\)</span> 项，<span
+class="math inline">\(p&lt;r\)</span>.</p>
+<h3 id="另一种svd的方法">另一种SVD的方法</h3>
+<p>考虑 <span class="math display">\[
+    B=\begin{bmatrix}
+    0 &amp; A ^{\mathsf{T}} \\
+    A &amp; 0 \\
+    \end{bmatrix}
+\]</span> 设有 <span class="math inline">\(B\)</span> 的特征向量 <span
+class="math display">\[
+    \begin{bmatrix}
+    A ^{\mathsf{T}}w \\
+    Av \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    0 &amp; A^{\mathsf{T}} \\
+    A &amp; 0 \\
+    \end{bmatrix}
+    \begin{bmatrix}
+    v \\
+    w \\
+    \end{bmatrix}
+    =\lambda
+    \begin{bmatrix}
+    v \\
+    w \\
+    \end{bmatrix}
+\]</span> 注意 <span class="math inline">\(w\)</span> 是 <span
+class="math inline">\(A ^{\mathsf{T}}A\)</span>
+的特征向量，对应的特征值为 <span
+class="math inline">\(\lambda^{2}\)</span>.</p>
+<h3 id="其他svd相关性质">其他SVD相关性质</h3>
+<p><strong>Frobenius范数</strong>：<span class="math inline">\(\left\| A
+\right\|_{F}= (\sum_{i}^{} \sum_{j}^{} a_{ij})^{1/2}\)</span>，则 <span
+class="math display">\[
+    \left\| A \right\|_{F}^{2}= s_1^{2}+\cdots +s_{r}^{2}
+\]</span> <span class="math display">\[
+    \left\| A \right\|_{2}=s_1
+\]</span></p>
+<p>设 <span class="math inline">\(U^{\mathsf{T}}AV= diag\{s_1,\cdots
+,s_r\}\)</span>，若 <span class="math inline">\(k&lt;r\)</span>，令
+<span class="math inline">\(A_k=\sum_{i=1}^{k}
+s_iu_iv_i^{\mathsf{T}}\)</span>，则 <span class="math display">\[
+    \min_{\operatorname{rank}(B)=k}\left\| A-B \right\|_{2}= \left\|
+A-A_k \right\|_{2}= s_{k+1}
+\]</span></p>
+<h1 id="数值代数">数值代数</h1>
+<h2
+id="方程组的求解高斯消去法和lu分解">方程组的求解——高斯消去法和LU分解</h2>
+<h3 id="朴素的gauss消去法">朴素的Gauss消去法</h3>
+<p><span class="math inline">\(n\)</span>个方程 <span
+class="math inline">\(n\)</span>个未知数的消去计算，可以在 <span
+class="math inline">\(\displaystyle
+\frac{2}{3}n^{3}+\frac{1}{2}n^{2}-\frac{7}{6}n\)</span>次操作后完成.
+<span class="math inline">\(\displaystyle \frac{1}{3}n^{3}\)</span>
+次操作是加减， <span class="math inline">\(\displaystyle
+\frac{1}{3}n^{3}\)</span> 次操作是乘除.
+所有操作完成后，变为上三角矩阵.</p>
+<p>再经历回代的操作，回代计算复杂度是 <span
+class="math inline">\(O(n^{2})\)</span>（实际上就是 <span
+class="math inline">\(n^{2}\)</span> 次），加减与乘除也是一半一半.</p>
+<blockquote>
+<p>如果某时主元为0，会导致Gauss消去法终止.</p>
+</blockquote>
+<h3 id="lu分解">LU分解</h3>
+<p><span class="math inline">\(A=LU\)</span> <span
+class="math display">\[
+    Ly=b \Rightarrow Ux=y
+\]</span></p>
+<p>如果 <span class="math inline">\(L\)</span> 和 <span
+class="math inline">\(U\)</span>
+的对角线元素满足不同条件，也是不同的分解. - <span
+class="math inline">\(l_{ii}=1\)</span> 为 Doolittle 分解 - <span
+class="math inline">\(u_{ii}=1\)</span> 为 Crount 分解 - <span
+class="math inline">\(l_{ii}=u_{ii}\)</span> 为 Choleski 分解</p>
+<p>一般 LU 分解的复杂度是 <span
+class="math inline">\(O(n^{3})\)</span>，而有限带宽矩阵的 LU
+分解复杂度为 <span class="math inline">\(O(n)\)</span>.</p>
+<p><strong>LU分解相比经典的 Gauss 消去法，更适合求解 <span
+class="math inline">\(b\)</span> 变化时的问题</strong></p>
+<h3 id="矩阵范数">矩阵范数</h3>
+<ul>
+<li>算子范数</li>
+<li>无穷范数 <span class="math display">\[
+  \left\| A \right\|_{\infty}= \max_{\left\| x \right\|_{\infty}=1}
+\left\| Ax \right\|_{\infty}
+\]</span> 有 <span class="math inline">\(\left\| A \right\|_{\infty}=
+\max_{1\leqslant i\leqslant n} \sum_{j=1}^{n} \lvert a_{ij}
+\rvert\)</span></li>
+<li><span class="math inline">\(L_2\)</span> 范数 <span
+class="math display">\[
+  \left\| A \right\|_{2}= \max_{\left\| x \right\|_{2}=1} \left\| Ax
+\right\|_{2}
+\]</span> 有 <span class="math inline">\(\left\| A \right\|_{2}=
+[\rho(A^{\mathsf{T}}A)]^{1/2}\)</span>；<span
+class="math inline">\(\rho(A)\leqslant \left\| A \right\|_{}\)</span>
+对任意满足相容性的范数成立</li>
+</ul>
+<h3 id="误差放大和条件数">误差放大和条件数</h3>
+<p>令 <span class="math inline">\(x_{a}\)</span> 为 <span
+class="math inline">\(Ax=b\)</span>
+的近似解，<strong>后向误差</strong>为余项的范数 <span
+class="math inline">\(\left\| b-Ax_{a}
+\right\|_{\infty}\)</span>，前向误差为 <span
+class="math inline">\(\left\| x-x_{a} \right\|_{\infty}\)</span>.</p>
+<p><strong>定义</strong> <span class="math display">\[
+    误差放大因子Q=\frac{相对前向误差}{相对后向误差}=\frac{\left\|
+x-x_{a} \right\|_{\infty}/ \left\| x \right\|_{\infty}}{\left\| r
+\right\|_{\infty}/ \left\| b \right\|_{\infty}}
+\]</span></p>
+<ul>
+<li><p>方阵 <span class="math inline">\(A\)</span> 的条件 cond(<span
+class="math inline">\(A\)</span>) 为最大的误差放大因子.</p></li>
+<li><p><span class="math inline">\(n\)</span> 阶矩阵 <span
+class="math inline">\(A\)</span> 的条件数为 <span
+class="math display">\[
+  \text{cond}(A)= \left\| A \right\|_{} \left\| A^{-1} \right\|_{}    
+\]</span> 一般可以取无穷范数</p></li>
+</ul>
+<hr />
+<p>线性方程组-迭代法 0.2：条件数
+https://zhuanlan.zhihu.com/p/388053510</p>
+<hr />
+<p><strong>Q:</strong> 证明矩阵 <span
+class="math inline">\(A\)</span>的条件数为 <span
+class="math inline">\(\text{cond}(A)=\left\| A \right\|_{}\left\| A
+^{-1} \right\|_{}\)</span></p>
+<p><strong>证:</strong> 注意误差放大因子 <span class="math display">\[
+    Q=\frac{\left\| x-x_a \right\|_{}/\left\| x \right\|_{}}{\left\| b-
+Ax_a \right\|_{}/\left\| b \right\|_{}}\leqslant
+\]</span></p>
+<p><span class="math display">\[
+    \exists b,x,r \quad \text{s.t.} \quad \left\| A
+\right\|_{}=\frac{\left\| Ax \right\|_{}}{\left\| x
+\right\|_{}}=\frac{\left\| b \right\|_{}}{\left\| x \right\|_{}}, \quad
+\left\| A ^{-1} \right\|_{}=\frac{\left\| A ^{-1} r \right\|_{}}{\left\|
+r \right\|_{}}
+\]</span></p>
+<h3 id="palu-分解">PA=LU 分解</h3>
+<p><strong>淹没问题</strong> p80</p>
+<p><strong>部分主元</strong> 第一步选择第 <span
+class="math inline">\(p\)</span> 行，其中 <span class="math display">\[
+    \lvert a_{p1} \rvert \geqslant \lvert a_{i1} \rvert ,1\leqslant
+i\leqslant n
+\]</span> 交换第 <span class="math inline">\(1\)</span> 行和第 <span
+class="math inline">\(p\)</span> 行，然后再作消去.
+以后每一步都要比较.</p>
+<p>然后 <span class="math display">\[
+    Lc=Pb \Rightarrow Ux=c
+\]</span></p>
+<h3 id="迭代方法">迭代方法</h3>
+<p><strong>不动点迭代</strong>：<span
+class="math inline">\(Ax=b\)</span> 等价于 <span
+class="math inline">\(x= Tx+b\)</span></p>
+<p>设 <span class="math inline">\(A=D+L+U\)</span>，则有 - Jacobi
+迭代中的 <span class="math inline">\(T\)</span>: <span
+class="math display">\[
+    x=D ^{-1} [b-(L+U)x]
+\]</span> - Gauss-Seidel迭代中的 <span
+class="math inline">\(T\)</span>： <span class="math display">\[
+    x=(L+D) ^{-1}(b-Ux)
+\]</span></p>
+<p><strong>连续松弛迭代（SOR）</strong> - 引入参数 <span
+class="math inline">\(\omega\)</span>，对上面两种迭代方法加权组合 <span
+class="math display">\[
+    [\omega(D+L)+(1-\omega)D]x=\omega(-Ux+b)+(1-\omega)Dx
+\]</span> 当 <span class="math inline">\(0&lt;\omega&lt;1\)</span>
+时称为欠松弛，<span class="math inline">\(\omega&gt;1\)</span>
+称为过松弛</p>
+<p><strong>迭代基本定理</strong> 设 <span class="math inline">\(x=
+Bx+f\)</span>，对任意的 <span class="math inline">\(x^{(0)}\)</span>和
+<span class="math inline">\(f\)</span>，迭代法 <span
+class="math inline">\(x^{(k+1)}=Bx^{(k)}+f\)</span> 收敛 <span
+class="math inline">\(\Leftrightarrow\)</span> <span
+class="math inline">\(\rho(B)&lt;1\)</span>.</p>
+<p><strong>收敛速度：</strong> <span
+class="math inline">\(\varepsilon^{(k)}=B^{k}\varepsilon^{(0)}\)</span>
+设 <span class="math inline">\(B\)</span>有 <span
+class="math inline">\(n\)</span>个线性无关的特征向量 <span
+class="math inline">\(u_1,\cdots ,u_n\)</span>，对应特征值为 <span
+class="math inline">\(\lambda_1,\cdots ,\lambda_n\)</span>，则由 <span
+class="math inline">\(\varepsilon^{(0)}=\sum_{i=1}^{n}
+a_iu_i\)</span>,</p>
+<p><span class="math display">\[
+    \varepsilon^{(k)}=\sum_{i=1}^{n} a_i\lambda_i^{k}u_i
+\]</span> 可以看到 <span class="math inline">\(\rho(B)&lt;1\)</span>
+越小，收敛越快.</p>
+<p><strong>定义</strong>： <span class="math display">\[
+    R(B)=-\ln \rho(B)
+\]</span> 称为迭代法的收敛速度</p>
+<p><strong>定理：</strong> <span
+class="math inline">\(x^{(k+1)}=Bx^{(k)}+f\)</span>为迭代公式，存在某一范数（需要满足相容性条件）使得
+<span class="math inline">\(\left\| B \right\|_{}=q&lt;1\)</span>，则 -
+迭代法收敛 - <span class="math inline">\(\displaystyle \left\|
+x^{(k)}-x^{*} \right\|_{}\leqslant \frac{q}{1-q}\left\|
+x^{(k)}-x^{(k-1)} \right\|_{}\)</span> - <span
+class="math inline">\(\displaystyle \left\| x^{(k)}-x^{*}
+\right\|_{}\leqslant \frac{q^{k}}{1-q}\left\| x^{(1)}-x^{(0)}
+\right\|_{}\)</span></p>
+<h3 id="稀疏矩阵计算">稀疏矩阵计算</h3>
+<p>稀疏矩阵：非零元密度远小于1的矩阵. 对于很大的 <span
+class="math inline">\(N\)</span>，直接法存储 <span
+class="math inline">\(N\)</span>阶矩阵数据需要 <span
+class="math inline">\(O(N^{2})\)</span>大小；稀疏矩阵只存储非零元位置和数据，需要
+<span class="math inline">\(2N\)</span>（或者 <span
+class="math inline">\(3N\)</span>） 大小.</p>
+<p><strong>应用例</strong>：有限差分离散泊松方程 <span
+class="math display">\[
+    AU=F
+\]</span> <span class="math inline">\(U\)</span> 为 <span
+class="math inline">\((n-1)^{2}\)</span> 维向量，<span
+class="math inline">\(A\)</span> 的带宽为 <span
+class="math inline">\(2(n-1)+1\)</span></p>
+<h3 id="cholesky-分解">Cholesky 分解</h3>
+<p>如果 <span class="math inline">\(A\)</span> 是 <span
+class="math inline">\(n \times n\)</span> 对称正定矩阵，则存在上三角
+<span class="math inline">\(n \times n\)</span> 矩阵 <span
+class="math inline">\(R\)</span> 满足 <span class="math inline">\(A= R
+^{\mathsf{T}} R\)</span></p>
+<p><strong>证</strong> 归纳 <span class="math display">\[
+    A=
+    \begin{bmatrix}
+    a &amp; b^{\mathsf{T}} \\
+    b &amp; C \\
+    \end{bmatrix}
+\]</span> 设 <span class="math inline">\(\displaystyle
+u=\frac{b}{\sqrt{a}}\)</span>，令 <span class="math inline">\(A_1=C-uu
+^{\mathsf{T}}\)</span> 定义可逆矩阵 <span class="math display">\[
+    S=
+    \begin{bmatrix}
+    \sqrt{a} &amp; u^{\mathsf{T}} \\
+    0 &amp; I       
+    \end{bmatrix}
+\]</span> 得到 <span class="math display">\[
+    S ^{\mathsf{T}}
+    \begin{bmatrix}
+    1 &amp; 0 \\
+    0 &amp; A_1 \\
+    \end{bmatrix}
+    S=A     
+\]</span> <span class="math inline">\(A_1\)</span> 也是对称正定的，故
+<span class="math inline">\(A_1=V ^{\mathsf{T}}V\)</span>，最后定义
+<span class="math display">\[
+    R=
+    \begin{bmatrix}
+    \sqrt{a} &amp; u ^{\mathsf{T}} \\
+    0 &amp; V \\
+    \end{bmatrix}
+\]</span> 在寻找 <span class="math inline">\(R\)</span> 时，继续对 <span
+class="math inline">\(A_1\)</span> 作操作即可.</p>
+<h3 id="共轭梯度法">共轭梯度法</h3>
+<p><strong>等价极值问题</strong></p>
+<p><strong>定理</strong> <span class="math inline">\(A\)</span> 是 <span
+class="math inline">\(n\)</span> 阶对称正定矩阵，<span
+class="math inline">\(x\)</span> 是方程组 <span
+class="math inline">\(Ax=b\)</span>的解 <span
+class="math inline">\(\Leftrightarrow\)</span> <span
+class="math inline">\(x\)</span> 是二次函数 <span
+class="math inline">\(f(x)=\frac{1}{2}x^{\mathsf{T}}Ax-b^{\mathsf{T}}x\)</span>
+的极小点. 即 <span class="math display">\[
+    Ax^{*}=b \Leftrightarrow f(x^{*})= \min_{x\in \mathbb{R}^{n}}f(x)
+\]</span></p>
+<p><strong>证</strong> 注意 <span class="math inline">\(\nabla f(x)=
+Ax-b\)</span> 且 <span class="math inline">\(f(x+\alpha y)=f(x)+\alpha
+(Ax-b,y)+\frac{1}{2}\alpha^{2}(Ay,y)\)</span></p>
+<p>那么我们就把一个求方程根的问题转化为了一个求函数极小值的问题</p>
+<h3 id="最速下降法">最速下降法</h3>
+<ul>
+<li><p>每次找一个方向 <span class="math inline">\(d_k\)</span>，使得
+<span class="math display">\[
+  x_{k+1}=x_k+\alpha_k d_k
+\]</span> 其中系数 <span
+class="math inline">\(\alpha_k\)</span>通过求一维问题的极小获得.</p></li>
+<li><p>若 <span class="math inline">\(d_k=-\nabla
+f(x_k)=b-Ax_k\)</span>，则该方向为<strong>最速下降方向</strong>. 有
+<span class="math inline">\(d_k=r_k\)</span>，且 <span
+class="math inline">\(d_k\)</span>和 <span
+class="math inline">\(d_{k+1}\)</span>正交.</p></li>
+</ul>
+<p>计算可以得到 <span class="math display">\[
+    \alpha_k=\frac{(r_k,r_k)}{(Ar_k,r_k)}
+\]</span> &gt; 可以直接考虑为什么 <span
+class="math inline">\(d_k\)</span> 和 <span
+class="math inline">\(d_{k+1}\)</span>
+正交，注意并<strong>不</strong>一定有 <span
+class="math inline">\((d_i,d_j)=0, i\neq j\)</span></p>
+<p>误差估计 <span class="math display">\[
+    \left\| x_k-x^{*} \right\|_{A}\leqslant
+\left(\frac{\lambda_1-\lambda_n}{\lambda_1+\lambda_n}\right)^{k}\left\|
+x_0-x^{*} \right\|_{A}
+\]</span></p>
+<p><strong>证</strong> 用归纳法，然后用Kantorovich不等式，具体推导略.
+Kantorovich不等式可以见</p>
+<hr />
+<p>康托洛维奇(Kantorovich)不等式的一种初等证明
+https://zhuanlan.zhihu.com/p/271983329</p>
+<hr />
+<blockquote>
+<p>最速下降法当矩阵条件数过大，即最大与最小特征值相差极大时收敛非常慢，不具有实际应用意义
+### 共轭梯度法</p>
+</blockquote>
+<blockquote>
+<p><span class="math inline">\(d_k\)</span> 是方向， <span
+class="math inline">\(r_k\)</span> 是残差（标量），<span
+class="math inline">\(x_k\)</span> 是经过 <span
+class="math inline">\(k\)</span> 步得到的估计</p>
+</blockquote>
+<ul>
+<li><p><span class="math inline">\(f(x)\)</span>
+极小问题可迭代计算，每次找方向 <span
+class="math inline">\(d_k\)</span>，使 <span class="math display">\[
+  x_{k+1}=x_{k}+\alpha_k d_k
+\]</span> 其中系数 <span class="math inline">\(\alpha\)</span>
+通过求一维问题的极小获得</p></li>
+<li><p>搜索方向两两共轭，且 <span class="math display">\[
+  d_{k+1}=r_k+\beta_k d_k
+\]</span> 其中的系数由共轭性质确定.</p></li>
+</ul>
+<p><strong>共轭向量</strong> 定义 <span class="math inline">\(\left\| x
+\right\|_{A}=(Ax,x)^{\frac{1}{2}}\)</span> 定义 如果两个方向 <span
+class="math inline">\(d_i\)</span> 和 <span
+class="math inline">\(d_j\)</span> 满足 <span class="math display">\[
+    (d_i,Ad_j)=0
+\]</span> 则称这两个向量关于矩阵 <span class="math inline">\(A\)</span>
+共轭. 类似可定义矩阵 <span class="math inline">\(A\)</span>
+的共轭向量组.</p>
+<p>共轭梯度法有误差估计，收敛速度为（K为矩阵条件数） <span
+class="math display">\[
+    \left\| x_k-x^{*} \right\|_{A}\leqslant
+2\left(\frac{\sqrt{K}-1}{\sqrt{K}+1}\right)^{k} \left\| x_0-x^{*}
+\right\|_{A}
+\]</span></p>
+<p><strong>有限步收敛性定理</strong> 设 <span
+class="math inline">\({d_1,\cdots ,d_n}\)</span> 为对称正定矩阵 <span
+class="math inline">\(A\)</span> 的共轭向量组，令 <span
+class="math display">\[
+    \alpha_k=\frac{(d_k,r_{k-1})}{(d_k,Ad_k)},  x_k=x_{k-1}+\alpha_k
+d_k,  k=1,\cdots ,n
+\]</span> 该方向为<strong>共轭方向法</strong>（比共轭梯度更广泛）.
+对于该迭代法， <span class="math inline">\(n\)</span> 步迭代可得准确解
+<span class="math display">\[
+    A x_n=b
+\]</span></p>
+<p><strong>证</strong> 首先 <span
+class="math inline">\(Ax_n=Ax_0+\alpha_1 Ad_1+\cdots +\alpha_n A
+d_n\)</span></p>
+<p>由共轭性质，<span
+class="math inline">\((d_k,r_{k-1})=(d_k,b-Ax_0)\)</span>.</p>
+<p>而 <span
+class="math inline">\((b-Ax_n,d_k)=(b-Ax_0,d_k)-\alpha_k(Ad_k,d_k)=0\)</span>（代入
+<span class="math inline">\(\alpha_k\)</span> 的定义即知）</p>
+<p>故 <span class="math inline">\(r_n\)</span> 与所有的 <span
+class="math inline">\(d_k\)</span>正交， 故 <span
+class="math inline">\(Ax_n=b\)</span>.</p>
+<p><strong>共轭梯度法</strong>
+选择的搜索方向为负梯度方向和前一个搜索方向的组合，使得所得到的余项与前面的余项两两正交.
+负梯度方向即为残差 <span class="math inline">\(r_k\)</span>的方向（
+<span
+class="math inline">\(\beta_{k-1}\)</span>是为了使方向向量两两共轭，<span
+class="math inline">\(\alpha_k\)</span> 是为了使残差向量两两共轭） <span
+class="math display">\[
+    (r_i,r_j)=0, i \neq j
+\]</span></p>
+<p>令 <span class="math display">\[
+    r_{k-1}=b-Ax_{k-1}, \quad(r_{k-1},d_i)=0, \quad i=1,\cdots ,k-1
+\]</span> 则 <span class="math display">\[
+    d_k=r_{k-1}+\beta _{k-1}d_{k-1}
+\]</span> 选择合适的 <span class="math inline">\(\beta_{k-1}\)</span>
+使得与前面的搜索方向共轭 <span class="math display">\[
+    (d_{k-1},Ad_k)=0
+\]</span> 可以得到 <span class="math display">\[
+    \beta_{k-1}=-\frac{(d_{k-1},Ar_{k-1})}{(d_{k-1},Ad_{k-1})}
+\]</span></p>
+<p>证明实际上 <span class="math inline">\(d_k\)</span>与 <span
+class="math inline">\(d_j\)</span>都共轭（<span
+class="math inline">\(j&lt;k\)</span>），归纳法 <span
+class="math display">\[
+    d_{j-1} ^{\mathsf{T}}A d_k=d_{j-1} ^{\mathsf{T}} A
+r_{k-1}+\beta_{k-1} d_{j-1} ^{\mathsf{T}}A d_{k-1}
+\]</span> 那么由归纳法 <span class="math inline">\(d_{j-1} ^{\mathsf{T}}
+A d_{k-1}=0\)</span> 且 <span class="math display">\[
+    A d_{j-1}=\frac{1}{\alpha_{j-1}}(r_{j-2}-r_{j-1}) \Rightarrow
+d_{j-1} ^{\mathsf{T}} Ar_{k-1}=\frac{1}{\alpha_{j-1}}(r_{j-2}-r_{j-1})
+^{\mathsf{T}} r_{k-1}=0
+\]</span></p>
+<p>共轭梯度法复杂度还是 <span class="math inline">\(O(n^{3})\)</span>
+甚至比直接法还要慢，但是在处理一些特殊问题（大型稀疏矩阵、良态即条件数很小）时有非常高的效率.</p>
+<blockquote>
+<p>总结算法如下 初始：<span class="math inline">\(r_0=b-Ax_0, \quad
+d_1=r_0\)</span> For <span class="math inline">\(k=1,\cdots ,n\)</span>
+<span class="math inline">\(\displaystyle
+\alpha_k=\frac{(r_{k-1},r_{k-1})}{(d_k,Ad_k)}\)</span> <span
+class="math inline">\(x_k=x_{k-1}+\alpha_k d_k\)</span> <span
+class="math inline">\(r_k=r_{k-1}-\alpha_k A d_k\)</span> （新残差）
+<span class="math inline">\(\displaystyle
+\beta_k=\frac{(r_k,r_k)}{(r_{k-1},r_{k-1})}=\frac{-(d_k, A r_k)}{(d_k,A
+d_k)}\)</span> <span class="math inline">\(d _{k+1}=r_k+\beta_k
+d_k\)</span> End For</p>
+</blockquote>
+<p>（下标可能与书本有所不同）</p>
+<p><strong>预条件</strong> 若 <span
+class="math inline">\(A\)</span>为病态矩阵，过程易受舍入误差的影响，使用预条件可以在
+<span class="math inline">\(\sqrt{n}\)</span> 步得到收敛解.</p>
+<p>目标是选择合适的矩阵 <span class="math inline">\(M\)</span>，使得方程
+<span class="math display">\[
+    M ^{-1} Ax= M ^{-1}b
+\]</span> 更“好”. <span class="math inline">\(M\)</span>
+当然可逆，称为<strong>预条件子</strong>. 我们希望 - <span
+class="math inline">\(M\)</span>和 <span
+class="math inline">\(A\)</span> 足够接近 - <span
+class="math inline">\(M\)</span> 容易求逆</p>
+<p><strong>雅可比预条件子</strong> <span
+class="math inline">\(M=D\)</span> ，其中 <span
+class="math inline">\(D\)</span> 是 <span
+class="math inline">\(A\)</span> 的对角线矩阵. 用 <span
+class="math inline">\((v,w)_{M}\)</span> 替换欧几里得内积. 则 <span
+class="math inline">\(M ^{-1}A\)</span>
+相对于新的内积仍然是对称正定矩阵.</p>
+<p><strong>高斯-赛德尔预条件子</strong>
+对称连续过松弛（SSOR），中预条件子定义为 <span class="math display">\[
+    M=(D+\omega L)D ^{-1}(D+\omega U)
+\]</span> 其中 <span class="math inline">\(A=L+D+U\)</span>
+被分为下三角部分、对角线以及上三角部分. <span
+class="math inline">\(\omega \in [0,2]\)</span>，当 <span
+class="math inline">\(\omega=1\)</span> 时称为高斯-赛德尔预条件子</p>
+<blockquote>
+<p>经过一些化简可以得到有预条件的算法 <span
+class="math inline">\(x_0=\)</span> 初始条件 初始：<span
+class="math inline">\(r_0=b-Ax_0, \quad d_1=z_0=M ^{-1}r_0\)</span> For
+<span class="math inline">\(k=1,\cdots ,n\)</span> <span
+class="math inline">\(\displaystyle
+\alpha_k=\frac{(r_{k-1},z_{k-1})}{(d_k,Ad_k)}\)</span> <span
+class="math inline">\(x_k=x_{k-1}+\alpha_k d_k\)</span> <span
+class="math inline">\(r_k=r_{k-1}-\alpha_k A d_k\)</span> （新残差）
+<span class="math inline">\(z_k=M ^{-1}r_k\)</span> <span
+class="math inline">\(\displaystyle
+\beta_k=\frac{(r_k,z_k)}{(r_{k-1},z_{k-1})}\)</span> <span
+class="math inline">\(d _{k+1}=z_k+\beta_k d_k\)</span> End For</p>
+</blockquote>
+<p>在SSOR下，不需要求 <span class="math inline">\(M
+^{-1}\)</span>，在计算 <span class="math inline">\(z_{k}= M ^{-1}
+r_k\)</span> 时，由于 <span class="math inline">\(M=(I+\omega LD
+^{-1})(D+\omega U)\)</span>
+是下上三角矩阵的乘积，故该方程可以通过两次回代求解. <span
+class="math display">\[
+    (I+\omega LD ^{-1})c=v \\
+    (D+ \omega U)z=c \\
+\]</span></p>
+<p>可以将具备SSOR的共轭梯度法与一般的迭代法作比较.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" class="category-chain-item">数值分析</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>数值分析笔记</div>
+      <div>http://example.com/2022/05/17/数值分析笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>May 17, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/18/%E8%AE%A1%E7%A7%91%E5%AF%BC%E5%A4%8D%E4%B9%A0/" title="计科导复习">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">计科导复习</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/06/%E6%B0%B8%E4%B9%85%E8%AE%B0%E5%BD%95%EF%BC%88%E4%B8%80%EF%BC%89/" title="永久记录（一）">
+                        <span class="hidden-mobile">永久记录（一）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

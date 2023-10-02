@@ -1,0 +1,950 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Encoding and Decoding with Stochastic Neuron models">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neuronal Dynamics (11)">
+<meta property="og:url" content="http://example.com/2022/10/04/Neuronal-Dynamics-11/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Encoding and Decoding with Stochastic Neuron models">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-10-04T10:51:42.000Z">
+<meta property="article:modified_time" content="2022-10-05T14:16:23.242Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="神经科学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
+  
+  
+  
+  <title>Neuronal Dynamics (11) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (11)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-04 18:51" pubdate>
+          October 4, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9.4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          79 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Neuronal Dynamics (11)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="encoding-and-decoding-with-stochastic-neuron-models">Encoding
+and Decoding with Stochastic Neuron models</h1>
+<p>The online version of this chapter:</p>
+<hr />
+<p>Chapter 11 Encoding and Decoding with Stochastic Neuron models
+https://neuronaldynamics.epfl.ch/online/Ch11.html</p>
+<hr />
+<h2 id="encoding-models-for-intracellular-recordings">Encoding Models
+for Intracellular Recordings</h2>
+<p>We focus on GLMs with escape noise, also called soft-threshold
+integrate-and-fire models.</p>
+<h3 id="predicting-membrane-potential">Predicting Membrane
+Potential</h3>
+<p>The SRM model <span class="math display">\[
+    u(t)=\sum_{f}^{} \eta(t-t^{(f)})+\int_{0}^{\infty}
+\kappa(s)I^{ext}(t-s) \mathrm{d}s +u_{rest}. \tag{11.1}
+\]</span></p>
+<p>For both the main type of excitatory neurons and the main type on
+inhibitory neurons, the membrane filter <span
+class="math inline">\(\kappa(t)\)</span> is well described by a single
+exponential. Different cell types have different amplitudes and time
+constants. The inhibitory neurons are typically faster, with a smaller
+time constant than the excitatory neurons, suggesting we could
+discriminate between excitatory and inhibitory neurons in terms of the
+shape of <span class="math inline">\(\kappa(t)\)</span>. When we take
+into account the spike-afterpotential, discrimination of cell types is
+much improved. The shape of <span class="math inline">\(\eta(t)\)</span>
+in inhibitory cells is very different than that in excitatory ones.</p>
+<p>While the spike-afterpotential is a monotonically decreasing function
+in the excitatory cells, in the inhibitory cells the function <span
+class="math inline">\(\eta(t)\)</span> is better fitted by two
+exponentials of opposite polarity. Spike afterpotential of inhibitory
+neurons has an oscillatory component.</p>
+<p>If we set <span class="math inline">\(\kappa(s)=(1/C)\exp
+(-s/\tau_m)\)</span>, we can take the derivative of (11.1) and write it
+in the form of <span class="math display">\[
+    C\frac{\mathrm{d}u(t)}{\mathrm{d}t}=-\frac{1}{R}(u-u_{rest})+\sum_{f}^{}
+\tilde{\eta}(t-t^{(f)})+I^{ext}(t) \tag{11.2}
+\]</span> where <span class="math inline">\(\tilde{\eta}\)</span> is the
+time course of the net current triggered after a spike.</p>
+<p>After every spike the total current that can charge the membrane
+capacitance is <span class="math display">\[
+    C\frac{\mathrm{d}u}{\mathrm{d}t} \propto
+\eta_{C}(t-\hat{t})(u-E_{rev}) \tag{11.3}
+\]</span> where <span class="math inline">\(\eta_{C}\)</span> is the
+spike triggered change in conductance and <span
+class="math inline">\(E_{rev}\)</span> its reversal potential. The
+prediction performance based on conductance change instead of spike
+after-effects in terms of potential is not significantly improved.</p>
+<h3 id="predicting-spikes">Predicting Spikes</h3>
+<p>Assuming a moving threshold that can undergo a stereotypical change
+at every spike <span
+class="math inline">\(\theta(t)=\theta_0+\sum_{f}^{}
+\theta_1(t-t^{(f)})\)</span> we can model the conditional firing
+intensity as (c.f., 9.27) <span class="math display">\[
+    p(t|S)=\frac{1}{\tau_0}\exp \left[
+\beta\left(u(t)-\theta_0-\sum_{t^{(f)}\in S}^{} \theta_1(t-t^{(f)})
+\right)\right] \tag{11.4}
+\]</span></p>
+<p>Since the parameters regulating <span
+class="math inline">\(u(t)\)</span> were optimized using the
+subthreshold membrane potential in 11.1.1, the only free parameters left
+are those of the threshold, that is, <span
+class="math inline">\(\theta_0\)</span>,<span
+class="math inline">\(\beta\)</span> and the function <span
+class="math inline">\(\theta_1(t)\)</span>. Once the function <span
+class="math inline">\(\theta_1\)</span> is expanded in a linear
+combination of basis functions, maximizing the likelihood (10.40) can be
+done through a convex gradient descent.</p>
+<p>Dynamic threshold is not necessary for some neurons. The threshold in
+those cells is constant in time. However, the excitatory cells have a
+strongly moving threshold which is characterized by at least two decay
+time constants. Inactivation of sodium channels is a likely candidate
+for the biophysical causes of a moving threshold.</p>
+<p>GLMs predict more than 80 percent of the 'predictable' spikes. Some
+cells were predicted better than others such that the <span
+class="math inline">\(M\)</span> reached up to 95%. Other optimization
+methods but with similar models could improve the spike timing
+prediction of inhibitory neurons, reaching up to <span
+class="math inline">\(M\)</span>=100% for some cells. However,
+optimizing a GLM model with refractory effects but no adaptation reduces
+the prediction performance by 20-30%, for both the excitatory and
+inhibitory cortical cells. A single spike has a measurable effect more
+than 10 seconds after the action potential has occurred. Thus,
+adaptation is not characterized by a single time scale and shows up as a
+power-law decay in both spike-triggered current and threshold.</p>
+<h2 id="encoding-models-in-systems-neuronscience">Encoding Models in
+Systems Neuronscience</h2>
+<h3 id="receptive-fields-and-linear-nonlinear-poisson-model">Receptive
+fields and Linear-Nonlinear Poisson Model</h3>
+<p>For a two-dimensional image, we label all pixels with a single index
+<span class="math inline">\(k\)</span>. A full image corresponds to a
+vector <span class="math inline">\(\mathbf{x}=(x_1,\cdots
+,x_{K})\)</span> while a single spot of light corresponds to a vector
+with all components equal to zero except one.</p>
+<p>The spatial receptive field of a neuron is a vector <span
+class="math inline">\(\mathbf{k}\)</span> of the same dimensionality as
+<span class="math inline">\(\mathbf{x}\)</span>. The response of the
+neuron to an arbitrary spatial stimulus <span
+class="math inline">\(\mathbf{x}\)</span> depends on the total drive
+<span class="math inline">\(\mathbf{k}\cdot \mathbf{x}_t\)</span>, i.e.,
+the similarity between the stimulus and the spatial filter.</p>
+<p>More generally, the receptive field filter <span
+class="math inline">\(\mathbf{k}\)</span> can be described not only by a
+spatial component, but also by a temporal component. The scalar product
+<span class="math inline">\(\mathbf{k}\cdot \mathbf{x}_t\)</span> is a
+shorthand notation for integration over space as well as over time. Such
+a filter <span class="math inline">\(\mathbf{k}\)</span> is called a
+spatio-temporal receptive field.</p>
+<p>In the linear-nonlinear-Poisson (LNP) model, one assumes that spike
+trains are produced by an inhomogeneous Poisson process with rate <span
+class="math display">\[
+    \rho(t)=f(\mathbf{k}\cdot \mathbf{x}_t) \tag{11.5}
+\]</span> Note that the LNP model neglects the spike history effects
+that are the hallmark of the SRM and the GLM - otherwise the two models
+are suprisingly similar.</p>
+<h4
+id="example-detour-on-reverse-correlation-for-receptive-field-estimation">Example:
+Detour on reverse correlation for receptive field estimation</h4>
+<p>Reverse correlation measurements are an experimental procedure based
+on spike-triggered averaging. Stimuli <span
+class="math inline">\(\mathbf{x}\)</span> are drawn from some
+statistical ensemble and presented on after the other. Each time the
+neuron elicits a spike, the stimulus <span
+class="math inline">\(\mathbf{x}\)</span> presented just before the
+firing is recorded. The reverse correlation filter is the mean of all
+inputs that have triggered a spike <span class="math display">\[
+    \mathbf{x}_{RevCorr}=\langle \mathbf{x}\rangle
+_{spike}=\frac{\sum_{t}^{} n_t \mathbf{x}_t}{\sum_{t}^{} n_t},\tag{11.6}
+\]</span> where <span class="math inline">\(n_t\)</span> is the spike
+count in trial <span class="math inline">\(t\)</span>. The reverse
+correlation technique finds the typical stimulus that causes a
+spike.</p>
+<p>Consider an ensemble <span
+class="math inline">\(p(\mathbf{x})\)</span> of stimuli <span
+class="math inline">\(\mathbf{x}\)</span> with a 'power' constraint
+<span class="math inline">\(\lvert \mathbf{x} \rvert ^{2}&lt;c\)</span>.
+In this case, the stimulus that is most likely to generate a spike under
+the linear receptive field model is the one which is aligned with the
+receptive field <span class="math display">\[
+    \mathbf{x}_{opt}\propto \mathbf{k}  \tag{11.7}  
+\]</span> The receptive field vector <span
+class="math inline">\(\mathbf{k}\)</span> can be interpreted as the
+optimal stimulus to cause a spike.</p>
+<p>Then, consider an ensemble of stimuli <span
+class="math inline">\(\mathbf{x}\)</span> with a radially-symmetric
+distribution, where the probability of a possibly multidimensional <span
+class="math inline">\(\mathbf{x}\)</span> is equal to the probability of
+observing its norm <span class="math inline">\(\lvert \mathbf{x} \rvert
+\colon p(\mathbf{x})=p_c(\lvert \mathbf{x} \rvert )\)</span>. An
+important result is that the experimental reverse correlation technique
+yields an unbiased estimator of the filter <span
+class="math inline">\(\mathbf{k}\)</span>, i.e., <span
+class="math display">\[
+    \langle \mathbf{x}_{RevCorr}\rangle =\mathbf{k}. \tag{11.8}
+\]</span></p>
+<h3 id="multiple-neurons">Multiple Neurons</h3>
+<p>An SRM-like model of the membrane potential of a neuron <span
+class="math inline">\(i\)</span> surrounded by <span
+class="math inline">\(n\)</span> other neurons is <span
+class="math display">\[
+    u_i(t)=\sum_{f}^{} \eta_i(t-t_i^{(f)})+\mathbf{k}_i \cdot
+\mathbf{x}(t)+\sum_{j \neq i}^{} \sum_{f}^{}
+\varepsilon_{ij}(t-t_j^{(f)})+u_{rest}. \tag{11.12}
+\]</span></p>
+<h2 id="decoding">Decoding</h2>
+<p>In this section, we apply 'Bayes' rule to obtain the posterior
+probability of the stimulus, conditional on the observed response: <span
+class="math display">\[
+    p(\mathbf{x}|D)\propto p(D|\mathbf{x})p(\mathbf{x}), \tag{11.13}
+\]</span></p>
+<h3 id="maximum-a-posteriori-decoding">Maximum a posteriori
+decoding</h3>
+<p>The <strong>Maximum A Posteriori</strong> (MAP) estimate is the
+stimulus <span class="math inline">\(\mathbf{x}\)</span> that is most
+probable given the observed spike response <span
+class="math inline">\(D\)</span>, i.e., the <span
+class="math inline">\(\mathbf{x}\)</span> that maximizes <span
+class="math inline">\(p(\mathbf{x}|D)\)</span>.</p>
+<p>The log-posterior, <span class="math display">\[
+    \log p(\mathbf{x}|D)=\log p(D|\mathbf{x})+\log p(\mathbf{x})+c
+\tag{11.14}
+\]</span> is concave as long as the stimulus log-prior <span
+class="math inline">\(\log p(\mathbf{x})\)</span> is itself a concave
+function of <span class="math inline">\(\mathbf{x}\)</span> (e.g. <span
+class="math inline">\(p\)</span> is Gaussian). In this case, again, we
+may easily compute <span class="math inline">\(\hat{x}_{MAP}\)</span> by
+numerically ascending the function <span class="math inline">\(\log
+p(\mathbf{x}|D)\)</span>.</p>
+<p>The MAP estimate of the stimulus is, in general, a nonlinear function
+of the observed spiking data <span class="math inline">\(D\)</span>.</p>
+<h4 id="example-linear-stimulus-reconstruction">Example: Linear stimulus
+Reconstruction</h4>
+<p>We predict the stimulus <span
+class="math inline">\(\mathbf{x}_t\)</span> by linear filtering of the
+observed spike times <span class="math inline">\(t^{1},t^{2},\cdots
+,t^{F}&lt;t\)</span>, <span class="math display">\[
+    x(t)=x_0+\sum_{f}^{} k(t-t^{f}) \tag{11.15}
+\]</span></p>
+<p>The aim is to find the shape of the filter <span
+class="math inline">\(k\)</span>, i.e., the optimal linear estimator
+(OLE) of the stimulus. It can be obtained using standard least-squares
+regression of the spiking data onto the stimulus <span
+class="math inline">\(\mathbf{x}\)</span>.</p>
+<h3 id="assessing-decoding-uncertainty">Assessing decoding
+uncertainty</h3>
+<p>In addition to providing a reliable estimate of the stimulus
+underlying a set of spike responses, computing the MAP estimate <span
+class="math inline">\(\hat{x}_{MAP}\)</span> gives us easy access to the
+variance of the posterior distribution around <span
+class="math inline">\(\hat{x}_{MAP}\)</span>. It tells us something
+about which stimulus features are best encoded by the response <span
+class="math inline">\(D\)</span>.</p>
+<p>For example, along stimulus axes where the posterior has small
+variance (i.e. the posterior declines rapidly as we move away from <span
+class="math inline">\(\hat{x}_{MAP}\)</span>), we have relatively high
+certainty that the true <span class="math inline">\(\mathbf{x}\)</span>
+is close to <span class="math inline">\(\hat{x}_{MAP}\)</span>.
+Conversely, we have relatively low certainty about any feature axis
+along which the posterior variance is large.</p>
+<p>We measure the curvature at <span
+class="math inline">\(\hat{x}_{MAP}\)</span> by computing the 'Hessian'
+matrix <span class="math inline">\(A\)</span> of second-derivatives of
+the log-posterior, <span class="math display">\[
+    A_{ij}=-\frac{\partial ^{2}}{\partial x_i \partial x_j}\log
+p(\mathbf{x}|D). \tag{11.16}
+\]</span></p>
+<p>Moreover, the eigendecomposition of this matrix <span
+class="math inline">\(A\)</span> tells us exactly which axes of stimulus
+space correspond to the 'best' and 'worst' encoded feature of the neural
+response: small eigenvalues of <span class="math inline">\(A\)</span>
+correspond to directions of small curvature, where the observed data
+<span class="math inline">\(D\)</span> poorly constrains the posterior
+distribution <span class="math inline">\(p(\mathbf{x}|D)\)</span> (and
+therefore the posterior variance will be relatively large in this
+direction), while conversely large eigenvalues in <span
+class="math inline">\(A\)</span> imply relatively precise knowledge of
+<span class="math inline">\(\mathbf{x}\)</span>, i.e., small posterior
+variance (for this reason the Hessian of the log-likelihood <span
+class="math inline">\(p(D|x)\)</span> is referred to as the 'observed
+Fisher information matrix' in the statistic literature).</p>
+<p>We can use this Hessian to construct a useful approximation to the
+posterior <span class="math inline">\(p(\mathbf{x}|D)\)</span>. The idea
+is simply to approximate this log-concave bump with a Gaussian function,
+where the parameters of the Gaussian are chosen to exactly match the
+peak and curvature of the true posterior. <span class="math display">\[
+    p(\mathbf{x}|D)\thickapprox (2\pi)^{-d/2}\lvert A \rvert
+^{1/2}\mathrm{e}^{-(\mathbf{x}-\hat{x}_{MAP})^{\mathsf{T}}A(\mathbf{x}-\hat{x}_{MAP})^{2}}
+, \tag{11.17}
+\]</span> with <span
+class="math inline">\(d=\text{dim}(\mathbf{x})\)</span>. The approximate
+posterior entropy of variance of <span
+class="math inline">\(x_i\)</span> is <span
+class="math inline">\(var(x_i|D)\thickapprox [A^{-1}]_{ii}\)</span>.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/" class="print-no-link">#神经科学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Neuronal Dynamics (11)</div>
+      <div>http://example.com/2022/10/04/Neuronal-Dynamics-11/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>October 4, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/10/05/Neuronal-Dynamics-12/" title="Neuronal Dynamics (12)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Neuronal Dynamics (12)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/18/%E6%B0%B8%E4%B9%85%E8%AE%B0%E5%BD%95%EF%BC%88%E4%BA%94%EF%BC%89/" title="永久记录 （五）">
+                        <span class="hidden-mobile">永久记录 （五）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

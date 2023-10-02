@@ -1,0 +1,1977 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Adaptation and Firing Patterns">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neuronal Dynamics (6)">
+<meta property="og:url" content="http://example.com/2022/07/11/Neuronal-Dynamics-6/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Adaptation and Firing Patterns">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-07-11T07:50:54.000Z">
+<meta property="article:modified_time" content="2022-09-14T09:12:38.661Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="神经科学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
+  
+  
+  
+  <title>Neuronal Dynamics (6) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (6)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-11 15:50" pubdate>
+          July 11, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          40k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          334 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Neuronal Dynamics (6)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="adaptation-and-firing-patterns">Adaptation and Firing
+Patterns</h1>
+<p>The online version of this chapter:</p>
+<hr />
+<p>Chapter 6 Adaptation and Firing Patterns
+https://neuronaldynamics.epfl.ch/online/Ch6.html</p>
+<hr />
+<h2 id="adaptive-exponential-integrate-and-fire">Adaptive Exponential
+Integrate-and-Fire</h2>
+<p>A single equation is not sufficient to describe the variety of firing
+patterns that neurons exhibit in response to a step current. We couple
+the voltage equation to abstract current variables <span
+class="math inline">\(w_k\)</span>. The set of equation is <span
+class="math display">\[
+    \tau_m \frac{\mathrm{d}u}{\mathrm{d}t}=f(u)-R \sum_{k}^{} w_k+RI(t)
+\]</span> (6.1) <span class="math display">\[
+    \tau_k
+\frac{\mathrm{d}w_k}{\mathrm{d}t}=a_k(u-u_{rest})-w_k+b_k\tau_k\sum_{t^{(f)}}^{}
+\delta(t-t^{(f)}).
+\]</span> (6.2)</p>
+<p>the adaptation current is fed back to the voltage equation with
+resistance <span class="math inline">\(R\)</span>. The voltage variable
+<span class="math inline">\(u\)</span> is reset if the membrane
+potential reaches the numerical threshold <span
+class="math inline">\(\Theta_{reset}\)</span>. The moment <span
+class="math inline">\(u(t)=\Theta_{reset}\)</span> defines the firing
+time <span class="math inline">\(t^{(f)}=t\)</span>. After firing,
+integration of the voltage restarts at <span
+class="math inline">\(u=u_r\)</span>. The parameters <span
+class="math inline">\(b_k\)</span> are the 'jump' of the spike-triggered
+adaptation.</p>
+<div class="note note-info">
+            <p>One possible biophysical interpretation of the increase is thatduring the action potential calcium enters into the cell so that theamplitude of a calcium-dependent potassium current is increased.</p>
+          </div>
+<p>The adaptive Exponential Integrate-and-Fire model (AdEx) consists of
+an exponential nonlinearity in the voltage equation coupled to a single
+adaptation variable <span class="math inline">\(w\)</span> <span
+class="math display">\[
+    \tau_m \frac{\mathrm{d}u}{\mathrm{d}t}=-(u-u_{rest})+\Delta_{T} \exp
+\left(\frac{u-\theta_{rh}}{\Delta_{T}}\right)-Rw+RI(t)
+\]</span> (6.3) <span class="math display">\[
+    \tau_w \frac{\mathrm{d}w}{\mathrm{d}t}=a(u-u_{rest})-w+b\tau_w
+\sum_{t^{(f)}}^{} \delta(t-t^{(f)}).
+\]</span> (6.4)</p>
+<p>At each threshold crossing the voltage is reset to <span
+class="math inline">\(u=u_r\)</span> and the adaptation variable <span
+class="math inline">\(w\)</span> is increased by an amount <span
+class="math inline">\(b\)</span>. Adaptation is characterized by two
+parameters: <span class="math inline">\(a\)</span> couples adaptation to
+the voltage and is the source of subthreshold adaptation.
+Spike-triggered adaptation is controlled by a combination of <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span>. The choice of <span
+class="math inline">\(a\)</span> and <span
+class="math inline">\(b\)</span> largely determines the firing patterns
+of the neuron and can be related to the dynamics of ion channels.</p>
+<h4 id="example-izhikevich-model">Example: Izhikevich model</h4>
+<p>This model uses the quadratic integrate-and-fire model for the first
+equation <span class="math display">\[
+    \tau_m
+\frac{\mathrm{d}u}{\mathrm{d}t}=-(u-u_{rest})(u-\theta)-Rw+RI(t)
+\]</span> <span class="math display">\[
+    \tau_w \frac{\mathrm{d}w}{\mathrm{d}t}=a(u-u_{rest})-w+b\tau_w
+\sum_{t^{(f)}}^{} \delta(t-t^{(f)}).
+\]</span></p>
+<p>If <span class="math inline">\(u=\theta_{reset}\)</span>, the voltage
+is reset to <span class="math inline">\(u=u_r\)</span> and the
+adaptation variable <span class="math inline">\(w\)</span> is increased
+by an amount <span class="math inline">\(b\)</span>. Normally <span
+class="math inline">\(b\)</span> is positive, but <span
+class="math inline">\(b&lt;0\)</span> is also possible.</p>
+<p><img src="/img/neu_dyn/x150.png" srcset="/img/loading.gif" lazyload /> &gt; Multiple firing patterns in
+cortical neurons. For each type, the neuron is stimulated with a step
+current with low or high amplitude.</p>
+<p><img src="/img/neu_dyn/x151.png" srcset="/img/loading.gif" lazyload /> &gt; Multiple firing patterns in
+the AdEx neuron model. The spiking response can be classified by the
+steady-state firing behavior (vertical axis: tonic, adapting, bursting)
+and by its transient initiation pattern as shown along the horizontal
+axis: tonic (i.e. no special transient behavior), initial burst, or
+delayed spike initiation.</p>
+<h4 id="example-leaky-model-with-adaptation">Example: Leaky model with
+adaptation</h4>
+<p>Adaptation variables <span class="math inline">\(w_k\)</span> can
+also be combined with a standard leaky integrate-and-fire model <span
+class="math display">\[
+    \tau_m \frac{\mathrm{d}u}{\mathrm{d}t}=-(u-u_{rest})-R\sum_{k}^{}
+w_k +RI(t)
+\]</span> (6.7)</p>
+<p><span class="math display">\[
+    \tau_k \frac{\mathrm{d}w_k}{\mathrm{d}t}=a(u-u_{rest})-w_k+b_k\tau_k
+\sum_{t^{(f)}}^{} \delta(t-t^{(f)})
+\]</span> (6.8)</p>
+<p>At the moment of firing, defined by the threshold condition <span
+class="math inline">\(u(t^{(f)})=\theta_{reset}\)</span>, the voltage is
+reset to <span class="math inline">\(u=u_r\)</span> and the adaptation
+variable <span class="math inline">\(w_k\)</span> are increased by an
+amount <span class="math inline">\(b_k\)</span>.</p>
+<h2 id="firing-patterns">Firing Patterns</h2>
+<h3 id="classification-of-firing-patterns">Classification of Firing
+Patterns</h3>
+<p>It is advisable to separate the steady-state pattern from the initial
+transient phase. The initiation phase refers to the firing pattern right
+after the onset of the current step.</p>
+<p>Three main initiation pattern: the initiation can not be
+distinguished from the rest of the spiking response (tonic); the neuron
+responds with a significantly greater spike frequency in the transient
+(initial burst) than in the steady state; the neuronal firing starts
+with a delay (delay).</p>
+<p>Three main steady state patterns: regularly spaced spikes (tonic);
+gradually increasing interspike intervals (adapting); or regular
+alternations between short and long interspike intervals (bursting).</p>
+<p>Irregular firing patterns are also possible in the AdEx model, but
+the discussion below is restricted to deterministic models.</p>
+<h4 id="example-tonic-adapting-and-facilitating">Example: Tonic,
+Adapting and Facilitating</h4>
+<p>When the subthreshold coupling <span class="math inline">\(a\)</span>
+is small and the voltage reset is low (<span class="math inline">\(u_r
+\thickapprox u_{rest}\)</span>), the AdEx response is either tonic or
+adapting. This depends on the jump <span
+class="math inline">\(b\)</span> and the time scale <span
+class="math inline">\(\tau_w\)</span>.</p>
+<p>A large jump with a small time scale creates evenly spaced spikes at
+low frequency.On the other hand, a small spike-triggered current
+decaying on a long timescale can accumulate strength over several spikes
+and therefore successively decreases the net driving current <span
+class="math inline">\(I-w\)</span>. In general, weak but long-lasting
+spike-triggered currents cause spike-frequency adadptation while short
+but strong currents lead to a prolongation of the refactory period.
+There is a continuum between purely tonic spiking and strongly
+adapting.</p>
+<p>When the spike-triggered curent is depolarizing <span
+class="math inline">\((b&lt;0)\)</span> the interspike interval may
+gradually decreases, leading to spike-frequency facilitation.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x152.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x153.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x154.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x155.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<h3
+id="phase-plane-analysis-of-non-linear-integrate-and-fire-models-in-two-dimensions">Phase
+plane analysis of non-linear integrate-and-fire models in two
+dimensions</h3>
+<p>In the AdEx model, the <span
+class="math inline">\(u-\)</span>nullcline is again linear in the
+subthreshold regime and rises exponentially when <span
+class="math inline">\(u\)</span> is close to <span
+class="math inline">\(\theta\)</span>. Upon current injection, the <span
+class="math inline">\(u-\)</span>nullcline is shifted vertically by an
+amount proportional to the magnitude of the current <span
+class="math inline">\(I\)</span>.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x156.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x157.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x158.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x159.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>Each time the trajectory reaches <span
+class="math inline">\(u=\theta_{reset}\)</span>, it will be
+re-initialized at a reset value <span
+class="math inline">\((u_r,w+b)\)</span>.</p>
+<p>There are three regions of the phase plane with qualitatively
+different ensuing dynamics. A 'detour reset' corresponds to a downswing
+of the membrane potential after the end of the action potential. The
+distinction between detour and direct resets is helpful to understand
+how different firing patterns arise.</p>
+<h4 id="example-bursting">Example: Bursting</h4>
+<p>Initial burst: a neuron first fires a group of spikes at a
+considerably higher spiking frequency than the steady-state
+frequency.</p>
+<p>The shape of the voltage trajectory after the end of the action
+potential (downswing or not) can be used to distinguish between adapting
+(strictly detour or strictly direct resets) and initial bursting (first
+direct then detour resets).</p>
+<p>By alternation between direct and detour resets, regular bursting can
+arise.</p>
+<p>AdEx can also produce an irregular alternation. The parameters for
+irregular firing occupies a small and patchy volume in parameter
+space.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x160.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x161.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<h3 id="exploring-the-space-of-reset-parameters">Exploring the Space of
+Reset Parameters</h3>
+<p>Boundaries in the parameter space mark transitions between different
+types of firing pattern - which are often correlated with types of
+cells.</p>
+<p>Apply a step current with an amplitude twice as large as the minimal
+current necessary to elicit a spike and study the dependence of the
+observed firing pattern on the reset parameter <span
+class="math inline">\(u_r\)</span> and <span
+class="math inline">\(b\)</span>. All the other parameters are kept
+fixed.</p>
+<p><img src="/img/neu_dyn/x162.png" srcset="/img/loading.gif" lazyload /></p>
+<ul>
+<li>The line separating initial bursting and tonic firing resembles the
+shape of the <span class="math inline">\(u-\)</span>nullcline. That's
+because the <span class="math inline">\(u-\)</span>nullcline plays an
+important role in determining whether the reset is 'direct' or leads to
+a 'detour'.</li>
+<li>Regular bursting is possible, if the voltage reset <span
+class="math inline">\(u_r\)</span> is located above the voltage
+threshold <span class="math inline">\(\theta\)</span>. Irregular firing
+patterns are found within the bursting region of the parameter
+space.</li>
+<li>Adapting firing patterns occur only over a restricted range of jump
+amplitudes <span class="math inline">\(b\)</span> of the spike-triggered
+adaptation current.</li>
+</ul>
+<h4 id="example-piecewise-linear-model">Example: Piecewise-Linear
+Model</h4>
+<p>Consider a piecewise linear version of the AdEx model <span
+class="math display">\[
+    f(u)=
+    \begin{cases}
+        -(u-u_{rest}) \quad u\leqslant \theta_{rh} \\
+        \Delta_{T}(u-u_p) \quad \text{otherwise}
+    \end{cases}
+\]</span> (6.9)</p>
+<p>with <span class="math display">\[
+    u_p=\theta_{rh}+\frac{\theta_{rh}-u_{rest}}{\Delta_T},
+\]</span> (6.10) which we insert into the voltage equation <span
+class="math inline">\(\tau_m
+\mathrm{d}u/\mathrm{d}t=f(u)+RI-Rw\)</span>. Note that the <span
+class="math inline">\(u-\)</span>nullcline is given by <span
+class="math inline">\(w=f(u)/R+I\)</span> and takes at <span
+class="math inline">\(u=\theta_{rh}\)</span> its minimum value <span
+class="math inline">\(w_{min}=f(\theta_{rh})/R+I\)</span>.</p>
+<p>We assume separation of timescale (<span
+class="math inline">\(\tau_m/\tau_w \ll 1\)</span>) and exploit the fact
+that the trajectories in the phase plane are nearly horizontal - unless
+they approach the <span class="math inline">\(u-\)</span>nullcline.</p>
+<p>Map the initial condition <span
+class="math inline">\((u_r,w_r)\)</span> after a first reset to the
+value <span class="math inline">\(w_e\)</span> of the adaptation
+variable at the end of the trajectory: <span
+class="math inline">\(w_e=M(u_r,w_r)\)</span>. The next reset starts
+then from <span class="math inline">\((u_r,w_e+b)\)</span>. All
+trajectories with <span class="math inline">\(w_r&lt;w_{min}\)</span>
+remain horizontal, so that <span
+class="math inline">\(w_e=w_r\)</span>.</p>
+<p>If <span class="math inline">\(w_r&gt;w_{min}\)</span>, we
+distinguish two possible cases. The first one corresponds to a voltage
+reset below the threshold, <span
+class="math inline">\(u_r&lt;\theta_{rh}\)</span>. A trajectory
+initiated at <span class="math inline">\(u_r&lt;\theta_{rh}\)</span>
+evolves horizontally until it comes close to the left branch of the
+<span class="math inline">\(u-\)</span>nullcline. It then follows the
+<span class="math inline">\(u-\)</span>nullcline at a small distance
+<span class="math inline">\(x(u)\)</span> below it. The distance can be
+shown to be <span class="math display">\[
+    x(u)=\frac{\tau_m}{\tau_w}[I-(a+R^{-1})(u-u_{rest})],       
+\]</span> (6.11) which vanishes in the limit <span
+class="math inline">\(\tau_m/\tau_w \to 0\)</span>. For <span
+class="math inline">\(u_r&lt;\theta_{rh}\)</span>. <span
+class="math display">\[
+    M(u_r,w_r)=
+    \begin{cases}
+        w_r \quad w_r&lt;f(u_r)/R+I \\
+        f(\theta_{rh})/R+I \quad \text{otherwise}
+    \end{cases}
+\]</span> (6.12) If <span
+class="math inline">\(u_r&gt;\theta_{rh}\)</span> then we have a direct
+reset (i.e.,movement starts to the right) if <span
+class="math inline">\((u_r,w_r)\)</span> lands below the right branch of
+the <span class="math inline">\(u-\)</span>nullcline and a detour reset
+otherwise <span class="math display">\[
+    M(u_r,w_r)=
+    \begin{cases}
+        w_r \quad w_r&lt;f(u_r)/R+I \\
+        f(\theta_{rh})/R+I \quad \text{otherwise}
+    \end{cases}
+\]</span> (6.13)</p>
+<p><img src="/img/neu_dyn/x163.png" srcset="/img/loading.gif" lazyload /> &gt; Fig.6.7</p>
+<p>The map <span class="math inline">\(M\)</span> uniquely defines the
+firing pattern. Regular bursting is possible only if <span
+class="math inline">\(u_r&gt;\theta_{rh}\)</span> and <span
+class="math inline">\(b&lt;f(u_r)-f(\theta_{rh})\)</span> so that at
+least one reset in each burst lands below the <span
+class="math inline">\(u-\)</span>nullcline. For <span
+class="math inline">\(u_r&gt;\theta_{rh}\)</span>, we have tonic spiking
+with detour resets when <span
+class="math inline">\(b&gt;f(u_r)+I\)</span> and initial bursting if
+<span
+class="math inline">\(f(u_r)+I&gt;b&gt;f(u_r)-f(\theta_{rh})+x(\theta_{rh})\)</span>.</p>
+<p>If <span class="math inline">\(u_r\leqslant \theta\)</span> we have
+tonic spiking with detour resets when <span
+class="math inline">\(b&gt;f(u_r)+I\)</span>, tonic spiking with direct
+reset when <span
+class="math inline">\(b&lt;f(u_r)-f(\theta_{rh})\)</span> and initial
+bursting if <span
+class="math inline">\(f(u_r)+I&gt;b&gt;f(u_r)-f(\theta_{rh})\)</span>.
+Note that the rough layout of the parameter regions in Fig.6.7A.</p>
+<h3 id="exploring-the-space-of-subthreshold-parameters">Exploring the
+Space of Subthreshold Parameters</h3>
+<p>While the exponential integrate-and-fire model losses stability
+always via a saddle-node bifurcation, the AdEx can become unstable
+either via a Hopf or a saddle-node bifurcation.</p>
+<p>In the AdEx, an eigenvalue analysis shows that the stable fixed point
+looses stability via a Hopf bifurcation if <span
+class="math inline">\(aR&gt;\tau_m/\tau_w\)</span>.</p>
+<div class="note note-info">
+            <p>Otherwise, when the coupling from voltage to adaptation (parameter<span class="math inline">\(a\)</span>) and back from adaptation tovoltage (parameter <span class="math inline">\(R\)</span>) are bothweak, an increase in the current causes the stable fixed point to mergewith the unstable one, so that both disappear via a saddle-nodebifurcation.</p>
+          </div>
+<div class="note note-warning">
+            <p>The type of bifurcation has no influence on the firing pattern(bursting, adapting, tonic) which depends mainly on the choice of resetparameters.</p>
+          </div>
+<p>However, the subthreshold parameters do control the presence or
+absence of oscillations in response to a short current pulse.</p>
+<p><strong>resonator</strong>: a model showing damped oscillations.</p>
+<p><strong>integrator</strong>: a model without damped oscillations.</p>
+<p>The presence of damped oscillations depends non-linearly on <span
+class="math inline">\(a/g_{L}\)</span> and <span
+class="math inline">\(\tau_m/\tau_w\)</span> as summarized in the figure
+below.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x164.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x165.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>The frequency of the damped oscillation is given by <span
+class="math display">\[
+    \omega=\frac{4}{\tau_w}\left[aR-\frac{2\tau_w}{\tau_m}\left(1-\frac{\tau_m}{\tau_w}\right)^{2}\right]
+\]</span> (6.14)</p>
+<h4 id="example-transient-spiking">Example: Transient Spiking</h4>
+<p>Upon the onset of a current step, some neurons may fire a small
+number of spikes and then remain silent, even if the stimulus is
+maintained for a very long time. An AdEx model with subthreshold
+coupling <span class="math inline">\(a&gt;0\)</span> can explain this
+phenomenon whereas pure spike-triggered adaptation (<span
+class="math inline">\(a=0;b&gt;0\)</span>) cannot account for it,
+because adaptation would eventually decay back to zero so that the
+neuron fires another spike.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x166.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x167.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>Choose parameter <span class="math inline">\(a\)</span> and <span
+class="math inline">\(\tau_w\)</span> such that the neuron is in the
+resonator regime. The voltage response to a step input then exhibits
+damped oscillations. Phase plane analysis reveals that sometimes several
+resets are needed before the trajectory is attracted towards the fixed
+point.</p>
+<h2 id="biophysical-origin-of-adaptation">Biophysical Origin of
+Adaptation</h2>
+<p>We now show that the variables <span
+class="math inline">\(w_k\)</span> can be linked to the biophysics of
+ion channels and dendrites.</p>
+<h3 id="subthreshold-adaptation-by-a-single-slow-channel">Subthreshold
+adaptation by a single slow channel</h3>
+<p>First our aim is to give a biophysical interpretation of the
+parameters <span class="math inline">\(a\)</span>, <span
+class="math inline">\(\tau_w\)</span>, and the variable <span
+class="math inline">\(w\)</span> that show up in the adaptation equation
+<span class="math display">\[
+    \tau_w \frac{\mathrm{d}w}{\mathrm{d}t}=a(u-E_0)-w.
+\]</span> (6.15) Here and in the following we write <span
+class="math inline">\(E_0\)</span> instead of <span
+class="math inline">\(u_{rest}\)</span> in order to simplify notation
+and keep the treatment slightly more general.</p>
+<p>We know rapid activation of the sodium channels, important during the
+upswing of action potentials, is well approximated by the exponential
+nonlinearity in the voltage equation of the AdEx model. We will see now
+that the subthreshold current <span class="math inline">\(w\)</span> is
+linked to the dynamics of other ion channels with a slower dynamics.</p>
+<p>Let us focus on the model of a membrane with a leak current and a
+single, slow, ion channel, say a potassium channel of the Hodgkin-Huxley
+type <span class="math display">\[
+    \tau_m
+\frac{\mathrm{d}u}{\mathrm{d}t}=-(u-E_{L})-R_{L}g_{K}n^{p}(u-E_k)+R_{L}I_{ext}
+\]</span> (6.16)</p>
+<p>where <span class="math inline">\(R_{L}\)</span> and <span
+class="math inline">\(E_{L}\)</span> are the resistance and reversal
+potential of the leak current, <span
+class="math inline">\(\tau_m=R_{L}C\)</span> the membrane time constant,
+<span class="math inline">\(g_{K}\)</span> the maximal conductance of
+the open channel and <span class="math inline">\(n\)</span> the gating
+variable (which appears with arbitrary power <span
+class="math inline">\(p\)</span>) with dynamics <span
+class="math display">\[
+    \frac{\mathrm{d}n}{\mathrm{d}t}=-\frac{n-n_0(u)}{\tau_n(u)}.
+\]</span> (6.17)</p>
+<p>As long as the membrane potential stays below threshold, we can
+linearize the equations (6.16) and (6.17) aroung the resting voltage
+<span class="math inline">\(E_0\)</span>, given by the fixed point
+condition <span class="math display">\[
+    E_0=\frac{E_{L}+(R_{L}g_{K})n_0^{p}(E_0)E_{K}}{1+(R_{L}g_{K})n_0^{p}(E_0)}.
+\]</span> (6.18)</p>
+<p>The resting potential is shifted with respect to the leak reversal
+potential if the channel is partially open at rest, <span
+class="math inline">\(n_0(E_0)&gt;0\)</span>.</p>
+<p>We introduce the parameter <span class="math inline">\(\beta=g_{K}p
+n_0^{p-1}(E_0)(E_0-E_{K})\)</span> and expand <span
+class="math inline">\(n_0(u)=n_0(E_0)+n_0&#39;(u-E_0)\)</span> where
+<span class="math inline">\(n_0&#39;\)</span> is the derivative <span
+class="math inline">\(\mathrm{d}n_0/\mathrm{d}u\)</span> evaluated at
+<span class="math inline">\(E_0\)</span>.</p>
+<p>The variable <span class="math inline">\(w=\beta[n-n_0(E_0)]\)</span>
+then follows the linear equation <span class="math display">\[
+    \tau_n(E_0) \frac{\mathrm{d}w}{\mathrm{d}t}=a(u-E_0)-w.
+\]</span> (6.19)</p>
+<p>Note that the time constant of the variable <span
+class="math inline">\(w\)</span> is given by the time constant of the
+channel at the resting potential. The parameter <span
+class="math inline">\(a=\beta n_0&#39;(E_0)\)</span> is proportional to
+the sensitivity of the channel to a change in the membrane voltage, as
+measured by the slope <span
+class="math inline">\(\mathrm{d}n_0/\mathrm{d}u\)</span> at <span
+class="math inline">\(E_0\)</span>.</p>
+<p>The adaptation variable <span class="math inline">\(w\)</span> is
+coupled into the voltage equation in the standart form <span
+class="math display">\[
+    \tau_m^{eff}=-(u-E_0)-Rw+RI_{ext}.
+\]</span> (6.20)</p>
+<p>Note that the membrane time constant and the resistance are rescaled
+by a factor <span
+class="math inline">\(\lambda=1+(R_{L}g_{K})n_0^{p}(E_0)\)</span> with
+respect to their values in the passive membrane equation (6.16). Namely,
+<span class="math inline">\(\tau_m^{eff}=\tau_m/\lambda\)</span>, <span
+class="math inline">\(R=R_{L}/\lambda\)</span>. In fact, both are
+smaller because of partial opening of the channel at rest.</p>
+<p>In summary, each channel with nonzero slope <span
+class="math inline">\(\mathrm{d}n_0/\mathrm{d}u\)</span> at <span
+class="math inline">\(E_0\)</span> gives rise to an effective adaptation
+variable <span class="math inline">\(w\)</span>. Since there are many
+channels, we can expect many variables <span
+class="math inline">\(w_k\)</span>. Those with similar time constants
+can be summed and grouped into a single equation. But if time constants
+are different by an order of magnitude or more than several adaptation
+variables are needed.</p>
+<h3
+id="spike-triggered-adaptation-arising-from-a-biophysical-ion-channel">Spike-triggered
+adaptation arising from a biophysical ion-channel</h3>
+<p>We have seen that some ion channels are partially open at the resting
+potential, while others react only when the membrane potential is well
+above the firing threshold. The second group gives a biophysical
+interpretation of the jump amplitude <span
+class="math inline">\(b\)</span> og a spike-triggered adaptation
+current.</p>
+<p>We now study the change in the state of the ion channel induced
+during the large-amplitude excursion of the voltage trajectory during a
+spike. During the spike, the target <span
+class="math inline">\(n_0(u)\)</span> of the gating variable is close to
+one; but since the time constant <span
+class="math inline">\(\tau_n\)</span> is long, the target is not reached
+during the short time that the voltage stays above the activation
+threshold.</p>
+<p>Nevertheless, the ion channel is partially activated by the spike.
+Unless the neuron is firing at a very large firing rate, each additional
+spike activate the channel further, always by the same amount <span
+class="math inline">\(\Delta_{n}\)</span>, which depends on the duration
+of the spike and the activation threshold of the current. The
+spike-triggered jump in the adapting current <span
+class="math inline">\(w\)</span> is then <span class="math display">\[
+    b=\beta \Delta_n. \tag{6.21}
+\]</span> where <span class="math inline">\(\beta=g_{K}p
+n_0^{p-1}(E_0)(E_0-E_K)\)</span> has been defined before.</p>
+<h4
+id="example-calculating-the-jump-b-of-the-spike-triggered-adaptation-current">Example:
+Calculating the jump <span class="math inline">\(b\)</span> of the
+spike-triggered adaptation current</h4>
+<p>We consider a gating dynamics <span class="math display">\[
+    \frac{\mathrm{d}n}{\mathrm{d}t}=-\frac{n-n_0(u)}{\tau_n(u)}.
+\]</span> (6.22)</p>
+<p>with the steplike activation function <span
+class="math inline">\(n_0(u)=\Theta(u-u_0^{act})\)</span> where <span
+class="math inline">\(u_{0}^{act}=-30\)</span> mV and <span
+class="math inline">\(\tau_n(u)=100\)</span> ms independent of <span
+class="math inline">\(u\)</span>. The activation threshold <span
+class="math inline">\(-30\)</span> mV is above the firing threshold
+(typically in the range of <span class="math inline">\(-40\)</span> mV).
+Assuming that, during an action potential the voltage remains for <span
+class="math inline">\(\Delta_{t}=1\)</span> ms above <span
+class="math inline">\(u_0^{act}\)</span>, we found <span
+class="math display">\[
+    n_{after}-n_{before}\thickapprox \ln
+(1+\frac{n_{after}-n_{before}}{1-n_{after}})=\frac{\Delta_{t}}{\tau_n}=\Delta_{n}
+\]</span></p>
+<h3
+id="subthreshold-adaptation-caused-by-passive-dendrites">Subthreshold
+adaptation caused by passive dendrites</h3>
+<p>Here we show that a passive dendrite can also give rise to a
+subthreshold coupling of the form of (6.15).</p>
+<p>We focus on a simple neuron model with two compartments, representing
+the soma and the dendrite, superscript <span
+class="math inline">\(s\)</span> and <span
+class="math inline">\(d\)</span> respectively. The two compartments are
+both passive with membrane potential <span
+class="math inline">\(V^{s}\)</span>, <span
+class="math inline">\(V^{d}\)</span>, transversal resistance <span
+class="math inline">\(R_{T}^{s}\)</span>, <span
+class="math inline">\(R_{T}^{d}\)</span>, capacity <span
+class="math inline">\(C^{s}\)</span>, <span
+class="math inline">\(C^{d}\)</span> and resting potential <span
+class="math inline">\(u_{rest}\)</span>, <span
+class="math inline">\(E^{d}\)</span>. The two compartments are linked by
+a longitudinal resistance <span class="math inline">\(R_{L}\)</span>. If
+current is injected only in the soma, then the two-compartment model
+with passive dendrites corresponds to <span class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t}V^{s}=\frac{1}{C^{s}}\left[-\frac{(V^{s}-u_{rest})}{R_{T}^{s}}-\frac{V^{s}-V^{d}}{R_{L}}+I(t)\right],     
+\]</span> (6.23)</p>
+<p><span class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t}V^{d}=\frac{1}{C^{d}}\left[-\frac{(V^{d}-E^{d})}{R_{T}^{d}}-\frac{V^{d}-V^{s}}{R_{L}}\right].
+\]</span> (6.24)</p>
+<p>We assume that <span class="math inline">\(E^{d}=u_{rest}=E\)</span>.
+In this case the adaptation current is <span
+class="math inline">\(w=-(V^{d}-u_{rest})/R_{L}\)</span> and the two
+equations above reduce to <span class="math display">\[
+    \tau^{eff}\frac{\mathrm{d}V^{s}}{\mathrm{d}t}=-(V^{s}-E)-R^{eff}w
+\]</span> (6.25) <span class="math display">\[
+    \tau_w \frac{\mathrm{d}w}{\mathrm{d}t}=a(V^{s}-E)-w
+\]</span> (6.26) with an effective input resistance <span
+class="math inline">\(R^{eff}=1/[1/R_{T}^{s}+1/R_{L}]\)</span>, an
+effective somatic time constant <span
+class="math inline">\(\tau^{eff}=C^{s}R^{eff}\)</span> and effective
+adaptation time constant <span
+class="math inline">\(\tau_w=R_{L}C^{d}/[1+(R_{L}/R_{T}^{d})]\)</span>
+and a coupling between somatic voltage and adaptation current <span
+class="math inline">\(a=-[R_{L}+(R_{L}^{2}/R_{T}^{d})]^{-1}\)</span>.</p>
+<ul>
+<li><span class="math inline">\(a\)</span> is always negative, which
+means that passive dendrites introduce a facilitating subthreshold
+coupling.</li>
+<li>Facilitation is particularly strong with a small longitudinal
+resistance.</li>
+<li>The timescale of the facilitation <span
+class="math inline">\(\tau_w\)</span> is smaller than the dendritic time
+constant <span class="math inline">\(R_{T}^{d}C^{d}\)</span> - so that,
+compared to other 'adaptation' currents, the dendritic current is a
+relatively fast one.</li>
+</ul>
+<h4 id="example-bursting-with-a-passive-dendrite-and-i_m">Example:
+Bursting with a Passive Dendrite and <span
+class="math inline">\(I_{M}\)</span></h4>
+<p>Suppose that the action potential can be approximated by a
+one-millisecond pulse at <span class="math inline">\(0\)</span> mV. Then
+each spike brings an increase in the dendritic membrane potential. In
+terms of the current <span class="math inline">\(w\)</span>, the
+increase is <span
+class="math inline">\(b=-aE_0(1-\mathrm{e}^{-1/\tau_w})\)</span>. Again,
+the spike-triggered jump is always negative, leading to spike-triggered
+facilitation.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x168.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img
+src="/img/neu_dyn/x169.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>The above figures shows an example where we combined a dendritic
+compartment with the linearized effects of the M-current to result in
+regular bursting.</p>
+<p>The bursting is meditated by the dendritic facilitation which is
+counterbalanced by the adapting effects of <span
+class="math inline">\(I_{M}\)</span>.</p>
+<p>This example suggests that the dynamics of spike-triggered currents
+on multiple timescales can be understood in terms of their stereotypical
+effect on the membrane potential.</p>
+<h2 id="spike-response-model-srm">Spike response model (SRM)</h2>
+<p>We introduced 'filter picture' in section 1.3.5. In this picture, the
+parameters of the model are replaced by (parametric) functions of
+time.</p>
+<p>In contrast to nonlinear integrate-and-fire models, the SRM has no
+'intrinsic' firing threshold but only the sharp numerical threshold for
+reset.</p>
+<p>The subthreshold behavior of the SRM is richer than that of the
+integrate-and-fire model discussed so far and can account for various
+aspects of refractoriness and adaptation.</p>
+<h3 id="definition-of-the-srm">Definition of the SRM</h3>
+<p>In the framework of SRM the state of a neuron is described by a
+single variable <span class="math inline">\(u\)</span> which we
+interpret as the membrane potential.</p>
+<p>After a short current pulse perturbing <span
+class="math inline">\(u\)</span>, it takes some time before <span
+class="math inline">\(u\)</span> returns to rest. The function <span
+class="math inline">\(\kappa(s)\)</span> describes the time course of
+the voltage response to a short current pulse at time <span
+class="math inline">\(s=0\)</span>. Because the subthreshold behavior of
+the membrane potential is taken as linear, the voltage response <span
+class="math inline">\(h\)</span> to an arbitrary time-dependent
+stimuating current <span class="math inline">\(I^{ext}(t&#39;)\)</span>
+is given by the integral <span
+class="math inline">\(h(t)=\int_{0}^{\infty} \kappa(s)I^{ext}(t-s)
+\mathrm{d}s\)</span>.</p>
+<p>Spike firing is defined by a threshold process. The form of the
+action potential and the after-potential is described by a function
+<span class="math inline">\(\eta\)</span>. The evolution of <span
+class="math inline">\(u\)</span> is given by <span
+class="math display">\[
+    u(t)=\sum_{f} \eta(t-t^{(f)})+\int_{0}^{\infty}
+\kappa(s)I^{ext}(t-s) \mathrm{d}s + u_{rest}    
+\]</span> (6.27)</p>
+<p>Introducing the spike train <span
+class="math inline">\(S(t)=\sum_{f}^{} \delta(t-t^{(f)})\)</span>,
+(6.27) can be also written as a convolution <span
+class="math display">\[
+    u(t)=\int_{0}^{\infty} \eta(s)S(t-s) \mathrm{d}s +\int_{0}^{\infty}
+\kappa(s)I^{ext}(t-s) \mathrm{d}s+u_{rest}
+\]</span> (6.28)</p>
+<p>The threshold <span class="math inline">\(\theta\)</span> is not
+fixed, but time-dependent <span class="math display">\[
+    \theta \to \theta(t)
+\]</span> (6.29)</p>
+<p>Firing occurs whenever the membrane potential <span
+class="math inline">\(u\)</span> reaches the dynamic threshold <span
+class="math inline">\(\theta(t)\)</span> from below <span
+class="math display">\[
+    t=t^{(f)} \Leftrightarrow u(t)=\theta(t)\ \text{and}\
+\frac{\mathrm{d}[u(t)-\theta(t)]}{\mathrm{d}t}&gt;0.
+\]</span> (6.30)</p>
+<p><img src="/img/neu_dyn/x170.png" srcset="/img/loading.gif" lazyload /></p>
+<h4 id="example-dynamic-threshold---and-how-to-get-rid-of-it">Example:
+Dynamic threshold - and how to get rid of it</h4>
+<p>A standard model of the dynamic threshold is <span
+class="math display">\[
+    \theta(t)=\theta_0+\sum_{f}^{}
+\theta_1(t-t^{(f)})=\theta_0+\int_{0}^{\infty} \theta_1(s)S(t-s)
+\mathrm{d}s
+\]</span> (6.31)</p>
+<p>where <span class="math inline">\(\theta_0\)</span> is the 'normal'
+threshold of neuron <span class="math inline">\(i\)</span> in the
+absence of spiking. After each output spike, the firing threshold of the
+neuron is increased by an amount <span
+class="math inline">\(\theta_1(t-t^{(f)})\)</span> where <span
+class="math inline">\(t^{(f)}&lt;t\)</span> denote the firing times in
+the past.</p>
+<p>For example, during an absolute refractory period <span
+class="math inline">\(\Delta^{abs}\)</span>, we may set <span
+class="math inline">\(\Delta_{\theta}\)</span> for a few milliseconds to
+a large and positive value so as to avoid any firing and let it relax
+back to zero over the next few hundred milliseconds.</p>
+<p>There is no need to interpret the variable <span
+class="math inline">\(u\)</span> as the membrane potential. It is often
+convenient to transform the variable <span
+class="math inline">\(u\)</span> so as to remove the time-dependence of
+the threshold. <span class="math display">\[
+    \eta(t-t^{(f)}) \to
+\eta^{eff}(t-t^{(f)})=\eta(t-t^{(f)})-\theta_1(t-t^{(f)})
+\]</span> (6.32)</p>
+<p>The argument can also be turned the other way round, so as to remove
+the spike after-potential and only work with a dynamic threshold.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x171.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x172.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<h3 id="interpretation-of-eta-and-kappa">Interpretation of <span
+class="math inline">\(\eta\)</span> and <span
+class="math inline">\(\kappa\)</span></h3>
+<p>(6.27) and (6.30) defines a mathematical model. We'll give a
+biological interpretation of the terms.</p>
+<p>The kernel <span class="math inline">\(\kappa(s)\)</span> is the
+linear response of the membrane potential to an input current. It
+describes the time course of a deviation of the membrane potential from
+its resting value that is caused by a short current pulse ("impulse
+response").</p>
+<p>The kernel <span class="math inline">\(\eta\)</span> describes the
+standard form of an action potential of neuron <span
+class="math inline">\(i\)</span> including the negative overshoot which
+typically follows a spike (the spike afterpotential). Graphically
+speaking, a contribution <span class="math inline">\(\eta\)</span> is
+'pasted in' each time membrane potential reaches the threshold <span
+class="math inline">\(\theta\)</span>.</p>
+<p>In a simplified model, the form of the action potential may be
+neglected as long as we keep track of the firing times <span
+class="math inline">\(t^{(f)}\)</span>. The kernel <span
+class="math inline">\(\eta\)</span> describes then simply the 'reset' of
+the membrane potential to a lower value after the spike at <span
+class="math inline">\(t^{(f)}\)</span>. <span class="math display">\[
+    \eta(t-t^{(f)})=-\eta_0 \exp
+\left(-\frac{t-t^{(f)}}{\tau_{recov}}\right)
+\]</span> (6.33)</p>
+<p>with a parameter <span class="math inline">\(\eta_0&gt;0\)</span> and
+a recovery time constant <span
+class="math inline">\(\tau_{recov}\)</span>. The leaky
+integrate-and-fire model is in fact a special case of the SRM, with
+parameter <span class="math inline">\(\eta_0=(\theta-u_{r})\)</span> and
+<span class="math inline">\(\tau_{recov}=\tau_m\)</span>.</p>
+<h4 id="example-refractoriness">Example: Refractoriness</h4>
+<p>Absolute refractoriness can be incorporated in the SRM by setting the
+dynamic threshold during a time <span
+class="math inline">\(\Delta^{abs}\)</span> to an extremely high value
+that cannot be attained.</p>
+<p>Relative refractoriness can be mimicked in various ways. - After a
+spike the firing threshold returns only slowly back to its normal value
+(increase in firing threshold). - After the spike the membrane
+potential, and hence <span class="math inline">\(\eta\)</span>, passes
+through a regime of hyperpolarization (spike after-potential) where the
+voltage is below the resting potential. During this phase, more
+stimulation than usual is needed to drive the membrane potential above
+the threshold. This is equivalent to a transient increase of the firing
+threshold. - The responsiveness of the neuron is reduced immediately
+after a spike. In the SRM we can model the reduced responsiveness by
+making the shape of <span class="math inline">\(\varepsilon\)</span> and
+<span class="math inline">\(\kappa\)</span> depend on the time since the
+last spike timing <span class="math inline">\(\hat{t}\)</span>.</p>
+<p>A slightly more general version of SRM is <span
+class="math display">\[
+    u(t)=\sum_{f}^{} \eta(t-t^{(f)})+\int_{0}^{\infty}
+\kappa(t-\hat{t},s)I^{ext}(t-s) \mathrm{d}s+u_{rest}.
+\]</span> (6.34)</p>
+<h3 id="mapping-the-integrate-and-fire-model-to-the-srm">Mapping the
+Integrate-and-Fire Model to the SRM</h3>
+<p>Recall that the leaky integrate-and-fire model follows the equation
+<span class="math display">\[
+    \tau_m \frac{\mathrm{d}u_i}{\mathrm{d}t}=-(u_i-E_0)-R\sum_{k}^{} w_k
++RI_i(t)
+\]</span> (6.35)</p>
+<p><span class="math display">\[
+\{t_i^{(f)}\} \in \{t | u_i(t)=\theta\}.
+\]</span> (6.36)</p>
+<p><span class="math display">\[
+\tau_k \frac{\mathrm{d}w_k}{\mathrm{d}t}=a_k(u_i-E_0)-w_k+\tau_k b_k
+\sum_{t^{(f)}}^{} \delta(t-t^{(f)})
+\]</span><br />
+(6.37)</p>
+<p>Let us consider a short current pulse <span
+class="math inline">\(I_i^{out}=-q\delta(t)\)</span> applied to the
+<span class="math inline">\(RC\)</span> circuit. Let <span
+class="math inline">\(q=C(\theta-u_r)\)</span>, the total reset current
+is <span class="math display">\[
+    I_i^{out}(t)=-C(\theta-u_r)\sum_{f}^{} \delta(t-t_i^{(f)})   
+\]</span> (6.38)</p>
+<p>We add the output current (6.38) on the right-hand side of (6.35),
+<span class="math display">\[
+    \tau_m\frac{\mathrm{d}u_i}{\mathrm{d}t}=-(u_i-E_0)-R\sum_{k}^{} w_k
++RI_i(t)-RC(\theta-u_r) \sum_{f}^{} \delta(t-t_i^{(f)}),
+\]</span> (6.39)</p>
+<p><span class="math display">\[
+    \tau_k \frac{\mathrm{d}w_k}{\mathrm{d}t}=a_k(u_i-E_0)-w_k+\tau_k b_k
+\sum_{f}^{} \delta(t-t^{(f)})
+\]</span> (6.40)</p>
+<p>Now we solve (6.39) and (6.40). - First, we shift the voltage so as
+to set <span class="math inline">\(E_0\)</span> to zero. - Second, we
+calculate the eigenvalues and eigenvectors of the 'free' equations in
+the absence of input (and therefore no spikes). If there are <span
+class="math inline">\(K\)</span> adaptation variables, we have a total
+of <span class="math inline">\(K+1\)</span> eigenvalues (including <span
+class="math inline">\(\pm \sqrt{R(-a_1-\cdots -a_K)}-1\)</span> and
+<span class="math inline">\(-1\)</span> with a multiplicity of <span
+class="math inline">\(K-1\)</span>). The associated eigenvectors are
+<span class="math inline">\(\mathbf{e}_k\)</span> with components <span
+class="math inline">\((e_{k0},\cdots ,e_{kK})^{\mathsf{T}}\)</span>. -
+Third, we express the response to an impulse <span
+class="math inline">\(\Delta u=1\)</span> in the voltage (no
+perturbation in the adaptation variables) in terms of the <span
+class="math inline">\(K+1\)</span> eigenvectors: <span
+class="math inline">\((1,0,\cdots ,0)^{\mathsf{T}}=\sum_{k=0}^{K}
+\beta_k \mathbf{e}_k\)</span>. - Finally, we express the pulse caused by
+a reset of voltage and adaptation variables in terms of the eigenvectors
+<span class="math inline">\((-\theta+u_r,b_1,\cdots
+,b_{K})^{\mathsf{T}}=\sum_{k=0}^{K} \gamma_k \mathbf{e}_k\)</span>.</p>
+<p>The response to the reset pulses yields the kernel <span
+class="math inline">\(\eta\)</span> while the response to voltage pulses
+yields the filter <span class="math inline">\(\kappa(s)\)</span> of the
+SRM <span class="math display">\[
+    u_i(t)=\sum_{f}^{} \eta(t-t_i^{(f)})+\int_{0}^{\infty}
+\kappa(s)I_i(t-s) \mathrm{d}s,
+\]</span> (6.41)</p>
+<p>with kernels <span class="math display">\[
+    \eta(s)=\sum_{k=0}^{K} \gamma_k e_{k0} \exp (\lambda_k s)\Theta(s),
+\]</span> (6.42)</p>
+<p><span class="math display">\[
+    \kappa(s)=\sum_{k=0}^{K} \beta_k e_{k0} \exp (\lambda_k s)\Theta(s).
+\]</span> (6.43)</p>
+<blockquote>
+<p>我大概能理解，但是求导的一些细节不是很了解</p>
+</blockquote>
+<h4 id="example-adaptation-and-bursting">Example: Adaptation and
+Bursting</h4>
+<p>Study a leaky integrate-and-fire model with a single slow adaptation
+variable <span class="math inline">\(\tau_w\gg \tau_m\)</span> which is
+coupled to the voltage in the threshold regime (<span
+class="math inline">\(a&gt;0\)</span>) and increased during spiking by
+an amount <span class="math inline">\(b\)</span>.</p>
+<p>With a parameter <span class="math inline">\(\delta=\tau_m/\tau_w \ll
+1\)</span>, the eigenvalues are <span
+class="math inline">\(\lambda_1=-\tau_w[1-a\delta]\)</span> and <span
+class="math inline">\(\lambda_2=-\tau_w\delta[1+a]\)</span>, associated
+to eigenvectors <span
+class="math inline">\(\mathbf{e}_1=(1,a\delta)^{\mathsf{T}}\)</span> and
+<span
+class="math inline">\(\mathbf{e}_2=(1,-1+\delta+a\delta)^{\mathsf{T}}\)</span>.
+The resulting spike after-potential kernel <span
+class="math inline">\(\eta(s)\)</span> is shown below. Because of the
+slow constant <span class="math inline">\(\tau_w\gg \tau_m\)</span>, the
+kernel <span class="math inline">\(\eta\)</span> has a long
+hyperpolarizing tail. The neuron model responds to a step current with
+adaptation, because of accumulation of hyperpolarizing spike-after
+potentials over many spikes.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x173.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img
+src="/img/neu_dyn/x174.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>As a second example, consider four adaptation currents with different
+time constants <span
+class="math inline">\(\tau_1&lt;\tau_2&lt;\tau_3&lt;\tau_4\)</span>. We
+assume pure spike-triggered coupling (<span
+class="math inline">\(a=0\)</span>) so that the integration of the
+differential equations of <span class="math inline">\(w_k\)</span> gives
+each an exponential current <span class="math display">\[
+    w_k(t)=\sum_{f}^{} b_k \exp \left( -\frac{t-t^{(f)}}{\tau_k}\right)
+\Theta(t-t^{(f)})   
+\]</span> (6.44)</p>
+<p>Choose as follows: - The time constant of the first current is very
+short and <span class="math inline">\(b_1&lt;0\)</span> (inward current)
+so as to model the upswing of the action potential (a candidate current
+would be sodium). - A second current (e.g. a fast potassium channel)
+with a slightly longer time constant is outgoing (<span
+class="math inline">\(b_2&gt;0\)</span>) and leads to the downswing and
+rapid reset of the membrane potential. - The third current, with a time
+constant of tens of milliseconds is inward (<span
+class="math inline">\(b_3&lt;0\)</span>). - The slowest current is again
+hyperpolarizing (<span class="math inline">\(b_4&gt;0\)</span>).</p>
+<p>The spike after-potential <span class="math inline">\(\eta\)</span>
+is shown below.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x639.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img
+src="/img/neu_dyn/x640.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>Because of the depolarizing spike after-potential induced by the
+inward current <span class="math inline">\(w_3\)</span>, the neuron
+model responds to a step current of appropriate amplitude with bursts.
+The bursts end because of the accumulation of the hyperpolarizing effect
+of the slowest current.</p>
+<h3
+id="multi-compartment-integrate-and-fire-model-as-a-srm">Multi-compartment
+integrate-and-fire model as a SRM</h3>
+<p>In this section, we want to show that neurons with a linear dendritic
+tree and a voltage threshold for spike firing at the soma can be mapped
+to the SRM.</p>
+<p>We study an integrate-and-fire model with a passive dendritic tree
+described by <span class="math inline">\(n\)</span> compartments.
+Membrane resistance, core resistance, and capacity of compartment <span
+class="math inline">\(\mu\)</span> are denoted by <span
+class="math inline">\(R_{T}^{\mu}\)</span>, <span
+class="math inline">\(R_{L}^{\mu}\)</span>, and <span
+class="math inline">\(C^{\mu}\)</span>, respectively. The longitudinal
+core resistance between compartment <span
+class="math inline">\(\mu\)</span> and a neighboring compartment <span
+class="math inline">\(\nu\)</span> is <span class="math inline">\(r^{\mu
+\nu}=(R_{L}^{\mu}+R_{L}^{\nu})/2\)</span>. Compartment <span
+class="math inline">\(\mu=1\)</span> represents the soma and is equipped
+with a simple mechanism for spike generation, i.e., with a threshold
+criterion as in the standard integrate-and-fire model. The remaining
+dendritic compartments (<span class="math inline">\(2\leqslant
+\mu\leqslant n\)</span>) are passive.</p>
+<p>Each compartment <span class="math inline">\(1\leqslant \mu\leqslant
+n\)</span> of neuron <span class="math inline">\(i\)</span> may receive
+input <span class="math inline">\(I_i^{\mu}(t)\)</span> from presynaptic
+neurons. As a result of spike generation, there is an additional reset
+current <span class="math inline">\(\Omega_i(t)\)</span> at the soma.
+The membrane potential <span class="math inline">\(V_i^{\mu}\)</span> of
+compartment <span class="math inline">\(\mu\)</span> is given by <span
+class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t}V_i^{\mu}=\frac{1}{C_i^{\mu}}\left[
+-\frac{V_i^{\mu}}{R_{T,i}^{\mu}}-\sum_{\nu}^{}
+\frac{V_i^{\mu}-V_i^{\nu}}{r_{i}^{\mu \nu}}+I_i^{\mu}(t)-\delta^{\mu
+1}\Omega_i(t)\right]  
+\]</span> (6.45)</p>
+<p>where the sum runs over all neighbors of compartment <span
+class="math inline">\(\mu\)</span>. <span
+class="math inline">\(\delta^{\mu \nu}\)</span> is the Kronecker symbol.
+Below we will identify the somatic voltage <span
+class="math inline">\(V_i^{1}\)</span> with the potential <span
+class="math inline">\(u_i\)</span> of the SRM.</p>
+<p>The solution of (6.45) can be formulated by means of Green's
+functions <span class="math inline">\(G_{i}^{\mu \nu}(s)\)</span> that
+describe the impact of an current pulse injected in compartment <span
+class="math inline">\(\nu\)</span> on the membrane potential of
+compartment <span class="math inline">\(\mu\)</span>. The solution is of
+the form <span class="math display">\[
+    V_{i}^{\mu}(t)=\sum_{\nu}^{} \frac{1}{C_i^{\nu}}\int_{0}^{\infty}
+G_i^{\mu \nu}(s)[I_i^{\nu}(t-s)-\delta^{\nu 1}\Omega_i(t-s)]
+\mathrm{d}s.
+\]</span> (6.46)</p>
+<blockquote>
+<p>这里我完全不理解上面的解法，什么是作用于 compartment <span
+class="math inline">\(\nu\)</span> 上的电流对于 compartment <span
+class="math inline">\(\mu\)</span> 的影响？另外我对于 Green
+函数法解二阶线性齐次常微分方程也有问题：既然 <span
+class="math inline">\(f(t)\)</span> 也可以写成 <span
+class="math inline">\(\int_{0}^{\infty} \delta(s)f(t-s)
+\mathrm{d}s\)</span>（积分上下限无所谓），那么为什么在数学物理方法的书上一定要求出非齐次项为
+<span class="math inline">\(\delta(t-s)\)</span> 的关于两个元 <span
+class="math inline">\(t,s\)</span> 的 Green 函数 <span
+class="math inline">\(G(t,s)\)</span>？</p>
+</blockquote>
+<hr />
+<p>This part is based on Bressloff and Taylor's
+paper<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="P. C. Bressloff and J. G. Taylor (1994) Dynamics of compartmental model neurons. Neural Networks 7, pp. 1153–1165.">[1]</span></a></sup>.</p>
+<p>(6.45) may be written as a linear matrix equation of the form <span
+class="math display">\[
+    \frac{\mathrm{d}\mathbf{V}}{\mathrm{d}t}=\mathbf{Q}
+\mathbf{V}(t)+\mathbf{I}(t)
+\]</span> <span class="math display">\[
+    \mathbf{Q}_{\mu \nu}=-\frac{\delta^{\mu
+\nu}}{\tau_{\mu}}+\sum_{\nu&#39;}^{}
+\frac{\delta^{\nu\nu&#39;}}{\tau_{\mu\nu&#39;}}
+\]</span> <span class="math display">\[
+    \mathbf{I}_{\mu}(t)=\frac{1}{C_i^{\mu}}[I_{i}^{\mu}-\delta^{\mu
+1}\Omega_i(t)]
+\]</span> where <span class="math display">\[
+    \frac{1}{\tau_{\mu}}=\frac{1}{C_i^{\mu}}\left[ \sum_{\nu&#39;}^{}
+\frac{1}{r_i^{\mu\nu&#39;}}+\frac{1}{R^{\mu}_{T,i}}\right], \quad
+\frac{1}{\tau_{\mu\nu}}=\frac{1}{C_i^{\mu}r_i^{\mu\nu}}
+\]</span> (the sum runs over all neighbors of compartment <span
+class="math inline">\(\mu\)</span>)</p>
+<p>The above equation may be solved as (a bit different from (6.46))</p>
+<p><span class="math display">\[
+    V_i^{\mu}(t)=\sum_{\nu}^{} \int_{t_0}^{t}
+G_i^{\mu\nu}(t-s)I_{\nu}(s) \mathrm{d}s +\sum_{\nu}^{}
+G_i^{\mu\nu}(t-t_0)V_i^{\nu}(t_0) \quad t\geqslant t_0
+\]</span> (maybe the second sum stands for initial condition?) with
+<span class="math display">\[
+    G_i^{\mu\nu}(t)= [\mathrm{e}^{t \mathbf{Q}}] _{\mu\nu}
+\]</span></p>
+<p>This coincides with the <span
+class="math inline">\(G_i^{\mu\nu}\)</span> in the textbook except for a
+constant (maybe <span class="math inline">\(C_i^{\mu}\)</span> or
+something)</p>
+<hr />
+<p>We consider a network made up of a set of neurons described by (6.45)
+and a simple threshold criterion for generating spikes. We assume that
+each spike <span class="math inline">\(t_j^{(f)}\)</span> of a
+presynaptic neuron <span class="math inline">\(j\)</span> evokes, for
+<span class="math inline">\(t&gt;t_j^{(f)}\)</span>, a synaptic current
+pulse <span class="math inline">\(\alpha(t-t_j^{(f)})\)</span> into the
+postsynaptic neuron <span class="math inline">\(i\)</span>. The actual
+amplitude of the current of the current pulse depends on the strength
+<span class="math inline">\(W_{ij}\)</span> of the synapse that connects
+neuron <span class="math inline">\(j\)</span> to neuron <span
+class="math inline">\(i\)</span>. The total input to compartment <span
+class="math inline">\(\mu\)</span> of neuron <span
+class="math inline">\(i\)</span> is thus <span class="math display">\[
+    I_i^{\mu}(t)=\sum_{j \in \Gamma_i^{\mu}}^{} W_{ij} \sum_{f}^{}
+\alpha(t-t_j^{(f)}).
+\]</span> (6.47)</p>
+<p>Here, <span class="math inline">\(\Gamma_i^{\mu}\)</span> denotes the
+set of all neurons that have a synapse with compartment <span
+class="math inline">\(\mu\)</span> of neuron <span
+class="math inline">\(i\)</span>. The firing times of neuron <span
+class="math inline">\(j\)</span> are denoted by <span
+class="math inline">\(t_j^{(f)}\)</span>.</p>
+<p>We assume that spikes are generated at the soma in the manner of the
+integrate-and-fire model. The reset voltage is <span
+class="math inline">\(V_i^{1}=u_r&lt;\theta\)</span>. This is equivalent
+to a current pulse <span class="math display">\[
+    \gamma_i(s)=C_i^{1}(\theta-u_r)\delta(s),
+\]</span> (6.48)</p>
+<p>so that the overall current due to the firing of action potentials at
+the soma of neuron <span class="math inline">\(i\)</span> amounts to
+<span class="math display">\[
+    \Omega_i(t)=\sum_{f}^{} \gamma_i(t-t_i^{(f)}).
+\]</span> (6.49)</p>
+<p>Using the above specializations for the synaptic input current and
+the somatic reset current the membrane potential (6.46) of compartment
+<span class="math inline">\(\mu\)</span> in neuron <span
+class="math inline">\(i\)</span> can be written as <span
+class="math display">\[
+    V_i^{\mu}(t)=\sum_{f}^{} \eta_i^{\mu}(t-t_i^{(f)})+\sum_{\nu}^{}
+\sum_{j \in \Gamma_i^{\nu}}^{} W_{ij} \sum_{f}^{} \varepsilon_i^{\mu
+\nu}(t-t_j^{(f)}).
+\]</span> (6.50)</p>
+<p>with <span class="math display">\[
+    \varepsilon_i^{\mu \nu}(s)=\frac{1}{C_i^{\nu}}\int_{0}^{\infty}
+G_i^{\mu \nu}(s&#39;)\alpha(s-s&#39;) \mathrm{d}s&#39;,
+\]</span> (6.51) <span class="math display">\[
+    \eta_i^{\mu}(s)=\frac{1}{C_i^{1}}\int_{0}^{\infty} G_i^{\mu
+1}(s&#39;)\gamma_i(s-s&#39;) \mathrm{d}s&#39;.
+\]</span> (6.52)</p>
+<p>The kernel <span class="math inline">\(\varepsilon_i^{\mu
+\nu}(s)\)</span> describes the effect of a presynaptic action potential
+arriving at compartment <span class="math inline">\(\nu\)</span> on the
+membrane potential of compartment <span
+class="math inline">\(\mu\)</span>. Similarly, <span
+class="math inline">\(\eta_i^{\mu}(s)\)</span> describes the response of
+compartment <span class="math inline">\(\mu\)</span> to an action
+potential generated at the soma.</p>
+<p>The triggering of action potentials depends on the somatic membrane
+potential only. We define <span
+class="math inline">\(u_i=V_i^{1}\)</span>, <span
+class="math inline">\(\eta_i(s)=\eta_i^{1}(s)\)</span> and, for <span
+class="math inline">\(j \in \Gamma_i^{\nu}\)</span>, we set <span
+class="math inline">\(\varepsilon_{ij}=\varepsilon_i^{1\nu}\)</span>.
+This yields the equation of the SRM <span class="math display">\[
+    u_i(t)=\sum_{f}^{} \eta_i(t-t_i^{(f)})+\sum_{j}^{} W_{ij}\sum_{f}^{}
+\varepsilon_{ij}(t-t_j^{(f)}).
+\]</span> (6.53)</p>
+<h4 id="example-two-compartment-integrate-and-fire-model">Example:
+Two-compartment integrate-and-fire model</h4>
+<p>Two compartments are characterized by a somatic capacitance <span
+class="math inline">\(C^{1}\)</span> and a dendritic capacitance <span
+class="math inline">\(C^{2}=aC^{1}\)</span>. The membrane time constant
+is <span class="math inline">\(\tau_0=R^{1}C^{1}=R^{2}C^{2}\)</span> and
+the longitudinal time constant <span
+class="math inline">\(\tau_{12}=r^{12}C^{1}C^{2}/(C^{1}+C^{2})\)</span>.
+The neuron fires, if <span
+class="math inline">\(V^{1}(t)=\theta\)</span>. After each firing the
+somatic potential is reset to <span class="math inline">\(u_r\)</span>.
+This is equivalent to a current pulse <span class="math display">\[
+    \gamma(s)=q\delta(s),\tag{6.54}
+\]</span> where <span
+class="math inline">\(q=C^{1}[\theta-u_r]\)</span>. The dendrite
+receives spike trains from other neurons <span
+class="math inline">\(j\)</span> and we assume that each spike evokes a
+current pulse with time course <span class="math display">\[
+    \alpha(s)=\frac{1}{\tau_s}\exp \left(-\frac{s}{\tau_s}\right)
+\Theta(s).
+\]</span> (6.55)</p>
+<p>With the Green's function we can calculate the response kernels <span
+class="math inline">\(\eta_0(s)=\eta_i^{(1)}\)</span> and <span
+class="math inline">\(\varepsilon_0(s)=\varepsilon_i^{12}\)</span> as
+defined in (6.51) and (6.52).</p>
+<hr />
+<p>Calculate <span class="math inline">\(\eta_0(s)\)</span> (omit the
+subscript <span class="math inline">\(i\)</span>): <span
+class="math display">\[
+    \begin{bmatrix}
+    \frac{\mathrm{d}V^{1}}{\mathrm{d}t} \\
+    \frac{\mathrm{d}V^{2}}{\mathrm{d}t}
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    -\frac{1}{C^{1}}\left(\frac{1}{\tau^{12}}+\frac{1}{R^{1}}\right)
+&amp; \frac{1}{C^{1}\tau^{12}} \\
+    \frac{1}{aC^{1}\tau^{12}} &amp;
+-\frac{1}{aC^{1}}\left(\frac{1}{\tau^{12}}+\frac{1}{R^{2}}\right)
+    \end{bmatrix}
+    \begin{bmatrix}
+    V^{1} \\
+    V^{2} \\
+    \end{bmatrix}
+    +
+    \begin{bmatrix}
+    -q[\theta-u_r]\delta(t) \\
+    \frac{1}{\tau_s}\exp \left(-\frac{s}{\tau_s}\right) \Theta(s) \\
+    \end{bmatrix}
+\]</span></p>
+<p>which is the form of <span class="math inline">\(\displaystyle
+\frac{\mathrm{d}\mathbf{V}}{\mathrm{d}t}=\mathbf{Q}
+\mathbf{V}(t)+\mathbf{I}(t)\)</span>. <span class="math display">\[
+    \mathbf{Q}=
+    \begin{bmatrix}
+    -\frac{a}{(1+a)\tau^{12}}-\frac{1}{\tau_0} &amp;
+\frac{a}{(1+a)\tau^{12}} \\
+    \frac{1}{(1+a)\tau^{12}} &amp;
+-\frac{1}{(1+a)\tau^{12}}-\frac{1}{\tau_0} \\
+    \end{bmatrix}
+\]</span></p>
+<p>The eigenvalues of <span class="math inline">\(\mathbf{Q}\)</span>
+are <span class="math inline">\(\displaystyle -\frac{1}{\tau_0}\)</span>
+and <span class="math inline">\(\displaystyle
+-\frac{1}{\tau_0}-\frac{1}{\tau^{12}}\)</span>. The corresponding
+eigenvectors are <span class="math inline">\((1,1)^{\mathsf{T}}\)</span>
+and <span class="math inline">\(\displaystyle (1,
+-\frac{1}{a})^{\mathsf{T}}\)</span>. <span class="math display">\[
+    G^{11}(t)=\left[\int_{0}^{t} \mathrm{e}^{(t-s)\mathbf{Q}} \delta(s)
+\mathrm{d}s\right]_{11}=[\mathrm{e}^{t
+\mathbf{Q}}]_{11}=\frac{1}{1+a}\exp
+\left(-\frac{s}{\tau_0}\right)\left[1+a\exp
+\left(-\frac{s}{\tau_{12}}\right)\right]
+\]</span></p>
+<p>So <span class="math display">\[
+    \eta_0(s)=-\frac{1}{C^{1}}\int_{0}^{\infty}
+G^{11}(s&#39;)q\delta(s-s&#39;) \mathrm{d}s&#39;
+\]</span></p>
+<p>Similarly, <span class="math display">\[
+    G^{12}(t)=\frac{a}{1+a}\exp
+\left(-\frac{t}{\tau_0}\right)\left[1-\exp
+\left(-\frac{t}{\tau^{12}}\right)\right]
+\]</span> So <span class="math display">\[
+    \varepsilon_0(s)=\varepsilon^{12}(s)=\frac{1}{C^{2}}\int_{0}^{\infty}
+G^{12}(s&#39;)\frac{1}{\tau_s}\exp
+\left(-\frac{s-s&#39;}{\tau_s}\right)\Theta(s-s&#39;) \mathrm{d}s&#39;
+\]</span></p>
+<hr />
+<p>We find <span class="math display">\[
+    \eta_0(s)=-\frac{\theta-u_r}{(1+a)}\exp
+\left(-\frac{s}{\tau_0}\right)\left[1+a\exp
+\left(-\frac{s}{\tau_{12}}\right)\right],
+\]</span></p>
+<p><span class="math display">\[
+    \varepsilon_0(s)=\frac{1}{(1+a)C^{1}}\exp
+\left(-\frac{s}{\tau_0}\right)\left[\frac{1-\mathrm{e}^{-\delta_1s}
+}{\tau_s\delta_1}-\exp
+\left(-\frac{s}{\tau_{12}}\right)\frac{1-\mathrm{e}^{-\delta_2s}
+}{\tau_s\delta_2}\right],
+\]</span> (6.56)</p>
+<p>with <span
+class="math inline">\(\delta_1=\tau_s^{-1}-\tau_0^{-1}\)</span> and
+<span
+class="math inline">\(\delta_2=\tau_s^{-1}-\tau_0^{-1}-\tau_{12}^{-1}\)</span>.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x176.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x177.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>The kernel <span class="math inline">\(\varepsilon_0(s)\)</span>
+describes the voltage response of the soma to an input at the dendrite.
+It shows the typical time course of an excitatory or inhibitory
+postsynaptic potential. The time course of the kernel <span
+class="math inline">\(\eta_0(s)\)</span> is a double exponential and
+reflects the dynamics of the reset in a two-compartment model.</p>
+<h2 id="summary">Summary</h2>
+<p>For the understanding of the Spike Response Model, we introduce</p>
+<hr />
+<p>Spike-response model -Scholarpedia
+http://www.scholarpedia.org/article/Spike-response_model#Leaky_Integrate-and-fire_model</p>
+<hr />
+<hr />
+<p>Adaptive exponential integrate-and-fire model -Scholarpedia
+http://www.scholarpedia.org/article/Adaptive_exponential_integrate-and-fire_model</p>
+<hr />
+<h3 id="exercises">Exercises</h3>
+<ol type="1">
+<li><strong>Timescale of firing rate decay</strong>. The characteristic
+feature of adaptation is that, after the onset of a superthreshold step
+current, interspike-intervals become successively longer, or,
+equivalently, that the momentary firing rate drops. The aim is to make a
+quantitative prediction of the decay of the firing rate of a leak
+integrate-and-fire model with a single adaptation current.</li>
+</ol>
+<ol type="a">
+<li>Show that the firing rate of (6.7) and (6.8) with constant <span
+class="math inline">\(I\)</span>, constant <span
+class="math inline">\(w\)</span> and <span
+class="math inline">\(a=0\)</span> is <span class="math display">\[
+f(I,w)=-\left[\tau_m \log
+\left(1-\frac{\theta_{rh}-u_{reset}}{R(I-w)}\right)\right]^{-1}.      
+\]</span> (6.57)</li>
+<li>For each spike (i.e., once per interspike interval), <span
+class="math inline">\(w\)</span> jumps by an amount <span
+class="math inline">\(b\)</span>. Show that for <span
+class="math inline">\(I\)</span> constant and <span
+class="math inline">\(w\)</span> averaged over one interspike, (6.8)
+becomes <span class="math display">\[
+\tau_w \frac{\mathrm{d}w}{\mathrm{d}t}=-w+b\tau_w f(I,w).
+\]</span> (6.58)</li>
+<li>At time <span class="math inline">\(t_0\)</span>, a strong current
+of amplitude <span class="math inline">\(I_0\)</span> is switched on
+that causes transiently a firing rate <span class="math inline">\(f\gg
+\tau_w\)</span>. Afterward the firing rate decays. Find the effective
+time constant of the firing rate for the case of strong input current.
+<strong>Solution</strong>: For a) I find that <span
+class="math display">\[
+f(I,w)=\left[ \tau \log \left(
+1+\frac{\tau_m(\theta_{rh}-u_{reset})}{R(I-w)-\tau_m(\theta_{rh}-u_{rest})}
+\right) \right]^{-1}
+\]</span> which must satisfy <span class="math display">\[
+\theta_{rh}-u_{rest}&lt;\frac{R(I-w)}{\tau_m}
+\]</span></li>
+</ol>
+<ol start="2" type="1">
+<li><strong>Subthreshold resonance</strong>. We study a leaky
+integrate-and-fire model with a single adaptation variable <span
+class="math inline">\(w\)</span>.</li>
+</ol>
+<ol type="a">
+<li>Assume <span class="math inline">\(E_0=u_{rest}\)</span> and cast
+equation (6.7) and (6.8) in the form of (6.27). Set <span
+class="math inline">\(\varepsilon=0\)</span> and calculate <span
+class="math inline">\(\eta\)</span> andn <span
+class="math inline">\(\kappa\)</span>. Show that <span
+class="math inline">\(\kappa(t)\)</span> can be written as a linear
+combination <span
+class="math inline">\(\kappa(t)=k_{+}\mathrm{e}^{\lambda_{+}t}
++k_{-}\mathrm{e}^{\lambda_{-}t}\)</span> with <span
+class="math display">\[
+\lambda_{\pm}=\frac{1}{2\tau_m \tau_w}(-(\tau_m+\tau_w)\pm
+\sqrt{\tau_m^{2}+\tau_w^{2}-2\tau_m\tau_w(1+2aR)})   
+\]</span> (6.59) and <span class="math display">\[
+k_{\pm}=\pm \frac{R(\lambda_{\pm}\tau_w+1)}{\tau_m
+\tau_w(\lambda_{+}-\lambda_{-})}
+\]</span> (6.60)</li>
+<li>What are the parameters of (6.7),(6.8) that lead to oscillations in
+<span class="math inline">\(\kappa(t)\)</span>?</li>
+<li>What is the frequency of the oscillation?</li>
+<li>Take the Fourier transform of (6.7),(6.8) and find the function
+<span class="math inline">\(\hat{R}(w)\)</span> that relates the current
+<span class="math inline">\(\hat{I}(w)\)</span> at frequency <span
+class="math inline">\(\omega\)</span> to the voltage <span
+class="math inline">\(\hat{u}(w)\)</span> at the same frequency, i.e.,
+<span class="math inline">\(\hat{u}(w)=\hat{R}(w)\hat{I}(w)\)</span>.
+Show that, in the case where <span class="math inline">\(\kappa\)</span>
+has oscillations, the function <span
+class="math inline">\(\hat{R}(w)\)</span> has a global maximum. What is
+the frequency where this happens? <strong>Solution</strong>: (6.7),(6.8)
+can be expressed as <span class="math display">\[
+\begin{bmatrix}
+\frac{\mathrm{d}u}{\mathrm{d}t} \\
+\frac{\mathrm{d}w}{\mathrm{d}t} \\
+\end{bmatrix}
+=
+\begin{bmatrix}
+-\frac{1}{\tau_m} &amp; -\frac{R}{\tau_m} \\
+\frac{a}{\tau_w} &amp; -\frac{1}{\tau_w} \\
+\end{bmatrix}
+\begin{bmatrix}
+u \\
+w \\
+\end{bmatrix}
++
+\begin{bmatrix}
+\frac{E_0+RI(t)}{\tau_m} \\
+-\frac{aE_0}{\tau_w} \\
+\end{bmatrix}
+\]</span> Under the assumption that <span
+class="math inline">\(I(t)=\delta(t)\)</span>, <span
+class="math inline">\(E_0=0\)</span>, <span
+class="math inline">\(w(0)=0\)</span>, we get what we want. <span
+class="math inline">\(\tau_m^{2}+\tau_w^{2}-2\tau_m\tau_w(1+2aR)&lt;0\)</span>
+leads to oscillation of <span class="math inline">\(\kappa(t)\)</span>.
+The frequency is <span class="math display">\[
+\sqrt{-\tau_m^{2}-\tau_w^{2}+2\tau_m\tau_w(1+2aR)}/2\pi
+\]</span> For d), <span class="math display">\[
+\hat{R}(\omega)=\frac{(2\pi i\tau_w \omega+1)R}{-8\pi^{3}\tau_m\tau_w
+\omega^{2}+1+aR+2\pi i\omega(2\pi \tau_m+\tau_w)}
+\]</span> &gt; I give up! Ask 1 and 2.</li>
+</ol>
+<ol start="3" type="1">
+<li><strong>Integrate-and-fire model with slow adaptation</strong>. The
+aim is to relate the leaky integrate-and-fire model with a singel
+adaptation variable, defined in (6.7) and (6.8) to the Spike Response
+Model in the form of (6.27). Adaptation is slow so that <span
+class="math inline">\(\tau_m/\tau_w=\delta\ll 1\)</span> and all
+calculations can be done to first order in <span
+class="math inline">\(\delta\)</span>.</li>
+</ol>
+<ol type="a">
+<li>Show that the spike after-potential is given by <span
+class="math display">\[
+\eta(t)=\gamma_1\mathrm{e}^{\lambda_1t} +\gamma_2
+\mathrm{e}^{\lambda_2t}
+\]</span> (6.61) <span class="math display">\[
+\gamma_1=\Delta u (1-\delta-\delta a)-b(1+\delta)
+\]</span> (6.62) <span class="math display">\[
+\gamma_2=\Delta u -\gamma_1
+\]</span> (6.63)</li>
+<li>Derive the input response kernel <span
+class="math inline">\(\kappa(s)\)</span>. &gt; The initial conditions
+are <span class="math inline">\(\eta(0)=\Delta(u)\)</span> and <span
+class="math inline">\(w(0)=b\)</span> ? I cannot get the desired
+result.</li>
+</ol>
+<ol type="1">
+<li><strong>Integrate-and-fire model with time-dependent time
+constant</strong>. Since many channels are open immediately after a
+spike, the effective membrane time constant after a spike is smaller
+than the time constant at rest. Consider an integrate-and-fire model
+with spike-time dependent time constant, i.e., with a membrane time
+constant <span class="math inline">\(\tau\)</span> that is a function of
+the time since the last postsynaptic spike, <span
+class="math display">\[
+\frac{\mathrm{d}u}{\mathrm{d}t}=-\frac{u}{\tau(t-\hat{t})}+\frac{1}{C}I^{ext}(t);
+\]</span> (6.64) As usual, <span class="math inline">\(\hat{t}\)</span>
+denotes the last firing time of the neuron. The neuron fires if <span
+class="math inline">\(u(t)\)</span> hits a fixed threshold <span
+class="math inline">\(\theta\)</span> and integration restarts with a
+reset value <span class="math inline">\(u_r\)</span>.</li>
+</ol>
+<ol type="a">
+<li>Suppose that the time constant is <span
+class="math inline">\(\tau(t-\hat{t})=2\)</span> ms for <span
+class="math inline">\(t-\hat{t}&lt;10\)</span> ms and <span
+class="math inline">\(\tau(t-\hat{t})=20\)</span> ms for <span
+class="math inline">\(t-\hat{t}\geqslant 10\)</span> ms. Set <span
+class="math inline">\(u_r=-10\)</span> mV. Sketch the time course of the
+membrane potential for an input current <span
+class="math inline">\(I(t)=q\delta(t-t&#39;)\)</span> arriving at <span
+class="math inline">\(t&#39;=5\)</span> ms or <span
+class="math inline">\(t&#39;=15\)</span> ms. What are the differences
+between the two cases?</li>
+<li>Integrate (6.64) for arbitrary input with <span
+class="math inline">\(u(\hat{t})=u_r\)</span> as initial condition and
+interpret the result.</li>
+</ol>
+<ol start="5" type="1">
+<li><strong>Spike-triggered adaptation currents</strong>. Consider a
+leaky integrate-and-fire model. A spike at time <span
+class="math inline">\(t^{(f)}\)</span> generates several adaptation
+currents <span
+class="math inline">\(\mathrm{d}w_k/\mathrm{d}t=-\frac{w_k}{\tau_k}+b_k\delta(t-t^{(f)})\)</span>
+with <span class="math inline">\(k=1,\cdots ,K\)</span>.</li>
+</ol>
+<ol type="a">
+<li>Calculate the effect of the adaptation current on the voltage.</li>
+<li>Construct a combination of spike-triggered currents that could
+generates slow adaptation.</li>
+<li>Construct a combination of spike-triggered currents that could
+generates bursts.</li>
+</ol>
+<h2 id="references">References</h2>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>P. C. Bressloff and J. G.
+Taylor (1994) Dynamics of compartmental model neurons. Neural Networks
+7, pp. 1153–1165.
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/" class="print-no-link">#神经科学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Neuronal Dynamics (6)</div>
+      <div>http://example.com/2022/07/11/Neuronal-Dynamics-6/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 11, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/19/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%8811%EF%BC%89/" title="常微分方程（11）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">常微分方程（11）</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/09/Neuronal-Dynamics-5/" title="Neuronal Dynamics (5)">
+                        <span class="hidden-mobile">Neuronal Dynamics (5)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

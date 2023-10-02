@@ -1,0 +1,998 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="总结一下这方面的问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ascoli-Arzela Theorem">
+<meta property="og:url" content="http://example.com/2022/04/29/Ascoli-Arzela-Theorem/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="总结一下这方面的问题">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/head.JPG">
+<meta property="article:published_time" content="2022-04-29T00:59:47.000Z">
+<meta property="article:modified_time" content="2022-10-17T13:33:09.945Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/head.JPG">
+  
+  
+  
+  <title>Ascoli-Arzela Theorem - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Ascoli-Arzela Theorem"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-04-29 08:59" pubdate>
+          April 29, 2022 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.8k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          49 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Ascoli-Arzela Theorem</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="ascoli-arzela-theorem">Ascoli-Arzela Theorem</h1>
+<p>Ascoli-Arzela定理在分析的多门课中都有用到：数分中作为一个函数项级数中的重要定理给出；ODE中用它来证明解的存在和唯一性定理；复分析中用它来证明Montel定理，从而证明Riemann
+Mapping Theorem；调和分析中用它来证明Peter-Weyl
+Theorem；在泛函分析中......</p>
+<p>趁着脑子清醒，把以前记的相关结果记录一下，主要参考北京某高校数分三的笔记。这一节的标题为“紧集上的连续函数空间”主要是想证明如下定理：</p>
+<p><strong>Theorem (Ascoli-Arzela)</strong>: 设 <span
+class="math inline">\(D \subset \mathbb{R}^{d}\)</span>是一个紧集，<span
+class="math inline">\(\mathcal{F} \subset C(D)\)</span>， 则 <span
+class="math inline">\(\mathcal{F}\)</span>完全有界 <span
+class="math inline">\(\iff\)</span> <span
+class="math inline">\(\mathcal{F}\)</span> 有界且等度连续.</p>
+<p>它回答了这样一个问题：<span
+class="math inline">\(C(D)\)</span>中什么样的集合是紧的？</p>
+<p>解释一下概念： <strong>$C(D) $</strong> <span
+class="math inline">\(D\)</span>上连续函数构成的空间，其中 <span
+class="math inline">\(D\)</span>作为紧集可以是有限子集、有界闭区域或者紧子流形.</p>
+<p><strong>（逐点）等度连续</strong>：<span
+class="math inline">\(\forall x_0 \in D, \forall \varepsilon
+&gt;0,\exists \delta&gt;0, \forall f \in \mathcal{F}, \forall \lvert
+x-x_0 \rvert &lt;\delta,(\lvert f(x)-f(x_0) \rvert
+&lt;\varepsilon)\)</span></p>
+<p>一致等度连续就是上面定义中的 <span
+class="math inline">\(\delta\)</span>不依赖于 <span
+class="math inline">\(x_0\)</span>的选取</p>
+<p>规定 <span class="math inline">\(D\)</span>上的范数：<span
+class="math inline">\(\lVert \cdot \rVert \colon C(D) \to \mathbb{R}, f
+\mapsto \max_{x \in D} \lvert f(x) \rvert\)</span>，易见 <span
+class="math inline">\(C(D)\)</span>中函数列按由该范数诱导的度量定义的收敛性即为一致收敛性.
+由此得到</p>
+<p><strong>定理</strong>：<span
+class="math inline">\(C(D)\)</span>是一个Banach空间.</p>
+<p><strong>证</strong>：<span
+class="math inline">\(C(D)\)</span>中的Cauchy列 <span
+class="math inline">\(\{f_n\}\)</span>按上度量（一致）收敛到某个 <span
+class="math inline">\(f\)</span>，易知 <span
+class="math inline">\(f\)</span>连续，故属于 <span
+class="math inline">\(C(D)\)</span>.</p>
+<p>在一般的完备度量空间上，紧与列紧等价，但是有界闭的条件太弱了，可以从
+<span class="math inline">\(f_n(x)=x^{n}, x \in
+[0,1]\)</span>得出，有界闭并不与列紧等价.</p>
+<p>下面总假设 <span
+class="math inline">\((X,d_{X})\)</span>是一个完备度量空间，<span
+class="math inline">\(E\)</span>是 <span
+class="math inline">\(X\)</span>的一个子集.</p>
+<p><strong>Lemma 1</strong>：<span class="math inline">\(E\)</span>紧
+<span class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(E\)</span>列紧. <strong>证</strong>：设 <span
+class="math inline">\(\{x_k\}\)</span>是 <span
+class="math inline">\(E\)</span>中的点列，反证法：考虑 <span
+class="math inline">\(E\)</span>的像 <span
+class="math inline">\(F\)</span>. <span
+class="math inline">\(F\)</span>为有限集的情况是易证的；对于 <span
+class="math inline">\(F\)</span>为无限集的情况，考虑 <span
+class="math inline">\(E\)</span>中每个点与 <span
+class="math inline">\(F\)</span>交只为有限集的球领域，所有这些球领域构成
+<span
+class="math inline">\(E\)</span>的开覆盖，则它的任意有限子覆盖只能覆盖
+<span class="math inline">\(F\)</span>的有限个点，总有 <span
+class="math inline">\(F\)</span>中的点不被盖到，这与 <span
+class="math inline">\(E\)</span>的紧性矛盾！</p>
+<p><strong>Lemma 2</strong>： <span class="math inline">\(E\)</span>列紧
+<span class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(E\)</span>紧 在给出证明前先做一些准备工作</p>
+<p><strong>定义</strong>：若对任意的 <span
+class="math inline">\(\varepsilon &gt; 0\)</span>，存在 <span
+class="math inline">\(E\)</span>中的有限点集 <span
+class="math inline">\(x_1,\cdots ,x_m\)</span>使得 $E B(x_1,)B(x_m,)
+$则称 <span
+class="math inline">\(E\)</span>是<strong>完全有界</strong>的，有限点集
+<span class="math inline">\(x_1,\cdots ,x_m\)</span>称为一个
+<strong><span class="math inline">\(\varepsilon\)</span>-网</strong></p>
+<p><strong>Lemma3</strong>：<span class="math inline">\(E\)</span>列紧
+<span class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(E\)</span> 完全有界
+<strong>证</strong>：反证法，归纳得到一个两两之间距离大于 <span
+class="math inline">\(\varepsilon_{0}\)</span>的点列，它不是Cauchy列，从而
+<span class="math inline">\(E\)</span>不列紧.</p>
+<p>接下来讨论 <span class="math inline">\(X\)</span>中完备和闭的关系</p>
+<p><strong>Lemma4</strong>：<span class="math inline">\(E\)</span>完备
+<span class="math inline">\(\Leftrightarrow\)</span> <span
+class="math inline">\(E\)</span>闭
+<strong>证</strong>：完备推闭时，假设不闭，则某个不在 <span
+class="math inline">\(E\)</span>中的点会有一个 <span
+class="math inline">\(E\)</span>中趋向于该点的序列，由完备性，它在 <span
+class="math inline">\(E\)</span>中，得到矛盾.
+闭推完备时，假设不完备，则某个Cauchy列的极限不在 <span
+class="math inline">\(E\)</span>中，由聚点原理易得矛盾.</p>
+<blockquote>
+<p>总体上说这是一个比较显然但是很重要的引理</p>
+</blockquote>
+<p><strong>Lemma5</strong>：<span class="math inline">\(E\)</span>列紧
+<span class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(E\)</span>完备 <span
+class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(E\)</span>闭
+<strong>证</strong>：Cauchy列子列的极限也一定是Cauchy列的极限.</p>
+<p><strong>Lemma6</strong>：<span
+class="math inline">\(E\)</span>完全有界（且闭） <span
+class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(E\)</span>（自）列紧
+<strong>证</strong>：任取一个点列 <span
+class="math inline">\(\{x_k\}\)</span>，利用完全有界的性质，可以归纳地构造一系列以某个子列为圆心的开球族，每个开球都包含
+<span
+class="math inline">\(E\)</span>中的无穷多个点（类似于闭区间套定理的证明），证明该子列是Cauchy列，由闭（故完备）知极限也在
+<span class="math inline">\(E\)</span>中，从而 <span
+class="math inline">\(E\)</span>列紧.</p>
+<p><strong>Lemma7</strong>：<span class="math inline">\(E\)</span>列紧
+<span class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(E\)</span>具有Lebesgue数性质，即对于 <span
+class="math inline">\(E\)</span>的任一开覆盖 <span
+class="math inline">\(\{U_{\alpha}\}\)</span>，存在一个 <span
+class="math inline">\(\varepsilon&gt;0\)</span>，使得对于任意的 <span
+class="math inline">\(x \in E\)</span>，存在一个 <span
+class="math inline">\(U_{\alpha}\)</span>，使得 $B(x,) U_{} $.</p>
+<p><strong>证</strong>：也是利用反证法，依次取 <span
+class="math inline">\(\displaystyle
+\varepsilon_k=\frac{1}{k}\)</span>，得到不满足上性质的一个序列，它有一个收敛子列，但是这样就会与
+<span class="math inline">\(U_{\alpha}\)</span> 是开集矛盾了.</p>
+<p><strong>Lemma8</strong>：<span
+class="math inline">\(E\)</span>完全有界且具有Lebesgue数性质 <span
+class="math inline">\(\Rightarrow\)</span> <span
+class="math inline">\(E\)</span>紧
+<strong>证</strong>：倒一倒，完全有界得到的 <span
+class="math inline">\(\varepsilon-\)</span>网和Lebesgue数性质基本上是一个东西.
+这样可以从任意一个开覆盖得到一个有限子覆盖.</p>
+<p>这样我们就可以证明Lemma2了：列紧可以得到完全有界（Lemma3）且具有Lebesgue数性质（Lemma7），由Lemma8得其紧.</p>
+<p>至此证明了如下定理 <strong>Theorem1</strong>：设 <span
+class="math inline">\((X,d_{X})\)</span>是一个完备度量空间，<span
+class="math inline">\(E\)</span>是 <span
+class="math inline">\(X\)</span>的子集，则以下性质等价 - <span
+class="math inline">\(E\)</span>紧 - <span
+class="math inline">\(E\)</span>列紧 - <span
+class="math inline">\(E\)</span>完全有界闭</p>
+<p>关于完全有界性，还有如下结果</p>
+<p><strong>Theorem2</strong>：<span class="math inline">\(X\)</span>和
+<span class="math inline">\(E\)</span>如前，则以下性质等价 - <span
+class="math inline">\(E\)</span>完全有界 - <span
+class="math inline">\(\bar{E}\)</span>紧（这在拓扑中叫<strong>预紧</strong>或<strong>相对紧</strong>）
+- <span class="math inline">\(E\)</span>是紧集的子集 - <span
+class="math inline">\(E\)</span>中任意序列有收敛子列（其极限不必在 <span
+class="math inline">\(E\)</span>中）</p>
+<p><strong>证</strong>：1证2：只要证明 <span
+class="math inline">\(\bar{E}\)</span>完全有界，这在 <span
+class="math inline">\(E\)</span>完全有界的 <span
+class="math inline">\(\varepsilon\)</span>取小一点即可. 2证3：显然.
+3证4：设 <span class="math inline">\(E\)</span>是紧集 <span
+class="math inline">\(F\)</span>的子集，则 <span
+class="math inline">\(E\)</span>中的点列都有收敛于 <span
+class="math inline">\(F\)</span>的子列. 4证1：同Lemma3.</p>
+<blockquote>
+<p>实际应用中Theorem2的最后一个条件比较重要.
+一般的完备度量空间上能得到的最好的结果就是上面的两个定理.</p>
+</blockquote>
+<p>在泛函分析中，对 <span class="math inline">\(\forall
+\varepsilon&gt;0\)</span> 存在有限 <span
+class="math inline">\(\varepsilon\)</span>-网和 <span
+class="math inline">\(\forall \varepsilon&gt;0\)</span> 存在列紧的 <span
+class="math inline">\(\varepsilon\)</span>-网是等价的。注意到 <span
+class="math inline">\(\varepsilon\)</span>
+的任意性其实是很强的一个条件。</p>
+<p>下面回到 <span
+class="math inline">\(C(D)\)</span>，在该空间上紧性的刻画.</p>
+<p><strong>Theorem (Ascoli-Arzela)</strong>: 设 <span
+class="math inline">\(D \subset \mathbb{R}^{d}\)</span>是一个紧集，<span
+class="math inline">\(\mathcal{F} \subset C(D)\)</span>， 则 <span
+class="math inline">\(\mathcal{F}\)</span>完全有界 <span
+class="math inline">\(\iff\)</span> <span
+class="math inline">\(\mathcal{F}\)</span> 有界且等度连续.</p>
+<blockquote>
+<p>此处的有界可以是逐点有界，也可以是一致有界.
+等度连续可以是逐点等度连续，也可以是一致等度连续，它们在紧集上基本是等价的.</p>
+</blockquote>
+<p><strong>Lemma1</strong>：设 <span
+class="math inline">\(D\)</span>紧，则 <span
+class="math inline">\(\mathcal{F}\)</span>逐点等度连续 <span
+class="math inline">\(\Leftrightarrow\)</span> <span
+class="math inline">\(\mathcal{F}\)</span>一致等度连续.</p>
+<p><strong>证</strong>：同紧集上逐点连续函数必一致连续的证明.</p>
+<p><strong>Lemma2</strong>：设 <span
+class="math inline">\(D\)</span>紧，$ C(D) $等度连续，则 <span
+class="math inline">\(\mathcal{F}\)</span>逐点有界 <span
+class="math inline">\(\Leftrightarrow\)</span> <span
+class="math inline">\(\mathcal{F}\)</span>一致有界.</p>
+<p><strong>证</strong>：只需要证明正方向.
+由等度连续和紧（从而完全有界）的性质，可以从 <span
+class="math inline">\(x_1,\cdots ,x_m\)</span>的 <span
+class="math inline">\(\delta-\)</span>网得到 <span
+class="math inline">\(f(x_1),\cdots ,f(x_m)\)</span>的 <span
+class="math inline">\(\varepsilon-\)</span>网，取其中最大的，再加上一个
+<span class="math inline">\(\varepsilon\)</span>即为一致的界.</p>
+<p><strong>Ascoli-Arzela定理的证明</strong>： - 完全有界 <span
+class="math inline">\(\Rightarrow\)</span>有界： 取 <span
+class="math inline">\(\mathcal{F}\)</span>的一个 <span
+class="math inline">\(1-\)</span>网，再放大一下即可.</p>
+<ul>
+<li>完全有界 <span class="math inline">\(\Rightarrow\)</span>等度连续
+先证一个引理</li>
+</ul>
+<p><strong>Lemma3</strong>：若 <span class="math inline">\(f_k
+\rightrightarrows f\)</span>，则 <span
+class="math inline">\(\{f_k\}\)</span>完全有界且等度连续.</p>
+<p><strong>证</strong>：“<span
+class="math inline">\(\Rightarrow\)</span>”：在一开始说过的度量的意义下，<span
+class="math inline">\(\{f_k\}\)</span>是 <span
+class="math inline">\(C(D)\)</span>中的Cauchy列，所以任一子列都收敛，因此完全有界（注意这里谈论的是点列的完全有界性）.</p>
+<p>下证等度连续，采用三分法. 一致收敛得到 <span
+class="math inline">\(d(f_n(x),f(x))\)</span>的估计，<span
+class="math inline">\(f\)</span>的一致连续性得到 <span
+class="math inline">\(d(f(x),f(y))\)</span>的估计，于是可以得到 <span
+class="math inline">\(n&gt;N\)</span>时 <span
+class="math inline">\(d(f_n(x),f_n(y))\)</span>的估计. 由 <span
+class="math inline">\(f_k\)</span>的一致连续性可以补充 <span
+class="math inline">\(k\)</span>较小的时候的情况. Lemma3证毕.</p>
+<p>回到Ascoli-Arzela定理的证明. 假设 <span
+class="math inline">\(\mathcal{F}\)</span>不等度连续，则存在 <span
+class="math inline">\(\varepsilon_0&gt;0\)</span>使得对于任意的 <span
+class="math inline">\(\delta&gt;0\)</span> 都存在 <span
+class="math inline">\(x_{\delta},y_{\delta} \in D, f_{\delta} \in
+\mathcal{F}\)</span>，满足 <span
+class="math inline">\(d(x_{\delta},y_{\delta})&lt;\delta\)</span>，且
+<span
+class="math inline">\(d(f_{\delta}(x_{\delta}),f_{\delta}(y_{\delta}))&gt;\varepsilon_0\)</span>.</p>
+<p>依次取 <span class="math inline">\(\displaystyle
+\delta_k=\frac{1}{k}, k=1,2,..\)</span>可得 <span
+class="math inline">\(x_k,y_k,f_k\)</span>满足上述条件. 因为 <span
+class="math inline">\(\mathcal{F}\)</span>完全有界，所以 <span
+class="math inline">\(\{f_k\}\)</span>有收敛子列 <span
+class="math inline">\(\{f_{k_j}\}\)</span>. 由刚刚证明的Lemma3，<span
+class="math inline">\(\{f_{k_j}\}\)</span>等度连续，于是对上面的 <span
+class="math inline">\(\varepsilon_0&gt;0\)</span>，存在 <span
+class="math inline">\(\delta&gt;0\)</span>，使得当 <span
+class="math inline">\(x,y \in D\)</span>满足 <span
+class="math inline">\(d(x,y)&lt;\delta\)</span>时，有 <span
+class="math inline">\(d(f_{k_j}(x),f_{k_j}(y))&lt;\varepsilon_0, \forall
+j \in \mathbb{N}\)</span>.</p>
+<p>另一方面，取充分大的 <span class="math inline">\(j\)</span>使得 <span
+class="math inline">\(\frac{1}{k_j}&lt;\delta\)</span>，则 <span
+class="math inline">\(d(x_{k_j},y_{k_j})&lt;\frac{1}{k_j}&lt;\delta\)</span>，并且有
+<span
+class="math inline">\(d(f_{k_j}(x_{k_j}),f_{k_j}(y_{k_j}))\geqslant
+\varepsilon_0\)</span>，矛盾！</p>
+<p>“<span class="math inline">\(\Leftarrow\)</span>”：若 <span
+class="math inline">\(D\)</span>是有限集，记 <span
+class="math inline">\(n\)</span>为 <span
+class="math inline">\(D\)</span>的势，则 <span
+class="math inline">\(C(D)=\mathbb{R}^{n}\)</span>，此时有界 <span
+class="math inline">\(\Rightarrow\)</span> 完全有界.</p>
+<p>若 <span class="math inline">\(D\)</span>是无限集，下证有界和等度连续
+<span
+class="math inline">\(\Rightarrow\)</span>任一序列有收敛子列（极限不必在
+<span class="math inline">\(\mathcal{F}\)</span>中）. 从而由Theorem2知
+<span class="math inline">\(\mathcal{F}\)</span>完全有界.</p>
+<p>设 <span class="math inline">\(\{f_n\}\)</span>是 <span
+class="math inline">\(\mathcal{F}\)</span>中一个点列，<span
+class="math inline">\(D\)</span>紧从而完全有界. 依次取 $_k=,
+k=1,2,$有相应的 <span class="math inline">\(\varepsilon_k-\)</span>网
+<span class="math inline">\(\{x_{k,1},\cdots ,x_{k,m_k}\}\)</span>. 记
+<span class="math inline">\(I\)</span>是这些 <span
+class="math inline">\(\varepsilon_k-\)</span>网的并，并将 <span
+class="math inline">\(I\)</span>中元素重新编号为 <span
+class="math inline">\(I=\{x_1,x_2,\cdots \}\)</span>.</p>
+<p>对于每个 <span class="math inline">\(x_k \in I\)</span>，因为 <span
+class="math inline">\(\mathcal{F}\)</span>逐点有界，所以 <span
+class="math inline">\(f_n(x_k)\)</span>有界，于是有收敛子列 <span
+class="math inline">\(\{f_n^{(k)}(x_k)\}\)</span>，再考虑 <span
+class="math inline">\(\{f_n^{(k)}(x_{k+1})\}\)</span>，它也有收敛子列
+<span
+class="math inline">\(\{f_n^{(k+1)}(x_{k+1})\}\)</span>，继续下去得到一系列子列
+<span class="math inline">\(\{f_{n}^{(k)}\}\)</span>. 取 <span
+class="math inline">\(g_n=f_n^{(n)}\)</span>，对于每个 <span
+class="math inline">\(x_k \in I\)</span>，<span
+class="math inline">\(\{g_n(x_k)\}=\{f_n^{(n)}(x_k)\}\)</span>. 推得
+<span class="math inline">\(\{g_n\}\)</span>在 <span
+class="math inline">\(I\)</span>上逐点收敛.</p>
+<p>三分法，取一个足够大的 <span
+class="math inline">\(n_0\)</span>对应的一个 <span
+class="math inline">\(\varepsilon_{n_0}-\)</span>网 <span
+class="math inline">\(\{\xi_1,\cdots ,\xi_k\}\)</span>，则 <span
+class="math inline">\(\{g_n(\xi_i)\}\)</span>收敛. 应用等度连续性即知
+<span class="math inline">\(\{g_n\}\)</span>在 <span
+class="math inline">\(D\)</span>上一致收敛，于是 <span
+class="math inline">\(\mathcal{F}\)</span>完全有界.</p>
+<p>最后看一个例子 <strong>例</strong>：<span
+class="math inline">\(D=[a,b], X=C[a,b]\)</span>，$ X $一致有界，设
+<span class="math inline">\(\lvert f(x) \rvert \leqslant M, \forall x,
+\forall f\)</span>. 定义 $X X, f _{a}^{x} f(t) t $，则 <span
+class="math inline">\(\lvert \varphi(f)(x) \rvert \leqslant
+M(b-a)\)</span>，即 <span
+class="math inline">\(\varphi(\mathcal{F})\)</span>一致有界.
+$(f)(x)-(f)(y) M x-y $ 这说明 <span
+class="math inline">\(\varphi(\mathcal{F})\)</span>等度连续.
+于是由Ascoli-Arzela定理知，<span
+class="math inline">\(\varphi(\mathcal{F})\)</span>完全有界，即任意序列有收敛子列，像
+<span
+class="math inline">\(\varphi\)</span>这样将有界集映成完全有界集的映射在泛函分析中叫<strong>紧算子</strong>，证明一个算子是紧的通常就要用Ascoli-Arzela定理.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E6%9D%82%E9%A1%B9/" class="category-chain-item">杂项</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Ascoli-Arzela Theorem</div>
+      <div>http://example.com/2022/04/29/Ascoli-Arzela-Theorem/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>April 29, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/05/01/Neuronal-Dynamics-2/" title="Neuronal Dynamics (2)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Neuronal Dynamics (2)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/04/28/Neuronal-Dynamics-1/" title="Neuronal Dynamics (1)">
+                        <span class="hidden-mobile">Neuronal Dynamics (1)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

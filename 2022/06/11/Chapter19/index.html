@@ -1,0 +1,929 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="量子力学的基本原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter19">
+<meta property="og:url" content="http://example.com/2022/06/11/Chapter19/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="量子力学的基本原理">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/physics.jpg">
+<meta property="article:published_time" content="2022-06-11T13:37:26.000Z">
+<meta property="article:modified_time" content="2022-06-14T08:06:41.548Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="物理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/physics.jpg">
+  
+  
+  
+  <title>Chapter19 - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Chapter19"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-11 21:37" pubdate>
+          June 11, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          34 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Chapter19</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="量子力学的基本原理">量子力学的基本原理</h1>
+<h2 id="物质波">物质波</h2>
+<p><span class="math display">\[
+    E=h \nu \\
+    p=\frac{h}{\lambda}
+\]</span></p>
+<p>（波速不一定是粒子的速度）</p>
+<p>用德布罗意假设推导玻尔量子化条件：电子圆轨道运动，对应于一个环形驻波</p>
+<p>实验验证：1927，戴维逊-革末</p>
+<h3 id="波函数">波函数</h3>
+<p>令 <span class="math display">\[
+    \hbar=\frac{h}{2\pi}
+\]</span></p>
+<p>若自由粒子在三维空间运动，其动量 <span
+class="math inline">\(\mathbf{p}\)</span>，能量为 <span
+class="math inline">\(E\)</span>，波函数为 <span class="math display">\[
+    \Psi(\mathbf{r},t)=\psi_0
+\exp\left({-\frac{i}{\hbar}(Et-\mathbf{p}\cdot \mathbf{r})} \right)
+\]</span> 波函数的模的平方（波的强度） <span class="math display">\[
+    \rho(\mathbf{r},t)=\lvert \Psi(\mathbf{r},t) \rvert ^{2}
+\]</span> 代表时刻 <span class="math inline">\(t\)</span>，在空间 <span
+class="math inline">\(\mathbf{r}\)</span>
+点处，单位体积元中微观粒子出现的概率。</p>
+<p><strong>波函数应满足的条件</strong> - 归一化条件 <span
+class="math display">\[
+    \int_{\Omega}^{} \Psi^{*}(\mathbf{r},t) \Psi(\mathbf{r},t)
+\mathrm{d}V =1       
+\]</span></p>
+<p><span class="math display">\[
+    \rho(\mathbf{r},t)=\lvert \Psi(\mathbf{r},t) \rvert ^{2}
+\]</span> - 在空间任何有限体积元中找到粒子的概率为有限值</p>
+<ul>
+<li><p>概率密度在任何时刻都是确定的单值</p></li>
+<li><p>波函数连续可导</p></li>
+</ul>
+<p><strong>玻尔的互补原理</strong> omitted</p>
+<h2 id="不确定性原理">不确定性原理</h2>
+<p><span class="math display">\[
+    \Delta x \Delta p \geqslant \hbar /2    
+\]</span> 其中 <span class="math display">\[
+    \Delta x=\sqrt{(x-\bar{x})^{2}}
+\]</span> 为坐标不确定度（方差），<span class="math inline">\(\Delta
+p\)</span> 为动量不确定度（方差）</p>
+<p><strong>能量-时间不确定关系</strong> <span class="math display">\[
+    \Delta E \Delta t \geqslant  \hbar /2
+\]</span> 其中 <span class="math inline">\(\Delta E\)</span>
+为激发态能量不确定度，<span class="math inline">\(\Delta t\)</span>
+为激发态寿命</p>
+<h2 id="薛定谔方程">薛定谔方程</h2>
+<p>对于自由粒子 <span class="math display">\[
+    \Psi(x,t)=\Psi_0 \exp\left({\frac{i}{\hbar}(p_x x-Et)} \right)
+\]</span></p>
+<p>得到方程 <span class="math display">\[
+    i \hbar \frac{\partial }{\partial t} \Psi(x,t)=-\frac{\hbar^{2}}{2m}
+\frac{\partial ^{2}}{\partial x^{2}} \Psi(x,t)
+\]</span></p>
+<p>对于势场中的粒子</p>
+<p><span class="math display">\[
+    i \hbar \frac{\partial }{\partial t}
+\Psi(x,t)=\left(-\frac{\hbar^{2}}{2m} \frac{\partial ^{2}}{\partial
+x^{2}}+U\right) \Psi(x,t)
+\]</span></p>
+<p><strong>定态薛定谔方程</strong> <span class="math display">\[
+    \hat{H} \Phi (\mathbf{r})=E \Phi(\mathbf{r})        
+\]</span></p>
+<p>其中 <span class="math display">\[
+    \hat{H}=-\frac{\hbar ^{2}}{2m} \nabla ^{2}+U(\mathbf{r})
+\]</span></p>
+<p>解要看势能 <span class="math inline">\(U\)</span> 和边界条件</p>
+<p>除去定态波函数之外，还有一个时间因子 <span class="math display">\[
+    T(t) \propto \mathrm{e}^{- \frac{i}{\hbar} Et}
+\]</span> 故 <span class="math display">\[
+    \Psi(\mathbf{r},t)=\Phi (\mathbf{r}) \mathrm{e}^{- \frac{i}{\hbar}
+Et}
+\]</span></p>
+<p>由此见，定态问题归结为求解定态薛定谔方程.</p>
+<h2 id="量子力学的基本假设">量子力学的基本假设</h2>
+<ul>
+<li>波函数公设</li>
+<li>算符公设（看书）</li>
+<li>测量公设</li>
+<li>Schrodinger方程</li>
+<li>全同性原理</li>
+</ul>
+<h2 id="一维定态">一维定态</h2>
+<h3 id="一维无限深势阱">一维无限深势阱</h3>
+<p><span class="math display">\[
+    U(x)=
+    \begin{cases}
+        \infty, \quad x&lt;0 或 x&gt;L \\
+        0, \quad 0\leqslant x\leqslant L
+    \end{cases}
+\]</span></p>
+<p><span class="math display">\[
+    \Phi(x)=C\sin (kx+\delta)
+\]</span> <span class="math display">\[
+    k= \frac{n \pi}{L}
+\]</span> 由归一化条件得到定态波函数为 <span class="math display">\[
+    \Phi(x)=
+    \begin{cases}
+        \sqrt{\frac{2}{L}} \sin \frac{n \pi}{L}x, \quad 0\leqslant
+x\leqslant L \\
+        0, \quad else
+    \end{cases}
+\]</span></p>
+<p>动能的可能值 <span class="math display">\[
+    E=\frac{k^{2} \hbar^{2}}{2m}=n^{2}E_1
+\]</span> 其中 <span class="math display">\[
+    E_1= \frac{\pi^{2} \hbar^{2}}{2m L^{2}}
+\]</span> 为零点能.</p>
+<p>粒子动量的可能值为 <span class="math display">\[
+    p=\pm n \frac{\pi \hbar}{L}
+\]</span> 由此得到波长的可能值为 <span class="math display">\[
+    \lambda_n= \frac{2L}{n}
+\]</span> 即阱宽为半波长的整数倍</p>
+<p>得到粒子基态波函数 <span class="math display">\[
+    \Psi_1(x,t)=\Phi_1(x)\exp
+(-\frac{i}{\hbar}E_1t)=\frac{1}{2i}\sqrt{\frac{2}{L}}(\mathrm{e}^{ik_1x}
+-\mathrm{e}^{-ik_1x}) \mathrm{e}^{-\frac{i}{\hbar}E_1t}
+\]</span>
+可以看成是频率相同、波长相同、传播方向相反的两单色平面波的叠加——形成物质波的驻波</p>
+<h3 id="一维谐振子">一维谐振子</h3>
+<p>方程很难求解</p>
+<p>谐振子能量 <span class="math inline">\(E\)</span> 是量子化的 <span
+class="math display">\[
+    E_n=(n+\frac{1}{2})\hbar \omega =(n+\frac{1}{2}) h \nu
+\]</span> 零点能为 <span class="math display">\[
+    E_0=\frac{1}{2} \hbar \omega
+\]</span></p>
+<h3 id="散射问题">散射问题</h3>
+<p><strong>台阶势垒</strong></p>
+<p><strong>方势垒</strong></p>
+<p><strong>隧道效应</strong></p>
+<h2 id="氢原子量子理论">氢原子量子理论</h2>
+<h3 id="能量">能量</h3>
+<p><span class="math display">\[
+    E_n= -\frac{me^{4}}{2\hbar^{2}(4\pi
+\varepsilon_0)^{2}}\frac{1}{n^{2}}=-13.6 \frac{1}{n^{2}}    
+\]</span> 其中 $n=1,2,$称为<strong>主量子数</strong></p>
+<h3 id="角动量">角动量</h3>
+<p>角动量的平方 <span class="math display">\[
+    L^{2}=l(l+1) \hbar^{2}
+\]</span> <span class="math inline">\(l=0,1,2,\cdots ,n-1\)</span>
+称为<strong>角量子数</strong></p>
+<p>角动量最小值可取零（与玻尔假设不同）</p>
+<p>角动量 <span class="math inline">\(z\)</span> 分量 <span
+class="math display">\[
+    L_z= m \hbar
+\]</span> <span class="math inline">\(m=-l,-l+1,\cdots, l-1,l\)</span>
+称为<strong>磁量子数</strong></p>
+<p>对于一定的角量子数 <span class="math inline">\(l\)</span>，磁量子数
+<span class="math inline">\(m\)</span> 可取 <span
+class="math inline">\((2l+1)\)</span> 个值（与玻尔假设不同）</p>
+<h3 id="塞曼效应">塞曼效应</h3>
+<p>强磁场中纳的光谱线分裂</p>
+<p><span class="math display">\[
+    \Delta E=- \mathbf{\mu}_l \cdot \mathbf{B}=\frac{e}{2m_0} \mathbf{L}
+\cdot \mathbf{B}= \frac{e}{2m_0} L_z B=m(\frac{e \hbar}{2m_0})B
+\]</span> <span class="math inline">\(m=-l,-l+1,\cdots
+l-1,l\)</span></p>
+<p>塞曼效应从实验上验证了角动量空间取向的量子化.</p>
+<h3 id="波函数-1">波函数</h3>
+<p>电子波函数可划分为角度部分和径向部分的乘积 <span
+class="math display">\[
+    \Psi_{nlm}(r,\theta,\phi)=R_{nl}(r) Y_{lm}(\theta,\phi)
+\]</span> 在空间点 <span class="math inline">\((r,\theta,\phi)\)</span>
+处，小体积元 <span class="math inline">\(\mathrm{d}V\)</span>
+中电子出现的概率为 <span class="math display">\[
+    \lvert R_{nl}(r) \rvert ^{2} \lvert Y_{lm}(\theta,\phi) \rvert ^{2}
+r^{2} \sin \theta \mathrm{d}r \mathrm{d}\theta \mathrm{d} \phi
+\]</span> 电子出现在 <span
+class="math inline">\(r—r+\mathrm{d}r\)</span>球壳内概率为 <span
+class="math display">\[
+    W_{nl}(r)\mathrm{d}r= \lvert r R_{nl}(r) \rvert ^{2}= u_{nl}^{2}(r)
+\mathrm{d}r
+\]</span> （这里用到 <span class="math inline">\(Y_{lm}\)</span>
+的归一化条件）<span
+class="math inline">\(u_{nl}^{2}(r)=r^{2}R_{nl}^{2}(r)\)</span>称为<strong>电子的径向概率密度</strong>.
+电子径向波函数分布反映了电子分布矩原子核的距离.</p>
+<p>电子出现在 <span class="math inline">\((\theta,\phi)\)</span>附近
+<span class="math inline">\(\mathrm{d}\Omega\)</span> 立体角内概率为
+<span class="math display">\[
+    W_{lm}(\theta,\phi) \mathrm{d}\Omega= \lvert Y_{lm}(\theta,\phi)
+\rvert ^{2} \mathrm{d}\Omega                       
+\]</span> （这里用到 <span class="math inline">\(R_{nl}(r)\)</span>
+的归一化条件）<span class="math inline">\(\lvert Y_{lm}(\theta,\phi)
+\rvert ^{2}\)</span> 称为<strong>电子的角向概率密度</strong>.
+电子的角向波函数分布反映了电子在空间分布的对称性；判断成键的方向（分子结构理论）.</p>
+<h3 id="电子的自旋">电子的自旋</h3>
+<p>Stern-Gerlach 实验说明电子有自旋</p>
+<p>电子自旋角动量在任意方向的分量只有两个值 <span
+class="math display">\[
+    S_z= m_s \hbar
+\]</span> <span
+class="math inline">\(m_s=-\frac{1}{2},\frac{1}{2}\)</span>
+称为<strong>自旋磁量子数</strong>，自旋量子数只有一个取值 <span
+class="math inline">\(s=1/2\)</span>.</p>
+<p>自旋角动量大小 <span class="math display">\[
+    S=\sqrt{s(s+1)}\hbar = \frac{\sqrt{3}}{2} \hbar
+\]</span></p>
+<p>自旋是相对论效应，无经典运动对应.</p>
+<p>氢原子电子运动状态由四个量子数决定 <span
+class="math inline">\((n,l,m_l,m_s)\)</span> - 主量子数 <span
+class="math inline">\(n\)</span> 决定电子的能量 <span
+class="math inline">\(E_n\)</span> - 轨道角量子数 <span
+class="math inline">\(l\)</span> 决定电子轨道角动量 <span
+class="math inline">\(L\)</span>、能量 <span
+class="math inline">\(E_{nl}\)</span> - 轨道磁量子数 <span
+class="math inline">\(m_l\)</span>，决定轨道角动量的方向 - 自旋磁量子数
+<span class="math inline">\(m_s\)</span>，决定自旋角动量的方向</p>
+<p><strong>泡利不相容原理</strong>
+<strong>费米子</strong>：自旋量子数取半整数，即
+$s=1/2,3/2,$，如电子、中子、质子 <strong>玻色子</strong>：自旋为整数，即
+$s=0,1,<span class="math inline">\(，如氘核、光子(\)</span>s=1<span
+class="math inline">\()、\)</span>$介子和 <span
+class="math inline">\(K\)</span>介子(<span
+class="math inline">\(s=0\)</span>)等</p>
+<p>不可能有两个及以上的电子（费米子）处在同一量子状态.
+玻色子不受限制.</p>
+<p>原子中具有相同主量子数 <span class="math inline">\(n\)</span>
+的电子属于同一<strong>主壳层</strong>，主壳层中每一个角量子数 <span
+class="math inline">\(l\)</span>对应一个<strong>支壳层</strong>.</p>
+<p>主壳层 <span class="math inline">\(n\)</span> 能容纳的最多电子数
+<span class="math display">\[
+    N_n= 2n^{2}
+\]</span></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/" class="category-chain-item">物理学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/%E6%99%AE%E7%89%A9/" class="category-chain-item">普物</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%89%A9%E7%90%86/" class="print-no-link">#物理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Chapter19</div>
+      <div>http://example.com/2022/06/11/Chapter19/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 11, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/20/About-Bezier-Curve/" title="About Bezier Curve">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">About Bezier Curve</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter18/" title="Chapter18">
+                        <span class="hidden-mobile">Chapter18</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,889 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="稳恒磁场">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter12">
+<meta property="og:url" content="http://example.com/2022/06/11/Chapter12/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="稳恒磁场">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/physics.jpg">
+<meta property="article:published_time" content="2022-06-11T13:36:29.000Z">
+<meta property="article:modified_time" content="2022-06-11T13:41:55.584Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="物理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/physics.jpg">
+  
+  
+  
+  <title>Chapter12 - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Chapter12"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-11 21:36" pubdate>
+          June 11, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.2k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          27 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Chapter12</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="稳恒磁场">稳恒磁场</h1>
+<h2 id="电流和电源">电流和电源</h2>
+<h3 id="电流密度">电流密度</h3>
+<p><span class="math display">\[
+    \mathbf{j}=\frac{\mathrm{d}I}{\mathrm{d}S_{\perp}}\mathbf{e}_n
+\]</span> 方向为正电荷运动的方向</p>
+<p>载流子 <span class="math inline">\(q\)</span>，数密度 <span
+class="math inline">\(n\)</span>，漂移速度 <span
+class="math inline">\(\mathbf{v}_d\)</span>，则 <span
+class="math display">\[
+    \mathbf{j}=nq \mathbf{v}_d
+\]</span></p>
+<p><strong>电流强度</strong></p>
+<p><span class="math display">\[
+    I= \iint_{S} \mathbf{j} \cdot \mathrm{d}\mathbf{S}
+\]</span></p>
+<p><strong>电荷守恒定律</strong></p>
+<p><span class="math display">\[
+    \oiint_{S} \mathbf{j} \cdot \mathrm{d}\mathbf{S}=-
+\frac{\mathrm{d}q_{内}}{\mathrm{d}t}         
+\]</span></p>
+<p>若空间电荷分布不随时间变化，则 <span class="math display">\[
+    \oiint_{S} \mathbf{j} \cdot \mathrm{d}\mathbf{S}=0
+\]</span></p>
+<p>它称为<strong>稳恒电流条件</strong>，恒定电流产生的电场称为<strong>稳恒电场</strong></p>
+<p>它满足 <span class="math display">\[
+    \oiint_{S} \mathbf{E}\cdot \mathrm{d}\mathbf{S}
+=\frac{1}{\varepsilon_0} \sum_{i}^{} q_i    
+\]</span> 即高斯定理</p>
+<p><span class="math display">\[
+    \oint_{l} \mathbf{E} \cdot\mathrm{d}  \mathbf{l}=0
+\]</span> 即保守场</p>
+<h3 id="欧姆定律">欧姆定律</h3>
+<p>微观形式</p>
+<p><span class="math display">\[
+    \mathbf{j} = \frac{1}{\rho} \mathbf{E}= \sigma \mathbf{E}
+\]</span> 其中 <span class="math inline">\(\sigma\)</span>
+称为电导率</p>
+<p><strong>电导率公式</strong></p>
+<p><span class="math display">\[
+    \sigma= \frac{n e^{2} \tau}{m}
+\]</span> 其中 <span class="math inline">\(n\)</span>
+是单位体积的电子数，<span class="math inline">\(\tau\)</span>
+是平均碰撞时间</p>
+<p><strong>焦耳定律的微分形式</strong></p>
+<p><span class="math display">\[
+    w=\sigma \mathbf{E}^{2}
+\]</span></p>
+<h3 id="电源">电源</h3>
+<p><strong>非静电力</strong></p>
+<p><span class="math display">\[
+    \mathbf{E}_k=\frac{\mathbf{F}_k}{q}
+\]</span></p>
+<p>比如洛伦兹力、旋电场、温差电源扩散作用、化学电池中溶解和沉积过程</p>
+<p><strong>电源电动势</strong></p>
+<p><span class="math display">\[
+    E=\frac{W}{q}=\int_{-}^{+} \mathbf{E}_k \cdot \mathrm{d}\mathbf{l}  
+\]</span></p>
+<p><strong>电源内部的欧姆定律</strong></p>
+<p><span class="math display">\[
+    \mathbf{j}=\sigma(\mathbf{E}+\mathbf{E}_k)
+\]</span></p>
+<h2 id="磁场">磁场</h2>
+<p>定义1： <span class="math inline">\(\mathbf{F}=q \mathbf{v} \times
+\mathbf{B}\)</span></p>
+<p>定义2： <span class="math inline">\(\mathbf{F}= I \mathbf{L} \times
+\mathbf{B}\)</span>（载流导线在磁场中受力）</p>
+<p>定义3： <span class="math inline">\(\mathbf{M}= \mathbf{m} \times
+\mathbf{B}\)</span>（小磁针在磁场中受力矩）</p>
+<h2 id="毕奥-萨法尔定律">毕奥-萨法尔定律</h2>
+<p><strong>Biot-Savart-Laplace Law</strong> <span
+class="math display">\[
+    \mathrm{d}\mathbf{B}= \frac{\mu_0}{4\pi} \frac{I
+\mathrm{d}\mathbf{l} \times \mathbf{r}}{r^{3}}
+\]</span></p>
+<p><span class="math inline">\(\mu_0=4\pi \times 10^{-7}\)</span>(T
+<span class="math inline">\(\cdot\)</span> m/A) 为真空磁导率</p>
+<p><span class="math display">\[
+    \mathbf{B}=\int_{}^{}  \mathrm{d}\mathbf{B}=\frac{\mu_0}{4\pi}\int_{L}
+\frac{\mathbf{I} \mathrm{d}\mathbf{l} \times \mathbf{r}}{r^{3}}
+\]</span></p>
+<p><strong>Q:</strong> 离无限长直电流距离为 <span
+class="math inline">\(r\)</span> 的空间点的磁感应强度的大小为 <span
+class="math display">\[
+    \mathbf{B}=\frac{\mu_0 I}{2\pi r}
+\]</span></p>
+<p><strong>Q:</strong> 圆电流轴线上的电场分布</p>
+<p><span class="math display">\[
+    \mathbf{B}=\frac{\mu_0 IR^{2}}{2(R^{2}+z^{2})^{3/2}}
+\]</span></p>
+<p>圆电流中心处 <span class="math inline">\(z=0\)</span> <span
+class="math display">\[
+    B_{O}=\frac{\mu_0 I}{2R}
+\]</span></p>
+<p>远离圆电流中心 <span class="math inline">\(z\gg R\)</span> <span
+class="math display">\[
+    B_{P} \thickapprox \frac{\mu_0 IR^{2}}{2z^{3}}= \frac{\mu_0}{2\pi}
+\frac{IS}{z^{3}}
+\]</span></p>
+<p>如果令 <span class="math inline">\(\mathbf{m}=IS
+\mathbf{e}_n\)</span>，则 <span class="math display">\[
+    \mathbf{B}_{P}= \frac{\mu_0}{2\pi} \frac{\mathbf{m}}{z^{3}}
+\]</span></p>
+<p>把载流圆线圈称为磁偶极子，<span
+class="math inline">\(\mathbf{m}\)</span>
+称为载流圆线圈的磁偶极矩，简称为<strong>磁矩</strong>. 如果线圈有 <span
+class="math inline">\(N\)</span> 匝，则 <span
+class="math inline">\(m=NIS\)</span></p>
+<p><strong>Q:</strong> 载流无限长直螺线管轴线上的磁场</p>
+<p><span class="math display">\[
+    \mathbf{B}_{O}=\mu_0 nI
+\]</span></p>
+<p>实际上不限于轴线，螺线管内空间各点磁感应强度均相同</p>
+<p><strong>Q:</strong> 半无限长螺线管断面中心处，磁感应强度大小为 <span
+class="math inline">\(\mathbf{B}=\frac{1}{2}\mu_0 nI\)</span></p>
+<h2 id="磁高斯定理安培环路定理">磁高斯定理/安培环路定理</h2>
+<p>通过任意曲面 <span class="math inline">\(S\)</span> 的磁通量为 <span
+class="math display">\[
+    \Phi_{m}= \iint_{S} \mathbf{B} \cdot \mathrm{d}\mathbf{S}   
+\]</span></p>
+<p><strong>磁场的高斯定理</strong></p>
+<p><span class="math display">\[
+    \oiint_{S} \mathbf{B}\cdot \mathrm{d}\mathbf{S}=0
+\]</span></p>
+<p><strong>安培环路定理</strong></p>
+<p><span class="math display">\[
+    \oint_{l} \mathbf{B}\cdot \mathrm{d}\mathbf{l}= \mu_0 \sum_{}^{} I
+\]</span> 当 <span class="math inline">\(I\)</span>
+穿过环路成右手螺旋定则时取正，反之取负.
+一条电流多次穿过也要分开计算.</p>
+<p><strong>Q:</strong> 无限大均匀载流平面板外的磁场 <span
+class="math display">\[
+    B(z)=\frac{\mu_0 \alpha}{2}
+\]</span> 其中 <span class="math inline">\(\alpha\)</span>
+为电流线密度</p>
+<p>板内是正比例关系</p>
+<p><strong>Q:</strong> 两个圆电流轴线上的磁场分布，分三种情况</p>
+<p>应用：亥姆霍兹线圈——相互平行的一对相同的圆形线圈，它们之间相隔一个半径并进行缠绕，从而使电流沿相同的方向流过这两个线圈。这种绕组在两个线圈之间产生均匀磁场，其主分量与这两个线圈的轴平行。</p>
+<p><strong>Q:</strong> 计算 （<span class="math inline">\(n,
+\mathrm{d}\mathbf{l}, S, q, \mathbf{v}\)</span>）在 <span
+class="math inline">\(\mathbf{r}\)</span> 的 <span
+class="math inline">\(\mathrm{d}\mathbf{B}\)</span></p>
+<p><span class="math display">\[
+    \mathrm{d}\mathbf{B}= \frac{\mu_0}{4\pi}\frac{q \mathrm{d}N
+\mathbf{v} \times \mathbf{r}}{r^{3}}
+\]</span> 一个载流子产生 <span class="math display">\[
+    \mathbf{B}= \frac{\mu_0}{4\pi} \frac{q \mathbf{v} \times
+\mathbf{r}}{r^{3}}
+\]</span></p>
+<p>但一定要 <span class="math inline">\(v \ll c\)</span></p>
+<p>由安培环路定理和 Kelvin-Stokes Theorem 可以得到以下结论</p>
+<p><span class="math display">\[
+    \nabla \times \mathbf{B}= \mu_0 \mathbf{j}
+\]</span></p>
+<p>即有电流的地方会产生磁场的旋转，没有电流的地方没有磁场的旋涡</p>
+<h2 id="磁场对载流导线的作用">磁场对载流导线的作用</h2>
+<p><span class="math display">\[
+    \mathbf{F}= \int_{L}^{} I \mathrm{d}\mathbf{l} \times \mathbf{B}
+\]</span></p>
+<p>磁场对闭合载流导线的作用合力为零</p>
+<p><strong>Q:</strong> 任意形状载流线圈在磁场中受到的磁力矩 <span
+class="math display">\[
+    \mathbf{M}= \mathbf{m} \times \mathbf{B}
+\]</span> 其中 <span class="math inline">\(\mathbf{m} = NI
+\mathbf{S}\)</span></p>
+<p><strong>Q:</strong> 一段电流 <span
+class="math inline">\(I\)</span>，在 <span
+class="math inline">\(\mathbf{B}\)</span> 中安培力的功 <span
+class="math display">\[
+    A=I \Delta \Phi
+\]</span></p>
+<p>其中当 <span class="math inline">\(I\)</span> 与 <span
+class="math inline">\(\mathbf{B}\)</span> 成右手关系时，<span
+class="math inline">\(\Phi&gt;0\)</span>. 反之则小于零.</p>
+<h2 id="带电粒子的运动">带电粒子的运动</h2>
+<p><strong>Q:</strong> 圆周运动等效磁矩与 <span
+class="math inline">\(\mathbf{B}\)</span> 的方向关系如何：<span
+class="math inline">\(\mathbf{m}\)</span> 与 <span
+class="math inline">\(- \mathbf{B}\)</span> 同向</p>
+<p><strong>霍尔效应</strong></p>
+<p><span class="math display">\[
+    U_{H}= R_{H} \frac{IB}{d}
+\]</span></p>
+<p><span class="math inline">\(d\)</span>是 <span
+class="math inline">\(\mathbf{B}\)</span> 方向上的距离，<span
+class="math inline">\(R_H=\frac{1}{qn}\)</span> 称为霍尔系数</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/" class="category-chain-item">物理学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/%E6%99%AE%E7%89%A9/" class="category-chain-item">普物</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%89%A9%E7%90%86/" class="print-no-link">#物理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Chapter12</div>
+      <div>http://example.com/2022/06/11/Chapter12/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 11, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter13/" title="Chapter13">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Chapter13</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter11/" title="Chapter11">
+                        <span class="hidden-mobile">Chapter11</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

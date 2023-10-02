@@ -1,0 +1,1430 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Chapter 9~13">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Information and Entropy (3)">
+<meta property="og:url" content="http://example.com/2022/07/24/Information-and-Entropy-3/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Chapter 9~13">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/shannon.jpg">
+<meta property="article:published_time" content="2022-07-24T09:17:52.000Z">
+<meta property="article:modified_time" content="2022-07-26T14:40:30.589Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/shannon.jpg">
+  
+  
+  
+  <title>Information and Entropy (3) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Information and Entropy (3)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-24 17:17" pubdate>
+          July 24, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          20k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          171 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Information and Entropy (3)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="principle-of-maximum-entropy">Principle of Maximum Entropy</h1>
+<h2 id="problem-setup">Problem Setup</h2>
+<p>The probelm domain needs to be setup. We'll apply the general case to
+two examples, one a business model, and the other a model of physical
+system.</p>
+<h3 id="bergers-burgers">Berger's Burgers</h3>
+<p>The menu has been extended to include a gourmet low-fat tofu
+meal.</p>
+<h3 id="magnetic-dipole-model">Magnetic Dipole Model</h3>
+<p>Consider a system containing one dipole and a two-side
+environment</p>
+<h2 id="probabilities">Probabilities</h2>
+<p>We assume that each of the possible states <span
+class="math inline">\(A_i\)</span> has some probability of occupancy
+<span class="math inline">\(p(A_i)\)</span> where <span
+class="math inline">\(i\)</span> is an index running over the possible
+states.</p>
+<p><span class="math display">\[
+    1=\sum_{i}^{} p(A_i) \tag{9.1}
+\]</span></p>
+<p>Probability, and all quantities that are based on probabilities, are
+subjective, or observer-dependent.</p>
+<h2 id="entropy">Entropy</h2>
+<p><span class="math display">\[
+    S=\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)
+\]</span> (9.2)</p>
+<p>Information is measured in bits.</p>
+<h2 id="constraints">Constraints</h2>
+<p>We consider only one constraint here. If there is a quantity <span
+class="math inline">\(G\)</span> for which each of the states has a
+value <span class="math inline">\(g(A_i)\)</span> then we want to
+consider only those probability distributions for which the expected
+value is a known value <span
+class="math inline">\(\widetilde{G}\)</span> <span
+class="math display">\[
+    \widetilde{G}=\sum_{i}^{} p(A_i)g(A_i) \tag{9.4}
+\]</span></p>
+<h2 id="maximum-entropy-single-constraint">Maximum Entropy, Single
+Constraint</h2>
+<h3 id="probability-formula">Probability Formula</h3>
+<p>The probability distribution <span
+class="math inline">\(p(A_i)\)</span> we want has been derived by
+others. It is a function of the dual variable <span
+class="math inline">\(\beta\)</span>: <span class="math display">\[
+    p(A_i)=2^{-\alpha}2^{-\beta g(A_i)}
+\]</span> (9.12)</p>
+<p>which implies <span class="math display">\[
+    \log _{2}\left(\frac{1}{p(A_i)}\right)=\alpha+\beta g(A_i)
+\]</span> (9.13)</p>
+<p>where <span class="math display">\[
+    \alpha=\log _{2}\left(\sum_{i}^{} 2^{-\beta g(A_i)}\right)
+\]</span> (9.14)</p>
+<p><span class="math display">\[
+    S=\alpha+\beta G \tag{9.15}
+\]</span> where <span class="math inline">\(S\)</span>,<span
+class="math inline">\(\alpha\)</span>, and <span
+class="math inline">\(G\)</span> are all functions of <span
+class="math inline">\(\beta\)</span>.</p>
+<h3 id="evaluating-the-dual-variable">Evaluating the Dual Variable</h3>
+<p><span class="math display">\[
+    0=\sum_{i}^{} [g(A_i)-G(\beta)]2^{-\beta g(A_i)}
+\]</span> (9.21)</p>
+<p>If this equation is multiplied by <span
+class="math inline">\(2^{\beta G(\beta)}\)</span>, the result is <span
+class="math display">\[
+    0=f(\beta)
+\]</span> where the function <span
+class="math inline">\(f(\beta)\)</span> is <span class="math display">\[
+    f(\beta)=\sum_{i}^{} [g(A_i)-G(\beta)]2^{-\beta[g(A_i)-G(\beta)]}
+\]</span> (9.23)</p>
+<p>It is not difficult to show that <span
+class="math inline">\(f(\beta)\)</span> is a monotonic function of <span
+class="math inline">\(\beta\)</span> since <span
+class="math inline">\(G(\beta)\)</span> is a monotonic function of <span
+class="math inline">\(\beta\)</span>.</p>
+<h3 id="examples">Examples</h3>
+<p>We only focus on the magnetic dipole example. <span
+class="math display">\[
+    1=p(U)+p(D)
+\]</span> (9.33)</p>
+<p><span class="math display">\[
+    \begin{aligned}
+        \widetilde{E} &amp;= e(U)p(U)+e(D)p(D) \\
+        &amp;= m_{d}H[p(U)-p(D)] \\
+    \end{aligned}
+\]</span> (9.34)</p>
+<p><span class="math display">\[
+    S=p(U)\log _{2}\left(\frac{1}{p(A)}\right)+p(D)\log
+_{2}\left(\frac{1}{p(D)}\right)
+\]</span> (9.35)</p>
+<p>The entropy is the largest, for the energy <span
+class="math inline">\(\widetilde{E}\)</span> and magnetic field <span
+class="math inline">\(H\)</span>, if</p>
+<p><span class="math display">\[
+    p(U)=2^{-\alpha}2^{-\beta m_{d}H}       
+\]</span> (9.36)</p>
+<p><span class="math display">\[
+    p(D)=2^{-\alpha}2^{\beta m_{d}H}
+\]</span> (9.37)</p>
+<p>where <span class="math display">\[
+    \alpha=\log _{2}(2^{-\beta m_{d}H}+2^{\beta m_{d}H})
+\]</span> (9.38)</p>
+<p>and an according <span class="math inline">\(f(\beta)\)</span>.</p>
+<h1 id="energy">Energy</h1>
+<h2 id="principle-of-maximum-entrophy-for-physical-systems">Principle of
+Maximum Entrophy for Physical Systems</h2>
+<p>So far we have <span class="math display">\[
+    1=\sum_{i}^{} p_i
+\]</span> <span class="math display">\[
+    E=\sum_{i}^{} p_i E_i
+\]</span> <span class="math display">\[
+    S=k_B \sum_{i}^{} p_i \ln \left(\frac{1}{p_i}\right)
+\]</span> <span class="math display">\[
+    p_i=\mathrm{e}^{-\alpha} \mathrm{e}^{-\beta E_i}
+\]</span> <span class="math display">\[
+    \alpha=\ln \left(\sum_{i}^{} \mathrm{e}^{-\beta E_i}
+\right)=\frac{S}{k_B}-\beta E
+\]</span></p>
+<h3 id="differential-forms">Differential Forms</h3>
+<p>Suppose <span class="math inline">\(E_i\)</span> does not depend on
+an external parameter. Take differentiation. <span
+class="math display">\[
+    0=\sum_{i}^{} \mathrm{d}p_i
+\]</span> <span class="math display">\[
+    \mathrm{d}E=\sum_{i}^{} E_i \mathrm{d}p_i
+\]</span> <span class="math display">\[
+    \mathrm{d}S=k_B \beta \mathrm{d}E   
+\]</span> <span class="math display">\[
+    \mathrm{d}\alpha=-E \mathrm{d}\beta
+\]</span> <span class="math display">\[
+    \mathrm{d}p_i=-p_i(E_i-E)\mathrm{d}\beta
+\]</span> from which it is not difficult to show <span
+class="math display">\[
+    \mathrm{d}E=-\left(\sum_{i}^{} p_i(E_i-E)^{2}\right)\mathrm{d}\beta
+\]</span> <span class="math display">\[
+    \mathrm{d}S=-k_B \beta\left(\sum_{i}^{} p_i(E_i-E)^{2}\right)
+\mathrm{d}\beta
+\]</span> Note that the formula relating <span
+class="math inline">\(\mathrm{d}E\)</span> and <span
+class="math inline">\(\mathrm{d}\beta\)</span>, implies that if <span
+class="math inline">\(E\)</span> goes up then <span
+class="math inline">\(\beta\)</span> goes down, and vice versa.</p>
+<h3 id="differential-forms-with-external-parameters">Differential Forms
+with External Parameters</h3>
+<p>Each <span class="math inline">\(E_i\)</span> could be written in the
+form <span class="math inline">\(E_i(H)\)</span>. <span
+class="math display">\[
+    E=\sum_{i}^{} p_i E_i(H) \tag{11.20}
+\]</span> So we have <span class="math display">\[
+    0=\sum_{i}^{} \mathrm{d}p_i
+\]</span> (11.21) <span class="math display">\[
+    \mathrm{d}E=\sum_{i}^{} E_i(H)\mathrm{d}p_i+\sum_{i}^{} p_i
+\mathrm{d}E_i(H)
+\]</span> (11.22) <span class="math display">\[
+    \mathrm{d}S=k_B \beta \mathrm{d}E-k_B \beta \sum_{i}^{} p_i
+\mathrm{d}E_i(H)
+\]</span> (11.23) <span class="math display">\[
+    \mathrm{d}\alpha=-E\mathrm{d}\beta-\beta \sum_{i}^{} p_i
+\mathrm{d}E_i(H)
+\]</span> (11.24) <span class="math display">\[
+    \mathrm{d}p_i=-p_i(E(H)-E)\mathrm{d}\beta-p_i \beta
+\mathrm{d}E_i(H)+p_i \beta \sum_{j}^{} p_j \mathrm{d}E_j(H)
+\]</span> (11.25) <span class="math display">\[
+    \mathrm{d}E=-\left[\sum_{i}^{} p_i(E_i(H)-E)^{2}\right]
+\mathrm{d}\beta+\sum_{i}^{} p_i(1-\beta(E_i(H)-E))\mathrm{d}E_i(H)
+\]</span> (11.26) <span class="math display">\[
+    \mathrm{d}S=-k_B \beta\left[\sum_{i}^{} p_i(E_i(H)-E)^{2}\right]
+\mathrm{d}\beta-k_B \beta^{2}\sum_{i}^{} p_i(E_i(H)-E)\mathrm{d}E_i(H)
+\]</span> (11.27)</p>
+<h2 id="system-and-environment">System and Environment</h2>
+<h3 id="partition-model">Partition Model</h3>
+<p>Our model for the way the total combination is partitioned into the
+system and the environment. We will use index <span
+class="math inline">\(i\)</span> for the system and the index <span
+class="math inline">\(j\)</span> for the environment.</p>
+<p>Whether system and environment are isolated or interacting does not
+affect the states or the physical properties associated with the states,
+although it may affect the probability of occupancy of the states.</p>
+<h3 id="interaction-model">Interaction Model</h3>
+<p>Consider two adjacent dipoles that exchange their orientations —— the
+one on the left ends up with the orientation that the one on the right
+started with, and vice versa. There are only a few cases.</p>
+<p>First, if the two dipoles started with the same orientation, nothing
+would change. On the other hand,if the two dipoles started with
+different orientations, the effect would be that the pattern of
+orientationshas changed. This has happened even though the dipoles
+themselves have not moved. Since the energy associated with the two
+possible alignments is different, there has been a small change in the
+location of the energy, even though the total energy is unchanged.</p>
+<p>Second, if both dipoles are in the system, or both are in the
+environment, then energy may have shifted position within the system or
+the environment, but has not moved between them.</p>
+<p>Third, if the two dipoles started with different alignment, and they
+are located one on each side of the boundary between the system and the
+environment, then energy has flowed from the system to the environment
+or vice versa. This has happened not because the dipoles have moved, but
+because the orientations have moved.</p>
+<h3 id="extensive-and-intensive-quantities">Extensive and Intensive
+Quantities</h3>
+<p>The energies of the system state and of the environment state add up
+to form the energy of the corresponding total state: <span
+class="math display">\[
+    E_{t,i,j}=E_{s,i}+E_{e,j} \tag{11.37}
+\]</span></p>
+<p>The probability of occupancy of total state <span
+class="math inline">\(k\)</span> is the product of the two probabilities
+of the two associated states <span class="math inline">\(i\)</span> and
+<span class="math inline">\(j\)</span>: <span class="math display">\[
+    p_{t,i,j}=p_{s,i}p_{e,j}
+\]</span></p>
+<p>The total energy is <span class="math display">\[
+    E_t=\sum_{i,j}^{} E_{t,i,j}p_{t,i,j}=\sum_{j}^{}
+E_{e,j}p_{e,j}+\sum_{i}^{} E_{s,i}p_{s,i}=E_e+E_s
+\]</span> (11.39)</p>
+<p>This result holds whether the system and environment are isolated or
+interacting. Similarly, <span class="math display">\[
+    S_t=\sum_{i,j}^{} p_{t,i,j}\ln
+\left(\frac{1}{p_{t,i,j}}\right)=\sum_{j}^{} p_{e,j}\ln
+\left(\frac{1}{p_{e,j}}\right)+\sum_{i}^{} p_{s,i} \ln
+\left(\frac{1}{p_{s,i}}\right)=S_{e}+S_{s}    
+\]</span> (11.40)</p>
+<p>This kind of quantity with the property that its total value is the
+sum of the value for the two (or more) parts is known as an
+<strong>extensive quantity</strong>.</p>
+<p>Not all quantities are extensive. In particular, <span
+class="math inline">\(\alpha\)</span> and <span
+class="math inline">\(\beta\)</span> are not. If the system and
+environment are isolated, then there is no reason why <span
+class="math inline">\(\beta_s\)</span> and <span
+class="math inline">\(\beta_e\)</span> would be related. However, if the
+system and environment are interacting, the distribution of energy
+between the system and the environment may not be known and therefore
+the Principle of Maximum Entropy can be applied only to the
+combination.</p>
+<p>Quantities like <span class="math inline">\(\beta\)</span> that are
+the same throughout a system when analyzed as a whole are called
+<strong>intensive</strong>.</p>
+<h3 id="equilibrium">Equilibrium</h3>
+<p>After mixing the system and the environment, the total entrophy
+increases. The energies of the system and the environment have changed,
+and as a result the values of <span
+class="math inline">\(\beta_s\)</span> and <span
+class="math inline">\(\beta_e\)</span> have changed, in opposite
+directions. Their new values are the same (each is equal to <span
+class="math inline">\(\beta_t\)</span>), and therefore this new value
+lies between the two old values.</p>
+<h3 id="energy-flow-work-and-heat">Energy Flow, Work and Heat</h3>
+<p>Energy can be transferred by heat and work at the same time. Work is
+represented by changes in the energy of the individual states <span
+class="math inline">\(\mathrm{d}E_i\)</span>, and heat by changes in the
+probabilities <span class="math inline">\(p_i\)</span>. <span
+class="math display">\[
+    \mathrm{d}E=\sum_{i}^{} E_i(H)\mathrm{d}p_i+\sum_{i}^{} p_i
+\mathrm{d}E_i(H)
+\]</span> (11.52)</p>
+<p>where the first term is heat and the second term is work.</p>
+<h3 id="reversible-energy-flow">Reversible Energy Flow</h3>
+<p><span class="math display">\[
+    \mathrm{d}S_{s}=k_{B} \beta_{s}\mathrm{d}E_s-k_{B}\beta_s\sum_{i}^{}
+p_{s,i}\mathrm{d}E_{s,i}(H)=k_{B}\beta_s\left[\mathrm{d}E_{s}-\sum_{i}^{}
+p_{s,i}\mathrm{d}E_{s,i}(H)\right]=k_{B}\beta_{s}\mathrm{d}q_{s}
+\]</span> (11.55)</p>
+<p>where <span class="math inline">\(\mathrm{d}q_{s}\)</span> stands for
+the heat that comes into the system due to the interaction
+mechanism.</p>
+<p>This formula applies to the system and a similar formula applies to
+the environment: <span class="math display">\[
+    \mathrm{d}S_{e}=k_{B}\beta_{e}\mathrm{d}q_{e} \tag{11.56}
+\]</span> The two heats are the same except for sign <span
+class="math display">\[
+    \mathrm{d}q_{s}=-\mathrm{d}q_{e} \tag{11.57}
+\]</span></p>
+<p>and it therefore follows that the total entropy <span
+class="math inline">\(S_{s}+S_{e}\)</span> is unchanged (i.e., <span
+class="math inline">\(\mathrm{d}S_{s}=-\mathrm{d}S_{e}\)</span> ) if and
+only if the two values of <span class="math inline">\(\beta\)</span> for
+the system and environment are the same: <span class="math display">\[
+    \beta_s=\beta_e \tag{11.58}
+\]</span></p>
+<p>Reversible changes (with no changes in total entrophy) can involve
+work and heat and therefore changes in energy and entrophy for the
+system, but the system and the environment must have the same value of
+<span class="math inline">\(\beta\)</span>. Otherwise, the changes are
+irreversible. Also, reversible changes result in no change to <span
+class="math inline">\(\beta\)</span>.</p>
+<p>The first-order change formulas given earlier can be written to
+account for reversible interactions with the environment by simply
+setting <span class="math inline">\(\mathrm{d}\beta=0\)</span> <span
+class="math display">\[
+    0=\sum_{i}^{} \mathrm{d}p_i
+\]</span> (11.59) <span class="math display">\[
+    \mathrm{d}E=\sum_{i}^{} E_i(H)\mathrm{d}p_i+\sum_{i}^{} p_i
+\mathrm{d}E_i(H)
+\]</span> (11.60) <span class="math display">\[
+    \mathrm{d}S=k_{B}\beta \mathrm{d}E-k_{B}\beta \sum_{i}^{} p_i
+\mathrm{d}E_i(H)
+\]</span> (11.61) <span class="math display">\[
+    \mathrm{d}\alpha=-\beta \sum_{i}^{} p_i \mathrm{d}E_i(H)
+\]</span> (11.62) <span class="math display">\[
+    \mathrm{d}p_i=-p_i \beta \mathrm{d}E_i(H)+p_i \beta \sum_{j}^{} p_j
+\mathrm{d}E_j(H)
+\]</span> (11.63) <span class="math display">\[
+    \mathrm{d}E=\sum_{i}^{} p_i(1-\beta(E_i(H)-E))\mathrm{d}E_i(H)
+\]</span> (11.64) <span class="math display">\[
+    \mathrm{d}S=-k_{B} \beta^{2}\sum_{i}^{}
+p_i(E_i(H)-E)\mathrm{d}E_i(H)
+\]</span> (11.65)</p>
+<h1 id="temperature">Temperature</h1>
+<p>In this chapter we will interpret <span
+class="math inline">\(\beta\)</span> further, and will define its
+reciprocal as the temperature of the material.</p>
+<h2 id="temperature-scales">Temperature Scales</h2>
+<p>Recall in Chapter 11 <span class="math display">\[
+    \frac{\mathrm{d}E}{\mathrm{d}S}=\frac{1}{k_{B}\beta}
+\]</span></p>
+<p>Define the "absolute temperature" as <span class="math display">\[
+    T=\frac{1}{k_{B}\beta}
+\]</span></p>
+<h2 id="heat-engine">Heat Engine</h2>
+<p>The change in energy can be attributed to the effects of work <span
+class="math inline">\(\mathrm{d}w\)</span> and heat <span
+class="math inline">\(\mathrm{d}q\)</span> <span class="math display">\[
+    \mathrm{d}w=\left(\frac{E}{H}\right) \mathrm{d}H
+\]</span> <span class="math display">\[
+    \mathrm{d}q=\sum_{i}^{} E_i(H) \mathrm{d}p_i =T \mathrm{d}S
+\]</span></p>
+<h1 id="quantum-information">Quantum Information</h1>
+<h2 id="quantum-information-storage">Quantum Information Storage</h2>
+<h3 id="model-1-tiny-classical-bits">Model 1: Tiny Classical Bits</h3>
+<p>Like the magnetic dipole model, this model of the quantum bit behaves
+essentially like a classical bit except that its size may be very small
+and it mamy be able to be measured rapidly.</p>
+<h3 id="model-2-superposition-of-states-the-qubit">Model 2:
+Superposition of States (the Qubit)</h3>
+<p><span class="math display">\[
+    \psi=\alpha \psi_0+\beta \psi_1
+\]</span> When a measurement is made, the values of <span
+class="math inline">\(\alpha\)</span> and <span
+class="math inline">\(\beta\)</span> change so that one of them is <span
+class="math inline">\(1\)</span> and the other is <span
+class="math inline">\(0\)</span>.</p>
+<h3 id="model-3-multiple-qubits-with-entanglement">Model 3: Multiple
+Qubits with Entanglement</h3>
+<p><span class="math display">\[
+    \psi=\alpha_{00} \psi_{00}+\alpha_{01}
+\psi_{01}+\alpha_{10}\psi_{10}+\alpha_{11} \psi_{11}
+\]</span></p>
+<p>This can be thought as two qubits, one corresponding to each of the
+two measurements. These qubits are not independent, but rather are
+<strong>entangled</strong> in some way. A measurement of, for example,
+the first qubit will return <span class="math inline">\(0\)</span> with
+probability <span class="math inline">\(\lvert \alpha_{00} \rvert
+^{2}+\lvert \alpha_{01} \rvert ^{2}\)</span> and if it does the wave
+funtion collapses to only those stationary states that are consistent
+with this measured value <span class="math display">\[
+    \psi=\frac{\alpha_{00}\psi_{00}+\alpha_{01} \psi_{01}}{\sqrt{\lvert
+\alpha_{00} \rvert ^{2}+\lvert \alpha_{01} \rvert ^{2}}}
+\]</span></p>
+<h2 id="bracket-notation-for-qubits">Bracket Notation for Qubits</h2>
+<h3 id="kets-bras-brackets-and-operators">Kets, Bras, Brackets, and
+Operators</h3>
+<p>A ket is a column vector composed of complex numbers.</p>
+<p><span class="math display">\[
+    |k\rangle =
+    \begin{pmatrix}
+    k_1 \\
+    k_2 \\
+    \end{pmatrix}
+    =
+    \vec k
+\]</span></p>
+<p>The two kets <span class="math inline">\(|0\rangle\)</span> and <span
+class="math inline">\(| 1 \rangle\)</span> are used to represent the two
+logical states of qubits, and have a standard vector representation
+<span class="math display">\[
+    |0 \rangle =\begin{pmatrix}
+    1 \\
+    0 \\
+    \end{pmatrix}
+    \quad
+    |1 \rangle =
+    \begin{pmatrix}
+    0 \\
+    1 \\
+    \end{pmatrix}
+\]</span></p>
+<p>The superposition of <span class="math inline">\(|0 \rangle\)</span>
+and <span class="math inline">\(|1 \rangle\)</span> can be written as
+<span class="math display">\[
+    |\psi\rangle =\alpha |0\rangle+\beta|1 \rangle=\begin{pmatrix}
+    \alpha \\
+    \beta
+    \end{pmatrix}
+\]</span></p>
+<hr />
+<p>Bras are the Hermitian conjugates of kets. <span
+class="math display">\[
+    \langle \psi |=(|\psi\rangle)^{\dag}=(\alpha^{*} \ \beta^{*})
+\]</span> (<span class="math inline">\(^{*}\)</span>) is the
+conventional notation for the conjugate of a complex number.</p>
+<hr />
+<p>The dot product is the product of a bra by a ket. It is called
+bracket. <span class="math display">\[
+    \langle q | k \rangle =\sum_{j}^{} q_j^{*}k_j
+\]</span></p>
+<p>We have the very important property of kets.</p>
+<p><span class="math display">\[
+    \langle \psi | \psi \rangle =\lvert \alpha \rvert ^{2}+\lvert \beta
+\rvert ^{2}=1
+\]</span></p>
+<p>The dot product can be used to compute the probability of a qubit of
+being in either one of the possible states <span
+class="math inline">\(|0\rangle\)</span> and <span
+class="math inline">\(|1\rangle\)</span>. <span class="math display">\[
+    \operatorname{Pr}(|0\rangle)=\lvert \langle 0 | \psi\rangle \rvert
+^{2}=\lvert \alpha \rvert ^{2}   
+\]</span></p>
+<hr />
+<p>Operators are objects that transform one ket <span
+class="math inline">\(|k\rangle\)</span> into another ket <span
+class="math inline">\(| q\rangle\)</span>. Operators are represented
+with hats: <span class="math inline">\(\widehat{O}\)</span>. <span
+class="math display">\[
+    \widehat{O} | k\rangle =\begin{pmatrix}
+    o_{11} &amp; o_{12} \\
+    o_{21} &amp; o_{22} \\
+    \end{pmatrix}
+    \begin{pmatrix}
+    k_1 \\
+    k_2 \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    q_1 \\
+    q_2 \\
+    \end{pmatrix}
+    =
+    |q\rangle
+\]</span></p>
+<p>Operators act on bras in a similar manner <span
+class="math display">\[
+    \langle k| \hat{O}^{\dag}=\langle q |
+\]</span></p>
+<p>All quantum operators must be unitary!</p>
+<p>If we know the input and output kets, we have a easy way to construct
+an operator <span class="math inline">\(\widehat{O}\)</span> using the
+exterior product of a ket by a bra.</p>
+<p><span class="math display">\[
+    \widehat{O} | k\rangle=(|q \rangle \langle k|)|k\rangle
+\]</span></p>
+<h3 id="tensor-product-composite-systems">Tensor Product —— Composite
+Systems</h3>
+<p>If we have two qubits <span
+class="math inline">\(|\psi\rangle\)</span> and <span
+class="math inline">\(|\phi \rangle\)</span>, the system composed by
+these two qubits is represented by <span
+class="math inline">\(|\psi\rangle \otimes |\phi\rangle\)</span>.</p>
+<p>The following four representations of the tensor product are made
+equivalent <span class="math display">\[
+    |q_1 \rangle \otimes |q_2\rangle \equiv |q_1\rangle | q_2 \rangle
+\equiv |q_1, q_2 \rangle \equiv |q_1q_2\rangle
+\]</span></p>
+<p>For <span class="math inline">\(n\)</span> qubits, <span
+class="math display">\[
+    |q_1 \rangle \otimes |q_2 \rangle \otimes \cdots \otimes |q_n\rangle
+= \bigotimes_{j=1}^{n}|q_j\rangle
+\]</span></p>
+<p>The dual of a tensor product of kets is the tensor product of the
+corresponding bras. <span class="math display">\[
+    (|q_1q_2\rangle)^{\dag}=(|q_1\rangle \otimes |q_2 \rangle
+)^{\dag}=\langle q_1 | \otimes \langle q_2|=\langle q_1q_2|
+\]</span></p>
+<p>The result of the dot product of two composite systems is the
+multiplication of the individual dot products taken in order. <span
+class="math display">\[
+    \langle q_1q_2 | w_1w_2 \rangle=(\langle q_1 | \otimes \langle
+q_2|)(|w_1\rangle \otimes |w_2\rangle)=\langle q_1| w_1\rangle \otimes
+\langle q_2 | w_2 \rangle
+\]</span></p>
+<h2 id="no-cloning-theorem">No Cloning Theorem</h2>
+<p>Qubits cannot be cloned.</p>
+<p>To show taht cloning is not possible, let us assume that an operator
+<span class="math inline">\(\widehat{C}\)</span> takes the information
+of one qubit <span class="math inline">\(|\phi_1\rangle\)</span> and
+copies it into another "blank" qubit, the result is a qubit <span
+class="math inline">\(|\psi_1\rangle\)</span> identical to <span
+class="math inline">\(|\phi_1\rangle\)</span>, and the original <span
+class="math inline">\(|\phi_1\rangle\)</span> is unmodified. <span
+class="math inline">\(\widehat{C}\)</span> must be unitary. Thus we
+define <span class="math inline">\(\widehat{C}\)</span> <span
+class="math display">\[
+    | Original \rangle \otimes | Blank \rangle
+\stackrel{\widehat{C}}{\longrightarrow} |Original \rangle \otimes  |
+clone \rangle
+\]</span></p>
+<p>We are now ready to clone two arbitrary qubits <span
+class="math inline">\(|\phi_1\rangle\)</span> and $| _2 $ separately.
+<span class="math display">\[
+    \widehat{C} | \phi_1 \rangle | blank \rangle =| \phi_1 \rangle |
+\psi_1 \rangle
+\]</span> <span class="math display">\[
+    \widehat{C} | \phi_2 \rangle | blank \rangle =| \phi_2 \rangle |
+\psi_2 \rangle
+\]</span> where it is understood that $| _1 =| _1 $ and <span
+class="math inline">\(| \phi_2 \rangle =| \psi_2 \rangle\)</span>, and
+we have given them different names to distinguish original from
+copy.</p>
+<p>Since the cloning machine is unitary, it preserves the dot products,
+so we can compare the dot product before and after cloning <span
+class="math display">\[
+    \langle \phi_2 | \langle blank | | \phi_1 \rangle | blank \rangle =
+\langle \phi_2 | \langle \psi_2 | | \phi_1 \rangle | \psi_1 \rangle
+\]</span> therefore <span class="math display">\[
+    \langle \phi_2 | \phi_1  \rangle \langle blank | blank \rangle
+=\langle \phi_2 | \phi_1 \rangle \langle \psi_2 | \psi_1 \rangle
+\]</span> The requirements that kets be normalized imposes that <span
+class="math inline">\(\langle blank | blank \rangle =1\)</span>. the
+above equation can only be true in two cases: - <span
+class="math inline">\(\langle \phi_2 | \phi_1 \rangle =0\)</span>, which
+means that $| _1 $ and $| _2 $ are orthogonal. This means that we can
+clone states chosen at random from a set of orthogonal states. And is
+equivalent to say that we can clone $| 0 $ and $| 1 $, which we already
+knew since we do that classically all the time. - <span
+class="math inline">\(\langle \psi_2 | \psi_2 \rangle =1\)</span>, which
+means that <span class="math inline">\(\psi_2=\psi_1\)</span>, that is,
+that clones obtained in each operation are identical. If the two
+originals were different, as we had assumed, what this result says is
+that the clone is independent from the original, which is quite a
+bizarre property for a clone!</p>
+<h2 id="representation-of-qubits">Representation of Qubits</h2>
+<h3 id="qubits-in-the-bloch-sphere">Qubits in the Bloch sphere</h3>
+<p><span class="math display">\[
+    | \psi \rangle =\mathrm{e}^{ia} \left( \cos \frac{\theta}{2}| 0
+\rangle +\sin \frac{\theta}{2} \mathrm{e}^{i\varphi} | 1 \rangle \right)
+\]</span></p>
+<p>If we ignore the global phase factor $^{ia} $, the two angles <span
+class="math inline">\(\theta\)</span> and <span
+class="math inline">\(\varphi\)</span> define a point in a unit sphere.
+This sphere is called the Bloch Sphere.</p>
+<h3 id="qubits-and-symmetries">Qubits and symmetries</h3>
+<p>Pauli matrices: <span class="math display">\[
+    \mathbb{I}=
+    \begin{pmatrix}
+    1 &amp; 0 \\
+    0 &amp; 1 \\
+    \end{pmatrix}
+    \quad
+    \sigma_{x}=
+    \begin{pmatrix}
+    0 &amp; 1 \\
+    1 &amp; 0 \\
+    \end{pmatrix}
+    \quad
+    \sigma_y=
+    \begin{pmatrix}
+    0 &amp; -i \\
+    i &amp; 0 \\
+    \end{pmatrix}   
+    \quad
+    \sigma_{z}=
+    \begin{pmatrix}
+    1 &amp; 0 \\
+    0 &amp; -1 \\
+    \end{pmatrix}
+\]</span></p>
+<h4 id="action-of-pauli-matrices-on-an-arbitrary-qubit">Action of Pauli
+matrices on an arbitrary qubit</h4>
+<p>An arbitrary superposition state <span class="math display">\[
+    | \psi \rangle =\alpha| 0 \rangle +\beta | 1 \rangle =\cos
+\frac{\theta}{2} | 0 \rangle +\sin \frac{\theta}{2}
+\mathrm{e}^{i\varphi} | 1 \rangle
+\]</span></p>
+<p>So <span class="math display">\[
+    \sigma_x | \psi \rangle =
+    \begin{pmatrix}
+    \beta \\
+    \alpha \\
+    \end{pmatrix}
+\]</span> (Rotation of <span class="math inline">\(\pi\)</span> about
+<span class="math inline">\(x\)</span> axis)</p>
+<p><span class="math display">\[
+    \sigma_y | \psi \rangle =i
+    \begin{pmatrix}
+    -\beta \\
+    \alpha \\
+    \end{pmatrix}    
+\]</span> (Rotation of <span class="math inline">\(\pi\)</span> about
+<span class="math inline">\(y\)</span> axis)</p>
+<p><span class="math display">\[
+    \sigma_z | \psi \rangle =
+    \begin{pmatrix}
+    \alpha \\
+    -\beta \\
+    \end{pmatrix}    
+\]</span> (Rotation of <span class="math inline">\(\pi\)</span> about
+<span class="math inline">\(z\)</span> axis)</p>
+<p>Hence Pauli matrices are rotations of <span
+class="math inline">\(\pi\)</span> about each of the axis of the bloch
+sphere.</p>
+<p><span class="math display">\[
+    \mathrm{e}^{i \sigma_x \theta/2} =\cos \frac{\theta}{2} \mathbb{I}+i
+\sin \frac{\theta}{2}\sigma_x
+\]</span></p>
+<p>This result shows us how to do arbitrary rotations of an angle <span
+class="math inline">\(\theta\)</span> about the <span
+class="math inline">\(x\)</span> axis, the resulting operator is often
+called $R_x()=^{i_x /2} $. The cases of <span
+class="math inline">\(R_y\)</span> and <span
+class="math inline">\(R_z\)</span> are completely analogous.</p>
+<h3 id="quantum-gates">Quantum Gates</h3>
+<h4 id="elementary-quantum-gates">Elementary Quantum Gates</h4>
+<ul>
+<li>Pauli <span class="math inline">\(X\)</span>: <span
+class="math inline">\(X=\begin{pmatrix} 0 &amp; 1 \\ 1 &amp; 0 \\
+\end{pmatrix}\equiv \sigma_x\)</span>. It is equivalent to doing a <span
+class="math inline">\(NOT\)</span> or bit flip.</li>
+<li>Pauli <span class="math inline">\(Y\)</span>: <span
+class="math inline">\(Y=\begin{pmatrix} 0 &amp; -i \\ i &amp; 0 \\
+\end{pmatrix}\equiv \sigma_y\)</span>.</li>
+<li>Pauli <span class="math inline">\(Z\)</span>: <span
+class="math inline">\(Z=\begin{pmatrix} 1 &amp; 0 \\ 0 &amp; -1 \\
+\end{pmatrix}\equiv \sigma_z\)</span>. Changes the internal phase.</li>
+<li>Hadamard: <span
+class="math inline">\(H=\frac{1}{\sqrt{2}}\begin{pmatrix} 1 &amp; 1 \\ 1
+&amp; 1 \\ \end{pmatrix}\)</span>.</li>
+<li>Phase: <span class="math inline">\(S=\begin{pmatrix} 1 &amp; 0 \\ 0
+&amp; i \\ \end{pmatrix}\)</span>.</li>
+</ul>
+<p>Below we enumerates some of the properties of the elementary quantum
+gates.</p>
+<p><span class="math display">\[
+    H=\frac{1}{\sqrt{2}}(X+Z) \quad HXH=Z
+\]</span> <span class="math display">\[
+    XYX=-Y \quad HYH=-Y
+\]</span> <span class="math display">\[
+    XZX=-Z \quad HZH=X
+\]</span> <span class="math display">\[
+    XR_{y}(\theta) X=R_y(-\theta) \quad XR_z(\theta)X=R_y(-\theta)
+\]</span></p>
+<h4 id="two-qubit-gates.-controlled-gates">Two-qubit gates. Controlled
+Gates</h4>
+<p>Operators are unitary and square, so quantum gates will always have
+the same number of inputs and outputs. Another way to say it is that all
+quantum gates are naturally reversible.</p>
+<p>The most important two qubit gates are the controlled gates. In a
+controlled gate the first input qubit is a control qubit. If is in the
+$| 1 $ state, it will trigger the gate that acts on the second qubit,
+otherwise, it will not trigger it and the second qubit will remain
+unaltered. Say, a control qubit <span class="math inline">\(| \psi
+\rangle =\begin{pmatrix} \alpha \\ \beta \\ \end{pmatrix}\)</span> with
+the second qubit $| $ and the gate <span
+class="math inline">\(U\)</span> results in $| +U | $.</p>
+<p>There are two controlled gates that are very relevant to the
+algorithms we will describe later on, the <span
+class="math inline">\(C-X\)</span> also known as <span
+class="math inline">\(C-NOT\)</span> and the <span
+class="math inline">\(C-Z\)</span> also known as <span
+class="math inline">\(C-Phase\)</span>.</p>
+<h2 id="quantum-communication">Quantum Communication</h2>
+<h3 id="teleportation---alice-and-bobs-story">Teleportation - Alice and
+Bob's story</h3>
+<p>Alice and Bob entangled a pair of qubits $| _{AB} $ when they first
+met, <span class="math display">\[
+    | \phi_{AB} \rangle =\frac{1}{\sqrt{2}} (| 0_{A} \rangle \otimes  |
+0_{B} \rangle +| 1_{A} \rangle \otimes | 1_{B} \rangle )
+\]</span></p>
+<p>Life took each of them through separate paths. However, Alice decides
+to send Bob a letter in a qubit $| <em>{L} =| 0</em>{L} +| 1_{L} $.</p>
+<p>Alice puts the qubit of the pair she once entangled with Bob in a
+composite system with $| _{L} $. The complete three-qubit system can be
+represented using tensor products <span class="math display">\[
+    | \phi_{A}\psi_{L}\phi_{B} \rangle =\frac{1}{\sqrt{2}}\biggl( |
+0_{A} \rangle  \otimes (\alpha | 0_{L} \rangle +\beta | 1_{L}\rangle )
+\otimes  | 0_{B} \rangle + | 1_{A} \rangle \otimes (\alpha | 0_{L}
+\rangle +\beta | 1_{L} \rangle ) \otimes | 1_{B} \rangle \biggr)
+\]</span></p>
+<p>In practice what the <span class="math inline">\(C-NOT\)</span> does
+is transfer the superposition to Alice's Qubit <span
+class="math display">\[
+    \begin{aligned}
+        &amp;= \frac{1}{\sqrt{2}}\alpha\biggl( | 0_{A} \rangle \otimes |
+0_{B} \rangle + | 1_{A} \rangle  \otimes | 1_{B} \rangle \biggr) \otimes
+| 0_{L} \rangle  \\
+        &amp;+ \frac{1}{\sqrt{2}}\beta\biggl( | 1_{A} \rangle \otimes |
+0_{B} \rangle +| 0_{A} \rangle \otimes | 1_{B} \rangle \biggr) \otimes |
+1_{L} \rangle  
+    \end{aligned}
+\]</span></p>
+<p>At this point Alice's and Bob's qubit have both the information of
+the superposition that was originally in the letter. The Hadamard gate
+produces a new superposition out of the letter as follows <span
+class="math display">\[
+    \begin{aligned}
+        &amp;= \frac{1}{\sqrt{2}}\alpha\biggl( | 0_{A} \rangle \otimes |
+0_{B} \rangle + | 1_{A} \rangle  \otimes | 1_{B} \rangle \biggr) \otimes
+\frac{1}{\sqrt{2}}(| 0_{L} \rangle+| 1_{L} \rangle )  \\
+        &amp;+ \frac{1}{\sqrt{2}}\beta\biggl( | 1_{A} \rangle \otimes |
+0_{B} \rangle +| 0_{A} \rangle \otimes | 1_{B} \rangle \biggr) \otimes
+\frac{1}{\sqrt{2}}(| 0_{L} \rangle-| 1_{L} \rangle )  
+    \end{aligned}
+\]</span></p>
+<p>At this point the information about the superposition in the original
+letter is no longer in Alice's hands. To appreciate that it is so, we
+need to make some manipulations and reordering of the corss products.
+<span class="math display">\[
+    \begin{aligned}
+        &amp;= \frac{1}{2}| 0_{A} \rangle \otimes | 0_{L} \rangle
+\otimes (\alpha | 0_{B} \rangle +\beta | 1_{B} \rangle ) \\
+        &amp;+ \frac{1}{2}| 0_{A} \rangle \otimes | 1_{L} \rangle
+\otimes (\alpha | 0_{B} \rangle -\beta | 1_{B} \rangle ) \\
+        &amp;+ \frac{1}{2}| 1_{A} \rangle \otimes | 0_{L} \rangle
+\otimes (\alpha | 1_{B} \rangle +\beta | 0_{B} \rangle ) \\
+        &amp;+ \frac{1}{2}| 1_{A} \rangle \otimes | 1_{L} \rangle
+\otimes (\alpha | 1_{B} \rangle -\beta | 0_{B} \rangle ) \\
+    \end{aligned}
+\]</span></p>
+<p>The next steps are the key to faultless teleportation - Alice
+measures her two qubits, she will obtain either of $| 0_{A}0_{L} <span
+class="math inline">\(,\)</span>| 0_{A}1_{L} $, $| 1_{A}0_{L} $, or $|
+1_{A}1_{L} $ with equal probability. - Upon Alice's measurement, Bob's
+qubit takes the value of one of the four possible superpositions. And
+so, the result of her measurement can help Bob unscramble his bit. - If
+she measured $| 0_{A}0_{L} $, she will tell Bob not to do anything to
+his qubit. If she measured $| 0_{A}1_{L} $, Bob will have to correct for
+the phase (that can be done with a <span
+class="math inline">\(Z\)</span> gate). If she measured $| 1_{A}0_{L} $,
+the states in the message have been flipped, and to unflip them Bob will
+have to use a bit-flip (a.k.a not, a.k.a <span
+class="math inline">\(X\)</span>) gate. Finally if she measured $|
+1_{A}1_{L} $, Bob will have to correct both for the phase and the bit
+flip.</p>
+<p>Alice needs to communicate to bob 2 classical bits. The first bit of
+Alice informs about bit-flip errors and the second about phase
+errors.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%BF%A1%E6%81%AF%E8%AE%BA/" class="category-chain-item">信息论</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Information and Entropy (3)</div>
+      <div>http://example.com/2022/07/24/Information-and-Entropy-3/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 24, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/24/Neuronal-Dynamics-7/" title="Neuronal Dynamics (7)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Neuronal Dynamics (7)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/19/%E5%B8%B8%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B%EF%BC%8811%EF%BC%89/" title="常微分方程（11）">
+                        <span class="hidden-mobile">常微分方程（11）</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

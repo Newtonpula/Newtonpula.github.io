@@ -1,0 +1,1267 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="ODE 与 PDE 数值解大作业">
+<meta property="og:type" content="article">
+<meta property="og:title" content="平均场朗之万动力学的数值模拟">
+<meta property="og:url" content="http://example.com/2023/06/21/%E5%B9%B3%E5%9D%87%E5%9C%BA%E6%9C%97%E4%B9%8B%E4%B8%87%E5%8A%A8%E5%8A%9B%E5%AD%A6%E7%9A%84%E6%95%B0%E5%80%BC%E6%A8%A1%E6%8B%9F/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="ODE 与 PDE 数值解大作业">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-06-21T06:18:42.000Z">
+<meta property="article:modified_time" content="2023-06-21T06:49:54.257Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>平均场朗之万动力学的数值模拟 - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="平均场朗之万动力学的数值模拟"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-06-21 14:18" pubdate>
+          June 21, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          15k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          122 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">平均场朗之万动力学的数值模拟</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="平均场朗之万动力学的数值模拟">平均场朗之万动力学的数值模拟</h1>
+<p><strong>摘要</strong>
+平均场朗之万动力学（MFLD），一种具有非线性漂移的朗之万动力学的推广，在许多领域有显著的作用，比如描述多粒子极限下的噪声粒子梯度下降算法或证明深度学习中随机梯度下降算法的收敛性.
+过去的工作证明了 MFLD
+弱收敛到对应的不变分布，且该不变分布是某个自由能函数的最小化子.
+在一定条件下，该收敛是指数速率的. 本文从引入随机微分方程和其对应的
+Fokker-Planck
+方程出发，尝试了平均场朗之万方程的数值模拟和经验分布的收敛性.</p>
+<h2 id="随机微分方程和-fokker-planck-方程">随机微分方程和 Fokker-Planck
+方程</h2>
+<p>本节主要参考了应用随机分析的相关材料<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="E, W., Li, T. \&amp; Vanden-Eijinden, E. 2019. Applied Stochastic Analysis. RI: AMS.">[2]</span></a></sup><sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="Lelièvre, T. \&amp; Stoltz, G. (2016) Partial differential equations and stochastic methods in molecular dynamics. Acta Numerica. Cambridge University Press, 25, pp. 681–880.">[4]</span></a></sup></p>
+<h3 id="随机微分方程">随机微分方程</h3>
+<p>一般的随机微分方程形如 <span class="math display">\[
+    \dot{X}_t=b(X_t,t)+\sigma(X_t,t)\dot{W}_t,\tag{1}
+\]</span> 其中 <span class="math inline">\(\dot{W}_t\)</span>
+为维纳过程的（在分布意义下的）导数，更广为人知的名字是白噪声.
+可以将其理解为具有均值 <span class="math inline">\(m(t)=0\)</span>
+和互相关函数 <span class="math inline">\(K(s,t)=\delta(t-s)\)</span>
+的一个高斯过程.</p>
+<p>一般将（1）改写为如下形式： <span class="math display">\[
+    \mathrm{d}X_t=b(X_t,t)\mathrm{d}t+\sigma(X_t,t)\mathrm{d}W_t.
+\tag{2}
+\]</span> （2）式应从积分意义下理解，即 <span class="math display">\[
+    X_t=X_0+\int_{0}^{t} b(X_s,s) \mathrm{d}s+\int_{0}^{t} \sigma(X_s,s)
+\mathrm{d}W_s. \tag{3}
+\]</span> 如何定义（3）式最后一项是一个问题，伊藤将其定义为 <span
+class="math display">\[
+    \int_{0}^{t} \sigma(X_s,s) \mathrm{d}W_s=\lim_{\lvert \Delta
+\rvert  \to 0}\sum_{j}^{} \sigma(X_{t_j},t_j)\left(
+W_{t_{j+1}}-W_{t_{j}} \right)
+\]</span>
+这里省略与伊藤积分相关的一些结果，只是不加证明地给出伊藤积分最重要的性质之一：伊藤引理.</p>
+<p><strong>伊藤引理</strong> 令 <span
+class="math inline">\(\bm{X}_t\)</span> 满足 <span
+class="math inline">\(\mathrm{d}\bm{X}_t=\bm{b}(t)\mathrm{d}t+\bm{\sigma}(t)\mathrm{d}\bm{W}_t\)</span>，其中
+<span class="math inline">\(\bm{X}_t\in \mathbb{R}^{n}\)</span>，<span
+class="math inline">\(\bm{\sigma}\in \mathbb{R}^{n\times
+m}\)</span>，<span class="math inline">\(\bm{W}\in
+\mathbb{R}^{m}\)</span> 为一个 <span class="math inline">\(m\)</span>
+维的标准维纳过程. 定义 <span
+class="math inline">\(Y_t=f(\bm{X}_t)\)</span>，其中 <span
+class="math inline">\(f\in C^{\infty}(\mathbb{R}^{d})\)</span>. 则 <span
+class="math display">\[
+    \mathrm{d}Y_t=\left( \bm{b}\cdot \nabla
+f+\frac{1}{2}\bm{\sigma\sigma}^{\mathsf{T}}\colon \nabla ^{2}f \right)
+\mathrm{d}t+\nabla f\cdot \bm{\sigma}\cdot \mathrm{d}\bm{W}_t.\tag{4}
+\]</span></p>
+<h3
+id="随机微分方程和偏微分方程的联系">随机微分方程和偏微分方程的联系</h3>
+<p>对于一个 <span class="math inline">\(\mathbb{R}^{d}\)</span>
+中时齐的随机微分方程 <span class="math display">\[
+    \mathrm{d}\bm{X}_t=\bm{b}(\bm{X}_t)\mathrm{d}t+\bm{\sigma}(\bm{X}_t)\mathrm{d}\bm{W}_t,
+\tag{5}
+\]</span> 满足初值 <span class="math inline">\(\bm{X}_0\in
+\mathbb{R}^{d}\)</span>. <span class="math inline">\(\bm{W}_t\in
+\mathbb{R}^{m}\)</span> 是标准维纳过程，<span
+class="math inline">\(\bm{b}\colon \mathbb{R}^{d}\rightarrow
+\mathbb{R}^{d}\)</span>， <span class="math inline">\(\bm{\sigma}\colon
+\mathbb{R}^{d} \rightarrow \mathbb{R}^{d\times m}\)</span>
+满足足够的光滑性，使得（5）存在唯一的强解.
+（5）自然地与一个微分算子相关： <span class="math display">\[
+    \mathcal{L}=\bm{b}\cdot \nabla +\frac{1}{2}
+\bm{\sigma\sigma}^{\mathsf{T}}\colon \nabla ^{2},
+\]</span> <span class="math inline">\(\mathcal{L}\)</span> 被称为马氏链
+<span class="math inline">\((\bm{X}_t)_{t\geqslant 0}\)</span>
+的无穷小生成算子. 这里符号 <span class="math inline">\(\colon\)</span>
+为 Frobenius 内积，即对于一个给定的 <span
+class="math inline">\(C^{\infty}\)</span> 试验函数 <span
+class="math inline">\(\varphi\colon \mathbb{R}^{d}\rightarrow
+\mathbb{R}\)</span>，有 <span class="math display">\[
+    \mathcal{L}\varphi=\sum_{i=1}^{d} b_i
+\partial_{x_i}\varphi+\frac{1}{2}\sum_{i=1}^{d}\sum_{j=1}^{d}
+\sum_{k=1}^{m} \sigma_{i,k}\sigma_{j,k}\partial_{x_i,x_j}\varphi.
+\]</span> （5）和（6）的关系由下面引理给出</p>
+<p><strong>引理</strong> 任取 <span class="math inline">\(\varphi\in
+C^{\infty}_{c}(\mathbb{R}^{d})\)</span>. 则 <span
+class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t}[\mathbb{E}_{\bm{W}}(\varphi(\bm{X}_t))]\bigg|_{t=0}=\mathcal{L}\varphi(\bm{X})\bigg|_{\bm{X}=\bm{X}_0}.
+\tag{7}
+\]</span></p>
+<p><strong>证明</strong> 由伊藤引理， <span class="math display">\[
+    \mathrm{d}\varphi(\bm{X}_t)=\mathcal{L}\varphi(\bm{X}_t)\mathrm{d}t+(\nabla
+\varphi(\bm{X}_t))^{\mathsf{T}}\sigma(\bm{X}_t)\mathrm{d}\bm{W}_t,
+\]</span> 因为 <span class="math inline">\(\varphi\in
+C_{c}^{\infty}(\mathbb{R}^{d})\)</span>，故有 <span
+class="math display">\[
+    \mathbb{E}_{\bm{W}}\left( \int_{0}^{t} (\nabla
+\varphi(\bm{X}_s))^{\mathsf{T}}\bm{\sigma}(\bm{X}_s) \mathrm{d}\bm{W}_s
+\right) =0
+\]</span> 这里用到期望是一个平方可积鞅的性质. 因此 <span
+class="math display">\[
+    \mathbb{E}_{\bm{W}}[\varphi(\bm{X}_t)]-\varphi(\bm{X}_0)=\int_{0}^{t}
+\mathbb{E}_{\bm{W}}[(\mathcal{L}\varphi)(\bm{X}_s) ]\mathrm{d}s, \tag{8}
+\]</span> 以及如下极限存在： <span class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t}(\mathbb{E}_{\bm{W}}[\varphi(\bm{X}_t)])\bigg|_{t=0}=\lim_{t
+\to
+0}\frac{\mathbb{E}_{\bm{W}}[\varphi(\bm{X}_t)]-\varphi(\bm{X}_0)}{t}=\mathcal{L}\varphi(\bm{X})\bigg|_{\bm{X}=\bm{X}_0}.
+\]</span></p>
+<p>这样，我们知道任何一个形如（5）的SDE，至少有一个与之密切相关的微分算子
+<span class="math inline">\(\mathcal{L}\)</span>，并且 <span
+class="math inline">\(\mathcal{L}\)</span> 不包含随机项.
+我们知道（5）其实是一个连续时间、连续状态的随机过程，可以考虑 <span
+class="math inline">\(x_t\)</span> 在不同状态的概率分布.
+进一步，（5）的不变分布自然地对应于某种“稳态”，因此非常重要. 如果认为
+<span class="math inline">\(t=0\)</span> 时刻 <span
+class="math inline">\(x\)</span> 所处状态满足分布 <span
+class="math inline">\(p(0,x)\)</span>，那么 <span
+class="math inline">\(p\)</span> 就满足（5）所对应的 Fokker-Planck
+方程，它与 <span class="math inline">\(\mathcal{L}\)</span>
+有着密切的关系，我们将在下一节给出证明.</p>
+<p>在此之前，可以注意到（5）的不变分布与 <span
+class="math inline">\(\mathcal{L}\)</span> 有如下关系：概率分布 <span
+class="math inline">\(\pi\)</span> 为（5）的不变分布，当且仅当对于任意
+<span class="math inline">\(\varphi\in
+C_{c}^{\infty}(\mathbb{R}^{d})\)</span>，有 <span
+class="math display">\[
+    \int_{}^{} \mathcal{L}\varphi \mathrm{d}\pi=0. \tag{9}
+\]</span> 这可以由（7）两边关于 <span class="math inline">\(\pi\)</span>
+积分，并利用当 <span class="math inline">\(x_0\sim \pi\)</span> 时 <span
+class="math inline">\(\mathbb{E}(\varphi(x_t))=\mathbb{E}(\varphi(x_{0}))\)</span>
+的性质得到.</p>
+<h3 id="fokker-planck-方程">Fokker-Planck 方程</h3>
+<p>考虑形如（4）的一个 <span
+class="math inline">\(\mathbb{R}^{d}\)</span> 中的一个随机过程 <span
+class="math inline">\((\bm{X}_t)_{t\geqslant 0}\)</span>. 设 <span
+class="math inline">\(t\)</span> 时刻 <span
+class="math inline">\(\bm{X}_t\)</span> 服从的分布有密度函数 <span
+class="math inline">\(\psi(t,\bm{X})\)</span>，<span
+class="math inline">\(\psi(0,\bm{X})=\psi_{0}(\bm{X})\)</span>
+为初始时刻的密度函数.</p>
+<p><strong>注</strong> 我们略去了 <span
+class="math inline">\(\bm{X}_t\)</span>
+在许多情况下是一个连续型随机变量的证明. 如果 <span
+class="math inline">\(\bm{X}_t\)</span> 没有密度函数，下面的
+Fokker-Planck 方程仍然具有弱形式.</p>
+<p>在上面这些假设下，<span class="math inline">\(\psi\)</span> 满足
+Fokker-Planck 方程（也被称为 Kolmogorov 前向方程）： <span
+class="math display">\[
+    \partial_{t}\psi=\mathcal{L}^{\dag}\psi, \quad \psi(0)=\psi_0,
+\tag{10}
+\]</span> 其中 <span class="math inline">\(\mathcal{L}^{\dag}\)</span>
+表示算子 <span class="math inline">\(\mathcal{L}\)</span> 的 <span
+class="math inline">\(L^{2}\)</span> 伴随： <span
+class="math display">\[
+    \mathcal{L}^{\dag}=-\operatorname{div}(\bm{b}\
+\cdot)+\frac{1}{2}\nabla ^{2}\colon
+(\bm{\sigma\sigma}^{\mathsf{T}}\cdot).
+\]</span> 即对于任何 <span class="math inline">\(\varphi\in
+C^{\infty}(\mathbb{R}^{d})\)</span>， <span class="math display">\[
+    \mathcal{L}^{\dag}\psi=-\sum_{i=1}^{d}
+\partial_{x_i}(b_i\psi)+\frac{1}{2}\sum_{i,j=1}^{d} \sum_{k=1}^{m}
+\partial_{x_i,x_j}(\sigma_{i,k}\sigma_{j,k}\psi).
+\]</span> <span class="math inline">\(L^{2}\)</span>
+伴随的意思是，对于任何 <span class="math inline">\(f,g \in
+C^{\infty}_{c}(\mathbb{R}^{d})\)</span>，有 <span
+class="math display">\[
+    \int_{\mathbb{R}^{d}}^{} \mathcal{L}f(x)g(x)
+\mathrm{d}x=\int_{\mathbb{R}^{d}}^{} f(x)\mathcal{L}^{\dag}g(x)
+\mathrm{d}x.
+\]</span> （7）的弱形式可以通过（5）推导得到. 对任意 <span
+class="math inline">\(h&gt;0\)</span> 和 <span
+class="math inline">\(\varphi\in
+C^{\infty}_{c}(\mathbb{R}^{d})\)</span>， <span class="math display">\[
+    \frac{\mathbb{E}_{\bm{W}}[\varphi(\bm{X}_{t+h})]-\mathbb{E}_{\bm{W}}[\varphi(\bm{X}_t)]}{h}=\frac{1}{h}\int_{t}^{t+h}
+\mathbb{E}_{\bm{W}}[(\mathcal{L}\varphi)(\bm{X}_s)] \mathrm{d}s,
+\]</span> 对不同布朗运动取均值，密度函数为 <span
+class="math inline">\(\psi\)</span>，故 <span class="math display">\[
+    \begin{aligned}
+        \frac{1}{h}\left( \int_{\mathbb{R}^{d}}
+\varphi(\bm{X})\psi(t+h,\bm{X})
+\mathrm{d}\bm{X}-\int_{\mathbb{R}^{d}}^{} \varphi(\bm{X})\psi(t,\bm{X})
+\mathrm{d}\bm{X} \right)  \\
+        =\frac{1}{h}\int_{t}^{t+h} \int_{\mathbb{R}^{d}}^{}
+(\mathcal{L}\varphi)(\bm{X})\psi(s,\bm{X}) \mathrm{d}\bm{X} \mathrm{d}s.
+    \end{aligned}
+\]</span> 取极限 <span class="math inline">\(h\rightarrow
+0\)</span>，就有 <span class="math display">\[
+    \frac{\mathrm{d}}{\mathrm{d}t}\left(
+\int_{\mathbb{R}^{d}}\varphi(\bm{X})\psi(t,\bm{X}) \mathrm{d}\bm{X}
+\right) = \int_{\mathbb{R}^{d}}^{}
+(\mathcal{L}\varphi)(\bm{X})\psi(t,\bm{X}) \mathrm{d}\bm{X}. \tag{11}
+\]</span> （11）是（10）的弱形式. 要求（5）的不变分布，只要在（10）中解
+<span class="math inline">\(\mathcal{L}^{\dag}\psi=0\)</span> 即可.</p>
+<h3 id="不变分布是自由能的极小化子">不变分布是自由能的极小化子</h3>
+<p>给定一个势函数 <span class="math inline">\(f\colon
+\mathbb{R}^{d}\rightarrow
+\mathbb{R}\)</span>，满足李普希茨连续性和合适的增长速率条件，过阻尼朗之万动力学定义为
+<span class="math display">\[
+    \mathrm{d}X_t=-\nabla f(X_t)\mathrm{d}t+\sigma \mathrm{d}W_t,
+\tag{12}
+\]</span> 它的 Fokker-Planck 方程形如 <span class="math display">\[
+    \partial_t m=\operatorname{div}(m\nabla f
+)+\frac{\sigma^{2}}{2}\Delta m, \tag{13}
+\]</span> 其中 <span class="math inline">\(\sigma\)</span> 是一个常数，
+<span class="math inline">\(W\)</span> 是一个 <span
+class="math inline">\(d\)</span> 维布朗运动. 此时，记（9）的不变分布为
+<span class="math inline">\(m^{\sigma,*}\)</span>，则它一定有如下形式
+<span class="math display">\[
+    m^{\sigma,*}(x)=\frac{1}{Z}\exp \left( -\frac{2}{\sigma^{2}}f(x)
+\right) , \quad \forall x\in \mathbb{R}^{d},
+\]</span> 其中 <span class="math inline">\(Z\)</span> 是归一化常数.</p>
+<p>一个重要发现是，<span class="math inline">\(m^{\sigma,*}\)</span>
+是如下自由能函数的唯一最小化子： <span class="math display">\[
+    V^{\sigma}(m):=\int_{\mathbb{R}^{d}}^{}
+f(x)m(\mathrm{d}x)+\frac{\sigma^{2}}{2}H(m),
+\]</span> 其中 <span class="math inline">\(H(m)\)</span> 是 <span
+class="math inline">\(m\)</span> 与 Lebesgue
+测度的相对熵（即通常意义下的熵）： <span class="math display">\[
+    H(m):=\int_{\mathbb{R}^{d}}^{} m(x)\log \left( \frac{m(x)}{g(x)}
+\right)  \mathrm{d}x,
+\]</span> 这里 <span class="math inline">\(g(x)=1\)</span> 对应于
+Lebesgue 测度，<span class="math inline">\(g(x)\)</span>
+可以取为更广泛的概率测度.</p>
+<h2 id="平均场朗之万动力学">平均场朗之万动力学</h2>
+<p>记 <span class="math inline">\(\mathcal{P}(\mathbb{R}^{d})\)</span>
+为 <span class="math inline">\(\mathbb{R}^{d}\)</span>
+上所有概率测度构成的集合，<span
+class="math inline">\(\mathcal{P}_{p}(\mathbb{R}^{d})\)</span> 为 <span
+class="math inline">\(\mathbb{R}^{d}\)</span> 上所有 <span
+class="math inline">\(p\)</span> 阶矩有限的概率测度构成的集合. <span
+class="math inline">\(F\)</span> 是一个定义在 <span
+class="math inline">\(\mathcal{P}(\mathbb{R}^{d})\)</span> 上的凸泛函.
+<span class="math inline">\(U\in C^{\infty}(\mathbb{R}^{d})\)</span>
+且满足 <span class="math display">\[
+    \int_{\mathbb{R}^{d}}^{} \mathrm{e}^{-U(x)}  \mathrm{d}x=1,
+\]</span> 后文中记 <span class="math inline">\(g(x)=\exp
+(-U(x))\)</span>.</p>
+<p><strong>定义（MFLD）</strong> <span class="math display">\[
+\mathrm{d}X_t=-\left(D_{m}F(m_t,X_t)+\frac{\sigma^{2}}{2}\nabla
+U(X_t)\right)\mathrm{d}t+\sigma \mathrm{d}W_t, \tag{14}
+\]</span> 其中 <span class="math inline">\(D_mF\)</span>
+被称为概率测度空间上的内变分，定义为 <span
+class="math inline">\(D_mF(m,x):=\nabla \frac{\delta F}{\delta
+m}(m,x)\)</span>.</p>
+<p><strong>注</strong> 如果对于某个 <span class="math inline">\(f\in
+C^{1}(\mathbb{R}^{d},\mathbb{R})\)</span>，令 <span
+class="math inline">\(F(m)=\int_{\mathbb{R}^{d}}^{}
+f(x)m(\mathrm{d}x)\)</span>，则有 <span
+class="math inline">\(D_mF(m,x)=\nabla f(x)\)</span>. 那么 MFLD
+化为过阻尼的朗之万动力学（9）.</p>
+<p>MFLD 有相应的 Fokker-Planck 方程，下面简称 MFLE：</p>
+<p><span class="math display">\[
+    \partial_{t}m=\nabla \cdot \left( \left(
+D_mF(m,\cdot)+\frac{\sigma^{2}}{2}\nabla U \right)
+m+\frac{\sigma^{2}}{2}\nabla m \right) , \tag{15}
+\]</span> 其中 <span class="math inline">\(m_t\)</span> 是 <span
+class="math inline">\(X_t\)</span> 分布的密度函数.</p>
+<p>之前的工作证明了，在满足适当条件的情况下，（10）的不变分布是如下自由能函数的最小化子<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="Hu, K., Ren, Z., SISKA, D. \&amp; SZPRUCH, L. (2020) Mean-Field Langevin Dynamics and Energy Landscape of Neural Networks. arXiv preprint at arXiv:1905.07769.">[3]</span></a></sup>
+<span class="math display">\[
+    V^{\sigma}(m):=F(m)+\frac{\sigma^{2}}{2}H(m), \tag{16}
+\]</span></p>
+<p>记这个不变分布为 <span class="math inline">\(m^{*}\)</span>，则 <span
+class="math inline">\(m^{*}\in \mathcal{P}_{2}(\mathbb{R}^{d})\)</span>
+且满足下列变分方程： <span class="math display">\[
+    \frac{\delta F}{\delta m}(m^{*},\cdot)+\frac{\sigma^{2}}{2}\log
+(m^{*})+\frac{\sigma^{2}}{2}U \ \text{几乎处处是一个常数} \tag{17}
+\]</span></p>
+<p>任何初始分布 <span
+class="math inline">\(\mathcal{W}_{2}\)</span>-收敛到 <span
+class="math inline">\(m^{*}\)</span>：<span
+class="math inline">\(\lim_{t \to
+\infty}\mathcal{W}_{2}(m_t,m^{*})=0\)</span>. 这里略去 Wasserstein
+度量的相关介绍，但我们知道至少在某种意义上任何初始分布会收敛到不变分布.</p>
+<h3
+id="噪声粒子梯度下降noisy-particle-gradient-descent-npgd">噪声粒子梯度下降（Noisy
+Particle Gradient Descent, NPGD）</h3>
+<p>噪声粒子梯度下降（Noisy Particle Gradient Descent,
+NPGD）是一种最小化带正则项概率空间上的泛函的算法.
+当粒子数趋于无穷时，NPGD 可以用 MFLD 描述. 为了用能量泛函 <span
+class="math inline">\(G\)</span> 的一阶变分描述动力学，我们对 <span
+class="math inline">\(G\)</span>
+规定一定的光滑性条件<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="Chizat, L. (2022) Mean-Field Langevin Dynamics: Exponential Convergence and Annealing. arXiv preprint at arXiv: 2202.01009v3.">[1]</span></a></sup>.</p>
+<p><strong>假设（<span class="math inline">\(G\)</span>
+的光滑性条件）</strong> 对任意 <span class="math inline">\(m \in
+\mathcal{P}_{2}(\mathbb{R}^{d})\)</span>，<span
+class="math inline">\(G\)</span> 在 <span
+class="math inline">\(m\)</span> 处有一阶变分 <span
+class="math inline">\(V[m]\in C^{1}(\mathbb{R}^{d})\)</span> 且满足
+<span class="math inline">\((m,x)\rightarrow \nabla V[m](x)\)</span>
+在如下意义下 Lipschitz 连续：存在 <span
+class="math inline">\(L&gt;0\)</span> 使得 <span class="math display">\[
+    \forall m,\nu \in \mathcal{P}_{2}(\mathbb{R}^{d}), \quad \forall
+x,y\in \mathbb{R}^{d}, \quad \left\| \nabla V[m](x)-\nabla V[\nu](y)
+\right\|_{2}\leqslant L(\left\| x-y \right\|_{2}+W_2(m,\nu)).
+\]</span> 其中 <span class="math inline">\(W_{2}(\cdot,\cdot)\)</span>
+为 Wasserstein 距离.</p>
+<p>NPGD 的出发点是用经验分布来代替真实分布. 如果有 <span
+class="math inline">\(N\)</span> 个粒子 <span
+class="math inline">\(X_1,\cdots ,X_N \in \mathbb{R}^{d}\)</span>. 假设
+<span class="math inline">\(G\)</span>
+是一个服从上述假设的能量泛函，<span class="math inline">\(V\)</span>
+是其一阶变分. 独立同分布初始化 <span class="math inline">\(X_{i,0}\sim
+\mu_0\in \mathcal{P}_{2}(\mathbb{R}^{d}), i \in [N]\)</span> 并定义
+NPGD： <span class="math display">\[
+    \begin{cases}
+        X_{i,t+\mathrm{d}t}=X_{i,t}-\mathrm{d}t \nabla
+V[\hat{m}_{t}](X_{i,t})+\sigma\sqrt{\mathrm{d}t}Z_{i,t} \\
+        \hat{m}_{t}=\frac{1}{N}\sum_{i=1}^{N} \delta_{X_{i,t}},
+    \end{cases} \tag{18}
+\]</span> 其中 <span class="math inline">\(\mathrm{d}t&gt;0\)</span>
+为时间步长，<span class="math inline">\(Z_{i,t}\sim
+\mathcal{N}(0,1)\)</span> 为独立同分布的标准正态变量.</p>
+<p>概率分布 <span class="math inline">\(m_{t}\)</span> 为下列
+Fokker-Planck 方程的近似解 <span class="math display">\[
+    \partial_{t} m=\nabla \cdot \left(m \nabla
+V[m]\right)+\frac{\sigma^{2}}{2} \Delta m, \tag{19}
+\]</span> 也即 <span class="math display">\[
+    \partial_{t} m=\nabla \cdot
+\left(D_{m}G(m,\cdot)m+\frac{\sigma^{2}}{2} \nabla  m\right). \tag{20}
+\]</span> 满足 <span class="math inline">\(G\)</span>
+的光滑性条件下，（19）有唯一解. 注意，（20）的形式与（15）略有差别，MFLD
+的核心在于 <span class="math inline">\(t\)</span> 时刻 <span
+class="math inline">\(X_{i}\)</span> 的动力学与所有粒子的分布 <span
+class="math inline">\(m_{t}\)</span>
+有关，从这个角度来看，（20）与（15）相差的正则项并不关键.</p>
+<h2 id="过阻尼朗之万动力学的数值模拟">过阻尼朗之万动力学的数值模拟</h2>
+<p>由上文知，过阻尼朗之万动力学是 MFLD
+的特殊情形，故我们先研究（10）的数值解的特性. 考虑方程 <span
+class="math display">\[
+    \mathrm{d}x=-\frac{x}{50}\mathrm{d}t+\sigma\mathrm{d}W_t, \tag{21}
+\]</span> 它的不变分布为 <span class="math display">\[
+    m^{\sigma,*}(x)=\frac{1}{5\sqrt{2\pi}\sigma}\exp
+(-\frac{x^{2}}{50\sigma^{2}}). \tag{22}
+\]</span></p>
+<p><strong>这里省略了一幅大图，实在不知道怎么排版好</strong></p>
+<p>利用 KL 散度和 Wasserstein 距离来衡量两个概率分布的差异.
+这里只考虑一维情况. KL 散度的计算是方便的.<span
+class="math inline">\(p\)</span>-Wasserstein
+距离的计算利用了下列事实：对任意 <span
+class="math inline">\(\mu_1,\mu_2\in
+\mathcal{P}_{p}(\mathbb{R})\)</span>，设它们的累积分布函数分别为 <span
+class="math inline">\(F_1(x), F_2(x)\)</span>，则 <span
+class="math inline">\(p\)</span>-Wasserstein 距离为 <span
+class="math display">\[
+    W_{p}(\mu_1,\mu_2)=\left( \int_{0}^{1} \lvert F_1 ^{-1}(q)-F_{2}
+^{-1}(q) \rvert ^{p} \mathrm{d}q \right) ^{1/p},
+\]</span> 其中 <span class="math inline">\(F_1^{-1}\)</span> 和 <span
+class="math inline">\(F_{2}^{-1}\)</span> 是逆累积分布函数. 特别的，当
+<span class="math inline">\(p=1\)</span> 时，结合几何意义不难看出 <span
+class="math display">\[
+    W_1(\mu_1,\mu_2)=\int_{\mathbb{R}}^{} \lvert F_1(x)-F_2(x)
+\rvert  \mathrm{d}x.
+\]</span></p>
+<p>本节模拟均采用了大量独立样本以对分布函数作较好的近似.
+具体的，独立初始化 <span class="math inline">\(N=10000\)</span> 个样本
+<span class="math inline">\(X^{1}_{0},\cdots ,X^{N}_{0}\)</span>.
+不失一般性，<span class="math inline">\(X^{i}_{0}\sim \mathcal{N}(0,1),
+i=1,\cdots,N\)</span>. 时间步长 <span
+class="math inline">\(\mathrm{d}t=0.01\)</span> 并演化 <span
+class="math inline">\(10000\)</span> 步至 <span
+class="math inline">\(t=100\)</span> 处. 从 <span
+class="math inline">\(\mathcal{N}(0,25\sigma^{2})\)</span> 随机采样
+<span class="math inline">\(N=10000\)</span>
+个样本，以该样本的经验分布代替真实分布 <span
+class="math inline">\(\mathcal{N}(0,25\sigma^{2})\)</span> 计算每步的 KL
+散度和 Wasserstein 距离. 图1展示了取 <span
+class="math inline">\(\sigma=0.1,1,5\)</span> 时的模拟情况.
+从图中可以看出，KL 散度和 Wasserstein 距离收敛阶相同，且明显当 <span
+class="math inline">\(\sigma\)</span> 小时收敛速度快且稳定. 另外，在 KL
+散度和 Wasserstein
+距离下降的主要部分，二者都大致呈指数阶收敛，这与理论相符<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="Chizat, L. (2022) Mean-Field Langevin Dynamics: Exponential Convergence and Annealing. arXiv preprint at arXiv: 2202.01009v3.">[1]</span></a></sup><sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="E, W., Li, T. \&amp; Vanden-Eijinden, E. 2019. Applied Stochastic Analysis. RI: AMS.">[2]</span></a></sup>.</p>
+<h2
+id="平均场朗之万动力学的数值模拟核最大均值差异度量">平均场朗之万动力学的数值模拟——核最大均值差异度量</h2>
+<p>Chizat 使用 NPGD 模拟了 MFLD. 具体来说，对于任何概率分布 <span
+class="math inline">\(\mu,\nu\in
+\mathcal{P}(\mathcal{X})\)</span>，定义核最大均值差异（kernel Maximum
+Mean Discrepancy，kMMD）为 <span class="math display">\[
+    G^{2}(\mu,\nu)=\frac{1}{2}\int_{\mathcal{X}^{2}}^{} k(x,y)
+\mathrm{d}\mu(x)\mathrm{d}\mu(y)-\int_{\mathcal{X}^{2}}^{} k(x,y)
+\mathrm{d}\mu(x)\mathrm{d}\nu(y)+\frac{1}{2}\int_{\mathcal{X}^{2}}^{}
+k(x,y) \mathrm{d}\nu(x)\mathrm{d}\nu(y). \tag{23}   
+\]</span></p>
+<p>其中 <span class="math inline">\(k\in C^{2}(\mathcal{X} \times
+\mathcal{X})\)</span> 是一个光滑半正定的再生核. 它可以看成 <span
+class="math inline">\(\mathcal{P}(\mathcal{X})\)</span> 上的能量泛函. 当
+<span class="math inline">\(k(x,y)=k(y,x)\)</span> 时，它还可以看成是
+<span class="math inline">\(\mathcal{P}(\mathcal{X})\)</span>
+上的一个度量.</p>
+<p>kMMD 和 Wasserstein 距离之间的关系由 Kantorovich-Rubinstein 对偶给出.
+它告诉我们，对于一个可分的拓扑空间 <span
+class="math inline">\(\mathcal{X}\)</span> 和任意 <span
+class="math inline">\(\mu,\nu \in
+\mathcal{P}_{1}(\mathcal{X})\)</span>， <span class="math display">\[
+    W_{1}(\mu,\nu)=\sup_{\left\| f \right\|_{L}\leqslant 1} \left|
+\int_{}^{} f(\mu-\nu) \mathrm{d}x\right| \tag{24}
+\]</span> 而 <span class="math inline">\(G(\mu,\nu)\)</span> 可以写成
+<span class="math display">\[
+    G^{2}(\mu,\nu)=\frac{1}{2}\left\| \mu-\nu
+\right\|^{2}_{\mathcal{H}}=\frac{1}{2}\int_{}^{} k(x,y)
+(\mu(x)-\nu(x))(\mu(y)-\nu(y))\mathrm{d}x\mathrm{d}y \tag{25}
+\]</span> 如果 <span class="math inline">\(k(x,y)\)</span> 具有 <span
+class="math inline">\(h(x)h(y)\)</span> 的形式（比如 <span
+class="math inline">\(k(x,y)=xy\)</span>），那么 <span
+class="math display">\[
+    G(\mu,\nu)=\frac{\sqrt{2}}{2}\left| \int_{}^{} h(\mu-\nu)
+\mathrm{d}x \right| \tag{26}
+\]</span> 由此得到 <span class="math inline">\(G(\mu,\nu)\)</span> 和
+<span class="math inline">\(W_1(\mu,\nu)\)</span> 应当以同阶收敛，即若
+<span class="math inline">\(\mu_{n}\)</span> 依概率收敛到 <span
+class="math inline">\(\nu\)</span>，则有<span
+class="math inline">\(G(\mu_{n},\nu)=O_{p}(n^{-s})\Leftrightarrow
+W_1(\mu_{n},\nu)=O_{p}(n^{-s})\)</span>.</p>
+<p>回到 MFLD 的构造，<span class="math inline">\(G\)</span>
+的一阶变分易求：对于 <span class="math inline">\(\mu\in
+\mathcal{P}(\mathcal{X})\)</span> 和 <span class="math inline">\(x\in
+\mathcal{X}\)</span>， <span class="math display">\[
+    V[\mu](x)=\int_{}^{} k(x,y) \mathrm{d}(\mu-\nu)(y).
+\]</span></p>
+<p>在满足适当条件的情况下，（14）的解以指数阶收敛到 <span
+class="math inline">\(G\)</span> 的正则化 <span
+class="math inline">\(F_{\tau}=G+\frac{\sigma^{2}}{2} H\)</span>
+的极小化子. 并且，如果噪声系数 <span
+class="math inline">\(\sigma=\sigma_{t}\)</span> 随时间增长收敛到 <span
+class="math inline">\(0\)</span>，如 <span
+class="math inline">\(\sigma_{t}=\alpha/\sqrt{\log (t)}\)</span>，那么
+<span class="math inline">\(G(\mu_{t})\)</span> 就会收敛到无正则化 <span
+class="math inline">\(F_{0}=G\)</span> 的极小化子.</p>
+<p>考虑方程（18），在本例中化为 <span class="math display">\[
+    \begin{cases}
+        X^{i}_{t+\mathrm{d}t}=X^{i}_{t}-\int_{}^{} k_{x}(x,y)
+\mathrm{d}(\mu_{t}-\nu)(y) +\sigma_{t} \sqrt{\mathrm{d}t}Z^{i}_{t}\\
+        \mu_{t}=\frac{1}{N}\sum_{i=1}^{N} \delta_{X^{i}_{t}},
+    \end{cases} \tag{27}
+\]</span>
+由于平均场效应的存在，每一步的更新都依赖于所有样本的状态，故计算量非常大.
+限于计算资源，我们只能考虑 <span class="math inline">\(N=100\)</span>
+的情况. 此时这 <span class="math inline">\(N\)</span>
+个样本无法较好近似一个连续分布，故取 <span
+class="math inline">\(\nu\)</span> 为离散分布为佳.
+为展示方便起见，后文取 <span class="math display">\[
+    \nu=\frac{1}{10} \sum_{i=1}^{10} \delta_{2i-11}
+\]</span> 这样（27）中的积分化为一个求和. 观察当 <span
+class="math inline">\(\sigma_{t}\to 0 (t\to \infty)\)</span>
+且收敛速度不同时，经验分布 <span
+class="math inline">\(\mu_{t}=\frac{1}{N}\sum_{i=1}^{N}
+\delta_{X^{i}_{t}}\)</span> 是否在如下意义下收敛到 <span
+class="math inline">\(\nu\)</span>： <span class="math display">\[
+    \lim_{t \to \infty}G(\mu_{t},\nu)=0.
+\]</span> 这里使用 Chizat 提到的退火算法. 他证明了当迭代第 <span
+class="math inline">\(k\)</span> 步的噪声系数 <span
+class="math inline">\(\sigma_{k}=\sigma/\sqrt{\log k}\)</span> 且 <span
+class="math inline">\(\sigma\)</span> 大于某个临界值 <span
+class="math inline">\(\sigma^{*}\)</span> 时，经过足够长的时间，经验分布
+<span class="math inline">\(\mu_{t}\)</span> 会以如下速率收敛到 <span
+class="math inline">\(G\)</span> 的极小化子（Chizat, Theorem 4.1）：
+<span class="math display">\[
+    G(\mu_{t})-\inf G\leqslant C&#39; \frac{\log \log t}{\log t}.
+\]</span></p>
+<p><strong>这里也省略了一幅大图</strong></p>
+<p>独立初始化 <span class="math inline">\(X^{i}_{0}\sim
+\mathcal{N}(0,25)\)</span>，初始噪声系数 <span
+class="math inline">\(\sigma=1\)</span>，时间步长 <span
+class="math inline">\(\mathrm{d}t=0.01\)</span>，迭代步数为 <span
+class="math inline">\(10000\)</span>，并在（27）中选用三种不同的核函数
+$k(x,y)k(x,y)=1+2_{k=1}^{5} (1+k)^{-1}(k(x-y)), k(x,y)=(-(x-y)^{2}/2),
+k(x,y)=xy $. 其中第一种是 Chizat
+的实验中使用的，它并不严格正定，但是在实验中表现良好.
+第二种是常用的高斯核，具有 <span
+class="math inline">\(k(x,y)=\tilde{k}(x-y)=\tilde{k}(y-x)\)</span>
+的性质. 第三种是线性核. 图2中展示了三种退火速度和三种核函数下的实验结果.
+由于 <span class="math inline">\(N\)</span> 和 <span
+class="math inline">\(t\)</span> 的限制，<span
+class="math inline">\(\sigma_{k}=\sigma/\sqrt{\log (k+1)}\)</span>
+时的收敛速度并不快. <span
+class="math inline">\(\sigma_{k}=\sigma/\sqrt{k}\)</span> 和 <span
+class="math inline">\(\sigma_{k}=\sigma/k\)</span>
+下降速率较快且速率相近. <span
+class="math inline">\(\sigma_{k}=\sigma/k\)</span> 更加稳定.
+但已有的结果表明，比 <span
+class="math inline">\(\sigma_{k}=\sigma/\sqrt{\log (k+1)}\)</span>
+更快的收敛速度已经会破坏收敛性（Holley, Sec.3）. 即使取 <span
+class="math inline">\(\sigma_{k}=\sigma/\sqrt{\log
+(k+1)}\)</span>，<span class="math inline">\(\sigma\)</span>
+较小时也会破坏收敛性. 这些情况下，经验分布 <span
+class="math inline">\(\mu_{t}\)</span> 会收敛到 <span
+class="math inline">\(G\)</span> 的局部极小值点，而非全局最小值点.</p>
+<p>图2还表明 <span class="math inline">\(k(x,y)=1+2\sum_{k=1}^{5}
+(1+k)^{-1}\cos (k(x-y))\)</span> 的表现最好，而线性核 <span
+class="math inline">\(k(x,y)=xy\)</span>
+收敛很不稳定，这可能是因为线性核无界导致的.</p>
+<p>最后，空间的紧性对于收敛性也有一定的影响. Chizat
+在实验中使用的底空间是 <span
+class="math inline">\((\mathbb{R}/2\pi\mathbb{Z})^{d}\)</span>. <span
+class="math inline">\(\sigma_{k}\)</span> 下降得较慢（对应于 <span
+class="math inline">\(\sigma_{k}=\sigma/\sqrt{\log (k+1)}\)</span>
+时，大量样本具有的遍历性能够让经验分布 <span
+class="math inline">\(\mu_{t}\)</span> 收敛到 <span
+class="math inline">\(G\)</span> 的全局最小值点. 本文中使用的空间是
+<span
+class="math inline">\(\mathbb{R}\)</span>，因此初始化对于能否收敛到全局最小值点有很大影响.
+图3展示了初始化为 <span
+class="math inline">\(X^{i}_{0}=0\)</span>，并增大初始噪声系数 <span
+class="math inline">\(\sigma=5\)</span> 时 <span
+class="math inline">\(G\)</span> 的收敛性情况. 在所有情况下，经验分布
+<span class="math inline">\(\mu_{t}\)</span> 不稳定包含 <span
+class="math inline">\(-9,-7,-5,5,7,9\)</span> 处的概率. <span
+class="math inline">\(\sigma_{k}=\sigma/\sqrt{\log (k+1)}, k(x,y)=\exp
+(-(x-y)^{2}/2)\)</span> 条件下 <span class="math inline">\(G\)</span>
+先降低，后增加的原因主要是从 <span
+class="math inline">\(X^{i}_{0}=0\)</span> 出发，经验分布 <span
+class="math inline">\(\mu_{t}\)</span> 的方差随时间增大而增大.
+当经验分布 <span class="math inline">\(\mu_{t}\)</span> 的方差与 <span
+class="math inline">\(\nu\)</span> 可比后，<span
+class="math inline">\(\mu_{t}\)</span> 的方差继续增大，<span
+class="math inline">\(G\)</span> 值增加.
+为得到收敛性，可能需要增加样本个数 <span
+class="math inline">\(N\)</span> 和模拟时间 <span
+class="math inline">\(t\)</span>.</p>
+<h2 id="结论">结论</h2>
+<p>平均场朗之万动力学（MFLD）的数值模拟是一个具有挑战性的问题.
+相比过阻尼朗之万动力学或欠阻尼朗之万动力学，MFLD
+的模拟对于计算资源的要求要高得多.
+在模拟过阻尼朗之万动力学或欠阻尼朗之万动力学时，使用离散分布近似连续分布是可能的，参考文献中提到的指数阶收敛性也容易复现.
+与之相反的是，用大量样本模拟 MFLD 通常是不可行的.
+本文取经验分布和目标分布（即 <span class="math inline">\(G\)</span>
+的最小化子）都为离散分布. 在使用 Chizat 提出的退火算法求 kMMD
+的最小化子时，核函数 <span
+class="math inline">\(k(x,y)\)</span>、退火速率 <span
+class="math inline">\(\sigma_{k}\)</span>、样本个数 <span
+class="math inline">\(N\)</span>、模拟时间 <span
+class="math inline">\(t\)</span>、初始化 <span
+class="math inline">\(X^{i}_{0}\)</span>
+甚至空间的紧性对于经验分布的收敛性和收敛速度都有影响.
+由于迭代步数较大，无论哪种退火速率，一定时间后噪声会非常小，可能使经验分布落在一个局部极小区域内，从而最终无法收敛到全局最小分布.</p>
+<p>本文用到的所有代码均可在
+https://github.com/Newtonpula/Numecial-Simulation-of-MFLD 找到.</p>
+<p><strong>这里也省略了一幅大图</strong></p>
+<h2 id="reference">Reference</h2>
+<section class="footnotes">
+<div class="footnote-list">
+<ol>
+<li>
+<span id="fn:1" class="footnote-text"><span>Chizat, L. (2022) Mean-Field
+Langevin Dynamics: Exponential Convergence and Annealing. arXiv preprint
+at arXiv: 2202.01009v3.
+<a href="#fnref:1" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:2" class="footnote-text"><span>E, W., Li, T. &amp;
+Vanden-Eijinden, E. 2019. Applied Stochastic Analysis. RI: AMS.
+<a href="#fnref:2" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:3" class="footnote-text"><span>Hu, K., Ren, Z., SISKA, D.
+&amp; SZPRUCH, L. (2020) Mean-Field Langevin Dynamics and Energy
+Landscape of Neural Networks. arXiv preprint at arXiv:1905.07769.
+<a href="#fnref:3" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:4" class="footnote-text"><span>Lelièvre, T. &amp; Stoltz,
+G. (2016) Partial differential equations and stochastic methods in
+molecular dynamics. Acta Numerica. Cambridge University Press, 25, pp.
+681–880. <a href="#fnref:4" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+</ol>
+</div>
+</section>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90/" class="category-chain-item">数值分析</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>平均场朗之万动力学的数值模拟</div>
+      <div>http://example.com/2023/06/21/平均场朗之万动力学的数值模拟/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 21, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/10/02/hello-world/" title="Hello World">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Hello World</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/30/Topics-in-Neuroscience/" title="Topics in Neuroscience">
+                        <span class="hidden-mobile">Topics in Neuroscience</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1375 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Chapter 6~8">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Information and Entropy (2)">
+<meta property="og:url" content="http://example.com/2022/07/08/Information-and-Entropy-2/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Chapter 6~8">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/shannon.jpg">
+<meta property="article:published_time" content="2022-07-08T07:45:58.000Z">
+<meta property="article:modified_time" content="2022-07-24T09:19:17.008Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/shannon.jpg">
+  
+  
+  
+  <title>Information and Entropy (2) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Information and Entropy (2)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-08 15:45" pubdate>
+          July 8, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          20k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          165 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Information and Entropy (2)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="communications">Communications</h1>
+<h2 id="source-model">Source Model</h2>
+<p>The source is assumed to produce symbols at a rate of <span
+class="math inline">\(R\)</span> symbols per second. The event of the
+selection of symbol <span class="math inline">\(i\)</span> will be
+denoted <span class="math inline">\(A_i\)</span>.</p>
+<p>Suppose that each event <span class="math inline">\(A_i\)</span> is
+represented by a different codeword <span
+class="math inline">\(C_i\)</span> with a length <span
+class="math inline">\(L_i\)</span>.</p>
+<p>An important property of such codewords is that none can be the same
+as the first portion of another, longer, codeword. A code that obeys
+this property is called a <strong>prefix-condition code</strong>, or
+sometimes an <strong>instantaneous code</strong>.</p>
+<h3 id="kraft-inequality">Kraft Inequality</h3>
+<p>An important limitation on the distribution of code lengths <span
+class="math inline">\(L_i\)</span> was given by L.G.Kraft, which is
+known as the Kraft inequality: <span class="math display">\[
+    \sum_{i}^{} \frac{1}{2^{L_i}}\leqslant 1 \tag{6.1}
+\]</span></p>
+<p>Any valid set of distinct codewords obeys this inequality, and
+conversely for any proposed <span class="math inline">\(L_i\)</span>
+that obey it, a code can be found.</p>
+<p>Proof: Let <span class="math inline">\(L_{max}\)</span> be the length
+of the longest codeword of a prefix-condition code. There are exactly
+<span class="math inline">\(2^{L_{max}}\)</span> different patterns of
+<span class="math inline">\(0\)</span> and <span
+class="math inline">\(1\)</span> of this length. Thus <span
+class="math display">\[
+    \sum_{i}^{} \frac{1}{2^{L_{max}}}=1 \tag{6.2}
+\]</span> where this sum is over these patterns. For each shorter
+codeword of length <span class="math inline">\(k(k&lt;L_{max})\)</span>
+there are exactly <span class="math inline">\(2^{L_{max}-k}\)</span>
+patterns that begin with this codeword, and none of those is a valid
+codeword. In the sum of (6.2) replace the terms corresponding to those
+patterns by a single term equal to <span
+class="math inline">\(1/2^{k}\)</span>. The sum is unchanged. Continue
+this process with other short codewords. Some terms that are not
+codewords are eliminated. Q.E.D.</p>
+<h3 id="source-entropy">Source Entropy</h3>
+<p>The uncertainty of the identity of the next symbol chosen <span
+class="math inline">\(H\)</span> is the average information gained when
+the next symbol is made known: <span class="math display">\[
+    H=\sum_{i} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right) \tag{6.3}
+\]</span></p>
+<p>This quantity is also known as the entropy of the source. The
+information rate, in bits per second, is <span
+class="math inline">\(H\cdot R\)</span> where <span
+class="math inline">\(R\)</span> is the rate at which the source selects
+the symbols, measured in symbols per second.</p>
+<h3 id="gibbs-inequality">Gibbs Inequality</h3>
+<p>This inequality states that the entropy is smaller than or equal to
+any other average formed using the same probabilities but a different
+but a different function in the logarithm. Specifically, <span
+class="math display">\[
+    \sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)\leqslant
+\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p&#39;(A_i)}\right) \tag{6.4}
+\]</span> where <span class="math inline">\(p(A_i)\)</span> is any
+probability distribution and <span
+class="math inline">\(p&#39;(A_i)\)</span> is any other probability
+distribution, namely, <span class="math display">\[
+    0\leqslant p&#39;(A_i)\leqslant 1 \tag{6.5}
+\]</span> and <span class="math display">\[
+    \sum_{i}^{} p&#39;(A_i)\leqslant 1. \tag{6.6}
+\]</span> As is true for all probability distributions, <span
+class="math display">\[
+    \sum_{i}^{} p(A_i)=1. \tag{6.7}
+\]</span> Proof: <span class="math display">\[
+    \begin{aligned}
+        \sum_{i}^{} p(A_i)\log
+_{2}\left(\frac{1}{p(A_i)}\right)-\sum_{i}^{} p(A_i)\log
+_{2}\left(\frac{1}{p&#39;(A_i)}\right)&amp;= \sum_{i}^{} p(A_i)\log
+_{2}\left(\frac{p&#39;(A_i)}{p(A_i)}\right)  \\
+        &amp;\leqslant \log _{2}\mathrm{e} \sum_{i}^{}
+p(A_i)\left[\frac{p&#39;(A_i)}{p(A_i)}-1\right] \\
+        &amp;= \log _{2} \mathrm{e} \left(\sum_{i}^{} p&#39;(A_i)-1
+\right) \\
+        &amp;\leqslant 0
+    \end{aligned}
+\]</span></p>
+<h2 id="source-coding-theorem">Source Coding Theorem</h2>
+<p>The codewords have an average length, in bits per symbol, <span
+class="math display">\[
+    L=\sum_{i}^{} p(A_i)L_i \tag{6.11}
+\]</span></p>
+<p>The Source Coding Theorem states that the average information per
+symbol is always less than or equal to the average length of a codeword:
+<span class="math display">\[
+    H\leqslant L \tag{6.12}
+\]</span></p>
+<p>This inequality is easy to prove using the Gibbs and Kraft
+inequalities. Use the Gibbs inequality with <span
+class="math inline">\(p&#39;(A_i)=1/2^{L_i}\)</span>. Thus <span
+class="math display">\[
+    \begin{aligned}
+        H&amp;=\sum_{i}^{} p(A_i)\log _{2}\left( \frac{1}{p(A_i)}\right)
+\\
+        &amp;\leqslant  \sum_{i}^{} p(A_i)\log
+_{2}\left(\frac{1}{p&#39;(A_i)}\right) \\
+        &amp;= \sum_{i}^{} p(A_i)\log _{2}2^{L_i}\\
+        &amp;= \sum_{i}^{} p(A_i)L_i \\
+        &amp;= L
+    \end{aligned}
+\]</span></p>
+<p>The Source Coding Theorem can also be expressed in terms of rates of
+transmission in bits per second by multiplying (6.12) by the symbols per
+second <span class="math inline">\(R\)</span>: <span
+class="math display">\[
+    HR\leqslant LR \tag{6.14}
+\]</span></p>
+<h2 id="channel-model">Channel Model</h2>
+<p>If the channel perfectly changes its output state in conformance with
+its input state, it is said to be <strong>noiseless</strong> and in that
+case nothing affects the output except the input.</p>
+<p>Suppose that the channel has a certain maximum rate <span
+class="math inline">\(W\)</span> at which its output can follow changes
+at the input.</p>
+<p>The <strong>binary</strong> channel has two mutually exclusive input
+states.</p>
+<p>The maximum rate at which information supplied to the input can
+affect the output is called the <strong>channel capacity</strong> <span
+class="math inline">\(C=W \log _{2}n\)</span> bits per second. For the
+binary channel, <span class="math inline">\(C=W\)</span>.</p>
+<h2 id="noiseless-channel-theorem">Noiseless Channel Theorem</h2>
+<p>It may be necessary to provide temporary storage buffers to
+accommodate bursts of adjacent infrequently occurring symbols with long
+codewords, and the symbols may not materialize at the output of the
+system at a uniform rate.</p>
+<p>Also, to encode the symbols efficiently it may be necessary to
+consider several of them together, in which case the first symbol would
+not be available at the output until several symbols had been presented
+at the input. Therefore high speed operation may lead to high
+latency.</p>
+<h2 id="noisy-channel">Noisy Channel</h2>
+<p>For every possible input there may be more than one possible output
+outcome. Denote <strong>transition probabilities</strong> <span
+class="math inline">\(c_{ji}\)</span> the probability of the output
+event <span class="math inline">\(B_j\)</span> occuring when event <span
+class="math inline">\(A_i\)</span> happens. So <span
+class="math display">\[
+    0\leqslant c_{ji}\leqslant 1 \tag{6.15}
+\]</span> and <span class="math display">\[
+    1=\sum_{j}^{} c_{ji} \tag{6.16}
+\]</span> If the channel is noiseless, for each value of <span
+class="math inline">\(i\)</span> exactly one of the various <span
+class="math inline">\(c_{ji}\)</span> is equal to <span
+class="math inline">\(1\)</span> and all others are <span
+class="math inline">\(0\)</span>. <span class="math display">\[
+    p(B_j|A_i)=c_{ji} \tag{6.17}
+\]</span> The unconnditional probability of each output <span
+class="math inline">\(p(B_j)\)</span> is <span class="math display">\[
+    p(B_j)=\sum_{i}^{} c_{ji}p(A_i) \tag{6.18}
+\]</span> So by Bayes' Theorem: <span class="math display">\[
+    p(A_i|B_j)=\frac{p(A_i)c_{ji}}{p(B_j)} \tag{6.19}
+\]</span> The simplest noisy channel is the symmetric binary channel,
+for which there is a probability <span
+class="math inline">\(\varepsilon\)</span> of an error, so <span
+class="math display">\[
+    \begin{bmatrix}
+    c_{00} &amp; c_{01} \\
+    c_{10} &amp; c_{11} \\
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+    1-\varepsilon &amp; \varepsilon \\
+    \varepsilon &amp; 1-\varepsilon \\
+    \end{bmatrix}
+\]</span></p>
+<p>Define the information that we have learned about the input as a
+result of knowing the output as the <strong>mutual
+information</strong>.</p>
+<p>Before we know the output, our uncertainty <span
+class="math inline">\(U_{before}\)</span> about the identity of the
+input event is he entropy of the input: <span class="math display">\[
+    U_{before}=\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)
+\tag{6.21}
+\]</span> After some particular output event <span
+class="math inline">\(B_j\)</span> has been observed, the residual
+uncertainty <span class="math inline">\(U_{after}(B_j)\)</span> about
+the input event is: <span class="math display">\[
+    U_{after}(B_j)=\sum_{i}^{} p(A_i|B_j)\log
+_{2}\left(\frac{1}{p(A_i|B_j)}\right) \tag{6.22}
+\]</span></p>
+<p>The mutual information <span class="math inline">\(M\)</span> is
+defined as the average, over all outputs, of the amount so learned,
+<span class="math display">\[
+    M=U_{before}-\sum_{j}^{} p(B_j)U_{after}(B_j) \tag{6.23}
+\]</span> It is not difficult to prove that <span
+class="math inline">\(M\geqslant 0\)</span>. To prove this, the Gibbs
+inequality is used, for each <span class="math inline">\(j\)</span>:
+<span class="math display">\[
+    \begin{aligned}
+        U_{after}(B_j)&amp;=\sum_{i}^{} p(A_i|B_j)\log
+_{2}\left(\frac{1}{p(A_i|B_j)}\right) \\
+        &amp;\leqslant \sum_{i}^{} p(A_i|B_j)\log
+_{2}\left(\frac{1}{p(A_i)}\right)     
+    \end{aligned}
+\]</span> (6.24) So <span class="math display">\[
+    \begin{aligned}
+        \sum_{j}^{} p(B_j)U_{after}(B_j) &amp;\leqslant \sum_{j}^{}
+p(B_j)\sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i)}\right)  \\
+        &amp;= \sum_{ji}^{} p(B_j)p(A_i|B_j)\log
+_{2}\left(\frac{1}{p(A_i)}\right) \\
+        &amp;= \sum_{ij}^{} p(B_j|A_i)p(A_i)\log
+_{2}\left(\frac{1}{p(A_i)}\right) \\
+        &amp;=\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)
+\\
+        &amp;=U_{before}          
+    \end{aligned}
+\]</span> (6.25)</p>
+<p>Substitution in (6.23) and simplification leads to <span
+class="math display">\[
+    M=\sum_{j}^{} \left(\sum_{i}^{} p(A_i)c_{ji}\right)\log
+_{2}\left(\frac{1}{\sum_{i}^{} p(A_i)c_{ji}}\right)-\sum_{ij}^{}
+p(A_i)c_{ji}\log _{2}\left(\frac{1}{c_{ji}}\right)
+\]</span> (6.26)</p>
+<p>(6.26) was derived for the case where the input "causes" the output.
+However, such a cause-and-effect relationship is not necessary. The term
+<strong>mutual information</strong> suggests that it is just as valid to
+view the output as causing the input, or to ignore completely the
+question of what causes what. Two alternate formulas for <span
+class="math inline">\(M\)</span> shows that <span
+class="math inline">\(M\)</span> can be interpreted in either direction:
+<span class="math display">\[
+    \begin{aligned}
+        M &amp;= \sum_{i}^{} p(A_i)\log
+_{2}\left(\frac{1}{p(A_i)}\right)-\sum_{j}^{} p(B_j)\sum_{i}^{}
+p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i|B_j)}\right) \\
+        &amp;= \sum_{j}^{} p(B_j)\log
+_{2}\left(\frac{1}{p(B_j)}\right)-\sum_{i}^{} p(A_i)\sum_{j}^{}
+p(B_j|A_i)\log _{2}\left(\frac{1}{p(B_j|A_i)}\right)
+    \end{aligned}
+\]</span> (6.27)</p>
+<p>So (6.26) is easily checked.</p>
+<h2 id="noisy-channel-capacity-theorem">Noisy Channel Capacity
+Theorem</h2>
+<p>It is more useful to define the channel capacity so that it depends
+only on the channel, so <span class="math inline">\(M_{max}\)</span>,
+the maximum mutual information that results from any possible input
+probability distribution, is used.</p>
+<p>Generally speaking, going away from the symmetric case offers few if
+any advantages in engineered systems, and in particular the fundamental
+limits given by the theorems in this chapter cannot be evaded through
+such techniques. Therefore the symmetric case gives the right intuitive
+understanding.</p>
+<p>The channel capacity is defined as <span class="math display">\[
+    C=M_{max}W \tag{6.29}
+\]</span> where <span class="math inline">\(W\)</span> is the maximum
+rate at which the output state can follow changes at the input. Thus
+<span class="math inline">\(C\)</span> is expressed in bits per
+second.</p>
+<p>The channel capacity theorem states that: if the input information
+rate in bits per decond <span class="math inline">\(D\)</span> is less
+than <span class="math inline">\(C\)</span> then it is possible (perhaps
+by dealing with long sequences of inputs together) to code the data in
+such a way that the error rate is as low as desired.</p>
+<p>The proof is not a constructive proof. However, there is not yet any
+general theory of how to design codes from scratch.</p>
+<h2 id="reversibility">Reversibility</h2>
+<p>Some Boolean operations had the property that the input could not be
+deduced from the output. The <span class="math inline">\(AND\)</span>
+and <span class="math inline">\(OR\)</span> gates are examples. Other
+operations were reversible——the <span
+class="math inline">\(EXOR\)</span> gate, when the output is augmented
+by one of the two inputs, is an example.</p>
+<h2 id="detail-communication-system-requirements">Detail: Communication
+System Requirements</h2>
+<p>The systems are characterized by four measures: throughput, latency,
+tolerance of errors, and tolerance to nonuniform rate (bursts).
+Throghput is simply the number of bits per second that such a system
+should, to be successful, accommodate. Latency is the time delay of the
+message; it could be defined either as the delay of the start of the
+output after the source begins, or a similar quantity about the end of
+the message (or, for that matter, about any particular features in the
+message). The numbers for throughput, in MB (megabytes) or kb (kilobits)
+are approximate.</p>
+<hr />
+<p>Channel capacity
+http://web.archive.org/web/20080126223204/http://www.cs.ucl.ac.uk/staff/S.Bhatti/D51-notes/node31.html</p>
+<hr />
+<h1 id="processes">Processes</h1>
+<p>We know the model of a communication system: - Input (Symbols) -
+Source Encoder - Compressor - Channel Encoder - Channel - Channel
+Decoder - Expander - Source Decoder - Output(Symbols)</p>
+<p>Because each of these steps processes information in some way, it is
+called a <strong>processor</strong> and what it does is called a
+<strong>process</strong>. The processes we consider here are -
+<strong>Discrete:</strong> The inputs are members of a set of mutually
+exclusive possibilities, only one of which occurs at a time, and the
+output is one of another discrete set of mutually exclusive events. -
+<strong>Finite:</strong> The set of possible inputs is finite in number,
+as is the set of possible outputs. - <strong>Memoryless:</strong> The
+process acts on the input at some time and produces an output based on
+that input, ignoring any prior inputs. -
+<strong>Nondeterministic:</strong> The process may produce a different
+output when presented with the same input a second time (the model is
+also valid for deterministic processes). Because the process is
+nondeterministic the output may contain random <strong>noise</strong>. -
+<strong>Lossy:</strong> It may not be possible to "see" the input from
+the output, i.e., determine the input by observing the output. Such
+processes are called <strong>lossy</strong> because knowledge about the
+input is lost when the output is created (the model is also valid for
+lossless processes).</p>
+<h2 id="types-of-process-diagrams">Types of Process Diagrams</h2>
+<p>We may use <strong>block diagram</strong>, <strong>circuit
+diagram</strong>, <strong>probability diagram</strong> and
+<strong>information diagram</strong>.</p>
+<h2 id="probability-diagrams">Probability Diagrams</h2>
+<p>We suppose the probability model of a process with <span
+class="math inline">\(n\)</span> inputs and <span
+class="math inline">\(m\)</span> outputs. The <span
+class="math inline">\(n\)</span> inputs are mutually exclusive, as are
+the <span class="math inline">\(m\)</span> output states.</p>
+<p>For each <span class="math inline">\(i\)</span> denote the
+probability that this input leads to the output <span
+class="math inline">\(j\)</span> as <span
+class="math inline">\(c_{ji}\)</span>. Denote the event associated with
+the selection of input <span class="math inline">\(i\)</span> as <span
+class="math inline">\(A_i\)</span> and the event associated with output
+<span class="math inline">\(j\)</span> as <span
+class="math inline">\(B_j\)</span>.</p>
+<h3 id="example-and-gates">Example: AND Gates</h3>
+<p>The <span class="math inline">\(AND\)</span> gate is deterministic
+but is lossy.</p>
+<h3 id="example-binary-channel">Example: Binary Channel</h3>
+<p>Symmetric Binary Channel (SBC), symmetric in the sense that the
+errors in the two directions are equally likely.</p>
+<p>It is possible for processes to introduce noise but have no loss, or
+vice versa.</p>
+<p>Loss of information happens because it is no longer possible to tell
+with certainty what the input signal is, when the output is observed.
+Loss shows up in probability diagram where two or more paths converge on
+the same output.</p>
+<p>Noise happens because the output is not determined precisely by the
+input. Noise shows up in probability diagram where two or more paths
+diverge from the same input.</p>
+<h2 id="information-loss-and-noise">Information, Loss, and Noise</h2>
+<p>We now return to our model of a general discrete memoryless
+nondeterministic lossy process, and derive formulas for noise, loss, and
+information transfer.</p>
+<p>The information at the input <span class="math inline">\(I\)</span>
+is the same as the entropy of this source. <span class="math display">\[
+    I=\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)
+\]</span> The output information <span class="math inline">\(J\)</span>
+can also be expressed in terms of the input probability distribution and
+the channel transition matrix: <span class="math display">\[
+    \begin{aligned}
+        J &amp;= \sum_{j}^{} p(B_j)\log
+_{2}\left(\frac{1}{p(B_j)}\right) \\
+        &amp;= \sum_{j}^{} \left( \sum_{i}^{} c_{ji}p(A_i)\right)\log
+_{2}\left(\frac{1}{\sum_{i}^{} c_{ji}p(A_i)}\right)
+    \end{aligned}
+\]</span></p>
+<p>Note that this measure of information at the output <span
+class="math inline">\(J\)</span> refers to the identity of the output
+state, not the input state. If we've got an output state <span
+class="math inline">\(B_j\)</span>, then the uncertainty of our
+knowledge of the input state is <span class="math display">\[
+    \sum_{i}^{} p(A_i|B_j)\log _{2}\left(\frac{1}{p(A_i|B_j)}\right)
+\]</span> So the average uncertainty about the input after learning the
+output is <span class="math display">\[
+    \begin{aligned}
+        L&amp;=\sum_{j}^{} p(B_j)\sum_{i}^{} p(A_i|B_j)\log
+_{2}\left(\frac{1}{p(A_i|B_j)}\right) \\
+        &amp;=\sum_{ij}^{} p(A_i,B_j)\log
+_{2}\left(\frac{1}{p(A_i|B_j)}\right)
+    \end{aligned}
+\]</span></p>
+<p>We have denoted this average uncertainty by <span
+class="math inline">\(L\)</span> and will call it "loss." In the special
+case that the process allows the input state to be identified uniquely
+for each possible output state, the process is "lossless" and <span
+class="math inline">\(L=0\)</span>.</p>
+<p>Denote <span class="math inline">\(M=I-L\)</span> the "mutual
+information". This is an important quantity because it is the amount of
+information tha gets through the process.</p>
+<p>Some processes have loss but are deterministic. An example is the
+<span class="math inline">\(AND\)</span> logic gate.</p>
+<p>There is a quantity similar to <span class="math inline">\(L\)</span>
+that characterizes a nondeterministic process, whether or not it has
+loss. Define the noise <span class="math inline">\(N\)</span> of a
+process as the uncertainty in the output, given the input state,
+averaged over all input states. <span class="math display">\[
+    \begin{aligned}
+        N &amp;= \sum_{i}^{} p(A_i)\sum_{j}^{} p(B_j|A_i)\log
+_{2}\left(\frac{1}{p(B_j|A_i)}\right) \\
+        &amp;= \sum_{i}^{} p(A_i)\sum_{j}^{} c_{ji}\log
+_{2}\left(\frac{1}{c_{ji}}\right)
+    \end{aligned}
+\]</span></p>
+<p>What may not be obvious, but can be proven easily, is that the mutual
+information <span class="math inline">\(M\)</span> plays exactly the
+same sort of role for noise as it does for loss. Since <span
+class="math display">\[
+    J=\sum_{i}^{} p(B_j)\log _{2}\left(\frac{1}{p(B_j)}\right)
+\]</span> we have <span class="math display">\[
+    M=J-N \tag{7.24}
+\]</span> It follows from these results that <span
+class="math display">\[
+    J-I=N-L \tag{7.27}
+\]</span></p>
+<h3 id="example-symmetric-binary-channel">Example: Symmetric Binary
+Channel</h3>
+<p>For the SBC with bit error probability <span
+class="math inline">\(\varepsilon\)</span>, these formulas can be
+evaluated, even if the two input probabilities <span
+class="math inline">\(p(A_0)\)</span> and <span
+class="math inline">\(p(A_1)\)</span> are not equal. If they happen to
+be equal (each 0.5), then <span class="math display">\[
+    I=1\ \text{bit}
+\]</span> <span class="math display">\[
+    J=1\ \text{bit}
+\]</span> <span class="math display">\[
+    L=N=\varepsilon \log
+_{2}\left(\frac{1}{\varepsilon}\right)+(1-\varepsilon) \log
+_{2}\left(\frac{1}{1-\varepsilon}\right)
+\]</span> <span class="math display">\[
+    M=1-\varepsilon \log
+_{2}\left(\frac{1}{\varepsilon}\right)-(1-\varepsilon)\log
+_{2}\left(\frac{1}{1-\varepsilon}\right)
+\]</span></p>
+<h2 id="deterministic-examples">Deterministic Examples</h2>
+<p>p88-89</p>
+<h3 id="error-correcting-example">Error Correcting Example</h3>
+<p>p89-90</p>
+<h2 id="capacity">Capacity</h2>
+<p>Call <span class="math inline">\(W\)</span> the maximum rate at which
+the input state of the process can be detected at the output. Then the
+rate at which information flows through the process can be as large as
+<span class="math inline">\(WM\)</span>. However, this product is not a
+property of the process itself, but on how it is used. The
+<strong>process capacity</strong> <span class="math inline">\(C\)</span>
+is defined as <span class="math display">\[
+    C=WM_{max} \tag{7.32}
+\]</span></p>
+<h2 id="information-diagrams">Information Diagrams</h2>
+<p>p91</p>
+<h2 id="cascaded-processes">Cascaded Processes</h2>
+<p><img src="/img/inf_and_ent/2022-07-11-17-42-53.png" srcset="/img/loading.gif" lazyload /></p>
+<p>Consider two processes in <strong>cascade</strong>. This term refers
+to having the output from one process serve as the input to another
+process.</p>
+<p>The matrix of transition probabilities is merely the matrix product
+of the two transition probability matrices for process 1 and process
+2.</p>
+<p>Now we seek formulas for <span class="math inline">\(I,J,L,N\)</span>
+and <span class="math inline">\(M\)</span> of the overall process in
+terms of the corresponding quantities for the component processes.</p>
+<p><span class="math inline">\(I=I_1\)</span> and <span
+class="math inline">\(J=J_2\)</span>. <span
+class="math inline">\(L\)</span> and <span
+class="math inline">\(N\)</span> cannot generally be found exactly from
+<span class="math inline">\(L_1,L_2,N_1\)</span> and <span
+class="math inline">\(N_2\)</span>, it is possible to find upper and
+lower bounds for them. <span class="math display">\[
+    L-N=(L_1+L_2)-(N_1+N_2)\tag{7.33}
+\]</span> The loss <span class="math inline">\(L\)</span> for the
+overall process is not always equal to the sum of the losses for the two
+components <span class="math inline">\(L_1+L_2\)</span>, but instead
+<span class="math display">\[
+    0\leqslant L_1\leqslant L\leqslant L_1+L_2 \tag{7.34}
+\]</span> so that the loss is bound from above and below. Also, <span
+class="math display">\[
+    L_1+L_2-N_1\leqslant L\leqslant L_1+L_2 \tag{7.35}
+\]</span> so that if the first process is noise-free then <span
+class="math inline">\(L\)</span> is exactly <span
+class="math inline">\(L_1+L_2\)</span>.</p>
+<p>There are similar formulas for <span class="math inline">\(N\)</span>
+in terms of <span class="math inline">\(N_1+N_2\)</span>: <span
+class="math display">\[
+    0\leqslant N_2\leqslant N\leqslant N_1+N_2 \tag{7.36}
+\]</span> <span class="math display">\[
+    N_1+N_2-L_2\leqslant N\leqslant N_1+N_2 \tag{7.37}
+\]</span> Similar formulas for the mutual information of the cascade
+<span class="math inline">\(M\)</span> follow from these results: <span
+class="math display">\[
+    M_1-L_2\leqslant M\leqslant M_1\leqslant I \tag{7.38}
+\]</span> <span class="math display">\[
+    M_1-L_2\leqslant M\leqslant M_1+N_1-L_2 \tag{7.39}
+\]</span> <span class="math display">\[
+    M_2-N_1\leqslant M\leqslant M_2\leqslant J \tag{7.40}
+\]</span> <span class="math display">\[
+    M_2-N_1\leqslant M\leqslant M_2+L_2-N_1 \tag{7.41}
+\]</span> Other formulas for <span class="math inline">\(M\)</span> are
+easily derived from <span class="math inline">\(0\leqslant M\leqslant
+I\)</span> applied to the first process and the cascade, and <span
+class="math inline">\(M=J-N\)</span> applied to the second process and
+the cascade: <span class="math display">\[
+    \begin{aligned}
+        M &amp;= M_1+L_1-L \\
+        &amp;=M_1+N_1+N_2-N-L_2 \\
+        &amp;=M_2+N_2-N \\
+        &amp;=M_2+L_2+L_1-L-N_1     
+    \end{aligned}
+\]</span> where the second formula in each case comes from the use of
+(7.33).</p>
+<p><span class="math inline">\(M\)</span> cannont exceed either <span
+class="math inline">\(M_1\)</span> or <span
+class="math inline">\(M_2\)</span>. If the second process is lossless,
+<span class="math inline">\(L_2=0\)</span> and then <span
+class="math inline">\(M=M_1\)</span>. Similarly if the first process is
+noiseless, then <span class="math inline">\(N_1=0\)</span> and <span
+class="math inline">\(M=M_2\)</span>.</p>
+<p>The channel capacity <span class="math inline">\(C\)</span> of the
+cascade satisfies <span class="math inline">\(C\leqslant C_1\)</span>
+and <span class="math inline">\(C\leqslant C_2\)</span>. However, other
+results relating the channel capacities are not a trivial consequence of
+the formulas above.</p>
+<h1 id="inference">Inference</h1>
+<h2 id="estimation">Estimation</h2>
+<p>We now try to determine the input event when the output has been
+observed. This is the case for communication systems and memory
+systems.</p>
+<p>The conditional output probabilities <span
+class="math inline">\(c_{ji}\)</span> are a property of the process, and
+do not depend on the input probabilities <span
+class="math inline">\(p(A_i)\)</span>.</p>
+<p>The unconditional probability <span
+class="math inline">\(p(B_j)\)</span> of each output event <span
+class="math inline">\(B_j\)</span> is <span class="math display">\[
+    p(B_j)=\sum_{i}^{} c_{ji}p(A_i)  \tag{8.1}
+\]</span> and <span class="math display">\[
+    p(A_i,B_j)=p(A_i)c_{ji} \tag{8.2}       
+\]</span> so <span class="math display">\[
+    p(A_i|B_j)=\frac{p(A_i)c_{ji}}{p(B_j)} \tag{8.3}
+\]</span> If the process has no loss (<span
+class="math inline">\(L=0\)</span>) then for each <span
+class="math inline">\(j\)</span> exactly one of the input events <span
+class="math inline">\(A_i\)</span> has nonzero probability, and
+therefore its probability <span
+class="math inline">\(p(A_i|B_j)\)</span> is <span
+class="math inline">\(1\)</span>.</p>
+<p>We know <span class="math display">\[
+    U_{before}=\sum_{i}^{} p(A_i)\log _{2}\left(\frac{1}{p(A_i)}\right)
+\]</span> and the residual uncertainty after some particular output
+event is <span class="math display">\[
+    U_{after}(B_j)=\sum_{i}^{} p(A_i|B_j)\log
+_{2}\left(\frac{1}{p(A_i|B_j)}\right)
+\]</span></p>
+<p>The question is whether <span
+class="math inline">\(U_{after}(B_j)\leqslant U_{before}\)</span>. The
+answer is often, but not always, yes.</p>
+<p><strong>On average</strong>, out uncertainty about the input state is
+never increased by learning something about the output state.</p>
+<h3 id="non-symmetric-binary-channel">Non-symmetric Binary Channel</h3>
+<p>For a rare family genetic disease,</p>
+<table>
+
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(p(A)\)</span></th>
+<th><span class="math inline">\(p(B)\)</span></th>
+<th><span class="math inline">\(I\)</span></th>
+<th><span class="math inline">\(L\)</span></th>
+<th><span class="math inline">\(M\)</span></th>
+<th><span class="math inline">\(N\)</span></th>
+<th><span class="math inline">\(J\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Family history</td>
+<td>0.5</td>
+<td>0.5</td>
+<td>1.00000</td>
+<td>0.11119</td>
+<td>0.88881</td>
+<td>0.11112</td>
+<td>0.99993</td>
+</tr>
+<tr class="even">
+<td>Unknown Family history</td>
+<td>0.9995</td>
+<td>0.0005</td>
+<td>0.00620</td>
+<td>0.00346</td>
+<td>0.00274</td>
+<td>0.14141</td>
+<td>0.14416</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inference-strategy">Inference Strategy</h3>
+<p>One simple strategy for inference is "maximum likelihood". However,
+sometimes it does not work at all (rare family genetic disease
+test).</p>
+<h2 id="principle-of-maximum-entropy-simple-form">Principle of Maximum
+Entropy: Simple Form</h2>
+<p>Before the Principle of Maximum Entropy can be used the problem
+domain needs to be set up. It is not assumed in this step which
+particular state the system is in (or which state is actually
+"occupied"); indeed it is assumed that we do not know and cannot know
+this with certainty, and so we deal instead with the probability of each
+of the states being occupied.</p>
+<h3 id="bergers-burgers">Berger's Burgers</h3>
+<p>The Principle of Maximum Entropy will be introduced by means of an
+example. A fast-food restaurant, Berger's Burgers, offers three meals:
+burger, chicken, and fish. The price, Calorie count, and probability of
+each meal being delivered cold are as listed below.</p>
+<table>
+
+<thead>
+<tr class="header">
+<th>Item</th>
+<th>Entree</th>
+<th>Cost</th>
+<th>Calories</th>
+<th>Probability of arriving hot</th>
+<th>probability of arriving cold</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Value Meal 1</td>
+<td>Burger</td>
+<td>1.00</td>
+<td>1000</td>
+<td>0.5</td>
+<td>0.5</td>
+</tr>
+<tr class="even">
+<td>Value Meal 2</td>
+<td>Chicken</td>
+<td>2.00</td>
+<td>600</td>
+<td>0.8</td>
+<td>0.2</td>
+</tr>
+<tr class="odd">
+<td>Value Meal 3</td>
+<td>Fish</td>
+<td>3.00</td>
+<td>400</td>
+<td>0.9</td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="probabilities">Probabilities</h3>
+<p>If we do not know the outcome we may still have some knowledge, and
+we use probabilities to express this knowledge.</p>
+<h3 id="entropy">Entropy</h3>
+<p>Our uncertainty is expressed as <span class="math display">\[
+    S=p(B)\log _{2}\left(\frac{1}{p(B)}\right)+p(C)\log
+_{2}\left(\frac{1}{p(C)}\right)+p(F)\log _{2}\left(\frac{1}{p(F)}\right)
+\]</span> In the context of physical systems this uncertainty is known
+as the entropy. In communication systems the uncertainty regarding which
+actual message is to be transmitted is also known as the entropy of the
+source.</p>
+<p>In general the entropy, because it is expressed in terms of
+probabilities, depends on the observer. One person may have different
+knowledge of the system from another, and therefore would calculate a
+different numerical value for entropy.</p>
+<p>The Principle of Maximum Entropy is used to discover the probability
+distribution which leads to the highest value for this uncertainty,
+thereby assuring that no information is inadvertently assumed. The
+resulting probability distribution is not observer-dependent.</p>
+<h3 id="constraints">Constraints</h3>
+<p>If we have additional information then we ought to be able to find a
+probability distribution that is better in the sense that it has less
+uncertainty.</p>
+<p>We consider we know the expected value of some quantity (the
+Principle of Maximum Entropy can handle multiple constraints but the
+mathematical procedures and formulas become more complicated) If there
+is an attribute for which each of the states has a value <span
+class="math inline">\(g(A_i)\)</span> and for which we know the actual
+value <span class="math inline">\(G\)</span>, then we should consider
+only those probability distributions for which the expected value is
+equal to <span class="math inline">\(G\)</span>.</p>
+<p><span class="math display">\[
+    G=\sum_{i}^{} p(A_i)g(A_i) \tag{8.15}
+\]</span></p>
+<p>In the case that the average cost is 1.75, <span
+class="math inline">\(S\)</span> attains its maximum when <span
+class="math inline">\(p(B)=0.466\)</span>, <span
+class="math inline">\(p(C)=0.318\)</span>, <span
+class="math inline">\(p(C)=0.318\)</span>, and <span
+class="math inline">\(S=1.517\)</span> bits.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E4%BF%A1%E6%81%AF%E8%AE%BA/" class="category-chain-item">信息论</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Information and Entropy (2)</div>
+      <div>http://example.com/2022/07/08/Information-and-Entropy-2/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>July 8, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/09/Neuronal-Dynamics-5/" title="Neuronal Dynamics (5)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Neuronal Dynamics (5)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/04/Neuronal-Dynamics-4/" title="Neuronal Dynamics (4)">
+                        <span class="hidden-mobile">Neuronal Dynamics (4)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

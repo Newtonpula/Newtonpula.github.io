@@ -1,0 +1,1277 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="微分动力系统的一个重要结果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浅谈Hartman-Grobman定理">
+<meta property="og:url" content="http://example.com/2022/12/12/%E6%B5%85%E8%B0%88Hartman-Grobman%E5%AE%9A%E7%90%86/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="微分动力系统的一个重要结果">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+<meta property="article:published_time" content="2022-12-12T15:43:45.000Z">
+<meta property="article:modified_time" content="2023-01-19T13:53:36.240Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="数学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/lorenz_const_step.jpg">
+  
+  
+  
+  <title>浅谈Hartman-Grobman定理 - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="浅谈Hartman-Grobman定理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-12-12 23:43" pubdate>
+          December 12, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          110 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">浅谈Hartman-Grobman定理</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="浅谈hartman-grobman定理">浅谈Hartman-Grobman定理</h1>
+<p>这是ODE课的期末大作业.
+期中考考得我心态崩了，期末考总体尽力了，但是有一个很弱智的计算错误令我无比痛心.
+这篇文章不能够令我满意的地方有三处：限于篇幅原因关于双曲同构的一些结果没有给出证明，关于非线性微分方程组线性化的
+Hartman-Grobman
+定理说得不是很清楚，最后的例子只给出了思路而没有给出证明.
+总的来说感觉学到了很多.</p>
+<h2 id="banach空间上的双曲同构">Banach空间上的双曲同构</h2>
+<p>首先我们要引入双曲同构的概念.
+我们需要将有限维线性空间同构的一些结果推广到无限维空间中去.</p>
+<p>我们知道，对于 <span class="math inline">\(\mathbb{R}\)</span> 或者
+<span class="math inline">\(\mathbb{C}\)</span> 上有限维线性空间 <span
+class="math inline">\(E\)</span> 的自同构 <span
+class="math inline">\(A:E \to E\)</span>，如果 <span
+class="math inline">\(A\)</span> 没有模为1的特征值，那么存在 <span
+class="math inline">\(E\)</span> 的子空间 <span
+class="math inline">\(E^{s}\)</span> 和 <span
+class="math inline">\(E^{u}\)</span> 满足： - <span
+class="math inline">\(E=E^{s}\oplus E^{u}\)</span>; - <span
+class="math inline">\(A^{n}x\to 0\)</span> as <span
+class="math inline">\(n\to +\infty\)</span> for all <span
+class="math inline">\(x \in E^{s}\)</span>; - <span
+class="math inline">\(A^{-n}x \to 0\)</span> as <span
+class="math inline">\(n\to +\infty\)</span> for all <span
+class="math inline">\(x \in E^{u}\)</span>.</p>
+<p>我们将 <span class="math inline">\(E^{s}\)</span> 称为 <span
+class="math inline">\(A\)</span> 的稳定空间，将 <span
+class="math inline">\(E^{u}\)</span> 称为 <span
+class="math inline">\(A\)</span> 的不稳定空间.
+无穷维Banach空间上的线性同构可能没有通常意义下的特征值，解决方法是考虑算子的谱.
+### 有界线性算子的谱和预解</p>
+<p>本节我们介绍复Banach空间上有界线性算子的谱，并证明相关的一些性质.</p>
+<p><strong>定义1.1.1</strong> 设 <span class="math inline">\(E\)</span>
+是一个复Banach空间. 定义 <span class="math inline">\(T \in
+\mathscr{L}(E)\)</span> 的谱为 <span class="math display">\[
+    \sigma(T)=\{ \lambda \in \mathbb{C}\colon \lambda I-T
+\text{不可逆}\}.
+\]</span></p>
+<p>定义 <span class="math inline">\(T\)</span> 的预解集为 <span
+class="math display">\[
+    \rho(T)=\mathbb{C} \backslash \sigma (T).
+\]</span></p>
+<p>给定 <span class="math inline">\(\lambda \in \rho(T)\)</span>，定义
+<span class="math inline">\(T\)</span> 在 <span
+class="math inline">\(\lambda\)</span> 处的预解算子为 <span
+class="math display">\[
+    R_{\lambda}(T)=(\lambda I-T)^{-1}.
+\]</span></p>
+<p><strong>引理1.1.2.</strong> 设 <span class="math inline">\(E\)</span>
+是一个复Banach空间，<span class="math inline">\(A,B\colon E \to
+E\)</span> 是有界线性同构，则 - <span class="math inline">\(\sigma(A
+^{-1})=\{1/\lambda\colon \lambda \in \sigma(A)\}\)</span>; - <span
+class="math inline">\(\sigma(BAB ^{-1})=\sigma(A)\)</span>.</p>
+<p><strong>证明</strong> 注意到 <span class="math inline">\(A\)</span>
+可逆，</p>
+<h3 id="复化">复化</h3>
+<p>给定实线性空间 <span class="math inline">\(E\)</span>，定义 <span
+class="math display">\[
+    E_{\mathbb{C}}=\{x+iy\colon x,y \in E\}.
+\]</span></p>
+<p>定义 <span class="math inline">\(E_{\mathbb{C}}\)</span>
+上的复结构如下：对于 <span class="math inline">\(x+iy,u+iv \in
+E_{\mathbb{C}}\)</span>，定义 <span class="math display">\[
+    (x+iy)+(u+iv)=(x+u)+i(y+v).
+\]</span></p>
+<p>对于 <span class="math inline">\(\alpha +i \beta \in
+\mathbb{C}\)</span> 和 <span class="math inline">\(x+iy \in
+E_{\mathbb{C}}\)</span>，定义 <span class="math display">\[
+    (\alpha+i\beta)(x+iy)=(\alpha x-\beta y)+i(\alpha y+\beta x).
+\]</span></p>
+<p>则 <span class="math inline">\(E_{\mathbb{C}}\)</span>
+成为一个复线性空间，将其称为 <span class="math inline">\(E\)</span>
+的复化.</p>
+<p>我们希望在 <span class="math inline">\(E_{\mathbb{C}}\)</span>
+上赋予范数，使得在 <span class="math inline">\(E\)</span>
+是Banach空间时，<span class="math inline">\(E_{\mathbb{C}}\)</span>
+也是Banach空间. 寻找这样的范数并不平凡，一个选择由A.E.Taylor提出，对
+<span class="math inline">\(x+iy \in E_{\mathbb{C}}\)</span>， <span
+class="math display">\[
+    \left\| x+iy \right\|_{\mathbb{C}}=\sup_{\theta \in [0,2\pi]}\left\|
+x\cos \theta- y\sin \theta \right\|_{}
+\]</span></p>
+<p>不难验证，<span class="math inline">\(\left\| \cdot
+\right\|_{\mathbb{C}}\)</span> 给出了 <span
+class="math inline">\(E_{\mathbb{C}}\)</span> 上的范数，且满足对于任何
+<span class="math inline">\(x,y \in E\)</span>， <span
+class="math display">\[
+    \max \{\left\| x \right\|_{},\left\| y \right\|_{}\}\leqslant
+\left\| x+iy \right\|_{\mathbb{C}}\leqslant \left\| x
+\right\|_{}+\left\| y \right\|_{}. \tag{2}
+\]</span></p>
+<p>如此定义的好处是，我们不会丢失 <span class="math inline">\(E\)</span>
+的完备性.</p>
+<p><strong>命题1.2.1.</strong> 如果 <span
+class="math inline">\(E\)</span> 是一个配有范数 <span
+class="math inline">\(\left\| \cdot \right\|_{}\)</span>
+的Banach空间，则 <span class="math inline">\(E_{\mathbb{C}}\)</span>
+是一个配有范数 <span class="math inline">\(\left\| \cdot
+\right\|_{\mathbb{C}}\)</span> 的Banach空间.</p>
+<p><strong>证明</strong> 任取 <span
+class="math inline">\(E_{\mathbb{C}}\)</span> 中的Cauchy列 <span
+class="math inline">\(\{x_{n}+iy_{n}\}\)</span>，由（2）知 <span
+class="math inline">\(\{x_n\}\)</span> 和 <span
+class="math inline">\(\{y_n\}\)</span> 都是 <span
+class="math inline">\(E\)</span> 中的Cauchy列. 由 <span
+class="math inline">\(E\)</span> 的完备性知，存在 <span
+class="math inline">\(x \in E\)</span>，<span class="math inline">\(y
+\in E\)</span>，使得 <span class="math inline">\(x_n \to
+x\)</span>，<span class="math inline">\(y_n\to y\)</span>. 故 <span
+class="math inline">\(x_n+iy_n \to x+iy\)</span>，从而 <span
+class="math inline">\(E_{\mathbb{C}}\)</span> 完备.</p>
+<p>另一方面，我们可以定义算子的复化. 给定实线性空间 <span
+class="math inline">\(E\)</span> 上的线性算子 <span
+class="math inline">\(T\colon E \to E\)</span>，定义 <span
+class="math inline">\(T\)</span> 的复化为 <span class="math display">\[
+    \begin{aligned}
+        T_{\mathbb{C}}\colon E_{\mathbb{C}} &amp;\to E_{\mathbb{C}}\\
+        x+iy&amp;\mapsto Tx+iTy.
+    \end{aligned}
+\]</span> 不难验证 <span class="math inline">\(T_{\mathbb{C}}\)</span>
+是 <span class="math inline">\(E_{\mathbb{C}}\)</span> 上的线性算子.
+一个不平凡的结果是，复化保持算子范数.</p>
+<p><strong>引理1.2.2.</strong> 设 <span class="math inline">\(E\)</span>
+是一个实Banach空间. 如果 <span class="math inline">\(T\colon E \to
+E\)</span> 是一个有界算子，则 <span
+class="math inline">\(T_{\mathbb{C}}\colon E_{\mathbb{C}} \to
+E_{\mathbb{C}}\)</span> 是一个有界算子且 <span
+class="math inline">\(\left\| T_{\mathbb{C}}
+\right\|_{\mathbb{C}}=\left\| T \right\|_{}\)</span>.</p>
+<p><strong>证明</strong> 对任意 <span class="math inline">\(x+iy \in
+E_{\mathbb{C}}\)</span>，我们有 <span class="math display">\[
+    \begin{aligned}
+        \left\| T_{\mathbb{C}}(x+iy) \right\|_{\mathbb{C}} &amp;=
+\left\| Tx+iTy \right\|_{\mathbb{C}}\\
+        &amp;=\sup_{\theta \in [0,2\pi]} \left\| T_x \cos \theta-Ty \sin
+\theta \right\|_{} \\
+        &amp;=\sup_{\theta \in [0,2\pi]} \left\| T(x \cos \theta-y\sin
+t\eta) \right\|_{} \\
+        &amp; \leqslant  \left\| T \right\|_{} \sup_{\theta \in
+[0,2\pi]} \left\| x\cos \theta-y\sin \theta \right\|_{} \\
+        &amp;= \left\| T \right\|_{} \left\| x+iy \right\|_{\mathbb{C}},
+    \end{aligned}
+\]</span></p>
+<p>故我们证明了 <span class="math inline">\(\left\| T_{\mathbb{C}}
+\right\|_{\mathbb{C}}\leqslant \left\| T \right\|_{}\)</span>.
+进一步，注意到对于任意 <span class="math inline">\(x \in E\)</span>
+我们有 <span class="math inline">\(\left\| x
+\right\|_{\mathbb{C}}=\left\| x \right\|_{}\)</span>，于是有 <span
+class="math display">\[
+    \left\| T_{\mathbb{C}} \right\|_{\mathbb{C}}\geqslant \sup _{x\neq
+0} \frac{\left\| T_{\mathbb{C}}(x+i 0) \right\|_{\mathbb{C}}}{\left\|
+x+i0 \right\|_{\mathbb{C}}}=\sup_{x\neq 0} \frac{\left\| Tx
+\right\|_{\mathbb{C}}}{\left\| x \right\|_{\mathbb{C}}}=\sup_{x\neq
+0}\frac{\left\| Tx \right\|_{}}{\left\| x \right\|_{}}=\left\| T
+\right\|_{},
+\]</span></p>
+<p>故引理成立.</p>
+<p><strong>推论1.2.3.</strong> 设 <span class="math inline">\(E\)</span>
+是一个实Banach空间. 映射 <span class="math inline">\(\mathscr{L}(E)\ni T
+\mapsto T_{\mathbb{C}} \in \mathscr{L}(E_{\mathbb{C}})\)</span>
+是连续的.</p>
+<p>最后，对于给定的实线性空间 <span class="math inline">\(E\)</span>
+上的线性算子 <span class="math inline">\(T\colon E\to
+E\)</span>，定义它的谱 <span class="math inline">\(\sigma(T)\)</span>
+为它的复化的谱，即 <span class="math display">\[
+    \sigma(T)=\sigma(T_{\mathbb{C}}).
+\]</span></p>
+<h3 id="谱分解">谱分解</h3>
+<p>本节我们说明如果对复Banach空间上某算子的谱作分划，那么存在空间本身的分划与谱的分划对应.
+具体的，我们有</p>
+<p><strong>定理1.3.1.</strong>（谱分解）设 <span
+class="math inline">\(E\)</span> 是一个复Banach空间，<span
+class="math inline">\(T \in \mathscr{L}(E)\)</span>. 假设存在分划 <span
+class="math inline">\(\sigma(T)=\sigma_1 \cup \sigma_2\)</span>，其中
+<span class="math inline">\(\sigma_1,\sigma_2\)</span>
+是不相交的紧集，那么存在闭子空间 <span
+class="math inline">\(E_1,E_2\)</span> 使得： - <span
+class="math inline">\(E=E_1 \oplus E_2\)</span>； - <span
+class="math inline">\(T(E_1) \subset E_1\)</span> 且 $T(E_2) E_2 $； -
+<span class="math inline">\(\sigma(T|_{E_1})=\sigma_1\)</span> 且 <span
+class="math inline">\(\sigma(T|_{E_2})=\sigma_2\)</span>.</p>
+<p><strong>命题1.3.2</strong> 设 <span class="math inline">\(E\)</span>
+是一个复Banach空间，配有范数 <span class="math inline">\(\left\| \cdot
+\right\|_{}\)</span>. 对于 <span class="math inline">\(T \in
+\mathscr{L}(E)\)</span>，下述条件等价： - <span
+class="math inline">\(T\)</span> 的谱半径严格小于1； - 存在与 <span
+class="math inline">\(\left\| \cdot \right\|_{}\)</span> 等价的范数 $$
+使得 <span class="math inline">\(\lvert T \rvert &lt;1\)</span>； - 存在
+<span class="math inline">\(C&gt;0\)</span> 和 <span
+class="math inline">\(0&lt;\lambda&lt;1\)</span> 使得对于任意 <span
+class="math inline">\(x \in E\)</span>，<span class="math inline">\(n
+\in \mathbb{N}\)</span>，有 <span class="math inline">\(\left\| T^{n}x
+\right\|_{}\leqslant C \lambda^{n}\left\| x \right\|_{}\)</span>.</p>
+<h3 id="双曲同构">双曲同构</h3>
+<p>给定线性空间 <span class="math inline">\(E\)</span>，令 <span
+class="math inline">\(GL(E)\)</span> 是 <span
+class="math inline">\(\mathscr{L}(E)\)</span> 中所有可逆元所组成的集合.
+注意如果 <span class="math inline">\(E\)</span>
+是Banach空间，那么由开映射定理，若 <span class="math inline">\(A \in
+GL(E)\)</span>，则 <span class="math inline">\(A ^{-1} \in
+GL(E)\)</span>.</p>
+<p><strong>定义1.4.1.</strong> 如果算子 <span class="math inline">\(A
+\in GL(E)\)</span> 的谱都不在单位圆 $S^{1} $上，则称 <span
+class="math inline">\(A\)</span> 是双曲的. 记 <span
+class="math inline">\(H(E)=\{A \in GL(E)\colon A
+\text{是双曲的}\}\)</span>.</p>
+<p><strong>命题1.4.2.</strong> 设 <span class="math inline">\(E\)</span>
+是一个Banach空间，则 <span class="math inline">\(H(E)\)</span> 在 <span
+class="math inline">\(GL(E)\)</span> 中是开的.</p>
+<p><strong>证明</strong> 先假设 <span class="math inline">\(E\)</span>
+是一个复Banach空间. 给定 <span class="math inline">\(A \in
+H(E)\)</span>，我们有 $S^{1} (A) $. 考虑 <span class="math display">\[
+    M=\max_{\lambda \in  S^{1}} \left\| (\lambda I-A)^{-1} \right\|_{}
+\]</span></p>
+<p>则当 <span class="math inline">\(B \in GL(E)\)</span>，<span
+class="math inline">\(\left\| B-A \right\|_{}&lt;M ^{-1}\)</span>
+时，对任意 <span class="math inline">\(\lambda \in S^{1}\)</span>，
+<span class="math display">\[
+    \lambda I-B=(\lambda I-A)[I+(\lambda I-A)^{-1}(A-B)].
+\]</span></p>
+<p>由于 <span class="math inline">\(\left\| (\lambda I-A) ^{-1}(A-B)
+\right\|_{}&lt;1\)</span>，故 <span class="math inline">\(\lambda
+I-B\)</span> 可逆. 故 <span class="math inline">\(B \in
+H(E)\)</span>，从而 <span class="math inline">\(H(E)\)</span> 在 <span
+class="math inline">\(GL(E)\)</span> 中开.</p>
+<p>再考虑 <span class="math inline">\(E\)</span> 是实空间的情况.
+由定义，<span
+class="math inline">\(\sigma(A)=\sigma(A_{\mathbb{C}})\)</span>，故
+<span class="math inline">\(A \in GL(E)\)</span> 是双曲的当且仅当 <span
+class="math inline">\(A_{\mathbb{C}}\in GL(E_{\mathbb{C}})\)</span>
+是双曲的. 由 <span class="math inline">\(A \mapsto
+A_{\mathbb{C}}\)</span> 连续和 <span
+class="math inline">\(H(E_{\mathbb{C}})\)</span> 在 <span
+class="math inline">\(GL(E_{\mathbb{C}})\)</span> 中开知 <span
+class="math inline">\(H(E)\)</span> 在 <span
+class="math inline">\(GL(E)\)</span> 中开.</p>
+<p><strong>定义1.4.3.</strong> 定义 <span class="math inline">\(A \in
+GL(E)\)</span> 的稳定子空间为 <span class="math display">\[
+    E^{s}=\{x \in E \colon \lim_{n \to +\infty}A^{n}x=0\}
+\]</span></p>
+<p><span class="math inline">\(A\)</span> 的不稳定子空间为 <span
+class="math display">\[
+    E^{u}=\{x \in E \colon \lim_{n \to +\infty} A^{-n}x=0\}.
+\]</span></p>
+<p>容易验证 <span class="math inline">\(E^{s}\)</span> 和 <span
+class="math inline">\(E^{u}\)</span> 都是 <span
+class="math inline">\(E\)</span> 的线性子空间且具有不变性质，即 <span
+class="math display">\[
+    A(E^{s})=E^{s}\ \text{且} \ A(E^{u})=E^{u}.
+\]</span></p>
+<p>并且存在两个常数 <span class="math inline">\(C\geqslant 1\)</span> 和
+<span class="math inline">\(0&lt;\lambda&lt;1\)</span>，使得 <span
+class="math display">\[
+    \left\| A^{n}x \right\|_{}\leqslant C \lambda^{n}\left\| x
+\right\|_{}, \quad \forall x \in E^{s}, n\geqslant 0,
+\]</span></p>
+<p><span class="math display">\[
+    \left\| A^{-n}x \right\|_{}\leqslant C \lambda^{n}\left\| x
+\right\|_{}, \quad \forall x \in E^{u}, n\geqslant 0.
+\]</span></p>
+<p>这时称 <span class="math inline">\(E^{s}\)</span> 为 <span
+class="math inline">\(A\)</span> （关于范数 <span
+class="math inline">\(\left\| \cdot
+\right\|_{}\)</span>）的压缩子空间，<span
+class="math inline">\(E^{u}\)</span> 为 <span
+class="math inline">\(A\)</span> （关于范数 <span
+class="math inline">\(\left\| \cdot \right\|_{}\)</span>）的扩张子空间.
+称 <span class="math inline">\(\dim E^{s}\)</span> 为 <span
+class="math inline">\(A\)</span> 的指标. 当 <span
+class="math inline">\(E\)</span> 为有限维欧氏空间时，由范数等价性，<span
+class="math inline">\(A\)</span> 的双曲性不依赖于范数的选择. 但当 <span
+class="math inline">\(E\)</span>
+是一般的Banach空间时，范数的选取就至关重要.</p>
+<p>下面这个结果说明当同构为双曲时，稳定空间和不稳定空间是互补的.
+双曲的条件是至关重要的，否则即使是有限维空间，该结果也不一定对.</p>
+<p><strong>定理1.4.4.</strong> 设 <span class="math inline">\(E\)</span>
+是一个Banach空间，<span class="math inline">\(A \in H(E)\)</span>，则
+<span class="math inline">\(E=E^{s} \oplus E^{u}\)</span>.</p>
+<p><strong>证明</strong> 先假设 <span class="math inline">\(E\)</span>
+是一个复Banach空间. 谱分解定理告诉我们，存在 <span
+class="math inline">\(E\)</span> 的分划 <span
+class="math inline">\(E=E_1 \oplus E_2\)</span>，其中 <span
+class="math inline">\(E_1\)</span> 和 <span
+class="math inline">\(E_2\)</span> 是 <span
+class="math inline">\(E\)</span> 的闭子空间，在 <span
+class="math inline">\(A\)</span> 作用下不变，满足 <span
+class="math display">\[
+    \sigma(A|_{E_1})=\sigma(A) \cap \{\lvert z \rvert &lt;1\}\ \text{且}
+\ \sigma(A|_{E_2})=\sigma(A) \cap \{\lvert z \rvert &gt;1\}. \tag{3}
+\]</span></p>
+<p>我们将证明 <span class="math inline">\(E^{s}=E_1\)</span> 且 <span
+class="math inline">\(E^{u}=E_2\)</span>. 注意（3）表明 <span
+class="math inline">\(A|_{E_1}\)</span> 的谱半径 <span
+class="math inline">\(r(A|_{E_1})\)</span> 满足 <span
+class="math display">\[
+    r(A|_{E_1})&lt;1, \tag{4}
+\]</span></p>
+<p>由命题1.3.2知</p>
+<h2 id="hartman-grobman-定理的证明">Hartman-Grobman 定理的证明</h2>
+<p>设 <span class="math inline">\(E\)</span> 是一个Banach空间，<span
+class="math inline">\(L\colon E\to E\)</span> 是一个给定的双曲同构.
+那么我们有 <span class="math inline">\(E=E^{u}\oplus
+E^{s}\)</span>，<span class="math inline">\(E^{u}\)</span> 和 <span
+class="math inline">\(E^{s}\)</span> 是 <span
+class="math inline">\(E\)</span> 的关于 <span
+class="math inline">\(L\)</span> 的不变子空间. <span
+class="math inline">\(L_{u}=L|_{E^{u}}\)</span> 是一个扩张，<span
+class="math inline">\(L_{s}=L|_{E^{s}}\)</span> 是一个收缩：<span
+class="math inline">\(\left\| L_{u}^{-1} \right\|_{}&lt;1\)</span> 且
+<span class="math inline">\(\left\| L_{s} \right\|_{}&lt;1\)</span>.
+如果一个 <span class="math inline">\(E\)</span>
+上线性同构的谱与单位圆不交，不难得到该线性同构对于某个 <span
+class="math inline">\(E\)</span> 上的范数是双曲的.</p>
+<p>在后续部分中，我们令 <span class="math inline">\(a=\max (\left\|
+L_u^{-1} \right\|_{},\left\| L_{s} \right\|_{})&lt;1\)</span>. <span
+class="math inline">\(a\)</span> 称为 <span
+class="math inline">\(L\)</span> 关于范数 <span
+class="math inline">\(\left\| \cdot \right\|_{}\)</span> 的双曲度. <span
+class="math inline">\(E\)</span> 配有范数 <span
+class="math inline">\(\lvert x+y \rvert =\max(\lvert x \rvert ,\lvert y
+\rvert )\)</span> （<span class="math inline">\(x\in E^{u}, y\in
+E^{s}\)</span>）. 对任意 <span class="math inline">\(\mu
+&gt;0\)</span>，我们定义 <span class="math display">\[
+    C_{*}^{0}(E,E)=\{\text{ $E$到 $E$ 一致有界，一致连续的映射}\}
+\]</span></p>
+<p><span class="math display">\[
+    \mathscr{L}_{\mu}(L)=\{\Lambda=L+\lambda\colon \lambda \in
+C_{*}^{0}(E,E) \text{是Lipschitz的，有界 $\mu$，有$\leqslant
+\mu$的Lipschitz常数}\}
+\]</span></p>
+<p><span class="math display">\[
+    \mathscr{H}=\{h=\mathbf{1}+g\colon g \in C_{*}^{0}(E,E)\}
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathbf{1}\)</span> 是 <span
+class="math inline">\(E\)</span> 上的恒同映射. 在 <span
+class="math inline">\(C_{*}^{0}(E,E)\)</span> 上赋 <span
+class="math inline">\(C^{0}\)</span> 范数 <span class="math display">\[
+    \left\| \phi \right\|_{}=\sup_{x \in E} \lvert \phi(x) \rvert .
+\]</span></p>
+<p>使其成为一个Banach空间，也使得 <span
+class="math inline">\(\mathscr{L}_{\mu}(L)\)</span>，<span
+class="math inline">\(\mathscr{H}\)</span> 成为完备的度量空间.</p>
+<h3 id="映射的-hartman-grobman-定理">映射的 Hartman-Grobman 定理</h3>
+<p>如果 <span class="math inline">\(\mu\)</span> 足够小，那么对于每个
+<span class="math inline">\(\Lambda \in
+\mathscr{L}_{\mu}(L)\)</span>，存在唯一的 <span
+class="math inline">\(h=h_{\Lambda} \in \mathscr{H}\)</span> 使得 <span
+class="math inline">\(h\Lambda=Lh\)</span>. 进一步的，<span
+class="math inline">\(h_{\Lambda}\)</span> 是一个关于 <span
+class="math inline">\(\Lambda \in \mathscr{L}_{\mu}(L)\)</span>
+连续依赖的同胚.</p>
+<p>特别的，这说明所有 <span class="math inline">\(\Lambda \in
+\mathscr{L}_{\mu}(L)\)</span> 都是同胚.</p>
+<p><strong>引理2.1.1.</strong> 如果 <span
+class="math inline">\(\mu\)</span> 足够小，那么每个 <span
+class="math inline">\(\Lambda \in \mathscr{L}_{\mu}(L)\)</span>
+是一个Lipschitz连续的同胚. 其逆也是Lipschitz连续的.</p>
+<p><strong>引理2.1.2</strong> 设 <span class="math inline">\(P\)</span>
+是一个拓扑空间，<span class="math inline">\(Y\)</span>
+是一个完备度量空间，<span class="math inline">\(F\colon P \times Y \to
+Y\)</span> 是连续的. 假设每个 <span class="math inline">\(F_p=F(p,\cdot
+)\colon Y\to Y\)</span> 是一个具有收缩系数 <span
+class="math inline">\(k_{p}&lt;1\)</span> 的收缩. 如果 <span
+class="math inline">\(k_p\)</span> 有一个严格小于1的上界，那么 <span
+class="math inline">\(F_p\)</span> 的唯一不动点关于 <span
+class="math inline">\(p\)</span> 连续依赖.</p>
+<p><strong>映射的 Hartman-Grobman 定理的证明</strong>
+我们证明一个加强的命题： 对每一对 <span
+class="math inline">\(\Lambda,\Lambda&#39;\in
+\mathscr{L}_{\mu}(L)\)</span>，存在一个唯一的 <span
+class="math inline">\(h \in \mathscr{H}\)</span> 使得 <span
+class="math inline">\(h\Lambda=\Lambda&#39;h\)</span>. <span
+class="math inline">\(h\)</span> 是一个关于 <span
+class="math inline">\(\Lambda,\Lambda&#39;\)</span> 连续依赖的同胚.</p>
+<p>解方程 <span class="math inline">\(h\Lambda=\Lambda&#39;h\)</span>
+等价于求一个唯一的 <span class="math inline">\(g \in
+C_{*}^{0}(E,E)\)</span>，使得 <span class="math display">\[
+    (\mathbf{1}+g)(L+\lambda)=(L+\lambda&#39;)(\mathbf{1}+g),
+\]</span></p>
+<p>这等价于 <span class="math display">\[
+    \lambda+g\Lambda=Lg+\lambda&#39;(\mathbf{1}+g), \tag{5}
+\]</span></p>
+<p>或由引理2.1.1保证 <span class="math inline">\(\Lambda ^{-1}\)</span>
+存在的情况下，<span
+class="math inline">\(g=[Lg+\lambda&#39;(\mathbf{1}+g)-\lambda]\Lambda
+^{-1}\)</span>. 对于 <span class="math inline">\(\forall \phi \in
+C_{*}^{0}(E,E)\)</span>，定义 <span class="math inline">\(\phi_s=\pi_s
+\circ\phi\)</span>，<span class="math inline">\(\phi_u=\pi_u \circ
+\phi\)</span>，其中 <span class="math inline">\(\pi_s\)</span> 和 <span
+class="math inline">\(\pi_u\)</span> 是投影算子. 那么就有 <span
+class="math display">\[
+    g_{u}=[L_u g_u+\lambda_u&#39;(\mathbf{1}+g)-\lambda_u]\Lambda
+^{-1}\tag{6a}
+\]</span></p>
+<p><span class="math display">\[
+    g_{s}=[L_s g_s+\lambda_s&#39;(\mathbf{1}+g)-\lambda_s]\Lambda
+^{-1}.\tag{6b}
+\]</span> 另一方面，（5）也等价于 <span class="math inline">\(g=L
+^{-1}[g\Lambda+\lambda-\lambda&#39;(\mathbf{1}+g)]\)</span>，故 <span
+class="math display">\[
+    g_u=L_u^{-1}[g_u\Lambda+\lambda_u-\lambda_u&#39;(\mathbf{1}+g)]\tag{7a}
+\]</span></p>
+<p><span class="math display">\[
+    g_s=L_s^{-1}[g_s\Lambda+\lambda_s-\lambda_s&#39;(\mathbf{1}+g)].\tag{7b}
+\]</span> （6a,b）和（7a,b）中任意两个都独立. 我们考虑（6b,7a）.
+对于充分小的 <span
+class="math inline">\(\mu&gt;0\)</span>，（6b,7a）定义了一个映射 <span
+class="math inline">\(K\colon C_{*}^{0}(E,E)\to
+C_{*}^{0}(E,E)\)</span>， <span class="math display">\[
+    g=(g_u,g_s)\mapsto
+(L_u^{-1}[g_u\Lambda+\lambda_u-\lambda_u&#39;(\mathbf{1}+g)],[L_s
+g_s+\lambda_s&#39;(\mathbf{1}+g)-\lambda_s]\Lambda ^{-1})
+\]</span></p>
+<p>由于 <span class="math inline">\(\lambda,\lambda&#39;,g\)</span>
+都属于 <span class="math inline">\(C_{*}^{0}(E,E)\)</span>，易见 <span
+class="math inline">\(K(g)\)</span> 确实属于 <span
+class="math inline">\(C_{*}^{0}(E,E)\)</span>. 下面验证 <span
+class="math inline">\(K\)</span> 是一个压缩映射：对所有 <span
+class="math inline">\(g,g&#39; \in C_{*}^{0}(E,E)\)</span>，我们有 <span
+class="math display">\[
+    \begin{aligned}
+        &amp;\left\| K_s(g)-K_s(g&#39;) \right\|_{} \\
+        &amp;=\left\|
+[L_s(g_s-g_s&#39;)+\lambda_s&#39;(g-g&#39;)]\Lambda ^{-1} \right\|_{} \\
+        &amp;=\sup _{x \in E} \lvert
+[L_s(g_s-g_s&#39;)+\lambda_s&#39;(g-g&#39;)]\Lambda ^{-1}(x) \rvert \\
+        &amp;=\sup _{y \in E} \lvert
+(L_s(g_s-g_s&#39;)+\lambda_s&#39;(g-g&#39;))(y) \rvert \\
+        &amp;\leqslant \sup_{y \in E}(a\cdot \lvert g_s(y)-g_s&#39;(y)
+\rvert +\mu\cdot \lvert g(y)-g&#39;(y) \rvert ) \\
+        &amp;\leqslant (a+\mu) \left\| g-g&#39; \right\|_{}.
+    \end{aligned}
+\]</span></p>
+<p>类似地， <span class="math display">\[
+    \begin{aligned}
+        \left\| K_u(g)-K_u(g&#39;) \right\|_{} &amp;\leqslant
+(a+a\mu)\left\| g-g&#39; \right\|_{} \\
+        &amp;\leqslant (a+\mu)\left\| g-g&#39; \right\|_{}.
+    \end{aligned}
+\]</span></p>
+<p>故 <span class="math inline">\(K\)</span>
+确实为压缩映射，从而有唯一不动点 <span
+class="math inline">\(g=g_{\Lambda,\Lambda&#39;} \in
+C_{*}^{0}(E,E)\)</span>，且关于 <span
+class="math inline">\(\Lambda,\Lambda&#39; \in
+\mathscr{L}_{\mu}(L)\)</span> 连续依赖，从而 <span
+class="math inline">\(h_{\Lambda,\Lambda&#39;}=\mathbf{1}+g_{\Lambda,\Lambda&#39;}\)</span>
+也是如此.</p>
+<p>注意原命题为 <span class="math display">\[
+    h_{\Lambda,\Lambda&#39;}\Lambda=\Lambda&#39;h_{\Lambda,\Lambda&#39;}.
+\tag{8}
+\]</span></p>
+<p>将原命题中的 <span class="math inline">\(\Lambda\)</span> 和 <span
+class="math inline">\(\Lambda&#39;\)</span> 对换，得 <span
+class="math display">\[
+    h_{\Lambda&#39;,\Lambda}\Lambda&#39;=\Lambda
+h_{\Lambda&#39;,\Lambda}. \tag{9}
+\]</span></p>
+<p>将（8）和（9）合并，得 <span class="math display">\[
+    h_{\Lambda&#39;,\Lambda}h_{\Lambda,\Lambda&#39;}\Lambda=\Lambda
+h_{\Lambda&#39;,\Lambda}h_{\Lambda,\Lambda&#39;}.
+\]</span></p>
+<p>由于 <span class="math inline">\(\mathbf{1}\)</span> 是 <span
+class="math inline">\(\Lambda\)</span> 在 <span
+class="math inline">\(\mathbf{1}+C_{*}^{0}(E,E)\)</span>
+中的一个自共轭，由自共轭的唯一性 <span class="math display">\[
+    h_{\Lambda,\Lambda&#39;}h_{\Lambda&#39;,\Lambda}=h_{\Lambda&#39;,\Lambda}h_{\Lambda,\Lambda&#39;}=\mathbf{1}.
+\]</span></p>
+<p>这说明 <span class="math inline">\(h_{\Lambda,\Lambda&#39;}\)</span>
+是同胚，证毕.</p>
+<h3 id="流的-hartman-定理">流的 Hartman 定理</h3>
+<p>设 <span class="math inline">\(\Lambda=L+\lambda\)</span> 是 <span
+class="math inline">\(E\)</span> 上的一个向量场，$^{L} $ 是关于直和分解
+<span class="math inline">\(E=E^{u}\oplus E^{s}\)</span>
+的双曲同构，<span class="math inline">\(\nu\)</span> 足够小，那么对每个
+<span class="math inline">\(\Lambda \in \mathscr{L}_{\mu}(L)\)</span>
+存在唯一的 <span class="math inline">\(H=H_{\Lambda}\in
+\mathscr{H}\)</span> 使得对于 <span class="math inline">\(x \in E, t\in
+\mathbb{R}\)</span>，有 <span class="math inline">\(H
+\phi_{\Lambda}(t,x)\equiv \phi_{L}(t,Hx)\)</span> 成立，其中 <span
+class="math inline">\(\phi_{L}, \phi_{\Lambda}\)</span> 是 <span
+class="math inline">\(L\)</span>- 和 <span
+class="math inline">\(\Lambda\)</span>- 流. <span
+class="math inline">\(H_{\Lambda}\)</span> 是一个关于 <span
+class="math inline">\(\Lambda \in \mathscr{L}_{\nu}(L)\)</span>
+连续依赖的同胚.</p>
+<p>注意：这里 $^{L} $ 是双曲同构，而不是 <span
+class="math inline">\(L\)</span> 是双曲同构.</p>
+<p><strong>证明</strong> 考虑映射 <span
+class="math inline">\(\tilde{\phi}_{L}=\phi_{L}(1,\cdot
+)=\mathrm{e}^{L}\)</span> 和 <span
+class="math inline">\(\tilde{\phi}_{\Lambda}=\phi_{\Lambda}(1,\cdot
+)\)</span>. 容易验证映射 <span class="math inline">\(\Lambda \mapsto
+\tilde{\phi}_{\Lambda}\)</span> 是连续的，因此对于足够小的 <span
+class="math inline">\(\nu&gt;0\)</span>，由映射的 Hartman
+定理知，存在足够小的 <span class="math inline">\(\mu\)</span>，使得
+<span class="math inline">\(\Lambda \in \mathscr{L}_{\nu}(L) \Rightarrow
+\tilde{\phi}_{\Lambda}\in \mathscr{L}_{\mu}(\mathrm{e}^{L} )\)</span>.
+相应地存在唯一的 <span class="math inline">\(h \in \mathscr{H}\)</span>
+使得 <span class="math inline">\(\tilde{\phi}_{L}h=h
+\tilde{\phi}_{\Lambda}\)</span>.</p>
+<p>我们断言 <span class="math inline">\(h\)</span> 满足 <span
+class="math inline">\(h \phi_{\Lambda}(t,x)\equiv
+\phi_{L}(t,hx)\)</span> 从而 <span class="math inline">\(h=H\)</span>
+满足定理. 这等价于证明 <span class="math display">\[
+\phi_{L}(t,h\phi_{\Lambda}(-t,\cdot ))\equiv h. \tag{10}
+\]</span></p>
+<p>观察到 <span
+class="math inline">\(\phi_{L}(t,h\phi_{\Lambda}(-t,\cdot ))\in
+\mathscr{H}\)</span>，对 <span
+class="math inline">\(\tilde{\phi}_{L}()=()\tilde{\phi}_{\Lambda}\)</span>
+应用映射的 Hartman 定理的唯一性部分即得（10）成立. 任何 <span
+class="math inline">\(\phi_{L}\)</span> 与 <span
+class="math inline">\(\phi_{\Lambda}\)</span> 之间的等价关系当然也是
+<span class="math inline">\(\tilde{\phi}_{L}\)</span> 与 <span
+class="math inline">\(\tilde{\phi}_{\Lambda}\)</span> 之间的等价关系.
+因此 <span class="math inline">\(H=h\)</span> 唯一，是一个同胚，并且关于
+<span class="math inline">\(\Lambda \in \mathscr{L}_{\nu}(L)\)</span>
+连续依赖.</p>
+<p>动力系统就是抽象的“流”，点的流动就形成了“轨道”. 流的 Hartman-Grobman
+定理就是判断非线性系统零解稳定性中用到的定理. 仍考虑系统（4），<span
+class="math inline">\(Df(\mathbf{0})\)</span> 满足 <span
+class="math inline">\(\mathrm{e}^{Df(\mathbf{0})}\)</span>
+是一个双曲线性同构. 固定 <span
+class="math inline">\(Df(\mathbf{0})\)</span>，在流的 Hartman-Grobman
+定理中确定相应的 <span class="math inline">\(\nu\)</span>，再取定理中的
+<span class="math inline">\(E\)</span> 为原点的一个充分小的领域 <span
+class="math inline">\(U\)</span>，使得在原点的邻域内，<span
+class="math inline">\(f-Df(\mathbf{0}) \in
+\mathscr{L}_{\nu}(L)\)</span>. Hartman-Grobman
+定理告诉我们存在唯一的同胚 <span class="math inline">\(H \in
+\mathscr{H}\)</span>，使得 <span class="math inline">\(H
+\phi_{\Lambda}(t,x)\equiv \phi_{L}(t,Hx)\)</span>
+成立，即系统（3）和其在原点的线性化系统（5）局部拓扑共轭.</p>
+<p>最后，我们来说明 Hartman-Grobman 定理给出的拓扑共轭 <span
+class="math inline">\(h\)</span> 一般不能是 Lipschitz 同胚.</p>
+<h4 id="一个例子">一个例子</h4>
+<p>设 <span class="math inline">\(A_{\alpha}\colon \mathbb{R}\to
+\mathbb{R}\)</span> 表示线性映射 <span class="math display">\[
+    A_{\alpha}(x)=\alpha x.
+\]</span></p>
+<p>若 <span class="math inline">\(0&lt;\alpha&lt;1,
+0&lt;\beta&lt;1\)</span>，令 <span class="math inline">\(h(x)=x^{\ln
+\beta/\ln \alpha},x\geqslant 0\)</span>，再对 <span
+class="math inline">\(h\)</span> 作奇延拓. 则 <span
+class="math inline">\(h(x)\)</span> 是一个 <span
+class="math inline">\(\mathbb{R}\)</span> 上的同胚，且 <span
+class="math inline">\(hA_{\alpha}=A_{\beta}h\)</span>. 然而，若 <span
+class="math inline">\(\alpha \neq \beta\)</span>，则不存在 Lipschitz
+同胚 <span class="math inline">\(h\colon \mathbb{R}\to
+\mathbb{R}\)</span> 满足 <span class="math inline">\(h
+A_{\alpha}=A_{\beta} h\)</span>.</p>
+<p>事实上，假设存在这样的同胚 <span class="math inline">\(h\colon
+\mathbb{R}\to \mathbb{R}\)</span>. 如果 <span
+class="math inline">\(h(0)\neq 0\)</span>，则由 <span
+class="math inline">\(h(\alpha x)=\beta h(x)\)</span> 知 <span
+class="math inline">\(\beta=1\)</span>，再由 <span
+class="math inline">\(h\)</span> 是单射知 <span
+class="math inline">\(\alpha=1\)</span>. 这与 <span
+class="math inline">\(\alpha\neq \beta\)</span> 矛盾.</p>
+<p>如果 <span class="math inline">\(h(0)=0\)</span>，显然 <span
+class="math inline">\(\alpha \beta\neq 0\)</span>. 有如下几式成立 -
+<span
+class="math inline">\(h(\alpha^{n}x)/(\alpha^{n}x)=(\beta^{n}h(x))/(\alpha^{n}x)\)</span>；
+- <span class="math inline">\(h ^{-1}
+(\beta^{n}y)/(\beta^{n}y)=(\alpha^{n}h ^{-1}(y))/(\beta^{n}
+y)\)</span>； -
+$h(<sup>{-n}x)/(</sup>{-n}x)=(<sup>{n}h</sup>{-1}(x))/(^{n}x) $； -
+<span class="math inline">\(h
+^{-1}(\beta^{-n}y)/(\beta^{-n}y)=(\beta^{n} h
+^{-1}(y))/(\alpha^{n}y)\)</span>.</p>
+<p>分析原点附近性态可得 <span class="math inline">\(h\)</span> 和 <span
+class="math inline">\(h ^{-1}\)</span> 不能同时为 Lipschitz 的，即 <span
+class="math inline">\(h\)</span> 不能是Lipschitz 同胚.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/" class="category-chain-item">分析学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E5%88%86%E6%9E%90%E5%AD%A6/%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B/" class="category-chain-item">微分方程</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E6%95%B0%E5%AD%A6/" class="print-no-link">#数学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>浅谈Hartman-Grobman定理</div>
+      <div>http://example.com/2022/12/12/浅谈Hartman-Grobman定理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>December 12, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/12/26/%E5%BA%9E%E5%8A%A0%E8%8E%B1%E5%AE%9A%E7%90%86%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/" title="庞加莱定理及其应用">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">庞加莱定理及其应用</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/12/11/Neuronal-Dynamics-14/" title="Neuronal Dynamics (14)">
+                        <span class="hidden-mobile">Neuronal Dynamics (14)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

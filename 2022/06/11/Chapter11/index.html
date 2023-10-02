@@ -1,0 +1,829 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="导体和电介质">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chapter11">
+<meta property="og:url" content="http://example.com/2022/06/11/Chapter11/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="导体和电介质">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/physics.jpg">
+<meta property="article:published_time" content="2022-06-11T13:36:18.000Z">
+<meta property="article:modified_time" content="2022-06-11T13:41:12.610Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="物理">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/physics.jpg">
+  
+  
+  
+  <title>Chapter11 - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Chapter11"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-11 21:36" pubdate>
+          June 11, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Chapter11</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="导体和电介质">导体和电介质</h1>
+<h2 id="导体">导体</h2>
+<h3 id="静电平衡">静电平衡</h3>
+<p>表面电场 <span class="math display">\[
+    \mathbf{E}= \frac{\sigma}{\varepsilon_0} \mathbf{n}
+\]</span> 其中 <span class="math inline">\(\sigma\)</span> 为电荷面密度.
+用高斯定理即可证明.</p>
+<p>腔内无电荷，<span class="math inline">\(U_{腔}=U_0, E_{腔内}=0,
+\sigma_{内}=0\)</span>（内表面无净电荷）</p>
+<p>导体接地，导体电势为零，但电荷不一定全跑光</p>
+<h3 id="唯一性定理">唯一性定理</h3>
+<p>空间电荷分布确定，该空间的电场分布由各个导体的电势（或电量）及区域边界上的电势（或电场）唯一确定.
+空间电荷分布确定，边界条件确定，则场分布唯一确定.</p>
+<h3 id="静电屏蔽">静电屏蔽</h3>
+<p>接地空腔导体可保护腔外空间不受腔内带电体的影响——全静电屏蔽</p>
+<h3 id="孤立导体">孤立导体</h3>
+<h2 id="电容器及电容">电容器及电容</h2>
+<h2 id="电介质">电介质</h2>
+<h3 id="介质的极化">介质的极化</h3>
+<p><strong>有极分子的转向极化</strong> - 极性分子： <span
+class="math inline">\(p\neq 0\)</span> 分子有固有电偶极矩 - 无极分子：
+<span class="math inline">\(p=0\)</span> 分子无固有电偶极矩</p>
+<p><strong>无极分子的位移极化（感应极化）</strong>
+无极分子在外场的作用下正、负电荷中心发生偏移而产生的极化现象</p>
+<h3 id="极化强度">极化强度</h3>
+<p>极化强度 <span class="math display">\[
+    \mathbf{P}= \lim_{\Delta V \to 0} \frac{\sum_{i}^{}
+\mathbf{p}_i}{\Delta V}
+\]</span> 要求 <span class="math inline">\(\Delta V\)</span>
+宏观小，微观大. <span class="math inline">\(\mathbf{p}_i\)</span>
+为分子电偶极矩，求和为矢量和，单位为 C/m<span
+class="math inline">\(^{2}\)</span></p>
+<p>完全极化的电介质，单位体积内分子数为 <span
+class="math inline">\(n\)</span>，则极化强度为 <span
+class="math display">\[
+    \mathbf{P}=n \mathbf{p}
+\]</span></p>
+<h3 id="极化电荷">极化电荷</h3>
+<p>在介质表面出现电荷，称为极化（束缚）电荷；也可能在体内出现极化电荷.</p>
+<p>面元 $S $处的极化电荷面密度 <span class="math display">\[
+    \sigma&#39;=\mathbf{P} \cdot \mathbf{e}_n
+\]</span></p>
+<p>任意闭合面内体极化电荷 <span class="math display">\[
+    q&#39;=-\oiint _{S} \mathbf{P} \cdot \mathrm{d}\mathbf{S}
+\]</span></p>
+<h3 id="极化率">极化率</h3>
+<p>对于各向同性的电介质，当外加电场不太强时，介质内任意点的极化强度与该点的总电场强度
+<span class="math inline">\(E=E_0+E&#39;\)</span> 成正比. <span
+class="math inline">\(E&#39;\)</span> 为介质极化所产生的附加电场强度.
+<span class="math display">\[
+    \mathbf{P}= \chi_e \varepsilon_0 \mathbf{E}
+\]</span> 式中 <span class="math inline">\(\chi_e\)</span>
+为介质的极化率.
+一般来说极化率与介质中的电场强度无关，且为无量纲常量.</p>
+<h3 id="介质中静电场的环流定理">介质中静电场的环流定理</h3>
+<p><span class="math display">\[
+    \oint_{l} \mathbf{E}_0 \cdot \mathrm{d}l=0
+\]</span></p>
+<h3 id="介质中静电场的高斯定理">介质中静电场的高斯定理</h3>
+<p>定义 <span class="math display">\[
+    \varepsilon_0 \mathbf{E}+\mathbf{P}=\mathbf{D}
+\]</span> 则 <span class="math display">\[
+    \oiint_{S} \mathbf{D} \cdot \mathrm{d} \mathbf{S}= \sum_{S内}^{}
+q_0       
+\]</span> <span class="math inline">\(\mathbf{D}\)</span>
+称为电位移矢量，注意 -
+电位移矢量并不仅仅由空间自由电荷分布决定，它还与外加电场 <span
+class="math inline">\(\mathbf{E}_0\)</span> 和介质的极化电荷有关； -
+<span class="math inline">\(\mathbf{D}\)</span> 本身没有物理意义 -
+上面的定义是对于各向同性线性介质而言的. 对于一般介质， <span
+class="math inline">\(\mathbf{P}\)</span> 与 <span
+class="math inline">\(\mathbf{E}\)</span>
+关系复杂（张量），如铁电体的电滞回线.</p>
+<p>外电场不太强时 <span class="math display">\[
+    \mathbf{D}=\varepsilon_0 E+\chi_e \varepsilon_0 E
+=\varepsilon_0(1+\chi_e)\mathbf{E}
+\]</span></p>
+<p>令 <span class="math inline">\(\varepsilon_r=1+ \chi_e\)</span>
+为介质的相对介电常数，则 <span class="math display">\[
+    \mathbf{D}=\varepsilon_0 \varepsilon_r \mathbf{E}=\varepsilon
+\mathbf{E}
+\]</span></p>
+<p>注意，对于永久极化的驻极体，上式并不成立</p>
+<p><strong>Q</strong> 均匀介质球发生均匀极化 <span
+class="math inline">\((\mathbf{P},R)\)</span> 则球内电场为 <span
+class="math display">\[
+    \mathbf{E}&#39;=-\frac{P}{3 \varepsilon_0}
+\]</span></p>
+<h3 id="介质交界面两侧电场的关系">介质交界面两侧电场的关系</h3>
+<p><strong>电场强度与界面垂直</strong> 价值两侧电场电矢量位移值 <span
+class="math inline">\(\mathbf{D}\)</span> 连续，则电场强度 <span
+class="math inline">\(\mathbf{E}\)</span> 在介质界面不连续</p>
+<p><strong>电场强度与界面斜交</strong>
+在介质两侧的电场电位移矢量在界面法线方向分量连续，从而电场强度在界面法线方向的分量不连续；介质两侧的电场强度界面切线方向的分量连续，从而电场电位移矢量在界面切线方向的分量不连续.</p>
+<p>满足折射定律 <span class="math display">\[
+    \frac{\tan \theta_1}{\tan \theta_2} =
+\frac{\varepsilon_1}{\varepsilon_2}
+\]</span></p>
+<p>（与法线夹角）</p>
+<p><strong>有介质时的唯一性定理</strong></p>
+<p>空间电荷分布确定， <span class="math inline">\(\varepsilon_i\)</span>
+分布确定，在各个子区域的边界上满足 <span class="math display">\[
+    \mathbf{E}_{it}=\mathbf{E}_{jt}, \quad
+\mathbf{D}_{in}=\mathbf{D}_{jn}
+\]</span></p>
+<p>该空间的电场分布由各个导体的电势（或电量）及整个区域边界上的电势（或电场）唯一确定.</p>
+<h2 id="静电场的能量">静电场的能量</h2>
+<p><span class="math inline">\(n\)</span> 个点电荷总电势能 <span
+class="math display">\[
+    W=\frac{1}{2} \sum_{i}^{} q_i U_i
+\]</span> 令 <span class="math inline">\(U_i\)</span> 为 <span
+class="math inline">\(q_i\)</span> 以外的电荷在 <span
+class="math inline">\(q_i\)</span> 处的电势</p>
+<p>一个带电体的总电势能 <span class="math display">\[
+    W=\frac{1}{2} \int_{Q}^{} U \mathrm{d}q
+\]</span></p>
+<p>把各点电荷彼此分散到无限远的过程中电场力做的功，把这些点电荷从无限远离的状态聚合到给定位置时外力做的功</p>
+<p><strong>带电导体球的静电能（<span
+class="math inline">\(Q,R\)</span>）</strong> <span
+class="math display">\[
+    W=\frac{Q^{2}}{8\pi \varepsilon_0 R}
+\]</span></p>
+<h3 id="电场能量密度">电场能量密度</h3>
+<p>电场能密度 <span class="math display">\[
+    w_{e}=\frac{1}{2} \mathbf{D} \cdot \mathbf{E}
+\]</span></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/" class="category-chain-item">物理学</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/%E7%89%A9%E7%90%86%E5%AD%A6/%E6%99%AE%E7%89%A9/" class="category-chain-item">普物</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%89%A9%E7%90%86/" class="print-no-link">#物理</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Chapter11</div>
+      <div>http://example.com/2022/06/11/Chapter11/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>June 11, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter12/" title="Chapter12">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Chapter12</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/06/11/Chapter10/" title="Chapter10">
+                        <span class="hidden-mobile">Chapter10</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

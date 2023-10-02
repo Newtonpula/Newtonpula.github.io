@@ -1,0 +1,1298 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Fisher Information 希望估计参数 \(\theta\)，有观测量 \(x_1,\cdots ,x_n\)，其中 \(x\sim D(\theta)\). 有似然函数 \[     L(\theta)&#x3D;\prod_{i&#x3D;1}^{n} p(x_i|\theta) \] 取对数以方便计算，或者可以认为是一种 normalization. \[     \ln L(\the">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Fisher Information, AIC &amp; BIC">
+<meta property="og:url" content="http://example.com/2023/03/02/Fisher-Information/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Fisher Information 希望估计参数 \(\theta\)，有观测量 \(x_1,\cdots ,x_n\)，其中 \(x\sim D(\theta)\). 有似然函数 \[     L(\theta)&#x3D;\prod_{i&#x3D;1}^{n} p(x_i|\theta) \] 取对数以方便计算，或者可以认为是一种 normalization. \[     \ln L(\the">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-03-02T15:38:36.000Z">
+<meta property="article:modified_time" content="2023-03-29T10:12:41.893Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>Fisher Information, AIC &amp; BIC - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Fisher Information, AIC &amp; BIC"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-02 23:38" pubdate>
+          March 2, 2023 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          18k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          148 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Fisher Information, AIC &amp; BIC</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="fisher-information">Fisher Information</h2>
+<p>希望估计参数 <span class="math inline">\(\theta\)</span>，有观测量
+<span class="math inline">\(x_1,\cdots ,x_n\)</span>，其中 <span
+class="math inline">\(x\sim D(\theta)\)</span>.</p>
+<p>有似然函数 <span class="math display">\[
+    L(\theta)=\prod_{i=1}^{n} p(x_i|\theta)
+\]</span></p>
+<p>取对数以方便计算，或者可以认为是一种 normalization. <span
+class="math display">\[
+    \ln L(\theta)=\sum_{i=1}^{n} \ln p(x_i|\theta)
+\]</span></p>
+<p>定义 score 函数 <span class="math display">\[
+    S(\theta)=\frac{\partial }{\partial \theta}\ln
+L(\theta)=\frac{\frac{\partial }{\partial \theta}L(\theta)}{L(\theta)}
+\]</span></p>
+<p>从最后一个等号可以看出 normalization 的意味.</p>
+<p>一个值得注意的点是 <span class="math display">\[
+    \mathbb{E}(S(\theta))=\int_{\mathbb{R}^{n}} \frac{\frac{\partial
+}{\partial \theta}L(\theta)}{L(\theta)}L(\theta)     \mathrm{d}x_1\cdots
+\mathrm{d}x_n=\frac{\partial }{\partial \theta}\int_{\mathbb{R}^{n}}
+L(\theta) \mathrm{d}x_1\cdots \mathrm{d}x_n=\frac{\partial }{\partial
+\theta}1=0
+\]</span></p>
+<p>定义 Fisher information <span class="math display">\[
+    I(\theta)=\operatorname{var}(S(\theta))
+\]</span></p>
+<p><span class="math display">\[
+    I(\theta)=-\mathbb{E}\left(\frac{\partial ^{2}}{\partial
+\theta^{2}}\ln L(\theta)\right)
+\]</span></p>
+<p>对于 <span class="math inline">\(\theta\)</span> 空间中的每个 <span
+class="math inline">\(\theta\)</span>，因为 <span
+class="math inline">\(\mathbb{E}(S(\theta))=0\)</span>，如果 <span
+class="math inline">\(I(\theta)\)</span>
+很小，则说明在样本空间中取到使得 <span class="math inline">\(\lvert
+S(\theta) \rvert\)</span> 很大的样本集合 <span
+class="math inline">\(\{x_1,\cdots x_n\}\)</span> 的概率很小；如果 <span
+class="math inline">\(I(\theta)\)</span>
+很大，则说明在样本空间中取到使得 <span class="math inline">\(\lvert
+S(\theta) \rvert\)</span> 很大的样本集合 <span
+class="math inline">\(\{x_1,\cdots x_n\}\)</span>
+的概率较大。对于该样本集合，<span
+class="math inline">\(L(\theta)\)</span> 对于 <span
+class="math inline">\(\theta\)</span>
+的变化十分敏感，因此这个样本集合能够对 <span
+class="math inline">\(\theta\)</span> 作出更好的估计.</p>
+<p><span class="math inline">\(\displaystyle \frac{\frac{\partial
+}{\partial \theta}L(\theta)}{L(\theta)}\)</span> 可以认为是一种
+normalization，因为 <span
+class="math inline">\(L(\theta+\mathrm{d}\theta)\thickapprox
+L(\theta)+\frac{\partial }{\partial
+\theta}L(\theta)\mathrm{d}\theta\)</span>，重要的其实是 <span
+class="math inline">\(\displaystyle \frac{\frac{\partial }{\partial
+\theta}L(\theta)}{L(\theta)}\)</span> 这个比例.</p>
+<p>对不同尺度的模型，不能直接比较 <span
+class="math inline">\(I(\theta)\)</span>，但在同一模型中，<span
+class="math inline">\(I(\theta)\)</span> 是一个绝对的量.</p>
+<p><strong>例1</strong> <span class="math inline">\(X\sim
+\mathcal{N}(\theta,\sigma_0^{2})\)</span>，其中 <span
+class="math inline">\(\sigma_0\)</span> 是给定的，求采样 <span
+class="math inline">\(n\)</span> 次得到的 Fisher information.</p>
+<p><span class="math display">\[
+    I(\theta)=\frac{n}{\sigma_0^{2}}
+\]</span></p>
+<p>可以发现，<span class="math inline">\(I(\theta)\)</span> 与 <span
+class="math inline">\(\theta\)</span>
+无关，说明单纯对分布作一个平移不会影响信息量.</p>
+<p><strong>例2</strong> <span class="math inline">\(X\sim
+\mathcal{N}(\mu_0,\theta^{2})\)</span>，其中 <span
+class="math inline">\(\mu_0\)</span> 是给定的，求采样 <span
+class="math inline">\(n\)</span> 次得到的 Fisher information. <span
+class="math display">\[
+    I(\theta)=\frac{2n}{\theta^{2}}
+\]</span></p>
+<p>可以发现，<span class="math inline">\(I(\theta)\)</span> 随着 <span
+class="math inline">\(\theta\)</span> 的增大而减小. 事实上，如果 <span
+class="math inline">\(\theta\to 0\)</span>，那么分布成为一个 <span
+class="math inline">\(\delta\)</span> 函数，每次采样只能采到 <span
+class="math inline">\(\mu_0\)</span>，我们有很大的把握认为这时 <span
+class="math inline">\(\theta=0\)</span>. 如果 <span
+class="math inline">\(\theta\to
+\infty\)</span>，那么分布近似为一个均匀分布，采样得到的 <span
+class="math inline">\(x_i\)</span> 分布很广泛，我们有很大的把握认为
+<span class="math inline">\(\theta\)</span> 很大，但具体 <span
+class="math inline">\(\theta\)</span> 是多少几乎不可能估计出来.</p>
+<p><strong>例3</strong> <span class="math inline">\(X\sim D\)</span> 与
+<span class="math inline">\(\theta\)</span>
+无关，此时无论取多少次，<span class="math inline">\(I(\theta)\)</span>
+都等于 <span class="math inline">\(0\)</span>.</p>
+<p><strong>例4</strong> <span class="math inline">\(X\sim
+\mathcal{N}(1000+\exp (-\theta^{2}),\sigma_0^{2})\)</span>，其中 <span
+class="math inline">\(\sigma_0\)</span> 是给定的，求采样 <span
+class="math inline">\(n\)</span> 次得到的Fisher information. <span
+class="math display">\[
+    I(\theta)=\frac{4n\theta^{2}\exp (-2\theta^{2})}{\sigma_0^{2}}
+\]</span></p>
+<p>这形式很奇妙吧，而且与 <span class="math inline">\(1000\)</span>
+并没有关系. 但是 <span class="math inline">\(\exp (-\theta^{2})\)</span>
+相比 <span class="math inline">\(1000\)</span>
+是很小的，感觉这背后有一种 Fisher information
+的缺陷（或许其实是优点），让我再问问.</p>
+<h3 id="fisher-information-in-neural-activity---approach-i">Fisher
+information in neural activity - approach I</h3>
+<p>类推到对刺激 <span class="math inline">\(\theta\)</span> 的neural
+activity <span
+class="math inline">\(\mathbf{r}\)</span>，假设它服从具有线性充分统计量的指数族分布（正态分布当然属于指数族分布）.
+<span class="math display">\[
+    p(\mathbf{r}|\theta)=g(\theta)\Phi(\mathbf{r})\exp
+(\mathbf{h}(\theta)^{\mathsf{T}}\mathbf{r}), \tag{1}
+\]</span></p>
+<p>其中 <span class="math display">\[
+    g(\theta)=\frac{1}{\int \Phi(\mathbf{r})\exp
+(\mathbf{h}(\theta)^{\mathsf{T}}\mathbf{r})\mathrm{d}\mathbf{r}},
+\tag{2}
+\]</span></p>
+<p>且 <span
+class="math inline">\(g(\theta),\Phi(\mathbf{r}),\mathbf{h}(\theta)\)</span>
+都是已知的函数. <span class="math inline">\(T(\mathbf{r}_1,\cdots
+,\mathbf{r}_n)=\mathbf{r}_1+\cdots +\mathbf{r}_n\)</span>
+是一个线性充分统计量.</p>
+<p>为什么要选用指数族分布呢？指数族分布是唯一具有下述几条性质的分布： -
+如果有独立同分布的一组样本 <span class="math inline">\(x_1,\cdots
+,x_n\)</span> 取自某一族由未知参数 <span
+class="math inline">\(\theta\)</span> 刻画的分布，在一定条件下，如果有
+<span class="math inline">\(\mathbb{R}^{m}\)</span> 中的充分统计量 <span
+class="math inline">\(T(x_1,\cdots ,x_n)\)</span> 使得 <span
+class="math inline">\(m\)</span> 不随 <span
+class="math inline">\(n\)</span>
+的增大而增大，那么该族分布一定是指数族分布. - 共轭先验（不懂） -
+关于变分推断（不懂）</p>
+<p>此时 score 函数 <span class="math display">\[
+    S(\theta)=\frac{\partial }{\partial \theta}\log
+p(\mathbf{r}|\theta)=\mathbf{h}&#39;(\theta)^{\mathsf{T}}(\mathbf{r}(\theta)-\mathbf{f}(\theta)),
+\tag{3}
+\]</span></p>
+<p>其中 <span
+class="math inline">\(\mathbf{f}(\theta)=\mathbb{E}(\mathbf{r}(\theta))\)</span>
+是 population activity vector. 记 <span
+class="math inline">\(\mathbf{\Sigma}(\theta)=\mathbb{E}[(\mathbf{r}(\theta)-\mathbf{f}(\theta))(\mathbf{r}(\theta)-\mathbf{f}(\theta))^{\mathsf{T}}]\)</span>
+为 neural activity的协方差矩阵.</p>
+<p>此时的 Fisher information 就是 <span class="math display">\[
+    I(\theta)=\mathbf{h}&#39;(\theta)^{\mathsf{T}}
+\mathbf{\Sigma}(\theta) \mathbf{h}&#39;(\theta), \tag{4}
+\]</span></p>
+<p>另外可以计算得到 <span class="math display">\[
+    \mathbf{f}&#39;(\theta)=\frac{\mathrm{d}}{\mathrm{d}\theta}\int_{}^{}
+\mathbf{r}p(\mathbf{r}|\theta)
+\mathrm{d}\mathbf{r}=\mathbf{\Sigma}(\theta)\mathbf{h}&#39;(\theta).
+\tag{5}
+\]</span></p>
+<p>代回（4），得到 <span class="math display">\[
+    I(\theta)=\mathbf{f}&#39;(\theta)^{\mathsf{T}}\mathbf{\Sigma}^{-1}(\theta)\mathbf{f}&#39;(\theta).
+\tag{6}
+\]</span></p>
+<h3 id="fisher-information-in-neural-activity---approach-ii">Fisher
+information in neural activity - approach II</h3>
+<p>线性 Fisher information
+还可以被认为是从一个最小方差、无偏的线性解码器中得到的信息.
+线性意味着解码器把 neural activity 投影到一个向量 <span
+class="math inline">\(\mathbf{w}\)</span> 上.</p>
+<p>在一篇<a target="_blank" rel="noopener" href="https://www.nature.com/articles/nn1321">2004年的nature
+neuroscience</a>上，实验是这么做的：对于十分靠近刺激 <span
+class="math inline">\(\theta_0\)</span> 的两个刺激 <span
+class="math inline">\(\theta_1=\theta_0-\delta \theta,
+\theta_2=\theta_0+\delta \theta\)</span>，训练两个参数 <span
+class="math inline">\(\mathbf{w}\)</span> 和 <span
+class="math inline">\(b\)</span>，使得可以从 neural activity 也就是
+<span class="math inline">\(\mathbf{r}\)</span> 中估计出受到的刺激是
+<span class="math inline">\(\theta_1\)</span> 还是 <span
+class="math inline">\(\theta_2\)</span> <span class="math display">\[
+    \hat{\theta}=\mathbf{w}^{\mathsf{T}}\mathbf{r}+b.
+\]</span></p>
+<p>由于当 <span class="math inline">\(\delta \theta\to 0\)</span>
+时，估计的参数 <span class="math inline">\(\hat{\theta}\)</span> 应当在
+<span class="math inline">\(\mathbf{r}\)</span> 取平均时趋于 <span
+class="math inline">\(\theta_0\)</span>（无偏性），故实际上有 <span
+class="math display">\[
+    \hat{\theta}=\mathbf{w}^{\mathsf{T}}(\mathbf{r}-\mathbf{f}(\theta_0))+\theta_0.
+\tag{7}
+\]</span></p>
+<p>如果我们不是通过实验+数据处理来得到 <span
+class="math inline">\(\mathbf{w}\)</span>，我们依然可以求得一个最佳的
+<span class="math inline">\(\mathbf{w}\)</span>（注意这个 <span
+class="math inline">\(\mathbf{w}\)</span> 是跟 <span
+class="math inline">\(\theta_0\)</span> 有关的），它应当满足对不同的
+<span class="math inline">\(\mathbf{r}\)</span> 方差最小. 这就是一个
+unbiased locally linear estimator.</p>
+<p>在<a target="_blank" rel="noopener" href="https://www.jstor.org/stable/2984603">关于locally unbiased
+estimation的理论</a>中，提到了渐近无偏的条件： - 期望渐近无偏，即 <span
+class="math inline">\(\lim_{\theta_1 \to
+\theta_0}\mathbb{E}_{\theta_1}(\hat{\theta})=\mathbb{E}_{\theta_0}(\hat{\theta})\)</span>，
+- 方差渐近无偏，即 <span class="math inline">\(\lim_{\theta_1 \to
+\theta_0}\operatorname{var}(\hat{\theta}|\theta_1)=\operatorname{var}(\hat{\theta}|\theta_0)\)</span>.</p>
+<p>因为 <span class="math display">\[
+    \mathbb{E}_{\mathbf{r}}(\hat{\theta})=\theta_0
+\]</span></p>
+<p>我没管一些 regularity 的条件，那么认为期望渐近无偏就等价于（在每个
+<span class="math inline">\(\theta\)</span> 处都有） <span
+class="math display">\[
+    \frac{\mathrm{d}\mathbb{E}_{\mathbf{r}}(\hat{\theta})}{\mathrm{d}\theta}=1.
+\tag{8}
+\]</span></p>
+<p>然后一定要用到 <span
+class="math inline">\(p(\mathbf{r}|\theta)\)</span>
+的具体表达式（1），代入（8），得到约束条件 <span class="math display">\[
+    \mathbf{w}^{\mathsf{T}}\mathbf{f}&#39;(\theta)=1. \tag{9}
+\]</span></p>
+<p>为了寻找满足约束条件（9）下使得估计方差最小的 <span
+class="math inline">\(\mathbf{w}\)</span>，目标是寻找 <span
+class="math display">\[
+    \min _{\mathbf{w}}\mathbf{w}^{\mathsf{T}}\mathbf{\Sigma}\mathbf{w},
+\quad s.t.\ \mathbf{w}^{\mathsf{T}}\mathbf{f}&#39;(\theta)=1. \tag{10}
+\]</span></p>
+<p>用拉格朗日乘子，得到 <span class="math display">\[
+    \mathbf{w}^{*}=\frac{\mathbf{\Sigma}^{-1}\mathbf{f}&#39;}{\mathbf{f}&#39;^{\mathsf{T}}\mathbf{\Sigma}^{-1}\mathbf{f}&#39;}
+\tag{11}
+\]</span></p>
+<p>此时估计值的方差为 <span class="math display">\[
+    \operatorname{var}(\hat{\theta})=\frac{1}{\mathbf{f}&#39;^{\mathsf{T}}\mathbf{\Sigma}^{-1}\mathbf{f}&#39;}.
+\tag{12}
+\]</span></p>
+<p>此时的 Fisher information就定义为 <span
+class="math inline">\(\operatorname{var}(\hat{\theta})\)</span>
+的倒数，即 <span class="math display">\[
+    I(\theta)=\mathbf{f}&#39;^{\mathsf{T}}\mathbf{\Sigma}^{-1}\mathbf{f}&#39;.
+\tag{13}
+\]</span></p>
+<h2
+id="generalizing-fisher-information-beyond-fine-discrimination">Generalizing
+Fisher information beyond fine discrimination</h2>
+<h3 id="approach-i">approach I</h3>
+<p>记 <span class="math inline">\(C_1\)</span> 为受到 <span
+class="math inline">\(\theta_1\)</span> 刺激的实验， <span
+class="math inline">\(C_2\)</span> 为受到 <span
+class="math inline">\(\theta_2\)</span> 刺激的实验.
+假设在每种实验中，neural activity 服从正态分布， <span
+class="math display">\[
+    C_1\colon
+p(\mathbf{r}|\theta_1)=\mathcal{N}(\mathbf{r}|\mathbf{f}_1,\mathbf{\Sigma})
+\\
+    C_2\colon
+p(\mathbf{r}|\theta_2)=\mathcal{N}(\mathbf{r}|\mathbf{f}_2,\mathbf{\Sigma}),
+\tag{14}
+\]</span></p>
+<p>（均值不同，但协方差矩阵相同）附加一些对称性条件、先验条件、对正确结果的偏好条件：记
+<span class="math inline">\(L_{ij}\)</span> 是当 <span
+class="math inline">\(C_i\)</span> 时选择 <span
+class="math inline">\(C_j\)</span> 的 loss，规定 <span
+class="math inline">\(L_{12}=L_{21}, L_{11}=L_{22},
+L_{11}&lt;L_{12}\)</span>，先验 <span
+class="math inline">\(p(C_1)=p(C_2)=\frac{1}{2}\)</span>. 这时，expected
+Bayesian risk（或者也可以叫 posterior expected loss/ Bayesian expected
+loss）就是 <span class="math display">\[
+    \sum_{i\in \{1,2\}}^{} L_{iD(\mathbf{r})}p(C_i|\mathbf{r}).
+\]</span></p>
+<p>这里 <span class="math inline">\(D(\mathbf{r})\)</span> 是一个
+decision rule. 最佳的 decision rule，使得 expected Bayesian risk 最小
+<span class="math display">\[
+    D(\mathbf{r})=\begin{cases}
+        2, \quad\Lambda(\mathbf{r})=\log
+\frac{p(\mathbf{r}|\theta_2)}{p(\mathbf{r}|\theta_1)}&gt;0, \\
+        1, \quad \Lambda(\mathbf{r})\leqslant 0,
+    \end{cases}
+\]</span> (15)</p>
+<p><span class="math inline">\(\Lambda(\mathbf{r})\)</span> 是
+log-likelihood ratio. 在假设的正态分布中， <span class="math display">\[
+    \Lambda(\mathbf{r})=(\mathbf{f}_2-\mathbf{f}_1)^{\mathsf{T}}\mathbf{\Sigma}^{-1}(\mathbf{r}-\mathbf{f}_0),
+\tag{16}
+\]</span></p>
+<p>其中 <span
+class="math inline">\(\mathbf{f}_0=\frac{1}{2}(\mathbf{f}_1+\mathbf{f}_2)\)</span>.
+令 <span class="math inline">\(\mathbf{w}=\mathbf{\Sigma}^{-1}\delta
+\mathbf{f}, \delta \mathbf{f}=\mathbf{f}_2-\mathbf{f}_1\)</span>. <span
+class="math display">\[
+    \Lambda(\mathbf{r})=\mathbf{w}^{\mathsf{T}}(\mathbf{r}-\mathbf{f}_0).
+\tag{17}
+\]</span></p>
+<p>注意 <span class="math display">\[
+    \Lambda(\mathbf{r})|C_1\sim \mathcal{N}\left(
+-\frac{1}{2}\mathbf{w}^{\mathsf{T}}\mathbf{\Sigma w} ,
+\mathbf{w}^{\mathsf{T}} \mathbf{\Sigma w}\right), \quad
+\Lambda(\mathbf{r})|C_2\sim \mathcal{N}\left(
+\frac{1}{2}\mathbf{w}^{\mathsf{T}}\mathbf{\Sigma w},
+\mathbf{w}^{\mathsf{T}}\mathbf{\Sigma w} \right). \tag{18}
+\]</span></p>
+<p>故我们可以计算 <span class="math inline">\(D(\mathbf{r})\)</span>
+下做出正确决策的概率 <span class="math display">\[
+    p(\text{correct})=\frac{1}{2}p(\Lambda(\mathbf{r})\leqslant
+0|C_1)+\frac{1}{2}p(\Lambda(\mathbf{r})&gt;0|C_2)=\Phi\left(\frac{1}{2}\sqrt{\mathbf{w}^{\mathsf{T}}\mathbf{\Sigma
+w}}\right)=\Phi\left( \frac{1}{2}\sqrt{\delta
+\mathbf{f}^{\mathsf{T}}\mathbf{\Sigma}^{-1}\delta \mathbf{f}} \right)
+\]</span></p>
+<p>其中 <span class="math inline">\(\Phi(\cdot)\)</span>
+是标准正态分布的累积分布函数，即 <span class="math display">\[
+    \Phi(y)=\frac{1}{\sqrt{2\pi}} \int_{-\infty}^{y} \exp
+(-\frac{x^{2}}{2}) \mathrm{d}x
+\]</span></p>
+<p>与（6）比较，可以定义 <span class="math display">\[
+    I_{g}(\theta)=\frac{\delta
+\mathbf{f}^{\mathsf{T}}\mathbf{\Sigma}^{-1}\delta \mathbf{f}}{\delta
+\theta^{2}}, \tag{19}
+\]</span></p>
+<h3 id="approach-ii">approach II</h3>
+<p>第二种得到 generalized linear Fisher information 的办法也是通过一个
+optimal linear discriminator，但此时我们对 neural activity
+的分布没有像（1）那么高的要求.</p>
+<p>我们可以这么做： <span class="math display">\[
+    \hat{\theta}=\mathbf{w}^{\mathsf{T}}\mathbf{r}. \tag{20}
+\]</span></p>
+<p>给 <span class="math inline">\(\hat{\theta}\)</span> 一个阈值. 要使得
+<span class="math inline">\(\mathbf{w}\)</span>
+是最佳的，意味着最小化两个类内的方差，最大化两个类间的平均距离（类间的方差，对
+<span class="math inline">\(\mathbf{r}\)</span> 而言）. 即 <span
+class="math display">\[
+    \max_{\mathbf{w}}\frac{\mathbf{w}^{\mathsf{T}}\delta \mathbf{f}
+\delta \mathbf{f}^{\mathsf{T}}\mathbf{w}}{\mathbf{w}^{\mathsf{T}}
+\mathbf{\Sigma w}}, \quad s.t. \ \left\| \mathbf{w} \right\|_{}^{2}=1,
+\tag{21}
+\]</span></p>
+<p>其中 <span class="math inline">\(\delta \mathbf{f} \delta
+\mathbf{f}^{\mathsf{T}}\)</span> 是类间协方差矩阵，<span
+class="math inline">\(\mathbf{\Sigma}\)</span> 是平均类内协方差矩阵
+<span class="math display">\[
+    \mathbf{\Sigma}=\frac{\mathbf{\Sigma}_1+\mathbf{\Sigma}_2}{2}.
+\tag{22}
+\]</span></p>
+<p>利用拉格朗日乘子，得到 <span class="math display">\[
+    \mathbf{w}=\frac{\mathbf{\Sigma}^{-1}\delta \mathbf{f}}{\delta
+\mathbf{f}^{\mathsf{T}} \mathbf{\Sigma}^{-1}\delta \mathbf{f}}. \tag{23}
+\]</span></p>
+<p>注意 <span class="math inline">\(\hat{\theta}\)</span>
+是许多相关的随机变量的线性组合，因此不能直接用中心极限定理.
+然而，还是可以近似认为 <span class="math display">\[
+    \hat{\theta}|C_1\sim
+\mathcal{N}(\mathbf{w}^{\mathsf{T}}\mathbf{f}_1, \mathbf{w}^{\mathsf{T}}
+\mathbf{\Sigma}_1 \mathbf{w}), \quad \hat{\theta}|C_2 \sim
+\mathcal{N}(\mathbf{w}^{\mathsf{T}}\mathbf{f}_2, \mathbf{w}^{\mathsf{T}}
+\mathbf{\Sigma}_2 \mathbf{w}). \tag{24}
+\]</span></p>
+<p>另外，阈值的选取使得正确率最高，但算起来比较麻烦，这里就不算了.</p>
+<h2 id="bic-bayesian-information-criterion">BIC (Bayesian information
+criterion)</h2>
+<p>简略地说，<span class="math inline">\(BIC\)</span>
+依靠后验概率评估模型的效果. 如果有 <span
+class="math inline">\(r\)</span> 个候选模型 <span
+class="math inline">\(M_1,\cdots ,M_r\)</span>，每个模型有一个
+likelihood <span
+class="math inline">\(f_i(x|\mathbf{\theta}_{i})(\mathbf{\theta}_{i}\in
+\Theta_{i} \subset \mathbb{R}^{k_i})\)</span>，有先验 <span
+class="math inline">\(\pi_i(\mathbf{\theta}_i)\)</span> 和 <span
+class="math inline">\(P(M_i)\)</span>. 给定 <span
+class="math inline">\(n\)</span> 个观测量 <span
+class="math inline">\(\mathbf{x}_{n}=\{x_1,\cdots
+,x_n\}\)</span>，marginal likelihood 定义为 <span
+class="math display">\[
+    p(\mathbf{x}_n|M_i)=\int_{}^{}
+f_i(\mathbf{x}_n|\mathbf{\theta}_i)\pi_{i}(\mathbf{\theta}_{i})
+\mathrm{d}\mathbf{\theta}_{i}. \tag{25}
+\]</span></p>
+<p>由 Bayes 定理 <span class="math display">\[
+    P(M_i|\mathbf{x}_n)=\frac{p(\mathbf{x}_n|M_i)P(M_i)}{\sum_{j=1}^{r}
+p(\mathbf{x}_n|M_j)P(M_j)}, \quad i=1,\cdots ,r. \tag{26}
+\]</span></p>
+<p>选择使 <span class="math inline">\(P(M_i|\mathbf{x}_n)\)</span>
+最大的模型即可，由此我们导出 <span class="math inline">\(BIC\)</span>
+这个量.</p>
+<p>一般我们会认为模型使用概率等可能，即 <span
+class="math inline">\(P(M_i)\)</span> 都相等. 此时</p>
+<p><span class="math display">\[
+    B_{12}=\frac{P(M_1|\mathbf{x}_n)}{P(M_2|\mathbf{x}_n)}=\frac{p(\mathbf{x}_n|M_1)}{p(\mathbf{x}_n|M_2)}\frac{P(M_1)}{P(M_2)}=\frac{\int_{}^{}
+f_1(\mathbf{x}_n|\mathbf{\theta}_1)\pi_{1}(\mathbf{\theta}_1)
+\mathrm{d}\mathbf{\theta}_{1}}{\int_{}^{}
+f_2(\mathbf{x}_n|\mathbf{\theta}_{2})\pi_{2}(\mathbf{\theta}_{2})
+\mathrm{d}\mathbf{\theta}_{2}} \tag{27}
+\]</span></p>
+<p>Bayes factor 定义为 <span class="math inline">\(\displaystyle
+\frac{p(\mathbf{x}_n|M_1)}{p(\mathbf{x}_n|M_2)}\)</span>.</p>
+<h3 id="section"></h3>
+<h3 id="laplace-approximation">Laplace Approximation</h3>
+<p>Laplace Approximation
+是一种用二阶泰勒展开近似计算积分的方法，依赖于所谓的 Bernstein–von Mises
+定理. 目标是近似 <span class="math display">\[
+    \int_{}^{} \exp \{nq(\mathbf{\theta})\} \mathrm{d}\mathbf{\theta}
+\tag{28}
+\]</span></p>
+<p>这里 <span class="math inline">\(\mathbf{\theta}\)</span> 是一个
+<span class="math inline">\(p\)</span> 维参数向量， <span
+class="math inline">\(q(\mathbf{\theta})\)</span> 一般属于 <span
+class="math inline">\(C_{c}^{2}(\mathbb{R}^{p})\)</span>
+且有一个全局最大值点 <span
+class="math inline">\(\hat{\mathbf{\theta}}\)</span>. 此时当然满足 <span
+class="math inline">\(\partial q(\mathbf{\theta})/\partial
+\mathbf{\theta}|_{\mathbf{\theta}=\hat{\mathbf{\theta}}}=\mathbf{0}\)</span>.
+在 <span class="math inline">\(\hat{\mathbf{\theta}}\)</span>
+作泰勒展开</p>
+<p><span class="math display">\[
+    q(\mathbf{\theta})=q(\hat{\mathbf{\theta}})-\frac{1}{2}(\mathbf{\theta}-\hat{\mathbf{\theta}})^{\mathsf{T}}J_{q}(\hat{\mathbf{\theta}})(\mathbf{\theta}-\hat{\mathbf{\theta}})+\cdots
+, \tag{29}
+\]</span></p>
+<p>Bernstein–von Mises 定理告诉我们 <span class="math display">\[
+    \int_{}^{} \exp \{nq(\mathbf{\theta})\}
+\mathrm{d}\mathbf{\theta}\thickapprox \exp
+\{nq(\hat{\mathbf{\theta}})\}\int_{}^{} \exp
+\left\{-\frac{n}{2}(\mathbf{\theta}-\hat{\mathbf{\theta}})^{\mathsf{T}}J_q(\hat{\mathbf{\theta}})(\mathbf{\theta}-\hat{\mathbf{\theta}})\right\}
+\mathrm{d}\mathbf{\theta}=\exp
+\{nq(\hat{\mathbf{\theta}})\}\frac{(2\pi)^{p/2}}{n^{p/2}\lvert
+J_q(\hat{\mathbf{\theta}}) \rvert ^{1/2}}
+\]</span></p>
+<h3 id="derivation-of-the-bic">Derivation of the BIC</h3>
+<p>为方便起见，省略 <span class="math inline">\(M_i\)</span>，将
+marginal likelihood 写成 <span class="math display">\[
+    p(\mathbf{x}_n)=\int_{}^{}
+f(\mathbf{x}_n|\mathbf{\theta})\pi(\mathbf{\theta}) \mathrm{d}
+\mathbf{\theta}=\int_{}^{} \exp \{\log
+f(\mathbf{x}_n|\mathbf{\theta})\}\pi(\mathbf{\theta})
+\mathrm{d}\mathbf{\theta}=\int_{}^{} \exp
+\{l(\mathbf{\theta})\}\pi(\mathbf{\theta}) \mathrm{d}\mathbf{\theta},
+\tag{30}
+\]</span></p>
+<p>即 <span class="math display">\[
+    l(\theta)=\log f(\mathbf{x}_n|\theta)=\sum_{i=1}^{n} \log
+f(x_n|\theta)
+\]</span></p>
+<p>在极大似然估计（MLE）对应的 <span
+class="math inline">\(\hat{\mathbf{\theta}}\)</span> 附近， <span
+class="math display">\[
+    l(\mathbf{\theta})=l(\hat{\mathbf{\theta}})-\frac{n}{2}(\mathbf{\theta}-\hat{\mathbf{\theta}})^{\mathsf{T}}J(\hat{\mathbf{\theta}})(\mathbf{\theta}-\hat{\mathbf{\theta}})+\cdots
+, \tag{31}
+\]</span></p>
+<p>其中 <span class="math display">\[
+    J(\hat{\mathbf{\theta}})=-\frac{1}{n}\frac{\partial^{2}l(\mathbf{\theta})}{\partial
+\mathbf{\theta} \partial
+\mathbf{\theta}^{\mathsf{T}}}\bigg|_{\mathbf{\theta}=\hat{\mathbf{\theta}}}\tag{32}
+\]</span></p>
+<p>另外对 <span class="math inline">\(\pi(\mathbf{\theta})\)</span>
+作类似展开， <span class="math display">\[
+    \pi(
+\mathbf{\theta})=\pi(\hat{\mathbf{\theta}})+(\mathbf{\theta}-\hat{\mathbf{\theta}})^{\mathsf{T}}\frac{\partial
+\pi(\mathbf{\theta})}{\partial
+\mathbf{\theta}}\bigg|_{\theta=\hat{\mathbf{\theta}}}+\cdots  \tag{33}
+\]</span></p>
+<p>将（31）（33）代入（30），且考虑到 <span
+class="math inline">\(\hat{\mathbf{\theta}}-\mathbf{\theta}=O_p(n^{-1/2})\)</span>（以
+<span class="math inline">\(n^{-1/2}\)</span> 的阶依概率收敛），就有
+<span class="math display">\[
+    p(\mathbf{x}_n)\thickapprox \exp
+\{l(\hat{\mathbf{\theta}})\}\pi(\hat{\mathbf{\theta}})(2\pi)^{p/2}n^{-p/2}
+\lvert J(\hat{\mathbf{\theta}}) \rvert ^{-1/2}. \tag{34}
+\]</span></p>
+<p>故有 <span class="math display">\[
+    -2\log p(\mathbf{x}_n)\thickapprox -2l(\hat{\mathbf{\theta}})+p\log
+n + \log \lvert J(\hat{\mathbf{\theta}}) \rvert -p \log (2\pi)-2 \log
+\pi(\hat{\mathbf{\theta}}).
+\]</span></p>
+<p>当 <span class="math inline">\(n\to \infty\)</span> 时，前两项
+dominate 后三项，故可以定义 <span class="math display">\[
+    BIC=-2\log f(\mathbf{x}_n|\hat{\mathbf{\theta}})+p\log n. \tag{35}
+\]</span></p>
+<p>另外，<span class="math inline">\(BIC\)</span> 也可以看成当统计模型是
+regular 时，用 MLE 得到的 <span
+class="math inline">\(\hat{\mathbf{\theta}}\)</span> 代入后的 Bayes free
+energy.</p>
+<h2 id="aic-akaike-information-criterion">AIC (Akaike information
+criterion)</h2>
+<p>简略地说，AIC 利用 K-L 散度衡量了利用 MLE 得到的 <span
+class="math inline">\(f(x|\hat{\mathbf{\theta}})\)</span> 的预测准确度.
+利用 K-L 散度衡量预测分布 <span class="math inline">\(f\)</span>
+与真实分布 <span class="math inline">\(g\)</span> 之间的关系 <span
+class="math display">\[
+    I\{g(z);f(z|\hat{\mathbf{\theta}})\}=\mathbb{E}_{G}\left[ \log
+\left\{\frac{g(Z)}{f(Z|\hat{\mathbf{\theta}})}\right\}\right] \tag{36}
+\]</span></p>
+<p>这里固定 <span
+class="math inline">\(\hat{\mathbf{\theta}}=\hat{\mathbf{\theta}}(\mathbf{x}_n)\)</span>.</p>
+<p>我们当然希望 expected log-likelihood <span class="math display">\[
+    \mathbb{E}_{G}\left[ \log
+f(Z|\hat{\mathbf{\theta}})\right]=\int_{}^{} \log
+f(z|\hat{\mathbf{\theta}}) \mathrm{d}G(z)  \tag{37}
+\]</span></p>
+<p>尽可能大. 一种对 log-likelihood 的估计是 <span
+class="math display">\[
+    \mathbb{E}_{\hat{G}}\left[ \log
+f(Z|\hat{\mathbf{\theta}})\right]=\int_{}^{} \log
+f(z|\hat{\mathbf{\theta}})
+\mathrm{d}\hat{G}(z)=\frac{1}{n}\sum_{\alpha=1}^{n} \log
+f(x_{\alpha}|\hat{\mathbf{\theta}})=\frac{1}{n}l(\hat{\mathbf{\theta}}).
+\tag{38}
+\]</span></p>
+<h3 id="bias-of-the-log-likelihood">Bias of the Log-likelihood</h3>
+<p>注意我们用观测到的样本 <span
+class="math inline">\(\mathbf{x}_n=\{x_1,\cdots x_n\}\)</span>
+对特定的模型进行MLE，然后得到一个 <span
+class="math inline">\(\hat{\mathbf{\theta}}\)</span>.
+在评估该模型时，我们重复利用 <span
+class="math inline">\(\mathbf{x}_n\)</span> 对 <span
+class="math inline">\(\mathbb{E}_{G}\left[ \log
+f(Z|\hat{\mathbf{\theta}})\right]\)</span> 进行了估计.
+这其中会有误差，感觉主要原因是采样不够多、不够好.</p>
+<p><a
+target="_blank" rel="noopener" href="https://link.springer.com/book/10.1007/978-0-387-71887-3">两个日本人写的书3.4.3节</a>中定义了
+bias</p>
+<p><span class="math display">\[
+    b(G)=\mathbb{E}_{G(\mathbf{x}_n)}\left[ \log
+f(\mathbf{X}_n|\hat{\mathbf{\theta}}(\mathbf{X}_n))-n
+\mathbb{E}_{G(z)}[\log f(Z|\hat{\mathbf{\theta}}(\mathbf{X}_n))]\right]
+\tag{39}
+\]</span></p>
+<p>并计算得到</p>
+<p><span class="math display">\[
+    b(G)=\operatorname{tr}\{I(\mathbf{\theta}_0)J(\mathbf{\theta}_0)^{-1}\}
+\]</span></p>
+<p>其中 <span class="math display">\[
+    I(\mathbf{\theta}_0)=\mathbb{E}_{G(z)}\left[\frac{\partial \log
+f(Z|\mathbf{\theta})}{\partial \mathbf{\theta}} \frac{\partial \log
+f(Z|\mathbf{\theta})}{\partial
+\mathbf{\theta}^{\mathsf{T}}}\bigg|_{\mathbf{\theta}_0}\right]=\int_{}^{}
+g(z) \frac{\partial \log f(z|\mathbf{\theta})}{\partial \mathbf{\theta}}
+\frac{\partial \log f(z|\mathbf{\theta})}{\partial
+\mathbf{\theta}^{\mathsf{T}}}\bigg|_{\mathbf{\theta}_0} \mathrm{d}z
+\]</span></p>
+<p><span class="math display">\[
+    J(\mathbf{\theta}_0)=-\mathbb{E}_{G(z)}\left[ \frac{\partial
+^{2}\log f(Z|\mathbf{\theta})}{\partial \mathbf{\theta} \partial
+\mathbf{\theta}^{\mathsf{T}}}\bigg|_{\mathbf{\theta}_0}\right]=-\int_{}^{}
+g(z) \frac{\partial ^{2}\log f(z|\mathbf{\theta})}{\partial
+\mathbf{\theta} \partial
+\mathbf{\theta}^{\mathsf{T}}}\bigg|_{\mathbf{\theta}_0} \mathrm{d}z
+\]</span></p>
+<p>注意一下几点： - <span class="math inline">\(b(G)\)</span> 与观测次数
+<span class="math inline">\(n\)</span> 无关； - <span
+class="math inline">\(b(G)\)</span> 需要真实分布 <span
+class="math inline">\(G(z)\)</span>（我们并不知道）来计算，我们可以跟（38）一样估计
+<span class="math inline">\(G(z)\)</span>，虽然这真的很粗糙. - <span
+class="math inline">\(b(G)\)</span> 的导出并没有用到真实分布 <span
+class="math inline">\(g(x)\)</span> 包含于模型 ${f(x|);^{p}} $
+中这个假设. 当这个假设成立时，<span
+class="math inline">\(I(\mathbf{\theta}_0)=J(\mathbf{\theta}_0)\)</span>.</p>
+<h3 id="akaike-information-criterion-aic">Akaike Information Criterion
+(AIC)</h3>
+<p>假设真实分布 <span class="math inline">\(g(x)\)</span> 包含于模型
+${f(x|);^{p}} $ 中，即存在 <span
+class="math inline">\(\mathbf{\theta}_0\in \Theta\)</span> 使得 <span
+class="math inline">\(g(x)=f(x|\mathbf{\theta}_0)\)</span>. 此时 <span
+class="math display">\[
+    b(G)=\operatorname{tr}(I_p)=p, \tag{40}
+\]</span></p>
+<p>恰好为模型的参数个数.
+如果认为采到不同样本集合的概率大致相同（感觉也不太靠谱），那么就有 <span
+class="math display">\[
+    p=b(G)\thickapprox \sum_{\alpha=1}^{n} \log
+f(X_{\alpha}|\hat{\mathbf{\theta}})-n \mathbb{E}_{G(z)}\log
+f(Z|\hat{\mathbf{\theta}})
+\]</span></p>
+<p>乘个系数 <span class="math inline">\(-2\)</span> 让它长得跟 <span
+class="math inline">\(BIC\)</span> 像一点，就得到 <span
+class="math inline">\(AIC\)</span> 的定义 <span class="math display">\[
+    AIC= -2 \sum_{\alpha=1}^{n} \log
+f(X_{\alpha}|\hat{\mathbf{\theta}})+2p \tag{41}
+\]</span></p>
+<h2 id="waic">WAIC</h2>
+<p>对于一个统计模型，如果从参数空间到概率分布的映射是一一映射且<strong>它的
+Fisher information matrix 是正定的</strong>，就称该统计模型是 regular
+的. 否则，就称该统计模型是 singular 的.
+一般来说，如果一个统计模型包含分层结构、隐变量等结构，那么这个模型是
+singular 的，比如神经网络是一个 singular 的模型.</p>
+<p><span class="math inline">\(WAIC\)</span> 是 <span
+class="math inline">\(AIC\)</span> 在 singular 的模型上的推广. 在
+singular 模型中，MLE 不满足渐近无偏性（asymptotic normality 我猜的）.
+从而，<span class="math inline">\(AIC\)</span> 不等于 average
+generalization error，<span class="math inline">\(BIC\)</span> 不等于
+Bayes marginal likelihood，甚至也不能渐近地趋向.</p>
+<p>对于 <span class="math inline">\(\mathbf{\Theta}\)</span>
+空间中的函数 <span
+class="math inline">\(f(\mathbf{\theta})\)</span>，给定一组样本集合
+<span class="math inline">\(\mathbf{x}_n=\{x_1,\cdots
+,x_n\}\)</span>，<span class="math inline">\(f(\mathbf{\theta})\)</span>
+关于后验分布的期望为</p>
+<p><span class="math display">\[
+    \mathbb{E}_\mathbf{\theta}[f(\mathbf{\theta})]=\int_{}^{}
+f(\mathbf{\theta})p(\mathbf{\theta}|x_1,\cdots x_n)
+\mathrm{d}\mathbf{\theta}=\frac{\int_{}^{}
+f(\mathbf{\theta})\prod_{i=1}^{n}
+p(x_i|\mathbf{\theta})^{\beta}\pi(\mathbf{\theta})
+\mathrm{d}\mathbf{\theta}}{\int_{}^{} \prod_{i=1}^{n}
+p(x_i|\mathbf{\theta})^{\beta}\pi(\mathbf{\theta})
+\mathrm{d}\mathbf{\theta}}
+\]</span></p>
+<p><span class="math inline">\(0&lt;\beta&lt;\infty\)</span> 称为
+inverse temperature，只关心 <span class="math inline">\(\beta=1\)</span>
+的情况（称为 strict Bayes estimation）. Watanabe 定义了 Bayes predictive
+distribution <span class="math display">\[
+    p^{*}(x)\equiv \mathbb{E}_{\mathbf{\theta}}[p(x|\mathbf{\theta})].
+\]</span></p>
+<p>Bayes generalization loss <span
+class="math inline">\(B_gL(n)\)</span> <span class="math display">\[
+    B_gL(n)=-\mathbb{E}_{X}[\log p^{*}(x)],
+\]</span></p>
+<p>Bayes training loss <span class="math inline">\(B_{t}L(n)\)</span>
+<span class="math display">\[
+    B_{t}L(n)=-\frac{1}{n} \sum_{i=1}^{n} \log p^{*}(x_{i}),
+\]</span></p>
+<p>empirical variance <span class="math display">\[
+    V(n)=\sum_{i=1}^{n} \left\{ \mathbb{E}_{\mathbf{\theta}}[(\log
+p(x_i|\mathbf{\theta}))^{2}]-\mathbb{E}_{\mathbf{\theta}}[\log
+p(x_i|\mathbf{\theta})]^{2}\right\},
+\]</span></p>
+<p>functional variance 体现了后验分布的波动. 然后可以定义 <span
+class="math display">\[
+    WAIC(n)\equiv B_{t}L(n)+\frac{\beta}{n}V(n),
+\]</span></p>
+<p>我只关心 <span class="math inline">\(\beta=1\)</span>，那么 <span
+class="math display">\[
+    WAIC(n)=-\frac{1}{n}\sum_{i=1}^{n} \log p^{*}(x_i)+\frac{1}{n}
+\sum_{i=1}^{n} \left\{ \mathbb{E}_{\mathbf{\theta}}[(\log
+p(x_i|\mathbf{\theta}))^{2}]-\mathbb{E}_{\mathbf{\theta}}[\log
+p(x_i|\mathbf{\theta})]^{2}\right\}.
+\]</span></p>
+<p>一般乘以系数 <span class="math inline">\(2n\)</span> 让它长得跟 <span
+class="math inline">\(AIC\)</span> 和 <span
+class="math inline">\(BIC\)</span> 更像 <span class="math display">\[
+    WAIC=-2\sum_{i=1}^{n} \log p^{*}(x_i)+2\sum_{i=1}^{n} \left\{
+\mathbb{E}_{\mathbf{\theta}}[(\log
+p(x_i|\mathbf{\theta}))^{2}]-\mathbb{E}_{\mathbf{\theta}}[\log
+p(x_i|\mathbf{\theta})]^{2}\right\}
+\]</span></p>
+<p>注意计算 <span class="math inline">\(p^{*}(x)\)</span>
+时不需要真实分布，只需要样本和模型族.</p>
+<h2 id="difference-among-information-criterions">Difference among
+information criterions</h2>
+<p><span class="math inline">\(BIC\)</span> 近似了 marginal
+likelihood，以选取最高的 posterior，这种做法其实并不好（Chapter7.4
+Bayesian Data Analysis, third edition, Andrew Gelman, et al.）.</p>
+<h2 id="reference">Reference</h2>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Fisher Information, AIC &amp; BIC</div>
+      <div>http://example.com/2023/03/02/Fisher-Information/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>March 2, 2023</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/04/30/Topics-in-Neuroscience/" title="Topics in Neuroscience">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Topics in Neuroscience</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/28/The-Circular-Law-2/" title="The Circular Law (2)">
+                        <span class="hidden-mobile">The Circular Law (2)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
