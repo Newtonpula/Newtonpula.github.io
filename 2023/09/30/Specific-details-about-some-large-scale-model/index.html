@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/large_scale_model/CCEP.png">
 <meta property="article:published_time" content="2023-09-30T02:23:55.000Z">
-<meta property="article:modified_time" content="2023-10-04T02:03:26.014Z">
+<meta property="article:modified_time" content="2023-10-04T03:00:30.515Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Neuroscience">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          9.2k words
+          9.8k words
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          77 mins
+          82 mins
         
       </span>
     
@@ -606,6 +606,29 @@ modified Deco model without E-I populations is derived. We only need to
 check <span class="math inline">\(S_i^{E}(t)\)</span> every time steps
 and update <span class="math inline">\(x_i^{E}(t)\)</span>
 accordingly.</p>
+<p>Adding noise and <span class="math inline">\(I_0\)</span> back, the
+model can be described by the following equations: <span
+class="math display">\[
+    \frac{\mathrm{d}S_i(t)}{\mathrm{d}t} = - \frac{S_i(t)}{\tau_{S}} +
+(1-S_i(t))\gamma H(x_i(t)) + \sigma \nu_i(t) \tag{14}
+\]</span></p>
+<p><span class="math display">\[
+  H(x_i(t)) = \frac{a_{E}x - b_{E}}{1-\exp (-d_{E}(a_{E}x - b_{E}))}
+\tag{15}
+\]</span></p>
+<p><span class="math display">\[
+  x_i(t) = w_1 S_i(t) + gJ_{N}\sum_{j}^{} C_{ij}S_{j}(t) + w_2 y_i(t)
+\tag{16}
+\]</span></p>
+<p><span class="math display">\[
+  y_i(t) =
+      \begin{cases}
+        w_3S_i(t), \quad w_3S_{i}(t) + w_4I_0&lt;177/615 \thickapprox
+0.288 \\
+        0.140(w_3S_{i}(t) + 1.77), \quad w_3S_{i}(t)+ w_4I_0 \geqslant
+0.288
+    \end{cases}
+\]</span></p>
 <p>Further experiments are needed to verify the effectiveness of this
 approach.</p>
 <h3 id="an-observation">An observation</h3>
@@ -613,7 +636,11 @@ approach.</p>
 realistic. However, in (12), <span class="math inline">\(w^{EE} -
 w^{IE}w^{EI}\)</span> is reasonable to be negative, so we can regard
 negative <span class="math inline">\(w\)</span> in (3) as a result of
-E-I balance. That also corresponds with two phase diagrams above.</p>
+E-I balance. That also corresponds with two phase diagrams above: when
+<span class="math inline">\(w\)</span> is negative and <span
+class="math inline">\(G\)</span> is large to compensate for <span
+class="math inline">\(w\)</span>, the network ends up in a reasonable
+low activity state and shows high propagation ratio.</p>
 <h2 id="other-models">Other models</h2>
 <p>We also apply other models to our project, including vanilla RNN,
 Joglekar's
