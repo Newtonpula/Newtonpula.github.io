@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>Takens&#39;s Theorem</title>
+    <link href="/2023/10/04/Takens-s-Theorem/"/>
+    <url>/2023/10/04/Takens-s-Theorem/</url>
+    
+    <content type="html"><![CDATA[<h1 id="takenss-theorem">Takens's Theorem</h1><h2 id="reference">Reference</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>dynamical system</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>math</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Specific details about some large scale model</title>
     <link href="/2023/09/30/Specific-details-about-some-large-scale-model/"/>
     <url>/2023/09/30/Specific-details-about-some-large-scale-model/</url>
@@ -194,16 +219,18 @@
     
     <categories>
       
-      <category>分析学</category>
+      <category>analysis</category>
       
-      <category>微分方程</category>
+      <category>differential equation</category>
+      
+      <category>dynamical system</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>数学</tag>
+      <tag>math</tag>
       
     </tags>
     
