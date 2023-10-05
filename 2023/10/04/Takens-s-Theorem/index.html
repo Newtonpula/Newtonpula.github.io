@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/index/takens.jpg">
 <meta property="article:published_time" content="2023-10-04T10:49:19.000Z">
-<meta property="article:modified_time" content="2023-10-05T11:20:43.624Z">
+<meta property="article:modified_time" content="2023-10-05T12:13:07.139Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k words
+          2k words
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          11 mins
+          17 mins
         
       </span>
     
@@ -295,7 +295,37 @@ which corresponds with the normal definition of dimension.</p>
 dimensions can be defined, and they are strongly related to the
 Hausdorff dimension.</p>
 <h2 id="some-definitions">some definitions</h2>
-<p><strong>Def 1</strong> let <span class="math inline">\(M\)</span> be
+<p>First we need to clarify what is an attractor.</p>
+<p><strong>Def 1</strong> Let <span
+class="math inline">\(\phi(t,x)\)</span> is a flow. A <strong>positively
+invariant set</strong> <span class="math inline">\(A\)</span> from a
+flow <span class="math inline">\(\phi(t,x)\)</span> is a set such that
+if <span class="math inline">\(\phi(t_0,x) \in A\)</span> for some <span
+class="math inline">\(t_0\)</span>, then <span
+class="math inline">\(\phi(t,x)\in A\)</span> for all <span
+class="math inline">\(t\geqslant t_0\)</span>.</p>
+<p><strong>Def 2</strong> A <strong>stable set</strong> from a
+continuous dynamical system of flow <span
+class="math inline">\(\phi(t,x)\)</span> is a set such that there exists
+a neighborhood <span class="math inline">\(B\)</span> of <span
+class="math inline">\(S\)</span> satisfying that if <span
+class="math inline">\(\phi(t_0,x)\in B\)</span>, then <span
+class="math inline">\(\phi(t,x)\in B\)</span> for all <span
+class="math inline">\(t\geqslant t_0\)</span>.</p>
+<p>Futhermore, if there exists a neighborhood <span
+class="math inline">\(B\)</span> such that, for every neighborhood <span
+class="math inline">\(B&#39; \subset B\)</span>, if <span
+class="math inline">\(\phi(t_0,x) \in B\)</span>, then there exists
+<span class="math inline">\(t_1\geqslant t_0\)</span> such that <span
+class="math inline">\(\phi(t_0,x)\in B&#39;\)</span> for every <span
+class="math inline">\(t\geqslant t_1\)</span>, then <span
+class="math inline">\(S\)</span> is also an <strong>asymptotically
+stable set</strong>.</p>
+<p><strong>Def 3</strong> An <strong>attracting set</strong> of an ODE
+is a closed, positively invariant and asymptotically stable set. An
+attractor of an ODE is an attracting set which contains a dense
+orbit.</p>
+<p><strong>Def 4</strong> let <span class="math inline">\(M\)</span> be
 a manifold. The set of <span class="math inline">\(C^{r}\)</span>
 functions from <span class="math inline">\(M\)</span> to itself which
 are also diffeomorphisms (have <span
@@ -307,7 +337,7 @@ theorem</h2>
 class="math inline">\(M\)</span> be a compact manifold of dimension
 <span class="math inline">\(m\)</span>. For pairs <span
 class="math inline">\((\phi, y)\)</span>, with <span
-class="math inline">\(\phi in Diff^{2}(M)\)</span>, <span
+class="math inline">\(\phi \in Diff^{2}(M)\)</span>, <span
 class="math inline">\(y \in C^{2}(M, \mathbb{R})\)</span>, it is a
 generic property that the map <span class="math inline">\(\Phi_{(\phi,
 y)}\colon M \rightarrow \mathbb{R}^{2m+1}\)</span>, defined by <span
