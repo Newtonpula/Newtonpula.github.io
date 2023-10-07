@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/large_scale_model/CCEP.png">
 <meta property="article:published_time" content="2023-09-30T02:23:55.000Z">
-<meta property="article:modified_time" content="2023-10-07T00:36:48.551Z">
+<meta property="article:modified_time" content="2023-10-07T01:47:12.198Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Neuroscience">
 <meta name="twitter:card" content="summary_large_image">
@@ -233,7 +233,7 @@
         
         
         
-          85 mins
+          86 mins
         
       </span>
     
@@ -462,7 +462,8 @@ C_{ij}S_j^{E}(t)-w^{IE}S_i^{I}(t) \tag{8}
 \]</span></p>
 <p>and <span class="math inline">\(H^{E}(x_i^{E}),
 H^{I}(x_i^{I})\)</span> is the same as (2) with different <span
-class="math inline">\(a,b,d\)</span>.</p>
+class="math inline">\(a,b,d\)</span>. Here, we can regard <span
+class="math inline">\(w^{II}=1\)</span>.</p>
 <p>Deco's model with E-I populations shows boost in propagation ratio in
 the toy model.</p>
 <div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/large_scale_model/prop_ratio_4_1.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img
@@ -635,24 +636,27 @@ parameters: <span class="math inline">\(w_0 = 1, w_2 = 1, w_3 = 7, w_4 =
 0.7\)</span>):</p>
 <div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/large_scale_model/prop_ratio_7_1.png" srcset="/img/loading.gif" lazyload /></div></div><div class="group-image-row"><div class="group-image-wrap"><img
 src="/img/large_scale_model/prop_ratio_7_2.png" srcset="/img/loading.gif" lazyload /></div></div></div>
-<p>Further steps include specification of parameters. <span
-class="math inline">\(w_0 = w^{E}\)</span> and <span
-class="math inline">\(w_1 = w^{I}\)</span> represent strength of
-background input, so they are negligible while <span
-class="math inline">\(I_0 = 0\)</span>. <span class="math inline">\(w_1
-= w^{EE} - w^{EI}w^{IE}, w_2=w^{IE}, w_3=w^{EI}, G\)</span> are
-trainable parameters. Among them <span
+<p>To make unit consistent, <span class="math inline">\(w_1\)</span> can
+be considered as <span
+class="math inline">\(w^{EE}w^{II}-w^{EI}w^{IE}\)</span>. Further steps
+include specification of parameters. <span class="math inline">\(w_0 =
+w^{E}\)</span> and <span class="math inline">\(w_1 = w^{I}\)</span>
+represent strength of background input, so they are negligible while
+<span class="math inline">\(I_0 = 0\)</span>. <span
+class="math inline">\(w_1 = w^{EE}w^{II} - w^{EI}w^{IE}, w_2=w^{IE},
+w_3=w^{EI}, G\)</span> are trainable parameters. Among them <span
 class="math inline">\(w_1\)</span> and <span
 class="math inline">\(G\)</span> is the key.</p>
 <p>More experiments need to be done to verify the effectiveness of this
 approach.</p>
-<h3 id="an-observation">An observation</h3>
+<h3 id="a-resonable-explanation-for-negative-w">A resonable explanation
+for negative w</h3>
 <p>In (3), negative <span class="math inline">\(w\)</span> seems not
-realistic. However, in (12), <span class="math inline">\(w^{EE} -
+realistic. However, in (12), <span class="math inline">\(w^{EE}w^{II} -
 w^{IE}w^{EI}\)</span> is reasonable to be negative, so we can regard
 negative <span class="math inline">\(w\)</span> in (3) as a result of
-E-I balance. That also corresponds with two phase diagrams above: when
-<span class="math inline">\(w\)</span> is negative and <span
+E-I balance. That also corresponds with phase diagrams above: when <span
+class="math inline">\(w\)</span> is negative and <span
 class="math inline">\(G\)</span> is large to compensate for <span
 class="math inline">\(w\)</span>, the network ends up in a reasonable
 low activity state and shows high propagation ratio.</p>
