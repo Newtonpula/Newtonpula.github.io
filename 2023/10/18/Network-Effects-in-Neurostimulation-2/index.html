@@ -16,24 +16,24 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="A brief introduction to Takens&#39;s theorem. Proof and applications are included.">
+    <meta name="description" content="critical region we found in parameter searching of homogeneous model, possible link between mean gating variable and local field potential">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Takens&#39;s Theorem">
-<meta property="og:url" content="http://example.com/2023/10/04/Takens-s-Theorem/index.html">
+<meta property="og:title" content="Network Effects in Neurostimulation (2)">
+<meta property="og:url" content="http://example.com/2023/10/18/Network-Effects-in-Neurostimulation-2/index.html">
 <meta property="og:site_name" content="Newtonpula&#39;s Land">
-<meta property="og:description" content="A brief introduction to Takens&#39;s theorem. Proof and applications are included.">
+<meta property="og:description" content="critical region we found in parameter searching of homogeneous model, possible link between mean gating variable and local field potential">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/img/index/takens.jpg">
-<meta property="article:published_time" content="2023-10-04T10:49:19.000Z">
-<meta property="article:modified_time" content="2023-10-06T13:34:00.288Z">
+<meta property="og:image" content="http://example.com/img/large_scale_model/CCEP.png">
+<meta property="article:published_time" content="2023-10-18T08:22:13.000Z">
+<meta property="article:modified_time" content="2023-10-19T07:11:08.251Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="math">
+<meta property="article:tag" content="Neuroscience">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/index/takens.jpg">
+<meta name="twitter:image" content="http://example.com/img/large_scale_model/CCEP.png">
   
   
   
-  <title>Takens&#39;s Theorem - Newtonpula&#39;s Land</title>
+  <title>Network Effects in Neurostimulation (2) - Newtonpula&#39;s Land</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -199,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Takens&#39;s Theorem"></span>
+            <span id="subtitle" data-typed-text="Network Effects in Neurostimulation (2)"></span>
           
         </div>
 
@@ -210,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-10-04 18:49" pubdate>
-          October 4, 2023 pm
+        <time datetime="2023-10-18 16:22" pubdate>
+          October 18, 2023 pm
         </time>
       </span>
     
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k words
+          651 words
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          28 mins
+          6 mins
         
       </span>
     
@@ -270,154 +270,34 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Takens&#39;s Theorem</h1>
+            <h1 id="seo-header">Network Effects in Neurostimulation (2)</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="takenss-theorem">Takens's Theorem</h1>
-<p>Takens's theorem shows connection between space and time, which is an
-important result in dynamical system. It also relates to ergodic theory
-and have applications in many fields. Here we introduce the proof of
-Takens's
-theorem<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
-class="hint--top hint--rounded"
-aria-label="J.P.Huke. Embedding Nonlinear Dynamical Systems: A Guide to Takens&#39; Theorem. 2006.">[2]</span></a></sup><sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
-class="hint--top hint--rounded"
-aria-label="Jordi Penalva Vadell. Takens&#39; Theorem: Proof and Applications. Advanced Physics and Applied Mathematics, 2018.">[4]</span></a></sup>
-and some
-applications<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
-class="hint--top hint--rounded"
-aria-label="Jia-Wen Hou, Huan-Fei Ma, et al. Harvesting random embedding for high-frequency change-point detection in temporal complex systems. National Science Review, 2022.">[1]</span></a></sup><sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
-class="hint--top hint--rounded"
-aria-label="Huanfei Ma, Siyang Leng, et al. Randomly distributed embedding making short-term high-dimensional data predictable. PNAS, 2018.">[3]</span></a></sup>.</p>
-<h2 id="box-counting-dimension">box counting dimension</h2>
-<p>The Minkowski-Bouigand dimension, also known as Minkowski dimension
-or box-counting dimension.</p>
-<p>Denote <span class="math inline">\(N(\varepsilon)\)</span> is the
-number of boxes of side length <span
-class="math inline">\(\varepsilon\)</span> required to cover the set.
-Then the box-counting dimension is defined as <span
-class="math display">\[
-    \dim_{\text{box}}(S):=\lim_{\varepsilon\to 0}\frac{\log
-N(\varepsilon)}{\log 1 / \varepsilon}
-\]</span></p>
-<p>If <span class="math inline">\(S\)</span> is a smooth space (a
-manifold) of integer dimension <span class="math inline">\(d\)</span>,
-then <span class="math inline">\(N(1 / n) \thickapprox Cn^{d}\)</span>,
-which corresponds with the normal definition of dimension.</p>
-<p>When the above limit does not exist, upper and lower box-counting
-dimensions can be defined, and they are strongly related to the
-Hausdorff dimension.</p>
-<h2 id="some-definitions">some definitions</h2>
-<p>First we need to clarify what is an attractor.</p>
-<p><strong>Def 1</strong> Let <span
-class="math inline">\(\phi(t,x)\)</span> is a flow. A <strong>positively
-invariant set</strong> <span class="math inline">\(A\)</span> from a
-flow <span class="math inline">\(\phi(t,x)\)</span> is a set such that
-if <span class="math inline">\(\phi(t_0,x) \in A\)</span> for some <span
-class="math inline">\(t_0\)</span>, then <span
-class="math inline">\(\phi(t,x)\in A\)</span> for all <span
-class="math inline">\(t\geqslant t_0\)</span>.</p>
-<p><strong>Def 2</strong> A <strong>stable set</strong> from a
-continuous dynamical system of flow <span
-class="math inline">\(\phi(t,x)\)</span> is a set such that there exists
-a neighborhood <span class="math inline">\(B\)</span> of <span
-class="math inline">\(S\)</span> satisfying that if <span
-class="math inline">\(\phi(t_0,x)\in B\)</span>, then <span
-class="math inline">\(\phi(t,x)\in B\)</span> for all <span
-class="math inline">\(t\geqslant t_0\)</span>.</p>
-<p>Futhermore, if there exists a neighborhood <span
-class="math inline">\(B\)</span> such that, for every neighborhood <span
-class="math inline">\(B&#39; \subset B\)</span>, if <span
-class="math inline">\(\phi(t_0,x) \in B\)</span>, then there exists
-<span class="math inline">\(t_1\geqslant t_0\)</span> such that <span
-class="math inline">\(\phi(t_0,x)\in B&#39;\)</span> for every <span
-class="math inline">\(t\geqslant t_1\)</span>, then <span
-class="math inline">\(S\)</span> is also an <strong>asymptotically
-stable set</strong>.</p>
-<p><strong>Def 3</strong> An <strong>attracting set</strong> of an ODE
-is a closed, positively invariant and asymptotically stable set. An
-attractor of an ODE is an attracting set which contains a dense
-orbit.</p>
-<p><strong>Def 4</strong> let <span class="math inline">\(M\)</span> be
-a manifold. The set of <span class="math inline">\(C^{r}\)</span>
-functions from <span class="math inline">\(M\)</span> to itself which
-are also diffeomorphisms (have <span
-class="math inline">\(C^{r}\)</span> inverse) is called <span
-class="math inline">\(Diff^{r}(M)\)</span>.</p>
-<h2 id="proof-of-takens-embedding-theorem">proof of Takens' embedding
-theorem</h2>
-<p><strong>Theorem 1 (Takens)</strong> Let <span
-class="math inline">\(M\)</span> be a compact manifold of dimension
-<span class="math inline">\(m\)</span>. For pairs <span
-class="math inline">\((\phi, y)\)</span>, with <span
-class="math inline">\(\phi \in Diff^{2}(M)\)</span>, <span
-class="math inline">\(y \in C^{2}(M, \mathbb{R})\)</span>, it is a
-generic property that the map <span class="math inline">\(\Phi_{(\phi,
-y)}\colon M \rightarrow \mathbb{R}^{2m+1}\)</span>, defined by <span
-class="math display">\[
-    \Phi_{(\phi, y)}(x) = (y(x), y(\phi(x)), \cdots , y(\phi^{2m}(x)))
-\]</span></p>
-<p>is an embedding. Recall Whitney embedding theorem. This mean that
-<span class="math inline">\(\Phi_{(\phi,y)}(M)\)</span> is diffeomorphic
-to <span class="math inline">\(M\)</span> (in the sense of <span
-class="math inline">\(C^{2}\)</span>)</p>
-<p>Here 'generic' means open and dense, and we use the <span
-class="math inline">\(C^{1}\)</span> topology. We refer to the functions
-<span class="math inline">\(y\in C^{2}(M,\mathbb{R})\)</span> as
-<strong>measurement functions</strong>.</p>
-<p>Another version focusing on one particular <span
-class="math inline">\(\phi\)</span> is that:</p>
-<p><strong>Theorem 2</strong> Let <span class="math inline">\(M\)</span>
-be as above. Let <span class="math inline">\(\phi \colon M\rightarrow
-M\)</span> be a diffeomorphism, with the properties: - the periodic
-points of <span class="math inline">\(\phi\)</span> with periods less
-than or equal to <span class="math inline">\(2m\)</span> are finite in
-number; - if <span class="math inline">\(x\)</span> is any periodic
-point with period <span class="math inline">\(k\leqslant 2m\)</span>
-then the eigenvalues of the derivative of <span
-class="math inline">\(\phi^{k}\)</span> at <span
-class="math inline">\(x\)</span> are all distinct.</p>
-<p>Then for generic <span class="math inline">\(y \in C^{2}(M,
-\mathbb{R})\)</span>, the map <span
-class="math inline">\(\Phi_{(\phi,y)}\colon M \rightarrow
-\mathbb{R}^{2m+1}\)</span>, defined as in Theorem 1, is an
-embedding.</p>
-<h2 id="reference">Reference</h2>
-<section class="footnotes">
-<div class="footnote-list">
-<ol>
-<li>
-<span id="fn:1" class="footnote-text"><span>Jia-Wen Hou, Huan-Fei Ma, et
-al. Harvesting random embedding for high-frequency change-point
-detection in temporal complex systems. National Science Review, 2022.
-<a href="#fnref:1" rev="footnote" class="footnote-backref">
-↩︎</a></span></span>
-</li>
-<li>
-<span id="fn:2" class="footnote-text"><span>J.P.Huke. Embedding
-Nonlinear Dynamical Systems: A Guide to Takens' Theorem. 2006.
-<a href="#fnref:2" rev="footnote" class="footnote-backref">
-↩︎</a></span></span>
-</li>
-<li>
-<span id="fn:3" class="footnote-text"><span>Huanfei Ma, Siyang Leng, et
-al. Randomly distributed embedding making short-term high-dimensional
-data predictable. PNAS, 2018.
-<a href="#fnref:3" rev="footnote" class="footnote-backref">
-↩︎</a></span></span>
-</li>
-<li>
-<span id="fn:4" class="footnote-text"><span>Jordi Penalva Vadell.
-Takens' Theorem: Proof and Applications. Advanced Physics and Applied
-Mathematics, 2018.
-<a href="#fnref:4" rev="footnote" class="footnote-backref">
-↩︎</a></span></span>
-</li>
-</ol>
-</div>
-</section>
+                <h1 id="network-effects-in-neurostimulation-2">Network Effects in
+Neurostimulation (2)</h1>
+<h2 id="dataset-used-to-training">Dataset used to training</h2>
+<p>The dataset we used is from Paulk, 2022, in which single
+pulse-induced cortico-cortical evoked potentials (CCEPs) were recorded.
+The data is from F-TRACT database.</p>
+<h2 id="reasons-of-training-with-original-deco-model">Reasons of
+training with original Deco model</h2>
+<p>As mentioned at the end of <a href="">the previous blog</a>, I
+derived a modified model.</p>
+<h2
+id="correlation-is-significantly-higher-in-critical-region">Correlation
+is significantly higher in critical region</h2>
+<h3 id="analysis-of-critical-line">Analysis of critical line</h3>
+<h2
+id="information-in-n2-component-implies-effective-connectivity">Information
+in N2 component implies effective connectivity</h2>
+<h2 id="further-problems">Further problems</h2>
+<h2 id="refrence">Refrence</h2>
+<p>Paulk, A.C., Zelmann, R., Croker, B., et al. (2022). Local and
+distant cortical responses to single pulse intracranial stimulation in
+the human brain are differentially modulated by specific stimulation
+parameters. Brain Stimulation. 15, 491-508</p>
 
                 
               </div>
@@ -436,8 +316,22 @@ Mathematics, 2018.
     
       <span class="category-chain">
         
-  <a href="/categories/dynamical-system/" class="category-chain-item">dynamical system</a>
+  <a href="/categories/Neuronal-Dynamics/" class="category-chain-item">Neuronal Dynamics</a>
   
+  
+    <span>></span>
+    
+  <a href="/categories/Neuronal-Dynamics/Neurostimulation/" class="category-chain-item">Neurostimulation</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Neuronal-Dynamics/Neurostimulation/CCEP/" class="category-chain-item">CCEP</a>
+  
+  
+
+  
+
   
 
       </span>
@@ -451,7 +345,7 @@ Mathematics, 2018.
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/math/" class="print-no-link">#math</a>
+        <a href="/tags/Neuroscience/" class="print-no-link">#Neuroscience</a>
       
     </div>
   
@@ -463,8 +357,8 @@ Mathematics, 2018.
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Takens&#39;s Theorem</div>
-      <div>http://example.com/2023/10/04/Takens-s-Theorem/</div>
+      <div>Network Effects in Neurostimulation (2)</div>
+      <div>http://example.com/2023/10/18/Network-Effects-in-Neurostimulation-2/</div>
     </div>
     <div class="license-meta">
       
@@ -476,7 +370,7 @@ Mathematics, 2018.
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>October 4, 2023</div>
+          <div>October 18, 2023</div>
         </div>
       
       
@@ -508,18 +402,12 @@ Mathematics, 2018.
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/10/18/Network-Effects-in-Neurostimulation-2/" title="Network Effects in Neurostimulation (2)">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Network Effects in Neurostimulation (2)</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/09/30/Network-Effects-in-Neurostimulation-1/" title="Network Effects in Neurostimulation (1)">
-                        <span class="hidden-mobile">Network Effects in Neurostimulation (1)</span>
+                      <a href="/2023/10/04/Takens-s-Theorem/" title="Takens&#39;s Theorem">
+                        <span class="hidden-mobile">Takens&#39;s Theorem</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
