@@ -1,0 +1,1090 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/title.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Noisy Output - Escape Rate and Soft Threshold">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Neuronal Dynamics (9)">
+<meta property="og:url" content="http://example.com/2022/09/12/Neuronal-Dynamics-9/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Noisy Output - Escape Rate and Soft Threshold">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/neu_dyn.png">
+<meta property="article:published_time" content="2022-09-12T17:14:32.000Z">
+<meta property="article:modified_time" content="2022-11-15T00:30:21.772Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="神经科学">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/neu_dyn.png">
+  
+  
+  
+  <title>Neuronal Dynamics (9) - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Neuronal Dynamics (9)"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-09-12 18:14" pubdate>
+          September 12, 2022 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          105 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Neuronal Dynamics (9)</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="noisy-output-escape-rate-and-soft-threshold">Noisy Output:
+Escape Rate and Soft Threshold</h1>
+<p>The online version of this chapter:</p>
+<hr />
+<p>Chapter 9 Noisy Output: Escape Rate and Soft Threshold
+https://neuronaldynamics.epfl.ch/online/Ch9.html</p>
+<hr />
+<h2 id="escape-noise">Escape noise</h2>
+<p>In this section the notion of escape noise is introduced.</p>
+<h3 id="escape-rate">Escape rate</h3>
+<p><span class="math inline">\(\theta\)</span>: formal threshold</p>
+<p>In Ch6, the value of the membrane potential of a SRM can be expressed
+as <span class="math display">\[
+    u(t)=\sum_{f}^{} \eta(t-t^{(f)})+\int_{0}^{\infty}
+\kappa(s)I^{det}(t-s) \mathrm{d}s +u_{rest}, \tag{9.1}
+\]</span></p>
+<p>where <span class="math inline">\(I^{det}\)</span> is the known
+driving current and <span class="math inline">\(\kappa\)</span> and
+<span class="math inline">\(\eta\)</span> are filters that describe the
+response of the membrane to an incoming pulse or an outgoing spike.</p>
+<p>Replace the strict threshold by a stochastic firing criterion. In the
+noisy threshold model, spikes can occur at any time with a probability
+density <span class="math display">\[
+    \rho(t)=f(u(t)-\theta), \tag{9.2}
+\]</span></p>
+<p>In the mathematical theory of point processes, the quantity <span
+class="math inline">\(\rho\)</span> is called a 'stochastic intensity'.
+We refer to <span class="math inline">\(\rho\)</span> as a firing
+intensity.</p>
+<p>A common choice for <span class="math inline">\(f\)</span> is the
+exponential, <span class="math display">\[
+    f(u-\theta)=\frac{1}{\tau_0}\exp [\beta(u_0-\theta)] \tag{9.3}
+\]</span> where <span class="math inline">\(\beta\)</span> and <span
+class="math inline">\(\tau_0\)</span> are parameters. For <span
+class="math inline">\(\beta \to \infty\)</span>, the soft threshold
+turns into a sharp one.</p>
+<p>More generally, the spike trigger process could also depend on the
+slope <span
+class="math inline">\(\dot{u}=\mathrm{d}u/\mathrm{d}t\)</span>. <span
+class="math display">\[
+    \rho(t)=f[u(t)-\theta,\dot{u}]. \tag{9.4}
+\]</span></p>
+<h3 id="transition-from-continuous-time-to-discrete-time">Transition
+from continuous time to discrete time</h3>
+<p>We consider the probability <span
+class="math inline">\(P_{F}(u)\)</span> of firing in a finite time step
+given the neurons has membrane potential <span
+class="math inline">\(u\)</span>.</p>
+<p>In a straightforward discretization scheme, <span
+class="math inline">\(\int_{t}^{t+\Delta t} \rho(t&#39;)
+\mathrm{d}t&#39;\thickapprox \rho(t)\Delta t\)</span>. <span
+class="math inline">\(\Delta t\)</span> must be taken extremely short so
+as to guarantee <span class="math inline">\(\rho(t)\Delta
+t&lt;1\)</span>.</p>
+<p>In an improved discretization scheme, <span class="math display">\[
+    P_{F}(u)=\operatorname{Pr}\{\text{spike in} \ [t,t+\Delta
+t]|u(t)\}\thickapprox 1-\exp \{-\Delta t f[u(t)-\theta] \}.
+\]</span> (9.8)</p>
+<p>For small <span class="math inline">\(\Delta t\)</span>, the
+probability <span class="math inline">\(P_{F}\)</span> scales as <span
+class="math inline">\(f \Delta t\)</span>.</p>
+<p>For an exponential escape rate, an increase in the discretization
+<span class="math inline">\(\Delta t\)</span> mainly shifts the firing
+curve to the left.</p>
+<h2 id="likelihood-of-a-spike-train">Likelihood of a spike train</h2>
+<p>In this section we determine the likelihood that a specific spike
+train is generated by a neuron model with escape noise.</p>
+<p>Assume a spike train which is generated by an escape noise
+process</p>
+<p><span class="math display">\[
+    \rho(t)=f(u(t)-\theta) \tag{9.9}
+\]</span></p>
+<p>and the membrane potential <span class="math inline">\(u(t)\)</span>
+arises from the dynamics of one of the dynamics of one of the
+generalized integrate-and-fire models such as the SRM.</p>
+<p>The likelihood <span class="math inline">\(L^{n}\)</span> that spikes
+occur at the times <span class="math inline">\(t^{(1)},\cdots
+,t^{(f)},\cdots ,t^{(n)}\)</span> is <span class="math display">\[
+    L^{n}(\{t^{(1)},t^{(2)},\cdots ,t^{(n)}\})=\rho(t^{(1)})\cdot
+\rho(t^{(2)})\cdots \rho(t^{(n)}) \exp \left[ -\int_{0}^{T} \rho(s)
+\mathrm{d}s\right], \tag{9.10}      
+\]</span> where <span class="math inline">\([0,T]\)</span> is the
+observation interval. The product on the right-hand side contains the
+momentary firing intensity <span
+class="math inline">\(\rho(t^{(f)})\)</span> at the firing times <span
+class="math inline">\(t^{(1)},t^{(2)},\cdots ,t^{(n)}\)</span>. The
+exponential factor takes into account that the neuron needs to 'survive'
+without firing in the intervals between the spikes.</p>
+<p>Actually, <span class="math display">\[
+    \begin{aligned}
+        L^{n}(\{t^{(1)},t^{(2)},\cdots ,t^{(n)}\})= \exp
+\left[-\int_{0}^{t^{(1)}} \rho(s) \mathrm{d}s\right]\cdot \\
+        \rho(t^{(1)})\exp \left[-\int_{t^{(1)}}^{t^{(2)}} \rho(s)
+\mathrm{d}s\right]\cdot \ldots\\
+        \rho(t^{(n)})\exp \left[-\int_{t^{(n)}}^{T} \rho(s)
+\mathrm{d}s\right].
+    \end{aligned}
+\]</span> (9.11)</p>
+<p>Sometimes it is more convenient to work with the logarithm of the
+likelihood, called the <strong>log-likelihood</strong> <span
+class="math display">\[
+    \log L^{n}(\{t^{(1)},\cdots ,t_i^{(f)},t^{(n)}\})=-\int_{0}^{T}
+\rho(s) \mathrm{d}s+\sum_{f=1}^{n} \log \rho(t_i^{(f)}). \tag{9.12}
+\]</span></p>
+<h4
+id="example-discrete-time-version-of-likelihood-and-generative-model">Example:
+Discrete-time version of likelihood and generative model</h4>
+<p>For a discrete-time simulation, the probability of finding an empty
+time bin (spike count <span class="math inline">\(n_t=0\)</span>) is
+<span class="math display">\[
+    \operatorname{Pr} \{\text{silent in} \ [t,t+\Delta t]\}=1-P_{t}=\exp
+\{-\Delta t \rho(t)\} \tag{9.13}
+\]</span></p>
+<p>With sufficiently small <span class="math inline">\(\Delta
+t\)</span>, it is impossible to have two spikes in a time bin <span
+class="math inline">\(\Delta t\)</span>. This reflects the fact that,
+because of neuronal refractoriness, neurons cannot emit two spikes in a
+time bin shorter than, say, half the duration of an action
+potential.</p>
+<p><span class="math display">\[
+    P_{total}=\prod_{bins \ with \ spike}^{} [P_t] \cdot \prod_{empty \
+bins}^{} [1-P_t]=\prod_{t}^{} \{[P_t]^{n_t}\cdot
+[1-P_t]^{1-n_t}\},       
+\]</span> where the product runs over all time bins and <span
+class="math inline">\(n_t \in \{0,1\}\)</span> is the spike count number
+in each bin.</p>
+<p>The observed spike trains has <span class="math display">\[
+    P_{total}=\prod_{k=1}^{n} [P_{t_k}]\cdot \prod_{k&#39;}^{}
+[1-P_{t_{k&#39;}}]. \tag{9.16}
+\]</span></p>
+<p>All time bins that fall into the interval between two spikes can be
+regrouped as follows <span class="math display">\[
+    \prod_{\{k&#39;|t_k&lt;t_{k&#39;}&lt;t_{k+1}\}}^{}[1-P_{t_{k&#39;}}]\exp
+\{-\Delta t \rho(t_{k&#39;})\}=\exp
+\left\{-\sum_{t_k&lt;t_{k&#39;}&lt;t_{k+1}}^{} \Delta t
+\rho(t_{k&#39;})\right\}.  
+\]</span> (9.17)</p>
+<p>The Riemann-sum on the right-hand side of (9.17) then turns into an
+integral. Combine the limit in (9.16), we have <span
+class="math display">\[
+    P_{total}=L^{n}(\{t^{(1)},t^{(2)},\cdots ,t^{(n)}\})(\Delta t)^{n},
+\tag{9.18}
+\]</span></p>
+<h2 id="renewal-approximation-of-the-spike-response-model">Renewal
+Approximation of the Spike Response Model</h2>
+<p>In this section we apply the escape noise formalism to the SRM and
+show an interesting link to the renewal statistics encountered in
+Ch7.</p>
+<p>We focus a SRM with escape noise. If the firing rate is low, so that
+the interspike interval is much longer than the decay time of the
+refractory kernel <span class="math inline">\(\eta\)</span>, then we can
+truncate the sum over past firing times and keep track only of the
+effect of the most recent spike <span class="math display">\[
+    u(t)=\eta(t-\hat{t})+\int_{0}^{\infty} \kappa(s)I^{det}(t-s)
+\mathrm{d}s +u_{rest}, \tag{9.19}
+\]</span> where <span class="math inline">\(\hat{t}\)</span> denotes the
+last firing time <span class="math inline">\(t^{(f)}&lt;t\)</span>.</p>
+<p>(9.19) is called the 'short-term momory' approximation of the SRM and
+abbreviated as SRM<span class="math inline">\(_0\)</span>. Sometimes we
+write <span class="math inline">\(u(t|\hat{t})\)</span> intstead of
+<span class="math inline">\(u(t)\)</span> to emphasize that the value of
+the membrane potential depends only on the most recent spike.</p>
+<p>Input potential: <span class="math display">\[
+    h(t)=\int_{0}^{\infty} \kappa(s)I^{det}(t-s) \mathrm{d}s \tag{9.20}
+\]</span> which allows us to rewrite (9.19) as <span
+class="math display">\[
+    u(t|\hat{t})=\eta(t-\hat{t})+h(t)+u_{rest}. \tag{9.21}
+\]</span></p>
+<p>The escape rate <span class="math display">\[
+    \rho(t|\hat{t})=f(u(t|\hat{t})) \tag{9.22}
+\]</span> depends on the time since the last spike and, implicitly, on
+the stimulating current <span class="math inline">\(I^{det}(t)\)</span>.
+Given the last spike time <span class="math inline">\(\hat{t}\)</span>
+and the input <span class="math inline">\(I^{det}(t&#39;)\)</span> for
+<span class="math inline">\(t&#39;&lt;t\)</span>, we can calculate the
+probability density that the next spike occurs at time <span
+class="math inline">\(t&gt;\hat{t}\)</span> <span
+class="math display">\[
+    P_{I}(t|\hat{t})=\rho(t|\hat{t})\exp \left[-\int_{\hat{t}}^{t}
+\rho(t&#39;|\hat{t}) \mathrm{d}t&#39;\right]. \tag{9.23}
+\]</span></p>
+<h4
+id="example-interval-distribution-with-exponential-escape-noise">Example:
+Interval distribution with exponential escape noise</h4>
+<p>We study a model SRM<span class="math inline">\(_0\)</span> with
+membrane potential <span
+class="math inline">\(u(t|\hat{t})=\eta(t-\hat{t})+h(t)\)</span> and
+choose a refractory kernel with absolute and relative refractoriness
+defined as <span class="math display">\[
+    \eta(s)=
+    \begin{cases}
+        -\infty, s&lt;\Delta^{abs} \\
+        -\eta_0 \exp \left(-\frac{s-\Delta^{abs}}{\tau}\right),
+s&gt;\Delta^{abs}  
+    \end{cases}
+\]</span> (9.24)</p>
+<p>and the exponential escape rate (9.3).</p>
+<p><img src="/img/neu_dyn/x649.png" srcset="/img/loading.gif" lazyload /></p>
+<p>The above figure shows the interval distribution for constant input
+current <span class="math inline">\(I_0\)</span> as a function of <span
+class="math inline">\(s=t-\hat{t}\)</span>. With the normalization <span
+class="math inline">\(\int_{0}^{\infty} \kappa(s)
+\mathrm{d}s=1\)</span>, we have <span
+class="math inline">\(h_0=I_0\)</span>. The gain function <span
+class="math inline">\(\nu=g(I_0)\)</span> of a noisy SRM<span
+class="math inline">\(_0\)</span> neuron is shown on the right.</p>
+<p>We now study the same model with periodic input <span
+class="math inline">\(I^{det}(t)=I_0+I_1 \cos (\Omega t)\)</span>. This
+leads to an input potential <span class="math inline">\(h(t)=h_0+h_1
+\cos (\Omega t+\varphi_1)\)</span> with bias <span
+class="math inline">\(h_0=I_0\)</span> and a periodic component with a
+certain amplitude <span class="math inline">\(h_1\)</span> and phase
+<span class="math inline">\(\varphi_1\)</span>.</p>
+<p>The result of <span class="math inline">\(P_{I}(t|0)\)</span> is
+shown in the following figure on the left.</p>
+<div class="group-image-container"><div class="group-image-row"><div class="group-image-wrap"><img src="/img/neu_dyn/x244.png" srcset="/img/loading.gif" lazyload /></div><div class="group-image-wrap"><img
+src="/img/neu_dyn/x245.png" srcset="/img/loading.gif" lazyload /></div></div></div>
+<p>The periodic component of the input is well represented in the
+response of the neuron. This example illustrates how neurons in the
+auditory system can transmit stimuli of frequencies higher than the mean
+firing rate of the neuron.</p>
+<h2 id="from-noisy-inputs-to-escape-noise">From noisy inputs to escape
+noise</h2>
+<p>Sometimes without noise there would be no output spike. On the other
+hand, at very high noise levels, the modulation of the interval
+distribution would be much weaker. Thus a certain amount of noise is
+beneficial for signal transmission.</p>
+<p>In this section we show that the noisy, unknown part <span
+class="math inline">\(\xi(t)\)</span> in the input can be approximated
+by an appropriately chosen escape function.</p>
+<h4
+id="example-adaptive-exponential-integrate-and-fire-model-with-noisy-input">Example:
+Adaptive exponential integrate-and-fire model with noisy input</h4>
+<p>Suppose that the AdEx model is driven by an input as <span
+class="math inline">\(I(t)=I^{det}(t)+\xi(t)\)</span> containing a
+ripidly moving deterministic signal <span
+class="math inline">\(I^{det}(t)\)</span> as well as a white noise
+component <span class="math inline">\(\xi(t)\)</span>.</p>
+<p>We approximate the voltage of the AdEx model by a linear model <span
+class="math display">\[
+    u(t)=\sum_{f}^{} \eta(t-t_i^{(f)})+\int_{0}^{\infty}
+\kappa(s)I^{det}(t-s) \mathrm{d}s+u_{rest}. \tag{9.26}
+\]</span></p>
+<p>In the subthreshold regime <span
+class="math inline">\(u&lt;\theta-\Delta_{T}\)</span>, the filters <span
+class="math inline">\(\kappa\)</span> and <span
+class="math inline">\(\eta\)</span> can be calculated analytically.
+(9.26) combined with the exponential escape rate <span
+class="math display">\[
+    f(u-\theta)=\frac{1}{\tau_0}\exp [\beta(u-\theta)]
+\]</span></p>
+<p>describes the activity of the AdEx with noisy input surprisingly
+well. <strong>In the presence of an input noise <span
+class="math inline">\(\xi(t)\)</span> the exponential term in the
+voltage equation of the AdEx model can be replaced by an exponential
+escape rate.</strong></p>
+<h3 id="leaky-integrate-and-fire-model-with-noisy-input">Leaky
+integrate-and-fire model with noisy input</h3>
+<p>Though the probability density at <span
+class="math inline">\(u=\theta\)</span> vanishes in the presence of
+threshold, we can approximate the probability density near <span
+class="math inline">\(u=\theta\)</span> by the 'free' distribution
+(i.e., without the threshold) <span class="math display">\[
+    \operatorname{Pr} \{u \ \text{reaches} \ \theta \ \text{in} \
+[t,t+\Delta t]\}\propto \Delta t \exp
+\left\{-\frac{[u_0(t)-\theta]^{2}}{2\langle \Delta
+u^{2}(t)\rangle}\right\} \tag{9.28}
+\]</span></p>
+<blockquote>
+<p>那么Fig 9.10是什么意思呢？<span class="math inline">\([t,t+\Delta
+t]\)</span> 间达到threshold的概率为什么与右边成正比呢</p>
+</blockquote>
+<p>We can replace the time dependent variance <span
+class="math inline">\(2\langle \Delta u(t)^{2}\rangle\)</span> by its
+stationary value <span class="math inline">\(\sigma^{2}\)</span>(see
+(8.13)). So <span class="math display">\[
+    f(u_0-\theta)=\frac{c_1}{\tau_m}\exp
+\left\{-\frac{[u_0(t)-\theta]^{2}}{\sigma^{2}}\right\} \tag{9.29}
+\]</span> (Arrhenius formula)</p>
+<p><span class="math inline">\(c_1/\tau_m\)</span> shows that the escape
+rate has units of one over time.</p>
+<p>If at <span class="math inline">\(t=t_0\)</span>, an input current
+pulse causes a jump of the membrane trajectory by amount <span
+class="math inline">\(\Delta u&gt;0\)</span>, then there is a nonzero
+probability that the neuron fires exactly at <span
+class="math inline">\(t_0\)</span>. We expect an increase of the
+instantaneous rate proportional to <span
+class="math inline">\(\dot{u}_{0}\)</span>, so we study <span
+class="math display">\[
+    f(u_0,\dot{u}_0)=\left(\frac{c_1}{\tau_m}+\frac{c_2}{\sigma}[\dot{u}_0]_{+}\right)\exp
+\left\{-\frac{[u_0(t)-\theta]^{2}}{\sigma^{2}}\right\}, \tag{9.30}
+\]</span> where <span class="math inline">\([x]_{+}=x\)</span> for <span
+class="math inline">\(x&gt;0\)</span> and zero otherwise. We call (9.30)
+he Arrhenius&amp;Current model.</p>
+<p>(9.30) depends only on the dimensionless variable <span
+class="math display">\[
+    x(t)=\frac{u_0(t)-\theta}{\sigma}, \tag{9.31}
+\]</span></p>
+<p>and its derivative <span class="math inline">\(\dot{x}\)</span>. A
+distance of <span class="math inline">\(u-\theta=-10 mV\)</span> at high
+noise (e.g., <span class="math inline">\(\sigma=10 mV\)</span>) is as
+effective in firing a cell as a distance of <span
+class="math inline">\(1mV\)</span> at low noise (<span
+class="math inline">\(\sigma=1mV\)</span>).</p>
+<h4
+id="example-comparison-of-diffusion-model-and-arrheniuscurrent-escape-rate">Example:
+Comparison of diffusion model and Arrhenius&amp;Current escape rate</h4>
+<p>The interval distribution for the diffusive white noise model
+(derived from stochastic spike arrival) and that for the
+Arrhenius&amp;Current escape model yields an excellent approximation to
+the diffusive noise model.</p>
+<p>An obvious shortcoming of (9.30) is that the instantaneous rate
+decreases with <span class="math inline">\(u\)</span> for <span
+class="math inline">\(u&gt;\theta\)</span>. The superthreshold behavior
+can be corrected if we replace the Gaussian <span
+class="math inline">\(\exp (-x^{2})\)</span> by <span
+class="math inline">\(2\exp(-x^{2})/[1+\text{erf}(-x)]\)</span>. The
+subthreshold behavior remains unchanged compared to (9.30) but the
+superthreshold behavior of the escape rate <span
+class="math inline">\(f\)</span> becomes linear.</p>
+<h3 id="stochastic-resonance">Stochastic resonance</h3>
+<p>Existence of an optimum for the noise amplitude which has motivated
+the name <strong>stochastic resonance</strong> is a counterintuitive
+phenomenon.</p>
+<p>In the absence of noise, a subthreshold stimulus <span
+class="math inline">\(I(t)\)</span> does not generate action potentials
+so that no information on the temporal structure of the stimulus can be
+transmitted. On the other hand, for very large noise <span
+class="math inline">\(\sigma \to \infty\)</span>, spike firing occurs at
+a constant rate, irrespective of the temporal structure of the
+input.</p>
+<p>Even though stochastic resonance does not require periodicity, it is
+typically studied with a periodic input signal <span
+class="math display">\[
+    I^{det}(t)=I_0+I_1\cos (\Omega t). \tag{9.32}
+\]</span> For <span class="math inline">\(t-\hat{t}\gg\tau_m\)</span>,
+the membrane potential of the noise-free reference trajectory has the
+form <span class="math display">\[
+    u_0(t)=u_{\infty}+u_1 \cos (\Omega t+\varphi_1), \tag{9.33}
+\]</span> where <span class="math inline">\(u_1\)</span> and <span
+class="math inline">\(\varphi_1\)</span> are amplitude and phase of its
+periodic component. We compute the signal-to-noise ratio (SNR).</p>
+<p>The signal <span class="math inline">\(\mathscr{S}\)</span> is
+measured as the amplitude of the power spectral density of the spike
+train evaluated at frequency <span
+class="math inline">\(\Omega\)</span>, i.e., <span
+class="math inline">\(\mathscr{S}=\mathscr{P}(\Omega)\)</span>. The
+noise level <span class="math inline">\(\mathscr{N}\)</span> is usually
+estimated from the noise power <span
+class="math inline">\(\mathscr{P}_{Poisson}\)</span> with the same
+number of spikes as the measured spike train.</p>
+<p><img src="/img/neu_dyn/x653.png" srcset="/img/loading.gif" lazyload /></p>
+<p>The above figure shows the SNR <span
+class="math inline">\(\mathscr{S}/\mathscr{N}\)</span> of a periodically
+stimulated integrate-and-fire neuron as a function of the noise level
+<span class="math inline">\(\sigma\)</span>. They exhibit a peak at
+<span class="math display">\[
+    \sigma^{opt}\thickapprox \frac{2}{3}(\theta-u_{\infty}) \tag{9.34}
+\]</span></p>
+<p>accordingly, <span class="math display">\[
+    2\sqrt{\langle \Delta u^{2}\rangle}\thickapprox \theta-u_{\infty}.
+\tag{9.35}
+\]</span></p>
+<h4 id="example-extracting-oscillations">Example: Extracting
+oscillations</h4>
+<p>We study the question whether an integrate-and-fire neuron or a SRM
+neuron is only sensitive to the total number of spikes that arrive in
+some time window <span class="math inline">\(T\)</span>, or also to the
+relative timing of the input spikes.</p>
+<p>We compare two different scenarios of stimulation. In the first
+scenario input spikes arrive with a periodically modulated rate, <span
+class="math display">\[
+    \nu^{in}(t)=\nu_0+\nu_1 \cos (\Omega t) \tag{9.36}      
+\]</span> with <span class="math inline">\(0&lt;\nu_1&lt;\nu_0\)</span>.
+Spikes are generated by this inhomogeneous Poisson process.</p>
+<p>In the second scenario input spikes are generated by a homogeneous
+Poisson process with constant rate <span
+class="math inline">\(\nu_0\)</span>.</p>
+<p>In a large interval <span class="math inline">\(T\gg\Omega
+^{-1}\)</span>, we expect in both cases a total number of <span
+class="math inline">\(\nu_0T\)</span> input spikes.</p>
+<p>It is found that the spike count numbers <span
+class="math inline">\(n^{(1)}\)</span> and <span
+class="math inline">\(n^{(2)}\)</span> are significantly different if
+the threshold is in the range <span class="math display">\[
+    u_{\infty}+\sqrt{\langle \Delta
+u^{2}\rangle}&lt;\theta&lt;u_{\infty}+3\sqrt{\langle \Delta
+u^{2}\rangle} \tag{9.37}
+\]</span></p>
+<p>This means that a neuron in the subthreshold regime is capable of
+transforming a temporal code (amplitude <span
+class="math inline">\(\nu_1\)</span> of the variations in the input)
+into a spike count code.</p>
+<h2 id="exercises">Exercises</h2>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%A5%9E%E7%BB%8F%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="category-chain-item">神经动力学</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E7%A5%9E%E7%BB%8F%E7%A7%91%E5%AD%A6/" class="print-no-link">#神经科学</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Neuronal Dynamics (9)</div>
+      <div>http://example.com/2022/09/12/Neuronal-Dynamics-9/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>September 12, 2022</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/16/Neuronal-Dynamics-10/" title="Neuronal Dynamics (10)">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Neuronal Dynamics (10)</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/08/26/Neuronal-Dynamics-8/" title="Neuronal Dynamics (8)">
+                        <span class="hidden-mobile">Neuronal Dynamics (8)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,1191 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/title.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="course project for &#39;graph and network&#39;, eigen-analysis of the tree graph of a directed graph, particularly the complete graph">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Eigenvalues of Tree Graph">
+<meta property="og:url" content="http://example.com/2024/01/29/Eigenvalues-of-Tree-Graph/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="course project for &#39;graph and network&#39;, eigen-analysis of the tree graph of a directed graph, particularly the complete graph">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/graph.png">
+<meta property="article:published_time" content="2024-01-29T22:11:59.000Z">
+<meta property="article:modified_time" content="2024-01-29T22:57:56.137Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="math">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/graph.png">
+  
+  
+  
+  <title>Eigenvalues of Tree Graph - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Eigenvalues of Tree Graph"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-29 22:11" pubdate>
+          January 29, 2024 pm
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          13k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          110 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Eigenvalues of Tree Graph</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="eigenvalues-of-tree-graph">Eigenvalues of Tree Graph</h1>
+<p>This blog version is slightly incomplete compared to the pdf version
+on <a target="_blank" rel="noopener" href="https://github.com/Newtonpula/Tree_Graph">github</a>. I put
+all related code there too.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The Laplacian of <span class="math inline">\(G\)</span> is defined as
+<span class="math inline">\(Q = D - M\)</span>, where <span
+class="math inline">\(D\)</span> is the diagonal matrix of outdegrees of
+vertices and <span class="math inline">\(M\)</span> is the adjacency
+matrix of <span class="math inline">\(G\)</span>.</p>
+<p>An <span class="math inline">\(l\)</span>-walk, or <span
+class="math inline">\(l\)</span>-path, in a directed graph <span
+class="math inline">\(G=(V,E)\)</span> means a directed <span
+class="math inline">\(l\)</span>-walk, that is a sequence <span
+class="math inline">\((u_0,e_1,u_1,\cdots ,e_{l}, u_l)\)</span> of
+vertices and edges of <span class="math inline">\(G\)</span> such that
+for each <span class="math inline">\(1\leqslant i\leqslant l\)</span>,
+edge <span class="math inline">\(e_i\)</span> has initial vertex <span
+class="math inline">\(u_{i-1}\)</span> and terminal vertex <span
+class="math inline">\(u_i\)</span>. The walk is closed if <span
+class="math inline">\(u_0=u_l\)</span>.</p>
+<p>If <span class="math inline">\(S\)</span> is a nonempty subset of
+<span class="math inline">\(V\)</span>, we denote by <span
+class="math inline">\(G_{S}\)</span> the induced subgraph of <span
+class="math inline">\(G\)</span> on the vertex set <span
+class="math inline">\(S\)</span>, that is the directed graph obtained
+from <span class="math inline">\(G\)</span> by only keeping vertices in
+<span class="math inline">\(S\)</span> and edges with both endpoints in
+<span class="math inline">\(S\)</span>.</p>
+<h2 id="tree-graph">tree graph</h2>
+<p>In this section we recall some basic concepts and introduce a few
+previous results.</p>
+<h3 id="spanning-trees-and-forests">Spanning trees and forests</h3>
+<p>Let <span class="math inline">\(G = (E,V)\)</span> be a finite
+directed graph. For each edge we denote <span
+class="math inline">\(s(e)\)</span> its source and <span
+class="math inline">\(t(e)\)</span> its target. A (rooted) spanning tree
+of <span class="math inline">\(G\)</span> is a subgraph of <span
+class="math inline">\(G\)</span> containing all vertices with no cycle.
+There is one vertex <span class="math inline">\(r\)</span>, called the
+root, having outdegree <span class="math inline">\(0\)</span> and the
+other vertices have outdegree <span class="math inline">\(1\)</span>. By
+the nature of tree, the spanning tree of <span
+class="math inline">\(G\)</span> has <span
+class="math inline">\(|V|-1\)</span> edges.</p>
+<p>Generally, if $W V $ is a nonempty subset, a forest of <span
+class="math inline">\(G\)</span> rooted in <span
+class="math inline">\(W\)</span> is defined as the following subgraph:
+it contains all vertices, with no cycle, and the vertices in <span
+class="math inline">\(W\)</span> have outdegree <span
+class="math inline">\(0\)</span> while the other vertices have outdegree
+<span class="math inline">\(1\)</span>.</p>
+<h4 id="tree-graph-mathcaltg">Tree graph <span
+class="math inline">\(\mathcal{T}G\)</span></h4>
+<p>The tree graph of <span class="math inline">\(G\)</span>, denoted
+<span class="math inline">\(\mathcal{T}G\)</span>, is the directed graph
+whose vertices are the spanning trees of <span
+class="math inline">\(G\)</span> and whose edges are obtained by the
+following construction:</p>
+<p>Let <span class="math inline">\(\mathbf{a}\)</span> be a spanning
+tree of <span class="math inline">\(G\)</span> with root <span
+class="math inline">\(r\)</span>. For an edge <span
+class="math inline">\(e\in E\)</span> with <span
+class="math inline">\(s(e)=r\)</span>, let <span
+class="math inline">\(\mathbf{b}\)</span> be the subgraph of <span
+class="math inline">\(G\)</span> obtained by adding edge <span
+class="math inline">\(e\)</span> to <span
+class="math inline">\(\mathbf{a}\)</span> then deleting the edge coming
+out of <span class="math inline">\(t(e)\)</span> in <span
+class="math inline">\(\mathbf{a}\)</span>.</p>
+<p>It's easy to check that <span
+class="math inline">\(\mathbf{b}\)</span> is a spanning tree of <span
+class="math inline">\(G\)</span>, with root <span
+class="math inline">\(t(e)\)</span>.</p>
+<p><img src="/img/tree_graph.png" srcset="/img/loading.gif" lazyload /></p>
+<p>In the following we will denote <span
+class="math inline">\(\mathcal{T}V\)</span> the set of vertices of <span
+class="math inline">\(\mathcal{T}G\)</span>, i.e., the set of spanning
+trees of <span class="math inline">\(G\)</span>.</p>
+<p>There is a natural map <span class="math inline">\(p\)</span> from
+<span class="math inline">\(\mathcal{T}G\)</span> to <span
+class="math inline">\(G\)</span>. <span class="math inline">\(p\)</span>
+maps each vertex of <span class="math inline">\(\mathcal{T}G\)</span> to
+its root, and maps each edge of <span
+class="math inline">\(\mathcal{T}G\)</span> to the edge <span
+class="math inline">\(e\)</span> of <span
+class="math inline">\(G\)</span> for its construction.</p>
+<p>Now we give here some elementary properties of the tree graph. See
+previous papers for proofs.</p>
+<ul>
+<li><span class="math inline">\(\mathcal{T}G\)</span> is simple and has
+no loop.</li>
+<li>The graph <span class="math inline">\(\mathcal{T}G\)</span> is
+strongly connected if <span class="math inline">\(G\)</span> is.</li>
+<li>The graph <span class="math inline">\(\mathcal{T}G\)</span> is a <a
+target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Covering_graph">covering graph</a>
+of <span class="math inline">\(G\)</span>.</li>
+<li>The set of edges of <span
+class="math inline">\(\mathcal{T}G\)</span> can be partitioned into
+edge-disjoint simple cycles, which project onto simple cycles of <span
+class="math inline">\(G\)</span>. If <span
+class="math inline">\(C\)</span> is a simple cycle of <span
+class="math inline">\(G\)</span>, with vertex set <span
+class="math inline">\(W\)</span>, then the number of simple cycles of
+<span class="math inline">\(\mathcal{T}G\)</span> lying above <span
+class="math inline">\(C\)</span> is equal to the number of forests
+rooted in <span class="math inline">\(W\)</span>.</li>
+<li>The graph <span class="math inline">\(\mathcal{T}G\)</span> is
+Eulerian: The number of outgoing or incoming edges of a vertex <span
+class="math inline">\(\mathbf{a}\)</span> are both equal to the number
+of outgoing edges of the root of <span
+class="math inline">\(\mathbf{a}\)</span> in <span
+class="math inline">\(G\)</span>.</li>
+</ul>
+<p>If $W V $, The matrix-tree theorem gives the generating function of
+spanning forests of <span class="math inline">\(G\)</span> rooted in
+<span class="math inline">\(W\)</span> . Moreover, it's easy to know the
+total number of those spanning forests: Denote <span
+class="math inline">\(Q^{W}\)</span> as the matrix obtained from the
+Laplacian matrix <span class="math inline">\(Q\)</span> of <span
+class="math inline">\(G\)</span> by deleting rows and columns indexed by
+elements of <span class="math inline">\(W\)</span>, then the number of
+spanning forests of <span class="math inline">\(G\)</span> rooted in
+<span class="math inline">\(W\)</span> is given by <span
+class="math inline">\(\det (Q^{W})\)</span>.</p>
+<p>In particular, let <span class="math inline">\(W = \{r\}\)</span>,
+then the number of spanning trees of <span
+class="math inline">\(G\)</span> rooted in <span
+class="math inline">\(r\)</span> is given by <span
+class="math inline">\(\det (Q^{r})\)</span>. For convenience in the
+following we use the notation <span class="math inline">\(Q_{W} = Q^{V
+\backslash W}\)</span> to denote the matrix extracted from the Laplacian
+matrix <span class="math inline">\(Q\)</span> of <span
+class="math inline">\(G\)</span> by keeping only rows and columns
+indexed by elements of <span class="math inline">\(W\)</span>.</p>
+<p>It is important to notice that the matrix-tree theorem is valid for
+both directed and undirected graphs.</p>
+<p>By the matrix-tree theorem, we can easily derive all spanning trees
+of <span class="math inline">\(G\)</span>, then construct the tree graph
+<span class="math inline">\(\mathcal{T}G\)</span>.</p>
+<h2 id="eigenvalues-of-tree-graph-1">Eigenvalues of Tree Graph</h2>
+<p>Though astonishing, eigenvalues of the adjacency matrix of the tree
+graph <span class="math inline">\(\mathcal{T}G\)</span> can be computed
+explicitly. This can be expected from the following fact: the <span
+class="math inline">\((i,j)\)</span> entry of the matrix <span
+class="math inline">\(M\)</span>, where <span
+class="math inline">\(M\)</span> is the adjacency matrix of <span
+class="math inline">\(G\)</span>, equals the number of <span
+class="math inline">\(l\)</span>-walks in <span
+class="math inline">\(G\)</span> which start at <span
+class="math inline">\(v_i\)</span> and end at <span
+class="math inline">\(v_j\)</span>. Thus, the number of closed <span
+class="math inline">\(l\)</span>-walks in <span
+class="math inline">\(\mathcal{T}G\)</span>, which we will denote by
+<span class="math inline">\(w(\mathcal{T}G, l)\)</span>, equals the
+trace of <span class="math inline">\(M^{l}\)</span> and hence the sum of
+the <span class="math inline">\(l\)</span>th powers of the eigenvalues
+of <span class="math inline">\(M\)</span>.</p>
+<p>C. Athanasiadis proved the following theorem about eigenvalues of
+<span class="math inline">\(\mathcal{M}\)</span>, i.e., the adjacency
+matrix of <span class="math inline">\(\mathcal{T}G\)</span>.
+<div class="note note-info">
+            <p>In Biane and Chapuy's paper, they wrote the theorem wrongly(Proposition 3.1)</p>
+          </div></p>
+<p><strong>Theorem</strong> The nonzero eigenvalues of <span
+class="math inline">\(\mathcal{M}\)</span> are eigenvalues of <span
+class="math inline">\(M_{X};X \subseteq V\)</span> where <span
+class="math inline">\(M\)</span> is the adjacency matrix of <span
+class="math inline">\(G\)</span>. For an eigenvalue <span
+class="math inline">\(\gamma\)</span>, let <span
+class="math inline">\(m_{X}(\gamma)\)</span> denotes its multiplicity in
+<span class="math inline">\(M_{X}\)</span>, then its multiplicity in
+<span class="math inline">\(\mathcal{M}\)</span> is <span
+class="math display">\[
+    \sum_{X \subseteq V }^{} m_{X}(\gamma) \det(Q_{V\backslash X}-I)
+\]</span></p>
+<p>Here we make the convention that <span
+class="math inline">\(\det(Q_{\emptyset}-I) = 1\)</span>.</p>
+<p>The original proof from Athanasiadis is a little confusing, so we
+make it more clear here. First we need to calculate <span
+class="math inline">\(w(\mathcal{T}G,l)\)</span>.</p>
+<p><strong>Theorem</strong> For a directed graph <span
+class="math inline">\(G\)</span> on the vertex set <span
+class="math inline">\(V\)</span> we have <span class="math display">\[
+    w(\mathcal{T}G, l) = \sum_{S \subseteq V} w(G_{S}, l)
+\det(Q_{V\backslash S}-I).
+\]</span></p>
+<p><strong>proof</strong> A closed <span
+class="math inline">\(l\)</span>-walk in <span
+class="math inline">\(\mathcal{T}G\)</span> is determined by a spanning
+tree <span class="math inline">\(T_0\)</span> on <span
+class="math inline">\(G\)</span> with root <span
+class="math inline">\(r\)</span>, and a closed <span
+class="math inline">\(l\)</span>-walk <span
+class="math inline">\(W=(u_0,e_1,u_1,\cdots ,e_l,u_l)\)</span> in <span
+class="math inline">\(G\)</span> with <span
+class="math inline">\(u_0=u_l=r\)</span>. Let <span
+class="math inline">\(a=(u_0,u_1,\cdots ,u_l)\)</span>. The sequence
+<span class="math inline">\(a\)</span> determines the roots of the trees
+<span class="math inline">\(T_0, T_1,\cdots ,T_{l}=T_0\)</span> to be
+visited during the walk in <span
+class="math inline">\(\mathcal{T}G\)</span>.</p>
+<p>Fix a closed <span class="math inline">\(l\)</span>-walk <span
+class="math inline">\(W\)</span> in <span
+class="math inline">\(G\)</span> together with the sequence <span
+class="math inline">\(a\)</span>. Following Athanasiadis's argument
+(Theorem 2.2) the number of trees <span
+class="math inline">\(T_0\)</span> which will yield a closed <span
+class="math inline">\(l\)</span>-walk in <span
+class="math inline">\(\mathcal{T}G\)</span> is the number <span
+class="math inline">\(\tau(G,U)\)</span> of spanning forests on <span
+class="math inline">\(G\)</span> with root set <span
+class="math inline">\(U=\{u_0,u_1,\cdots ,u_l\}\)</span>. Finally, the
+number of closed <span class="math inline">\(l\)</span>-walks in <span
+class="math inline">\(\mathcal{T}G\)</span> is <span
+class="math display">\[
+    w(\mathcal{T}G,l) = \sum_{U \subseteq V }^{} g(G_{U},l)\tau(G,U),
+\]</span></p>
+<p>where <span class="math inline">\(g(G,l)\)</span> stands for the
+number of closed <span class="math inline">\(l\)</span>-walks in a graph
+<span class="math inline">\(G\)</span> visiting all of its vertices.</p>
+<p>We may explain (1) more explicitly. Notice that a closed <span
+class="math inline">\(l\)</span>-walk in <span
+class="math inline">\(G\)</span> can have repeated vertices, so if <span
+class="math inline">\(G_{U}\)</span> has a closed <span
+class="math inline">\(l\)</span>-walk visiting all of its vertices, then
+<span class="math inline">\(\lvert U \rvert\)</span> can be divided by
+<span class="math inline">\(l\)</span>. Also, <span
+class="math inline">\(G_{U}\)</span> can have more than one closed <span
+class="math inline">\(l\)</span>-walk. The inclusion-exclusion principle
+gives <span class="math display">\[
+    g(G_{U},l) = \sum_{S\subseteq U }^{} (-1)^{\lvert U-S \rvert
+}w(G_{S},l).
+\]</span></p>
+<p>Hence, after using (2) to compute <span
+class="math inline">\(g(G_{U},l)\)</span> and changing the order of
+summation, (1) becomes <span class="math display">\[
+    w(\mathcal{T}G,l) = \sum_{S\subseteq V }^{} w(G_{S},l) \sum_{S
+\subseteq U \subseteq V  }^{} (-1)^{\lvert U-S \rvert }\tau(G,U).
+\]</span></p>
+<p>Recall that by the matrix-tree theorem, <span
+class="math inline">\(\tau(G,U) = \det(Q_{V\backslash U})\)</span>, thus
+<span class="math display">\[
+    w(\mathcal{T}G,l) = \sum_{S \subseteq V} w(G_{S},l)\sum_{S \subseteq
+U \subseteq V  }^{} (-1)^{\lvert U-S \rvert }\det (Q_{V\backslash U}) =
+\sum_{S \subseteq V} w(G_{S},l)\det(Q_{V\backslash S}-I).
+\]</span></p>
+<p>Now that we have the number of closed <span
+class="math inline">\(l\)</span>-walks in <span
+class="math inline">\(\mathcal{T}G\)</span>, we can compute the trace of
+<span class="math inline">\(\mathcal{M}^{l}\)</span> and <span
+class="math inline">\(M^{l}\)</span>. We need the following lemma to
+complete the proof.</p>
+<p><strong>lemma</strong> Suppose that for some nonzero complex numbers
+<span class="math inline">\(a_i\)</span>, <span
+class="math inline">\(b_j\)</span>, where <span
+class="math inline">\(1\leqslant i\leqslant r\)</span> and <span
+class="math inline">\(1\leqslant j\leqslant s\)</span> we have <span
+class="math display">\[
+    \sum_{i=1}^{r} a_i^{l} = \sum_{j=1}^{s} b_j^{l}
+\]</span></p>
+<p>for all positive integers <span class="math inline">\(l\)</span>.
+Then <span class="math inline">\(r=s\)</span> and the <span
+class="math inline">\(a_i\)</span> are a permutation of the <span
+class="math inline">\(b_j\)</span>.</p>
+<p>The proof can be found in Athanasiadis's paper.</p>
+<p>From theorem 3.2 and Lemma 3.3 we immediately get theorem 3.1.</p>
+<h2 id="example-of-complete-graph">Example of Complete Graph</h2>
+<p>The complete directed graph <span
+class="math inline">\(K_{n}\)</span> is the graph on the vertex set
+<span class="math inline">\(V=[n] = \{1,2,\cdots ,n\}\)</span> with
+exactly one directed edge from <span class="math inline">\(i\)</span> to
+<span class="math inline">\(j\)</span> for each <span
+class="math inline">\(i\neq j\)</span>.</p>
+<h3 id="eigenvalues-of-mathcaltk_n">Eigenvalues of <span
+class="math inline">\(\mathcal{T}K_{n}\)</span></h3>
+<p><strong>proposition</strong> With <span
+class="math inline">\(G=K_{n}\)</span>, <span
+class="math inline">\(n\geqslant 2\)</span>, <span
+class="math inline">\(\mathcal{M}\)</span> has eigenvalues <span
+class="math inline">\(-1, 1,\cdots ,n-1\)</span>. The multiplicity of
+<span class="math inline">\(i\)</span> is <span class="math display">\[
+    m_{\mathcal{M}}(i) =
+        \begin{cases}
+            i{n \choose i+1}(n-1)^{n-i-2}, \quad 1\leqslant i\leqslant
+n-1 \\
+            n^{n-1}-(n-1)^{n-1}, \quad i=-1.
+        \end{cases}
+\]</span></p>
+<p><strong>proof</strong> First we calculate the eigenvalues of <span
+class="math inline">\(K_{n}\)</span>. Note that <span
+class="math inline">\((1,\cdots ,1)^{\mathsf{T}}\)</span> is an
+eigenvector of <span class="math inline">\(M\)</span> with eigenvalue
+<span class="math inline">\(n-1\)</span>. Besides, <span
+class="math inline">\(J_n\)</span>, the <span
+class="math inline">\(n\times n\)</span> matrix with all entries equal
+to <span class="math inline">\(1\)</span>, has a kernel of dimension
+<span class="math inline">\(n-1\)</span>. Thus the eigenvalues of <span
+class="math inline">\(K_{n}\)</span> are <span
+class="math inline">\(n-1\)</span> with multiplicity <span
+class="math inline">\(1\)</span> and <span
+class="math inline">\(-1\)</span> with multiplicity <span
+class="math inline">\(n-1\)</span>. Hence, by theorem 3.1, the
+eigenvalues of <span class="math inline">\(\mathcal{M}\)</span> are
+<span class="math inline">\(-1, 1,\cdots ,n-1\)</span>. Moreover the
+eigenvalue <span class="math inline">\(m-1\)</span>, <span
+class="math inline">\(2\leqslant m\leqslant n\)</span> has multiplicity
+<span class="math display">\[
+    {n \choose m}\det (Q_{V\backslash [m]}-I) = {n \choose
+m}(m-1)(n-1)^{n-m-1}.
+\]</span></p>
+<p>which is easy to obtain by consider eigenvalues of <span
+class="math inline">\(Q_{V\backslash [m]}-I\)</span>.</p>
+<p><span class="math inline">\(-1\)</span> has multiplicity <span
+class="math display">\[
+    \begin{aligned}
+        &amp;\sum_{m=2}^{n} {n \choose m}(m-1)\det (Q_{V\backslash
+[m]}-I)  \\
+        &amp;= \sum_{m=1}^{n} (m-1)^{2} {n\choose m} (n-1)^{n-m-1} =
+n^{n-1}-(n-1)^{n-1}.
+    \end{aligned}
+\]</span></p>
+<p>The multiplicities we have so far add up to <span
+class="math inline">\(n^{n-1}\)</span>, so <span
+class="math inline">\(0\)</span> is not an eigenvalue of <span
+class="math inline">\(\mathcal{M}\)</span> and the proposition
+follows.</p>
+<h3 id="properties-of-mathcaltk_n">Properties of <span
+class="math inline">\(\mathcal{T}K_{n}\)</span></h3>
+<p>Properties of <span class="math inline">\(K_{n}\)</span> have always
+been interesting. We have a lot more to say about <span
+class="math inline">\(\mathcal{T}K_{n}\)</span>. First, since <span
+class="math inline">\(\mathcal{T}K_{n}\)</span> is a covering graph of
+<span class="math inline">\(K_{n}\)</span>, we have the following
+proposition.</p>
+<p><strong>proposition</strong> <span
+class="math inline">\(\mathcal{T}K_{n}\)</span> is a regular graph where
+each vertex has outdegree and indegree <span
+class="math inline">\(n-1\)</span>.</p>
+<p>However, we remind readers that while every vertex in <span
+class="math inline">\(\mathcal{T}K_{n}\)</span> has outdegree <span
+class="math inline">\(n-1\)</span> is obvious from the construction of
+edges in <span class="math inline">\(\mathcal{T}K_{n}\)</span>, the
+constant indegree of each vertex is not trivial at all. Given a spanning
+tree <span class="math inline">\(T_0\)</span> of <span
+class="math inline">\(K_{n}\)</span>, writing down all <span
+class="math inline">\(T_1,\cdots ,T_{n-1}\)</span> that <span
+class="math inline">\(T_i \rightarrow T_0\)</span> in <span
+class="math inline">\(\mathcal{T}K_{n}\)</span> is not that easy. The
+difficulty lies in irreversibility of the construction of edges in <span
+class="math inline">\(\mathcal{T}K_{n}\)</span>. Actually, we can get
+the following proposition.</p>
+<p><strong>proposition</strong> Let <span
+class="math inline">\(T_1\)</span> is a spanning tree of <span
+class="math inline">\(K_{n}\)</span> with root <span
+class="math inline">\(r_1\)</span>, <span
+class="math inline">\(T_2\)</span> is a spanning tree of <span
+class="math inline">\(K_{n}\)</span> with root <span
+class="math inline">\(r_2\)</span>. There is an edge <span
+class="math inline">\(T_1\rightarrow T_2\)</span> in <span
+class="math inline">\(\mathcal{T}K_n\)</span>. Then there is an edge
+<span class="math inline">\(T_2 \rightarrow T_1\)</span> in <span
+class="math inline">\(\mathcal{T}K_{n}\)</span> if and only if <span
+class="math inline">\(r_2 \rightarrow r_1\)</span> in <span
+class="math inline">\(T_1\)</span>. Also, by definition, we have <span
+class="math inline">\(r_1 \rightarrow r_2\)</span> in <span
+class="math inline">\(T_2\)</span>. In the remaining we will say that
+there is a bi-edge between <span class="math inline">\(T_1\)</span> and
+<span class="math inline">\(T_2\)</span>.</p>
+<p><strong>proof</strong> Suppose <span
+class="math inline">\(r_2\rightarrow r_1\)</span> in <span
+class="math inline">\(T_1\)</span>. Then in <span
+class="math inline">\(T_2\)</span>, we have <span
+class="math inline">\(r_1\rightarrow r_2\)</span>, and <span
+class="math inline">\(r_1\)</span> has no other outgoing edges. Thus, if
+we add <span class="math inline">\(r_2 \rightarrow r_1\)</span> in <span
+class="math inline">\(T_2\)</span> and delete <span
+class="math inline">\(r_1 \rightarrow r_2\)</span> in <span
+class="math inline">\(T_2\)</span>, we get exactly <span
+class="math inline">\(T_1\)</span>. Hence, <span
+class="math inline">\(T_2 \rightarrow T_1\)</span> in <span
+class="math inline">\(\mathcal{T}K_{n}\)</span>. Conversely, suppose
+<span class="math inline">\(T_2 \rightarrow T_1\)</span> in <span
+class="math inline">\(\mathcal{T}K_{n}\)</span>. By definition, <span
+class="math inline">\(r_2\rightarrow r_1\)</span> in <span
+class="math inline">\(T_1\)</span>.</p>
+<p>From the above proposition, we know that given <span
+class="math inline">\(T_0\)</span>, the number of <span
+class="math inline">\(T\)</span> such that <span
+class="math inline">\(T_0\)</span> and <span
+class="math inline">\(T\)</span> has a bi-edge equals the indegree of
+<span class="math inline">\(r_0\)</span> in <span
+class="math inline">\(T_0\)</span>, where <span
+class="math inline">\(r_0\)</span> is the root of <span
+class="math inline">\(T_0\)</span>.</p>
+<p>For any <span class="math inline">\(m\)</span>, we now consider
+number of rooted trees with <span class="math inline">\(m\)</span>
+bi-edges. There is a helpful simple decomposition of rooted trees: Let
+<span class="math inline">\(T\)</span> be a rooted tree. If we remove
+all edges incident with the root, we get the root together with a set of
+trees. Number of trees equals indegree of the root.</p>
+<p><strong>proposition</strong> With <span
+class="math inline">\(G=K_{n}\)</span>, number of trees with <span
+class="math inline">\(m\)</span> bi-edges is <span
+class="math display">\[
+    nm {n-1 \choose m}(n-1)^{n-2-m}
+\]</span></p>
+<p><strong>proof</strong> First, there are <span
+class="math inline">\(n\)</span> choices of root, denoted as <span
+class="math inline">\(r_0\)</span>. Second, by the above discussion,
+there are <span class="math inline">\({n-1\choose m}\)</span> choices of
+roots after the decomposition, denoted as <span
+class="math inline">\(r_1,\cdots ,r_m\)</span>. Finally, excluding <span
+class="math inline">\(r_0\)</span>, number of forests rooted in <span
+class="math inline">\(r_1,\cdots ,r_m\)</span> equals to <span
+class="math inline">\(\det (n-1)I_{n-1-m}-J_{n-1-m}\)</span>, which is
+<span class="math inline">\(m(n-1)^{n-2-m}\)</span>. By multiplicity
+principle, we get the proposition.</p>
+<p><strong>proposition</strong> With <span
+class="math inline">\(G=K_n\)</span>, if <span
+class="math inline">\(T_0\rightarrow T_1\)</span>, <span
+class="math inline">\(T_1\rightarrow T_2\)</span> in <span
+class="math inline">\(\mathcal{T}G\)</span>, then <span
+class="math inline">\(T_0\nrightarrow T_2\)</span>.</p>
+<p><strong>proof</strong> Denote roots of <span
+class="math inline">\(T_0,T_1,T_2\)</span> as <span
+class="math inline">\(r_0,r_1,r_2\)</span> and they are distinct. If
+<span class="math inline">\(T_0\rightarrow T_1\)</span> and <span
+class="math inline">\(T_1\rightarrow T_2\)</span>, then <span
+class="math inline">\(r_0\rightarrow r_1\rightarrow r_2\)</span>. Thus,
+if we add an edge from <span class="math inline">\(r_0\)</span> to <span
+class="math inline">\(r_2\)</span>, the spanning tree we get is
+different from <span class="math inline">\(T_2\)</span>.</p>
+<h3 id="three-conjectures">Three Conjectures</h3>
+<p>Properties of <span class="math inline">\(\mathcal{T}K_{n}\)</span>
+are much more than we have discussed. In particular, while eigenvalues
+of <span class="math inline">\(\mathcal{T}K_{n}\)</span> have been
+computed, the Jordan canonical form of <span
+class="math inline">\(\mathcal{T}K_{n}\)</span> has not been obtained.
+By calculating <span class="math inline">\(n=3,4,5,6\)</span> cases, we
+make three conjectures here.</p>
+<p><strong>conjecture 1</strong> For eigenvalues <span
+class="math inline">\(\lambda=1,2,\cdots ,n-1\)</span> of <span
+class="math inline">\(\mathcal{T}K_{n}\)</span>, the Jordan blocks are
+all of size <span class="math inline">\(1\)</span>.</p>
+<p><strong>conjecture 2</strong> For eigenvalue <span
+class="math inline">\(\lambda=-1\)</span>, the Jordan blocks are of size
+<span class="math inline">\(1,2,\cdots ,n-1\)</span>. Moreover, there
+are exactly <span class="math inline">\(n-1\)</span> Jordan blocks of
+size <span class="math inline">\(n-1\)</span>.</p>
+<p><strong>conjecture 3</strong> For eigenvalue <span
+class="math inline">\(\lambda=-1\)</span>, <span
+class="math inline">\(\operatorname{rank}((\mathcal{M}+I)^{n-1})=\operatorname{rank}((\mathcal{M}+I)^{n})=\operatorname{rank}((\mathcal{M}+I)^{n+1})=\cdots
+=(n-1)^{n-1}\)</span>.</p>
+<p><img src="/img/tree_graph_2.png" srcset="/img/loading.gif" lazyload /></p>
+<p>We hope to prove or falsify these three conjectures later.</p>
+<h3 id="classification-of-vertices-of-mathcaltk_n">Classification of
+Vertices of <span class="math inline">\(\mathcal{T}K_{n}\)</span></h3>
+<p>In Biane and Chapuy's paper, they obtain the number of spanning trees
+of <span class="math inline">\(\mathcal{T}K_{n}\)</span>, namely the
+number of vertices of graph <span
+class="math inline">\(\mathcal{T}^{2}K_{n}\)</span>: <span
+class="math display">\[
+    n^{n-2}\prod_{k=1}^{n-1} ((n-k)n^{k-1})^{(k-1)(n-1)^{n-k-1}{n\choose
+k}}
+\]</span></p>
+<p>If we want to calculate eigenvalues of <span
+class="math inline">\(\mathcal{T}^{2}K_n\)</span>, we need first
+classify vertices of <span
+class="math inline">\(\mathcal{T}K_{n}\)</span>. By relabeling this
+reduces to the problem of classifying unlabeled rooted trees with <span
+class="math inline">\(n\)</span> vertices. Namely, we only consider
+number of equivalence classes under graph isomorphism.</p>
+<p>There is no simple formula for counting unlabeled trees. Denote <span
+class="math inline">\(r(x)\)</span> be the generating function for
+number of unlabeled rooted trees, i.e., <span
+class="math inline">\(r(x)=\sum_{n=1}^{\infty} r_nx^{n}\)</span> where
+<span class="math inline">\(r_n\)</span> is the number of unlabeled
+rooted trees with <span class="math inline">\(n\)</span> vertices. Then
+we have the following theorem.</p>
+<p><strong>Theorem</strong> The generating function <span
+class="math inline">\(r(x)\)</span> for unlabeled rooted trees satisfies
+<span class="math display">\[
+        r(x) = x h[r(x)] = x \exp \left( \sum_{k=1}^{\infty}
+\frac{r(x^{k})}{k} \right) .       
+\]</span></p>
+<p>Please refer to Gessel's paper for definition for <span
+class="math inline">\(h(A(x))\)</span> and proof of this theorem. We
+find that <span class="math display">\[
+    \begin{aligned}
+        r(x) = x + x^{2} &amp;+ 2x^{3} + 4x^{4} + 9x^{5} + 20 x^{6} +
+48x^{7} + 115x^{8} + 286x^{9} \\
+        &amp;+ 719x^{10} + 1842 x^{11} + 4766x^{12} + 12486x^{13} +
+32973x^{14} \\
+        &amp;+ 87811x^{15} + 235381 x^{16} + 634847x^{17} +
+1721159x^{18} \\
+        &amp;+ 4688676 x^{19} + 1282622x^{20} + 35221832x^{21} + \cdots
+    \end{aligned}
+\]</span></p>
+<p>These numbers of sequence A000081 in the Online Encyclopedia of
+Integer Sequences (OEIS).</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/graph-theory/" class="category-chain-item">graph theory</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/math/" class="print-no-link">#math</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Eigenvalues of Tree Graph</div>
+      <div>http://example.com/2024/01/29/Eigenvalues-of-Tree-Graph/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>January 29, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/10/18/Network-Effects-in-Neurostimulation-2/" title="Network Effects in Neurostimulation (2)">
+                        <span class="hidden-mobile">Network Effects in Neurostimulation (2)</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>

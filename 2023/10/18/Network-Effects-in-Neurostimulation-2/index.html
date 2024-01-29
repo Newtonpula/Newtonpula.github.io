@@ -24,8 +24,8 @@
 <meta property="og:description" content="critical region we found in parameter searching of homogeneous model, possible link between mean gating variable and local field potential">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/large_scale_model/CCEP.png">
-<meta property="article:published_time" content="2023-10-18T08:22:13.000Z">
-<meta property="article:modified_time" content="2023-10-19T07:11:08.251Z">
+<meta property="article:published_time" content="2023-10-18T15:22:13.000Z">
+<meta property="article:modified_time" content="2023-10-31T04:21:08.582Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Neuroscience">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          651 words
+          2.1k words
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          6 mins
+          18 mins
         
       </span>
     
@@ -288,7 +288,95 @@ derived a modified model.</p>
 <h2
 id="correlation-is-significantly-higher-in-critical-region">Correlation
 is significantly higher in critical region</h2>
-<h3 id="analysis-of-critical-line">Analysis of critical line</h3>
+<h3 id="analysis-of-the-phase-transition-line">Analysis of the phase
+transition line</h3>
+<h3 id="calculate-the-phase-transition-line">Calculate the phase
+transition line</h3>
+<p><span class="math display">\[
+    \begin{aligned}
+        \frac{\mathrm{d}S_{i}(t)}{\mathrm{d}t} &amp;=
+-\frac{S_{i}}{\tau_{S}} + (1-S_{i})\gamma H(x_i) \\
+        H(x_i) &amp;= \frac{ax_{i}-b}{1-\exp (-d(ax_{i}-b))} \\
+        x_{i} &amp;= wJ_{N}S_{i} + GJ_{N}\sum_{j}^{} C_{ij}S_{j}
+    \end{aligned}
+\]</span> <!--
+For training, $H(x)$ is replaced by 
+$$
+    \tilde{H}(x) = \frac{1}{d}\ln(1+\exp d(ax-b))
+$$
+--></p>
+<ul>
+<li>First we consider <span class="math inline">\(G=0\)</span></li>
+</ul>
+<p><span class="math display">\[
+\tau_S \gamma (1-S_i)H(wJ_N S_i) = S_i
+\]</span></p>
+<p>At critical point, <span class="math display">\[
+\tau_S \gamma H(wJ_N S_i)+1 = \tau_S \gamma (1-S_i) wJ_N
+\frac{\mathrm{d}H}{\mathrm{d}x}(wJ_N S_i)
+\]</span></p>
+<p><span class="math display">\[
+    w = w_0 \approx 2.9185
+\]</span></p>
+<ul>
+<li>For <span class="math inline">\(G&gt;0\)</span>, denote <span
+class="math inline">\(\lambda\)</span> as the spectral radius of
+struc_conn_matrix.</li>
+</ul>
+<p>If there exists a high stable state, we have the following lemma:
+<strong>Lemma</strong> <span class="math inline">\(\exists k \in
+\{1,\cdots ,N\}\)</span>, such that <span class="math display">\[
+    \sum_{j=1}^{N} \mathbf{C}_{kj}S_{j} \leqslant \lambda S_{k}.
+\]</span></p>
+<p><strong>proof</strong> Since <span class="math inline">\(C\)</span>
+is symmetric, we have
+(https://en.wikipedia.org/wiki/Spectral_radius)</p>
+<p><span class="math display">\[
+    \left\| \mathbf{C}\mathbf{S} \right\|_{2}\leqslant \lambda \left\|
+\mathbf{S} \right\|_{2},
+\]</span></p>
+<p>i.e., <span class="math display">\[
+    \sqrt{\sum_{k=1}^{N} \left( \sum_{j=1}^{N} C_{kj}S_j \right)
+^{2}}\leqslant \lambda \sqrt{\sum_{k=1}^{N} S_k^{2}}
+\]</span></p>
+<p>Thus, <span class="math inline">\(\exists k \in \{1,\cdots
+,N\}\)</span>, such that <span class="math display">\[
+    \sum_{j=1}^{N} C_{kj}S_j \leqslant \lambda S_{k}    
+\]</span></p>
+<p>The existence of the high stable state is equivalent to <span
+class="math display">\[
+    S_i = \tau_S \gamma (1-S_i)H(J_N (w S_i + G\sum_{j=1}^{N}
+C_{ij}S_j))
+\]</span></p>
+<p>Since <span class="math inline">\(H\)</span> is increasing, by the
+lemma we know that <span class="math inline">\(\exists k \in \{1,\cdots
+,N\}\)</span>, <span class="math display">\[
+    S_k = \tau_S \gamma (1-S_k)H(J_N (w S_k + G\sum_{j=1}^{N}
+C_{kj}S_j)) \leqslant  \tau_S \gamma (1-S_k)H(J_N (w + \lambda G)S_k)
+\]</span></p>
+<p>This can only happen when <span class="math inline">\(w + \lambda G
+\geqslant w_0\)</span>.</p>
+<!--
+An intuitive approach is let $\mathbf{S}$ be the eigenvector corresponding to $\lambda$, then we have
+
+$$
+    x_i = J_{N}(wS_i + G \sum_{j}^{} C_{ij}S_{j}) = J_{N}(w S_{i} + \lambda G S_{i}) = J_{N}(w + \lambda G)S_{i}
+$$
+
+the dynamics of $S_{i}$ seems untangled:
+$$
+    \frac{\mathrm{d}S_{i}}{\mathrm{d}t} = -\frac{S_{i}}{\tau_{S}} + (1-S_{i}) \gamma H(J_{N}(w + \lambda G)S_{i})
+$$
+
+From the situation of $G=0$, the phase transition point should be 
+$$
+    w + \lambda G  = w_{0}
+$$
+
+However, the approach suffers from the problem of existence of a high stable state. The problem is comprised of two parts:
+- Whether there exists a high stable state.
+- If there exists, why can the initial state of $\mathbf{S}$ (S_init = 0.999) converge to the high stable state.
+-->
 <h2
 id="information-in-n2-component-implies-effective-connectivity">Information
 in N2 component implies effective connectivity</h2>
@@ -401,6 +489,12 @@ parameters. Brain Stimulation. 15, 491-508</p>
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2024/01/29/Eigenvalues-of-Tree-Graph/" title="Eigenvalues of Tree Graph">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Eigenvalues of Tree Graph</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
