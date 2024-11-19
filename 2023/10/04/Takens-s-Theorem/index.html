@@ -16,16 +16,16 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="A brief introduction to Takens&#39;s theorem. Proof and applications are included.">
+    <meta name="description" content="A brief introduction to Takens&#39;s theorem. Applications are included.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Takens&#39;s Theorem">
 <meta property="og:url" content="http://example.com/2023/10/04/Takens-s-Theorem/index.html">
 <meta property="og:site_name" content="Newtonpula&#39;s Land">
-<meta property="og:description" content="A brief introduction to Takens&#39;s theorem. Proof and applications are included.">
+<meta property="og:description" content="A brief introduction to Takens&#39;s theorem. Applications are included.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/index/takens.jpg">
-<meta property="article:published_time" content="2023-10-04T17:49:19.000Z">
-<meta property="article:modified_time" content="2023-10-06T13:34:00.288Z">
+<meta property="article:published_time" content="2023-10-04T10:49:19.000Z">
+<meta property="article:modified_time" content="2024-11-19T14:08:59.902Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="math">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k words
+          9k words
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          28 mins
+          75 mins
         
       </span>
     
@@ -278,20 +278,43 @@
                 <h1 id="takenss-theorem">Takens's Theorem</h1>
 <p>Takens's theorem shows connection between space and time, which is an
 important result in dynamical system. It also relates to ergodic theory
-and have applications in many fields. Here we introduce the proof of
-Takens's
-theorem<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
+and have applications in many fields. The proof is much obscure since
+it's mainly based on ideas from differential topology. The original
+proof is by, of course,
+Takens<sup id="fnref:8" class="footnote-ref"><a href="#fn:8" rel="footnote"><span
 class="hint--top hint--rounded"
-aria-label="J.P.Huke. Embedding Nonlinear Dynamical Systems: A Guide to Takens&#39; Theorem. 2006.">[2]</span></a></sup><sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+aria-label="F. Takens, “Detecting strange attractors in turbulence,” in Dynamical Systems and Turbulence, Warwick 1980, vol. 898, D. Rand and L.-S. Young, Eds., in Lecture Notes in Mathematics, vol. 898. , Berlin, Heidelberg: Springer Berlin Heidelberg, 1981, pp. 366–381. doi: 10.1007/BFb0091924.">[8]</span></a></sup>.
+Sauer, Yorke and
+Casdgali<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span
 class="hint--top hint--rounded"
-aria-label="Jordi Penalva Vadell. Takens&#39; Theorem: Proof and Applications. Advanced Physics and Applied Mathematics, 2018.">[4]</span></a></sup>
-and some
-applications<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+aria-label="T. Sauer, J. A. Yorke, and M. Casdagli, “Embedology,” J Stat Phys, vol. 65, no. 3–4, pp. 579–616, Nov. 1991, doi: 10.1007/BF01053745.">[6]</span></a></sup>
+generalized Takens's work. One big point is that manifolds are
+generalized to subset of <span
+class="math inline">\(\mathbb{R}^{k}\)</span> with certain box-counting
+dimension. Here we do not give the proof of Takens's theorem. Both
+original and explanatory materials
+exist<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span
 class="hint--top hint--rounded"
-aria-label="Jia-Wen Hou, Huan-Fei Ma, et al. Harvesting random embedding for high-frequency change-point detection in temporal complex systems. National Science Review, 2022.">[1]</span></a></sup><sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+aria-label="J. P. Huke, “Embedding Nonlinear Dynamical Systems: A Guide to Takens’ Theorem.” Mar. 2006. [Online]. Available: https://api.semanticscholar.org/CorpusID:55183186">[2]</span></a></sup>
+<sup id="fnref:5" class="footnote-ref"><a href="#fn:5" rel="footnote"><span
 class="hint--top hint--rounded"
-aria-label="Huanfei Ma, Siyang Leng, et al. Randomly distributed embedding making short-term high-dimensional data predictable. PNAS, 2018.">[3]</span></a></sup>.</p>
-<h2 id="box-counting-dimension">box counting dimension</h2>
+aria-label="J. Penalva Vadell, “Takens’s theorem proof and applications.pdf.” 2018.">[5]</span></a></sup>
+<sup id="fnref:6" class="footnote-ref"><a href="#fn:6" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="T. Sauer, J. A. Yorke, and M. Casdagli, “Embedology,” J Stat Phys, vol. 65, no. 3–4, pp. 579–616, Nov. 1991, doi: 10.1007/BF01053745.">[6]</span></a></sup>
+<sup id="fnref:8" class="footnote-ref"><a href="#fn:8" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="F. Takens, “Detecting strange attractors in turbulence,” in Dynamical Systems and Turbulence, Warwick 1980, vol. 898, D. Rand and L.-S. Young, Eds., in Lecture Notes in Mathematics, vol. 898. , Berlin, Heidelberg: Springer Berlin Heidelberg, 1981, pp. 366–381. doi: 10.1007/BFb0091924.">[8]</span></a></sup>.
+We focus on applications of Takens's theorem, including reconstruction
+of attractor from time series
+data<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="H. Ma, S. Leng, K. Aihara, W. Lin, and L. Chen, “Randomly distributed embedding making short-term high-dimensional data predictable,” Proc. Natl. Acad. Sci. U.S.A., vol. 115, no. 43, Oct. 2018, doi: 10.1073/pnas.1802987115.">[4]</span></a></sup>
+and change-point
+detection<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="J.-W. Hou, H.-F. Ma, D. He, J. Sun, Q. Nie, and W. Lin, “Harvesting random embedding for high-frequency change-point detection in temporal complex systems,” National Science Review, vol. 9, no. 4, p. nwab228, May 2022, doi: 10.1093/nsr/nwab228.">[1]</span></a></sup>.</p>
+<h2 id="box-counting-dimension">box-counting dimension</h2>
 <p>The Minkowski-Bouigand dimension, also known as Minkowski dimension
 or box-counting dimension.</p>
 <p>Denote <span class="math inline">\(N(\varepsilon)\)</span> is the
@@ -346,11 +369,10 @@ functions from <span class="math inline">\(M\)</span> to itself which
 are also diffeomorphisms (have <span
 class="math inline">\(C^{r}\)</span> inverse) is called <span
 class="math inline">\(Diff^{r}(M)\)</span>.</p>
-<h2 id="proof-of-takens-embedding-theorem">proof of Takens' embedding
-theorem</h2>
-<p><strong>Theorem 1 (Takens)</strong> Let <span
-class="math inline">\(M\)</span> be a compact manifold of dimension
-<span class="math inline">\(m\)</span>. For pairs <span
+<h2 id="takens-embedding-theorem">Takens' embedding theorem</h2>
+<p><strong>Theorem 1</strong> Let <span class="math inline">\(M\)</span>
+be a compact manifold of dimension <span
+class="math inline">\(m\)</span>. For pairs <span
 class="math inline">\((\phi, y)\)</span>, with <span
 class="math inline">\(\phi \in Diff^{2}(M)\)</span>, <span
 class="math inline">\(y \in C^{2}(M, \mathbb{R})\)</span>, it is a
@@ -384,35 +406,224 @@ class="math inline">\(x\)</span> are all distinct.</p>
 class="math inline">\(\Phi_{(\phi,y)}\colon M \rightarrow
 \mathbb{R}^{2m+1}\)</span>, defined as in Theorem 1, is an
 embedding.</p>
+<p><strong>Remark</strong> When theorem 1 gives stronger results,
+theorem 2 gives a sufficient condition for the diffeomorphism <span
+class="math inline">\(\phi\)</span>, this may be informative in
+applications. Though the expression and proof of Takens's theorem is all
+about existence, we usually have alternatives for <span
+class="math inline">\(\phi\)</span> and <span
+class="math inline">\(y\)</span> in many set ups: if <span
+class="math inline">\(M\)</span> is the strange attractor of a dynamical
+system, then <span class="math inline">\(\phi\)</span> is usually the
+flow with a certain time delay, and <span
+class="math inline">\(y\)</span> is the observable or measurement.
+<strong>However</strong>, we do not know if such <span
+class="math inline">\(\phi\)</span> and <span
+class="math inline">\(y\)</span> are appropriate.</p>
+<h2 id="applications-of-takenss-theorem">Applications of Takens's
+theorem</h2>
+<p>I saw two papers
+<sup id="fnref:4" class="footnote-ref"><a href="#fn:4" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="H. Ma, S. Leng, K. Aihara, W. Lin, and L. Chen, “Randomly distributed embedding making short-term high-dimensional data predictable,” Proc. Natl. Acad. Sci. U.S.A., vol. 115, no. 43, Oct. 2018, doi: 10.1073/pnas.1802987115.">[4]</span></a></sup>
+<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="J.-W. Hou, H.-F. Ma, D. He, J. Sun, Q. Nie, and W. Lin, “Harvesting random embedding for high-frequency change-point detection in temporal complex systems,” National Science Review, vol. 9, no. 4, p. nwab228, May 2022, doi: 10.1093/nsr/nwab228.">[1]</span></a></sup>
+before I determined to write this post. A framework, randomly
+distributed embedding (RDE) was proposed to reconstruct state space and
+predict future states. Later, the same group developed another
+framework, temporal change-point detection (TCD), to detect
+change-points, where RDE served as the very first step. They are not
+direct application of Takens's theorem, but they are based on the idea
+of embedding theorem.</p>
+<h3 id="reconstruction-of-state-space-and-prediction">Reconstruction of
+state space and prediction</h3>
+<p>The first idea roots in the theory of generalized embedding, where
+one can reconstruct the original system by both delayed embedding and
+non-delayed embedding.</p>
+<p>Suppose we have a time series <span
+class="math inline">\(\{\bm{x}(t)\}\in \mathbb{R}^{n\times
+\mathbb{R}}\)</span>. <span class="math inline">\(x_s(t)\)</span> is one
+of the interested observables of <span
+class="math inline">\(\bm{x}\)</span>. Then - A delayed embedding: <span
+class="math inline">\(\mathcal{N}=\{x_s(t),x_s(t+\tau),\cdots
+,x_s(t+(E-1)\tau)\}\)</span>. - A non-delayed embedding: <span
+class="math inline">\(\mathcal{M}=\{x_{k_1}(t),x_{k_2}(t),\cdots
+,x_{k_E}(t)\}\)</span>.</p>
+<p>Here, theoretically, the embedding dimension <span
+class="math inline">\(E&gt;2d\)</span> is required and <span
+class="math inline">\(d\)</span> is the box-counting dimension of the
+system dynamics. The determination of <span
+class="math inline">\(E\)</span> in practice, however, is not easy.</p>
+<p>In priciple, there exists a diffeomorphism <span
+class="math inline">\(\bm{\Psi}\colon \mathcal{M}\rightarrow
+\mathcal{N}\)</span>. Specifically, <span class="math display">\[
+    x_s(t+\tau)=\psi(x_{k_1}(t),x_{k_2}(t),\cdots ,x_{k_E}(t))
+\]</span></p>
+<p>How to reconstruct the state space and do one-step prediction? The
+process consists of several steps:</p>
+<ol type="1">
+<li>Randomly select a tuple <span
+class="math inline">\(\bm{k}=(k_1,\cdots ,k_{E})\)</span></li>
+<li>fit a predictor <span class="math inline">\(\psi{\bm{k}}\)</span> by
+minimizing <span class="math inline">\(\left\|
+x_s(t+\tau)-\psi(x_{k_1}(t),x_{k_2}(t),\cdots ,x_{k_E}(t)) \right\|_{},
+t=t_1,\cdots,t_q\)</span>. The authors used Gaussian Process Regression
+(GPR) to fit the predictor.</li>
+<li>Make a one-step prediction as <span
+class="math inline">\(\hat{x}_s^{\bm{k}}(T+\tau)=\psi_{\bm{k}}(x_{k_1}(T),x_{k_2}(T),\cdots
+,x_{k_E}(T))\)</span>.</li>
+<li>Repeat steps 1-3 by randomly picking up another <span
+class="math inline">\(r\)</span> tuples. Now we have <span
+class="math inline">\(r\)</span> predictions <span
+class="math inline">\(\{\hat{x}_s^{\bm{k}}(T+\tau)\}\)</span>.</li>
+<li>Statistical analysis of <span
+class="math inline">\(\{\hat{x}_s^{\bm{k}}(T+\tau)\}\)</span>. Exclude
+the outliers by calculating the quartiles of the predictions.</li>
+<li>Using kernel density estimation to estimate the probability density
+function of the predictions, <span
+class="math inline">\(p(\hat{x}_s(T+\tau))\)</span>.</li>
+<li>Set the final predictions by calculating the expectation of the
+above density function <span
+class="math inline">\(\mathbb{E}_{p}(\hat{x}_s(T+\tau))\)</span>.</li>
+</ol>
+<h4
+id="using-false-nearest-neighbor-criterion-to-determine-embedding-dimension">Using
+false nearest neighbor criterion to determine embedding dimension</h4>
+<p>The purpose to choose a large enough <span
+class="math inline">\(E\)</span> is to eliminate all self-crossings of
+the attractor. <span class="math inline">\(E&gt;2d\)</span> is obviously
+sufficient, but often we don't know the exact value of <span
+class="math inline">\(d\)</span> and <span
+class="math inline">\(E\leqslant 2d\)</span> is enough. The false
+nearest neighbor criterion (FNN) was proposed by Kennel, Brown and
+Abarbanel<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="M. B. Kennel, R. Brown, and H. D. I. Abarbanel, “Determining embedding dimension for phase-space reconstruction using a geometrical construction,” Phys. Rev. A, vol. 45, no. 6, pp. 3403–3411, Mar. 1992, doi: 10.1103/PhysRevA.45.3403.">[3]</span></a></sup>
+to determine <span class="math inline">\(E\)</span> in a model-free
+way.</p>
+<p>Denote <span
+class="math inline">\(\bm{x}_s(t,E)=(x_s(t),x_s(t+\tau),\cdots
+,x_s(t+(E-1)\tau))\)</span>. For a fix <span
+class="math inline">\(t\)</span>, let <span
+class="math inline">\(\bm{x}_s(t^{(r)},E)\)</span> be the <span
+class="math inline">\(r\)</span>th nearest neighbor of <span
+class="math inline">\(\bm{x}_s(t,E)\)</span>. The square of the
+Euclidian distance between <span
+class="math inline">\(\bm{x}_s(t,E)\)</span> and <span
+class="math inline">\(\bm{x}_s(t^{(r)},E)\)</span> is</p>
+<p><span class="math display">\[
+    R_{E}^{2}(t,r)=\sum_{k=0}^{E-1}
+[x_s(t+k\tau)-x_s(t^{(r)}+k\tau)]^{2}
+\]</span></p>
+<p>The idea is if <span
+class="math inline">\(\bm{x}_s(t^{(r)},E)\)</span> is a false nearest
+neighbor, meaning it's a self-crossing due to projection, then <span
+class="math inline">\(R_{E+1}^{2}(t,r)-R_{E}^{2}(t,r)\)</span> is large
+when <span class="math inline">\(E\)</span> passed the critical value.
+It is defined as a false nearest neighbor if <span
+class="math display">\[
+    \left( \frac{R_{E+1}^{2}(t,r)-R_{E}^{2}(t,r)}{R_{E}^{2}(t,r)}
+\right)^{\frac{1}{2}}=\frac{\lvert x_s(t+E\tau)-x_s(t^{(r)}+E\tau)
+\rvert }{R_{E}(t,r)} &gt; R_{tol}
+\]</span></p>
+<p>Another situation is the limited data set size. The authors used
+another criterion to avoid false nearest neighbors that are not close in
+the original attractor. <span class="math display">\[
+    \frac{R_{E+1}(t)}{R_{A}}&gt;A_{tol}
+\]</span></p>
+<p><span class="math inline">\(R_{A}\)</span> is a measure of the size
+of the attractor <span class="math display">\[
+    R_{A}^{2}=\frac{1}{N}\sum_{n=1}^{N} [x_s(t_n)-\bar{x}_s]^{2} \\
+    \bar{x}_s=\frac{1}{N}\sum_{n=1}^{N} x_s(t_n)
+\]</span></p>
+<p>where <span class="math inline">\(t_n\)</span> are all time points of
+the time series. <span class="math inline">\(E\)</span> is chosen so
+that there is no false nearest neighbor.</p>
+<h4
+id="using-kernel-density-estimation-to-estimate-the-probability-density-function">Using
+kernel density estimation to estimate the probability density
+function</h4>
+<p>The underlying probability density function is estimated as <span
+class="math display">\[
+    \hat{f}(x)=\sum_{i}^{} \alpha_i K(x-x_i)
+\]</span></p>
+<p>where <span class="math inline">\(K\)</span> is a kernel, typically a
+Gaussian, centered at the data points, <span class="math inline">\(x_i,
+i=1,\cdots ,n\)</span>, and <span
+class="math inline">\(\alpha_i\)</span> are weighting coefficients,
+typically uniform <span
+class="math inline">\(\alpha=\frac{1}{n}\)</span>. A good discussion of
+kernel estimation techniques can be
+found<sup id="fnref:7" class="footnote-ref"><a href="#fn:7" rel="footnote"><span
+class="hint--top hint--rounded"
+aria-label="D. W. Scott, Multivariate Density Estimation: Theory, Practice, and Visualization, 1st ed. in Wiley Series in Probability and Statistics. Wiley, 1992. doi: 10.1002/9780470316849.">[7]</span></a></sup>.</p>
+<h3 id="change-point-detection">Change-point detection</h3>
+<p>TBC.</p>
 <h2 id="reference">Reference</h2>
 <section class="footnotes">
 <div class="footnote-list">
 <ol>
 <li>
-<span id="fn:1" class="footnote-text"><span>Jia-Wen Hou, Huan-Fei Ma, et
-al. Harvesting random embedding for high-frequency change-point
-detection in temporal complex systems. National Science Review, 2022.
+<span id="fn:1" class="footnote-text"><span>J.-W. Hou, H.-F. Ma, D. He,
+J. Sun, Q. Nie, and W. Lin, “Harvesting random embedding for
+high-frequency change-point detection in temporal complex systems,”
+National Science Review, vol. 9, no. 4, p. nwab228, May 2022, doi:
+10.1093/nsr/nwab228.
 <a href="#fnref:1" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 <li>
-<span id="fn:2" class="footnote-text"><span>J.P.Huke. Embedding
-Nonlinear Dynamical Systems: A Guide to Takens' Theorem. 2006.
+<span id="fn:2" class="footnote-text"><span>J. P. Huke, “Embedding
+Nonlinear Dynamical Systems: A Guide to Takens’ Theorem.” Mar. 2006.
+[Online]. Available: https://api.semanticscholar.org/CorpusID:55183186
 <a href="#fnref:2" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 <li>
-<span id="fn:3" class="footnote-text"><span>Huanfei Ma, Siyang Leng, et
-al. Randomly distributed embedding making short-term high-dimensional
-data predictable. PNAS, 2018.
+<span id="fn:3" class="footnote-text"><span>M. B. Kennel, R. Brown, and
+H. D. I. Abarbanel, “Determining embedding dimension for phase-space
+reconstruction using a geometrical construction,” Phys. Rev. A, vol. 45,
+no. 6, pp. 3403–3411, Mar. 1992, doi: 10.1103/PhysRevA.45.3403.
 <a href="#fnref:3" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 <li>
-<span id="fn:4" class="footnote-text"><span>Jordi Penalva Vadell.
-Takens' Theorem: Proof and Applications. Advanced Physics and Applied
-Mathematics, 2018.
+<span id="fn:4" class="footnote-text"><span>H. Ma, S. Leng, K. Aihara,
+W. Lin, and L. Chen, “Randomly distributed embedding making short-term
+high-dimensional data predictable,” Proc. Natl. Acad. Sci. U.S.A., vol.
+115, no. 43, Oct. 2018, doi: 10.1073/pnas.1802987115.
 <a href="#fnref:4" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:5" class="footnote-text"><span>J. Penalva Vadell, “Takens’s
+theorem proof and applications.pdf.” 2018.
+<a href="#fnref:5" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:6" class="footnote-text"><span>T. Sauer, J. A. Yorke, and
+M. Casdagli, “Embedology,” J Stat Phys, vol. 65, no. 3–4, pp. 579–616,
+Nov. 1991, doi: 10.1007/BF01053745.
+<a href="#fnref:6" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:7" class="footnote-text"><span>D. W. Scott, Multivariate
+Density Estimation: Theory, Practice, and Visualization, 1st ed. in
+Wiley Series in Probability and Statistics. Wiley, 1992. doi:
+10.1002/9780470316849.
+<a href="#fnref:7" rev="footnote" class="footnote-backref">
+↩︎</a></span></span>
+</li>
+<li>
+<span id="fn:8" class="footnote-text"><span>F. Takens, “Detecting
+strange attractors in turbulence,” in Dynamical Systems and Turbulence,
+Warwick 1980, vol. 898, D. Rand and L.-S. Young, Eds., in Lecture Notes
+in Mathematics, vol. 898. , Berlin, Heidelberg: Springer Berlin
+Heidelberg, 1981, pp. 366–381. doi: 10.1007/BFb0091924.
+<a href="#fnref:8" rev="footnote" class="footnote-backref">
 ↩︎</a></span></span>
 </li>
 </ol>
