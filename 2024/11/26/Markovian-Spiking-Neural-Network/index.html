@@ -1,0 +1,931 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/title.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Notes on the Markovian Spiking Neural Network for discussion for my undergraduate thesis.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markovian Spiking Neural Network">
+<meta property="og:url" content="http://example.com/2024/11/26/Markovian-Spiking-Neural-Network/index.html">
+<meta property="og:site_name" content="Newtonpula&#39;s Land">
+<meta property="og:description" content="Notes on the Markovian Spiking Neural Network for discussion for my undergraduate thesis.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/img/index/neu.jpg">
+<meta property="article:published_time" content="2024-11-26T02:40:46.000Z">
+<meta property="article:modified_time" content="2024-11-26T02:46:16.518Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Neuroscience">
+<meta property="article:tag" content="Stochastic Process">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/index/neu.jpg">
+  
+  
+  
+  <title>Markovian Spiking Neural Network - Newtonpula&#39;s Land</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.5-a","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Newtonpula&#39;s Land</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>Home</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>Archives</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>Categories</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>Tags</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>About</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/bg/head.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Markovian Spiking Neural Network"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-11-26 10:40" pubdate>
+          November 26, 2024 am
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.7k words
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          48 mins
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">Markovian Spiking Neural Network</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="markovian-spiking-neural-network">Markovian Spiking Neural
+Network</h1>
+<h2 id="surrogate-for-linear-integrate-and-fire-lif-model">Surrogate for
+linear integrate-and-fire (LIF) model</h2>
+<p>See original code.</p>
+<h2 id="surrogate-for-fitzhugh-nagumo-fhn-model">Surrogate for
+FitzHugh-Nagumo (FHN) model</h2>
+<p>We refer to the system <span class="math display">\[
+    \begin{cases}
+        \frac{\mathrm{d}V}{\mathrm{d}t}
+&amp;=  -\frac{1}{\tau}\left((V-V_R)(V-V_{th})(V-V_M)+w \right) +
+I_{ext}(t) \\
+        \frac{\mathrm{d}w}{\mathrm{d}t} &amp;= b(V-c)-\gamma w
+    \end{cases} \tag{1}
+\]</span></p>
+<p>while we'll see the parameters in the evolution of <span
+class="math inline">\(w\)</span> does not matter in the Markovian
+surrogate. We set <span class="math inline">\(V_R=-70\)</span>mV the
+resting potential, <span class="math inline">\(V_{th}=-50\)</span>mV the
+firing threshold, <span class="math inline">\(V_M=40\)</span>mV the
+magnitude of the peak of the spike.</p>
+<p>The discretization of the state space is as follows: <span
+class="math inline">\(V\)</span> space is discretized into <span
+class="math inline">\(V_M-V_I-1\)</span> states (<strong>I found it
+difficult to deal with the boundary, or the stable fixed
+point</strong>), <span class="math inline">\([V_I+1,V_M-1]\)</span>.
+Here, <span class="math inline">\(V_I\)</span> is the magnitude of
+hyperpolarization after a spike. It's not arbitrary and must be negative
+enough (<strong>so it's not ideal, and I think it's inherited from the
+deficit of the original FitzHugh-Nagumo model</strong>). <span
+class="math inline">\(w\)</span> space is discretized into <span
+class="math inline">\(2\)</span> states, <span
+class="math inline">\(0\)</span> and <span
+class="math inline">\(w_M\)</span>. <span
+class="math inline">\(w_M\)</span> is determined by <span
+class="math inline">\(V_I\)</span>, given by <span
+class="math display">\[
+    w_{M} = -(V_{I}-V_{R})(V_{I}-V_{th})(V_{I}-V_{M})&gt;0
+\]</span></p>
+<p>So we have <span
+class="math inline">\(V_{I}&lt;V_{R}&lt;V_{th}&lt;V_{M}\)</span>. Now we
+explain how the membrane potential evolves.</p>
+<ul>
+<li>Each neuron receives independent Poisson kicks from an external
+source with rate <span class="math inline">\(\lambda^{E}\)</span> or
+<span class="math inline">\(\lambda^{I}\)</span>.</li>
+<li>Each neuron receives synaptic input from within the population.
+Similar to the original Markovian model, denote <span
+class="math inline">\(H^{E}\)</span> and <span
+class="math inline">\(H^{I}\)</span> as numbers of kicks 'in play'.</li>
+<li>The membrane potential evolves as follows:
+<ul>
+<li>If <span class="math inline">\(V_{I}&lt; V &lt; V_{th}\)</span>,
+then <span class="math inline">\(w=0\)</span> and <span
+class="math inline">\(V\)</span> evolves under the cubic term, external
+Poisson kicks and synaptic input from other neurons.</li>
+<li>If <span class="math inline">\(V_{th}\leq V &lt; V_{M}\)</span>,
+then <span class="math inline">\(V\)</span> evolves solely under the
+cubic term.</li>
+<li>If <span class="math inline">\(V=V_{M}\)</span>, then <span
+class="math inline">\(w\)</span> is set to <span
+class="math inline">\(w_{M}\)</span> with a rate <span
+class="math inline">\(\frac{1}{\tau_{w}}\)</span>, we think the neuron
+fires.</li>
+<li>If <span class="math inline">\(V_{I}&lt;V\leqslant V_{M}\)</span>
+and <span class="math inline">\(w=w_{M}\)</span>, then the neuron is in
+the phase of re-polarization and hyperpolarization. <span
+class="math inline">\(V\)</span> evolves solely under the cubic term. We
+think the neuron is in a refractory period.</li>
+<li>If <span class="math inline">\(V=V_{I}\)</span>, then <span
+class="math inline">\(w\)</span> is set to <span
+class="math inline">\(0\)</span> with the rate <span
+class="math inline">\(\frac{1}{\tau_{w}}\)</span>.</li>
+</ul></li>
+</ul>
+<p>The evolution of <span class="math inline">\(V\)</span> is
+questionable and needs to be discussed.</p>
+<h3 id="issue-questions-about-the-original-code">Issue: questions about
+the original code</h3>
+<ul>
+<li>Is the code really match the paper? Modelling the independent
+exponential clock of a synaptic input in play as a term in the rate
+matrix?</li>
+</ul>
+<h3 id="issue-linear-non-superimposability">Issue: linear
+non-superimposability</h3>
+<p>The construction of the transition matrix involves calculation of the
+rate of a leaky/cubic term. Separating the leaky term is straightforward
+in leaky integrate-and-fire model, but it's more complicated if the
+leaky term is not linear.</p>
+<p>In leaky integrate-and-fire model, the leaky term is <span
+class="math display">\[
+    \frac{\mathrm{d}V}{\mathrm{d}t} = -\frac{1}{\tau}V
+\]</span></p>
+<p>Notice that we deliberately set the resting potential to <span
+class="math inline">\(0\)</span>. In the case <span
+class="math inline">\(V&gt;0\)</span>,</p>
+<p><span class="math display">\[
+    V(t)=V(0)\exp \left( -\frac{t}{\tau} \right)
+\]</span></p>
+<p>Set <span class="math inline">\(V(t)=V-1, V(0)=V\)</span>, then <span
+class="math display">\[
+    t = \tau \ln \left( 1+\frac{1}{V-1} \right)
+\]</span></p>
+<p>So the rate is given by <span class="math display">\[
+    \frac{1}{t} = \frac{1}{\tau\ln \left( 1+\frac{1}{V-1} \right) }
+\tag{2}
+\]</span></p>
+<p>Similarly, in the case <span class="math inline">\(V&lt;0\)</span>,
+the rate of <span class="math inline">\(V\)</span> to <span
+class="math inline">\(V+1\)</span> is given by <span
+class="math display">\[
+    \frac{1}{t} = \frac{1}{\tau \ln \left( 1-\frac{1}{V+1} \right) }
+\tag{3}
+\]</span></p>
+<p>However, such rate is not linearly additive. Since the 'leaky' term
+in <span class="math inline">\((1)\)</span> is a cubic term, how to
+calculate the rate it represents is a question.</p>
+<p>To illustrate the linear non-superimposability, consider a quadratic
+'leaky' term <span class="math display">\[
+    \frac{\mathrm{d}V}{\mathrm{d}t} = - V(V+1)
+\]</span></p>
+<p>and <span class="math inline">\(V&gt;0\)</span>. Consider <span
+class="math inline">\(V(V+1)\)</span> as a whole, the rate of <span
+class="math inline">\(V\)</span> to <span
+class="math inline">\(V-1\)</span> is given by <span
+class="math display">\[
+    \frac{1}{2\ln V-\ln (V-1)-\ln (V+1)} \tag{4}
+\]</span></p>
+<p>Separate <span class="math inline">\(V(V+1)\)</span> into <span
+class="math inline">\(V^{2}\)</span> and <span
+class="math inline">\(V\)</span>, the rate of <span
+class="math inline">\(V\)</span> to <span
+class="math inline">\(V-1\)</span> is given by <span
+class="math display">\[
+    \frac{1}{\ln V -\ln (V-1)} + V(V-1) \tag{5}
+\]</span></p>
+<p>Obviously, <span class="math inline">\((4)\)</span> and <span
+class="math inline">\((5)\)</span> are not equal though they are both
+quite close to <span class="math inline">\(V(V+1)\)</span></p>
+<p>Several options to calculate the rate of the cubic term in <span
+class="math inline">\((1)\)</span> are: - Consider <span
+class="math inline">\((V-V_R)(V-V_{th})(V-V_M)\)</span> as a whole,
+separate it with <span class="math inline">\(w\)</span>. - Separate
+<span class="math inline">\(O(V^{3})\)</span>, <span
+class="math inline">\(O(V^{2})\)</span>, <span
+class="math inline">\(O(V)\)</span>, <span
+class="math inline">\(O(1)\)</span> and <span
+class="math inline">\(w\)</span> terms. - Directly use the absolute
+value of RHS of <span class="math inline">\((1)\)</span> as the
+rate.</p>
+<h3 id="issue-boundary-stable-fixed-points">Issue: boundary &amp; stable
+fixed points</h3>
+<p>We must be really careful of the boundary and fixed points, i.e.,
+<span class="math inline">\(V=V_{I}, V=V_{R}, V=V_{th}, V=V_{M}\)</span>
+though <span class="math inline">\(V=V_{I}\)</span> and <span
+class="math inline">\(V=V_{M}\)</span> are impossible due to our choices
+of state space.</p>
+<p>In <span class="math inline">\((2)\)</span>, <span
+class="math inline">\(V\)</span> cannot be <span
+class="math inline">\(0,1\)</span>. In <span
+class="math inline">\((3)\)</span>, <span
+class="math inline">\(V\)</span> cannot be <span
+class="math inline">\(-1,0\)</span>. This is relatively simple. However,
+if we use the first option above to calculate the rate of the cubic
+term, then two functions are <span class="math display">\[
+    \frac{1}{\tau \left( p \log (1+\frac{1}{V-V_{R}-1})+q\log
+(1+\frac{1}{V-V_{th}-1}) + r\log (1+\frac{1}{V-V_{M}-1}) \right) }
+\tag{6}
+\]</span></p>
+<p>where <span class="math inline">\(p,q,r\)</span> is the solution to
+<span class="math display">\[
+    \begin{pmatrix}
+    1 &amp; 1 &amp; 1 \\
+    V_{th}+V_{M} &amp; V_{R} + V_{M} &amp; V_{R} + V_{th} \\
+    V_{th}V_{M} &amp; V_{R}V_{M} &amp; V_{R}V_{th}
+    \end{pmatrix}
+    \begin{pmatrix}
+    p \\ q \\ r
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    0 \\ 0 \\ 1
+    \end{pmatrix}
+\]</span></p>
+<p>Similarly, the rate of <span class="math inline">\(V\)</span> to
+<span class="math inline">\(V+1\)</span> is given by <span
+class="math display">\[
+    \frac{1}{\tau \left( p \log (1-\frac{1}{V-V_{R}+1})+q\log
+(1-\frac{1}{V-V_{th}+1}) + r\log (1-\frac{1}{V-V_{M}+1}) \right) }
+\tag{7}
+\]</span></p>
+<p>In <span class="math inline">\((6)\)</span>, <span
+class="math inline">\(V\)</span> cannot be <span
+class="math inline">\(V_{R}, V_{R}+1, V_{th}, V_{th}+1, V_{M}\)</span>.
+In <span class="math inline">\((7)\)</span>, <span
+class="math inline">\(V\)</span> cannot be <span
+class="math inline">\(V_{R}-1, V_{R}, V_{th}-1, V_{th}, V_{M}-1,
+V_{M}\)</span>. It's laborious to tackle all the cases.</p>
+<p>Current approach to deal with the boundary: The state space of <span
+class="math inline">\(V\)</span> is narrowed to <span
+class="math inline">\([V_{I}+1, V_{M}-1]\)</span>. The neuron evolves on
+the cubic term, Poisson kicks and synaptic inputs around <span
+class="math inline">\(V_{R}\)</span>. - Around <span
+class="math inline">\(V=V_{R}\)</span>, the cubic term does not
+contribute if <span class="math inline">\(V=V_{R}, V_{R}+1\)</span> when
+<span class="math inline">\(V\)</span> is going to <span
+class="math inline">\(V-1\)</span>, and <span
+class="math inline">\(V=V_{R}, V_{R}-1\)</span> when <span
+class="math inline">\(V\)</span> is going to <span
+class="math inline">\(V+1\)</span>. - Around <span
+class="math inline">\(V=V_{th}\)</span>, the cubic term does not
+contribute if <span class="math inline">\(V=V_{th}, V_{th}+1\)</span>
+when <span class="math inline">\(V\)</span> is going to <span
+class="math inline">\(V-1\)</span>, and <span
+class="math inline">\(V=V_{th}, V_{th}-1\)</span> when <span
+class="math inline">\(V\)</span> is going to <span
+class="math inline">\(V+1\)</span>. Moreover, since <span
+class="math inline">\(V=V_{th}\)</span> is a fixed point when <span
+class="math inline">\(w=0\)</span>, the neuron still receives Poisson
+kicks and synaptic inputs at <span
+class="math inline">\(V=V_{th}\)</span>, and evolves solely under the
+cubic term when <span class="math inline">\(V\geqslant
+V_{th}+1\)</span>. - Around <span
+class="math inline">\(V=V_{M}\)</span>, we think the neuron fires if
+<span class="math inline">\(V=V_{M}-1\)</span>, so there is no <span
+class="math inline">\(V\)</span> to <span
+class="math inline">\(V+1\)</span> issue in <span
+class="math inline">\((7)\)</span>. - Around <span
+class="math inline">\(V=V_{I}\)</span>, there is actually no issue since
+<span class="math inline">\(V=V_{I}\)</span> is not a singular point of
+<span class="math inline">\((6)\)</span>. Recall that we separate the
+cubic term with <span class="math inline">\(w=w_{M}\)</span>, and the
+rate of <span class="math inline">\(w_{M}\)</span> is given by <span
+class="math inline">\(w_M/\tau\)</span>.</p>
+<h3 id="issue-parameters-to-make-neuron-fire">Issue: parameters to make
+neuron fire</h3>
+<p>It's harder to find a set of parameters to make the neuron fire.</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Neuronal-Dynamics/" class="category-chain-item">Neuronal Dynamics</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Neuroscience/" class="print-no-link">#Neuroscience</a>
+      
+        <a href="/tags/Stochastic-Process/" class="print-no-link">#Stochastic Process</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Markovian Spiking Neural Network</div>
+      <div>http://example.com/2024/11/26/Markovian-Spiking-Neural-Network/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>John Doe</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>Posted on</div>
+          <div>November 26, 2024</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>Licensed under</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/29/Eigenvalues-of-Tree-Graph/" title="Eigenvalues of Tree Graph">
+                        <span class="hidden-mobile">Eigenvalues of Tree Graph</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>Table of Contents</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+</body>
+</html>
