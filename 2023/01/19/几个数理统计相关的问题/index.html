@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/index/winnie.png">
 <meta property="article:published_time" content="2023-01-19T12:40:34.000Z">
-<meta property="article:modified_time" content="2025-01-03T09:05:00.009Z">
+<meta property="article:modified_time" content="2025-01-03T13:05:07.360Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Math">
 <meta name="twitter:card" content="summary_large_image">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.7k words
+          5.8k words
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          48 mins
+          49 mins
         
       </span>
     
@@ -402,9 +402,10 @@ aria-label="McIntosh, Anthony R., &amp; Bratislav Mišić. Multivariate Statisti
 (major part) of the eigenspectrum of the (sampled) covariance
 matrix.</p>
 <p>Assume we have several trials of neural activity recordings <span
-class="math inline">\(\bm{F}^{r}\in \mathbb{R}^{N_c\times N_s},
-r=1,2,\cdots ,p\)</span>. <span class="math inline">\(\bm{F}^{r}_{i,j} =
-f(c_i,s_j) + \nu_{r}(c_{i},s_{j})\)</span> is the activity of the <span
+class="math inline">\(\mathbf{F}^{r}\in \mathbb{R}^{N_c\times N_s},
+r=1,2,\cdots ,p\)</span>. <span
+class="math inline">\(\mathbf{F}^{r}_{i,j} = f(c_i,s_j) +
+\nu_{r}(c_{i},s_{j})\)</span> is the activity of the <span
 class="math inline">\(i\)</span>-th neuron/ROI under the <span
 class="math inline">\(j\)</span>-th stimulus (e.g., position) in the
 <span class="math inline">\(r\)</span>-th trial. The 'signal' <span
@@ -424,28 +425,30 @@ e.g., the sample correlation matrix is full rank. However, we often have
 <span class="math inline">\(N_c &gt; N_{s}\)</span>, so the sample
 correlation matrix is not full rank.</p>
 <p>Let's now describe how cvPCA is implemented. Suppose we have a
-training recording <span class="math inline">\(F_{train}\)</span>. We
-also have another test/cross-validating recording <span
-class="math inline">\(F_{test}\)</span>.</p>
+training recording <span
+class="math inline">\(\mathbf{F}_{train}\)</span>. We also have another
+test/cross-validating recording <span
+class="math inline">\(\mathbf{F}_{test}\)</span>.</p>
 <p>First, we can do PCA on the training recording <span
-class="math inline">\(F_{train}\)</span>: <span class="math display">\[
-    F_{train} = PC_{train} S_{train},
+class="math inline">\(\mathbf{F}_{train}\)</span>: <span
+class="math display">\[
+    \mathbf{F}_{train} = PC_{train} S_{train},
 \]</span></p>
 <p>where <span class="math inline">\(PC_{train}\in \mathbb{R}^{N_c\times
 N_{s}}, S_{train}\in \mathbb{R}^{N_{s}\times N_{s}}\)</span>. So the
 train scores are <span class="math display">\[
-    S_{train} = PC_{train}^{\mathsf{T}}F_{train}.
+    S_{train} = PC_{train}^{\mathsf{T}}\mathbf{F}_{train}.
 \]</span></p>
 <p>Next, we project the test recording <span
 class="math inline">\(F_{test}\)</span> onto the principal components of
 the training recording to get the cross-validated test scores: <span
 class="math display">\[
-S_{test} = PC_{train}^{\mathsf{T}}F_{test}.
+S_{test} = PC_{train}^{\mathsf{T}}\mathbf{F}_{test}.
 \]</span></p>
 <p>The estimated <span class="math inline">\(n\)</span>-th eigenvalue of
 the covariance matrix is <span class="math display">\[
     \lambda_{n} =
-PC^{\mathsf{T}}_{train,n}F_{train}F_{test}^{\mathsf{T}}
+PC^{\mathsf{T}}_{train,n}\mathbf{F}_{train}\mathbf{F}_{test}^{\mathsf{T}}
 PC_{train,n}^{\mathsf{T}}, n =1,2,\cdots ,N_{s}.
 \]</span></p>
 <h3 id="canonical-correlation-analysis-cca">Canonical Correlation
