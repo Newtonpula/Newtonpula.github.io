@@ -25,7 +25,7 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/img/index/neu.jpg">
 <meta property="article:published_time" content="2024-11-26T02:40:46.000Z">
-<meta property="article:modified_time" content="2024-11-26T02:57:29.888Z">
+<meta property="article:modified_time" content="2024-12-04T11:53:13.217Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="Neuroscience">
 <meta property="article:tag" content="Stochastic Process">
@@ -223,7 +223,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.7k words
+          9.5k words
         
       </span>
     
@@ -234,7 +234,7 @@
         
         
         
-          48 mins
+          79 mins
         
       </span>
     
@@ -514,9 +514,132 @@ class="math inline">\(w=w_{M}\)</span>, and the rate of <span
 class="math inline">\(w_{M}\)</span> is given by <span
 class="math inline">\(w_M/\tau\)</span>.</li>
 </ul>
-<h3 id="issue-parameters-to-make-neuron-fire">Issue: parameters to make
-neuron fire</h3>
-<p>It's harder to find a set of parameters to make the neuron fire.</p>
+<p><strong>After discussion</strong>, we think the above two issues are
+not critical. We are seeking for an approximation of the original
+dynaimcs, the rate for the leaky/cubic term is not necessary to be
+accurate and various forms can be used.</p>
+<h3 id="issue-scaling-of-the-system">Issue: scaling of the system</h3>
+<h4 id="scaling-of-v-and-w">scaling of <span
+class="math inline">\(V\)</span> and <span
+class="math inline">\(w\)</span></h4>
+<p>The original and variants of the FitzHugh-Nagumo model are not
+designed for modeling exact process of action potentials. They are
+mathematically ideal models to study the feature of periodic firing
+qualitatively. In specific, <span class="math inline">\(V_R, V_{th},
+V_M\)</span> are usually take small values, e.g., <span
+class="math inline">\(0,0.5,1.0\)</span>. The values can be seen as
+under unit 0.1V.</p>
+<p>We typically look at voltage under unit mV. How can we switch between
+two different scalings? Denote <span class="math inline">\(V, w\)</span>
+as the scale under unit 0.1V, and <span class="math inline">\(\bar{V},
+\bar{w}\)</span> as the scale under unit mV. The same treatment is
+applied to other parameters.</p>
+<p><span class="math display">\[
+    \begin{cases}
+        \frac{\mathrm{d}V}{\mathrm{d}t}
+&amp;=  -\frac{1}{\tau}\left((V-V_R)(V-V_{th})(V-V_M)+w \right) +
+I_{ext}(t) \\
+        \frac{\mathrm{d}w}{\mathrm{d}t} &amp;= b(V-c)-\gamma w
+    \end{cases}
+\]</span></p>
+<p><span class="math inline">\(\bar{V}=100V\)</span>, we may also assume
+<span class="math inline">\(\bar{w}=100w\)</span>. Then the system
+becomes <span class="math display">\[
+    \begin{cases}
+        \frac{\mathrm{d}\bar{V}}{\mathrm{d}t} =
+-\frac{1}{10000\tau}(\bar{V}-\bar{V}_{R})(\bar{V}-\bar{V}_{th})(\bar{V}-\bar{V}_{M})
+-\frac{1}{\tau}\bar{w} + 100 I_{ext}(t)\\
+        \frac{\mathrm{d}\bar{w}}{\mathrm{d}t} = b(\bar{V}-100c) - \gamma
+\bar{w} \tag{8}
+    \end{cases}
+\]</span></p>
+<p>As can be seen, the system is not linear, so the scaling is not
+invariant.</p>
+<h4 id="scaling-of-time">scaling of time</h4>
+<p>Baltanas and Casado studied the bursting behaviour of the
+FitzHugh-Nagumo model subject to quasi-monochromatic noise.
+Specifically, the input <span class="math inline">\(I_{ext}(t)\)</span>
+to the system is <span class="math inline">\(A_c + x(t)\)</span>, where
+<span class="math inline">\(A_c\)</span> is a critical constant and
+<span class="math inline">\(x(t)\)</span> is a noisy damped oscillation:
+<span class="math display">\[
+    \frac{\mathrm{d}^{2}x}{\mathrm{d}t^{2}}+2\Gamma
+\frac{\mathrm{d}x}{\mathrm{d}t} + \omega^{2} x=\xi(t) \tag{9}
+\]</span></p>
+<p>Here, <span class="math inline">\(\xi(t)\)</span> is a Gaussian white
+noise with zero mean and correlation <span class="math inline">\(\langle
+\xi(t)\xi(s)\rangle = \Delta \delta(t-s)\)</span>.</p>
+<p>The authors took <span class="math inline">\(\Gamma=0.03,
+\Delta=0.005, \omega=1\)</span> and observed bursting behaviour in <span
+class="math inline">\((1)\)</span>. We empirically observed that with
+<span class="math inline">\(\tau=1\)</span> and <span
+class="math inline">\(\tau_w=100\)</span>. However, the length of a
+spike is about 40 ms, inconsistent with a real spike, which is about 2~3
+ms. How to scale <span class="math inline">\(\tau, \tau_{w}, \Gamma,
+\omega, \Delta\)</span> to make the system more realistic? We simply
+scale <span class="math inline">\(\tau=0.1\)</span> and <span
+class="math inline">\(\tau_{w}=10\)</span>.</p>
+<p>It is a well-known fact that the solution to <span
+class="math inline">\((8)\)</span> with <span
+class="math inline">\(\xi(t)=0\)</span> is <span class="math display">\[
+    x(t) = A_0 \exp \left( -\Gamma t \right) \cos \left(
+\sqrt{\omega^{2}-\Gamma^{2}} t+ \phi \right)
+\]</span></p>
+<p>If we defined the Hamiltonian <span
+class="math inline">\(H(x,\dot{x})=\frac{1}{2}(\dot{x}^2+\omega^{2}x^{2})\)</span>,
+then the Hamiltonian equation is <span class="math display">\[
+    \mathrm{d}H=-2\Gamma\left( H- \frac{\Delta}{4\Gamma}
+\right)\mathrm{d}t + \sqrt{\Delta H} \mathrm{d}W_t \tag{10}
+\]</span></p>
+<p>In the long term the expected value of <span
+class="math inline">\(H\)</span> tends towards <span
+class="math inline">\(\frac{\Delta}{4\Gamma}\)</span>. Combined with the
+definition of <span class="math inline">\(H\)</span>, we see that if we
+set <span class="math inline">\(\omega=10\)</span> and want to keep the
+magnitude of oscillation, we should set <span
+class="math inline">\(\Delta=0.005\times 100=0.5\)</span>.</p>
+<h3 id="issue-time-alignment">Issue: time alignment</h3>
+<p>We first discretize the state space as an ordered pair <span
+class="math inline">\((V,w)\)</span>. However, it's not a good idea if
+more variables are to be incorporated or even we have more states in
+<span class="math inline">\(w\)</span> (recall that we only have <span
+class="math inline">\(2\)</span> states of <span
+class="math inline">\(w\)</span>). A better idea is to separate the
+state space of <span class="math inline">\(V\)</span> and <span
+class="math inline">\(w\)</span>. Since the evolution of <span
+class="math inline">\(V\)</span> and <span
+class="math inline">\(w\)</span> depends on each other, the transition
+vector must be calculated each time the state changes.</p>
+<p>The best we can do is it to precompute the transition probability due
+to the leaky/cubic term. Each time the state shall change, we grab the
+transition vector and add parts related to the other variable and
+external input.</p>
+<p>One of the problems is that transition rate of <span
+class="math inline">\(V\)</span> and <span
+class="math inline">\(w\)</span> are not the same. How to align <span
+class="math inline">\(V\)</span> and <span
+class="math inline">\(w\)</span>? One way is to sample two random number
+<span class="math inline">\(\Delta t_V\)</span>, <span
+class="math inline">\(\Delta t_w\)</span> from two exponential
+distributions with rates corresponding to <span
+class="math inline">\(V\)</span> and <span
+class="math inline">\(w\)</span>. If <span class="math inline">\(\Delta
+t_V&lt; \Delta t_w\)</span>, then we update <span
+class="math inline">\(V\)</span>, otherwise we update <span
+class="math inline">\(w\)</span>.</p>
+<h3 id="issue-range-of-w.">Issue: range of <span
+class="math inline">\(w\)</span>.</h3>
+<p>In the rescaled system <span class="math inline">\((8)\)</span>, the
+stationary value of <span class="math inline">\(\bar{w}\)</span> is
+given by <span
+class="math inline">\(\frac{b}{\gamma}(\bar{V}-100c)\)</span>. However,
+we obviously don't need the range of <span
+class="math inline">\(\bar{w}\)</span> to be that big from simple
+observation of the trajectory and the vector field.</p>
+<p>To constrain the range of <span
+class="math inline">\(\bar{w}\)</span>, we set a threshold of the
+leaky/cubic term.</p>
+<h2 id="reference">Reference</h2>
 
                 
               </div>
